@@ -136,6 +136,127 @@ export function allocSW_DEVICE_CREATE_INFO(data?: Partial<SW_DEVICE_CREATE_INFO>
   return buf;
 }
 
+export class SW_DEVICE_CREATE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pszInstanceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pszzHardwareIds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get pszzCompatibleIds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pContainerId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get CapabilityFlags(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: buffer
+  get pszDeviceDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: buffer
+  get pszDeviceLocation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pszInstanceId(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set pszzHardwareIds(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set pszzCompatibleIds(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set pContainerId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set CapabilityFlags(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: buffer
+  set pszDeviceDescription(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: buffer
+  set pszDeviceLocation(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f56 = value;
+    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+  }
+
+  // 0x40: pointer
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 export type HRESULT = number;
 
 export type BOOL = number;

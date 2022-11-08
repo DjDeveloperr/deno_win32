@@ -426,6 +426,61 @@ export function allocIP6_ADDRESS(data?: Partial<IP6_ADDRESS>): Uint8Array {
   return buf;
 }
 
+export class IP6_ADDRESSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IP6Qword(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get IP6Dword(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get IP6Word(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get IP6Byte(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IP6Qword(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set IP6Dword(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set IP6Word(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set IP6Byte(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.IP4_ARRAY (size: 16)
  */
@@ -447,6 +502,42 @@ export function allocIP4_ARRAY(data?: Partial<IP4_ARRAY>): Uint8Array {
   // 0x08: pointer
   if (data?.AddrArray !== undefined) view.setBigUint64(8, data.AddrArray === null ? 0n : BigInt(util.toPointer(data.AddrArray)), true);
   return buf;
+}
+
+export class IP4_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get AddrCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get AddrArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set AddrCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set AddrArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -472,6 +563,41 @@ export function allocRFCOMM_MSC_DATA(data?: Partial<RFCOMM_MSC_DATA>): Uint8Arra
   return buf;
 }
 
+export class RFCOMM_MSC_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Signals(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Break(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u8
+  set Signals(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Break(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+}
+
 /**
  * Windows.Win32.Devices.Bluetooth.RFCOMM_RLS_DATA (size: 8)
  */
@@ -489,6 +615,31 @@ export function allocRFCOMM_RLS_DATA(data?: Partial<RFCOMM_RLS_DATA>): Uint8Arra
   if (data?.LineStatus !== undefined) view.setUint8(0, Number(data.LineStatus));
   // 0x01: pad7
   return buf;
+}
+
+export class RFCOMM_RLS_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get LineStatus(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x00: u8
+  set LineStatus(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
 }
 
 /**
@@ -534,6 +685,91 @@ export function allocRFCOMM_RPN_DATA(data?: Partial<RFCOMM_RPN_DATA>): Uint8Arra
   return buf;
 }
 
+export class RFCOMM_RPN_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Baud(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Data(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get FlowControl(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get XonChar(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get XoffChar(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get ParameterMask1(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get ParameterMask2(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: pad1
+
+  // 0x00: u8
+  set Baud(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Data(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set FlowControl(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set XonChar(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set XoffChar(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set ParameterMask1(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set ParameterMask2(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: pad1
+}
+
 /**
  * _Data_e__Union (size: 24)
  */
@@ -560,6 +796,50 @@ export function alloc_Data_e__Union(data?: Partial<_Data_e__Union>): Uint8Array 
   return buf;
 }
 
+export class _Data_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get MSC(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get RLS(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get RPN(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set MSC(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set RLS(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set RPN(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_ADDR (size: 16)
  */
@@ -580,6 +860,39 @@ export function allocDNS_ADDR(data?: Partial<DNS_ADDR>): Uint8Array {
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DNS_ADDRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get MaxSa(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set MaxSa(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -636,6 +949,118 @@ export function allocDNS_ADDR_ARRAY(data?: Partial<DNS_ADDR_ARRAY>): Uint8Array 
   return buf;
 }
 
+export class DNS_ADDR_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MaxCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get AddrCount(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Tag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get Family(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get WordReserved(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u32
+  get Flags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get MatchFlag(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Reserved1(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Reserved2(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get AddrArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set MaxCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set AddrCount(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Tag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set Family(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set WordReserved(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u32
+  set Flags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set MatchFlag(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Reserved1(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Reserved2(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set AddrArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_HEADER (size: 16)
  */
@@ -679,6 +1104,91 @@ export function allocDNS_HEADER(data?: Partial<DNS_HEADER>): Uint8Array {
   return buf;
 }
 
+export class DNS_HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get Xid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get _bitfield1(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get _bitfield2(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u16
+  get QuestionCount(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get AnswerCount(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get NameServerCount(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get AdditionalCount(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u16
+  set Xid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set _bitfield1(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set _bitfield2(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u16
+  set QuestionCount(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set AnswerCount(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set NameServerCount(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set AdditionalCount(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_HEADER_EXT (size: 8)
  */
@@ -706,6 +1216,51 @@ export function allocDNS_HEADER_EXT(data?: Partial<DNS_HEADER_EXT>): Uint8Array 
   return buf;
 }
 
+export class DNS_HEADER_EXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get _bitfield(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get chRcode(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get chVersion(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set _bitfield(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set chRcode(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set chVersion(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_WIRE_QUESTION (size: 8)
  */
@@ -727,6 +1282,41 @@ export function allocDNS_WIRE_QUESTION(data?: Partial<DNS_WIRE_QUESTION>): Uint8
   if (data?.QuestionClass !== undefined) view.setUint16(2, Number(data.QuestionClass), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DNS_WIRE_QUESTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get QuestionType(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get QuestionClass(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set QuestionType(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set QuestionClass(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -760,6 +1350,61 @@ export function allocDNS_WIRE_RECORD(data?: Partial<DNS_WIRE_RECORD>): Uint8Arra
   return buf;
 }
 
+export class DNS_WIRE_RECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get RecordType(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get RecordClass(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get TimeToLive(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u16
+  get DataLength(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u16
+  set RecordType(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set RecordClass(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set TimeToLive(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u16
+  set DataLength(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_A_DATA (size: 8)
  */
@@ -777,6 +1422,31 @@ export function allocDNS_A_DATA(data?: Partial<DNS_A_DATA>): Uint8Array {
   if (data?.IpAddress !== undefined) view.setUint32(0, Number(data.IpAddress), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DNS_A_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get IpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set IpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -802,6 +1472,29 @@ export function allocDNS_PTR_DATAW(data?: Partial<DNS_PTR_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_PTR_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameHost(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+}
+
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
@@ -823,6 +1516,29 @@ export function allocDNS_PTR_DATAA(data?: Partial<DNS_PTR_DATAA>): Uint8Array {
     view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
+}
+
+export class DNS_PTR_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameHost(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
 }
 
 /**
@@ -874,6 +1590,95 @@ export function allocDNS_SOA_DATAW(data?: Partial<DNS_SOA_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_SOA_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNamePrimaryServer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pNameAdministrator(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSerialNo(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwRefresh(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwRetry(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwExpire(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwDefaultTtl(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: buffer
+  set pNamePrimaryServer(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pNameAdministrator(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set dwSerialNo(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwRefresh(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwRetry(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwExpire(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwDefaultTtl(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_SOA_DATAA (size: 40)
  */
@@ -923,6 +1728,95 @@ export function allocDNS_SOA_DATAA(data?: Partial<DNS_SOA_DATAA>): Uint8Array {
   return buf;
 }
 
+export class DNS_SOA_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNamePrimaryServer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pNameAdministrator(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSerialNo(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwRefresh(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwRetry(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwExpire(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwDefaultTtl(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: buffer
+  set pNamePrimaryServer(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pNameAdministrator(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set dwSerialNo(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwRefresh(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwRetry(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwExpire(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwDefaultTtl(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_MINFO_DATAW (size: 16)
  */
@@ -951,6 +1845,41 @@ export function allocDNS_MINFO_DATAW(data?: Partial<DNS_MINFO_DATAW>): Uint8Arra
   return buf;
 }
 
+export class DNS_MINFO_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameMailbox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pNameErrorsMailbox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameMailbox(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pNameErrorsMailbox(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_MINFO_DATAA (size: 16)
  */
@@ -977,6 +1906,41 @@ export function allocDNS_MINFO_DATAA(data?: Partial<DNS_MINFO_DATAA>): Uint8Arra
     view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
+}
+
+export class DNS_MINFO_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameMailbox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pNameErrorsMailbox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameMailbox(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pNameErrorsMailbox(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
 }
 
 /**
@@ -1009,6 +1973,53 @@ export function allocDNS_MX_DATAW(data?: Partial<DNS_MX_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_MX_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameExchange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wPreference(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get Pad(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: buffer
+  set pNameExchange(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wPreference(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set Pad(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_MX_DATAA (size: 16)
  */
@@ -1039,6 +2050,53 @@ export function allocDNS_MX_DATAA(data?: Partial<DNS_MX_DATAA>): Uint8Array {
   return buf;
 }
 
+export class DNS_MX_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameExchange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wPreference(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get Pad(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: buffer
+  set pNameExchange(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wPreference(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set Pad(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_TXT_DATAW (size: 16)
  */
@@ -1060,6 +2118,42 @@ export function allocDNS_TXT_DATAW(data?: Partial<DNS_TXT_DATAW>): Uint8Array {
   // 0x08: pointer
   if (data?.pStringArray !== undefined) view.setBigUint64(8, data.pStringArray === null ? 0n : BigInt(util.toPointer(data.pStringArray)), true);
   return buf;
+}
+
+export class DNS_TXT_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwStringCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pStringArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwStringCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pStringArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1085,6 +2179,42 @@ export function allocDNS_TXT_DATAA(data?: Partial<DNS_TXT_DATAA>): Uint8Array {
   return buf;
 }
 
+export class DNS_TXT_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwStringCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pStringArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwStringCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pStringArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NULL_DATA (size: 16)
  */
@@ -1106,6 +2236,42 @@ export function allocDNS_NULL_DATA(data?: Partial<DNS_NULL_DATA>): Uint8Array {
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DNS_NULL_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwByteCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwByteCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1135,6 +2301,52 @@ export function allocDNS_WKS_DATA(data?: Partial<DNS_WKS_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_WKS_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get IpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u8
+  get chProtocol(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get BitMask(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set IpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u8
+  set chProtocol(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set BitMask(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_AAAA_DATA (size: 8)
  */
@@ -1151,6 +2363,28 @@ export function allocDNS_AAAA_DATA(data?: Partial<DNS_AAAA_DATA>): Uint8Array {
   // 0x00: pointer
   if (data?.Ip6Address !== undefined) view.setBigUint64(0, data.Ip6Address === null ? 0n : BigInt(util.toPointer(data.Ip6Address)), true);
   return buf;
+}
+
+export class DNS_AAAA_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Ip6Address(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Ip6Address(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1211,6 +2445,124 @@ export function allocDNS_SIG_DATAW(data?: Partial<DNS_SIG_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_SIG_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wTypeCovered(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get chLabelCount(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u32
+  get dwOriginalTtl(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwExpiration(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwTimeSigned(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get wKeyTag(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wSignatureLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  get pNameSigner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Signature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wTypeCovered(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set chLabelCount(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u32
+  set dwOriginalTtl(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwExpiration(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwTimeSigned(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set wKeyTag(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wSignatureLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  set pNameSigner(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set Signature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_SIG_DATAA (size: 40)
  */
@@ -1269,6 +2621,124 @@ export function allocDNS_SIG_DATAA(data?: Partial<DNS_SIG_DATAA>): Uint8Array {
   return buf;
 }
 
+export class DNS_SIG_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wTypeCovered(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get chLabelCount(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u32
+  get dwOriginalTtl(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwExpiration(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwTimeSigned(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get wKeyTag(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wSignatureLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  get pNameSigner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Signature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wTypeCovered(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set chLabelCount(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u32
+  set dwOriginalTtl(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwExpiration(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwTimeSigned(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set wKeyTag(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wSignatureLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  set pNameSigner(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set Signature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_KEY_DATA (size: 16)
  */
@@ -1307,6 +2777,78 @@ export function allocDNS_KEY_DATA(data?: Partial<DNS_KEY_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_KEY_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wFlags(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get chProtocol(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u16
+  get wKeyLength(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wPad(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: pointer
+  get Key(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wFlags(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set chProtocol(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u16
+  set wKeyLength(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wPad(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: pointer
+  set Key(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_DHCID_DATA (size: 16)
  */
@@ -1328,6 +2870,42 @@ export function allocDNS_DHCID_DATA(data?: Partial<DNS_DHCID_DATA>): Uint8Array 
   // 0x08: pointer
   if (data?.DHCID !== undefined) view.setBigUint64(8, data.DHCID === null ? 0n : BigInt(util.toPointer(data.DHCID)), true);
   return buf;
+}
+
+export class DNS_DHCID_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwByteCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get DHCID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwByteCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set DHCID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1364,6 +2942,64 @@ export function allocDNS_NSEC_DATAW(data?: Partial<DNS_NSEC_DATAW>): Uint8Array 
   return buf;
 }
 
+export class DNS_NSEC_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNextDomainName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wTypeBitMapsLength(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wPad(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get TypeBitMaps(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNextDomainName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wTypeBitMapsLength(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wPad(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set TypeBitMaps(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NSEC_DATAA (size: 24)
  */
@@ -1396,6 +3032,64 @@ export function allocDNS_NSEC_DATAA(data?: Partial<DNS_NSEC_DATAA>): Uint8Array 
   // 0x10: pointer
   if (data?.TypeBitMaps !== undefined) view.setBigUint64(16, data.TypeBitMaps === null ? 0n : BigInt(util.toPointer(data.TypeBitMaps)), true);
   return buf;
+}
+
+export class DNS_NSEC_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNextDomainName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wTypeBitMapsLength(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wPad(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get TypeBitMaps(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNextDomainName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wTypeBitMapsLength(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wPad(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set TypeBitMaps(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1440,6 +3134,88 @@ export function allocDNS_NSEC3_DATA(data?: Partial<DNS_NSEC3_DATA>): Uint8Array 
   return buf;
 }
 
+export class DNS_NSEC3_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get bFlags(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u16
+  get wIterations(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u8
+  get bSaltLength(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get bHashLength(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u16
+  get wTypeBitMapsLength(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: pointer
+  get chData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set bFlags(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u16
+  set wIterations(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u8
+  set bSaltLength(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set bHashLength(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u16
+  set wTypeBitMapsLength(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: pointer
+  set chData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NSEC3PARAM_DATA (size: 24)
  */
@@ -1477,6 +3253,83 @@ export function allocDNS_NSEC3PARAM_DATA(data?: Partial<DNS_NSEC3PARAM_DATA>): U
   // 0x10: pointer
   if (data?.pbSalt !== undefined) view.setBigUint64(16, data.pbSalt === null ? 0n : BigInt(util.toPointer(data.pbSalt)), true);
   return buf;
+}
+
+export class DNS_NSEC3PARAM_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get bFlags(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u16
+  get wIterations(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u8
+  get bSaltLength(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get bPad(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pbSalt(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set bFlags(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u16
+  set wIterations(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u8
+  set bSaltLength(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set bPad(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pbSalt(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1518,6 +3371,83 @@ export function allocDNS_TLSA_DATA(data?: Partial<DNS_TLSA_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_TLSA_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get bCertUsage(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get bSelector(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get bMatchingType(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u16
+  get bCertificateAssociationDataLength(): number {
+    return this.view.getUint16(3, true);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get bPad(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get bCertificateAssociationData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set bCertUsage(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set bSelector(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set bMatchingType(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u16
+  set bCertificateAssociationDataLength(value: number) {
+    this.view.setUint16(3, value, true);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set bPad(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set bCertificateAssociationData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_DS_DATA (size: 16)
  */
@@ -1556,6 +3486,78 @@ export function allocDNS_DS_DATA(data?: Partial<DNS_DS_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_DS_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wKeyTag(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get chAlgorithm(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get chDigestType(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u16
+  get wDigestLength(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wPad(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: pointer
+  get Digest(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wKeyTag(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set chAlgorithm(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set chDigestType(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u16
+  set wDigestLength(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wPad(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: pointer
+  set Digest(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_OPT_DATA (size: 16)
  */
@@ -1581,6 +3583,52 @@ export function allocDNS_OPT_DATA(data?: Partial<DNS_OPT_DATA>): Uint8Array {
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DNS_OPT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wDataLength(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPad(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wDataLength(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPad(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1626,6 +3674,91 @@ export function allocDNS_LOC_DATA(data?: Partial<DNS_LOC_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_LOC_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wVersion(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wSize(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get wHorPrec(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wVerPrec(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u32
+  get dwLatitude(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwLongitude(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwAltitude(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u16
+  set wVersion(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wSize(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set wHorPrec(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wVerPrec(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u32
+  set dwLatitude(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwLongitude(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwAltitude(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NXT_DATAW (size: 24)
  */
@@ -1656,6 +3789,54 @@ export function allocDNS_NXT_DATAW(data?: Partial<DNS_NXT_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_NXT_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wNumTypes(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get wTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameNext(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wNumTypes(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set wTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NXT_DATAA (size: 24)
  */
@@ -1684,6 +3865,54 @@ export function allocDNS_NXT_DATAA(data?: Partial<DNS_NXT_DATAA>): Uint8Array {
   // 0x10: pointer
   if (data?.wTypes !== undefined) view.setBigUint64(16, data.wTypes === null ? 0n : BigInt(util.toPointer(data.wTypes)), true);
   return buf;
+}
+
+export class DNS_NXT_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wNumTypes(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get wTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pNameNext(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wNumTypes(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set wTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1723,6 +3952,69 @@ export function allocDNS_SRV_DATAW(data?: Partial<DNS_SRV_DATAW>): Uint8Array {
   return buf;
 }
 
+export class DNS_SRV_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameTarget(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wPriority(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wWeight(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get wPort(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get Pad(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x00: buffer
+  set pNameTarget(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wPriority(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wWeight(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set wPort(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set Pad(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_SRV_DATAA (size: 16)
  */
@@ -1758,6 +4050,69 @@ export function allocDNS_SRV_DATAA(data?: Partial<DNS_SRV_DATAA>): Uint8Array {
   // 0x0e: u16
   if (data?.Pad !== undefined) view.setUint16(14, Number(data.Pad), true);
   return buf;
+}
+
+export class DNS_SRV_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameTarget(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wPriority(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wWeight(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get wPort(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get Pad(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x00: buffer
+  set pNameTarget(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u16
+  set wPriority(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wWeight(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set wPort(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set Pad(value: number) {
+    this.view.setUint16(14, value, true);
+  }
 }
 
 /**
@@ -1811,6 +4166,89 @@ export function allocDNS_NAPTR_DATAW(data?: Partial<DNS_NAPTR_DATAW>): Uint8Arra
   return buf;
 }
 
+export class DNS_NAPTR_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wOrder(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPreference(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pFlags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pService(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get pRegularExpression(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get pReplacement(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wOrder(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPreference(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pFlags(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set pService(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set pRegularExpression(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set pReplacement(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_NAPTR_DATAA (size: 40)
  */
@@ -1862,6 +4300,89 @@ export function allocDNS_NAPTR_DATAA(data?: Partial<DNS_NAPTR_DATAA>): Uint8Arra
   return buf;
 }
 
+export class DNS_NAPTR_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wOrder(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPreference(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pFlags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pService(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get pRegularExpression(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get pReplacement(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wOrder(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPreference(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pFlags(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set pService(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set pRegularExpression(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set pReplacement(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_ATMA_DATA (size: 16)
  */
@@ -1883,6 +4404,42 @@ export function allocDNS_ATMA_DATA(data?: Partial<DNS_ATMA_DATA>): Uint8Array {
   // 0x08: pointer
   if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
   return buf;
+}
+
+export class DNS_ATMA_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get AddressType(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  get Address(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set AddressType(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  set Address(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type BOOL = number;
@@ -1953,6 +4510,146 @@ export function allocDNS_TKEY_DATAW(data?: Partial<DNS_TKEY_DATAW>): Uint8Array 
   return buf;
 }
 
+export class DNS_TKEY_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAlgorithmPacket(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pOtherData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dwCreateTime(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwExpireTime(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u16
+  get wMode(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wError(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u16
+  get wKeyLength(): number {
+    return this.view.getUint16(44, true);
+  }
+
+  // 0x2e: u16
+  get wOtherLength(): number {
+    return this.view.getUint16(46, true);
+  }
+
+  // 0x30: u8
+  get cAlgNameLength(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: i32
+  get bPacketPointers(): number {
+    return this.view.getInt32(49, true);
+  }
+
+  // 0x35: pad3
+
+  // 0x00: buffer
+  set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dwCreateTime(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwExpireTime(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u16
+  set wMode(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wError(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u16
+  set wKeyLength(value: number) {
+    this.view.setUint16(44, value, true);
+  }
+
+  // 0x2e: u16
+  set wOtherLength(value: number) {
+    this.view.setUint16(46, value, true);
+  }
+
+  // 0x30: u8
+  set cAlgNameLength(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: i32
+  set bPacketPointers(value: number) {
+    this.view.setInt32(49, value, true);
+  }
+
+  // 0x35: pad3
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_TKEY_DATAA (size: 56)
  */
@@ -2017,6 +4714,146 @@ export function allocDNS_TKEY_DATAA(data?: Partial<DNS_TKEY_DATAA>): Uint8Array 
   if (data?.bPacketPointers !== undefined) view.setInt32(49, Number(data.bPacketPointers), true);
   // 0x35: pad3
   return buf;
+}
+
+export class DNS_TKEY_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAlgorithmPacket(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pOtherData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dwCreateTime(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwExpireTime(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u16
+  get wMode(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wError(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u16
+  get wKeyLength(): number {
+    return this.view.getUint16(44, true);
+  }
+
+  // 0x2e: u16
+  get wOtherLength(): number {
+    return this.view.getUint16(46, true);
+  }
+
+  // 0x30: u8
+  get cAlgNameLength(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: i32
+  get bPacketPointers(): number {
+    return this.view.getInt32(49, true);
+  }
+
+  // 0x35: pad3
+
+  // 0x00: buffer
+  set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dwCreateTime(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwExpireTime(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u16
+  set wMode(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wError(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u16
+  set wKeyLength(value: number) {
+    this.view.setUint16(44, value, true);
+  }
+
+  // 0x2e: u16
+  set wOtherLength(value: number) {
+    this.view.setUint16(46, value, true);
+  }
+
+  // 0x30: u8
+  set cAlgNameLength(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: i32
+  set bPacketPointers(value: number) {
+    this.view.setInt32(49, value, true);
+  }
+
+  // 0x35: pad3
 }
 
 /**
@@ -2085,6 +4922,146 @@ export function allocDNS_TSIG_DATAW(data?: Partial<DNS_TSIG_DATAW>): Uint8Array 
   return buf;
 }
 
+export class DNS_TSIG_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAlgorithmPacket(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pSignature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pOtherData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i64
+  get i64CreateTime(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(32, true));
+  }
+
+  // 0x28: u16
+  get wFudgeTime(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wOriginalXid(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u16
+  get wError(): number {
+    return this.view.getUint16(44, true);
+  }
+
+  // 0x2e: u16
+  get wSigLength(): number {
+    return this.view.getUint16(46, true);
+  }
+
+  // 0x30: u16
+  get wOtherLength(): number {
+    return this.view.getUint16(48, true);
+  }
+
+  // 0x32: u8
+  get cAlgNameLength(): number {
+    return this.view.getUint8(50);
+  }
+
+  // 0x33: i32
+  get bPacketPointers(): number {
+    return this.view.getInt32(51, true);
+  }
+
+  // 0x37: pad1
+
+  // 0x00: buffer
+  set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pSignature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i64
+  set i64CreateTime(value: Deno.PointerValue) {
+    this.view.setBigInt64(32, BigInt(value), true);
+  }
+
+  // 0x28: u16
+  set wFudgeTime(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wOriginalXid(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u16
+  set wError(value: number) {
+    this.view.setUint16(44, value, true);
+  }
+
+  // 0x2e: u16
+  set wSigLength(value: number) {
+    this.view.setUint16(46, value, true);
+  }
+
+  // 0x30: u16
+  set wOtherLength(value: number) {
+    this.view.setUint16(48, value, true);
+  }
+
+  // 0x32: u8
+  set cAlgNameLength(value: number) {
+    this.view.setUint8(50, value);
+  }
+
+  // 0x33: i32
+  set bPacketPointers(value: number) {
+    this.view.setInt32(51, value, true);
+  }
+
+  // 0x37: pad1
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_TSIG_DATAA (size: 56)
  */
@@ -2151,6 +5128,146 @@ export function allocDNS_TSIG_DATAA(data?: Partial<DNS_TSIG_DATAA>): Uint8Array 
   return buf;
 }
 
+export class DNS_TSIG_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pNameAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAlgorithmPacket(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pSignature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pOtherData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i64
+  get i64CreateTime(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(32, true));
+  }
+
+  // 0x28: u16
+  get wFudgeTime(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wOriginalXid(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u16
+  get wError(): number {
+    return this.view.getUint16(44, true);
+  }
+
+  // 0x2e: u16
+  get wSigLength(): number {
+    return this.view.getUint16(46, true);
+  }
+
+  // 0x30: u16
+  get wOtherLength(): number {
+    return this.view.getUint16(48, true);
+  }
+
+  // 0x32: u8
+  get cAlgNameLength(): number {
+    return this.view.getUint8(50);
+  }
+
+  // 0x33: i32
+  get bPacketPointers(): number {
+    return this.view.getInt32(51, true);
+  }
+
+  // 0x37: pad1
+
+  // 0x00: buffer
+  set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pSignature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i64
+  set i64CreateTime(value: Deno.PointerValue) {
+    this.view.setBigInt64(32, BigInt(value), true);
+  }
+
+  // 0x28: u16
+  set wFudgeTime(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wOriginalXid(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u16
+  set wError(value: number) {
+    this.view.setUint16(44, value, true);
+  }
+
+  // 0x2e: u16
+  set wSigLength(value: number) {
+    this.view.setUint16(46, value, true);
+  }
+
+  // 0x30: u16
+  set wOtherLength(value: number) {
+    this.view.setUint16(48, value, true);
+  }
+
+  // 0x32: u8
+  set cAlgNameLength(value: number) {
+    this.view.setUint8(50, value);
+  }
+
+  // 0x33: i32
+  set bPacketPointers(value: number) {
+    this.view.setInt32(51, value, true);
+  }
+
+  // 0x37: pad1
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_UNKNOWN_DATA (size: 16)
  */
@@ -2172,6 +5289,42 @@ export function allocDNS_UNKNOWN_DATA(data?: Partial<DNS_UNKNOWN_DATA>): Uint8Ar
   // 0x08: pointer
   if (data?.bData !== undefined) view.setBigUint64(8, data.bData === null ? 0n : BigInt(util.toPointer(data.bData)), true);
   return buf;
+}
+
+export class DNS_UNKNOWN_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwByteCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get bData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwByteCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set bData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2208,6 +5361,68 @@ export function allocDNS_WINS_DATA(data?: Partial<DNS_WINS_DATA>): Uint8Array {
   return buf;
 }
 
+export class DNS_WINS_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwMappingFlag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwLookupTimeout(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwCacheTimeout(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cWinsServerCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get WinsServers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwMappingFlag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwLookupTimeout(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwCacheTimeout(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cWinsServerCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set WinsServers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_WINSR_DATAW (size: 24)
  */
@@ -2240,6 +5455,63 @@ export function allocDNS_WINSR_DATAW(data?: Partial<DNS_WINSR_DATAW>): Uint8Arra
     view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
+}
+
+export class DNS_WINSR_DATAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwMappingFlag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwLookupTimeout(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwCacheTimeout(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get pNameResultDomain(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwMappingFlag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwLookupTimeout(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwCacheTimeout(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set pNameResultDomain(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
 }
 
 /**
@@ -2276,6 +5548,63 @@ export function allocDNS_WINSR_DATAA(data?: Partial<DNS_WINSR_DATAA>): Uint8Arra
   return buf;
 }
 
+export class DNS_WINSR_DATAAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwMappingFlag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwLookupTimeout(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwCacheTimeout(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get pNameResultDomain(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwMappingFlag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwLookupTimeout(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwCacheTimeout(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set pNameResultDomain(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_RECORD_FLAGS (size: 8)
  */
@@ -2293,6 +5622,31 @@ export function allocDNS_RECORD_FLAGS(data?: Partial<DNS_RECORD_FLAGS>): Uint8Ar
   if (data?._bitfield !== undefined) view.setUint32(0, Number(data._bitfield), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DNS_RECORD_FLAGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get _bitfield(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set _bitfield(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2317,6 +5671,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Flags_e__Union (size: 16)
  */
@@ -2338,6 +5723,42 @@ export function alloc_Flags_e__Union(data?: Partial<_Flags_e__Union>): Uint8Arra
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class _Flags_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get AsWORD(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set AsWORD(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2388,6 +5809,106 @@ export function allocDNS_RECORDW(data?: Partial<DNS_RECORDW>): Uint8Array {
   // 0x28: pointer
   if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DNS_RECORDWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wDataLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Flags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dwTtl(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwReserved(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set wType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wDataLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Flags(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dwTtl(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2445,6 +5966,121 @@ export function allocDNS_RECORD_OPTW(data?: Partial<DNS_RECORD_OPTW>): Uint8Arra
   return buf;
 }
 
+export class DNS_RECORD_OPTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wDataLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Flags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ExtHeader(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u16
+  get wPayloadSize(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wReserved(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set wType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wDataLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Flags(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ExtHeader(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u16
+  set wPayloadSize(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wReserved(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_RECORDA (size: 48)
  */
@@ -2493,6 +6129,106 @@ export function allocDNS_RECORDA(data?: Partial<DNS_RECORDA>): Uint8Array {
   // 0x28: pointer
   if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DNS_RECORDAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wDataLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Flags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dwTtl(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwReserved(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set wType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wDataLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Flags(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dwTtl(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2550,6 +6286,121 @@ export function alloc_DnsRecordOptA(data?: Partial<_DnsRecordOptA>): Uint8Array 
   return buf;
 }
 
+export class _DnsRecordOptAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wDataLength(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Flags(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ExtHeader(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u16
+  get wPayloadSize(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wReserved(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set wType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wDataLength(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Flags(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ExtHeader(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u16
+  set wPayloadSize(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wReserved(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_RRSET (size: 16)
  */
@@ -2570,6 +6421,39 @@ export function allocDNS_RRSET(data?: Partial<DNS_RRSET>): Uint8Array {
   // 0x08: pointer
   if (data?.pLastRR !== undefined) view.setBigUint64(8, data.pLastRR === null ? 0n : BigInt(util.toPointer(data.pLastRR)), true);
   return buf;
+}
+
+export class DNS_RRSETView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pFirstRR(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pLastRR(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pFirstRR(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pLastRR(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2599,6 +6483,49 @@ export function allocDNS_PROXY_INFORMATION(data?: Partial<DNS_PROXY_INFORMATION>
     view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
+}
+
+export class DNS_PROXY_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get proxyInformationType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: buffer
+  get proxyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set proxyInformationType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set proxyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
 }
 
 /**
@@ -2633,6 +6560,69 @@ export function allocDNS_QUERY_RESULT(data?: Partial<DNS_QUERY_RESULT>): Uint8Ar
   // 0x18: pointer
   if (data?.Reserved !== undefined) view.setBigUint64(24, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
   return buf;
+}
+
+export class DNS_QUERY_RESULTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get QueryStatus(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u64
+  get QueryOptions(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get pQueryRecords(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Reserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set QueryStatus(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u64
+  set QueryOptions(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set pQueryRecords(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2687,6 +6677,114 @@ export function allocDNS_QUERY_REQUEST(data?: Partial<DNS_QUERY_REQUEST>): Uint8
   return buf;
 }
 
+export class DNS_QUERY_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get QueryName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get QueryType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  get QueryOptions(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: pointer
+  get pDnsServerList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pQueryCompletionCallback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set QueryName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set QueryType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  set QueryOptions(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: pointer
+  set pDnsServerList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pQueryCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_QUERY_CANCEL (size: 8)
  */
@@ -2703,6 +6801,28 @@ export function allocDNS_QUERY_CANCEL(data?: Partial<DNS_QUERY_CANCEL>): Uint8Ar
   // 0x00: pointer
   if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
   return buf;
+}
+
+export class DNS_QUERY_CANCELView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Reserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2755,6 +6875,107 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   return buf;
 }
 
+export class _Anonymous1_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data0(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: buffer
+  get String(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get u(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get psid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pguid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get LogonId_LowPart(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: usize
+  set Data0(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: buffer
+  set String(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: usize
+  set u(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set psid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pguid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set LogonId_LowPart(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous2_e__Union (size: 16)
  */
@@ -2776,6 +6997,41 @@ export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>):
   if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class _Anonymous2_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data1(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: i32
+  get LogonId_HighPart(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: usize
+  set Data1(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: i32
+  set LogonId_HighPart(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -2807,6 +7063,63 @@ export function allocDNS_CUSTOM_SERVER(data?: Partial<DNS_CUSTOM_SERVER>): Uint8
   // 0x18: pointer
   if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
   return buf;
+}
+
+export class DNS_CUSTOM_SERVERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwServerType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  get ullFlags(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwServerType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  set ullFlags(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2878,6 +7191,159 @@ export function allocDNS_QUERY_REQUEST3(data?: Partial<DNS_QUERY_REQUEST3>): Uin
   return buf;
 }
 
+export class DNS_QUERY_REQUEST3View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get QueryName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get QueryType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  get QueryOptions(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: pointer
+  get pDnsServerList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pQueryCompletionCallback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get IsNetworkQueryRequired(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get RequiredNetworkIndex(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cCustomServers(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get pCustomServers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set QueryName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set QueryType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  set QueryOptions(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: pointer
+  set pDnsServerList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pQueryCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set IsNetworkQueryRequired(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set RequiredNetworkIndex(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cCustomServers(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set pCustomServers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_APPLICATION_SETTINGS (size: 16)
  */
@@ -2899,6 +7365,41 @@ export function allocDNS_APPLICATION_SETTINGS(data?: Partial<DNS_APPLICATION_SET
   // 0x08: u64
   if (data?.Flags !== undefined) view.setBigUint64(8, BigInt(data.Flags), true);
   return buf;
+}
+
+export class DNS_APPLICATION_SETTINGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  get Flags(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  set Flags(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 /**
@@ -2923,6 +7424,39 @@ export function allocDNS_MESSAGE_BUFFER(data?: Partial<DNS_MESSAGE_BUFFER>): Uin
   return buf;
 }
 
+export class DNS_MESSAGE_BUFFERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get MessageHead(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get MessageBody(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set MessageHead(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set MessageBody(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -2943,6 +7477,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2981,6 +7548,74 @@ export function allocDNS_CONNECTION_PROXY_INFO(data?: Partial<DNS_CONNECTION_PRO
   // 0x18: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class DNS_CONNECTION_PROXY_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pwszFriendlyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get Flags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Switch(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pwszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set Flags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Switch(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HANDLE = Deno.PointerValue;
@@ -3024,6 +7659,79 @@ export function allocDNS_CONNECTION_PROXY_INFO_EX(data?: Partial<DNS_CONNECTION_
   return buf;
 }
 
+export class DNS_CONNECTION_PROXY_INFO_EXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ProxyInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwInterfaceIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get pwszConnectionName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get fDirectConfiguration(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get hConnection(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ProxyInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwInterfaceIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set pwszConnectionName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: i32
+  set fDirectConfiguration(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set hConnection(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_ELEMENT (size: 16)
  */
@@ -3045,6 +7753,42 @@ export function allocDNS_CONNECTION_PROXY_ELEMENT(data?: Partial<DNS_CONNECTION_
   // 0x08: pointer
   if (data?.Info !== undefined) view.setBigUint64(8, data.Info === null ? 0n : BigInt(util.toPointer(data.Info)), true);
   return buf;
+}
+
+export class DNS_CONNECTION_PROXY_ELEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Info(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Info(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3070,6 +7814,42 @@ export function allocDNS_CONNECTION_PROXY_LIST(data?: Partial<DNS_CONNECTION_PRO
   return buf;
 }
 
+export class DNS_CONNECTION_PROXY_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cProxies(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pProxies(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cProxies(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pProxies(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_NAME (size: 8)
  */
@@ -3086,6 +7866,28 @@ export function allocDNS_CONNECTION_NAME(data?: Partial<DNS_CONNECTION_NAME>): U
   // 0x00: pointer
   if (data?.wszName !== undefined) view.setBigUint64(0, data.wszName === null ? 0n : BigInt(util.toPointer(data.wszName)), true);
   return buf;
+}
+
+export class DNS_CONNECTION_NAMEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set wszName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3109,6 +7911,42 @@ export function allocDNS_CONNECTION_NAME_LIST(data?: Partial<DNS_CONNECTION_NAME
   // 0x08: pointer
   if (data?.pNames !== undefined) view.setBigUint64(8, data.pNames === null ? 0n : BigInt(util.toPointer(data.pNames)), true);
   return buf;
+}
+
+export class DNS_CONNECTION_NAME_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cNames(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pNames(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cNames(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pNames(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3137,6 +7975,43 @@ export function allocDNS_CONNECTION_IFINDEX_ENTRY(data?: Partial<DNS_CONNECTION_
   return buf;
 }
 
+export class DNS_CONNECTION_IFINDEX_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pwszConnectionName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwIfIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: buffer
+  set pwszConnectionName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set dwIfIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_IFINDEX_LIST (size: 16)
  */
@@ -3158,6 +8033,42 @@ export function allocDNS_CONNECTION_IFINDEX_LIST(data?: Partial<DNS_CONNECTION_I
   if (data?.nEntries !== undefined) view.setUint32(8, Number(data.nEntries), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DNS_CONNECTION_IFINDEX_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pConnectionIfIndexEntries(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get nEntries(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pConnectionIfIndexEntries(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set nEntries(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -3211,6 +8122,105 @@ export function allocDNS_CONNECTION_POLICY_ENTRY(data?: Partial<DNS_CONNECTION_P
   return buf;
 }
 
+export class DNS_CONNECTION_POLICY_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pwszHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pwszAppId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbAppSid(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pbAppSid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get nConnections(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get ppwszConnections(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get dwPolicyEntryFlags(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: buffer
+  set pwszHost(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pwszAppId(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set cbAppSid(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pbAppSid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set nConnections(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set ppwszConnections(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set dwPolicyEntryFlags(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_POLICY_ENTRY_LIST (size: 16)
  */
@@ -3232,6 +8242,42 @@ export function allocDNS_CONNECTION_POLICY_ENTRY_LIST(data?: Partial<DNS_CONNECT
   if (data?.nEntries !== undefined) view.setUint32(8, Number(data.nEntries), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DNS_CONNECTION_POLICY_ENTRY_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pPolicyEntries(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get nEntries(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pPolicyEntries(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set nEntries(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -3300,6 +8346,143 @@ export function allocDNS_SERVICE_INSTANCE(data?: Partial<DNS_SERVICE_INSTANCE>):
   return buf;
 }
 
+export class DNS_SERVICE_INSTANCEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszInstanceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pszHostName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ip4Address(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ip6Address(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u16
+  get wPort(): number {
+    return this.view.getUint16(32, true);
+  }
+
+  // 0x22: u16
+  get wPriority(): number {
+    return this.view.getUint16(34, true);
+  }
+
+  // 0x24: u16
+  get wWeight(): number {
+    return this.view.getUint16(36, true);
+  }
+
+  // 0x26: u32
+  get dwPropertyCount(): number {
+    return this.view.getUint32(38, true);
+  }
+
+  // 0x2a: pad6
+
+  // 0x30: pointer
+  get keys(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get values(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get dwInterfaceIndex(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x00: buffer
+  set pszInstanceName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pszHostName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set ip4Address(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ip6Address(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u16
+  set wPort(value: number) {
+    this.view.setUint16(32, value, true);
+  }
+
+  // 0x22: u16
+  set wPriority(value: number) {
+    this.view.setUint16(34, value, true);
+  }
+
+  // 0x24: u16
+  set wWeight(value: number) {
+    this.view.setUint16(36, value, true);
+  }
+
+  // 0x26: u32
+  set dwPropertyCount(value: number) {
+    this.view.setUint32(38, value, true);
+  }
+
+  // 0x2a: pad6
+
+  // 0x30: pointer
+  set keys(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set values(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set dwInterfaceIndex(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_SERVICE_CANCEL (size: 8)
  */
@@ -3316,6 +8499,28 @@ export function allocDNS_SERVICE_CANCEL(data?: Partial<DNS_SERVICE_CANCEL>): Uin
   // 0x00: pointer
   if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
   return buf;
+}
+
+export class DNS_SERVICE_CANCELView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get reserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set reserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3355,6 +8560,71 @@ export function allocDNS_SERVICE_BROWSE_REQUEST(data?: Partial<DNS_SERVICE_BROWS
   return buf;
 }
 
+export class DNS_SERVICE_BROWSE_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: buffer
+  get QueryName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set QueryName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_SERVICE_RESOLVE_REQUEST (size: 32)
  */
@@ -3390,6 +8660,71 @@ export function allocDNS_SERVICE_RESOLVE_REQUEST(data?: Partial<DNS_SERVICE_RESO
   // 0x18: pointer
   if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
   return buf;
+}
+
+export class DNS_SERVICE_RESOLVE_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: buffer
+  get QueryName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pResolveCompletionCallback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set QueryName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set pResolveCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3435,6 +8770,95 @@ export function allocDNS_SERVICE_REGISTER_REQUEST(data?: Partial<DNS_SERVICE_REG
   return buf;
 }
 
+export class DNS_SERVICE_REGISTER_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get pServiceInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pRegisterCompletionCallback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get hCredentials(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: i32
+  get unicastEnabled(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set pServiceInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pRegisterCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set hCredentials(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: i32
+  set unicastEnabled(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dns.MDNS_QUERY_HANDLE (size: 40)
  */
@@ -3468,6 +8892,75 @@ export function allocMDNS_QUERY_HANDLE(data?: Partial<MDNS_QUERY_HANDLE>): Uint8
   // 0x20: pointer
   if (data?.stateNameData !== undefined) view.setBigUint64(32, data.stateNameData === null ? 0n : BigInt(util.toPointer(data.stateNameData)), true);
   return buf;
+}
+
+export class MDNS_QUERY_HANDLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get nameBuf(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wType(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get pSubscription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pWnfCallbackParams(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get stateNameData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set nameBuf(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set wType(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set pSubscription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pWnfCallbackParams(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set stateNameData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3527,6 +9020,129 @@ export function allocMDNS_QUERY_REQUEST(data?: Partial<MDNS_QUERY_REQUEST>): Uin
   // 0x3c: u32
   if (data?.ulResendCount !== undefined) view.setUint32(60, Number(data.ulResendCount), true);
   return buf;
+}
+
+export class MDNS_QUERY_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulRefCount(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: buffer
+  get Query(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get QueryType(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  get QueryOptions(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get InterfaceIndex(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get pQueryCallback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get pQueryContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: i32
+  get fAnswerReceived(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: u32
+  get ulResendCount(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulRefCount(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set Query(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u16
+  set QueryType(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: u64
+  set QueryOptions(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set InterfaceIndex(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set pQueryCallback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: i32
+  set fAnswerReceived(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set ulResendCount(value: number) {
+    this.view.setUint32(60, value, true);
+  }
 }
 
 // Native Libraries

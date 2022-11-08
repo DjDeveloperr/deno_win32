@@ -33,6 +33,42 @@ export function allocIPNG_ADDRESS(data?: Partial<IPNG_ADDRESS>): Uint8Array {
   return buf;
 }
 
+export class IPNG_ADDRESSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get IpAddrV4(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get IpAddrV6(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set IpAddrV4(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set IpAddrV6(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Multicast.MCAST_CLIENT_UID (size: 16)
  */
@@ -54,6 +90,42 @@ export function allocMCAST_CLIENT_UID(data?: Partial<MCAST_CLIENT_UID>): Uint8Ar
   if (data?.ClientUIDLength !== undefined) view.setUint32(8, Number(data.ClientUIDLength), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class MCAST_CLIENT_UIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ClientUID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ClientUIDLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set ClientUID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ClientUIDLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -80,6 +152,50 @@ export function allocMCAST_SCOPE_CTX(data?: Partial<MCAST_SCOPE_CTX>): Uint8Arra
   // 0x10: pointer
   if (data?.ServerID !== undefined) view.setBigUint64(16, data.ServerID === null ? 0n : BigInt(util.toPointer(data.ServerID)), true);
   return buf;
+}
+
+export class MCAST_SCOPE_CTXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ScopeID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Interface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ServerID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ScopeID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Interface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ServerID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -114,6 +230,53 @@ export function allocUNICODE_STRING(data?: Partial<UNICODE_STRING>): Uint8Array 
   return buf;
 }
 
+export class UNICODE_STRINGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get Length(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get MaximumLength(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get Buffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set Length(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set MaximumLength(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Multicast.MCAST_SCOPE_ENTRY (size: 32)
  */
@@ -143,6 +306,64 @@ export function allocMCAST_SCOPE_ENTRY(data?: Partial<MCAST_SCOPE_ENTRY>): Uint8
   // 0x18: pointer
   if (data?.ScopeDesc !== undefined) view.setBigUint64(24, data.ScopeDesc === null ? 0n : BigInt(util.toPointer(data.ScopeDesc)), true);
   return buf;
+}
+
+export class MCAST_SCOPE_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ScopeCtx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get LastAddr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get TTL(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get ScopeDesc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ScopeCtx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set LastAddr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set TTL(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set ScopeDesc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -192,6 +413,103 @@ export function allocMCAST_LEASE_REQUEST(data?: Partial<MCAST_LEASE_REQUEST>): U
   return buf;
 }
 
+export class MCAST_LEASE_REQUESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get LeaseStartTime(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get MaxLeaseStartTime(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get LeaseDuration(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinLeaseDuration(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get ServerAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u16
+  get MinAddrCount(): number {
+    return this.view.getUint16(24, true);
+  }
+
+  // 0x1a: u16
+  get AddrCount(): number {
+    return this.view.getUint16(26, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get pAddrBuf(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set LeaseStartTime(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set MaxLeaseStartTime(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set LeaseDuration(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinLeaseDuration(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set ServerAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u16
+  set MinAddrCount(value: number) {
+    this.view.setUint16(24, value, true);
+  }
+
+  // 0x1a: u16
+  set AddrCount(value: number) {
+    this.view.setUint16(26, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set pAddrBuf(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Multicast.MCAST_LEASE_RESPONSE (size: 32)
  */
@@ -225,6 +543,73 @@ export function allocMCAST_LEASE_RESPONSE(data?: Partial<MCAST_LEASE_RESPONSE>):
   // 0x18: pointer
   if (data?.pAddrBuf !== undefined) view.setBigUint64(24, data.pAddrBuf === null ? 0n : BigInt(util.toPointer(data.pAddrBuf)), true);
   return buf;
+}
+
+export class MCAST_LEASE_RESPONSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get LeaseStartTime(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get LeaseEndTime(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get ServerAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get AddrCount(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: pointer
+  get pAddrBuf(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set LeaseStartTime(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set LeaseEndTime(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ServerAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set AddrCount(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: pointer
+  set pAddrBuf(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type BOOL = number;

@@ -100,6 +100,118 @@ export function allocTOUCHINPUT(data?: Partial<TOUCHINPUT>): Uint8Array {
   return buf;
 }
 
+export class TOUCHINPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get hSource(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwID(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwMask(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwTime(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: usize
+  get dwExtraInfo(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: u32
+  get cxContact(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get cyContact(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hSource(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwID(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwMask(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwTime(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: usize
+  set dwExtraInfo(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: u32
+  set cxContact(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set cyContact(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+}
+
 export type HWND = Deno.PointerValue;
 
 /**
@@ -123,6 +235,41 @@ export function allocPOINTS(data?: Partial<POINTS>): Uint8Array {
   if (data?.y !== undefined) view.setInt16(2, Number(data.y), true);
   // 0x04: pad4
   return buf;
+}
+
+export class POINTSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i16
+  get x(): number {
+    return this.view.getInt16(0, true);
+  }
+
+  // 0x02: i16
+  get y(): number {
+    return this.view.getInt16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i16
+  set x(value: number) {
+    this.view.setInt16(0, value, true);
+  }
+
+  // 0x02: i16
+  set y(value: number) {
+    this.view.setInt16(2, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -177,6 +324,117 @@ export function allocGESTUREINFO(data?: Partial<GESTUREINFO>): Uint8Array {
   return buf;
 }
 
+export class GESTUREINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get hwndTarget(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ptsLocation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dwInstanceID(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwSequenceID(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u64
+  get ullArguments(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: u32
+  get cbExtraArgs(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dwInstanceID(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwSequenceID(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u64
+  set ullArguments(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: u32
+  set cbExtraArgs(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.UI.Input.Touch.GESTURENOTIFYSTRUCT (size: 32)
  */
@@ -212,6 +470,73 @@ export function allocGESTURENOTIFYSTRUCT(data?: Partial<GESTURENOTIFYSTRUCT>): U
   return buf;
 }
 
+export class GESTURENOTIFYSTRUCTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndTarget(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ptsLocation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwInstanceID(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwInstanceID(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.UI.Input.Touch.GESTURECONFIG (size: 16)
  */
@@ -237,6 +562,51 @@ export function allocGESTURECONFIG(data?: Partial<GESTURECONFIG>): Uint8Array {
   if (data?.dwBlock !== undefined) view.setUint32(8, Number(data.dwBlock), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class GESTURECONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwWant(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBlock(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set dwID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwWant(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBlock(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 export type BOOL = number;

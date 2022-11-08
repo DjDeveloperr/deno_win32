@@ -37,6 +37,57 @@ export function allocMilRectD(data?: Partial<MilRectD>): Uint8Array {
   return buf;
 }
 
+export class MilRectDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f64
+  get left(): number {
+    return this.view.getFloat64(0, true);
+  }
+
+  // 0x08: f64
+  get top(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get right(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get bottom(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x00: f64
+  set left(value: number) {
+    this.view.setFloat64(0, value, true);
+  }
+
+  // 0x08: f64
+  set top(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set right(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set bottom(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Wpf.MilPoint2D (size: 16)
  */
@@ -57,6 +108,37 @@ export function allocMilPoint2D(data?: Partial<MilPoint2D>): Uint8Array {
   // 0x08: f64
   if (data?.Y !== undefined) view.setFloat64(8, Number(data.Y), true);
   return buf;
+}
+
+export class MilPoint2DView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f64
+  get X(): number {
+    return this.view.getFloat64(0, true);
+  }
+
+  // 0x08: f64
+  get Y(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x00: f64
+  set X(value: number) {
+    this.view.setFloat64(0, value, true);
+  }
+
+  // 0x08: f64
+  set Y(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
 }
 
 /**
@@ -135,6 +217,177 @@ export function allocMILMatrixF(data?: Partial<MILMatrixF>): Uint8Array {
   // 0x78: f64
   if (data?._44 !== undefined) view.setFloat64(120, Number(data._44), true);
   return buf;
+}
+
+export class MILMatrixFView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f64
+  get _11(): number {
+    return this.view.getFloat64(0, true);
+  }
+
+  // 0x08: f64
+  get _12(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get _13(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get _14(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x20: f64
+  get _21(): number {
+    return this.view.getFloat64(32, true);
+  }
+
+  // 0x28: f64
+  get _22(): number {
+    return this.view.getFloat64(40, true);
+  }
+
+  // 0x30: f64
+  get _23(): number {
+    return this.view.getFloat64(48, true);
+  }
+
+  // 0x38: f64
+  get _24(): number {
+    return this.view.getFloat64(56, true);
+  }
+
+  // 0x40: f64
+  get _31(): number {
+    return this.view.getFloat64(64, true);
+  }
+
+  // 0x48: f64
+  get _32(): number {
+    return this.view.getFloat64(72, true);
+  }
+
+  // 0x50: f64
+  get _33(): number {
+    return this.view.getFloat64(80, true);
+  }
+
+  // 0x58: f64
+  get _34(): number {
+    return this.view.getFloat64(88, true);
+  }
+
+  // 0x60: f64
+  get _41(): number {
+    return this.view.getFloat64(96, true);
+  }
+
+  // 0x68: f64
+  get _42(): number {
+    return this.view.getFloat64(104, true);
+  }
+
+  // 0x70: f64
+  get _43(): number {
+    return this.view.getFloat64(112, true);
+  }
+
+  // 0x78: f64
+  get _44(): number {
+    return this.view.getFloat64(120, true);
+  }
+
+  // 0x00: f64
+  set _11(value: number) {
+    this.view.setFloat64(0, value, true);
+  }
+
+  // 0x08: f64
+  set _12(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set _13(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set _14(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+
+  // 0x20: f64
+  set _21(value: number) {
+    this.view.setFloat64(32, value, true);
+  }
+
+  // 0x28: f64
+  set _22(value: number) {
+    this.view.setFloat64(40, value, true);
+  }
+
+  // 0x30: f64
+  set _23(value: number) {
+    this.view.setFloat64(48, value, true);
+  }
+
+  // 0x38: f64
+  set _24(value: number) {
+    this.view.setFloat64(56, value, true);
+  }
+
+  // 0x40: f64
+  set _31(value: number) {
+    this.view.setFloat64(64, value, true);
+  }
+
+  // 0x48: f64
+  set _32(value: number) {
+    this.view.setFloat64(72, value, true);
+  }
+
+  // 0x50: f64
+  set _33(value: number) {
+    this.view.setFloat64(80, value, true);
+  }
+
+  // 0x58: f64
+  set _34(value: number) {
+    this.view.setFloat64(88, value, true);
+  }
+
+  // 0x60: f64
+  set _41(value: number) {
+    this.view.setFloat64(96, value, true);
+  }
+
+  // 0x68: f64
+  set _42(value: number) {
+    this.view.setFloat64(104, value, true);
+  }
+
+  // 0x70: f64
+  set _43(value: number) {
+    this.view.setFloat64(112, value, true);
+  }
+
+  // 0x78: f64
+  set _44(value: number) {
+    this.view.setFloat64(120, value, true);
+  }
 }
 
 // Native Libraries

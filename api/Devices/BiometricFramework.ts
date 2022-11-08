@@ -169,6 +169,37 @@ export function allocWINBIO_VERSION(data?: Partial<WINBIO_VERSION>): Uint8Array 
   return buf;
 }
 
+export class WINBIO_VERSIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MajorVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MinorVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MajorVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MinorVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * _Value_e__Union (size: 16)
  */
@@ -192,6 +223,42 @@ export function alloc_Value_e__Union(data?: Partial<_Value_e__Union>): Uint8Arra
   return buf;
 }
 
+export class _Value_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get ShortUuid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get LongUuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set ShortUuid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set LongUuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_IDENTITY (size: 16)
  */
@@ -213,6 +280,42 @@ export function allocWINBIO_IDENTITY(data?: Partial<WINBIO_IDENTITY>): Uint8Arra
   // 0x08: pointer
   if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
   return buf;
+}
+
+export class WINBIO_IDENTITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Type(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Value(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Type(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Value(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -239,6 +342,47 @@ export function allocWINBIO_SECURE_CONNECTION_PARAMS(data?: Partial<WINBIO_SECUR
   // 0x06: u16
   if (data?.Flags !== undefined) view.setUint16(6, Number(data.Flags), true);
   return buf;
+}
+
+export class WINBIO_SECURE_CONNECTION_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get Version(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get Flags(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set Version(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set Flags(value: number) {
+    this.view.setUint16(6, value, true);
+  }
 }
 
 /**
@@ -280,6 +424,81 @@ export function allocWINBIO_SECURE_CONNECTION_DATA(data?: Partial<WINBIO_SECURE_
   return buf;
 }
 
+export class WINBIO_SECURE_CONNECTION_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get Version(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get Flags(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u32
+  get ModelCertificateSize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get IntermediateCA1Size(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get IntermediateCA2Size(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set Version(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set Flags(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u32
+  set ModelCertificateSize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set IntermediateCA1Size(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set IntermediateCA2Size(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_BIR_DATA (size: 8)
  */
@@ -300,6 +519,37 @@ export function allocWINBIO_BIR_DATA(data?: Partial<WINBIO_BIR_DATA>): Uint8Arra
   // 0x04: u32
   if (data?.Offset !== undefined) view.setUint32(4, Number(data.Offset), true);
   return buf;
+}
+
+export class WINBIO_BIR_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Offset(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Offset(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -332,6 +582,61 @@ export function allocWINBIO_BIR(data?: Partial<WINBIO_BIR>): Uint8Array {
   return buf;
 }
 
+export class WINBIO_BIRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get HeaderBlock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get StandardDataBlock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get VendorDataBlock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get SignatureBlock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set HeaderBlock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set StandardDataBlock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set VendorDataBlock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set SignatureBlock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_REGISTERED_FORMAT (size: 8)
  */
@@ -355,6 +660,41 @@ export function allocWINBIO_REGISTERED_FORMAT(data?: Partial<WINBIO_REGISTERED_F
   return buf;
 }
 
+export class WINBIO_REGISTERED_FORMATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get Owner(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get Type(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set Owner(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set Type(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -375,6 +715,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   // 0x08: u64
   if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
   return buf;
+}
+
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -405,6 +776,43 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   return buf;
 }
 
+export class _u_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwValue(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pwszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwValue(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.LARGE_INTEGER (size: 24)
  */
@@ -431,6 +839,49 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   return buf;
 }
 
+export class LARGE_INTEGERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get u(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i64
+  get QuadPart(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(16, true));
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set u(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i64
+  set QuadPart(value: Deno.PointerValue) {
+    this.view.setBigInt64(16, BigInt(value), true);
+  }
+}
+
 /**
  * _ValidityPeriod_e__Struct (size: 16)
  */
@@ -451,6 +902,39 @@ export function alloc_ValidityPeriod_e__Struct(data?: Partial<_ValidityPeriod_e_
   // 0x08: pointer
   if (data?.EndDate !== undefined) view.setBigUint64(8, data.EndDate === null ? 0n : BigInt(util.toPointer(data.EndDate)), true);
   return buf;
+}
+
+export class _ValidityPeriod_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get BeginDate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get EndDate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set BeginDate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set EndDate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -514,6 +998,145 @@ export function allocWINBIO_BIR_HEADER(data?: Partial<WINBIO_BIR_HEADER>): Uint8
   // 0x28: pointer
   if (data?.ProductId !== undefined) view.setBigUint64(40, data.ProductId === null ? 0n : BigInt(util.toPointer(data.ProductId)), true);
   return buf;
+}
+
+export class WINBIO_BIR_HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get ValidFields(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get HeaderVersion(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get PatronHeaderVersion(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get DataFlags(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u32
+  get Type(): number {
+    return this.view.getUint32(5, true);
+  }
+
+  // 0x09: u8
+  get Subtype(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: u8
+  get Purpose(): number {
+    return this.view.getUint8(10);
+  }
+
+  // 0x0b: i8
+  get DataQuality(): number {
+    return this.view.getInt8(11);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get CreationDate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ValidityPeriod(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get BiometricDataFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ProductId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set ValidFields(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set HeaderVersion(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set PatronHeaderVersion(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set DataFlags(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u32
+  set Type(value: number) {
+    this.view.setUint32(5, value, true);
+  }
+
+  // 0x09: u8
+  set Subtype(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: u8
+  set Purpose(value: number) {
+    this.view.setUint8(10, value);
+  }
+
+  // 0x0b: i8
+  set DataQuality(value: number) {
+    this.view.setInt8(11, value);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set CreationDate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ValidityPeriod(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set BiometricDataFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ProductId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -591,6 +1214,172 @@ export function allocWINBIO_BDB_ANSI_381_HEADER(data?: Partial<WINBIO_BDB_ANSI_3
   return buf;
 }
 
+export class WINBIO_BDB_ANSI_381_HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get RecordLength(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u32
+  get FormatIdentifier(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get VersionNumber(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get ProductId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u16
+  get CaptureDeviceId(): number {
+    return this.view.getUint16(24, true);
+  }
+
+  // 0x1a: u16
+  get ImageAcquisitionLevel(): number {
+    return this.view.getUint16(26, true);
+  }
+
+  // 0x1c: u16
+  get HorizontalScanResolution(): number {
+    return this.view.getUint16(28, true);
+  }
+
+  // 0x1e: u16
+  get VerticalScanResolution(): number {
+    return this.view.getUint16(30, true);
+  }
+
+  // 0x20: u16
+  get HorizontalImageResolution(): number {
+    return this.view.getUint16(32, true);
+  }
+
+  // 0x22: u16
+  get VerticalImageResolution(): number {
+    return this.view.getUint16(34, true);
+  }
+
+  // 0x24: u8
+  get ElementCount(): number {
+    return this.view.getUint8(36);
+  }
+
+  // 0x25: u8
+  get ScaleUnits(): number {
+    return this.view.getUint8(37);
+  }
+
+  // 0x26: u8
+  get PixelDepth(): number {
+    return this.view.getUint8(38);
+  }
+
+  // 0x27: u8
+  get ImageCompressionAlg(): number {
+    return this.view.getUint8(39);
+  }
+
+  // 0x28: u16
+  get Reserved(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: pad6
+
+  // 0x00: u64
+  set RecordLength(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u32
+  set FormatIdentifier(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set VersionNumber(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set ProductId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u16
+  set CaptureDeviceId(value: number) {
+    this.view.setUint16(24, value, true);
+  }
+
+  // 0x1a: u16
+  set ImageAcquisitionLevel(value: number) {
+    this.view.setUint16(26, value, true);
+  }
+
+  // 0x1c: u16
+  set HorizontalScanResolution(value: number) {
+    this.view.setUint16(28, value, true);
+  }
+
+  // 0x1e: u16
+  set VerticalScanResolution(value: number) {
+    this.view.setUint16(30, value, true);
+  }
+
+  // 0x20: u16
+  set HorizontalImageResolution(value: number) {
+    this.view.setUint16(32, value, true);
+  }
+
+  // 0x22: u16
+  set VerticalImageResolution(value: number) {
+    this.view.setUint16(34, value, true);
+  }
+
+  // 0x24: u8
+  set ElementCount(value: number) {
+    this.view.setUint8(36, value);
+  }
+
+  // 0x25: u8
+  set ScaleUnits(value: number) {
+    this.view.setUint8(37, value);
+  }
+
+  // 0x26: u8
+  set PixelDepth(value: number) {
+    this.view.setUint8(38, value);
+  }
+
+  // 0x27: u8
+  set ImageCompressionAlg(value: number) {
+    this.view.setUint8(39, value);
+  }
+
+  // 0x28: u16
+  set Reserved(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: pad6
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_BDB_ANSI_381_RECORD (size: 16)
  */
@@ -642,6 +1431,111 @@ export function allocWINBIO_BDB_ANSI_381_RECORD(data?: Partial<WINBIO_BDB_ANSI_3
   return buf;
 }
 
+export class WINBIO_BDB_ANSI_381_RECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get BlockLength(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get HorizontalLineLength(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get VerticalLineLength(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u8
+  get Position(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get CountOfViews(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: u8
+  get ViewNumber(): number {
+    return this.view.getUint8(10);
+  }
+
+  // 0x0b: u8
+  get ImageQuality(): number {
+    return this.view.getUint8(11);
+  }
+
+  // 0x0c: u8
+  get ImpressionType(): number {
+    return this.view.getUint8(12);
+  }
+
+  // 0x0d: u8
+  get Reserved(): number {
+    return this.view.getUint8(13);
+  }
+
+  // 0x0e: pad2
+
+  // 0x00: u32
+  set BlockLength(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set HorizontalLineLength(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set VerticalLineLength(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u8
+  set Position(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set CountOfViews(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: u8
+  set ViewNumber(value: number) {
+    this.view.setUint8(10, value);
+  }
+
+  // 0x0b: u8
+  set ImageQuality(value: number) {
+    this.view.setUint8(11, value);
+  }
+
+  // 0x0c: u8
+  set ImpressionType(value: number) {
+    this.view.setUint8(12, value);
+  }
+
+  // 0x0d: u8
+  set Reserved(value: number) {
+    this.view.setUint8(13, value);
+  }
+
+  // 0x0e: pad2
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_SECURE_BUFFER_HEADER_V1 (size: 24)
  */
@@ -673,6 +1567,61 @@ export function allocWINBIO_SECURE_BUFFER_HEADER_V1(data?: Partial<WINBIO_SECURE
   return buf;
 }
 
+export class WINBIO_SECURE_BUFFER_HEADER_V1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Type(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Size(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Flags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  get ValidationTag(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: u32
+  set Type(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Size(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Flags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  set ValidationTag(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+}
+
 /**
  * _Unclaimed_e__Struct (size: 8)
  */
@@ -693,6 +1642,37 @@ export function alloc_Unclaimed_e__Struct(data?: Partial<_Unclaimed_e__Struct>):
   // 0x04: u32
   if (data?.RejectDetail !== undefined) view.setUint32(4, Number(data.RejectDetail), true);
   return buf;
+}
+
+export class _Unclaimed_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnitId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get RejectDetail(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set UnitId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set RejectDetail(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -727,6 +1707,66 @@ export function alloc_UnclaimedIdentify_e__Struct(data?: Partial<_UnclaimedIdent
   return buf;
 }
 
+export class _UnclaimedIdentify_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnitId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Identity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get SubFactor(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: u32
+  get RejectDetail(): number {
+    return this.view.getUint32(17, true);
+  }
+
+  // 0x15: pad3
+
+  // 0x00: u32
+  set UnitId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Identity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u8
+  set SubFactor(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: u32
+  set RejectDetail(value: number) {
+    this.view.setUint32(17, value, true);
+  }
+
+  // 0x15: pad3
+}
+
 export type HRESULT = number;
 
 /**
@@ -745,6 +1785,28 @@ export function alloc_Error_e__Struct(data?: Partial<_Error_e__Struct>): Uint8Ar
   // 0x00: pointer
   if (data?.ErrorCode !== undefined) view.setBigUint64(0, data.ErrorCode === null ? 0n : BigInt(util.toPointer(data.ErrorCode)), true);
   return buf;
+}
+
+export class _Error_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ErrorCode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ErrorCode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -773,6 +1835,50 @@ export function alloc_Parameters_e__Union(data?: Partial<_Parameters_e__Union>):
   return buf;
 }
 
+export class _Parameters_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Unclaimed(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get UnclaimedIdentify(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Error(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Unclaimed(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set UnclaimedIdentify(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set Error(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_EVENT (size: 16)
  */
@@ -794,6 +1900,42 @@ export function allocWINBIO_EVENT(data?: Partial<WINBIO_EVENT>): Uint8Array {
   // 0x08: pointer
   if (data?.Parameters !== undefined) view.setBigUint64(8, data.Parameters === null ? 0n : BigInt(util.toPointer(data.Parameters)), true);
   return buf;
+}
+
+export class WINBIO_EVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Type(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Parameters(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Type(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Parameters(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -826,6 +1968,57 @@ export function allocRECT(data?: Partial<RECT>): Uint8Array {
   return buf;
 }
 
+export class RECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get left(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get top(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get right(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get bottom(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: i32
+  set left(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set top(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set right(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set bottom(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+}
+
 /**
  * _OpaqueEngineData_e__Struct (size: 16)
  */
@@ -846,6 +2039,39 @@ export function alloc_OpaqueEngineData_e__Struct(data?: Partial<_OpaqueEngineDat
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class _OpaqueEngineData_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AdapterId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set AdapterId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -875,6 +2101,53 @@ export function alloc_FacialFeatures_e__Struct(data?: Partial<_FacialFeatures_e_
   return buf;
 }
 
+export class _FacialFeatures_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get BoundingBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get Distance(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get OpaqueEngineData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set BoundingBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set Distance(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set OpaqueEngineData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
  */
@@ -895,6 +2168,37 @@ export function allocPOINT(data?: Partial<POINT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   return buf;
+}
+
+export class POINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -932,6 +2236,75 @@ export function alloc_Iris_e__Struct(data?: Partial<_Iris_e__Struct>): Uint8Arra
   return buf;
 }
 
+export class _Iris_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get EyeBoundingBox_1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get EyeBoundingBox_2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get PupilCenter_1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get PupilCenter_2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get Distance(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: pointer
+  set EyeBoundingBox_1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set EyeBoundingBox_2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set PupilCenter_1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set PupilCenter_2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set Distance(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_PRESENCE_PROPERTIES (size: 16)
  */
@@ -952,6 +2325,39 @@ export function allocWINBIO_PRESENCE_PROPERTIES(data?: Partial<WINBIO_PRESENCE_P
   // 0x08: pointer
   if (data?.Iris !== undefined) view.setBigUint64(8, data.Iris === null ? 0n : BigInt(util.toPointer(data.Iris)), true);
   return buf;
+}
+
+export class WINBIO_PRESENCE_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get FacialFeatures(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Iris(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set FacialFeatures(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Iris(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -975,6 +2381,42 @@ export function alloc_Authorization_e__Struct(data?: Partial<_Authorization_e__S
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class _Authorization_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1029,6 +2471,119 @@ export function allocWINBIO_PRESENCE(data?: Partial<WINBIO_PRESENCE>): Uint8Arra
   return buf;
 }
 
+export class WINBIO_PRESENCEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Factor(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u8
+  get SubFactor(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get Status(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get RejectDetail(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Identity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u64
+  get TrackingId(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: u64
+  get Ticket(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: pointer
+  get Properties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get Authorization(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Factor(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u8
+  set SubFactor(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set Status(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set RejectDetail(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Identity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u64
+  set TrackingId(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: u64
+  set Ticket(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: pointer
+  set Properties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set Authorization(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_BSP_SCHEMA (size: 40)
  */
@@ -1062,6 +2617,75 @@ export function allocWINBIO_BSP_SCHEMA(data?: Partial<WINBIO_BSP_SCHEMA>): Uint8
   // 0x20: pointer
   if (data?.Version !== undefined) view.setBigUint64(32, data.Version === null ? 0n : BigInt(util.toPointer(data.Version)), true);
   return buf;
+}
+
+export class WINBIO_BSP_SCHEMAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get BiometricFactor(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get BspId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Vendor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Version(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set BiometricFactor(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set BspId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Vendor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Version(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1123,6 +2747,137 @@ export function allocWINBIO_UNIT_SCHEMA(data?: Partial<WINBIO_UNIT_SCHEMA>): Uin
   return buf;
 }
 
+export class WINBIO_UNIT_SCHEMAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnitId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get PoolType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get BiometricFactor(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get SensorSubType(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Capabilities(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get DeviceInstanceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Manufacturer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Model(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get SerialNumber(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get FirmwareVersion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set UnitId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set PoolType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set BiometricFactor(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set SensorSubType(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Capabilities(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set DeviceInstanceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Manufacturer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Model(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set SerialNumber(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set FirmwareVersion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_STORAGE_SCHEMA (size: 48)
  */
@@ -1163,6 +2918,89 @@ export function allocWINBIO_STORAGE_SCHEMA(data?: Partial<WINBIO_STORAGE_SCHEMA>
   return buf;
 }
 
+export class WINBIO_STORAGE_SCHEMAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get BiometricFactor(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get DatabaseId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DataFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get Attributes(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get FilePath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ConnectionString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set BiometricFactor(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set DatabaseId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DataFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set Attributes(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set FilePath(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ConnectionString(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Fingerprint_e__Struct (size: 8)
  */
@@ -1182,6 +3020,31 @@ export function alloc_Fingerprint_e__Struct(data?: Partial<_Fingerprint_e__Struc
   return buf;
 }
 
+export class _Fingerprint_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Reserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set Reserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * _Voice_e__Struct (size: 8)
  */
@@ -1199,6 +3062,31 @@ export function alloc_Voice_e__Struct(data?: Partial<_Voice_e__Struct>): Uint8Ar
   if (data?.Reserved !== undefined) view.setUint32(0, Number(data.Reserved), true);
   // 0x04: pad4
   return buf;
+}
+
+export class _Voice_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Reserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set Reserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -1236,6 +3124,75 @@ export function alloc_Specific_e__Union(data?: Partial<_Specific_e__Union>): Uin
   return buf;
 }
 
+export class _Specific_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Null(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get FacialFeatures(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Fingerprint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Iris(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Voice(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Null(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set FacialFeatures(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set Fingerprint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Iris(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Voice(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_EXTENDED_SENSOR_INFO (size: 16)
  */
@@ -1260,6 +3217,48 @@ export function allocWINBIO_EXTENDED_SENSOR_INFO(data?: Partial<WINBIO_EXTENDED_
   // 0x08: pointer
   if (data?.Specific !== undefined) view.setBigUint64(8, data.Specific === null ? 0n : BigInt(util.toPointer(data.Specific)), true);
   return buf;
+}
+
+export class WINBIO_EXTENDED_SENSOR_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get GenericSensorCapabilities(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Factor(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Specific(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set GenericSensorCapabilities(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Factor(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Specific(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1288,6 +3287,48 @@ export function allocWINBIO_EXTENDED_ENGINE_INFO(data?: Partial<WINBIO_EXTENDED_
   return buf;
 }
 
+export class WINBIO_EXTENDED_ENGINE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get GenericEngineCapabilities(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Factor(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Specific(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set GenericEngineCapabilities(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Factor(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Specific(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_EXTENDED_STORAGE_INFO (size: 16)
  */
@@ -1312,6 +3353,48 @@ export function allocWINBIO_EXTENDED_STORAGE_INFO(data?: Partial<WINBIO_EXTENDED
   // 0x08: pointer
   if (data?.Specific !== undefined) view.setBigUint64(8, data.Specific === null ? 0n : BigInt(util.toPointer(data.Specific)), true);
   return buf;
+}
+
+export class WINBIO_EXTENDED_STORAGE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get GenericStorageCapabilities(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Factor(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Specific(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set GenericStorageCapabilities(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Factor(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Specific(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1353,6 +3436,83 @@ export function allocWINBIO_EXTENDED_ENROLLMENT_STATUS(data?: Partial<WINBIO_EXT
   return buf;
 }
 
+export class WINBIO_EXTENDED_ENROLLMENT_STATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get TemplateStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get RejectDetail(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get PercentComplete(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Factor(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u8
+  get SubFactor(): number {
+    return this.view.getUint8(20);
+  }
+
+  // 0x15: pad3
+
+  // 0x18: pointer
+  get Specific(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set TemplateStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set RejectDetail(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set PercentComplete(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Factor(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u8
+  set SubFactor(value: number) {
+    this.view.setUint8(20, value);
+  }
+
+  // 0x15: pad3
+
+  // 0x18: pointer
+  set Specific(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_EXTENDED_UNIT_STATUS (size: 8)
  */
@@ -1373,6 +3533,37 @@ export function allocWINBIO_EXTENDED_UNIT_STATUS(data?: Partial<WINBIO_EXTENDED_
   // 0x04: u32
   if (data?.ReasonCode !== undefined) view.setUint32(4, Number(data.ReasonCode), true);
   return buf;
+}
+
+export class WINBIO_EXTENDED_UNIT_STATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Availability(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ReasonCode(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set Availability(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ReasonCode(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 export type BOOL = number;
@@ -1400,6 +3591,42 @@ export function allocWINBIO_FP_BU_STATE(data?: Partial<WINBIO_FP_BU_STATE>): Uin
   return buf;
 }
 
+export class WINBIO_FP_BU_STATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get SensorAttached(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get CreationResult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set SensorAttached(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set CreationResult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_ANTI_SPOOF_POLICY (size: 8)
  */
@@ -1420,6 +3647,37 @@ export function allocWINBIO_ANTI_SPOOF_POLICY(data?: Partial<WINBIO_ANTI_SPOOF_P
   // 0x04: i32
   if (data?.Source !== undefined) view.setInt32(4, Number(data.Source), true);
   return buf;
+}
+
+export class WINBIO_ANTI_SPOOF_POLICYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Action(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get Source(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set Action(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Source(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -1445,6 +3703,41 @@ export function allocWINBIO_EXTENDED_ENROLLMENT_PARAMETERS(data?: Partial<WINBIO
   return buf;
 }
 
+export class WINBIO_EXTENDED_ENROLLMENT_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u8
+  get SubFactor(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: pad7
+
+  // 0x00: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u8
+  set SubFactor(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: pad7
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_ACCOUNT_POLICY (size: 16)
  */
@@ -1466,6 +3759,42 @@ export function allocWINBIO_ACCOUNT_POLICY(data?: Partial<WINBIO_ACCOUNT_POLICY>
   if (data?.AntiSpoofBehavior !== undefined) view.setInt32(8, Number(data.AntiSpoofBehavior), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class WINBIO_ACCOUNT_POLICYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Identity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get AntiSpoofBehavior(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set Identity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set AntiSpoofBehavior(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -1507,6 +3836,84 @@ export function allocWINBIO_PROTECTION_POLICY(data?: Partial<WINBIO_PROTECTION_P
   return buf;
 }
 
+export class WINBIO_PROTECTION_POLICYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Identity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DatabaseId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u64
+  get UserState(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: usize
+  get PolicySize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: pointer
+  get Policy(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Identity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DatabaseId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u64
+  set UserState(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: usize
+  set PolicySize(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: pointer
+  set Policy(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_GESTURE_METADATA (size: 24)
  */
@@ -1536,6 +3943,61 @@ export function allocWINBIO_GESTURE_METADATA(data?: Partial<WINBIO_GESTURE_METAD
   if (data?.ProtectionType !== undefined) view.setUint32(16, Number(data.ProtectionType), true);
   // 0x14: pad4
   return buf;
+}
+
+export class WINBIO_GESTURE_METADATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u32
+  get BiometricType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MatchType(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ProtectionType(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u32
+  set BiometricType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MatchType(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ProtectionType(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -1585,6 +4047,104 @@ export function allocWINBIO_ASYNC_RESULT(data?: Partial<WINBIO_ASYNC_RESULT>): U
   return buf;
 }
 
+export class WINBIO_ASYNC_RESULTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SessionHandle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Operation(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get SequenceNumber(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: i64
+  get TimeStamp(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(16, true));
+  }
+
+  // 0x18: pointer
+  get ApiStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get UnitId(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get UserData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Parameters(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set SessionHandle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Operation(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set SequenceNumber(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: i64
+  set TimeStamp(value: Deno.PointerValue) {
+    this.view.setBigInt64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set ApiStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set UnitId(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set UserData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Parameters(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_STORAGE_RECORD (size: 64)
  */
@@ -1630,6 +4190,105 @@ export function allocWINBIO_STORAGE_RECORD(data?: Partial<WINBIO_STORAGE_RECORD>
   // 0x38: usize
   if (data?.PayloadBlobSize !== undefined) view.setBigUint64(56, BigInt(data.PayloadBlobSize), true);
   return buf;
+}
+
+export class WINBIO_STORAGE_RECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Identity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u8
+  get SubFactor(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: pad7
+
+  // 0x10: pointer
+  get IndexVector(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: usize
+  get IndexElementCount(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: pointer
+  get TemplateBlob(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: usize
+  get TemplateBlobSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: pointer
+  get PayloadBlob(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: usize
+  get PayloadBlobSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(56, true));
+  }
+
+  // 0x00: pointer
+  set Identity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u8
+  set SubFactor(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: pad7
+
+  // 0x10: pointer
+  set IndexVector(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: usize
+  set IndexElementCount(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: pointer
+  set TemplateBlob(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: usize
+  set TemplateBlobSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: pointer
+  set PayloadBlob(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: usize
+  set PayloadBlobSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(value), true);
+  }
 }
 
 export type HANDLE = Deno.PointerValue;
@@ -1688,6 +4347,127 @@ export function allocWINBIO_PIPELINE(data?: Partial<WINBIO_PIPELINE>): Uint8Arra
   return buf;
 }
 
+export class WINBIO_PIPELINEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get SensorHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get EngineHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get StorageHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get SensorInterface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get EngineInterface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get StorageInterface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get SensorContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get EngineContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get StorageContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get FrameworkInterface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set SensorHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set EngineHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set StorageHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set SensorInterface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set EngineInterface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set StorageInterface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set SensorContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set EngineContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set StorageContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set FrameworkInterface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_ADAPTER_INTERFACE_VERSION (size: 8)
  */
@@ -1709,6 +4489,41 @@ export function allocWINBIO_ADAPTER_INTERFACE_VERSION(data?: Partial<WINBIO_ADAP
   if (data?.MinorVersion !== undefined) view.setUint16(2, Number(data.MinorVersion), true);
   // 0x04: pad4
   return buf;
+}
+
+export class WINBIO_ADAPTER_INTERFACE_VERSIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get MajorVersion(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get MinorVersion(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set MajorVersion(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set MinorVersion(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -1864,6 +4679,404 @@ export function allocWINBIO_SENSOR_INTERFACE(data?: Partial<WINBIO_SENSOR_INTERF
   // 0x110: pointer
   if (data?.FinishNotifyWake !== undefined) view.setBigUint64(272, data.FinishNotifyWake === null ? 0n : BigInt(util.toPointer(data.FinishNotifyWake)), true);
   return buf;
+}
+
+export class WINBIO_SENSOR_INTERFACEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Version(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Type(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get AdapterId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Attach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Detach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get ClearContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get QueryStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get Reset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get SetMode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get SetIndicatorStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get GetIndicatorStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get StartCapture(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get FinishCapture(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get ExportSensorData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get Cancel(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get PushDataToEngine(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: pointer
+  get ControlUnit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(136, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x90: pointer
+  get ControlUnitPrivileged(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(144, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x98: pointer
+  get NotifyPowerChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: pointer
+  get PipelineInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: pointer
+  get PipelineCleanup(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: pointer
+  get Activate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb8: pointer
+  get Deactivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(184, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc0: pointer
+  get QueryExtendedInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(192, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc8: pointer
+  get QueryCalibrationFormats(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(200, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd0: pointer
+  get SetCalibrationFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(208, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd8: pointer
+  get AcceptCalibrationData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(216, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe0: pointer
+  get AsyncImportRawBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(224, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe8: pointer
+  get AsyncImportSecureBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(232, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf0: pointer
+  get QueryPrivateSensorType(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(240, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf8: pointer
+  get ConnectSecure(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(248, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x100: pointer
+  get StartCaptureEx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(256, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x108: pointer
+  get StartNotifyWake(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(264, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x110: pointer
+  get FinishNotifyWake(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(272, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Version(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Type(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set AdapterId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Attach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Detach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set ClearContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set QueryStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set Reset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set SetMode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set SetIndicatorStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set GetIndicatorStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: pointer
+  set StartCapture(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set FinishCapture(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set ExportSensorData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set Cancel(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set PushDataToEngine(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: pointer
+  set ControlUnit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x90: pointer
+  set ControlUnitPrivileged(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x98: pointer
+  set NotifyPowerChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa0: pointer
+  set PipelineInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa8: pointer
+  set PipelineCleanup(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb0: pointer
+  set Activate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb8: pointer
+  set Deactivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc0: pointer
+  set QueryExtendedInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc8: pointer
+  set QueryCalibrationFormats(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(200, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd0: pointer
+  set SetCalibrationFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd8: pointer
+  set AcceptCalibrationData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(216, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe0: pointer
+  set AsyncImportRawBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe8: pointer
+  set AsyncImportSecureBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf0: pointer
+  set QueryPrivateSensorType(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(240, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf8: pointer
+  set ConnectSecure(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(248, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x100: pointer
+  set StartCaptureEx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x108: pointer
+  set StartNotifyWake(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x110: pointer
+  set FinishNotifyWake(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(272, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2061,6 +5274,514 @@ export function allocWINBIO_ENGINE_INTERFACE(data?: Partial<WINBIO_ENGINE_INTERF
   return buf;
 }
 
+export class WINBIO_ENGINE_INTERFACEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Version(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Type(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get AdapterId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Attach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Detach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get ClearContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get QueryPreferredFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get QueryIndexVectorSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get QueryHashAlgorithms(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get SetHashAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get QuerySampleHint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get AcceptSampleData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get ExportEngineData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get VerifyFeatureSet(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get IdentifyFeatureSet(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get CreateEnrollment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: pointer
+  get UpdateEnrollment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(136, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x90: pointer
+  get GetEnrollmentStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(144, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x98: pointer
+  get GetEnrollmentHash(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: pointer
+  get CheckForDuplicate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: pointer
+  get CommitEnrollment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: pointer
+  get DiscardEnrollment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb8: pointer
+  get ControlUnit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(184, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc0: pointer
+  get ControlUnitPrivileged(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(192, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc8: pointer
+  get NotifyPowerChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(200, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd0: pointer
+  get Reserved_1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(208, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd8: pointer
+  get PipelineInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(216, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe0: pointer
+  get PipelineCleanup(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(224, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe8: pointer
+  get Activate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(232, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf0: pointer
+  get Deactivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(240, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf8: pointer
+  get QueryExtendedInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(248, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x100: pointer
+  get IdentifyAll(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(256, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x108: pointer
+  get SetEnrollmentSelector(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(264, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x110: pointer
+  get SetEnrollmentParameters(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(272, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x118: pointer
+  get QueryExtendedEnrollmentStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(280, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x120: pointer
+  get RefreshCache(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(288, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x128: pointer
+  get SelectCalibrationFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(296, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x130: pointer
+  get QueryCalibrationData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(304, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x138: pointer
+  get SetAccountPolicy(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(312, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x140: pointer
+  get CreateKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(320, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x148: pointer
+  get IdentifyFeatureSetSecure(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(328, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x150: pointer
+  get AcceptPrivateSensorTypeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(336, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x158: pointer
+  get CreateEnrollmentAuthenticated(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(344, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x160: pointer
+  get IdentifyFeatureSetAuthenticated(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(352, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Version(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Type(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set AdapterId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Attach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Detach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set ClearContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set QueryPreferredFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set QueryIndexVectorSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set QueryHashAlgorithms(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set SetHashAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set QuerySampleHint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: pointer
+  set AcceptSampleData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set ExportEngineData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set VerifyFeatureSet(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set IdentifyFeatureSet(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set CreateEnrollment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: pointer
+  set UpdateEnrollment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x90: pointer
+  set GetEnrollmentStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x98: pointer
+  set GetEnrollmentHash(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa0: pointer
+  set CheckForDuplicate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa8: pointer
+  set CommitEnrollment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb0: pointer
+  set DiscardEnrollment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb8: pointer
+  set ControlUnit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc0: pointer
+  set ControlUnitPrivileged(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc8: pointer
+  set NotifyPowerChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(200, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd0: pointer
+  set Reserved_1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd8: pointer
+  set PipelineInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(216, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe0: pointer
+  set PipelineCleanup(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe8: pointer
+  set Activate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf0: pointer
+  set Deactivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(240, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf8: pointer
+  set QueryExtendedInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(248, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x100: pointer
+  set IdentifyAll(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x108: pointer
+  set SetEnrollmentSelector(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x110: pointer
+  set SetEnrollmentParameters(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(272, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x118: pointer
+  set QueryExtendedEnrollmentStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(280, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x120: pointer
+  set RefreshCache(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(288, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x128: pointer
+  set SelectCalibrationFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(296, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x130: pointer
+  set QueryCalibrationData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(304, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x138: pointer
+  set SetAccountPolicy(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(312, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x140: pointer
+  set CreateKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(320, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x148: pointer
+  set IdentifyFeatureSetSecure(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(328, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x150: pointer
+  set AcceptPrivateSensorTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(336, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x158: pointer
+  set CreateEnrollmentAuthenticated(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(344, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x160: pointer
+  set IdentifyFeatureSetAuthenticated(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(352, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_STORAGE_INTERFACE (size: 272)
  */
@@ -2210,6 +5931,393 @@ export function allocWINBIO_STORAGE_INTERFACE(data?: Partial<WINBIO_STORAGE_INTE
   // 0x108: pointer
   if (data?.UpdateRecordCommit !== undefined) view.setBigUint64(264, data.UpdateRecordCommit === null ? 0n : BigInt(util.toPointer(data.UpdateRecordCommit)), true);
   return buf;
+}
+
+export class WINBIO_STORAGE_INTERFACEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Version(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Type(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get AdapterId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Attach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Detach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get ClearContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get CreateDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get EraseDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get OpenDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get CloseDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get GetDataFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get GetDatabaseSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get AddRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get DeleteRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get QueryBySubject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get QueryByContent(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: pointer
+  get GetRecordCount(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(136, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x90: pointer
+  get FirstRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(144, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x98: pointer
+  get NextRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: pointer
+  get GetCurrentRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: pointer
+  get ControlUnit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: pointer
+  get ControlUnitPrivileged(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb8: pointer
+  get NotifyPowerChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(184, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc0: pointer
+  get PipelineInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(192, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc8: pointer
+  get PipelineCleanup(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(200, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd0: pointer
+  get Activate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(208, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd8: pointer
+  get Deactivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(216, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe0: pointer
+  get QueryExtendedInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(224, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe8: pointer
+  get NotifyDatabaseChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(232, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf0: pointer
+  get Reserved1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(240, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf8: pointer
+  get Reserved2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(248, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x100: pointer
+  get UpdateRecordBegin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(256, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x108: pointer
+  get UpdateRecordCommit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(264, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Version(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Type(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set AdapterId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Attach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Detach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set ClearContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set CreateDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set EraseDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set OpenDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set CloseDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set GetDataFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: pointer
+  set GetDatabaseSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set AddRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set DeleteRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set QueryBySubject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set QueryByContent(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: pointer
+  set GetRecordCount(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x90: pointer
+  set FirstRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x98: pointer
+  set NextRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa0: pointer
+  set GetCurrentRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa8: pointer
+  set ControlUnit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb0: pointer
+  set ControlUnitPrivileged(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb8: pointer
+  set NotifyPowerChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc0: pointer
+  set PipelineInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc8: pointer
+  set PipelineCleanup(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(200, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd0: pointer
+  set Activate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd8: pointer
+  set Deactivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(216, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe0: pointer
+  set QueryExtendedInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe8: pointer
+  set NotifyDatabaseChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf0: pointer
+  set Reserved1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(240, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf8: pointer
+  set Reserved2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(248, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x100: pointer
+  set UpdateRecordBegin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x108: pointer
+  set UpdateRecordCommit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2419,6 +6527,547 @@ export function allocWINBIO_FRAMEWORK_INTERFACE(data?: Partial<WINBIO_FRAMEWORK_
   return buf;
 }
 
+export class WINBIO_FRAMEWORK_INTERFACEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Version(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Type(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get AdapterId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get SetUnitStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get VsmStorageAttach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get VsmStorageDetach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get VsmStorageClearContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get VsmStorageCreateDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get VsmStorageOpenDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get VsmStorageCloseDatabase(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get VsmStorageDeleteRecord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get VsmStorageNotifyPowerChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get VsmStoragePipelineInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get VsmStoragePipelineCleanup(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get VsmStorageActivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get VsmStorageDeactivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: pointer
+  get VsmStorageQueryExtendedInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(136, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x90: pointer
+  get VsmStorageCacheClear(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(144, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x98: pointer
+  get VsmStorageCacheImportBegin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: pointer
+  get VsmStorageCacheImportNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: pointer
+  get VsmStorageCacheImportEnd(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: pointer
+  get VsmStorageCacheExportBegin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb8: pointer
+  get VsmStorageCacheExportNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(184, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc0: pointer
+  get VsmStorageCacheExportEnd(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(192, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xc8: pointer
+  get VsmSensorAttach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(200, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd0: pointer
+  get VsmSensorDetach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(208, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xd8: pointer
+  get VsmSensorClearContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(216, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe0: pointer
+  get VsmSensorPushDataToEngine(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(224, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xe8: pointer
+  get VsmSensorNotifyPowerChange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(232, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf0: pointer
+  get VsmSensorPipelineInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(240, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xf8: pointer
+  get VsmSensorPipelineCleanup(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(248, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x100: pointer
+  get VsmSensorActivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(256, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x108: pointer
+  get VsmSensorDeactivate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(264, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x110: pointer
+  get VsmSensorAsyncImportRawBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(272, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x118: pointer
+  get VsmSensorAsyncImportSecureBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(280, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x120: pointer
+  get Reserved1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(288, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x128: pointer
+  get Reserved2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(296, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x130: pointer
+  get Reserved3(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(304, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x138: pointer
+  get Reserved4(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(312, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x140: pointer
+  get Reserved5(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(320, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x148: pointer
+  get AllocateMemory(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(328, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x150: pointer
+  get FreeMemory(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(336, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x158: pointer
+  get GetProperty(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(344, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x160: pointer
+  get LockAndValidateSecureBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(352, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x168: pointer
+  get ReleaseSecureBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(360, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x170: pointer
+  get QueryAuthorizedEnrollments(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(368, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x178: pointer
+  get DecryptSample(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(376, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Version(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Type(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set AdapterId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set SetUnitStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set VsmStorageAttach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set VsmStorageDetach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set VsmStorageClearContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set VsmStorageCreateDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set VsmStorageOpenDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set VsmStorageCloseDatabase(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set VsmStorageDeleteRecord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: pointer
+  set VsmStorageNotifyPowerChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set VsmStoragePipelineInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set VsmStoragePipelineCleanup(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set VsmStorageActivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set VsmStorageDeactivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: pointer
+  set VsmStorageQueryExtendedInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x90: pointer
+  set VsmStorageCacheClear(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x98: pointer
+  set VsmStorageCacheImportBegin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa0: pointer
+  set VsmStorageCacheImportNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xa8: pointer
+  set VsmStorageCacheImportEnd(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb0: pointer
+  set VsmStorageCacheExportBegin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xb8: pointer
+  set VsmStorageCacheExportNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc0: pointer
+  set VsmStorageCacheExportEnd(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xc8: pointer
+  set VsmSensorAttach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(200, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd0: pointer
+  set VsmSensorDetach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xd8: pointer
+  set VsmSensorClearContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(216, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe0: pointer
+  set VsmSensorPushDataToEngine(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xe8: pointer
+  set VsmSensorNotifyPowerChange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf0: pointer
+  set VsmSensorPipelineInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(240, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0xf8: pointer
+  set VsmSensorPipelineCleanup(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(248, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x100: pointer
+  set VsmSensorActivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x108: pointer
+  set VsmSensorDeactivate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x110: pointer
+  set VsmSensorAsyncImportRawBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(272, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x118: pointer
+  set VsmSensorAsyncImportSecureBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(280, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x120: pointer
+  set Reserved1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(288, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x128: pointer
+  set Reserved2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(296, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x130: pointer
+  set Reserved3(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(304, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x138: pointer
+  set Reserved4(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(312, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x140: pointer
+  set Reserved5(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(320, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x148: pointer
+  set AllocateMemory(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(328, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x150: pointer
+  set FreeMemory(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(336, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x158: pointer
+  set GetProperty(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(344, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x160: pointer
+  set LockAndValidateSecureBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(352, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x168: pointer
+  set ReleaseSecureBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(360, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x170: pointer
+  set QueryAuthorizedEnrollments(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(368, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x178: pointer
+  set DecryptSample(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(376, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_SENSOR_ATTRIBUTES (size: 88)
  */
@@ -2484,6 +7133,156 @@ export function allocWINBIO_SENSOR_ATTRIBUTES(data?: Partial<WINBIO_SENSOR_ATTRI
   return buf;
 }
 
+export class WINBIO_SENSOR_ATTRIBUTESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get WinBioVersion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get SensorType(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get SensorSubType(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get Capabilities(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get ManufacturerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get ModelName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get SerialNumber(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get FirmwareVersion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get SupportedFormatEntries(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get SupportedFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set WinBioVersion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set SensorType(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set SensorSubType(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set Capabilities(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set ManufacturerName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set ModelName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set SerialNumber(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set FirmwareVersion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set SupportedFormatEntries(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set SupportedFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_DATA (size: 16)
  */
@@ -2507,6 +7306,42 @@ export function allocWINBIO_DATA(data?: Partial<WINBIO_DATA>): Uint8Array {
   return buf;
 }
 
+export class WINBIO_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_UPDATE_FIRMWARE (size: 16)
  */
@@ -2528,6 +7363,42 @@ export function allocWINBIO_UPDATE_FIRMWARE(data?: Partial<WINBIO_UPDATE_FIRMWAR
   // 0x08: pointer
   if (data?.FirmwareData !== undefined) view.setBigUint64(8, data.FirmwareData === null ? 0n : BigInt(util.toPointer(data.FirmwareData)), true);
   return buf;
+}
+
+export class WINBIO_UPDATE_FIRMWAREView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get FirmwareData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set FirmwareData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2555,6 +7426,53 @@ export function allocWINBIO_CALIBRATION_INFO(data?: Partial<WINBIO_CALIBRATION_I
   // 0x10: pointer
   if (data?.CalibrationData !== undefined) view.setBigUint64(16, data.CalibrationData === null ? 0n : BigInt(util.toPointer(data.CalibrationData)), true);
   return buf;
+}
+
+export class WINBIO_CALIBRATION_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get CalibrationData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set CalibrationData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2589,6 +7507,67 @@ export function allocWINBIO_DIAGNOSTICS(data?: Partial<WINBIO_DIAGNOSTICS>): Uin
   return buf;
 }
 
+export class WINBIO_DIAGNOSTICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get SensorStatus(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get VendorDiagnostics(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set SensorStatus(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set VendorDiagnostics(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_BLANK_PAYLOAD (size: 16)
  */
@@ -2610,6 +7589,42 @@ export function allocWINBIO_BLANK_PAYLOAD(data?: Partial<WINBIO_BLANK_PAYLOAD>):
   // 0x08: pointer
   if (data?.WinBioHresult !== undefined) view.setBigUint64(8, data.WinBioHresult === null ? 0n : BigInt(util.toPointer(data.WinBioHresult)), true);
   return buf;
+}
+
+export class WINBIO_BLANK_PAYLOADView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2648,6 +7663,77 @@ export function allocWINBIO_CAPTURE_PARAMETERS(data?: Partial<WINBIO_CAPTURE_PAR
   return buf;
 }
 
+export class WINBIO_CAPTURE_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u8
+  get Purpose(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get Format(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get VendorFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u8
+  get Flags(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: pad7
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u8
+  set Purpose(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set Format(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set VendorFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u8
+  set Flags(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: pad7
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_CAPTURE_DATA (size: 32)
  */
@@ -2683,6 +7769,73 @@ export function allocWINBIO_CAPTURE_DATA(data?: Partial<WINBIO_CAPTURE_DATA>): U
   return buf;
 }
 
+export class WINBIO_CAPTURE_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get SensorStatus(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get RejectDetail(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get CaptureData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set SensorStatus(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set RejectDetail(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set CaptureData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_SUPPORTED_ALGORITHMS (size: 32)
  */
@@ -2715,6 +7868,67 @@ export function allocWINBIO_SUPPORTED_ALGORITHMS(data?: Partial<WINBIO_SUPPORTED
   return buf;
 }
 
+export class WINBIO_SUPPORTED_ALGORITHMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get NumberOfAlgorithms(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get AlgorithmData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set NumberOfAlgorithms(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set AlgorithmData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_GET_INDICATOR (size: 24)
  */
@@ -2743,6 +7957,56 @@ export function allocWINBIO_GET_INDICATOR(data?: Partial<WINBIO_GET_INDICATOR>):
   return buf;
 }
 
+export class WINBIO_GET_INDICATORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get IndicatorStatus(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set IndicatorStatus(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_SET_INDICATOR (size: 8)
  */
@@ -2763,6 +8027,37 @@ export function allocWINBIO_SET_INDICATOR(data?: Partial<WINBIO_SET_INDICATOR>):
   // 0x04: u32
   if (data?.IndicatorStatus !== undefined) view.setUint32(4, Number(data.IndicatorStatus), true);
   return buf;
+}
+
+export class WINBIO_SET_INDICATORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get IndicatorStatus(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set IndicatorStatus(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2790,6 +8085,53 @@ export function allocWINBIO_PRIVATE_SENSOR_TYPE_INFO(data?: Partial<WINBIO_PRIVA
   // 0x10: pointer
   if (data?.PrivateSensorTypeInfo !== undefined) view.setBigUint64(16, data.PrivateSensorTypeInfo === null ? 0n : BigInt(util.toPointer(data.PrivateSensorTypeInfo)), true);
   return buf;
+}
+
+export class WINBIO_PRIVATE_SENSOR_TYPE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get PrivateSensorTypeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set PrivateSensorTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2832,6 +8174,87 @@ export function allocWINBIO_ENCRYPTED_CAPTURE_PARAMS(data?: Partial<WINBIO_ENCRY
   return buf;
 }
 
+export class WINBIO_ENCRYPTED_CAPTURE_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u8
+  get Purpose(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  get Format(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get VendorFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u8
+  get Flags(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: u32
+  get NonceSize(): number {
+    return this.view.getUint32(25, true);
+  }
+
+  // 0x1d: pad3
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u8
+  set Purpose(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: pad3
+
+  // 0x08: pointer
+  set Format(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set VendorFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u8
+  set Flags(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: u32
+  set NonceSize(value: number) {
+    this.view.setUint32(25, value, true);
+  }
+
+  // 0x1d: pad3
+}
+
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_NOTIFY_WAKE (size: 24)
  */
@@ -2858,6 +8281,56 @@ export function allocWINBIO_NOTIFY_WAKE(data?: Partial<WINBIO_NOTIFY_WAKE>): Uin
   if (data?.Reason !== undefined) view.setUint32(16, Number(data.Reason), true);
   // 0x14: pad4
   return buf;
+}
+
+export class WINBIO_NOTIFY_WAKEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PayloadSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get WinBioHresult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get Reason(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set PayloadSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set WinBioHresult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set Reason(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 export type HWND = Deno.PointerValue;

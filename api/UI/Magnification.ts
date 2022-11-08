@@ -35,6 +35,28 @@ export function allocMAGTRANSFORM(data?: Partial<MAGTRANSFORM>): Uint8Array {
   return buf;
 }
 
+export class MAGTRANSFORMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get v(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set v(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Magnification.MAGIMAGEHEADER (size: 32)
  */
@@ -73,6 +95,78 @@ export function allocMAGIMAGEHEADER(data?: Partial<MAGIMAGEHEADER>): Uint8Array 
   return buf;
 }
 
+export class MAGIMAGEHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get width(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get height(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get format(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get stride(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get offset(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: usize
+  get cbSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: u32
+  set width(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set height(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set format(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set stride(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set offset(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: usize
+  set cbSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Magnification.MAGCOLOREFFECT (size: 8)
  */
@@ -89,6 +183,28 @@ export function allocMAGCOLOREFFECT(data?: Partial<MAGCOLOREFFECT>): Uint8Array 
   // 0x00: pointer
   if (data?.transform !== undefined) view.setBigUint64(0, data.transform === null ? 0n : BigInt(util.toPointer(data.transform)), true);
   return buf;
+}
+
+export class MAGCOLOREFFECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get transform(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set transform(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type BOOL = number;
@@ -123,6 +239,57 @@ export function allocRECT(data?: Partial<RECT>): Uint8Array {
   // 0x0c: i32
   if (data?.bottom !== undefined) view.setInt32(12, Number(data.bottom), true);
   return buf;
+}
+
+export class RECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get left(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get top(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get right(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get bottom(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: i32
+  set left(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set top(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set right(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set bottom(value: number) {
+    this.view.setInt32(12, value, true);
+  }
 }
 
 // Native Libraries

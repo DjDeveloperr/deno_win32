@@ -156,6 +156,31 @@ export function allocDAILY(data?: Partial<DAILY>): Uint8Array {
   return buf;
 }
 
+export class DAILYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get DaysInterval(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u16
+  set DaysInterval(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
+}
+
 /**
  * Windows.Win32.System.TaskScheduler.WEEKLY (size: 8)
  */
@@ -179,6 +204,41 @@ export function allocWEEKLY(data?: Partial<WEEKLY>): Uint8Array {
   return buf;
 }
 
+export class WEEKLYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get WeeksInterval(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get rgfDaysOfTheWeek(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set WeeksInterval(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set rgfDaysOfTheWeek(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.System.TaskScheduler.MONTHLYDATE (size: 8)
  */
@@ -200,6 +260,41 @@ export function allocMONTHLYDATE(data?: Partial<MONTHLYDATE>): Uint8Array {
   if (data?.rgfMonths !== undefined) view.setUint16(4, Number(data.rgfMonths), true);
   // 0x06: pad2
   return buf;
+}
+
+export class MONTHLYDATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get rgfDays(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get rgfMonths(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: u32
+  set rgfDays(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set rgfMonths(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: pad2
 }
 
 /**
@@ -227,6 +322,51 @@ export function allocMONTHLYDOW(data?: Partial<MONTHLYDOW>): Uint8Array {
   if (data?.rgfMonths !== undefined) view.setUint16(4, Number(data.rgfMonths), true);
   // 0x06: pad2
   return buf;
+}
+
+export class MONTHLYDOWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wWhichWeek(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get rgfDaysOfTheWeek(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get rgfMonths(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: u16
+  set wWhichWeek(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set rgfDaysOfTheWeek(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set rgfMonths(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: pad2
 }
 
 /**
@@ -257,6 +397,61 @@ export function allocTRIGGER_TYPE_UNION(data?: Partial<TRIGGER_TYPE_UNION>): Uin
   // 0x18: pointer
   if (data?.MonthlyDOW !== undefined) view.setBigUint64(24, data.MonthlyDOW === null ? 0n : BigInt(util.toPointer(data.MonthlyDOW)), true);
   return buf;
+}
+
+export class TRIGGER_TYPE_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Daily(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Weekly(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get MonthlyDate(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get MonthlyDOW(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Daily(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Weekly(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set MonthlyDate(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set MonthlyDOW(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -341,6 +536,196 @@ export function allocTASK_TRIGGER(data?: Partial<TASK_TRIGGER>): Uint8Array {
   if (data?.wRandomMinutesInterval !== undefined) view.setUint16(50, Number(data.wRandomMinutesInterval), true);
   // 0x34: pad4
   return buf;
+}
+
+export class TASK_TRIGGERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get cbTriggerSize(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get Reserved1(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get wBeginYear(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wBeginMonth(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get wBeginDay(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wEndYear(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get wEndMonth(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wEndDay(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u16
+  get wStartHour(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wStartMinute(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get MinutesDuration(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get MinutesInterval(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get rgFlags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: i32
+  get TriggerType(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get Type(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u16
+  get Reserved2(): number {
+    return this.view.getUint16(48, true);
+  }
+
+  // 0x32: u16
+  get wRandomMinutesInterval(): number {
+    return this.view.getUint16(50, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: u16
+  set cbTriggerSize(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set Reserved1(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set wBeginYear(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wBeginMonth(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set wBeginDay(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wEndYear(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set wEndMonth(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wEndDay(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u16
+  set wStartHour(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wStartMinute(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set MinutesDuration(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set MinutesInterval(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set rgFlags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: i32
+  set TriggerType(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set Type(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u16
+  set Reserved2(value: number) {
+    this.view.setUint16(48, value, true);
+  }
+
+  // 0x32: u16
+  set wRandomMinutesInterval(value: number) {
+    this.view.setUint16(50, value, true);
+  }
+
+  // 0x34: pad4
 }
 
 // Native Libraries

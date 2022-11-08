@@ -250,6 +250,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -270,6 +301,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -296,6 +360,48 @@ export function allocEVT_VARIANT(data?: Partial<EVT_VARIANT>): Uint8Array {
   // 0x0c: u32
   if (data?.Type !== undefined) view.setUint32(12, Number(data.Type), true);
   return buf;
+}
+
+export class EVT_VARIANTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Count(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Type(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Count(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Type(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -345,6 +451,79 @@ export function allocEVT_RPC_LOGIN(data?: Partial<EVT_RPC_LOGIN>): Uint8Array {
   if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
   // 0x24: pad4
   return buf;
+}
+
+export class EVT_RPC_LOGINView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Server(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get User(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get Domain(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get Password(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get Flags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: buffer
+  set Server(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set User(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set Domain(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set Password(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set Flags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -425,6 +604,177 @@ export function allocEVENTLOGRECORD(data?: Partial<EVENTLOGRECORD>): Uint8Array 
   return buf;
 }
 
+export class EVENTLOGRECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Length(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Reserved(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get RecordNumber(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get TimeGenerated(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get TimeWritten(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get EventID(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u16
+  get EventType(): number {
+    return this.view.getUint16(24, true);
+  }
+
+  // 0x1a: u16
+  get NumStrings(): number {
+    return this.view.getUint16(26, true);
+  }
+
+  // 0x1c: u16
+  get EventCategory(): number {
+    return this.view.getUint16(28, true);
+  }
+
+  // 0x1e: u16
+  get ReservedFlags(): number {
+    return this.view.getUint16(30, true);
+  }
+
+  // 0x20: u32
+  get ClosingRecordNumber(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get StringOffset(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get UserSidLength(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get UserSidOffset(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get DataLength(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get DataOffset(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x00: u32
+  set Length(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Reserved(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set RecordNumber(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set TimeGenerated(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set TimeWritten(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set EventID(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u16
+  set EventType(value: number) {
+    this.view.setUint16(24, value, true);
+  }
+
+  // 0x1a: u16
+  set NumStrings(value: number) {
+    this.view.setUint16(26, value, true);
+  }
+
+  // 0x1c: u16
+  set EventCategory(value: number) {
+    this.view.setUint16(28, value, true);
+  }
+
+  // 0x1e: u16
+  set ReservedFlags(value: number) {
+    this.view.setUint16(30, value, true);
+  }
+
+  // 0x20: u32
+  set ClosingRecordNumber(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set StringOffset(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set UserSidLength(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set UserSidOffset(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set DataLength(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set DataOffset(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+}
+
 /**
  * Windows.Win32.System.EventLog.EVENTSFORLOGFILE (size: 32)
  */
@@ -457,6 +807,67 @@ export function allocEVENTSFORLOGFILE(data?: Partial<EVENTSFORLOGFILE>): Uint8Ar
   return buf;
 }
 
+export class EVENTSFORLOGFILEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get szLogicalLogFile(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ulNumRecords(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pEventLogRecords(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set szLogicalLogFile(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set ulNumRecords(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pEventLogRecords(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.EventLog.EVENTLOG_FULL_INFORMATION (size: 8)
  */
@@ -474,6 +885,31 @@ export function allocEVENTLOG_FULL_INFORMATION(data?: Partial<EVENTLOG_FULL_INFO
   if (data?.dwFull !== undefined) view.setUint32(0, Number(data.dwFull), true);
   // 0x04: pad4
   return buf;
+}
+
+export class EVENTLOG_FULL_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwFull(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set dwFull(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 export type BOOL = number;

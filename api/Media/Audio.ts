@@ -1509,6 +1509,42 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
+export class PROPERTYKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fmtid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get pid(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set pid(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.UNCOMPRESSEDAUDIOFORMAT (size: 32)
  */
@@ -1548,6 +1584,82 @@ export function allocUNCOMPRESSEDAUDIOFORMAT(data?: Partial<UNCOMPRESSEDAUDIOFOR
   return buf;
 }
 
+export class UNCOMPRESSEDAUDIOFORMATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get guidFormatType(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwSamplesPerFrame(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwBytesPerSampleContainer(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwValidBitsPerSample(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: f32
+  get fFramesPerSecond(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: u32
+  get dwChannelMask(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: pointer
+  set guidFormatType(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwSamplesPerFrame(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwBytesPerSampleContainer(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwValidBitsPerSample(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fFramesPerSecond(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwChannelMask(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.APO_CONNECTION_PROPERTY (size: 24)
  */
@@ -1579,6 +1691,61 @@ export function allocAPO_CONNECTION_PROPERTY(data?: Partial<APO_CONNECTION_PROPE
   return buf;
 }
 
+export class APO_CONNECTION_PROPERTYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get pBuffer(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u32
+  get u32ValidFrameCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get u32BufferFlags(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get u32Signature(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: usize
+  set pBuffer(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u32
+  set u32ValidFrameCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set u32BufferFlags(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set u32Signature(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.APO_CONNECTION_PROPERTY_V2 (size: 16)
  */
@@ -1599,6 +1766,38 @@ export function allocAPO_CONNECTION_PROPERTY_V2(data?: Partial<APO_CONNECTION_PR
   // 0x08: u64
   if (data?.u64QPCTime !== undefined) view.setBigUint64(8, BigInt(data.u64QPCTime), true);
   return buf;
+}
+
+export class APO_CONNECTION_PROPERTY_V2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get property(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u64
+  get u64QPCTime(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: pointer
+  set property(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u64
+  set u64QPCTime(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 /**
@@ -1636,6 +1835,80 @@ export function allocAPO_CONNECTION_DESCRIPTOR(data?: Partial<APO_CONNECTION_DES
   if (data?.u32Signature !== undefined) view.setUint32(32, Number(data.u32Signature), true);
   // 0x24: pad4
   return buf;
+}
+
+export class APO_CONNECTION_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: usize
+  get pBuffer(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get u32MaxFrameCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get u32Signature(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: usize
+  set pBuffer(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set u32MaxFrameCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set u32Signature(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -1705,6 +1978,155 @@ export function allocAPO_REG_PROPERTIES(data?: Partial<APO_REG_PROPERTIES>): Uin
   return buf;
 }
 
+export class APO_REG_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get clsid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get Flags(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get szFriendlyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get szCopyrightInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get u32MajorVersion(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get u32MinorVersion(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get u32MinInputConnections(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get u32MaxInputConnections(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get u32MinOutputConnections(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get u32MaxOutputConnections(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get u32MaxInstances(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get u32NumAPOInterfaces(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: pointer
+  get iidAPOInterfaceList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set clsid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set Flags(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set szFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set szCopyrightInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set u32MajorVersion(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set u32MinorVersion(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set u32MinInputConnections(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set u32MaxInputConnections(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set u32MinOutputConnections(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set u32MaxOutputConnections(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set u32MaxInstances(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set u32NumAPOInterfaces(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: pointer
+  set iidAPOInterfaceList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.APOInitBaseStruct (size: 16)
  */
@@ -1726,6 +2148,42 @@ export function allocAPOInitBaseStruct(data?: Partial<APOInitBaseStruct>): Uint8
   // 0x08: pointer
   if (data?.clsid !== undefined) view.setBigUint64(8, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
   return buf;
+}
+
+export class APOInitBaseStructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get clsid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set clsid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1760,6 +2218,72 @@ export function allocAPOInitSystemEffects(data?: Partial<APOInitSystemEffects>):
   // 0x20: pointer
   if (data?.pDeviceCollection !== undefined) view.setBigUint64(32, data.pDeviceCollection === null ? 0n : BigInt(util.toPointer(data.pDeviceCollection)), true);
   return buf;
+}
+
+export class APOInitSystemEffectsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get APOInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAPOEndpointProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pAPOSystemEffectsProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pDeviceCollection(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set APOInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pAPOEndpointProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pAPOSystemEffectsProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pDeviceCollection(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type BOOL = number;
@@ -1815,6 +2339,117 @@ export function allocAPOInitSystemEffects2(data?: Partial<APOInitSystemEffects2>
   return buf;
 }
 
+export class APOInitSystemEffects2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get APOInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAPOEndpointProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pAPOSystemEffectsProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pDeviceCollection(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get nSoftwareIoDeviceInCollection(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get nSoftwareIoConnectorIndex(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get AudioProcessingMode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: i32
+  get InitializeForDiscoveryOnly(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x00: pointer
+  set APOInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pAPOEndpointProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pAPOSystemEffectsProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pDeviceCollection(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set nSoftwareIoDeviceInCollection(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set nSoftwareIoConnectorIndex(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set AudioProcessingMode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: i32
+  set InitializeForDiscoveryOnly(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: pad4
+}
+
 export type LPARAM = Deno.PointerValue;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -1848,6 +2483,51 @@ export function allocAudioFXExtensionParams(data?: Partial<AudioFXExtensionParam
   return buf;
 }
 
+export class AudioFXExtensionParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AddPageParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pwstrEndpointID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pFxProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set AddPageParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pwstrEndpointID(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set pFxProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.AUDIO_SYSTEMEFFECT (size: 16)
  */
@@ -1872,6 +2552,48 @@ export function allocAUDIO_SYSTEMEFFECT(data?: Partial<AUDIO_SYSTEMEFFECT>): Uin
   // 0x0c: i32
   if (data?.state !== undefined) view.setInt32(12, Number(data.state), true);
   return buf;
+}
+
+export class AUDIO_SYSTEMEFFECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get id(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get canSetState(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get state(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: pointer
+  set id(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set canSetState(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set state(value: number) {
+    this.view.setInt32(12, value, true);
+  }
 }
 
 /**
@@ -1921,6 +2643,106 @@ export function allocAPOInitSystemEffects3(data?: Partial<APOInitSystemEffects3>
   return buf;
 }
 
+export class APOInitSystemEffects3View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get APOInit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pAPOEndpointProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pServiceProvider(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pDeviceCollection(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get nSoftwareIoDeviceInCollection(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get nSoftwareIoConnectorIndex(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get AudioProcessingMode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: i32
+  get InitializeForDiscoveryOnly(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: pointer
+  set APOInit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pAPOEndpointProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pServiceProvider(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pDeviceCollection(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set nSoftwareIoDeviceInCollection(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set nSoftwareIoConnectorIndex(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set AudioProcessingMode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: i32
+  set InitializeForDiscoveryOnly(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION (size: 16)
  */
@@ -1941,6 +2763,39 @@ export function allocAUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION(data?: Partial<AU
   // 0x08: pointer
   if (data?.volume !== undefined) view.setBigUint64(8, data.volume === null ? 0n : BigInt(util.toPointer(data.volume)), true);
   return buf;
+}
+
+export class AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get endpoint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get volume(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set endpoint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set volume(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1967,6 +2822,50 @@ export function allocAUDIO_ENDPOINT_PROPERTY_CHANGE_NOTIFICATION(data?: Partial<
   // 0x10: pointer
   if (data?.propertyKey !== undefined) view.setBigUint64(16, data.propertyKey === null ? 0n : BigInt(util.toPointer(data.propertyKey)), true);
   return buf;
+}
+
+export class AUDIO_ENDPOINT_PROPERTY_CHANGE_NOTIFICATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get endpoint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get propertyStore(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get propertyKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set endpoint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set propertyStore(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set propertyKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2004,6 +2903,75 @@ export function allocAUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION(data?: Par
   return buf;
 }
 
+export class AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get endpoint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get propertyStoreContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get propertyStoreType(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get propertyStore(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get propertyKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set endpoint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set propertyStoreContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set propertyStoreType(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set propertyStore(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set propertyKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -2026,6 +2994,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -2046,6 +3045,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2071,6 +3103,42 @@ export function allocAPO_NOTIFICATION(data?: Partial<APO_NOTIFICATION>): Uint8Ar
   return buf;
 }
 
+export class APO_NOTIFICATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.AUDIO_ENDPOINT_VOLUME_APO_NOTIFICATION_DESCRIPTOR (size: 8)
  */
@@ -2089,6 +3157,28 @@ export function allocAUDIO_ENDPOINT_VOLUME_APO_NOTIFICATION_DESCRIPTOR(data?: Pa
   return buf;
 }
 
+export class AUDIO_ENDPOINT_VOLUME_APO_NOTIFICATION_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get device(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set device(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.AUDIO_ENDPOINT_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR (size: 8)
  */
@@ -2105,6 +3195,28 @@ export function allocAUDIO_ENDPOINT_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR(
   // 0x00: pointer
   if (data?.device !== undefined) view.setBigUint64(0, data.device === null ? 0n : BigInt(util.toPointer(data.device)), true);
   return buf;
+}
+
+export class AUDIO_ENDPOINT_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get device(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set device(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2129,6 +3241,39 @@ export function allocAUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRI
   return buf;
 }
 
+export class AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get device(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get propertyStoreContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set device(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set propertyStoreContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.Apo.APO_NOTIFICATION_DESCRIPTOR (size: 16)
  */
@@ -2150,6 +3295,42 @@ export function allocAPO_NOTIFICATION_DESCRIPTOR(data?: Partial<APO_NOTIFICATION
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class APO_NOTIFICATION_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2182,6 +3363,58 @@ export function allocDLSID(data?: Partial<DLSID>): Uint8Array {
   return buf;
 }
 
+export class DLSIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulData1(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get usData2(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get usData3(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: pointer
+  get abData4(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulData1(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set usData2(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set usData3(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: pointer
+  set abData4(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DLSVERSION (size: 8)
  */
@@ -2202,6 +3435,37 @@ export function allocDLSVERSION(data?: Partial<DLSVERSION>): Uint8Array {
   // 0x04: u32
   if (data?.dwVersionLS !== undefined) view.setUint32(4, Number(data.dwVersionLS), true);
   return buf;
+}
+
+export class DLSVERSIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwVersionMS(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwVersionLS(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwVersionMS(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwVersionLS(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2239,6 +3503,71 @@ export function allocCONNECTION(data?: Partial<CONNECTION>): Uint8Array {
   return buf;
 }
 
+export class CONNECTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get usSource(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get usControl(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get usDestination(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get usTransform(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: i32
+  get lScale(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u16
+  set usSource(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set usControl(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set usDestination(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set usTransform(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: i32
+  set lScale(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.CONNECTIONLIST (size: 8)
  */
@@ -2259,6 +3588,37 @@ export function allocCONNECTIONLIST(data?: Partial<CONNECTIONLIST>): Uint8Array 
   // 0x04: u32
   if (data?.cConnections !== undefined) view.setUint32(4, Number(data.cConnections), true);
   return buf;
+}
+
+export class CONNECTIONLISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cConnections(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cConnections(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2284,6 +3644,41 @@ export function allocRGNRANGE(data?: Partial<RGNRANGE>): Uint8Array {
   return buf;
 }
 
+export class RGNRANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get usLow(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get usHigh(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set usLow(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set usHigh(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.MIDILOCALE (size: 8)
  */
@@ -2304,6 +3699,37 @@ export function allocMIDILOCALE(data?: Partial<MIDILOCALE>): Uint8Array {
   // 0x04: u32
   if (data?.ulInstrument !== undefined) view.setUint32(4, Number(data.ulInstrument), true);
   return buf;
+}
+
+export class MIDILOCALEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulBank(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulInstrument(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set ulBank(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulInstrument(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2337,6 +3763,63 @@ export function allocRGNHEADER(data?: Partial<RGNHEADER>): Uint8Array {
   return buf;
 }
 
+export class RGNHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get RangeKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get RangeVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get fusOptions(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get usKeyGroup(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set RangeKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set RangeVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set fusOptions(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set usKeyGroup(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.INSTHEADER (size: 16)
  */
@@ -2360,6 +3843,42 @@ export function allocINSTHEADER(data?: Partial<INSTHEADER>): Uint8Array {
   return buf;
 }
 
+export class INSTHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cRegions(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Locale(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cRegions(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Locale(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DLSHEADER (size: 8)
  */
@@ -2377,6 +3896,31 @@ export function allocDLSHEADER(data?: Partial<DLSHEADER>): Uint8Array {
   if (data?.cInstruments !== undefined) view.setUint32(0, Number(data.cInstruments), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DLSHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cInstruments(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set cInstruments(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2410,6 +3954,61 @@ export function allocWAVELINK(data?: Partial<WAVELINK>): Uint8Array {
   return buf;
 }
 
+export class WAVELINKView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get fusOptions(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get usPhaseGroup(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get ulChannel(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulTableIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u16
+  set fusOptions(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set usPhaseGroup(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set ulChannel(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulTableIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.POOLCUE (size: 8)
  */
@@ -2427,6 +4026,31 @@ export function allocPOOLCUE(data?: Partial<POOLCUE>): Uint8Array {
   if (data?.ulOffset !== undefined) view.setUint32(0, Number(data.ulOffset), true);
   // 0x04: pad4
   return buf;
+}
+
+export class POOLCUEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulOffset(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set ulOffset(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2449,6 +4073,37 @@ export function allocPOOLTABLE(data?: Partial<POOLTABLE>): Uint8Array {
   // 0x04: u32
   if (data?.cCues !== undefined) view.setUint32(4, Number(data.cCues), true);
   return buf;
+}
+
+export class POOLTABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cCues(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cCues(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2490,6 +4145,81 @@ export function allocWSMPL(data?: Partial<WSMPL>): Uint8Array {
   return buf;
 }
 
+export class WSMPLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get usUnityNote(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: i16
+  get sFineTune(): number {
+    return this.view.getInt16(6, true);
+  }
+
+  // 0x08: i32
+  get lAttenuation(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get fulOptions(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cSampleLoops(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set usUnityNote(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: i16
+  set sFineTune(value: number) {
+    this.view.setInt16(6, value, true);
+  }
+
+  // 0x08: i32
+  set lAttenuation(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fulOptions(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cSampleLoops(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.WLOOP (size: 16)
  */
@@ -2518,6 +4248,57 @@ export function allocWLOOP(data?: Partial<WLOOP>): Uint8Array {
   // 0x0c: u32
   if (data?.ulLength !== undefined) view.setUint32(12, Number(data.ulLength), true);
   return buf;
+}
+
+export class WLOOPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulStart(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulLength(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulStart(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulLength(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -2550,6 +4331,57 @@ export function allocDMUS_DOWNLOADINFO(data?: Partial<DMUS_DOWNLOADINFO>): Uint8
   return buf;
 }
 
+export class DMUS_DOWNLOADINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwDLType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwDLId(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwNumOffsetTableEntries(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dwDLType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwDLId(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwNumOffsetTableEntries(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_OFFSETTABLE (size: 8)
  */
@@ -2566,6 +4398,28 @@ export function allocDMUS_OFFSETTABLE(data?: Partial<DMUS_OFFSETTABLE>): Uint8Ar
   // 0x00: pointer
   if (data?.ulOffsetTable !== undefined) view.setBigUint64(0, data.ulOffsetTable === null ? 0n : BigInt(util.toPointer(data.ulOffsetTable)), true);
   return buf;
+}
+
+export class DMUS_OFFSETTABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ulOffsetTable(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ulOffsetTable(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2604,6 +4458,77 @@ export function allocDMUS_INSTRUMENT(data?: Partial<DMUS_INSTRUMENT>): Uint8Arra
   // 0x14: u32
   if (data?.ulFlags !== undefined) view.setUint32(20, Number(data.ulFlags), true);
   return buf;
+}
+
+export class DMUS_INSTRUMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulPatch(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulFirstRegionIdx(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulGlobalArtIdx(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulFirstExtCkIdx(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ulCopyrightIdx(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ulFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u32
+  set ulPatch(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulFirstRegionIdx(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulGlobalArtIdx(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulFirstExtCkIdx(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ulCopyrightIdx(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ulFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -2660,6 +4585,122 @@ export function allocDMUS_REGION(data?: Partial<DMUS_REGION>): Uint8Array {
   return buf;
 }
 
+export class DMUS_REGIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get RangeKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get RangeVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get fusOptions(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get usKeyGroup(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get ulRegionArtIdx(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get ulNextRegionIdx(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get ulFirstExtCkIdx(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get WaveLink(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get WSMP(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get WLOOP(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set RangeKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set RangeVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set fusOptions(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set usKeyGroup(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set ulRegionArtIdx(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set ulNextRegionIdx(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set ulFirstExtCkIdx(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set WaveLink(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set WSMP(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set WLOOP(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_LFOPARAMS (size: 24)
  */
@@ -2698,6 +4739,77 @@ export function allocDMUS_LFOPARAMS(data?: Partial<DMUS_LFOPARAMS>): Uint8Array 
   return buf;
 }
 
+export class DMUS_LFOPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get pcFrequency(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tcDelay(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get gcVolumeScale(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get pcPitchScale(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get gcMWToVolume(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get pcMWToPitch(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: i32
+  set pcFrequency(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tcDelay(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set gcVolumeScale(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set pcPitchScale(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set gcMWToVolume(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set pcMWToPitch(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_VEGPARAMS (size: 24)
  */
@@ -2734,6 +4846,77 @@ export function allocDMUS_VEGPARAMS(data?: Partial<DMUS_VEGPARAMS>): Uint8Array 
   // 0x14: i32
   if (data?.tcKey2Decay !== undefined) view.setInt32(20, Number(data.tcKey2Decay), true);
   return buf;
+}
+
+export class DMUS_VEGPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tcAttack(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tcDecay(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get ptSustain(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tcRelease(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tcVel2Attack(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tcKey2Decay(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: i32
+  set tcAttack(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tcDecay(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set ptSustain(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tcRelease(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tcVel2Attack(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tcKey2Decay(value: number) {
+    this.view.setInt32(20, value, true);
+  }
 }
 
 /**
@@ -2779,6 +4962,91 @@ export function allocDMUS_PEGPARAMS(data?: Partial<DMUS_PEGPARAMS>): Uint8Array 
   return buf;
 }
 
+export class DMUS_PEGPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tcAttack(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tcDecay(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get ptSustain(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tcRelease(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tcVel2Attack(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tcKey2Decay(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get pcRange(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: i32
+  set tcAttack(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tcDecay(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set ptSustain(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tcRelease(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tcVel2Attack(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tcKey2Decay(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set pcRange(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_MSCPARAMS (size: 8)
  */
@@ -2796,6 +5064,31 @@ export function allocDMUS_MSCPARAMS(data?: Partial<DMUS_MSCPARAMS>): Uint8Array 
   if (data?.ptDefaultPan !== undefined) view.setInt32(0, Number(data.ptDefaultPan), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DMUS_MSCPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ptDefaultPan(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set ptDefaultPan(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2828,6 +5121,61 @@ export function allocDMUS_ARTICPARAMS(data?: Partial<DMUS_ARTICPARAMS>): Uint8Ar
   return buf;
 }
 
+export class DMUS_ARTICPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get LFO(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get VolEG(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get PitchEG(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Misc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set LFO(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set VolEG(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set PitchEG(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Misc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_ARTICULATION (size: 8)
  */
@@ -2848,6 +5196,37 @@ export function allocDMUS_ARTICULATION(data?: Partial<DMUS_ARTICULATION>): Uint8
   // 0x04: u32
   if (data?.ulFirstExtCkIdx !== undefined) view.setUint32(4, Number(data.ulFirstExtCkIdx), true);
   return buf;
+}
+
+export class DMUS_ARTICULATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulArt1Idx(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulFirstExtCkIdx(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set ulArt1Idx(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulFirstExtCkIdx(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2875,6 +5254,51 @@ export function allocDMUS_ARTICULATION2(data?: Partial<DMUS_ARTICULATION2>): Uin
   if (data?.ulNextArtIdx !== undefined) view.setUint32(8, Number(data.ulNextArtIdx), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DMUS_ARTICULATION2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulArtIdx(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulFirstExtCkIdx(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulNextArtIdx(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set ulArtIdx(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulFirstExtCkIdx(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulNextArtIdx(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -2908,6 +5332,62 @@ export function allocDMUS_EXTENSIONCHUNK(data?: Partial<DMUS_EXTENSIONCHUNK>): U
   return buf;
 }
 
+export class DMUS_EXTENSIONCHUNKView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulNextExtCkIdx(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ExtCkID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get byExtCk(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulNextExtCkIdx(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ExtCkID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set byExtCk(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_COPYRIGHT (size: 16)
  */
@@ -2931,6 +5411,42 @@ export function allocDMUS_COPYRIGHT(data?: Partial<DMUS_COPYRIGHT>): Uint8Array 
   return buf;
 }
 
+export class DMUS_COPYRIGHTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get byCopyright(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set byCopyright(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_WAVEDATA (size: 16)
  */
@@ -2952,6 +5468,42 @@ export function allocDMUS_WAVEDATA(data?: Partial<DMUS_WAVEDATA>): Uint8Array {
   // 0x08: pointer
   if (data?.byData !== undefined) view.setBigUint64(8, data.byData === null ? 0n : BigInt(util.toPointer(data.byData)), true);
   return buf;
+}
+
+export class DMUS_WAVEDATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get byData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set byData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2997,6 +5549,91 @@ export function allocWAVEFORMATEX(data?: Partial<WAVEFORMATEX>): Uint8Array {
   return buf;
 }
 
+export class WAVEFORMATEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wFormatTag(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get nChannels(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get nSamplesPerSec(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get nAvgBytesPerSec(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get nBlockAlign(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wBitsPerSample(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u16
+  get cbSize(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x00: u16
+  set wFormatTag(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set nChannels(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set nSamplesPerSec(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set nAvgBytesPerSec(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set nBlockAlign(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wBitsPerSample(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u16
+  set cbSize(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_WAVE (size: 24)
  */
@@ -3028,6 +5665,62 @@ export function allocDMUS_WAVE(data?: Partial<DMUS_WAVE>): Uint8Array {
   return buf;
 }
 
+export class DMUS_WAVEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulFirstExtCkIdx(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulCopyrightIdx(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulWaveDataIdx(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get WaveformatEx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulFirstExtCkIdx(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulCopyrightIdx(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulWaveDataIdx(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set WaveformatEx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_NOTERANGE (size: 8)
  */
@@ -3048,6 +5741,37 @@ export function allocDMUS_NOTERANGE(data?: Partial<DMUS_NOTERANGE>): Uint8Array 
   // 0x04: u32
   if (data?.dwHighNote !== undefined) view.setUint32(4, Number(data.dwHighNote), true);
   return buf;
+}
+
+export class DMUS_NOTERANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwLowNote(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwHighNote(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwLowNote(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwHighNote(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -3085,6 +5809,71 @@ export function allocDMUS_WAVEARTDL(data?: Partial<DMUS_WAVEARTDL>): Uint8Array 
   return buf;
 }
 
+export class DMUS_WAVEARTDLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulDownloadIdIdx(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulBus(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulBuffers(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulMasterDLId(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get usOptions(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x00: u32
+  set ulDownloadIdIdx(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulBus(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulBuffers(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulMasterDLId(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set usOptions(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_WAVEDL (size: 8)
  */
@@ -3102,6 +5891,31 @@ export function allocDMUS_WAVEDL(data?: Partial<DMUS_WAVEDL>): Uint8Array {
   if (data?.cbWaveData !== undefined) view.setUint32(0, Number(data.cbWaveData), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DMUS_WAVEDLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbWaveData(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set cbWaveData(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -3135,6 +5949,61 @@ export function allocDMUS_EVENTHEADER(data?: Partial<DMUS_EVENTHEADER>): Uint8Ar
   return buf;
 }
 
+export class DMUS_EVENTHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbEvent(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwChannelGroup(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i64
+  get rtDelta(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(8, true));
+  }
+
+  // 0x10: u32
+  get dwFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set cbEvent(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwChannelGroup(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i64
+  set rtDelta(value: Deno.PointerValue) {
+    this.view.setBigInt64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_BUFFERDESC (size: 24)
  */
@@ -3164,6 +6033,62 @@ export function allocDMUS_BUFFERDESC(data?: Partial<DMUS_BUFFERDESC>): Uint8Arra
   if (data?.cbBuffer !== undefined) view.setUint32(16, Number(data.cbBuffer), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DMUS_BUFFERDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidBufferFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbBuffer(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidBufferFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbBuffer(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -3225,6 +6150,133 @@ export function allocDMUS_PORTCAPS(data?: Partial<DMUS_PORTCAPS>): Uint8Array {
   return buf;
 }
 
+export class DMUS_PORTCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidPort(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwClass(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwType(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwMemorySize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwMaxChannelGroups(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwMaxVoices(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwMaxAudioChannels(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwEffectFlags(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get wszDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidPort(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwClass(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwType(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwMemorySize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwMaxChannelGroups(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwMaxVoices(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwMaxAudioChannels(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwEffectFlags(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_PORTPARAMS7 (size: 32)
  */
@@ -3269,6 +6321,97 @@ export function allocDMUS_PORTPARAMS7(data?: Partial<DMUS_PORTPARAMS7>): Uint8Ar
   // 0x1c: i32
   if (data?.fShare !== undefined) view.setInt32(28, Number(data.fShare), true);
   return buf;
+}
+
+export class DMUS_PORTPARAMS7View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwValidParams(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwVoices(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwChannelGroups(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwAudioChannels(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwSampleRate(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwEffectFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get fShare(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwValidParams(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwVoices(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwChannelGroups(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwAudioChannels(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwSampleRate(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwEffectFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set fShare(value: number) {
+    this.view.setInt32(28, value, true);
+  }
 }
 
 /**
@@ -3322,6 +6465,111 @@ export function allocDMUS_PORTPARAMS8(data?: Partial<DMUS_PORTPARAMS8>): Uint8Ar
   return buf;
 }
 
+export class DMUS_PORTPARAMS8View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwValidParams(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwVoices(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwChannelGroups(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwAudioChannels(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwSampleRate(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwEffectFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get fShare(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwFeatures(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwValidParams(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwVoices(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwChannelGroups(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwAudioChannels(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwSampleRate(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwEffectFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set fShare(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwFeatures(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_SYNTHSTATS (size: 32)
  */
@@ -3366,6 +6614,97 @@ export function allocDMUS_SYNTHSTATS(data?: Partial<DMUS_SYNTHSTATS>): Uint8Arra
   // 0x1c: i32
   if (data?.lPeakVolume !== undefined) view.setInt32(28, Number(data.lPeakVolume), true);
   return buf;
+}
+
+export class DMUS_SYNTHSTATSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwValidStats(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwVoices(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwTotalCPU(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwCPUPerVoice(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwLostNotes(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwFreeMemory(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get lPeakVolume(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwValidStats(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwVoices(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwTotalCPU(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwCPUPerVoice(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwLostNotes(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwFreeMemory(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set lPeakVolume(value: number) {
+    this.view.setInt32(28, value, true);
+  }
 }
 
 /**
@@ -3419,6 +6758,111 @@ export function allocDMUS_SYNTHSTATS8(data?: Partial<DMUS_SYNTHSTATS8>): Uint8Ar
   return buf;
 }
 
+export class DMUS_SYNTHSTATS8View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwValidStats(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwVoices(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwTotalCPU(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwCPUPerVoice(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwLostNotes(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwFreeMemory(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get lPeakVolume(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwSynthMemUse(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwValidStats(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwVoices(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwTotalCPU(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwCPUPerVoice(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwLostNotes(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwFreeMemory(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set lPeakVolume(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwSynthMemUse(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_WAVES_REVERB_PARAMS (size: 16)
  */
@@ -3449,6 +6893,57 @@ export function allocDMUS_WAVES_REVERB_PARAMS(data?: Partial<DMUS_WAVES_REVERB_P
   return buf;
 }
 
+export class DMUS_WAVES_REVERB_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fInGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fReverbMix(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fReverbTime(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fHighFreqRTRatio(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set fInGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fReverbMix(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fReverbTime(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fHighFreqRTRatio(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_CLOCKINFO7 (size: 24)
  */
@@ -3477,6 +6972,59 @@ export function allocDMUS_CLOCKINFO7(data?: Partial<DMUS_CLOCKINFO7>): Uint8Arra
   // 0x10: pointer
   if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
   return buf;
+}
+
+export class DMUS_CLOCKINFO7View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ctType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidClock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get wszDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ctType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidClock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3514,6 +7062,73 @@ export function allocDMUS_CLOCKINFO8(data?: Partial<DMUS_CLOCKINFO8>): Uint8Arra
   return buf;
 }
 
+export class DMUS_CLOCKINFO8View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ctType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidClock(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get wszDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ctType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidClock(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DMUS_VOICE_STATE (size: 16)
  */
@@ -3535,6 +7150,41 @@ export function allocDMUS_VOICE_STATE(data?: Partial<DMUS_VOICE_STATE>): Uint8Ar
   // 0x08: u64
   if (data?.spPosition !== undefined) view.setBigUint64(8, BigInt(data.spPosition), true);
   return buf;
+}
+
+export class DMUS_VOICE_STATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get bExists(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  get spPosition(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: i32
+  set bExists(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  set spPosition(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
@@ -3569,6 +7219,54 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA(data?
   return buf;
 }
 
+export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get DeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get DataFlow(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set DataFlow(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA (size: 24)
  */
@@ -3597,6 +7295,54 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA(data?
   // 0x10: pointer
   if (data?.DeviceId !== undefined) view.setBigUint64(16, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
   return buf;
+}
+
+export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get DeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get DataFlow(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set DataFlow(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3647,6 +7393,112 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATA(data?: Part
   // 0x34: u32
   if (data?.Devnode !== undefined) view.setUint32(52, Number(data.Devnode), true);
   return buf;
+}
+
+export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get DescriptionA(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DescriptionW(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ModuleA(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ModuleW(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: i32
+  get Type(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: i32
+  get DataFlow(): number {
+    return this.view.getInt32(44, true);
+  }
+
+  // 0x30: u32
+  get WaveDeviceId(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get Devnode(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x00: pointer
+  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set DescriptionA(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DescriptionW(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ModuleA(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ModuleW(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: i32
+  set Type(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: i32
+  set DataFlow(value: number) {
+    this.view.setInt32(44, value, true);
+  }
+
+  // 0x30: u32
+  set WaveDeviceId(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set Devnode(value: number) {
+    this.view.setUint32(52, value, true);
+  }
 }
 
 /**
@@ -3701,6 +7553,98 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA(data?: Part
   return buf;
 }
 
+export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get DataFlow(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get Module(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get Interface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get WaveDeviceId(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set DataFlow(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set Module(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set Interface(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set WaveDeviceId(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA (size: 48)
  */
@@ -3753,6 +7697,98 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA(data?: Part
   return buf;
 }
 
+export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get DataFlow(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get Module(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get Interface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get WaveDeviceId(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set DataFlow(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set Module(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set Interface(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set WaveDeviceId(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATA (size: 16)
  */
@@ -3773,6 +7809,39 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATA(data?: Partia
   // 0x08: pointer
   if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
   return buf;
+}
+
+export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Callback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Context(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Callback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Context(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3797,6 +7866,39 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATA(data?: Partia
   return buf;
 }
 
+export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Callback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Context(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Callback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Context(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA (size: 16)
  */
@@ -3817,6 +7919,39 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA(data?: Partia
   // 0x08: pointer
   if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
   return buf;
+}
+
+export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Callback(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Context(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Callback(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Context(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3861,6 +7996,98 @@ export function allocDVAudInfo(data?: Partial<DVAudInfo>): Uint8Array {
   if (data?.wBlkDiv !== undefined) view.setUint16(36, Number(data.wBlkDiv), true);
   // 0x26: pad2
   return buf;
+}
+
+export class DVAudInfoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get bAudStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get bAudQu(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get bNumAudPin(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  get wAvgSamplesPerPinPerFrm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u16
+  get wBlkMode(): number {
+    return this.view.getUint16(32, true);
+  }
+
+  // 0x22: u16
+  get wDIFMode(): number {
+    return this.view.getUint16(34, true);
+  }
+
+  // 0x24: u16
+  get wBlkDiv(): number {
+    return this.view.getUint16(36, true);
+  }
+
+  // 0x26: pad2
+
+  // 0x00: pointer
+  set bAudStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set bAudQu(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u8
+  set bNumAudPin(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  set wAvgSamplesPerPinPerFrm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u16
+  set wBlkMode(value: number) {
+    this.view.setUint16(32, value, true);
+  }
+
+  // 0x22: u16
+  set wDIFMode(value: number) {
+    this.view.setUint16(34, value, true);
+  }
+
+  // 0x24: u16
+  set wBlkDiv(value: number) {
+    this.view.setUint16(36, value, true);
+  }
+
+  // 0x26: pad2
 }
 
 /**
@@ -3973,6 +8200,257 @@ export function allocDSCAPS(data?: Partial<DSCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwMinSecondarySampleRate(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwMaxSecondarySampleRate(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwPrimaryBuffers(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwMaxHwMixingAllBuffers(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwMaxHwMixingStaticBuffers(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwMaxHwMixingStreamingBuffers(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwFreeHwMixingAllBuffers(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwFreeHwMixingStaticBuffers(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwFreeHwMixingStreamingBuffers(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dwMaxHw3DAllBuffers(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get dwMaxHw3DStaticBuffers(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwMaxHw3DStreamingBuffers(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get dwFreeHw3DAllBuffers(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get dwFreeHw3DStaticBuffers(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get dwFreeHw3DStreamingBuffers(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get dwTotalHwMemBytes(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get dwFreeHwMemBytes(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get dwMaxContigFreeHwMemBytes(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get dwUnlockTransferRateHwBuffers(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get dwPlayCpuOverheadSwBuffers(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwMinSecondarySampleRate(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwMaxSecondarySampleRate(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwPrimaryBuffers(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwMaxHwMixingAllBuffers(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwMaxHwMixingStaticBuffers(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwMaxHwMixingStreamingBuffers(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwFreeHwMixingAllBuffers(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwFreeHwMixingStaticBuffers(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwFreeHwMixingStreamingBuffers(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dwMaxHw3DAllBuffers(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set dwMaxHw3DStaticBuffers(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwMaxHw3DStreamingBuffers(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set dwFreeHw3DAllBuffers(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set dwFreeHw3DStaticBuffers(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set dwFreeHw3DStreamingBuffers(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set dwTotalHwMemBytes(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set dwFreeHwMemBytes(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set dwMaxContigFreeHwMemBytes(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set dwUnlockTransferRateHwBuffers(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set dwPlayCpuOverheadSwBuffers(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBCAPS (size: 24)
  */
@@ -4008,6 +8486,71 @@ export function allocDSBCAPS(data?: Partial<DSBCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSBCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwUnlockTransferRate(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwPlayCpuOverhead(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwUnlockTransferRate(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwPlayCpuOverhead(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSEFFECTDESC (size: 32)
  */
@@ -4040,6 +8583,68 @@ export function allocDSEFFECTDESC(data?: Partial<DSEFFECTDESC>): Uint8Array {
   // 0x18: usize
   if (data?.dwReserved2 !== undefined) view.setBigUint64(24, BigInt(data.dwReserved2), true);
   return buf;
+}
+
+export class DSEFFECTDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidDSFXClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get dwReserved1(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: usize
+  get dwReserved2(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidDSFXClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: usize
+  set dwReserved1(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: usize
+  set dwReserved2(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
 }
 
 /**
@@ -4080,6 +8685,79 @@ export function allocDSCEFFECTDESC(data?: Partial<DSCEFFECTDESC>): Uint8Array {
   return buf;
 }
 
+export class DSCEFFECTDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidDSCFXClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get guidDSCFXInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidDSCFXClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set guidDSCFXInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBUFFERDESC (size: 32)
  */
@@ -4118,6 +8796,79 @@ export function allocDSBUFFERDESC(data?: Partial<DSBUFFERDESC>): Uint8Array {
   return buf;
 }
 
+export class DSBUFFERDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get guid3DAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set guid3DAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBUFFERDESC1 (size: 24)
  */
@@ -4152,6 +8903,68 @@ export function allocDSBUFFERDESC1(data?: Partial<DSBUFFERDESC1>): Uint8Array {
   return buf;
 }
 
+export class DSBUFFERDESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D.D3DVECTOR (size: 16)
  */
@@ -4177,6 +8990,51 @@ export function allocD3DVECTOR(data?: Partial<D3DVECTOR>): Uint8Array {
   if (data?.z !== undefined) view.setFloat32(8, Number(data.z), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class D3DVECTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get x(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get y(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get z(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set x(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set y(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set z(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -4234,6 +9092,124 @@ export function allocDS3DBUFFER(data?: Partial<DS3DBUFFER>): Uint8Array {
   return buf;
 }
 
+export class DS3DBUFFERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get vPosition(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwInsideConeAngle(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwOutsideConeAngle(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get vConeOrientation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: i32
+  get lConeOutsideVolume(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: f32
+  get flMinDistance(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x30: f32
+  get flMaxDistance(): number {
+    return this.view.getFloat32(48, true);
+  }
+
+  // 0x34: u32
+  get dwMode(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwInsideConeAngle(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwOutsideConeAngle(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set vConeOrientation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: i32
+  set lConeOutsideVolume(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flMinDistance(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+
+  // 0x30: f32
+  set flMaxDistance(value: number) {
+    this.view.setFloat32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwMode(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DS3DLISTENER (size: 56)
  */
@@ -4282,6 +9258,109 @@ export function allocDS3DLISTENER(data?: Partial<DS3DLISTENER>): Uint8Array {
   return buf;
 }
 
+export class DS3DLISTENERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get vPosition(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get vOrientFront(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get vOrientTop(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: f32
+  get flDistanceFactor(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get flRolloffFactor(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x30: f32
+  get flDopplerFactor(): number {
+    return this.view.getFloat32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set vOrientFront(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set vOrientTop(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: f32
+  set flDistanceFactor(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flRolloffFactor(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+
+  // 0x30: f32
+  set flDopplerFactor(value: number) {
+    this.view.setFloat32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCCAPS (size: 16)
  */
@@ -4310,6 +9389,57 @@ export function allocDSCCAPS(data?: Partial<DSCCAPS>): Uint8Array {
   // 0x0c: u32
   if (data?.dwChannels !== undefined) view.setUint32(12, Number(data.dwChannels), true);
   return buf;
+}
+
+export class DSCCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormats(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwChannels(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwChannels(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -4344,6 +9474,68 @@ export function allocDSCBUFFERDESC1(data?: Partial<DSCBUFFERDESC1>): Uint8Array 
   // 0x10: pointer
   if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
   return buf;
+}
+
+export class DSCBUFFERDESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4389,6 +9581,93 @@ export function allocDSCBUFFERDESC(data?: Partial<DSCBUFFERDESC>): Uint8Array {
   return buf;
 }
 
+export class DSCBUFFERDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwFXCount(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get lpDSCFXDesc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwFXCount(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set lpDSCFXDesc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCBCAPS (size: 16)
  */
@@ -4419,6 +9698,57 @@ export function allocDSCBCAPS(data?: Partial<DSCBCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSCBCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 export type HANDLE = Deno.PointerValue;
 
 /**
@@ -4444,6 +9774,42 @@ export function allocDSBPOSITIONNOTIFY(data?: Partial<DSBPOSITIONNOTIFY>): Uint8
   return buf;
 }
 
+export class DSBPOSITIONNOTIFYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwOffset(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get hEventNotify(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwOffset(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set hEventNotify(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXGargle (size: 8)
  */
@@ -4464,6 +9830,37 @@ export function allocDSFXGargle(data?: Partial<DSFXGargle>): Uint8Array {
   // 0x04: u32
   if (data?.dwWaveShape !== undefined) view.setUint32(4, Number(data.dwWaveShape), true);
   return buf;
+}
+
+export class DSFXGargleView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwRateHz(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwWaveShape(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwRateHz(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwWaveShape(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -4509,6 +9906,91 @@ export function allocDSFXChorus(data?: Partial<DSFXChorus>): Uint8Array {
   return buf;
 }
 
+export class DSFXChorusView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fDepth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fFrequency(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lWaveform(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: f32
+  get fDelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get lPhase(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fDepth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fFrequency(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lWaveform(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fDelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set lPhase(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXFlanger (size: 32)
  */
@@ -4552,6 +10034,91 @@ export function allocDSFXFlanger(data?: Partial<DSFXFlanger>): Uint8Array {
   return buf;
 }
 
+export class DSFXFlangerView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fDepth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fFrequency(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lWaveform(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: f32
+  get fDelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get lPhase(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fDepth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fFrequency(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lWaveform(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fDelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set lPhase(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXEcho (size: 24)
  */
@@ -4587,6 +10154,71 @@ export function allocDSFXEcho(data?: Partial<DSFXEcho>): Uint8Array {
   return buf;
 }
 
+export class DSFXEchoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fLeftDelay(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fRightDelay(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lPanDelay(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fLeftDelay(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fRightDelay(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lPanDelay(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXDistortion (size: 24)
  */
@@ -4620,6 +10252,71 @@ export function allocDSFXDistortion(data?: Partial<DSFXDistortion>): Uint8Array 
   if (data?.fPreLowpassCutoff !== undefined) view.setFloat32(16, Number(data.fPreLowpassCutoff), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DSFXDistortionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fEdge(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fPostEQCenterFrequency(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fPostEQBandwidth(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get fPreLowpassCutoff(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: f32
+  set fGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fEdge(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fPostEQCenterFrequency(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fPostEQBandwidth(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set fPreLowpassCutoff(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -4660,6 +10357,77 @@ export function allocDSFXCompressor(data?: Partial<DSFXCompressor>): Uint8Array 
   return buf;
 }
 
+export class DSFXCompressorView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fAttack(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fRelease(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fThreshold(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get fRatio(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get fPredelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set fGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fAttack(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fRelease(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fThreshold(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set fRatio(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fPredelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXParamEq (size: 16)
  */
@@ -4685,6 +10453,51 @@ export function allocDSFXParamEq(data?: Partial<DSFXParamEq>): Uint8Array {
   if (data?.fGain !== undefined) view.setFloat32(8, Number(data.fGain), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DSFXParamEqView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fCenter(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fBandwidth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fGain(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set fCenter(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fBandwidth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fGain(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -4749,6 +10562,137 @@ export function allocDSFXI3DL2Reverb(data?: Partial<DSFXI3DL2Reverb>): Uint8Arra
   return buf;
 }
 
+export class DSFXI3DL2ReverbView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get lRoom(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get lRoomHF(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: f32
+  get flRoomRolloffFactor(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get flDecayTime(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get flDecayHFRatio(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: i32
+  get lReflections(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: f32
+  get flReflectionsDelay(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: i32
+  get lReverb(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: f32
+  get flReverbDelay(): number {
+    return this.view.getFloat32(32, true);
+  }
+
+  // 0x24: f32
+  get flDiffusion(): number {
+    return this.view.getFloat32(36, true);
+  }
+
+  // 0x28: f32
+  get flDensity(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get flHFReference(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x00: i32
+  set lRoom(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lRoomHF(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: f32
+  set flRoomRolloffFactor(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set flDecayTime(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set flDecayHFRatio(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: i32
+  set lReflections(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: f32
+  set flReflectionsDelay(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set lReverb(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: f32
+  set flReverbDelay(value: number) {
+    this.view.setFloat32(32, value, true);
+  }
+
+  // 0x24: f32
+  set flDiffusion(value: number) {
+    this.view.setFloat32(36, value, true);
+  }
+
+  // 0x28: f32
+  set flDensity(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flHFReference(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXWavesReverb (size: 16)
  */
@@ -4779,6 +10723,57 @@ export function allocDSFXWavesReverb(data?: Partial<DSFXWavesReverb>): Uint8Arra
   return buf;
 }
 
+export class DSFXWavesReverbView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fInGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fReverbMix(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fReverbTime(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fHighFreqRTRatio(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set fInGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fReverbMix(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fReverbTime(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fHighFreqRTRatio(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCFXAec (size: 16)
  */
@@ -4806,6 +10801,51 @@ export function allocDSCFXAec(data?: Partial<DSCFXAec>): Uint8Array {
   return buf;
 }
 
+export class DSCFXAecView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get fNoiseFill(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get dwMode(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set fEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fNoiseFill(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwMode(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCFXNoiseSuppress (size: 8)
  */
@@ -4823,6 +10863,31 @@ export function allocDSCFXNoiseSuppress(data?: Partial<DSCFXNoiseSuppress>): Uin
   if (data?.fEnable !== undefined) view.setInt32(0, Number(data.fEnable), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DSCFXNoiseSuppressView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set fEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -4854,6 +10919,62 @@ export function allocAUDIO_ENDPOINT_SHARED_CREATE_PARAMS(data?: Partial<AUDIO_EN
   // 0x10: pointer
   if (data?.wfxDeviceFormat !== undefined) view.setBigUint64(16, data.wfxDeviceFormat === null ? 0n : BigInt(util.toPointer(data.wfxDeviceFormat)), true);
   return buf;
+}
+
+export class AUDIO_ENDPOINT_SHARED_CREATE_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get u32Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get u32TSSessionId(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get targetEndpointConnectorType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get wfxDeviceFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set u32Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set u32TSSessionId(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set targetEndpointConnectorType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set wfxDeviceFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4889,6 +11010,73 @@ export function allocAUDIO_VOLUME_NOTIFICATION_DATA(data?: Partial<AUDIO_VOLUME_
   // 0x18: pointer
   if (data?.afChannelVolumes !== undefined) view.setBigUint64(24, data.afChannelVolumes === null ? 0n : BigInt(util.toPointer(data.afChannelVolumes)), true);
   return buf;
+}
+
+export class AUDIO_VOLUME_NOTIFICATION_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get guidEventContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get bMuted(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: f32
+  get fMasterVolume(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: u32
+  get nChannels(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get afChannelVolumes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set guidEventContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set bMuted(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fMasterVolume(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: u32
+  set nChannels(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set afChannelVolumes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HMIDI = Deno.PointerValue;
@@ -4944,6 +11132,51 @@ export function alloc_Samples_e__Union(data?: Partial<_Samples_e__Union>): Uint8
   return buf;
 }
 
+export class _Samples_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wValidBitsPerSample(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wSamplesPerBlock(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get wReserved(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: u16
+  set wValidBitsPerSample(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wSamplesPerBlock(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set wReserved(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: pad2
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEFORMATEXTENSIBLE (size: 32)
  */
@@ -4973,6 +11206,64 @@ export function allocWAVEFORMATEXTENSIBLE(data?: Partial<WAVEFORMATEXTENSIBLE>):
   // 0x18: pointer
   if (data?.SubFormat !== undefined) view.setBigUint64(24, data.SubFormat === null ? 0n : BigInt(util.toPointer(data.SubFormat)), true);
   return buf;
+}
+
+export class WAVEFORMATEXTENSIBLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Format(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Samples(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwChannelMask(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get SubFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Format(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Samples(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwChannelMask(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set SubFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5006,6 +11297,62 @@ export function allocWAVEFILTER(data?: Partial<WAVEFILTER>): Uint8Array {
   return buf;
 }
 
+export class WAVEFILTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFilterTag(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get fdwFilter(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get dwReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFilterTag(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set fdwFilter(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set dwReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.VOLUMEWAVEFILTER (size: 16)
  */
@@ -5027,6 +11374,42 @@ export function allocVOLUMEWAVEFILTER(data?: Partial<VOLUMEWAVEFILTER>): Uint8Ar
   if (data?.dwVolume !== undefined) view.setUint32(8, Number(data.dwVolume), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class VOLUMEWAVEFILTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwVolume(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set wfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwVolume(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5055,6 +11438,48 @@ export function allocECHOWAVEFILTER(data?: Partial<ECHOWAVEFILTER>): Uint8Array 
   return buf;
 }
 
+export class ECHOWAVEFILTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwVolume(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwDelay(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set wfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwVolume(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwDelay(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectMusic.MDEVICECAPSEX (size: 16)
  */
@@ -5076,6 +11501,42 @@ export function allocMDEVICECAPSEX(data?: Partial<MDEVICECAPSEX>): Uint8Array {
   // 0x08: pointer
   if (data?.pCaps !== undefined) view.setBigUint64(8, data.pCaps === null ? 0n : BigInt(util.toPointer(data.pCaps)), true);
   return buf;
+}
+
+export class MDEVICECAPSEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pCaps(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pCaps(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5115,6 +11576,83 @@ export function allocMIDIOPENDESC(data?: Partial<MIDIOPENDESC>): Uint8Array {
   // 0x28: pointer
   if (data?.rgIds !== undefined) view.setBigUint64(40, data.rgIds === null ? 0n : BigInt(util.toPointer(data.rgIds)), true);
   return buf;
+}
+
+export class MIDIOPENDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get hMidi(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: usize
+  get dwCallback(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: usize
+  get dwInstance(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: usize
+  get dnDevNode(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get cIds(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get rgIds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set hMidi(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: usize
+  set dwCallback(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: usize
+  set dwInstance(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: usize
+  set dnDevNode(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set cIds(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set rgIds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5172,6 +11710,124 @@ export function allocXAPO_REGISTRATION_PROPERTIES(data?: Partial<XAPO_REGISTRATI
   return buf;
 }
 
+export class XAPO_REGISTRATION_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get clsid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get FriendlyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get CopyrightInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get MajorVersion(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get MinorVersion(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get Flags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get MinInputBufferCount(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get MaxInputBufferCount(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get MinOutputBufferCount(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get MaxOutputBufferCount(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: pointer
+  set clsid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set FriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set CopyrightInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set MajorVersion(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set MinorVersion(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set Flags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set MinInputBufferCount(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set MaxInputBufferCount(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set MinOutputBufferCount(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set MaxOutputBufferCount(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAPO_LOCKFORPROCESS_PARAMETERS (size: 16)
  */
@@ -5193,6 +11849,42 @@ export function allocXAPO_LOCKFORPROCESS_PARAMETERS(data?: Partial<XAPO_LOCKFORP
   if (data?.MaxFrameCount !== undefined) view.setUint32(8, Number(data.MaxFrameCount), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class XAPO_LOCKFORPROCESS_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get MaxFrameCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set MaxFrameCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5219,6 +11911,48 @@ export function allocXAPO_PROCESS_BUFFER_PARAMETERS(data?: Partial<XAPO_PROCESS_
   // 0x0c: u32
   if (data?.ValidFrameCount !== undefined) view.setUint32(12, Number(data.ValidFrameCount), true);
   return buf;
+}
+
+export class XAPO_PROCESS_BUFFER_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get BufferFlags(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get ValidFrameCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set pBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set BufferFlags(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ValidFrameCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -5283,6 +12017,137 @@ export function allocFXEQ_PARAMETERS(data?: Partial<FXEQ_PARAMETERS>): Uint8Arra
   return buf;
 }
 
+export class FXEQ_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get FrequencyCenter0(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get Gain0(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get Bandwidth0(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get FrequencyCenter1(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get Gain1(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get Bandwidth1(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get FrequencyCenter2(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: f32
+  get Gain2(): number {
+    return this.view.getFloat32(28, true);
+  }
+
+  // 0x20: f32
+  get Bandwidth2(): number {
+    return this.view.getFloat32(32, true);
+  }
+
+  // 0x24: f32
+  get FrequencyCenter3(): number {
+    return this.view.getFloat32(36, true);
+  }
+
+  // 0x28: f32
+  get Gain3(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get Bandwidth3(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x00: f32
+  set FrequencyCenter0(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set Gain0(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set Bandwidth0(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set FrequencyCenter1(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set Gain1(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set Bandwidth1(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set FrequencyCenter2(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: f32
+  set Gain2(value: number) {
+    this.view.setFloat32(28, value, true);
+  }
+
+  // 0x20: f32
+  set Bandwidth2(value: number) {
+    this.view.setFloat32(32, value, true);
+  }
+
+  // 0x24: f32
+  set FrequencyCenter3(value: number) {
+    this.view.setFloat32(36, value, true);
+  }
+
+  // 0x28: f32
+  set Gain3(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set Bandwidth3(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.FXMASTERINGLIMITER_PARAMETERS (size: 8)
  */
@@ -5303,6 +12168,37 @@ export function allocFXMASTERINGLIMITER_PARAMETERS(data?: Partial<FXMASTERINGLIM
   // 0x04: u32
   if (data?.Loudness !== undefined) view.setUint32(4, Number(data.Loudness), true);
   return buf;
+}
+
+export class FXMASTERINGLIMITER_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Release(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Loudness(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set Release(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Loudness(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -5327,6 +12223,37 @@ export function allocFXREVERB_PARAMETERS(data?: Partial<FXREVERB_PARAMETERS>): U
   return buf;
 }
 
+export class FXREVERB_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get Diffusion(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get RoomSize(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: f32
+  set Diffusion(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set RoomSize(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.FXECHO_INITDATA (size: 8)
  */
@@ -5344,6 +12271,31 @@ export function allocFXECHO_INITDATA(data?: Partial<FXECHO_INITDATA>): Uint8Arra
   if (data?.MaxDelay !== undefined) view.setFloat32(0, Number(data.MaxDelay), true);
   // 0x04: pad4
   return buf;
+}
+
+export class FXECHO_INITDATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get MaxDelay(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: f32
+  set MaxDelay(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -5371,6 +12323,51 @@ export function allocFXECHO_PARAMETERS(data?: Partial<FXECHO_PARAMETERS>): Uint8
   if (data?.Delay !== undefined) view.setFloat32(8, Number(data.Delay), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class FXECHO_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get WetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get Feedback(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get Delay(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set WetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set Feedback(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set Delay(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5403,6 +12400,57 @@ export function allocXAUDIO2_VOICE_DETAILS(data?: Partial<XAUDIO2_VOICE_DETAILS>
   return buf;
 }
 
+export class XAUDIO2_VOICE_DETAILSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get CreationFlags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ActiveFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get InputChannels(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get InputSampleRate(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set CreationFlags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ActiveFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set InputChannels(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set InputSampleRate(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2_SEND_DESCRIPTOR (size: 16)
  */
@@ -5426,6 +12474,42 @@ export function allocXAUDIO2_SEND_DESCRIPTOR(data?: Partial<XAUDIO2_SEND_DESCRIP
   return buf;
 }
 
+export class XAUDIO2_SEND_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pOutputVoice(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pOutputVoice(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2_VOICE_SENDS (size: 16)
  */
@@ -5447,6 +12531,42 @@ export function allocXAUDIO2_VOICE_SENDS(data?: Partial<XAUDIO2_VOICE_SENDS>): U
   // 0x08: pointer
   if (data?.pSends !== undefined) view.setBigUint64(8, data.pSends === null ? 0n : BigInt(util.toPointer(data.pSends)), true);
   return buf;
+}
+
+export class XAUDIO2_VOICE_SENDSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SendCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pSends(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set SendCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pSends(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5475,6 +12595,48 @@ export function allocXAUDIO2_EFFECT_DESCRIPTOR(data?: Partial<XAUDIO2_EFFECT_DES
   return buf;
 }
 
+export class XAUDIO2_EFFECT_DESCRIPTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pEffect(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get InitialState(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get OutputChannels(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set pEffect(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set InitialState(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set OutputChannels(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2_EFFECT_CHAIN (size: 16)
  */
@@ -5496,6 +12658,42 @@ export function allocXAUDIO2_EFFECT_CHAIN(data?: Partial<XAUDIO2_EFFECT_CHAIN>):
   // 0x08: pointer
   if (data?.pEffectDescriptors !== undefined) view.setBigUint64(8, data.pEffectDescriptors === null ? 0n : BigInt(util.toPointer(data.pEffectDescriptors)), true);
   return buf;
+}
+
+export class XAUDIO2_EFFECT_CHAINView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get EffectCount(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pEffectDescriptors(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set EffectCount(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pEffectDescriptors(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5523,6 +12721,51 @@ export function allocXAUDIO2_FILTER_PARAMETERS(data?: Partial<XAUDIO2_FILTER_PAR
   if (data?.OneOverQ !== undefined) view.setFloat32(8, Number(data.OneOverQ), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class XAUDIO2_FILTER_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get Frequency(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get OneOverQ(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set Frequency(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set OneOverQ(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5576,6 +12819,113 @@ export function allocXAUDIO2_BUFFER(data?: Partial<XAUDIO2_BUFFER>): Uint8Array 
   return buf;
 }
 
+export class XAUDIO2_BUFFERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get AudioBytes(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get pAudioData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get PlayBegin(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get PlayLength(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get LoopBegin(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get LoopLength(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get LoopCount(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get pContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set AudioBytes(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set pAudioData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set PlayBegin(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set PlayLength(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set LoopBegin(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set LoopLength(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set LoopCount(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set pContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2_BUFFER_WMA (size: 16)
  */
@@ -5597,6 +12947,42 @@ export function allocXAUDIO2_BUFFER_WMA(data?: Partial<XAUDIO2_BUFFER_WMA>): Uin
   if (data?.PacketCount !== undefined) view.setUint32(8, Number(data.PacketCount), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class XAUDIO2_BUFFER_WMAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pDecodedPacketCumulativeBytes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get PacketCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pDecodedPacketCumulativeBytes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set PacketCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5624,6 +13010,52 @@ export function allocXAUDIO2_VOICE_STATE(data?: Partial<XAUDIO2_VOICE_STATE>): U
   // 0x10: u64
   if (data?.SamplesPlayed !== undefined) view.setBigUint64(16, BigInt(data.SamplesPlayed), true);
   return buf;
+}
+
+export class XAUDIO2_VOICE_STATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pCurrentBufferContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get BuffersQueued(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  get SamplesPlayed(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: pointer
+  set pCurrentBufferContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set BuffersQueued(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  set SamplesPlayed(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
 }
 
 /**
@@ -5696,6 +13128,157 @@ export function allocXAUDIO2_PERFORMANCE_DATA(data?: Partial<XAUDIO2_PERFORMANCE
   return buf;
 }
 
+export class XAUDIO2_PERFORMANCE_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get AudioCyclesSinceLastQuery(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get TotalCyclesSinceLastQuery(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get MinimumCyclesPerQuantum(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get MaximumCyclesPerQuantum(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get MemoryUsageInBytes(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get CurrentLatencyInSamples(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get GlitchesSinceEngineStarted(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get ActiveSourceVoiceCount(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get TotalSourceVoiceCount(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get ActiveSubmixVoiceCount(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get ActiveResamplerCount(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get ActiveMatrixMixCount(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get ActiveXmaSourceVoices(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get ActiveXmaStreams(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x00: u64
+  set AudioCyclesSinceLastQuery(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set TotalCyclesSinceLastQuery(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set MinimumCyclesPerQuantum(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set MaximumCyclesPerQuantum(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set MemoryUsageInBytes(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set CurrentLatencyInSamples(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set GlitchesSinceEngineStarted(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set ActiveSourceVoiceCount(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set TotalSourceVoiceCount(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set ActiveSubmixVoiceCount(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set ActiveResamplerCount(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set ActiveMatrixMixCount(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set ActiveXmaSourceVoices(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set ActiveXmaStreams(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2_DEBUG_CONFIGURATION (size: 24)
  */
@@ -5734,6 +13317,77 @@ export function allocXAUDIO2_DEBUG_CONFIGURATION(data?: Partial<XAUDIO2_DEBUG_CO
   return buf;
 }
 
+export class XAUDIO2_DEBUG_CONFIGURATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get TraceMask(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get BreakMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get LogThreadID(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get LogFileline(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get LogFunctionName(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get LogTiming(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: u32
+  set TraceMask(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set BreakMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set LogThreadID(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set LogFileline(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set LogFunctionName(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set LogTiming(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2FX_VOLUMEMETER_LEVELS (size: 24)
  */
@@ -5759,6 +13413,53 @@ export function allocXAUDIO2FX_VOLUMEMETER_LEVELS(data?: Partial<XAUDIO2FX_VOLUM
   if (data?.ChannelCount !== undefined) view.setUint32(16, Number(data.ChannelCount), true);
   // 0x14: pad4
   return buf;
+}
+
+export class XAUDIO2FX_VOLUMEMETER_LEVELSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pPeakLevels(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pRMSLevels(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ChannelCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set pPeakLevels(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pRMSLevels(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set ChannelCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -5872,6 +13573,261 @@ export function allocXAUDIO2FX_REVERB_PARAMETERS(data?: Partial<XAUDIO2FX_REVERB
   return buf;
 }
 
+export class XAUDIO2FX_REVERB_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get WetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: u32
+  get ReflectionsDelay(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u8
+  get ReverbDelay(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get RearDelay(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: u8
+  get SideDelay(): number {
+    return this.view.getUint8(10);
+  }
+
+  // 0x0b: u8
+  get PositionLeft(): number {
+    return this.view.getUint8(11);
+  }
+
+  // 0x0c: u8
+  get PositionRight(): number {
+    return this.view.getUint8(12);
+  }
+
+  // 0x0d: u8
+  get PositionMatrixLeft(): number {
+    return this.view.getUint8(13);
+  }
+
+  // 0x0e: u8
+  get PositionMatrixRight(): number {
+    return this.view.getUint8(14);
+  }
+
+  // 0x0f: u8
+  get EarlyDiffusion(): number {
+    return this.view.getUint8(15);
+  }
+
+  // 0x10: u8
+  get LateDiffusion(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: u8
+  get LowEQGain(): number {
+    return this.view.getUint8(17);
+  }
+
+  // 0x12: u8
+  get LowEQCutoff(): number {
+    return this.view.getUint8(18);
+  }
+
+  // 0x13: u8
+  get HighEQGain(): number {
+    return this.view.getUint8(19);
+  }
+
+  // 0x14: u8
+  get HighEQCutoff(): number {
+    return this.view.getUint8(20);
+  }
+
+  // 0x15: f32
+  get RoomFilterFreq(): number {
+    return this.view.getFloat32(21, true);
+  }
+
+  // 0x19: f32
+  get RoomFilterMain(): number {
+    return this.view.getFloat32(25, true);
+  }
+
+  // 0x1d: f32
+  get RoomFilterHF(): number {
+    return this.view.getFloat32(29, true);
+  }
+
+  // 0x21: f32
+  get ReflectionsGain(): number {
+    return this.view.getFloat32(33, true);
+  }
+
+  // 0x25: f32
+  get ReverbGain(): number {
+    return this.view.getFloat32(37, true);
+  }
+
+  // 0x29: f32
+  get DecayTime(): number {
+    return this.view.getFloat32(41, true);
+  }
+
+  // 0x2d: f32
+  get Density(): number {
+    return this.view.getFloat32(45, true);
+  }
+
+  // 0x31: f32
+  get RoomSize(): number {
+    return this.view.getFloat32(49, true);
+  }
+
+  // 0x35: i32
+  get DisableLateField(): number {
+    return this.view.getInt32(53, true);
+  }
+
+  // 0x39: pad7
+
+  // 0x00: f32
+  set WetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ReflectionsDelay(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u8
+  set ReverbDelay(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set RearDelay(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: u8
+  set SideDelay(value: number) {
+    this.view.setUint8(10, value);
+  }
+
+  // 0x0b: u8
+  set PositionLeft(value: number) {
+    this.view.setUint8(11, value);
+  }
+
+  // 0x0c: u8
+  set PositionRight(value: number) {
+    this.view.setUint8(12, value);
+  }
+
+  // 0x0d: u8
+  set PositionMatrixLeft(value: number) {
+    this.view.setUint8(13, value);
+  }
+
+  // 0x0e: u8
+  set PositionMatrixRight(value: number) {
+    this.view.setUint8(14, value);
+  }
+
+  // 0x0f: u8
+  set EarlyDiffusion(value: number) {
+    this.view.setUint8(15, value);
+  }
+
+  // 0x10: u8
+  set LateDiffusion(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: u8
+  set LowEQGain(value: number) {
+    this.view.setUint8(17, value);
+  }
+
+  // 0x12: u8
+  set LowEQCutoff(value: number) {
+    this.view.setUint8(18, value);
+  }
+
+  // 0x13: u8
+  set HighEQGain(value: number) {
+    this.view.setUint8(19, value);
+  }
+
+  // 0x14: u8
+  set HighEQCutoff(value: number) {
+    this.view.setUint8(20, value);
+  }
+
+  // 0x15: f32
+  set RoomFilterFreq(value: number) {
+    this.view.setFloat32(21, value, true);
+  }
+
+  // 0x19: f32
+  set RoomFilterMain(value: number) {
+    this.view.setFloat32(25, value, true);
+  }
+
+  // 0x1d: f32
+  set RoomFilterHF(value: number) {
+    this.view.setFloat32(29, value, true);
+  }
+
+  // 0x21: f32
+  set ReflectionsGain(value: number) {
+    this.view.setFloat32(33, value, true);
+  }
+
+  // 0x25: f32
+  set ReverbGain(value: number) {
+    this.view.setFloat32(37, value, true);
+  }
+
+  // 0x29: f32
+  set DecayTime(value: number) {
+    this.view.setFloat32(41, value, true);
+  }
+
+  // 0x2d: f32
+  set Density(value: number) {
+    this.view.setFloat32(45, value, true);
+  }
+
+  // 0x31: f32
+  set RoomSize(value: number) {
+    this.view.setFloat32(49, value, true);
+  }
+
+  // 0x35: i32
+  set DisableLateField(value: number) {
+    this.view.setInt32(53, value, true);
+  }
+
+  // 0x39: pad7
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.XAUDIO2FX_REVERB_I3DL2_PARAMETERS (size: 56)
  */
@@ -5939,6 +13895,151 @@ export function allocXAUDIO2FX_REVERB_I3DL2_PARAMETERS(data?: Partial<XAUDIO2FX_
   return buf;
 }
 
+export class XAUDIO2FX_REVERB_I3DL2_PARAMETERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get WetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: i32
+  get Room(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get RoomHF(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: f32
+  get RoomRolloffFactor(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get DecayTime(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get DecayHFRatio(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get Reflections(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: f32
+  get ReflectionsDelay(): number {
+    return this.view.getFloat32(28, true);
+  }
+
+  // 0x20: i32
+  get Reverb(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: f32
+  get ReverbDelay(): number {
+    return this.view.getFloat32(36, true);
+  }
+
+  // 0x28: f32
+  get Diffusion(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get Density(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x30: f32
+  get HFReference(): number {
+    return this.view.getFloat32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: f32
+  set WetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Room(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set RoomHF(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set RoomRolloffFactor(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set DecayTime(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set DecayHFRatio(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set Reflections(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: f32
+  set ReflectionsDelay(value: number) {
+    this.view.setFloat32(28, value, true);
+  }
+
+  // 0x20: i32
+  set Reverb(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: f32
+  set ReverbDelay(value: number) {
+    this.view.setFloat32(36, value, true);
+  }
+
+  // 0x28: f32
+  set Diffusion(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set Density(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+
+  // 0x30: f32
+  set HFReference(value: number) {
+    this.view.setFloat32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.HrtfPosition (size: 16)
  */
@@ -5966,6 +14067,51 @@ export function allocHrtfPosition(data?: Partial<HrtfPosition>): Uint8Array {
   return buf;
 }
 
+export class HrtfPositionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get x(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get y(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get z(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set x(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set y(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set z(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.HrtfOrientation (size: 8)
  */
@@ -5982,6 +14128,28 @@ export function allocHrtfOrientation(data?: Partial<HrtfOrientation>): Uint8Arra
   // 0x00: pointer
   if (data?.element !== undefined) view.setBigUint64(0, data.element === null ? 0n : BigInt(util.toPointer(data.element)), true);
   return buf;
+}
+
+export class HrtfOrientationView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6006,6 +14174,37 @@ export function allocHrtfDirectivity(data?: Partial<HrtfDirectivity>): Uint8Arra
   return buf;
 }
 
+export class HrtfDirectivityView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get scaling(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: i32
+  set type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set scaling(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.HrtfDirectivityCardioid (size: 16)
  */
@@ -6027,6 +14226,42 @@ export function allocHrtfDirectivityCardioid(data?: Partial<HrtfDirectivityCardi
   if (data?.order !== undefined) view.setFloat32(8, Number(data.order), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class HrtfDirectivityCardioidView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get order(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set order(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -6053,6 +14288,48 @@ export function allocHrtfDirectivityCone(data?: Partial<HrtfDirectivityCone>): U
   // 0x0c: f32
   if (data?.outerAngle !== undefined) view.setFloat32(12, Number(data.outerAngle), true);
   return buf;
+}
+
+export class HrtfDirectivityConeView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get innerAngle(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get outerAngle(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: pointer
+  set directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set innerAngle(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set outerAngle(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 /**
@@ -6090,6 +14367,71 @@ export function allocHrtfDistanceDecay(data?: Partial<HrtfDistanceDecay>): Uint8
   return buf;
 }
 
+export class HrtfDistanceDecayView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get maxGain(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get minGain(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get unityGainDistance(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get cutoffDistance(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: i32
+  set type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set maxGain(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set minGain(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set unityGainDistance(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set cutoffDistance(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.XAudio2.HrtfApoInit (size: 16)
  */
@@ -6110,6 +14452,39 @@ export function allocHrtfApoInit(data?: Partial<HrtfApoInit>): Uint8Array {
   // 0x08: pointer
   if (data?.directivity !== undefined) view.setBigUint64(8, data.directivity === null ? 0n : BigInt(util.toPointer(data.directivity)), true);
   return buf;
+}
+
+export class HrtfApoInitView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get distanceDecay(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set distanceDecay(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6174,6 +14549,140 @@ export function allocACMSTREAMHEADER(data?: Partial<ACMSTREAMHEADER>): Uint8Arra
   return buf;
 }
 
+export class ACMSTREAMHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStatus(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get pbSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbSrcLength(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cbSrcLengthUsed(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: usize
+  get dwSrcUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: pointer
+  get pbDst(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get cbDstLength(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get cbDstLengthUsed(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: usize
+  get dwDstUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(56, true));
+  }
+
+  // 0x40: pointer
+  get dwReservedDriver(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStatus(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set pbSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbSrcLength(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cbSrcLengthUsed(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: usize
+  set dwSrcUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: pointer
+  set pbDst(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set cbDstLength(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set cbDstLengthUsed(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: usize
+  set dwDstUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(value), true);
+  }
+
+  // 0x40: pointer
+  set dwReservedDriver(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEHDR (size: 48)
  */
@@ -6223,6 +14732,100 @@ export function allocWAVEHDR(data?: Partial<WAVEHDR>): Uint8Array {
   return buf;
 }
 
+export class WAVEHDRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get lpData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwBufferLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwBytesRecorded(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u32
+  get dwFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwLoops(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get lpNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: usize
+  get reserved(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x00: buffer
+  set lpData(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set dwBufferLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwBytesRecorded(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwLoops(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set lpNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: usize
+  set reserved(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEOUTCAPSA (size: 32)
  */
@@ -6270,6 +14873,102 @@ export function allocWAVEOUTCAPSA(data?: Partial<WAVEOUTCAPSA>): Uint8Array {
   return buf;
 }
 
+export class WAVEOUTCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEOUTCAPSW (size: 32)
  */
@@ -6315,6 +15014,102 @@ export function allocWAVEOUTCAPSW(data?: Partial<WAVEOUTCAPSW>): Uint8Array {
   if (data?.dwSupport !== undefined) view.setUint32(24, Number(data.dwSupport), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class WAVEOUTCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -6376,6 +15171,135 @@ export function allocWAVEOUTCAPS2A(data?: Partial<WAVEOUTCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class WAVEOUTCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEOUTCAPS2W (size: 56)
  */
@@ -6435,6 +15359,135 @@ export function allocWAVEOUTCAPS2W(data?: Partial<WAVEOUTCAPS2W>): Uint8Array {
   return buf;
 }
 
+export class WAVEOUTCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEINCAPSA (size: 24)
  */
@@ -6477,6 +15530,88 @@ export function allocWAVEINCAPSA(data?: Partial<WAVEINCAPSA>): Uint8Array {
   return buf;
 }
 
+export class WAVEINCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEINCAPSW (size: 24)
  */
@@ -6517,6 +15652,88 @@ export function allocWAVEINCAPSW(data?: Partial<WAVEINCAPSW>): Uint8Array {
   // 0x16: u16
   if (data?.wReserved1 !== undefined) view.setUint16(22, Number(data.wReserved1), true);
   return buf;
+}
+
+export class WAVEINCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
 }
 
 /**
@@ -6573,6 +15790,121 @@ export function allocWAVEINCAPS2A(data?: Partial<WAVEINCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class WAVEINCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEINCAPS2W (size: 48)
  */
@@ -6627,6 +15959,121 @@ export function allocWAVEINCAPS2W(data?: Partial<WAVEINCAPS2W>): Uint8Array {
   return buf;
 }
 
+export class WAVEINCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwFormats(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u16
+  get wChannels(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wReserved1(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u16
+  set wChannels(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEFORMAT (size: 16)
  */
@@ -6662,6 +16109,71 @@ export function allocWAVEFORMAT(data?: Partial<WAVEFORMAT>): Uint8Array {
   return buf;
 }
 
+export class WAVEFORMATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wFormatTag(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get nChannels(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get nSamplesPerSec(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get nAvgBytesPerSec(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get nBlockAlign(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x00: u16
+  set wFormatTag(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set nChannels(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set nSamplesPerSec(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set nAvgBytesPerSec(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set nBlockAlign(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: pad2
+}
+
 /**
  * Windows.Win32.Media.Audio.PCMWAVEFORMAT (size: 16)
  */
@@ -6683,6 +16195,42 @@ export function allocPCMWAVEFORMAT(data?: Partial<PCMWAVEFORMAT>): Uint8Array {
   if (data?.wBitsPerSample !== undefined) view.setUint16(8, Number(data.wBitsPerSample), true);
   // 0x0a: pad6
   return buf;
+}
+
+export class PCMWAVEFORMATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wf(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wBitsPerSample(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: pointer
+  set wf(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set wBitsPerSample(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -6736,6 +16284,112 @@ export function allocMIDIOUTCAPSA(data?: Partial<MIDIOUTCAPSA>): Uint8Array {
   return buf;
 }
 
+export class MIDIOUTCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wVoices(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u16
+  get wNotes(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wChannelMask(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wVoices(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u16
+  set wNotes(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wChannelMask(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIOUTCAPSW (size: 32)
  */
@@ -6785,6 +16439,112 @@ export function allocMIDIOUTCAPSW(data?: Partial<MIDIOUTCAPSW>): Uint8Array {
   if (data?.dwSupport !== undefined) view.setUint32(24, Number(data.dwSupport), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class MIDIOUTCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wVoices(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u16
+  get wNotes(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wChannelMask(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wVoices(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u16
+  set wNotes(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wChannelMask(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -6850,6 +16610,145 @@ export function allocMIDIOUTCAPS2A(data?: Partial<MIDIOUTCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class MIDIOUTCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wVoices(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u16
+  get wNotes(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wChannelMask(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wVoices(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u16
+  set wNotes(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wChannelMask(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIOUTCAPS2W (size: 56)
  */
@@ -6913,6 +16812,145 @@ export function allocMIDIOUTCAPS2W(data?: Partial<MIDIOUTCAPS2W>): Uint8Array {
   return buf;
 }
 
+export class MIDIOUTCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wVoices(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u16
+  get wNotes(): number {
+    return this.view.getUint16(20, true);
+  }
+
+  // 0x16: u16
+  get wChannelMask(): number {
+    return this.view.getUint16(22, true);
+  }
+
+  // 0x18: u32
+  get dwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wVoices(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u16
+  set wNotes(value: number) {
+    this.view.setUint16(20, value, true);
+  }
+
+  // 0x16: u16
+  set wChannelMask(value: number) {
+    this.view.setUint16(22, value, true);
+  }
+
+  // 0x18: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIINCAPSA (size: 24)
  */
@@ -6948,6 +16986,72 @@ export function allocMIDIINCAPSA(data?: Partial<MIDIINCAPSA>): Uint8Array {
   return buf;
 }
 
+export class MIDIINCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIINCAPSW (size: 24)
  */
@@ -6981,6 +17085,72 @@ export function allocMIDIINCAPSW(data?: Partial<MIDIINCAPSW>): Uint8Array {
   if (data?.dwSupport !== undefined) view.setUint32(16, Number(data.dwSupport), true);
   // 0x14: pad4
   return buf;
+}
+
+export class MIDIINCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -7030,6 +17200,105 @@ export function allocMIDIINCAPS2A(data?: Partial<MIDIINCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class MIDIINCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIINCAPS2W (size: 48)
  */
@@ -7075,6 +17344,105 @@ export function allocMIDIINCAPS2W(data?: Partial<MIDIINCAPS2W>): Uint8Array {
   // 0x28: pointer
   if (data?.NameGuid !== undefined) view.setBigUint64(40, data.NameGuid === null ? 0n : BigInt(util.toPointer(data.NameGuid)), true);
   return buf;
+}
+
+export class MIDIINCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7132,6 +17500,119 @@ export function allocMIDIHDR(data?: Partial<MIDIHDR>): Uint8Array {
   return buf;
 }
 
+export class MIDIHDRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get lpData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwBufferLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwBytesRecorded(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u32
+  get dwFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get lpNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: usize
+  get reserved(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: u32
+  get dwOffset(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  get dwReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set lpData(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set dwBufferLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwBytesRecorded(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set lpNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: usize
+  set reserved(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: u32
+  set dwOffset(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  set dwReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIEVENT (size: 24)
  */
@@ -7163,6 +17644,62 @@ export function allocMIDIEVENT(data?: Partial<MIDIEVENT>): Uint8Array {
   return buf;
 }
 
+export class MIDIEVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwDeltaTime(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwStreamID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwEvent(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get dwParms(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwDeltaTime(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwStreamID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwEvent(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set dwParms(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDISTRMBUFFVER (size: 16)
  */
@@ -7190,6 +17727,51 @@ export function allocMIDISTRMBUFFVER(data?: Partial<MIDISTRMBUFFVER>): Uint8Arra
   return buf;
 }
 
+export class MIDISTRMBUFFVERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwMid(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwOEMVersion(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwMid(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwOEMVersion(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIPROPTIMEDIV (size: 8)
  */
@@ -7212,6 +17794,37 @@ export function allocMIDIPROPTIMEDIV(data?: Partial<MIDIPROPTIMEDIV>): Uint8Arra
   return buf;
 }
 
+export class MIDIPROPTIMEDIVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwTimeDiv(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwTimeDiv(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIDIPROPTEMPO (size: 8)
  */
@@ -7232,6 +17845,37 @@ export function allocMIDIPROPTEMPO(data?: Partial<MIDIPROPTEMPO>): Uint8Array {
   // 0x04: u32
   if (data?.dwTempo !== undefined) view.setUint32(4, Number(data.dwTempo), true);
   return buf;
+}
+
+export class MIDIPROPTEMPOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwTempo(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwTempo(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -7276,6 +17920,88 @@ export function allocAUXCAPSA(data?: Partial<AUXCAPSA>): Uint8Array {
   return buf;
 }
 
+export class AUXCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wReserved1(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get dwSupport(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.AUXCAPSW (size: 24)
  */
@@ -7316,6 +18042,88 @@ export function allocAUXCAPSW(data?: Partial<AUXCAPSW>): Uint8Array {
   // 0x14: u32
   if (data?.dwSupport !== undefined) view.setUint32(20, Number(data.dwSupport), true);
   return buf;
+}
+
+export class AUXCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wReserved1(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get dwSupport(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -7372,6 +18180,121 @@ export function allocAUXCAPS2A(data?: Partial<AUXCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class AUXCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wReserved1(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get dwSupport(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.AUXCAPS2W (size: 48)
  */
@@ -7426,6 +18349,121 @@ export function allocAUXCAPS2W(data?: Partial<AUXCAPS2W>): Uint8Array {
   return buf;
 }
 
+export class AUXCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get wTechnology(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get wReserved1(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: u32
+  get dwSupport(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set wTechnology(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: u32
+  set dwSupport(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCAPSA (size: 24)
  */
@@ -7464,6 +18502,78 @@ export function allocMIXERCAPSA(data?: Partial<MIXERCAPSA>): Uint8Array {
   return buf;
 }
 
+export class MIXERCAPSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cDestinations(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cDestinations(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCAPSW (size: 24)
  */
@@ -7500,6 +18610,78 @@ export function allocMIXERCAPSW(data?: Partial<MIXERCAPSW>): Uint8Array {
   // 0x14: u32
   if (data?.cDestinations !== undefined) view.setUint32(20, Number(data.cDestinations), true);
   return buf;
+}
+
+export class MIXERCAPSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cDestinations(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cDestinations(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -7552,6 +18734,111 @@ export function allocMIXERCAPS2A(data?: Partial<MIXERCAPS2A>): Uint8Array {
   return buf;
 }
 
+export class MIXERCAPS2AView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cDestinations(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cDestinations(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCAPS2W (size: 48)
  */
@@ -7602,6 +18889,111 @@ export function allocMIXERCAPS2W(data?: Partial<MIXERCAPS2W>): Uint8Array {
   return buf;
 }
 
+export class MIXERCAPS2WView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wMid(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPid(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cDestinations(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get ManufacturerGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ProductGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get NameGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wMid(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPid(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cDestinations(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set ManufacturerGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set ProductGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set NameGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Target_e__Struct (size: 24)
  */
@@ -7638,6 +19030,78 @@ export function alloc_Target_e__Struct(data?: Partial<_Target_e__Struct>): Uint8
   // 0x10: pointer
   if (data?.szPname !== undefined) view.setBigUint64(16, data.szPname === null ? 0n : BigInt(util.toPointer(data.szPname)), true);
   return buf;
+}
+
+export class _Target_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwDeviceID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u16
+  get wMid(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wPid(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u32
+  get vDriverVersion(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get szPname(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwDeviceID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u16
+  set wMid(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wPid(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u32
+  set vDriverVersion(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set szPname(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7707,6 +19171,154 @@ export function allocMIXERLINEA(data?: Partial<MIXERLINEA>): Uint8Array {
   return buf;
 }
 
+export class MIXERLINEAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwDestination(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwSource(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwLineID(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwLine(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get dwComponentType(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get cChannels(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get cConnections(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get cControls(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get Target(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwDestination(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwSource(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwLineID(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwLine(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set dwComponentType(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set cChannels(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set cConnections(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set cControls(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set Target(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERLINEW (size: 72)
  */
@@ -7774,6 +19386,154 @@ export function allocMIXERLINEW(data?: Partial<MIXERLINEW>): Uint8Array {
   return buf;
 }
 
+export class MIXERLINEWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwDestination(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwSource(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwLineID(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwLine(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get dwComponentType(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get cChannels(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get cConnections(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get cControls(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get Target(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwDestination(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwSource(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwLineID(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwLine(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set dwComponentType(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set cChannels(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set cConnections(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set cControls(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set Target(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous1_e__Struct (size: 24)
  */
@@ -7810,6 +19570,77 @@ export function alloc_Anonymous1_e__Struct(data?: Partial<_Anonymous1_e__Struct>
   // 0x14: f32
   if (data?.dy !== undefined) view.setFloat32(20, Number(data.dy), true);
   return buf;
+}
+
+export class _Anonymous1_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get m11(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get m12(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get m21(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get m22(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get dx(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get dy(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set m11(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set m12(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set m21(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set m22(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set dx(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set dy(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
 }
 
 /**
@@ -7850,6 +19681,77 @@ export function alloc_Anonymous2_e__Struct(data?: Partial<_Anonymous2_e__Struct>
   return buf;
 }
 
+export class _Anonymous2_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get _11(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get _12(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get _21(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get _22(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get _31(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get _32(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set _11(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set _12(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set _21(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set _22(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set _31(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set _32(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * _Bounds_e__Union (size: 24)
  */
@@ -7876,6 +19778,50 @@ export function alloc_Bounds_e__Union(data?: Partial<_Bounds_e__Union>): Uint8Ar
   return buf;
 }
 
+export class _Bounds_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get dwReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set dwReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Metrics_e__Union (size: 16)
  */
@@ -7900,6 +19846,48 @@ export function alloc_Metrics_e__Union(data?: Partial<_Metrics_e__Union>): Uint8
   // 0x08: pointer
   if (data?.dwReserved !== undefined) view.setBigUint64(8, data.dwReserved === null ? 0n : BigInt(util.toPointer(data.dwReserved)), true);
   return buf;
+}
+
+export class _Metrics_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cSteps(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cbCustomData(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get dwReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cSteps(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cbCustomData(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set dwReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7953,6 +19941,115 @@ export function allocMIXERCONTROLA(data?: Partial<MIXERCONTROLA>): Uint8Array {
   return buf;
 }
 
+export class MIXERCONTROLAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwControlID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwControlType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwControl(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cMultipleItems(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Bounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Metrics(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwControlID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwControlType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwControl(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cMultipleItems(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Bounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Metrics(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCONTROLW (size: 56)
  */
@@ -8004,6 +20101,115 @@ export function allocMIXERCONTROLW(data?: Partial<MIXERCONTROLW>): Uint8Array {
   return buf;
 }
 
+export class MIXERCONTROLWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwControlID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwControlType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwControl(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cMultipleItems(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Bounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Metrics(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwControlID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwControlType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwControl(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cMultipleItems(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Bounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Metrics(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERLINECONTROLSA (size: 32)
  */
@@ -8042,6 +20248,79 @@ export function allocMIXERLINECONTROLSA(data?: Partial<MIXERLINECONTROLSA>): Uin
   return buf;
 }
 
+export class MIXERLINECONTROLSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwLineID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cControls(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbmxctrl(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get pamxctrl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwLineID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cControls(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbmxctrl(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set pamxctrl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERLINECONTROLSW (size: 32)
  */
@@ -8078,6 +20357,79 @@ export function allocMIXERLINECONTROLSW(data?: Partial<MIXERLINECONTROLSW>): Uin
   // 0x18: pointer
   if (data?.pamxctrl !== undefined) view.setBigUint64(24, data.pamxctrl === null ? 0n : BigInt(util.toPointer(data.pamxctrl)), true);
   return buf;
+}
+
+export class MIXERLINECONTROLSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwLineID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cControls(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbmxctrl(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get pamxctrl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwLineID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cControls(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbmxctrl(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set pamxctrl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8120,6 +20472,87 @@ export function allocMIXERCONTROLDETAILS(data?: Partial<MIXERCONTROLDETAILS>): U
   return buf;
 }
 
+export class MIXERCONTROLDETAILSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwControlID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cChannels(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbDetails(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get paDetails(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwControlID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cChannels(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbDetails(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set paDetails(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCONTROLDETAILS_LISTTEXTA (size: 16)
  */
@@ -8144,6 +20577,48 @@ export function allocMIXERCONTROLDETAILS_LISTTEXTA(data?: Partial<MIXERCONTROLDE
   // 0x08: pointer
   if (data?.szName !== undefined) view.setBigUint64(8, data.szName === null ? 0n : BigInt(util.toPointer(data.szName)), true);
   return buf;
+}
+
+export class MIXERCONTROLDETAILS_LISTTEXTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwParam1(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwParam2(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwParam1(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwParam2(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8172,6 +20647,48 @@ export function allocMIXERCONTROLDETAILS_LISTTEXTW(data?: Partial<MIXERCONTROLDE
   return buf;
 }
 
+export class MIXERCONTROLDETAILS_LISTTEXTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwParam1(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwParam2(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get szName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwParam1(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwParam2(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set szName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCONTROLDETAILS_BOOLEAN (size: 8)
  */
@@ -8189,6 +20706,31 @@ export function allocMIXERCONTROLDETAILS_BOOLEAN(data?: Partial<MIXERCONTROLDETA
   if (data?.fValue !== undefined) view.setInt32(0, Number(data.fValue), true);
   // 0x04: pad4
   return buf;
+}
+
+export class MIXERCONTROLDETAILS_BOOLEANView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fValue(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set fValue(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -8210,6 +20752,31 @@ export function allocMIXERCONTROLDETAILS_SIGNED(data?: Partial<MIXERCONTROLDETAI
   return buf;
 }
 
+export class MIXERCONTROLDETAILS_SIGNEDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get lValue(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set lValue(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.MIXERCONTROLDETAILS_UNSIGNED (size: 8)
  */
@@ -8227,6 +20794,31 @@ export function allocMIXERCONTROLDETAILS_UNSIGNED(data?: Partial<MIXERCONTROLDET
   if (data?.dwValue !== undefined) view.setUint32(0, Number(data.dwValue), true);
   // 0x04: pad4
   return buf;
+}
+
+export class MIXERCONTROLDETAILS_UNSIGNEDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwValue(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set dwValue(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -8259,6 +20851,57 @@ export function allocAudioClientProperties(data?: Partial<AudioClientProperties>
   return buf;
 }
 
+export class AudioClientPropertiesView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get bIsOffload(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get eCategory(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Options(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set bIsOffload(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set eCategory(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Options(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.AudioClient3ActivationParams (size: 8)
  */
@@ -8275,6 +20918,28 @@ export function allocAudioClient3ActivationParams(data?: Partial<AudioClient3Act
   // 0x00: pointer
   if (data?.tracingContextId !== undefined) view.setBigUint64(0, data.tracingContextId === null ? 0n : BigInt(util.toPointer(data.tracingContextId)), true);
   return buf;
+}
+
+export class AudioClient3ActivationParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get tracingContextId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set tracingContextId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8301,6 +20966,48 @@ export function allocAUDIO_EFFECT(data?: Partial<AUDIO_EFFECT>): Uint8Array {
   // 0x0c: i32
   if (data?.state !== undefined) view.setInt32(12, Number(data.state), true);
   return buf;
+}
+
+export class AUDIO_EFFECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get id(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get canSetState(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get state(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: pointer
+  set id(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set canSetState(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set state(value: number) {
+    this.view.setInt32(12, value, true);
+  }
 }
 
 /**
@@ -8350,6 +21057,102 @@ export function allocAMBISONICS_PARAMS(data?: Partial<AMBISONICS_PARAMS>): Uint8
   return buf;
 }
 
+export class AMBISONICS_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get u32Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get u32Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get u32Type(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get u32ChannelOrdering(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get u32Normalization(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get u32Order(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get u32NumChannels(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get pu32ChannelMap(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set u32Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set u32Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set u32Type(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set u32ChannelOrdering(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set u32Normalization(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set u32Order(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set u32NumChannels(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set pu32ChannelMap(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.SpatialAudioObjectRenderStreamActivationParams (size: 40)
  */
@@ -8390,6 +21193,90 @@ export function allocSpatialAudioObjectRenderStreamActivationParams(data?: Parti
   // 0x20: pointer
   if (data?.NotifyObject !== undefined) view.setBigUint64(32, data.NotifyObject === null ? 0n : BigInt(util.toPointer(data.NotifyObject)), true);
   return buf;
+}
+
+export class SpatialAudioObjectRenderStreamActivationParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8439,6 +21326,104 @@ export function allocSpatialAudioObjectRenderStreamActivationParams2(data?: Part
   return buf;
 }
 
+export class SpatialAudioObjectRenderStreamActivationParams2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get Options(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set Options(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.SpatialAudioClientActivationParams (size: 32)
  */
@@ -8477,6 +21462,79 @@ export function allocSpatialAudioClientActivationParams(data?: Partial<SpatialAu
   return buf;
 }
 
+export class SpatialAudioClientActivationParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get tracingContextId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get appId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get majorVersion(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get minorVersion1(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get minorVersion2(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get minorVersion3(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x00: pointer
+  set tracingContextId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set appId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set majorVersion(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set minorVersion1(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set minorVersion2(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set minorVersion3(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.SpatialAudioHrtfDirectivity (size: 8)
  */
@@ -8497,6 +21555,37 @@ export function allocSpatialAudioHrtfDirectivity(data?: Partial<SpatialAudioHrtf
   // 0x04: f32
   if (data?.Scaling !== undefined) view.setFloat32(4, Number(data.Scaling), true);
   return buf;
+}
+
+export class SpatialAudioHrtfDirectivityView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get Scaling(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set Scaling(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
 }
 
 /**
@@ -8520,6 +21609,42 @@ export function allocSpatialAudioHrtfDirectivityCardioid(data?: Partial<SpatialA
   if (data?.Order !== undefined) view.setFloat32(8, Number(data.Order), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class SpatialAudioHrtfDirectivityCardioidView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get Order(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set Order(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -8548,6 +21673,48 @@ export function allocSpatialAudioHrtfDirectivityCone(data?: Partial<SpatialAudio
   return buf;
 }
 
+export class SpatialAudioHrtfDirectivityConeView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get InnerAngle(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get OuterAngle(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: pointer
+  set directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set InnerAngle(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set OuterAngle(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.SpatialAudioHrtfDirectivityUnion (size: 24)
  */
@@ -8572,6 +21739,50 @@ export function allocSpatialAudioHrtfDirectivityUnion(data?: Partial<SpatialAudi
   // 0x10: pointer
   if (data?.Omni !== undefined) view.setBigUint64(16, data.Omni === null ? 0n : BigInt(util.toPointer(data.Omni)), true);
   return buf;
+}
+
+export class SpatialAudioHrtfDirectivityUnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Cone(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Cardiod(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Omni(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Cone(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Cardiod(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set Omni(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8607,6 +21818,71 @@ export function allocSpatialAudioHrtfDistanceDecay(data?: Partial<SpatialAudioHr
   if (data?.CutoffDistance !== undefined) view.setFloat32(16, Number(data.CutoffDistance), true);
   // 0x14: pad4
   return buf;
+}
+
+export class SpatialAudioHrtfDistanceDecayView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get MaxGain(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get MinGain(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get UnityGainDistance(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get CutoffDistance(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set MaxGain(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set MinGain(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set UnityGainDistance(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set CutoffDistance(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -8665,6 +21941,134 @@ export function allocSpatialAudioHrtfActivationParams(data?: Partial<SpatialAudi
   // 0x40: pointer
   if (data?.Orientation !== undefined) view.setBigUint64(64, data.Orientation === null ? 0n : BigInt(util.toPointer(data.Orientation)), true);
   return buf;
+}
+
+export class SpatialAudioHrtfActivationParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get DistanceDecay(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get Environment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get Orientation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set DistanceDecay(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set Environment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set Orientation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8730,6 +22134,148 @@ export function allocSpatialAudioHrtfActivationParams2(data?: Partial<SpatialAud
   return buf;
 }
 
+export class SpatialAudioHrtfActivationParams2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get DistanceDecay(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Directivity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get Environment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get Orientation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get Options(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set DistanceDecay(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Directivity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set Environment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set Orientation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set Options(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DIRECTX_AUDIO_ACTIVATION_PARAMS (size: 24)
  */
@@ -8756,6 +22302,56 @@ export function allocDIRECTX_AUDIO_ACTIVATION_PARAMS(data?: Partial<DIRECTX_AUDI
   if (data?.dwAudioStreamFlags !== undefined) view.setUint32(16, Number(data.dwAudioStreamFlags), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DIRECTX_AUDIO_ACTIVATION_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbDirectXAudioActivationParams(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get guidAudioSession(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwAudioStreamFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set cbDirectXAudioActivationParams(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set guidAudioSession(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwAudioStreamFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -8788,6 +22384,61 @@ export function allocAudioExtensionParams(data?: Partial<AudioExtensionParams>):
   return buf;
 }
 
+export class AudioExtensionParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AddPageParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pEndpoint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pPnpInterface(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pPnpDevnode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set AddPageParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pEndpoint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pPnpInterface(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pPnpDevnode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.SpatialAudioMetadataItemsInfo (size: 16)
  */
@@ -8817,6 +22468,61 @@ export function allocSpatialAudioMetadataItemsInfo(data?: Partial<SpatialAudioMe
   if (data?.MaxValueBufferLength !== undefined) view.setUint32(6, Number(data.MaxValueBufferLength), true);
   // 0x0a: pad6
   return buf;
+}
+
+export class SpatialAudioMetadataItemsInfoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get FrameCount(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get ItemCount(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get MaxItemCount(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u32
+  get MaxValueBufferLength(): number {
+    return this.view.getUint32(6, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u16
+  set FrameCount(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set ItemCount(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set MaxItemCount(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u32
+  set MaxValueBufferLength(value: number) {
+    this.view.setUint32(6, value, true);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -8872,6 +22578,126 @@ export function allocSpatialAudioObjectRenderStreamForMetadataActivationParams(d
   // 0x38: pointer
   if (data?.NotifyObject !== undefined) view.setBigUint64(56, data.NotifyObject === null ? 0n : BigInt(util.toPointer(data.NotifyObject)), true);
   return buf;
+}
+
+export class SpatialAudioObjectRenderStreamForMetadataActivationParamsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get MetadataFormatId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u16
+  get MaxMetadataItemCount(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: pad6
+
+  // 0x30: pointer
+  get MetadataActivationParams(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set MetadataFormatId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u16
+  set MaxMetadataItemCount(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: pad6
+
+  // 0x30: pointer
+  set MetadataActivationParams(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8934,6 +22760,140 @@ export function allocSpatialAudioObjectRenderStreamForMetadataActivationParams2(
   return buf;
 }
 
+export class SpatialAudioObjectRenderStreamForMetadataActivationParams2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ObjectFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StaticObjectTypeMask(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDynamicObjectCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaxDynamicObjectCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Category(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get EventHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get MetadataFormatId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get MaxMetadataItemCount(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get MetadataActivationParams(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get NotifyObject(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get Options(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x00: pointer
+  set ObjectFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set StaticObjectTypeMask(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDynamicObjectCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaxDynamicObjectCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Category(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set EventHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set MetadataFormatId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set MaxMetadataItemCount(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set MetadataActivationParams(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set NotifyObject(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set Options(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.AUDIOCLIENT_PROCESS_LOOPBACK_PARAMS (size: 8)
  */
@@ -8954,6 +22914,37 @@ export function allocAUDIOCLIENT_PROCESS_LOOPBACK_PARAMS(data?: Partial<AUDIOCLI
   // 0x04: i32
   if (data?.ProcessLoopbackMode !== undefined) view.setInt32(4, Number(data.ProcessLoopbackMode), true);
   return buf;
+}
+
+export class AUDIOCLIENT_PROCESS_LOOPBACK_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get TargetProcessId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ProcessLoopbackMode(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u32
+  set TargetProcessId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ProcessLoopbackMode(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -8977,6 +22968,42 @@ export function allocAUDIOCLIENT_ACTIVATION_PARAMS(data?: Partial<AUDIOCLIENT_AC
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class AUDIOCLIENT_ACTIVATION_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ActivationType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ActivationType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HICON = Deno.PointerValue;
@@ -9060,6 +23087,187 @@ export function allocACMDRIVERDETAILSA(data?: Partial<ACMDRIVERDETAILSA>): Uint8
   return buf;
 }
 
+export class ACMDRIVERDETAILSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fccType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get fccComp(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get wMid(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wPid(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u32
+  get vdwACM(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get vdwDriver(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cFormatTags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get cFilterTags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get hicon(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get szLongName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get szCopyright(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get szLicensing(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get szFeatures(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fccType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set fccComp(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set wMid(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wPid(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u32
+  set vdwACM(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set vdwDriver(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cFormatTags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set cFilterTags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set hicon(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set szLongName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set szCopyright(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set szLicensing(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set szFeatures(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMDRIVERDETAILSW (size: 88)
  */
@@ -9139,6 +23347,187 @@ export function allocACMDRIVERDETAILSW(data?: Partial<ACMDRIVERDETAILSW>): Uint8
   return buf;
 }
 
+export class ACMDRIVERDETAILSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fccType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get fccComp(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get wMid(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wPid(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u32
+  get vdwACM(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get vdwDriver(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cFormatTags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get cFilterTags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get hicon(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szShortName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get szLongName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get szCopyright(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get szLicensing(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get szFeatures(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fccType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set fccComp(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set wMid(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wPid(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u32
+  set vdwACM(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set vdwDriver(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cFormatTags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set cFilterTags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set hicon(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szShortName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set szLongName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set szCopyright(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set szLicensing(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set szFeatures(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFORMATTAGDETAILSA (size: 32)
  */
@@ -9181,6 +23570,88 @@ export function allocACMFORMATTAGDETAILSA(data?: Partial<ACMFORMATTAGDETAILSA>):
   return buf;
 }
 
+export class ACMFORMATTAGDETAILSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFormatTagIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormatTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbFormatSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cStandardFormats(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get szFormatTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFormatTagIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormatTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbFormatSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cStandardFormats(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set szFormatTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFORMATTAGDETAILSW (size: 32)
  */
@@ -9221,6 +23692,88 @@ export function allocACMFORMATTAGDETAILSW(data?: Partial<ACMFORMATTAGDETAILSW>):
   // 0x18: pointer
   if (data?.szFormatTag !== undefined) view.setBigUint64(24, data.szFormatTag === null ? 0n : BigInt(util.toPointer(data.szFormatTag)), true);
   return buf;
+}
+
+export class ACMFORMATTAGDETAILSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFormatTagIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormatTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbFormatSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cStandardFormats(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get szFormatTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFormatTagIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormatTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbFormatSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cStandardFormats(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set szFormatTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -9266,6 +23819,93 @@ export function allocACMFORMATDETAILSA(data?: Partial<ACMFORMATDETAILSA>): Uint8
   return buf;
 }
 
+export class ACMFORMATDETAILSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFormatIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormatTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get pwfx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfx(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get szFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFormatIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormatTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set pwfx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfx(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set szFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.tACMFORMATDETAILSW (size: 40)
  */
@@ -9307,6 +23947,93 @@ export function allocTACMFORMATDETAILSW(data?: Partial<tACMFORMATDETAILSW>): Uin
   // 0x20: pointer
   if (data?.szFormat !== undefined) view.setBigUint64(32, data.szFormat === null ? 0n : BigInt(util.toPointer(data.szFormat)), true);
   return buf;
+}
+
+export class tACMFORMATDETAILSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFormatIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormatTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get pwfx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfx(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get szFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFormatIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormatTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set pwfx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfx(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set szFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HWND = Deno.PointerValue;
@@ -9401,6 +24128,195 @@ export function allocACMFORMATCHOOSEA(data?: Partial<ACMFORMATCHOOSEA>): Uint8Ar
   return buf;
 }
 
+export class ACMFORMATCHOOSEAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStyle(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pwfx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfx(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get pszTitle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get szFormatTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get cchName(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get fdwEnum(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: pointer
+  get pwfxEnum(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get hInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: buffer
+  get pszTemplateName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get lCustData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get pfnHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStyle(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pwfx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfx(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set pszTitle(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set szFormatTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f56 = value;
+    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+  }
+
+  // 0x40: u32
+  set cchName(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set fdwEnum(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: pointer
+  set pwfxEnum(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set hInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: buffer
+  set pszTemplateName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f88 = value;
+    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+  }
+
+  // 0x60: pointer
+  set lCustData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set pfnHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFORMATCHOOSEW (size: 112)
  */
@@ -9489,6 +24405,195 @@ export function allocACMFORMATCHOOSEW(data?: Partial<ACMFORMATCHOOSEW>): Uint8Ar
   return buf;
 }
 
+export class ACMFORMATCHOOSEWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStyle(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pwfx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfx(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get pszTitle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get szFormatTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get cchName(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get fdwEnum(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: pointer
+  get pwfxEnum(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get hInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: buffer
+  get pszTemplateName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get lCustData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get pfnHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStyle(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pwfx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfx(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set pszTitle(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set szFormatTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f56 = value;
+    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+  }
+
+  // 0x40: u32
+  set cchName(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set fdwEnum(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: pointer
+  set pwfxEnum(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set hInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: buffer
+  set pszTemplateName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f88 = value;
+    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+  }
+
+  // 0x60: pointer
+  set lCustData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set pfnHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFILTERTAGDETAILSA (size: 32)
  */
@@ -9531,6 +24636,88 @@ export function allocACMFILTERTAGDETAILSA(data?: Partial<ACMFILTERTAGDETAILSA>):
   return buf;
 }
 
+export class ACMFILTERTAGDETAILSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFilterTagIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFilterTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbFilterSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cStandardFilters(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get szFilterTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFilterTagIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFilterTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbFilterSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cStandardFilters(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set szFilterTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFILTERTAGDETAILSW (size: 32)
  */
@@ -9571,6 +24758,88 @@ export function allocACMFILTERTAGDETAILSW(data?: Partial<ACMFILTERTAGDETAILSW>):
   // 0x18: pointer
   if (data?.szFilterTag !== undefined) view.setBigUint64(24, data.szFilterTag === null ? 0n : BigInt(util.toPointer(data.szFilterTag)), true);
   return buf;
+}
+
+export class ACMFILTERTAGDETAILSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFilterTagIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFilterTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbFilterSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cStandardFilters(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get szFilterTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFilterTagIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFilterTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbFilterSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cStandardFilters(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set szFilterTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -9616,6 +24885,93 @@ export function allocACMFILTERDETAILSA(data?: Partial<ACMFILTERDETAILSA>): Uint8
   return buf;
 }
 
+export class ACMFILTERDETAILSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFilterIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFilterTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get pwfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfltr(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get szFilter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFilterIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFilterTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set pwfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfltr(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set szFilter(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFILTERDETAILSW (size: 40)
  */
@@ -9657,6 +25013,93 @@ export function allocACMFILTERDETAILSW(data?: Partial<ACMFILTERDETAILSW>): Uint8
   // 0x20: pointer
   if (data?.szFilter !== undefined) view.setBigUint64(32, data.szFilter === null ? 0n : BigInt(util.toPointer(data.szFilter)), true);
   return buf;
+}
+
+export class ACMFILTERDETAILSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFilterIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFilterTag(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get fdwSupport(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get pwfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfltr(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get szFilter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFilterIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFilterTag(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set fdwSupport(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set pwfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfltr(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set szFilter(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -9747,6 +25190,195 @@ export function allocACMFILTERCHOOSEA(data?: Partial<ACMFILTERCHOOSEA>): Uint8Ar
   return buf;
 }
 
+export class ACMFILTERCHOOSEAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStyle(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pwfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfltr(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get pszTitle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get szFilterTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szFilter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get cchName(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get fdwEnum(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: pointer
+  get pwfltrEnum(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get hInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: buffer
+  get pszTemplateName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get lCustData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get pfnHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStyle(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pwfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfltr(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set pszTitle(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set szFilterTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szFilter(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f56 = value;
+    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+  }
+
+  // 0x40: u32
+  set cchName(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set fdwEnum(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: pointer
+  set pwfltrEnum(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set hInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: buffer
+  set pszTemplateName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f88 = value;
+    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+  }
+
+  // 0x60: pointer
+  set lCustData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set pfnHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMFILTERCHOOSEW (size: 112)
  */
@@ -9835,6 +25467,195 @@ export function allocACMFILTERCHOOSEW(data?: Partial<ACMFILTERCHOOSEW>): Uint8Ar
   return buf;
 }
 
+export class ACMFILTERCHOOSEWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStyle(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pwfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbwfltr(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get pszTitle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get szFilterTag(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szFilter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get cchName(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get fdwEnum(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: pointer
+  get pwfltrEnum(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get hInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: buffer
+  get pszTemplateName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get lCustData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: pointer
+  get pfnHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStyle(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pwfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbwfltr(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set pszTitle(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set szFilterTag(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szFilter(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f56 = value;
+    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+  }
+
+  // 0x40: u32
+  set cchName(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set fdwEnum(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: pointer
+  set pwfltrEnum(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set hInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: buffer
+  set pszTemplateName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f88 = value;
+    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+  }
+
+  // 0x60: pointer
+  set lCustData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: pointer
+  set pfnHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMDRVOPENDESCA (size: 48)
  */
@@ -9890,6 +25711,115 @@ export function allocACMDRVOPENDESCA(data?: Partial<ACMDRVOPENDESCA>): Uint8Arra
   if (data?.dnDevNode !== undefined) view.setUint32(40, Number(data.dnDevNode), true);
   // 0x2c: pad4
   return buf;
+}
+
+export class ACMDRVOPENDESCAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fccType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get fccComp(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwVersion(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwError(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: buffer
+  get pszSectionName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get pszAliasName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get dnDevNode(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fccType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set fccComp(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwError(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: buffer
+  set pszSectionName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set pszAliasName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set dnDevNode(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
 }
 
 /**
@@ -9949,6 +25879,115 @@ export function allocACMDRVOPENDESCW(data?: Partial<ACMDRVOPENDESCW>): Uint8Arra
   return buf;
 }
 
+export class ACMDRVOPENDESCWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fccType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get fccComp(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwVersion(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwError(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: buffer
+  get pszSectionName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get pszAliasName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get dnDevNode(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fccType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set fccComp(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwError(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: buffer
+  set pszSectionName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set pszAliasName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set dnDevNode(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMDRVSTREAMINSTANCE (size: 72)
  */
@@ -10002,6 +26041,125 @@ export function allocACMDRVSTREAMINSTANCE(data?: Partial<ACMDRVSTREAMINSTANCE>):
   // 0x40: pointer
   if (data?.has !== undefined) view.setBigUint64(64, data.has === null ? 0n : BigInt(util.toPointer(data.has)), true);
   return buf;
+}
+
+export class ACMDRVSTREAMINSTANCEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pwfxSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pwfxDst(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pwfltr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: usize
+  get dwCallback(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: usize
+  get dwInstance(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: u32
+  get fdwOpen(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get fdwDriver(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: usize
+  get dwDriver(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(56, true));
+  }
+
+  // 0x40: pointer
+  get has(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pwfxSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pwfxDst(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pwfltr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: usize
+  set dwCallback(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: usize
+  set dwInstance(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: u32
+  set fdwOpen(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set fdwDriver(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: usize
+  set dwDriver(value: Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(value), true);
+  }
+
+  // 0x40: pointer
+  set has(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -10107,6 +26265,252 @@ export function allocACMDRVSTREAMHEADER(data?: Partial<ACMDRVSTREAMHEADER>): Uin
   return buf;
 }
 
+export class ACMDRVSTREAMHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwStatus(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: usize
+  get dwUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get pbSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbSrcLength(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cbSrcLengthUsed(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: usize
+  get dwSrcUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: pointer
+  get pbDst(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get cbDstLength(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get cbDstLengthUsed(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: usize
+  get dwDstUser(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(56, true));
+  }
+
+  // 0x40: u32
+  get fdwConvert(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x48: pointer
+  get padshNext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u32
+  get fdwDriver(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: usize
+  get dwDriver(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(88, true));
+  }
+
+  // 0x60: u32
+  get fdwPrepared(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: pad4
+
+  // 0x68: usize
+  get dwPrepared(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(104, true));
+  }
+
+  // 0x70: pointer
+  get pbPreparedSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: u32
+  get cbPreparedSrcLength(): number {
+    return this.view.getUint32(120, true);
+  }
+
+  // 0x7c: pad4
+
+  // 0x80: pointer
+  get pbPreparedDst(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: u32
+  get cbPreparedDstLength(): number {
+    return this.view.getUint32(136, true);
+  }
+
+  // 0x8c: pad4
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwStatus(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: usize
+  set dwUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set pbSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbSrcLength(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cbSrcLengthUsed(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: usize
+  set dwSrcUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: pointer
+  set pbDst(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set cbDstLength(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set cbDstLengthUsed(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: usize
+  set dwDstUser(value: Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(value), true);
+  }
+
+  // 0x40: u32
+  set fdwConvert(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x48: pointer
+  set padshNext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u32
+  set fdwDriver(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: usize
+  set dwDriver(value: Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(value), true);
+  }
+
+  // 0x60: u32
+  set fdwPrepared(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: pad4
+
+  // 0x68: usize
+  set dwPrepared(value: Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(value), true);
+  }
+
+  // 0x70: pointer
+  set pbPreparedSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: u32
+  set cbPreparedSrcLength(value: number) {
+    this.view.setUint32(120, value, true);
+  }
+
+  // 0x7c: pad4
+
+  // 0x80: pointer
+  set pbPreparedDst(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: u32
+  set cbPreparedDstLength(value: number) {
+    this.view.setUint32(136, value, true);
+  }
+
+  // 0x8c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.ACMDRVSTREAMSIZE (size: 16)
  */
@@ -10135,6 +26539,57 @@ export function allocACMDRVSTREAMSIZE(data?: Partial<ACMDRVSTREAMSIZE>): Uint8Ar
   // 0x0c: u32
   if (data?.cbDstLength !== undefined) view.setUint32(12, Number(data.cbDstLength), true);
   return buf;
+}
+
+export class ACMDRVSTREAMSIZEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cbSrcLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbDstLength(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cbSrcLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbDstLength(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -10175,6 +26630,87 @@ export function allocACMDRVFORMATSUGGEST(data?: Partial<ACMDRVFORMATSUGGEST>): U
   if (data?.cbwfxDst !== undefined) view.setUint32(32, Number(data.cbwfxDst), true);
   // 0x24: pad4
   return buf;
+}
+
+export class ACMDRVFORMATSUGGESTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbStruct(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get fdwSuggest(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get pwfxSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbwfxSrc(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pwfxDst(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get cbwfxDst(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set cbStruct(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set fdwSuggest(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set pwfxSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbwfxSrc(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pwfxDst(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set cbwfxDst(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 export type HRESULT = number;

@@ -44,6 +44,73 @@ export function allocD3D9ON12_ARGS(data?: Partial<D3D9ON12_ARGS>): Uint8Array {
   return buf;
 }
 
+export class D3D9ON12_ARGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Enable9On12(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pD3D12Device(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ppD3D12Queues(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get NumQueues(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get NodeMask(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: i32
+  set Enable9On12(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pD3D12Device(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ppD3D12Queues(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set NumQueues(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set NodeMask(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 export type HRESULT = number;
 
 // Native Libraries

@@ -37,6 +37,42 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
+export class PROPERTYKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fmtid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get pid(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set pid(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.WAVEFORMATEX (size: 24)
  */
@@ -80,6 +116,91 @@ export function allocWAVEFORMATEX(data?: Partial<WAVEFORMATEX>): Uint8Array {
   return buf;
 }
 
+export class WAVEFORMATEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wFormatTag(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get nChannels(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get nSamplesPerSec(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get nAvgBytesPerSec(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get nBlockAlign(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wBitsPerSample(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u16
+  get cbSize(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x00: u16
+  set wFormatTag(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set nChannels(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set nSamplesPerSec(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set nAvgBytesPerSec(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set nBlockAlign(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wBitsPerSample(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u16
+  set cbSize(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+}
+
 /**
  * Windows.Win32.Media.Audio.Endpoints.AUDIO_ENDPOINT_SHARED_CREATE_PARAMS (size: 24)
  */
@@ -109,6 +230,62 @@ export function allocAUDIO_ENDPOINT_SHARED_CREATE_PARAMS(data?: Partial<AUDIO_EN
   // 0x10: pointer
   if (data?.wfxDeviceFormat !== undefined) view.setBigUint64(16, data.wfxDeviceFormat === null ? 0n : BigInt(util.toPointer(data.wfxDeviceFormat)), true);
   return buf;
+}
+
+export class AUDIO_ENDPOINT_SHARED_CREATE_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get u32Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get u32TSSessionId(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get targetEndpointConnectorType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get wfxDeviceFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set u32Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set u32TSSessionId(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set targetEndpointConnectorType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set wfxDeviceFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

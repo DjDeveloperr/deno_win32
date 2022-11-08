@@ -66,6 +66,51 @@ export function allocUSEROBJECTFLAGS(data?: Partial<USEROBJECTFLAGS>): Uint8Arra
   return buf;
 }
 
+export class USEROBJECTFLAGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fInherit(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get fReserved(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFlags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set fInherit(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fReserved(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 export type HWND = Deno.PointerValue;
 
 /**
@@ -88,6 +133,37 @@ export function allocLUID(data?: Partial<LUID>): Uint8Array {
   // 0x04: i32
   if (data?.HighPart !== undefined) view.setInt32(4, Number(data.HighPart), true);
   return buf;
+}
+
+export class LUIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get LowPart(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get HighPart(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u32
+  set LowPart(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set HighPart(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -119,6 +195,64 @@ export function allocBSMINFO(data?: Partial<BSMINFO>): Uint8Array {
   // 0x18: pointer
   if (data?.luid !== undefined) view.setBigUint64(24, data.luid === null ? 0n : BigInt(util.toPointer(data.luid)), true);
   return buf;
+}
+
+export class BSMINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get hdesk(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get hwnd(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get luid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set hdesk(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set hwnd(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set luid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;

@@ -71,6 +71,31 @@ export function allocDFS_INFO_1_32(data?: Partial<DFS_INFO_1_32>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_1_32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get EntryPath(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set EntryPath(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_2_32 (size: 16)
  */
@@ -101,6 +126,57 @@ export function allocDFS_INFO_2_32(data?: Partial<DFS_INFO_2_32>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_2_32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get EntryPath(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Comment(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get State(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set EntryPath(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Comment(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set State(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_STORAGE_INFO_0_32 (size: 16)
  */
@@ -126,6 +202,51 @@ export function allocDFS_STORAGE_INFO_0_32(data?: Partial<DFS_STORAGE_INFO_0_32>
   if (data?.ShareName !== undefined) view.setUint32(8, Number(data.ShareName), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DFS_STORAGE_INFO_0_32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get State(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ServerName(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ShareName(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set State(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ServerName(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ShareName(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -161,6 +282,71 @@ export function allocDFS_INFO_3_32(data?: Partial<DFS_INFO_3_32>): Uint8Array {
   if (data?.Storage !== undefined) view.setUint32(16, Number(data.Storage), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DFS_INFO_3_32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get EntryPath(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Comment(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get State(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Storage(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set EntryPath(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Comment(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set State(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Storage(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -205,6 +391,88 @@ export function allocDFS_INFO_4_32(data?: Partial<DFS_INFO_4_32>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_4_32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get EntryPath(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Comment(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get State(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Timeout(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Storage(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: u32
+  set EntryPath(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Comment(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set State(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Timeout(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Storage(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_TARGET_PRIORITY (size: 8)
  */
@@ -231,6 +499,47 @@ export function allocDFS_TARGET_PRIORITY(data?: Partial<DFS_TARGET_PRIORITY>): U
   return buf;
 }
 
+export class DFS_TARGET_PRIORITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get TargetPriorityClass(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u16
+  get TargetPriorityRank(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get Reserved(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x00: i32
+  set TargetPriorityClass(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u16
+  set TargetPriorityRank(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set Reserved(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+}
+
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
@@ -252,6 +561,29 @@ export function allocDFS_INFO_1(data?: Partial<DFS_INFO_1>): Uint8Array {
     view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
+}
+
+export class DFS_INFO_1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
 }
 
 /**
@@ -290,6 +622,61 @@ export function allocDFS_INFO_2(data?: Partial<DFS_INFO_2>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_STORAGE_INFO (size: 24)
  */
@@ -321,6 +708,55 @@ export function allocDFS_STORAGE_INFO(data?: Partial<DFS_STORAGE_INFO>): Uint8Ar
     view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
+}
+
+export class DFS_STORAGE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get State(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get ServerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ShareName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set State(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set ServerName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set ShareName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
 }
 
 /**
@@ -358,6 +794,66 @@ export function allocDFS_STORAGE_INFO_1(data?: Partial<DFS_STORAGE_INFO_1>): Uin
   // 0x18: pointer
   if (data?.TargetPriority !== undefined) view.setBigUint64(24, data.TargetPriority === null ? 0n : BigInt(util.toPointer(data.TargetPriority)), true);
   return buf;
+}
+
+export class DFS_STORAGE_INFO_1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get State(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get ServerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ShareName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get TargetPriority(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set State(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set ServerName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set ShareName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set TargetPriority(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -398,6 +894,72 @@ export function allocDFS_INFO_3(data?: Partial<DFS_INFO_3>): Uint8Array {
   // 0x18: pointer
   if (data?.Storage !== undefined) view.setBigUint64(24, data.Storage === null ? 0n : BigInt(util.toPointer(data.Storage)), true);
   return buf;
+}
+
+export class DFS_INFO_3View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Storage(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Storage(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -447,6 +1009,97 @@ export function allocDFS_INFO_4(data?: Partial<DFS_INFO_4>): Uint8Array {
   // 0x28: pointer
   if (data?.Storage !== undefined) view.setBigUint64(40, data.Storage === null ? 0n : BigInt(util.toPointer(data.Storage)), true);
   return buf;
+}
+
+export class DFS_INFO_4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Timeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get Storage(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Timeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set Storage(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -500,6 +1153,106 @@ export function allocDFS_INFO_5(data?: Partial<DFS_INFO_5>): Uint8Array {
   if (data?.NumberOfStorages !== undefined) view.setUint32(40, Number(data.NumberOfStorages), true);
   // 0x2c: pad4
   return buf;
+}
+
+export class DFS_INFO_5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Timeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get MetadataSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Timeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set MetadataSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
 }
 
 /**
@@ -559,6 +1312,117 @@ export function allocDFS_INFO_6(data?: Partial<DFS_INFO_6>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Timeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get MetadataSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get Storage(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Timeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set MetadataSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set Storage(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_7 (size: 8)
  */
@@ -575,6 +1439,28 @@ export function allocDFS_INFO_7(data?: Partial<DFS_INFO_7>): Uint8Array {
   // 0x00: pointer
   if (data?.GenerationGuid !== undefined) view.setBigUint64(0, data.GenerationGuid === null ? 0n : BigInt(util.toPointer(data.GenerationGuid)), true);
   return buf;
+}
+
+export class DFS_INFO_7View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get GenerationGuid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set GenerationGuid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
@@ -639,6 +1525,131 @@ export function allocDFS_INFO_8(data?: Partial<DFS_INFO_8>): Uint8Array {
   if (data?.NumberOfStorages !== undefined) view.setUint32(56, Number(data.NumberOfStorages), true);
   // 0x3c: pad4
   return buf;
+}
+
+export class DFS_INFO_8View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Timeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get MetadataSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get SdLengthReserved(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Timeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set MetadataSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set SdLengthReserved(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
 }
 
 /**
@@ -707,6 +1718,142 @@ export function allocDFS_INFO_9(data?: Partial<DFS_INFO_9>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_9View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get EntryPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get State(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Timeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Guid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get MetadataSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get SdLengthReserved(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u32
+  get NumberOfStorages(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get Storage(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set EntryPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set State(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Timeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Guid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set MetadataSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set SdLengthReserved(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u32
+  set NumberOfStorages(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set Storage(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_50 (size: 16)
  */
@@ -733,6 +1880,47 @@ export function allocDFS_INFO_50(data?: Partial<DFS_INFO_50>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_50View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NamespaceMajorVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NamespaceMinorVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get NamespaceCapabilities(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u32
+  set NamespaceMajorVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NamespaceMinorVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set NamespaceCapabilities(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_100 (size: 8)
  */
@@ -754,6 +1942,29 @@ export function allocDFS_INFO_100(data?: Partial<DFS_INFO_100>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_100View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_101 (size: 8)
  */
@@ -773,6 +1984,31 @@ export function allocDFS_INFO_101(data?: Partial<DFS_INFO_101>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_101View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get State(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set State(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_102 (size: 8)
  */
@@ -790,6 +2026,31 @@ export function allocDFS_INFO_102(data?: Partial<DFS_INFO_102>): Uint8Array {
   if (data?.Timeout !== undefined) view.setUint32(0, Number(data.Timeout), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DFS_INFO_102View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Timeout(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set Timeout(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -814,6 +2075,37 @@ export function allocDFS_INFO_103(data?: Partial<DFS_INFO_103>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_103View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PropertyFlagMask(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set PropertyFlagMask(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_104 (size: 8)
  */
@@ -830,6 +2122,28 @@ export function allocDFS_INFO_104(data?: Partial<DFS_INFO_104>): Uint8Array {
   // 0x00: pointer
   if (data?.TargetPriority !== undefined) view.setBigUint64(0, data.TargetPriority === null ? 0n : BigInt(util.toPointer(data.TargetPriority)), true);
   return buf;
+}
+
+export class DFS_INFO_104View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get TargetPriority(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set TargetPriority(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -869,6 +2183,69 @@ export function allocDFS_INFO_105(data?: Partial<DFS_INFO_105>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_105View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get State(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Timeout(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get PropertyFlagMask(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set State(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Timeout(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set PropertyFlagMask(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_106 (size: 16)
  */
@@ -890,6 +2267,42 @@ export function allocDFS_INFO_106(data?: Partial<DFS_INFO_106>): Uint8Array {
   // 0x08: pointer
   if (data?.TargetPriority !== undefined) view.setBigUint64(8, data.TargetPriority === null ? 0n : BigInt(util.toPointer(data.TargetPriority)), true);
   return buf;
+}
+
+export class DFS_INFO_106View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get State(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get TargetPriority(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set State(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set TargetPriority(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -938,6 +2351,94 @@ export function allocDFS_INFO_107(data?: Partial<DFS_INFO_107>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_107View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get State(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Timeout(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get PropertyFlagMask(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get PropertyFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get SdLengthReserved(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set State(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Timeout(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set PropertyFlagMask(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set PropertyFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set SdLengthReserved(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_150 (size: 16)
  */
@@ -961,6 +2462,42 @@ export function allocDFS_INFO_150(data?: Partial<DFS_INFO_150>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_150View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SdLengthReserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set SdLengthReserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_INFO_200 (size: 8)
  */
@@ -980,6 +2517,29 @@ export function allocDFS_INFO_200(data?: Partial<DFS_INFO_200>): Uint8Array {
     view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
+}
+
+export class DFS_INFO_200View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get FtDfsName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set FtDfsName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
 }
 
 /**
@@ -1008,6 +2568,43 @@ export function allocDFS_INFO_300(data?: Partial<DFS_INFO_300>): Uint8Array {
   return buf;
 }
 
+export class DFS_INFO_300View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get DfsName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set DfsName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_SITENAME_INFO (size: 16)
  */
@@ -1034,6 +2631,43 @@ export function allocDFS_SITENAME_INFO(data?: Partial<DFS_SITENAME_INFO>): Uint8
   return buf;
 }
 
+export class DFS_SITENAME_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SiteFlags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get SiteName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set SiteFlags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set SiteName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_SITELIST_INFO (size: 16)
  */
@@ -1055,6 +2689,42 @@ export function allocDFS_SITELIST_INFO(data?: Partial<DFS_SITELIST_INFO>): Uint8
   // 0x08: pointer
   if (data?.Site !== undefined) view.setBigUint64(8, data.Site === null ? 0n : BigInt(util.toPointer(data.Site)), true);
   return buf;
+}
+
+export class DFS_SITELIST_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cSites(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Site(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cSites(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Site(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1095,6 +2765,77 @@ export function allocDFS_SUPPORTED_NAMESPACE_VERSION_INFO(data?: Partial<DFS_SUP
   return buf;
 }
 
+export class DFS_SUPPORTED_NAMESPACE_VERSION_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get DomainDfsMajorVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get DomainDfsMinorVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get DomainDfsCapabilities(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get StandaloneDfsMajorVersion(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get StandaloneDfsMinorVersion(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u64
+  get StandaloneDfsCapabilities(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: u32
+  set DomainDfsMajorVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set DomainDfsMinorVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set DomainDfsCapabilities(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set StandaloneDfsMajorVersion(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set StandaloneDfsMinorVersion(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u64
+  set StandaloneDfsCapabilities(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.DistributedFileSystem.DFS_GET_PKT_ENTRY_STATE_ARG (size: 24)
  */
@@ -1128,6 +2869,72 @@ export function allocDFS_GET_PKT_ENTRY_STATE_ARG(data?: Partial<DFS_GET_PKT_ENTR
   // 0x10: pointer
   if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
   return buf;
+}
+
+export class DFS_GET_PKT_ENTRY_STATE_ARGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get DfsEntryPathLen(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get ServerNameLen(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get ShareNameLen(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u32
+  get Level(): number {
+    return this.view.getUint32(6, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get Buffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set DfsEntryPathLen(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set ServerNameLen(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set ShareNameLen(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u32
+  set Level(value: number) {
+    this.view.setUint32(6, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

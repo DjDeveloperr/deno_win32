@@ -93,6 +93,142 @@ export function allocCALLFRAMEINFO(data?: Partial<CALLFRAMEINFO>): Uint8Array {
   return buf;
 }
 
+export class CALLFRAMEINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get iMethod(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get fHasInValues(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get fHasInOutValues(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get fHasOutValues(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get fDerivesFromIDispatch(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get cInInterfacesMax(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cInOutInterfacesMax(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cOutInterfacesMax(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get cTopLevelInInterfaces(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get iid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get cMethod(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get cParams(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x00: u32
+  set iMethod(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fHasInValues(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set fHasInOutValues(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set fHasOutValues(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set fDerivesFromIDispatch(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set cInInterfacesMax(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cInOutInterfacesMax(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cOutInterfacesMax(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set cTopLevelInInterfaces(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set iid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set cMethod(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set cParams(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+}
+
 export type BOOLEAN = number;
 
 /**
@@ -123,6 +259,59 @@ export function allocCALLFRAMEPARAMINFO(data?: Partial<CALLFRAMEPARAMINFO>): Uin
   // 0x14: u32
   if (data?.cbParam !== undefined) view.setUint32(20, Number(data.cbParam), true);
   return buf;
+}
+
+export class CALLFRAMEPARAMINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fIn(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get fOut(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get stackOffset(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbParam(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: pointer
+  set fIn(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set fOut(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set stackOffset(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbParam(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -158,6 +347,75 @@ export function allocCALLFRAME_MARSHALCONTEXT(data?: Partial<CALLFRAME_MARSHALCO
   // 0x20: pointer
   if (data?.guidTransferSyntax !== undefined) view.setBigUint64(32, data.guidTransferSyntax === null ? 0n : BigInt(util.toPointer(data.guidTransferSyntax)), true);
   return buf;
+}
+
+export class CALLFRAME_MARSHALCONTEXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fIn(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwDestContext(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pvDestContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get punkReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get guidTransferSyntax(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set fIn(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwDestContext(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pvDestContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set punkReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set guidTransferSyntax(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HRESULT = number;

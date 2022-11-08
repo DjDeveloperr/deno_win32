@@ -698,6 +698,57 @@ export function allocDWRITE_COLOR_F(data?: Partial<DWRITE_COLOR_F>): Uint8Array 
   return buf;
 }
 
+export class DWRITE_COLOR_FView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get r(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get g(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get b(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get a(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set r(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set g(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set b(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set a(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_METRICS (size: 24)
  */
@@ -753,6 +804,121 @@ export function allocDWRITE_FONT_METRICS(data?: Partial<DWRITE_FONT_METRICS>): U
   return buf;
 }
 
+export class DWRITE_FONT_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get designUnitsPerEm(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get ascent(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get descent(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: i16
+  get lineGap(): number {
+    return this.view.getInt16(6, true);
+  }
+
+  // 0x08: u16
+  get capHeight(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get xHeight(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: i16
+  get underlinePosition(): number {
+    return this.view.getInt16(12, true);
+  }
+
+  // 0x0e: u16
+  get underlineThickness(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i16
+  get strikethroughPosition(): number {
+    return this.view.getInt16(16, true);
+  }
+
+  // 0x12: u16
+  get strikethroughThickness(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u16
+  set designUnitsPerEm(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set ascent(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set descent(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: i16
+  set lineGap(value: number) {
+    this.view.setInt16(6, value, true);
+  }
+
+  // 0x08: u16
+  set capHeight(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set xHeight(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: i16
+  set underlinePosition(value: number) {
+    this.view.setInt16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set underlineThickness(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i16
+  set strikethroughPosition(value: number) {
+    this.view.setInt16(16, value, true);
+  }
+
+  // 0x12: u16
+  set strikethroughThickness(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_GLYPH_METRICS (size: 32)
  */
@@ -796,6 +962,91 @@ export function allocDWRITE_GLYPH_METRICS(data?: Partial<DWRITE_GLYPH_METRICS>):
   return buf;
 }
 
+export class DWRITE_GLYPH_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get leftSideBearing(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get advanceWidth(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get rightSideBearing(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get topSideBearing(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get advanceHeight(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get bottomSideBearing(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get verticalOriginY(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: i32
+  set leftSideBearing(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set advanceWidth(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set rightSideBearing(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set topSideBearing(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set advanceHeight(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set bottomSideBearing(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set verticalOriginY(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_GLYPH_OFFSET (size: 8)
  */
@@ -816,6 +1067,37 @@ export function allocDWRITE_GLYPH_OFFSET(data?: Partial<DWRITE_GLYPH_OFFSET>): U
   // 0x04: f32
   if (data?.ascenderOffset !== undefined) view.setFloat32(4, Number(data.ascenderOffset), true);
   return buf;
+}
+
+export class DWRITE_GLYPH_OFFSETView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get advanceOffset(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get ascenderOffset(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: f32
+  set advanceOffset(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set ascenderOffset(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
 }
 
 /**
@@ -856,6 +1138,77 @@ export function allocDWRITE_MATRIX(data?: Partial<DWRITE_MATRIX>): Uint8Array {
   return buf;
 }
 
+export class DWRITE_MATRIXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get m11(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get m12(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get m21(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get m22(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get dx(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get dy(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set m11(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set m12(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set m21(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set m22(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set dx(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set dy(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_TEXT_RANGE (size: 8)
  */
@@ -876,6 +1229,37 @@ export function allocDWRITE_TEXT_RANGE(data?: Partial<DWRITE_TEXT_RANGE>): Uint8
   // 0x04: u32
   if (data?.length !== undefined) view.setUint32(4, Number(data.length), true);
   return buf;
+}
+
+export class DWRITE_TEXT_RANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get startPosition(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get length(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set startPosition(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set length(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -900,6 +1284,37 @@ export function allocDWRITE_FONT_FEATURE(data?: Partial<DWRITE_FONT_FEATURE>): U
   return buf;
 }
 
+export class DWRITE_FONT_FEATUREView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nameTag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get parameter(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set nameTag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set parameter(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_TYPOGRAPHIC_FEATURES (size: 16)
  */
@@ -921,6 +1336,42 @@ export function allocDWRITE_TYPOGRAPHIC_FEATURES(data?: Partial<DWRITE_TYPOGRAPH
   if (data?.featureCount !== undefined) view.setUint32(8, Number(data.featureCount), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DWRITE_TYPOGRAPHIC_FEATURESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get features(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get featureCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set features(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set featureCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -950,6 +1401,51 @@ export function allocDWRITE_TRIMMING(data?: Partial<DWRITE_TRIMMING>): Uint8Arra
   return buf;
 }
 
+export class DWRITE_TRIMMINGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get granularity(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get delimiter(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get delimiterCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set granularity(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set delimiter(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set delimiterCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_SCRIPT_ANALYSIS (size: 8)
  */
@@ -973,6 +1469,41 @@ export function allocDWRITE_SCRIPT_ANALYSIS(data?: Partial<DWRITE_SCRIPT_ANALYSI
   return buf;
 }
 
+export class DWRITE_SCRIPT_ANALYSISView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get script(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u32
+  get shapes(): number {
+    return this.view.getUint32(2, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: u16
+  set script(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u32
+  set shapes(value: number) {
+    this.view.setUint32(2, value, true);
+  }
+
+  // 0x06: pad2
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_LINE_BREAKPOINT (size: 8)
  */
@@ -990,6 +1521,31 @@ export function allocDWRITE_LINE_BREAKPOINT(data?: Partial<DWRITE_LINE_BREAKPOIN
   if (data?._bitfield !== undefined) view.setUint8(0, Number(data._bitfield));
   // 0x01: pad7
   return buf;
+}
+
+export class DWRITE_LINE_BREAKPOINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get _bitfield(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x00: u8
+  set _bitfield(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
 }
 
 /**
@@ -1011,6 +1567,31 @@ export function allocDWRITE_SHAPING_TEXT_PROPERTIES(data?: Partial<DWRITE_SHAPIN
   return buf;
 }
 
+export class DWRITE_SHAPING_TEXT_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get _bitfield(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u16
+  set _bitfield(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_SHAPING_GLYPH_PROPERTIES (size: 8)
  */
@@ -1028,6 +1609,31 @@ export function allocDWRITE_SHAPING_GLYPH_PROPERTIES(data?: Partial<DWRITE_SHAPI
   if (data?._bitfield !== undefined) view.setUint16(0, Number(data._bitfield), true);
   // 0x02: pad6
   return buf;
+}
+
+export class DWRITE_SHAPING_GLYPH_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get _bitfield(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u16
+  set _bitfield(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
 }
 
 export type BOOL = number;
@@ -1078,6 +1684,101 @@ export function allocDWRITE_GLYPH_RUN(data?: Partial<DWRITE_GLYPH_RUN>): Uint8Ar
   return buf;
 }
 
+export class DWRITE_GLYPH_RUNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fontFace(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get fontEmSize(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: u32
+  get glyphCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get glyphIndices(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get glyphAdvances(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get glyphOffsets(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: i32
+  get isSideways(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: u32
+  get bidiLevel(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x00: pointer
+  set fontFace(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set fontEmSize(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set glyphCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set glyphIndices(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set glyphAdvances(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set glyphOffsets(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: i32
+  set isSideways(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set bidiLevel(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+}
+
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
@@ -1120,6 +1821,80 @@ export function allocDWRITE_GLYPH_RUN_DESCRIPTION(data?: Partial<DWRITE_GLYPH_RU
   if (data?.textPosition !== undefined) view.setUint32(32, Number(data.textPosition), true);
   // 0x24: pad4
   return buf;
+}
+
+export class DWRITE_GLYPH_RUN_DESCRIPTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get localeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get string(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get stringLength(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get clusterMap(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get textPosition(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: buffer
+  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set string(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set stringLength(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set clusterMap(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set textPosition(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -1172,6 +1947,103 @@ export function allocDWRITE_UNDERLINE(data?: Partial<DWRITE_UNDERLINE>): Uint8Ar
   return buf;
 }
 
+export class DWRITE_UNDERLINEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get width(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get thickness(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get offset(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get runHeight(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get readingDirection(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get flowDirection(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: buffer
+  get localeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get measuringMode(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: f32
+  set width(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set thickness(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set offset(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set runHeight(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set readingDirection(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set flowDirection(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: buffer
+  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: i32
+  set measuringMode(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_STRIKETHROUGH (size: 40)
  */
@@ -1219,6 +2091,97 @@ export function allocDWRITE_STRIKETHROUGH(data?: Partial<DWRITE_STRIKETHROUGH>):
   return buf;
 }
 
+export class DWRITE_STRIKETHROUGHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get width(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get thickness(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get offset(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: i32
+  get readingDirection(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get flowDirection(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  get localeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get measuringMode(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: f32
+  set width(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set thickness(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set offset(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set readingDirection(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set flowDirection(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: i32
+  set measuringMode(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_LINE_METRICS (size: 24)
  */
@@ -1257,6 +2220,77 @@ export function allocDWRITE_LINE_METRICS(data?: Partial<DWRITE_LINE_METRICS>): U
   return buf;
 }
 
+export class DWRITE_LINE_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get length(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get trailingWhitespaceLength(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get newlineLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: f32
+  get height(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get baseline(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: i32
+  get isTrimmed(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: u32
+  set length(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set trailingWhitespaceLength(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set newlineLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set height(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set baseline(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: i32
+  set isTrimmed(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_CLUSTER_METRICS (size: 8)
  */
@@ -1281,6 +2315,47 @@ export function allocDWRITE_CLUSTER_METRICS(data?: Partial<DWRITE_CLUSTER_METRIC
   // 0x06: u16
   if (data?._bitfield !== undefined) view.setUint16(6, Number(data._bitfield), true);
   return buf;
+}
+
+export class DWRITE_CLUSTER_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get width(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: u16
+  get length(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get _bitfield(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x00: f32
+  set width(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: u16
+  set length(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set _bitfield(value: number) {
+    this.view.setUint16(6, value, true);
+  }
 }
 
 /**
@@ -1334,6 +2409,111 @@ export function allocDWRITE_TEXT_METRICS(data?: Partial<DWRITE_TEXT_METRICS>): U
   return buf;
 }
 
+export class DWRITE_TEXT_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get left(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get top(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get width(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get widthIncludingTrailingWhitespace(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get height(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get layoutWidth(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get layoutHeight(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: u32
+  get maxBidiReorderingDepth(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get lineCount(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: f32
+  set left(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set top(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set width(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set widthIncludingTrailingWhitespace(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set height(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set layoutWidth(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set layoutHeight(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set maxBidiReorderingDepth(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set lineCount(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_INLINE_OBJECT_METRICS (size: 16)
  */
@@ -1364,6 +2544,57 @@ export function allocDWRITE_INLINE_OBJECT_METRICS(data?: Partial<DWRITE_INLINE_O
   return buf;
 }
 
+export class DWRITE_INLINE_OBJECT_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get width(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get height(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get baseline(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: i32
+  get supportsSideways(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: f32
+  set width(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set height(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set baseline(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set supportsSideways(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_OVERHANG_METRICS (size: 16)
  */
@@ -1392,6 +2623,57 @@ export function allocDWRITE_OVERHANG_METRICS(data?: Partial<DWRITE_OVERHANG_METR
   // 0x0c: f32
   if (data?.bottom !== undefined) view.setFloat32(12, Number(data.bottom), true);
   return buf;
+}
+
+export class DWRITE_OVERHANG_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get left(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get top(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get right(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get bottom(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set left(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set top(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set right(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set bottom(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 /**
@@ -1443,6 +2725,111 @@ export function allocDWRITE_HIT_TEST_METRICS(data?: Partial<DWRITE_HIT_TEST_METR
   if (data?.isTrimmed !== undefined) view.setInt32(32, Number(data.isTrimmed), true);
   // 0x24: pad4
   return buf;
+}
+
+export class DWRITE_HIT_TEST_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get textPosition(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get length(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: f32
+  get left(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get top(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get width(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get height(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: u32
+  get bidiLevel(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get isText(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get isTrimmed(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set textPosition(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set length(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: f32
+  set left(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set top(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set width(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set height(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: u32
+  set bidiLevel(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set isText(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set isTrimmed(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -1516,6 +2903,162 @@ export function allocDWRITE_FONT_METRICS1(data?: Partial<DWRITE_FONT_METRICS1>):
   return buf;
 }
 
+export class DWRITE_FONT_METRICS1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Base(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i16
+  get glyphBoxLeft(): number {
+    return this.view.getInt16(8, true);
+  }
+
+  // 0x0a: i16
+  get glyphBoxTop(): number {
+    return this.view.getInt16(10, true);
+  }
+
+  // 0x0c: i16
+  get glyphBoxRight(): number {
+    return this.view.getInt16(12, true);
+  }
+
+  // 0x0e: i16
+  get glyphBoxBottom(): number {
+    return this.view.getInt16(14, true);
+  }
+
+  // 0x10: i16
+  get subscriptPositionX(): number {
+    return this.view.getInt16(16, true);
+  }
+
+  // 0x12: i16
+  get subscriptPositionY(): number {
+    return this.view.getInt16(18, true);
+  }
+
+  // 0x14: i16
+  get subscriptSizeX(): number {
+    return this.view.getInt16(20, true);
+  }
+
+  // 0x16: i16
+  get subscriptSizeY(): number {
+    return this.view.getInt16(22, true);
+  }
+
+  // 0x18: i16
+  get superscriptPositionX(): number {
+    return this.view.getInt16(24, true);
+  }
+
+  // 0x1a: i16
+  get superscriptPositionY(): number {
+    return this.view.getInt16(26, true);
+  }
+
+  // 0x1c: i16
+  get superscriptSizeX(): number {
+    return this.view.getInt16(28, true);
+  }
+
+  // 0x1e: i16
+  get superscriptSizeY(): number {
+    return this.view.getInt16(30, true);
+  }
+
+  // 0x20: i32
+  get hasTypographicMetrics(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: pointer
+  set Base(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i16
+  set glyphBoxLeft(value: number) {
+    this.view.setInt16(8, value, true);
+  }
+
+  // 0x0a: i16
+  set glyphBoxTop(value: number) {
+    this.view.setInt16(10, value, true);
+  }
+
+  // 0x0c: i16
+  set glyphBoxRight(value: number) {
+    this.view.setInt16(12, value, true);
+  }
+
+  // 0x0e: i16
+  set glyphBoxBottom(value: number) {
+    this.view.setInt16(14, value, true);
+  }
+
+  // 0x10: i16
+  set subscriptPositionX(value: number) {
+    this.view.setInt16(16, value, true);
+  }
+
+  // 0x12: i16
+  set subscriptPositionY(value: number) {
+    this.view.setInt16(18, value, true);
+  }
+
+  // 0x14: i16
+  set subscriptSizeX(value: number) {
+    this.view.setInt16(20, value, true);
+  }
+
+  // 0x16: i16
+  set subscriptSizeY(value: number) {
+    this.view.setInt16(22, value, true);
+  }
+
+  // 0x18: i16
+  set superscriptPositionX(value: number) {
+    this.view.setInt16(24, value, true);
+  }
+
+  // 0x1a: i16
+  set superscriptPositionY(value: number) {
+    this.view.setInt16(26, value, true);
+  }
+
+  // 0x1c: i16
+  set superscriptSizeX(value: number) {
+    this.view.setInt16(28, value, true);
+  }
+
+  // 0x1e: i16
+  set superscriptSizeY(value: number) {
+    this.view.setInt16(30, value, true);
+  }
+
+  // 0x20: i32
+  set hasTypographicMetrics(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_CARET_METRICS (size: 8)
  */
@@ -1541,6 +3084,51 @@ export function allocDWRITE_CARET_METRICS(data?: Partial<DWRITE_CARET_METRICS>):
   if (data?.offset !== undefined) view.setInt16(4, Number(data.offset), true);
   // 0x06: pad2
   return buf;
+}
+
+export class DWRITE_CARET_METRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i16
+  get slopeRise(): number {
+    return this.view.getInt16(0, true);
+  }
+
+  // 0x02: i16
+  get slopeRun(): number {
+    return this.view.getInt16(2, true);
+  }
+
+  // 0x04: i16
+  get offset(): number {
+    return this.view.getInt16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: i16
+  set slopeRise(value: number) {
+    this.view.setInt16(0, value, true);
+  }
+
+  // 0x02: i16
+  set slopeRun(value: number) {
+    this.view.setInt16(2, value, true);
+  }
+
+  // 0x04: i16
+  set offset(value: number) {
+    this.view.setInt16(4, value, true);
+  }
+
+  // 0x06: pad2
 }
 
 /**
@@ -1598,6 +3186,121 @@ export function alloc_text_e__Struct(data?: Partial<_text_e__Struct>): Uint8Arra
   return buf;
 }
 
+export class _text_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get familyKind(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get serifStyle(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get weight(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get proportion(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get contrast(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get strokeVariation(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get armStyle(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: u8
+  get letterform(): number {
+    return this.view.getUint8(7);
+  }
+
+  // 0x08: u8
+  get midline(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get xHeight(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u8
+  set familyKind(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set serifStyle(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set weight(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set proportion(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set contrast(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set strokeVariation(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set armStyle(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: u8
+  set letterform(value: number) {
+    this.view.setUint8(7, value);
+  }
+
+  // 0x08: u8
+  set midline(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set xHeight(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
+}
+
 /**
  * _script_e__Struct (size: 16)
  */
@@ -1651,6 +3354,121 @@ export function alloc_script_e__Struct(data?: Partial<_script_e__Struct>): Uint8
   if (data?.xAscent !== undefined) view.setUint8(9, Number(data.xAscent));
   // 0x0a: pad6
   return buf;
+}
+
+export class _script_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get familyKind(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get toolKind(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get weight(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get spacing(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get aspectRatio(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get contrast(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get scriptTopology(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: u8
+  get scriptForm(): number {
+    return this.view.getUint8(7);
+  }
+
+  // 0x08: u8
+  get finials(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get xAscent(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u8
+  set familyKind(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set toolKind(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set weight(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set spacing(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set aspectRatio(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set contrast(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set scriptTopology(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: u8
+  set scriptForm(value: number) {
+    this.view.setUint8(7, value);
+  }
+
+  // 0x08: u8
+  set finials(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set xAscent(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -1708,6 +3526,121 @@ export function alloc_decorative_e__Struct(data?: Partial<_decorative_e__Struct>
   return buf;
 }
 
+export class _decorative_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get familyKind(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get decorativeClass(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get weight(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get aspect(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get contrast(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get serifVariant(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get fill(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: u8
+  get lining(): number {
+    return this.view.getUint8(7);
+  }
+
+  // 0x08: u8
+  get decorativeTopology(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get characterRange(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u8
+  set familyKind(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set decorativeClass(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set weight(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set aspect(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set contrast(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set serifVariant(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set fill(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: u8
+  set lining(value: number) {
+    this.view.setUint8(7, value);
+  }
+
+  // 0x08: u8
+  set decorativeTopology(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set characterRange(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
+}
+
 /**
  * _symbol_e__Struct (size: 16)
  */
@@ -1763,6 +3696,121 @@ export function alloc_symbol_e__Struct(data?: Partial<_symbol_e__Struct>): Uint8
   return buf;
 }
 
+export class _symbol_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get familyKind(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get symbolKind(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get weight(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get spacing(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u8
+  get aspectRatioAndContrast(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get aspectRatio94(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get aspectRatio119(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: u8
+  get aspectRatio157(): number {
+    return this.view.getUint8(7);
+  }
+
+  // 0x08: u8
+  get aspectRatio163(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get aspectRatio211(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u8
+  set familyKind(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set symbolKind(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set weight(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set spacing(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u8
+  set aspectRatioAndContrast(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set aspectRatio94(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set aspectRatio119(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: u8
+  set aspectRatio157(value: number) {
+    this.view.setUint8(7, value);
+  }
+
+  // 0x08: u8
+  set aspectRatio163(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set aspectRatio211(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_PANOSE (size: 48)
  */
@@ -1802,6 +3850,86 @@ export function allocDWRITE_PANOSE(data?: Partial<DWRITE_PANOSE>): Uint8Array {
   return buf;
 }
 
+export class DWRITE_PANOSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get values(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u8
+  get familyKind(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: pad7
+
+  // 0x10: pointer
+  get text(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get script(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get decorative(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get symbol(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set values(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u8
+  set familyKind(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: pad7
+
+  // 0x10: pointer
+  set text(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set script(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set decorative(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set symbol(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_UNICODE_RANGE (size: 8)
  */
@@ -1822,6 +3950,37 @@ export function allocDWRITE_UNICODE_RANGE(data?: Partial<DWRITE_UNICODE_RANGE>):
   // 0x04: u32
   if (data?.last !== undefined) view.setUint32(4, Number(data.last), true);
   return buf;
+}
+
+export class DWRITE_UNICODE_RANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get first(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get last(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set first(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set last(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -1859,6 +4018,71 @@ export function allocDWRITE_SCRIPT_PROPERTIES(data?: Partial<DWRITE_SCRIPT_PROPE
   return buf;
 }
 
+export class DWRITE_SCRIPT_PROPERTIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get isoScriptCode(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get isoScriptNumber(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get clusterLookahead(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get justificationCharacter(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get _bitfield(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set isoScriptCode(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set isoScriptNumber(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set clusterLookahead(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set justificationCharacter(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set _bitfield(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_JUSTIFICATION_OPPORTUNITY (size: 16)
  */
@@ -1889,6 +4113,57 @@ export function allocDWRITE_JUSTIFICATION_OPPORTUNITY(data?: Partial<DWRITE_JUST
   return buf;
 }
 
+export class DWRITE_JUSTIFICATION_OPPORTUNITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get expansionMinimum(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get expansionMaximum(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get compressionMaximum(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: u32
+  get _bitfield(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: f32
+  set expansionMinimum(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set expansionMaximum(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set compressionMaximum(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set _bitfield(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_TEXT_METRICS1 (size: 16)
  */
@@ -1910,6 +4185,42 @@ export function allocDWRITE_TEXT_METRICS1(data?: Partial<DWRITE_TEXT_METRICS1>):
   if (data?.heightIncludingTrailingWhitespace !== undefined) view.setFloat32(8, Number(data.heightIncludingTrailingWhitespace), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DWRITE_TEXT_METRICS1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Base(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get heightIncludingTrailingWhitespace(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set Base(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set heightIncludingTrailingWhitespace(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -1951,6 +4262,84 @@ export function allocDWRITE_COLOR_GLYPH_RUN(data?: Partial<DWRITE_COLOR_GLYPH_RU
   return buf;
 }
 
+export class DWRITE_COLOR_GLYPH_RUNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get glyphRun(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get glyphRunDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: f32
+  get baselineOriginX(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get baselineOriginY(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: pointer
+  get runColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u16
+  get paletteIndex(): number {
+    return this.view.getUint16(32, true);
+  }
+
+  // 0x22: pad6
+
+  // 0x00: pointer
+  set glyphRun(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set glyphRunDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: f32
+  set baselineOriginX(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set baselineOriginY(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set runColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u16
+  set paletteIndex(value: number) {
+    this.view.setUint16(32, value, true);
+  }
+
+  // 0x22: pad6
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_PROPERTY (size: 24)
  */
@@ -1984,6 +4373,55 @@ export function allocDWRITE_FONT_PROPERTY(data?: Partial<DWRITE_FONT_PROPERTY>):
   return buf;
 }
 
+export class DWRITE_FONT_PROPERTYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get propertyId(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get propertyValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get localeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set propertyId(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set propertyValue(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_LINE_METRICS1 (size: 16)
  */
@@ -2008,6 +4446,48 @@ export function allocDWRITE_LINE_METRICS1(data?: Partial<DWRITE_LINE_METRICS1>):
   // 0x0c: f32
   if (data?.leadingAfter !== undefined) view.setFloat32(12, Number(data.leadingAfter), true);
   return buf;
+}
+
+export class DWRITE_LINE_METRICS1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Base(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get leadingBefore(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get leadingAfter(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: pointer
+  set Base(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set leadingBefore(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set leadingAfter(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 /**
@@ -2045,6 +4525,71 @@ export function allocDWRITE_LINE_SPACING(data?: Partial<DWRITE_LINE_SPACING>): U
   return buf;
 }
 
+export class DWRITE_LINE_SPACINGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get method(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get height(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get baseline(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get leadingBefore(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get fontLineGapUsage(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: i32
+  set method(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set height(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set baseline(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set leadingBefore(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set fontLineGapUsage(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_COLOR_GLYPH_RUN1 (size: 16)
  */
@@ -2071,6 +4616,48 @@ export function allocDWRITE_COLOR_GLYPH_RUN1(data?: Partial<DWRITE_COLOR_GLYPH_R
   return buf;
 }
 
+export class DWRITE_COLOR_GLYPH_RUN1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Base(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get glyphImageFormat(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get measuringMode(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: pointer
+  set Base(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set glyphImageFormat(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set measuringMode(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct2D.Common.D2D_SIZE_U (size: 8)
  */
@@ -2093,6 +4680,37 @@ export function allocD2D_SIZE_U(data?: Partial<D2D_SIZE_U>): Uint8Array {
   return buf;
 }
 
+export class D2D_SIZE_UView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get width(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get height(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set width(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set height(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
  */
@@ -2113,6 +4731,37 @@ export function allocPOINT(data?: Partial<POINT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   return buf;
+}
+
+export class POINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -2166,6 +4815,117 @@ export function allocDWRITE_GLYPH_IMAGE_DATA(data?: Partial<DWRITE_GLYPH_IMAGE_D
   return buf;
 }
 
+export class DWRITE_GLYPH_IMAGE_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get imageData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get imageDataSize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get uniqueDataId(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get pixelsPerEm(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pixelSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get horizontalLeftOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get horizontalRightOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get verticalTopOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get verticalBottomOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set imageData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set imageDataSize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set uniqueDataId(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set pixelsPerEm(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pixelSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set horizontalLeftOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set horizontalRightOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set verticalTopOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set verticalBottomOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_FILE_FRAGMENT (size: 16)
  */
@@ -2188,6 +4948,37 @@ export function allocDWRITE_FILE_FRAGMENT(data?: Partial<DWRITE_FILE_FRAGMENT>):
   return buf;
 }
 
+export class DWRITE_FILE_FRAGMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get fileOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get fragmentSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set fileOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set fragmentSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_AXIS_VALUE (size: 8)
  */
@@ -2208,6 +4999,37 @@ export function allocDWRITE_FONT_AXIS_VALUE(data?: Partial<DWRITE_FONT_AXIS_VALU
   // 0x04: f32
   if (data?.value !== undefined) view.setFloat32(4, Number(data.value), true);
   return buf;
+}
+
+export class DWRITE_FONT_AXIS_VALUEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get axisTag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: f32
+  get value(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: u32
+  set axisTag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: f32
+  set value(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
 }
 
 /**
@@ -2235,6 +5057,51 @@ export function allocDWRITE_FONT_AXIS_RANGE(data?: Partial<DWRITE_FONT_AXIS_RANG
   if (data?.maxValue !== undefined) view.setFloat32(8, Number(data.maxValue), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DWRITE_FONT_AXIS_RANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get axisTag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: f32
+  get minValue(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get maxValue(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set axisTag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: f32
+  set minValue(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set maxValue(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 export type HRESULT = number;

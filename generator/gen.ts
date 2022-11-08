@@ -84,6 +84,14 @@ const specialTypes: Record<string, {
     toFfi: "util.hwndToFfi",
     fromFfi: "util.hwndFromFfi",
   },
+
+  "Windows.Win32.Foundation.CHAR": {
+    jsType: "string | number",
+    jsRtype: "string",
+    ffiType: "u8",
+    toFfi: "util.charToFfi",
+    fromFfi: "util.charFromFfi",
+  },
 };
 
 function typeToJS(ty: string, result = false) {
@@ -265,7 +273,10 @@ for (const api in win32) {
     }
     const value = consts[name];
     if ((value + "").match(/^[0-9]+n?$/)) {
-      content += `export const ${name} = ${value};\n`;
+      const ir = String(value).replaceAll(/^0+/g, "");
+      content += `export const ${name} = ${
+        ir === "" ? "0" : ir === "n" ? "0n" : ir
+      };\n`;
     } else {
       content += `export const ${name} = \`${
         value.toString().replaceAll("`", "\`").replaceAll("\\", "\\\\")
@@ -479,6 +490,211 @@ for (const api in win32) {
       });
       content += `  return buf;\n`;
       content += `}\n\n`;
+      content += `export class ${dispName}View {\n`;
+      content += `  private readonly view: DataView;\n`;
+      content += `  constructor(private readonly buf: Uint8Array) {\n`;
+      content += `    this.view = new DataView(buf.buffer);\n`;
+      content += `  }\n\n`;
+      content += `  get buffer(): Uint8Array {\n`;
+      content += `    return this.buf;\n`;
+      content += `  }\n`;
+      i = 0;
+      offset = 0;
+      layout.forEach((ty) => {
+        content += `\n  // 0x${offset.toString(16).padStart(2, "0")}: ${ty}\n`;
+        if (ty.startsWith("pad")) {
+          offset += parseInt(ty.slice(3));
+        } else {
+          const field = { name: jsify(fields[i][0]) };
+          content += `  get ${field.name}(): ${typeToJS(ty)} {\n`;
+          switch (ty) {
+            case "u8": {
+              content += `    return this.view.getUint8(${offset});\n`;
+              break;
+            }
+
+            case "i8": {
+              content += `    return this.view.getInt8(${offset});\n`;
+              break;
+            }
+
+            case "u16": {
+              content += `    return this.view.getUint16(${offset}, true);\n`;
+              break;
+            }
+
+            case "i16": {
+              content += `    return this.view.getInt16(${offset}, true);\n`;
+              break;
+            }
+
+            case "u32": {
+              content += `    return this.view.getUint32(${offset}, true);\n`;
+              break;
+            }
+
+            case "i32": {
+              content += `    return this.view.getInt32(${offset}, true);\n`;
+              break;
+            }
+
+            case "f32": {
+              content += `    return this.view.getFloat32(${offset}, true);\n`;
+              break;
+            }
+
+            case "u64": {
+              content +=
+                `    return Number(this.view.getBigUint64(${offset}, true));\n`;
+              break;
+            }
+
+            case "i64": {
+              content +=
+                `    return Number(this.view.getBigInt64(${offset}, true));\n`;
+              break;
+            }
+
+            case "f64": {
+              content += `    return this.view.getFloat64(${offset}, true);\n`;
+              break;
+            }
+
+            case "buffer": {
+              const special = specialTypes[fields[i][1]];
+              content +=
+                `    const ptr = this.view.getBigUint64(${offset}, true);\n`;
+              content += `    return util.pointerFromFfi(ptr);\n`;
+              break;
+            }
+
+            case "pointer": {
+              content +=
+                `    const ptr = this.view.getBigUint64(${offset}, true);\n`;
+              content += `    return util.pointerFromFfi(ptr);\n`;
+              break;
+            }
+
+            case "isize": {
+              content +=
+                `    return Number(this.view.getBigInt64(${offset}, true));\n`;
+              break;
+            }
+
+            case "usize": {
+              content +=
+                `    return Number(this.view.getBigUint64(${offset}, true));\n`;
+              break;
+            }
+
+            default:
+              throw new Error("Unsupported type");
+          }
+          i++;
+          content += `  }\n`;
+          offset += sizeof(ty as Deno.NativeType);
+        }
+      });
+
+      // setters
+      i = 0;
+      offset = 0;
+      layout.forEach((ty) => {
+        content += `\n  // 0x${offset.toString(16).padStart(2, "0")}: ${ty}\n`;
+        if (ty.startsWith("pad")) {
+          offset += parseInt(ty.slice(3));
+        } else {
+          const field = { name: jsify(fields[i][0]) };
+          content += `  set ${field.name}(value: ${typeToJS(ty)}) {\n`;
+          switch (ty) {
+            case "u8": {
+              content += `    this.view.setUint8(${offset}, value);\n`;
+              break;
+            }
+
+            case "i8": {
+              content += `    this.view.setInt8(${offset}, value);\n`;
+              break;
+            }
+
+            case "u16": {
+              content += `    this.view.setUint16(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "i16": {
+              content += `    this.view.setInt16(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "u32": {
+              content += `    this.view.setUint32(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "i32": {
+              content += `    this.view.setInt32(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "f32": {
+              content += `    this.view.setFloat32(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "u64": {
+              content +=
+                `    this.view.setBigUint64(${offset}, BigInt(value), true);\n`;
+              break;
+            }
+
+            case "i64": {
+              content +=
+                `    this.view.setBigInt64(${offset}, BigInt(value), true);\n`;
+              break;
+            }
+
+            case "f64": {
+              content += `    this.view.setFloat64(${offset}, value, true);\n`;
+              break;
+            }
+
+            case "buffer": {
+              const special = specialTypes[fields[i][1]];
+              // Attach the buffer to the view so it doesn't get GC'd
+              content += `    (this.buf as any)._f${offset} = value;\n`;
+              content +=
+                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer((this.buf as any)._f${offset})), true);\n`;
+              break;
+            }
+
+            case "pointer": {
+              content +=
+                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer(value)), true);\n`;
+              break;
+            }
+
+            case "isize": {
+              content +=
+                `    this.view.setBigInt64(${offset}, BigInt(value), true);\n`;
+              break;
+            }
+
+            case "usize": {
+              content +=
+                `    this.view.setBigUint64(${offset}, BigInt(value), true);\n`;
+              break;
+            }
+
+            default:
+              throw new Error("Unsupported type");
+          }
+          i++;
+          content += `  }\n`;
+          offset += sizeof(ty as Deno.NativeType);
+        }
+      });
+      content += "}\n\n";
     }
   }
 

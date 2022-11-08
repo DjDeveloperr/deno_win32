@@ -148,6 +148,91 @@ export function allocXINPUT_GAMEPAD(data?: Partial<XINPUT_GAMEPAD>): Uint8Array 
   return buf;
 }
 
+export class XINPUT_GAMEPADView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wButtons(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get bLeftTrigger(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get bRightTrigger(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: i16
+  get sThumbLX(): number {
+    return this.view.getInt16(4, true);
+  }
+
+  // 0x06: i16
+  get sThumbLY(): number {
+    return this.view.getInt16(6, true);
+  }
+
+  // 0x08: i16
+  get sThumbRX(): number {
+    return this.view.getInt16(8, true);
+  }
+
+  // 0x0a: i16
+  get sThumbRY(): number {
+    return this.view.getInt16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u16
+  set wButtons(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set bLeftTrigger(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set bRightTrigger(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: i16
+  set sThumbLX(value: number) {
+    this.view.setInt16(4, value, true);
+  }
+
+  // 0x06: i16
+  set sThumbLY(value: number) {
+    this.view.setInt16(6, value, true);
+  }
+
+  // 0x08: i16
+  set sThumbRX(value: number) {
+    this.view.setInt16(8, value, true);
+  }
+
+  // 0x0a: i16
+  set sThumbRY(value: number) {
+    this.view.setInt16(10, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.UI.Input.XboxController.XINPUT_STATE (size: 16)
  */
@@ -171,6 +256,42 @@ export function allocXINPUT_STATE(data?: Partial<XINPUT_STATE>): Uint8Array {
   return buf;
 }
 
+export class XINPUT_STATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwPacketNumber(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Gamepad(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwPacketNumber(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.XboxController.XINPUT_VIBRATION (size: 8)
  */
@@ -192,6 +313,41 @@ export function allocXINPUT_VIBRATION(data?: Partial<XINPUT_VIBRATION>): Uint8Ar
   if (data?.wRightMotorSpeed !== undefined) view.setUint16(2, Number(data.wRightMotorSpeed), true);
   // 0x04: pad4
   return buf;
+}
+
+export class XINPUT_VIBRATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wLeftMotorSpeed(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wRightMotorSpeed(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set wLeftMotorSpeed(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wRightMotorSpeed(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -229,6 +385,73 @@ export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): U
   return buf;
 }
 
+export class XINPUT_CAPABILITIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Type(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u16
+  get Flags(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get Gamepad(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Vibration(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Type(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u16
+  set Flags(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Vibration(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.XboxController.XINPUT_BATTERY_INFORMATION (size: 8)
  */
@@ -249,6 +472,37 @@ export function allocXINPUT_BATTERY_INFORMATION(data?: Partial<XINPUT_BATTERY_IN
   // 0x04: u32
   if (data?.BatteryLevel !== undefined) view.setUint32(4, Number(data.BatteryLevel), true);
   return buf;
+}
+
+export class XINPUT_BATTERY_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get BatteryType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get BatteryLevel(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set BatteryType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set BatteryLevel(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -285,6 +539,76 @@ export function allocXINPUT_KEYSTROKE(data?: Partial<XINPUT_KEYSTROKE>): Uint8Ar
   if (data?.HidCode !== undefined) view.setUint8(19, Number(data.HidCode));
   // 0x14: pad4
   return buf;
+}
+
+export class XINPUT_KEYSTROKEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get VirtualKey(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get Unicode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get Flags(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u8
+  get UserIndex(): number {
+    return this.view.getUint8(18);
+  }
+
+  // 0x13: u8
+  get HidCode(): number {
+    return this.view.getUint8(19);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u16
+  set VirtualKey(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set Unicode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set Flags(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u8
+  set UserIndex(value: number) {
+    this.view.setUint8(18, value);
+  }
+
+  // 0x13: u8
+  set HidCode(value: number) {
+    this.view.setUint8(19, value);
+  }
+
+  // 0x14: pad4
 }
 
 export type BOOL = number;

@@ -460,6 +460,41 @@ export function allocVK_TO_BIT(data?: Partial<VK_TO_BIT>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_BITView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Vk(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get ModBits(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u8
+  set Vk(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set ModBits(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.MODIFIERS (size: 24)
  */
@@ -487,6 +522,53 @@ export function allocMODIFIERS(data?: Partial<MODIFIERS>): Uint8Array {
   return buf;
 }
 
+export class MODIFIERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pVkToBit(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get wMaxModBits(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get ModNumber(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pVkToBit(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set wMaxModBits(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set ModNumber(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VSC_VK (size: 8)
  */
@@ -510,6 +592,41 @@ export function allocVSC_VK(data?: Partial<VSC_VK>): Uint8Array {
   return buf;
 }
 
+export class VSC_VKView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Vsc(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get Vk(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x00: u8
+  set Vsc(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set Vk(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_VSC (size: 8)
  */
@@ -531,6 +648,41 @@ export function allocVK_VSC(data?: Partial<VK_VSC>): Uint8Array {
   if (data?.Vsc !== undefined) view.setUint8(1, Number(data.Vsc));
   // 0x02: pad6
   return buf;
+}
+
+export class VK_VSCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Vk(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Vsc(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x00: u8
+  set Vk(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Vsc(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
 }
 
 /**
@@ -560,6 +712,52 @@ export function allocVK_TO_WCHARS1(data?: Partial<VK_TO_WCHARS1>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_WCHARS1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHARS2 (size: 16)
  */
@@ -585,6 +783,52 @@ export function allocVK_TO_WCHARS2(data?: Partial<VK_TO_WCHARS2>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class VK_TO_WCHARS2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -614,6 +858,52 @@ export function allocVK_TO_WCHARS3(data?: Partial<VK_TO_WCHARS3>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_WCHARS3View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHARS4 (size: 16)
  */
@@ -639,6 +929,52 @@ export function allocVK_TO_WCHARS4(data?: Partial<VK_TO_WCHARS4>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class VK_TO_WCHARS4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -668,6 +1004,52 @@ export function allocVK_TO_WCHARS5(data?: Partial<VK_TO_WCHARS5>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_WCHARS5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHARS6 (size: 16)
  */
@@ -693,6 +1075,52 @@ export function allocVK_TO_WCHARS6(data?: Partial<VK_TO_WCHARS6>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class VK_TO_WCHARS6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -722,6 +1150,52 @@ export function allocVK_TO_WCHARS7(data?: Partial<VK_TO_WCHARS7>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_WCHARS7View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHARS8 (size: 16)
  */
@@ -747,6 +1221,52 @@ export function allocVK_TO_WCHARS8(data?: Partial<VK_TO_WCHARS8>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class VK_TO_WCHARS8View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -776,6 +1296,52 @@ export function allocVK_TO_WCHARS9(data?: Partial<VK_TO_WCHARS9>): Uint8Array {
   return buf;
 }
 
+export class VK_TO_WCHARS9View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHARS10 (size: 16)
  */
@@ -803,6 +1369,52 @@ export function allocVK_TO_WCHARS10(data?: Partial<VK_TO_WCHARS10>): Uint8Array 
   return buf;
 }
 
+export class VK_TO_WCHARS10View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get Attributes(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set Attributes(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: pad6
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_TO_WCHAR_TABLE (size: 16)
  */
@@ -828,6 +1440,52 @@ export function allocVK_TO_WCHAR_TABLE(data?: Partial<VK_TO_WCHAR_TABLE>): Uint8
   if (data?.cbSize !== undefined) view.setUint8(9, Number(data.cbSize));
   // 0x0a: pad6
   return buf;
+}
+
+export class VK_TO_WCHAR_TABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pVkToWchars(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u8
+  get nModifications(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get cbSize(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: pointer
+  set pVkToWchars(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u8
+  set nModifications(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set cbSize(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -858,6 +1516,56 @@ export function allocDEADKEY(data?: Partial<DEADKEY>): Uint8Array {
   return buf;
 }
 
+export class DEADKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwBoth(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get wchComposed(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u16
+  get uFlags(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x00: u32
+  set dwBoth(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set wchComposed(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u16
+  set uFlags(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.LIGATURE1 (size: 16)
  */
@@ -883,6 +1591,52 @@ export function allocLIGATURE1(data?: Partial<LIGATURE1>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class LIGATURE1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get ModificationNumber(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set ModificationNumber(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -912,6 +1666,52 @@ export function allocLIGATURE2(data?: Partial<LIGATURE2>): Uint8Array {
   return buf;
 }
 
+export class LIGATURE2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get ModificationNumber(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set ModificationNumber(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.LIGATURE3 (size: 16)
  */
@@ -937,6 +1737,52 @@ export function allocLIGATURE3(data?: Partial<LIGATURE3>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class LIGATURE3View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get ModificationNumber(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set ModificationNumber(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -966,6 +1812,52 @@ export function allocLIGATURE4(data?: Partial<LIGATURE4>): Uint8Array {
   return buf;
 }
 
+export class LIGATURE4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get ModificationNumber(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set ModificationNumber(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.LIGATURE5 (size: 16)
  */
@@ -991,6 +1883,52 @@ export function allocLIGATURE5(data?: Partial<LIGATURE5>): Uint8Array {
   // 0x08: pointer
   if (data?.wch !== undefined) view.setBigUint64(8, data.wch === null ? 0n : BigInt(util.toPointer(data.wch)), true);
   return buf;
+}
+
+export class LIGATURE5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VirtualKey(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get ModificationNumber(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  get wch(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set VirtualKey(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set ModificationNumber(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: pad5
+
+  // 0x08: pointer
+  set wch(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -1019,6 +1957,43 @@ export function allocVSC_LPWSTR(data?: Partial<VSC_LPWSTR>): Uint8Array {
     view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
+}
+
+export class VSC_LPWSTRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get vsc(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: buffer
+  get pwsz(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set vsc(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: buffer
+  set pwsz(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
 }
 
 /**
@@ -1101,6 +2076,195 @@ export function allocKBDTABLES(data?: Partial<KBDTABLES>): Uint8Array {
   return buf;
 }
 
+export class KBDTABLESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pCharModifiers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get pVkToWcharTable(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pDeadKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pKeyNames(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pKeyNamesExt(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get pKeyNamesDead(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get pusVSCtoVK(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u8
+  get bMaxVSCtoVK(): number {
+    return this.view.getUint8(56);
+  }
+
+  // 0x39: pad7
+
+  // 0x40: pointer
+  get pVSCtoVK_E0(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get pVSCtoVK_E1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u32
+  get fLocaleFlags(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u8
+  get nLgMax(): number {
+    return this.view.getUint8(84);
+  }
+
+  // 0x55: u8
+  get cbLgEntry(): number {
+    return this.view.getUint8(85);
+  }
+
+  // 0x56: pad2
+
+  // 0x58: pointer
+  get pLigature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: u32
+  get dwType(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get dwSubType(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x00: pointer
+  set pCharModifiers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set pVkToWcharTable(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pDeadKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set pKeyNames(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pKeyNamesExt(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set pKeyNamesDead(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set pusVSCtoVK(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u8
+  set bMaxVSCtoVK(value: number) {
+    this.view.setUint8(56, value);
+  }
+
+  // 0x39: pad7
+
+  // 0x40: pointer
+  set pVSCtoVK_E0(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set pVSCtoVK_E1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u32
+  set fLocaleFlags(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u8
+  set nLgMax(value: number) {
+    this.view.setUint8(84, value);
+  }
+
+  // 0x55: u8
+  set cbLgEntry(value: number) {
+    this.view.setUint8(85, value);
+  }
+
+  // 0x56: pad2
+
+  // 0x58: pointer
+  set pLigature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: u32
+  set dwType(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set dwSubType(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.VK_FPARAM (size: 8)
  */
@@ -1122,6 +2286,41 @@ export function allocVK_FPARAM(data?: Partial<VK_FPARAM>): Uint8Array {
   if (data?.NLSFEProcParam !== undefined) view.setUint32(1, Number(data.NLSFEProcParam), true);
   // 0x05: pad3
   return buf;
+}
+
+export class VK_FPARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get NLSFEProcIndex(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u32
+  get NLSFEProcParam(): number {
+    return this.view.getUint32(1, true);
+  }
+
+  // 0x05: pad3
+
+  // 0x00: u8
+  set NLSFEProcIndex(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u32
+  set NLSFEProcParam(value: number) {
+    this.view.setUint32(1, value, true);
+  }
+
+  // 0x05: pad3
 }
 
 /**
@@ -1163,6 +2362,83 @@ export function allocVK_F(data?: Partial<VK_F>): Uint8Array {
   return buf;
 }
 
+export class VK_FView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Vk(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get NLSFEProcType(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get NLSFEProcCurrent(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get NLSFEProcSwitch(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get NLSFEProc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get NLSFEProcAlt(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set Vk(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set NLSFEProcType(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set NLSFEProcCurrent(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set NLSFEProcSwitch(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set NLSFEProc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set NLSFEProcAlt(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.KBDNLSTABLES (size: 32)
  */
@@ -1202,6 +2478,83 @@ export function allocKBDNLSTABLES(data?: Partial<KBDNLSTABLES>): Uint8Array {
   return buf;
 }
 
+export class KBDNLSTABLESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get OEMIdentifier(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get LayoutInformation(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get NumOfVkToF(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get pVkToF(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get NumOfMouseVKey(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pusMouseVKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set OEMIdentifier(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set LayoutInformation(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set NumOfVkToF(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set pVkToF(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set NumOfMouseVKey(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pusMouseVKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.KBDTABLE_DESC (size: 16)
  */
@@ -1228,6 +2581,48 @@ export function allocKBDTABLE_DESC(data?: Partial<KBDTABLE_DESC>): Uint8Array {
   return buf;
 }
 
+export class KBDTABLE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wszDllName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwSubType(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set wszDllName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwSubType(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.KBDTABLE_MULTI (size: 16)
  */
@@ -1249,6 +2644,42 @@ export function allocKBDTABLE_MULTI(data?: Partial<KBDTABLE_MULTI>): Uint8Array 
   // 0x08: pointer
   if (data?.aKbdTables !== undefined) view.setBigUint64(8, data.aKbdTables === null ? 0n : BigInt(util.toPointer(data.aKbdTables)), true);
   return buf;
+}
+
+export class KBDTABLE_MULTIView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nTables(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get aKbdTables(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set nTables(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set aKbdTables(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1276,6 +2707,51 @@ export function allocKBD_TYPE_INFO(data?: Partial<KBD_TYPE_INFO>): Uint8Array {
   if (data?.dwSubType !== undefined) view.setUint32(8, Number(data.dwSubType), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class KBD_TYPE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwSubType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwSubType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -1309,6 +2785,61 @@ export function allocMOUSEMOVEPOINT(data?: Partial<MOUSEMOVEPOINT>): Uint8Array 
   return buf;
 }
 
+export class MOUSEMOVEPOINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get time(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get dwExtraInfo(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set time(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set dwExtraInfo(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+}
+
 export type HWND = Deno.PointerValue;
 
 /**
@@ -1340,6 +2871,62 @@ export function allocTRACKMOUSEEVENT(data?: Partial<TRACKMOUSEEVENT>): Uint8Arra
   if (data?.dwHoverTime !== undefined) view.setUint32(16, Number(data.dwHoverTime), true);
   // 0x14: pad4
   return buf;
+}
+
+export class TRACKMOUSEEVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hwndTrack(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwHoverTime(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hwndTrack(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwHoverTime(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -1381,6 +2968,81 @@ export function allocMOUSEINPUT(data?: Partial<MOUSEINPUT>): Uint8Array {
   return buf;
 }
 
+export class MOUSEINPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get dx(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get dy(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get mouseData(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwFlags(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get time(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  get dwExtraInfo(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: i32
+  set dx(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set dy(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set mouseData(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set time(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: usize
+  set dwExtraInfo(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.KEYBDINPUT (size: 24)
  */
@@ -1416,6 +3078,71 @@ export function allocKEYBDINPUT(data?: Partial<KEYBDINPUT>): Uint8Array {
   return buf;
 }
 
+export class KEYBDINPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wVk(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wScan(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get time(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  get dwExtraInfo(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: u16
+  set wVk(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wScan(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set time(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: usize
+  set dwExtraInfo(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.HARDWAREINPUT (size: 8)
  */
@@ -1442,6 +3169,47 @@ export function allocHARDWAREINPUT(data?: Partial<HARDWAREINPUT>): Uint8Array {
   return buf;
 }
 
+export class HARDWAREINPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get uMsg(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get wParamL(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wParamH(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x00: u32
+  set uMsg(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set wParamL(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wParamH(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -1464,6 +3232,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -1484,6 +3283,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1509,6 +3341,42 @@ export function allocINPUT(data?: Partial<INPUT>): Uint8Array {
   return buf;
 }
 
+export class INPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get type(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set type(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.LASTINPUTINFO (size: 8)
  */
@@ -1529,6 +3397,37 @@ export function allocLASTINPUTINFO(data?: Partial<LASTINPUTINFO>): Uint8Array {
   // 0x04: u32
   if (data?.dwTime !== undefined) view.setUint32(4, Number(data.dwTime), true);
   return buf;
+}
+
+export class LASTINPUTINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwTime(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwTime(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 export type BOOL = number;
@@ -1559,6 +3458,37 @@ export function allocPOINT(data?: Partial<POINT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   return buf;
+}
+
+export class POINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 // Native Libraries
@@ -1699,7 +3629,7 @@ try {
       result: "u32",
     },
     VkKeyScanA: {
-      parameters: ["pointer"],
+      parameters: ["u8"],
       result: "i16",
     },
     VkKeyScanW: {
@@ -1707,7 +3637,7 @@ try {
       result: "i16",
     },
     VkKeyScanExA: {
-      parameters: ["pointer", "pointer"],
+      parameters: ["u8", "pointer"],
       result: "i16",
     },
     VkKeyScanExW: {
@@ -2004,9 +3934,9 @@ export function OemKeyScan(
 }
 
 export function VkKeyScanA(
-  ch: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.CHAR */,
+  ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanA(util.toPointer(ch));
+  return libUSER32_dll.VkKeyScanA(util.charToFfi(ch));
 }
 
 export function VkKeyScanW(
@@ -2016,10 +3946,10 @@ export function VkKeyScanW(
 }
 
 export function VkKeyScanExA(
-  ch: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.CHAR */,
+  ch: string | number /* Windows.Win32.Foundation.CHAR */,
   dwhkl: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanExA(util.toPointer(ch), util.toPointer(dwhkl));
+  return libUSER32_dll.VkKeyScanExA(util.charToFfi(ch), util.toPointer(dwhkl));
 }
 
 export function VkKeyScanExW(

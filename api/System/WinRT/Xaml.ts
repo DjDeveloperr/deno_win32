@@ -31,6 +31,31 @@ export function allocTrackerHandle__(data?: Partial<TrackerHandle__>): Uint8Arra
   return buf;
 }
 
+export class TrackerHandle__View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get unused(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set unused(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 // Native Libraries
 
 // Symbols

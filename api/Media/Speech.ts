@@ -1204,6 +1204,69 @@ export function allocSPEVENT(data?: Partial<SPEVENT>): Uint8Array {
   return buf;
 }
 
+export class SPEVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get _bitfield(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get ulStreamNum(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get ullAudioStreamOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get wParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get lParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set _bitfield(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulStreamNum(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set ullAudioStreamOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set wParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set lParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSERIALIZEDEVENT (size: 24)
  */
@@ -1238,6 +1301,67 @@ export function allocSPSERIALIZEDEVENT(data?: Partial<SPSERIALIZEDEVENT>): Uint8
   return buf;
 }
 
+export class SPSERIALIZEDEVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get _bitfield(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get ulStreamNum(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get ullAudioStreamOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get SerializedwParam(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get SerializedlParam(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: i32
+  set _bitfield(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulStreamNum(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set ullAudioStreamOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set SerializedwParam(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set SerializedlParam(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSERIALIZEDEVENT64 (size: 32)
  */
@@ -1270,6 +1394,67 @@ export function allocSPSERIALIZEDEVENT64(data?: Partial<SPSERIALIZEDEVENT64>): U
   // 0x18: i64
   if (data?.SerializedlParam !== undefined) view.setBigInt64(24, BigInt(data.SerializedlParam), true);
   return buf;
+}
+
+export class SPSERIALIZEDEVENT64View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get _bitfield(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get ulStreamNum(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get ullAudioStreamOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get SerializedwParam(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: i64
+  get SerializedlParam(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(24, true));
+  }
+
+  // 0x00: i32
+  set _bitfield(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulStreamNum(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set ullAudioStreamOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set SerializedwParam(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: i64
+  set SerializedlParam(value: Deno.PointerValue) {
+    this.view.setBigInt64(24, BigInt(value), true);
+  }
 }
 
 /**
@@ -1310,6 +1495,79 @@ export function allocSPEVENTEX(data?: Partial<SPEVENTEX>): Uint8Array {
   return buf;
 }
 
+export class SPEVENTEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get _bitfield(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get ulStreamNum(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get ullAudioStreamOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: pointer
+  get wParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get lParam(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u64
+  get ullAudioTimeOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x00: i32
+  set _bitfield(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulStreamNum(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set ullAudioStreamOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: pointer
+  set wParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set lParam(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u64
+  set ullAudioTimeOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPEVENTSOURCEINFO (size: 24)
  */
@@ -1335,6 +1593,51 @@ export function allocSPEVENTSOURCEINFO(data?: Partial<SPEVENTSOURCEINFO>): Uint8
   if (data?.ulCount !== undefined) view.setUint32(16, Number(data.ulCount), true);
   // 0x14: pad4
   return buf;
+}
+
+export class SPEVENTSOURCEINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get ullEventInterest(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get ullQueuedInterest(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get ulCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u64
+  set ullEventInterest(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set ullQueuedInterest(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set ulCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -1380,6 +1683,91 @@ export function allocSPAUDIOSTATUS(data?: Partial<SPAUDIOSTATUS>): Uint8Array {
   return buf;
 }
 
+export class SPAUDIOSTATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get cbFreeBuffSpace(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get cbNonBlockingIO(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get State(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  get CurSeekPos(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get CurDevicePos(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get dwAudioLevel(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: i32
+  set cbFreeBuffSpace(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cbNonBlockingIO(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set State(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  set CurSeekPos(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set CurDevicePos(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set dwAudioLevel(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPAUDIOBUFFERINFO (size: 16)
  */
@@ -1405,6 +1793,51 @@ export function allocSPAUDIOBUFFERINFO(data?: Partial<SPAUDIOBUFFERINFO>): Uint8
   if (data?.ulMsEventBias !== undefined) view.setUint32(8, Number(data.ulMsEventBias), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class SPAUDIOBUFFERINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulMsMinNotification(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulMsBufferSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulMsEventBias(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set ulMsMinNotification(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulMsBufferSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulMsEventBias(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -1485,6 +1918,162 @@ export function allocSPPHRASEELEMENT(data?: Partial<SPPHRASEELEMENT>): Uint8Arra
   return buf;
 }
 
+export class SPPHRASEELEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulAudioTimeOffset(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulAudioSizeTime(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulAudioStreamOffset(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulAudioSizeBytes(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ulRetainedStreamOffset(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ulRetainedSizeBytes(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: buffer
+  get pszDisplayText(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get pszLexicalForm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get pszPronunciation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bDisplayAttributes(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: i8
+  get RequiredConfidence(): number {
+    return this.view.getInt8(49);
+  }
+
+  // 0x32: i8
+  get ActualConfidence(): number {
+    return this.view.getInt8(50);
+  }
+
+  // 0x33: u8
+  get Reserved(): number {
+    return this.view.getUint8(51);
+  }
+
+  // 0x34: f32
+  get SREngineConfidence(): number {
+    return this.view.getFloat32(52, true);
+  }
+
+  // 0x00: u32
+  set ulAudioTimeOffset(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulAudioSizeTime(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulAudioStreamOffset(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulAudioSizeBytes(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ulRetainedStreamOffset(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ulRetainedSizeBytes(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: buffer
+  set pszDisplayText(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set pszLexicalForm(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set pszPronunciation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bDisplayAttributes(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: i8
+  set RequiredConfidence(value: number) {
+    this.view.setInt8(49, value);
+  }
+
+  // 0x32: i8
+  set ActualConfidence(value: number) {
+    this.view.setInt8(50, value);
+  }
+
+  // 0x33: u8
+  set Reserved(value: number) {
+    this.view.setUint8(51, value);
+  }
+
+  // 0x34: f32
+  set SREngineConfidence(value: number) {
+    this.view.setFloat32(52, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPPHRASERULE (size: 48)
  */
@@ -1536,6 +2125,109 @@ export function allocSPPHRASERULE(data?: Partial<SPPHRASERULE>): Uint8Array {
   return buf;
 }
 
+export class SPPHRASERULEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ulId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulFirstElement(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ulCountOfElements(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pNextSibling(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pFirstChild(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: f32
+  get SREngineConfidence(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: i8
+  get Confidence(): number {
+    return this.view.getInt8(44);
+  }
+
+  // 0x2d: pad3
+
+  // 0x00: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set ulId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulFirstElement(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ulCountOfElements(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pNextSibling(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pFirstChild(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: f32
+  set SREngineConfidence(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: i8
+  set Confidence(value: number) {
+    this.view.setInt8(44, value);
+  }
+
+  // 0x2d: pad3
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -1556,6 +2248,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   // 0x08: u64
   if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
   return buf;
+}
+
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 /**
@@ -1580,6 +2303,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   return buf;
 }
 
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.Com.VARIANT (size: 8)
  */
@@ -1596,6 +2352,28 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
   // 0x00: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class VARIANTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1659,6 +2437,129 @@ export function allocSPPHRASEPROPERTY(data?: Partial<SPPHRASEPROPERTY>): Uint8Ar
   return buf;
 }
 
+export class SPPHRASEPROPERTYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pszValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get vValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get ulFirstElement(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get ulCountOfElements(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get pNextSibling(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get pFirstChild(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: f32
+  get SREngineConfidence(): number {
+    return this.view.getFloat32(56, true);
+  }
+
+  // 0x3c: i8
+  get Confidence(): number {
+    return this.view.getInt8(60);
+  }
+
+  // 0x3d: pad3
+
+  // 0x00: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set pszValue(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set vValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set ulFirstElement(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set ulCountOfElements(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set pNextSibling(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set pFirstChild(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: f32
+  set SREngineConfidence(value: number) {
+    this.view.setFloat32(56, value, true);
+  }
+
+  // 0x3c: i8
+  set Confidence(value: number) {
+    this.view.setInt8(60, value);
+  }
+
+  // 0x3d: pad3
+}
+
 /**
  * Windows.Win32.Media.Speech.SPPHRASEREPLACEMENT (size: 24)
  */
@@ -1691,6 +2592,63 @@ export function allocSPPHRASEREPLACEMENT(data?: Partial<SPPHRASEREPLACEMENT>): U
   // 0x14: u32
   if (data?.ulCountOfElements !== undefined) view.setUint32(20, Number(data.ulCountOfElements), true);
   return buf;
+}
+
+export class SPPHRASEREPLACEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get bDisplayAttributes(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: buffer
+  get pszReplacementText(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ulFirstElement(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ulCountOfElements(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u8
+  set bDisplayAttributes(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: buffer
+  set pszReplacementText(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set ulFirstElement(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ulCountOfElements(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 export type HRESULT = number;
@@ -1737,6 +2695,78 @@ export function allocSPSEMANTICERRORINFO(data?: Partial<SPSEMANTICERRORINFO>): U
   // 0x20: pointer
   if (data?.hrResultCode !== undefined) view.setBigUint64(32, data.hrResultCode === null ? 0n : BigInt(util.toPointer(data.hrResultCode)), true);
   return buf;
+}
+
+export class SPSEMANTICERRORINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulLineNumber(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get pszScriptLine(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pszSource(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get pszDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get hrResultCode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulLineNumber(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set pszScriptLine(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set pszSource(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set pszDescription(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set hrResultCode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1824,6 +2854,205 @@ export function allocSPPHRASE_50(data?: Partial<SPPHRASE_50>): Uint8Array {
   return buf;
 }
 
+export class SPPHRASE_50View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get LangID(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wHomophoneGroupId(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u64
+  get ullGrammarID(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get ftStartTime(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get ullAudioStreamPosition(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get ulAudioSizeBytes(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get ulRetainedSizeBytes(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get ulAudioSizeTime(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get Rule(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pProperties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get pElements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get cReplacements(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get pReplacements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get SREngineID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: u32
+  get ulSREnginePrivateDataSize(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: pad4
+
+  // 0x68: pointer
+  get pSREnginePrivateData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set LangID(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wHomophoneGroupId(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u64
+  set ullGrammarID(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set ftStartTime(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set ullAudioStreamPosition(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set ulAudioSizeBytes(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set ulRetainedSizeBytes(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set ulAudioSizeTime(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set Rule(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pProperties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set pElements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set cReplacements(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set pReplacements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set SREngineID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: u32
+  set ulSREnginePrivateDataSize(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: pad4
+
+  // 0x68: pointer
+  set pSREnginePrivateData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPPHRASE (size: 24)
  */
@@ -1853,6 +3082,51 @@ export function allocSPPHRASE(data?: Partial<SPPHRASE>): Uint8Array {
   return buf;
 }
 
+export class SPPHRASEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Base(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pSML(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pSemanticErrorInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Base(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set pSML(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set pSemanticErrorInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSERIALIZEDPHRASE (size: 8)
  */
@@ -1870,6 +3144,31 @@ export function allocSPSERIALIZEDPHRASE(data?: Partial<SPSERIALIZEDPHRASE>): Uin
   if (data?.ulSerializedSize !== undefined) view.setUint32(0, Number(data.ulSerializedSize), true);
   // 0x04: pad4
   return buf;
+}
+
+export class SPSERIALIZEDPHRASEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSerializedSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set ulSerializedSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -1901,6 +3200,49 @@ export function allocSPRULE(data?: Partial<SPRULE>): Uint8Array {
   return buf;
 }
 
+export class SPRULEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszRuleName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ulRuleId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwAttributes(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: buffer
+  set pszRuleName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set ulRuleId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwAttributes(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPBINARYGRAMMAR (size: 8)
  */
@@ -1920,6 +3262,31 @@ export function allocSPBINARYGRAMMAR(data?: Partial<SPBINARYGRAMMAR>): Uint8Arra
   return buf;
 }
 
+export class SPBINARYGRAMMARView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulTotalSerializedSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set ulTotalSerializedSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSTATEHANDLE__ (size: 8)
  */
@@ -1937,6 +3304,31 @@ export function allocSPSTATEHANDLE__(data?: Partial<SPSTATEHANDLE__>): Uint8Arra
   if (data?.unused !== undefined) view.setInt32(0, Number(data.unused), true);
   // 0x04: pad4
   return buf;
+}
+
+export class SPSTATEHANDLE__View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get unused(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set unused(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -1978,6 +3370,83 @@ export function allocSPWORDPRONUNCIATION(data?: Partial<SPWORDPRONUNCIATION>): U
   return buf;
 }
 
+export class SPWORDPRONUNCIATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNextWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get eLexiconType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u16
+  get LangID(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get wPronunciationFlags(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i32
+  get ePartOfSpeech(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get szPronunciation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNextWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set eLexiconType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set LangID(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set wPronunciationFlags(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i32
+  set ePartOfSpeech(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set szPronunciation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPWORDPRONUNCIATIONLIST (size: 24)
  */
@@ -2003,6 +3472,53 @@ export function allocSPWORDPRONUNCIATIONLIST(data?: Partial<SPWORDPRONUNCIATIONL
   // 0x10: pointer
   if (data?.pFirstWordPronunciation !== undefined) view.setBigUint64(16, data.pFirstWordPronunciation === null ? 0n : BigInt(util.toPointer(data.pFirstWordPronunciation)), true);
   return buf;
+}
+
+export class SPWORDPRONUNCIATIONLISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2046,6 +3562,81 @@ export function allocSPWORD(data?: Partial<SPWORD>): Uint8Array {
   return buf;
 }
 
+export class SPWORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNextWord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get LangID(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get wReserved(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: i32
+  get eWordType(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: buffer
+  get pszWord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNextWord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set LangID(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set wReserved(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: i32
+  set eWordType(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: buffer
+  set pszWord(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPWORDLIST (size: 24)
  */
@@ -2071,6 +3662,53 @@ export function allocSPWORDLIST(data?: Partial<SPWORDLIST>): Uint8Array {
   // 0x10: pointer
   if (data?.pFirstWord !== undefined) view.setBigUint64(16, data.pFirstWord === null ? 0n : BigInt(util.toPointer(data.pFirstWord)), true);
   return buf;
+}
+
+export class SPWORDLISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pFirstWord(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pFirstWord(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2114,6 +3752,76 @@ export function allocSPSHORTCUTPAIR(data?: Partial<SPSHORTCUTPAIR>): Uint8Array 
   return buf;
 }
 
+export class SPSHORTCUTPAIRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pNextSHORTCUTPAIR(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get LangID(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: i32
+  get shType(): number {
+    return this.view.getInt32(10, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x10: buffer
+  get pszDisplay(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get pszSpoken(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set pNextSHORTCUTPAIR(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set LangID(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: i32
+  set shType(value: number) {
+    this.view.setInt32(10, value, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x10: buffer
+  set pszDisplay(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set pszSpoken(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSHORTCUTPAIRLIST (size: 24)
  */
@@ -2141,6 +3849,53 @@ export function allocSPSHORTCUTPAIRLIST(data?: Partial<SPSHORTCUTPAIRLIST>): Uin
   return buf;
 }
 
+export class SPSHORTCUTPAIRLISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get pFirstShortcutPair(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set pFirstShortcutPair(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPVPITCH (size: 8)
  */
@@ -2161,6 +3916,37 @@ export function allocSPVPITCH(data?: Partial<SPVPITCH>): Uint8Array {
   // 0x04: i32
   if (data?.RangeAdj !== undefined) view.setInt32(4, Number(data.RangeAdj), true);
   return buf;
+}
+
+export class SPVPITCHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get MiddleAdj(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get RangeAdj(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set MiddleAdj(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set RangeAdj(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -2196,6 +3982,53 @@ export function allocSPVCONTEXT(data?: Partial<SPVCONTEXT>): Uint8Array {
     view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
+}
+
+export class SPVCONTEXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pCategory(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pBefore(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get pAfter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pCategory(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pBefore(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set pAfter(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
 }
 
 /**
@@ -2257,6 +4090,142 @@ export function allocSPVSTATE(data?: Partial<SPVSTATE>): Uint8Array {
   // 0x38: pointer
   if (data?.Context !== undefined) view.setBigUint64(56, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
   return buf;
+}
+
+export class SPVSTATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get eAction(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u16
+  get LangID(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wReserved(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: i32
+  get EmphAdj(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get RateAdj(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get Volume(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get PitchAdj(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get SilenceMSecs(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get pPhoneIds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: i32
+  get ePartOfSpeech(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  get Context(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set eAction(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u16
+  set LangID(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wReserved(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: i32
+  set EmphAdj(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set RateAdj(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Volume(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set PitchAdj(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set SilenceMSecs(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set pPhoneIds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: i32
+  set ePartOfSpeech(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  set Context(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2326,6 +4295,152 @@ export function allocSPVOICESTATUS(data?: Partial<SPVOICESTATUS>): Uint8Array {
   return buf;
 }
 
+export class SPVOICESTATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulCurrentStream(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ulLastStreamQueued(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get hrLastResult(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwRunningState(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ulInputWordPos(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get ulInputWordLen(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get ulInputSentPos(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get ulInputSentLen(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get lBookmarkId(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: u16
+  get PhonemeId(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: i32
+  get VisemeId(): number {
+    return this.view.getInt32(42, true);
+  }
+
+  // 0x2e: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(46, true);
+  }
+
+  // 0x32: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x00: u32
+  set ulCurrentStream(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ulLastStreamQueued(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set hrLastResult(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwRunningState(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ulInputWordPos(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set ulInputWordLen(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set ulInputSentPos(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set ulInputSentLen(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set lBookmarkId(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: u16
+  set PhonemeId(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: i32
+  set VisemeId(value: number) {
+    this.view.setInt32(42, value, true);
+  }
+
+  // 0x2e: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(46, value, true);
+  }
+
+  // 0x32: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(50, value, true);
+  }
+
+  // 0x36: pad2
+}
+
 /**
  * Windows.Win32.Foundation.FILETIME (size: 8)
  */
@@ -2346,6 +4461,37 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
   // 0x04: u32
   if (data?.dwHighDateTime !== undefined) view.setUint32(4, Number(data.dwHighDateTime), true);
   return buf;
+}
+
+export class FILETIMEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwLowDateTime(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwHighDateTime(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwLowDateTime(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwHighDateTime(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2379,6 +4525,62 @@ export function allocSPRECORESULTTIMES(data?: Partial<SPRECORESULTTIMES>): Uint8
   return buf;
 }
 
+export class SPRECORESULTTIMESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ftStreamTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u64
+  get ullLength(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get dwTickCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: u64
+  get ullStart(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: pointer
+  set ftStreamTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u64
+  set ullLength(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set dwTickCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: u64
+  set ullStart(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPSERIALIZEDRESULT (size: 8)
  */
@@ -2396,6 +4598,31 @@ export function allocSPSERIALIZEDRESULT(data?: Partial<SPSERIALIZEDRESULT>): Uin
   if (data?.ulSerializedSize !== undefined) view.setUint32(0, Number(data.ulSerializedSize), true);
   // 0x04: pad4
   return buf;
+}
+
+export class SPSERIALIZEDRESULTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSerializedSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set ulSerializedSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2426,6 +4653,57 @@ export function allocSPTEXTSELECTIONINFO(data?: Partial<SPTEXTSELECTIONINFO>): U
   // 0x0c: u32
   if (data?.cchSelection !== undefined) view.setUint32(12, Number(data.cchSelection), true);
   return buf;
+}
+
+export class SPTEXTSELECTIONINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulStartActiveOffset(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cchActiveChars(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ulStartSelection(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cchSelection(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set ulStartActiveOffset(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cchActiveChars(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ulStartSelection(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cchSelection(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -2465,6 +4743,66 @@ export function allocSPPROPERTYINFO(data?: Partial<SPPROPERTYINFO>): Uint8Array 
   return buf;
 }
 
+export class SPPROPERTYINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ulId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get pszValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get vValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set ulId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set pszValue(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set vValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPRECOCONTEXTSTATUS (size: 24)
  */
@@ -2494,6 +4832,62 @@ export function allocSPRECOCONTEXTSTATUS(data?: Partial<SPRECOCONTEXTSTATUS>): U
   // 0x14: u32
   if (data?.dwReserved2 !== undefined) view.setUint32(20, Number(data.dwReserved2), true);
   return buf;
+}
+
+export class SPRECOCONTEXTSTATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get eInterference(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get szRequestTypeOfUI(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: i32
+  set eInterference(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set szRequestTypeOfUI(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -2543,6 +4937,104 @@ export function allocSPRECOGNIZERSTATUS(data?: Partial<SPRECOGNIZERSTATUS>): Uin
   return buf;
 }
 
+export class SPRECOGNIZERSTATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AudioStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u64
+  get ullRecognitionStreamPos(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u32
+  get ulStreamNumber(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ulNumActive(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get clsidEngine(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get cLangIDs(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get aLangID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u64
+  get ullRecognitionStreamTime(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(48, true));
+  }
+
+  // 0x00: pointer
+  set AudioStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u64
+  set ullRecognitionStreamPos(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u32
+  set ulStreamNumber(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ulNumActive(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set clsidEngine(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set cLangIDs(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set aLangID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u64
+  set ullRecognitionStreamTime(value: Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Speech.SPNORMALIZATIONLIST (size: 16)
  */
@@ -2564,6 +5056,42 @@ export function allocSPNORMALIZATIONLIST(data?: Partial<SPNORMALIZATIONLIST>): U
   // 0x08: pointer
   if (data?.ppszzNormalizedList !== undefined) view.setBigUint64(8, data.ppszzNormalizedList === null ? 0n : BigInt(util.toPointer(data.ppszzNormalizedList)), true);
   return buf;
+}
+
+export class SPNORMALIZATIONLISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ppszzNormalizedList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ppszzNormalizedList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2599,6 +5127,55 @@ export function allocSPDISPLAYTOKEN(data?: Partial<SPDISPLAYTOKEN>): Uint8Array 
   return buf;
 }
 
+export class SPDISPLAYTOKENView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pszLexical(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pszDisplay(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get bDisplayAttributes(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x00: buffer
+  set pszLexical(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pszDisplay(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u8
+  set bDisplayAttributes(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
+}
+
 /**
  * Windows.Win32.Media.Speech.SPDISPLAYPHRASE (size: 16)
  */
@@ -2620,6 +5197,42 @@ export function allocSPDISPLAYPHRASE(data?: Partial<SPDISPLAYPHRASE>): Uint8Arra
   // 0x08: pointer
   if (data?.pTokens !== undefined) view.setBigUint64(8, data.pTokens === null ? 0n : BigInt(util.toPointer(data.pTokens)), true);
   return buf;
+}
+
+export class SPDISPLAYPHRASEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulNumTokens(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pTokens(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulNumTokens(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pTokens(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

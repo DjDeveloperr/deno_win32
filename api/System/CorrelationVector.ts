@@ -18,7 +18,7 @@ export type CHAR = number;
  */
 export interface CORRELATION_VECTOR {
   /** Windows.Win32.Foundation.CHAR */
-  Version: Uint8Array | Deno.PointerValue | null;
+  Version: string | number;
   /** array */
   Vector: Deno.PointerValue | null;
 }
@@ -28,11 +28,48 @@ export const sizeofCORRELATION_VECTOR = 16;
 export function allocCORRELATION_VECTOR(data?: Partial<CORRELATION_VECTOR>): Uint8Array {
   const buf = new Uint8Array(sizeofCORRELATION_VECTOR);
   const view = new DataView(buf.buffer);
-  // 0x00: pointer
-  if (data?.Version !== undefined) view.setBigUint64(0, data.Version === null ? 0n : BigInt(util.toPointer(data.Version)), true);
+  // 0x00: u8
+  if (data?.Version !== undefined) view.setUint8(0, Number(data.Version));
+  // 0x01: pad7
   // 0x08: pointer
   if (data?.Vector !== undefined) view.setBigUint64(8, data.Vector === null ? 0n : BigInt(util.toPointer(data.Vector)), true);
   return buf;
+}
+
+export class CORRELATION_VECTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get Version(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  get Vector(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set Version(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  set Vector(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

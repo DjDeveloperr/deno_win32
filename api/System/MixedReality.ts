@@ -30,6 +30,48 @@ export function allocPERCEPTION_PAYLOAD_FIELD(data?: Partial<PERCEPTION_PAYLOAD_
   return buf;
 }
 
+export class PERCEPTION_PAYLOAD_FIELDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get FieldId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get OffsetInBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get SizeInBytes(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set FieldId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set OffsetInBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set SizeInBytes(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.System.MixedReality.PERCEPTION_STATE_STREAM_TIMESTAMPS (size: 16)
  */
@@ -50,6 +92,37 @@ export function allocPERCEPTION_STATE_STREAM_TIMESTAMPS(data?: Partial<PERCEPTIO
   // 0x08: i64
   if (data?.AvailableTimestampInQpcCounts !== undefined) view.setBigInt64(8, BigInt(data.AvailableTimestampInQpcCounts), true);
   return buf;
+}
+
+export class PERCEPTION_STATE_STREAM_TIMESTAMPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i64
+  get InputTimestampInQpcCounts(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(0, true));
+  }
+
+  // 0x08: i64
+  get AvailableTimestampInQpcCounts(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(8, true));
+  }
+
+  // 0x00: i64
+  set InputTimestampInQpcCounts(value: Deno.PointerValue) {
+    this.view.setBigInt64(0, BigInt(value), true);
+  }
+
+  // 0x08: i64
+  set AvailableTimestampInQpcCounts(value: Deno.PointerValue) {
+    this.view.setBigInt64(8, BigInt(value), true);
+  }
 }
 
 // Native Libraries

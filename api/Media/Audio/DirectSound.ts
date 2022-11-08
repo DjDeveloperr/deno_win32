@@ -413,6 +413,257 @@ export function allocDSCAPS(data?: Partial<DSCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwMinSecondarySampleRate(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwMaxSecondarySampleRate(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwPrimaryBuffers(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwMaxHwMixingAllBuffers(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwMaxHwMixingStaticBuffers(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwMaxHwMixingStreamingBuffers(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwFreeHwMixingAllBuffers(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwFreeHwMixingStaticBuffers(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwFreeHwMixingStreamingBuffers(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dwMaxHw3DAllBuffers(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get dwMaxHw3DStaticBuffers(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwMaxHw3DStreamingBuffers(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get dwFreeHw3DAllBuffers(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get dwFreeHw3DStaticBuffers(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get dwFreeHw3DStreamingBuffers(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get dwTotalHwMemBytes(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get dwFreeHwMemBytes(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get dwMaxContigFreeHwMemBytes(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get dwUnlockTransferRateHwBuffers(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get dwPlayCpuOverheadSwBuffers(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwMinSecondarySampleRate(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwMaxSecondarySampleRate(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwPrimaryBuffers(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwMaxHwMixingAllBuffers(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwMaxHwMixingStaticBuffers(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwMaxHwMixingStreamingBuffers(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwFreeHwMixingAllBuffers(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwFreeHwMixingStaticBuffers(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwFreeHwMixingStreamingBuffers(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dwMaxHw3DAllBuffers(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set dwMaxHw3DStaticBuffers(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwMaxHw3DStreamingBuffers(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set dwFreeHw3DAllBuffers(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set dwFreeHw3DStaticBuffers(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set dwFreeHw3DStreamingBuffers(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set dwTotalHwMemBytes(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set dwFreeHwMemBytes(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set dwMaxContigFreeHwMemBytes(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set dwUnlockTransferRateHwBuffers(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set dwPlayCpuOverheadSwBuffers(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBCAPS (size: 24)
  */
@@ -448,6 +699,71 @@ export function allocDSBCAPS(data?: Partial<DSBCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSBCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwUnlockTransferRate(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwPlayCpuOverhead(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwUnlockTransferRate(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwPlayCpuOverhead(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSEFFECTDESC (size: 32)
  */
@@ -480,6 +796,68 @@ export function allocDSEFFECTDESC(data?: Partial<DSEFFECTDESC>): Uint8Array {
   // 0x18: usize
   if (data?.dwReserved2 !== undefined) view.setBigUint64(24, BigInt(data.dwReserved2), true);
   return buf;
+}
+
+export class DSEFFECTDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidDSFXClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get dwReserved1(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: usize
+  get dwReserved2(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidDSFXClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: usize
+  set dwReserved1(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: usize
+  set dwReserved2(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
 }
 
 /**
@@ -520,6 +898,79 @@ export function allocDSCEFFECTDESC(data?: Partial<DSCEFFECTDESC>): Uint8Array {
   return buf;
 }
 
+export class DSCEFFECTDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get guidDSCFXClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get guidDSCFXInstance(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwReserved2(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set guidDSCFXClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set guidDSCFXInstance(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwReserved2(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBUFFERDESC (size: 32)
  */
@@ -558,6 +1009,79 @@ export function allocDSBUFFERDESC(data?: Partial<DSBUFFERDESC>): Uint8Array {
   return buf;
 }
 
+export class DSBUFFERDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get guid3DAlgorithm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set guid3DAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBUFFERDESC1 (size: 24)
  */
@@ -592,6 +1116,68 @@ export function allocDSBUFFERDESC1(data?: Partial<DSBUFFERDESC1>): Uint8Array {
   return buf;
 }
 
+export class DSBUFFERDESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D.D3DVECTOR (size: 16)
  */
@@ -617,6 +1203,51 @@ export function allocD3DVECTOR(data?: Partial<D3DVECTOR>): Uint8Array {
   if (data?.z !== undefined) view.setFloat32(8, Number(data.z), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class D3DVECTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get x(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get y(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get z(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set x(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set y(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set z(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -674,6 +1305,124 @@ export function allocDS3DBUFFER(data?: Partial<DS3DBUFFER>): Uint8Array {
   return buf;
 }
 
+export class DS3DBUFFERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get vPosition(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwInsideConeAngle(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwOutsideConeAngle(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get vConeOrientation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: i32
+  get lConeOutsideVolume(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: f32
+  get flMinDistance(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x30: f32
+  get flMaxDistance(): number {
+    return this.view.getFloat32(48, true);
+  }
+
+  // 0x34: u32
+  get dwMode(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwInsideConeAngle(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwOutsideConeAngle(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set vConeOrientation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: i32
+  set lConeOutsideVolume(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flMinDistance(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+
+  // 0x30: f32
+  set flMaxDistance(value: number) {
+    this.view.setFloat32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwMode(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DS3DLISTENER (size: 56)
  */
@@ -722,6 +1471,109 @@ export function allocDS3DLISTENER(data?: Partial<DS3DLISTENER>): Uint8Array {
   return buf;
 }
 
+export class DS3DLISTENERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get vPosition(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get vOrientFront(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get vOrientTop(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: f32
+  get flDistanceFactor(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get flRolloffFactor(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x30: f32
+  get flDopplerFactor(): number {
+    return this.view.getFloat32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set vOrientFront(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set vOrientTop(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: f32
+  set flDistanceFactor(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flRolloffFactor(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+
+  // 0x30: f32
+  set flDopplerFactor(value: number) {
+    this.view.setFloat32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCCAPS (size: 16)
  */
@@ -750,6 +1602,57 @@ export function allocDSCCAPS(data?: Partial<DSCCAPS>): Uint8Array {
   // 0x0c: u32
   if (data?.dwChannels !== undefined) view.setUint32(12, Number(data.dwChannels), true);
   return buf;
+}
+
+export class DSCCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwFormats(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwChannels(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwFormats(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwChannels(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -784,6 +1687,68 @@ export function allocDSCBUFFERDESC1(data?: Partial<DSCBUFFERDESC1>): Uint8Array 
   // 0x10: pointer
   if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
   return buf;
+}
+
+export class DSCBUFFERDESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -829,6 +1794,93 @@ export function allocDSCBUFFERDESC(data?: Partial<DSCBUFFERDESC>): Uint8Array {
   return buf;
 }
 
+export class DSCBUFFERDESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwFXCount(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get lpDSCFXDesc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwFXCount(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set lpDSCFXDesc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCBCAPS (size: 16)
  */
@@ -859,6 +1911,57 @@ export function allocDSCBCAPS(data?: Partial<DSCBCAPS>): Uint8Array {
   return buf;
 }
 
+export class DSCBCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwBufferBytes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwReserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwBufferBytes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwReserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 export type HANDLE = Deno.PointerValue;
 
 /**
@@ -884,6 +1987,42 @@ export function allocDSBPOSITIONNOTIFY(data?: Partial<DSBPOSITIONNOTIFY>): Uint8
   return buf;
 }
 
+export class DSBPOSITIONNOTIFYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwOffset(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get hEventNotify(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwOffset(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set hEventNotify(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXGargle (size: 8)
  */
@@ -904,6 +2043,37 @@ export function allocDSFXGargle(data?: Partial<DSFXGargle>): Uint8Array {
   // 0x04: u32
   if (data?.dwWaveShape !== undefined) view.setUint32(4, Number(data.dwWaveShape), true);
   return buf;
+}
+
+export class DSFXGargleView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwRateHz(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwWaveShape(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwRateHz(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwWaveShape(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -949,6 +2119,91 @@ export function allocDSFXChorus(data?: Partial<DSFXChorus>): Uint8Array {
   return buf;
 }
 
+export class DSFXChorusView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fDepth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fFrequency(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lWaveform(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: f32
+  get fDelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get lPhase(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fDepth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fFrequency(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lWaveform(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fDelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set lPhase(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXFlanger (size: 32)
  */
@@ -992,6 +2247,91 @@ export function allocDSFXFlanger(data?: Partial<DSFXFlanger>): Uint8Array {
   return buf;
 }
 
+export class DSFXFlangerView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fDepth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fFrequency(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lWaveform(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: f32
+  get fDelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get lPhase(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fDepth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fFrequency(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lWaveform(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fDelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set lPhase(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXEcho (size: 24)
  */
@@ -1027,6 +2367,71 @@ export function allocDSFXEcho(data?: Partial<DSFXEcho>): Uint8Array {
   return buf;
 }
 
+export class DSFXEchoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fWetDryMix(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fFeedback(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fLeftDelay(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fRightDelay(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: i32
+  get lPanDelay(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: f32
+  set fWetDryMix(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fFeedback(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fLeftDelay(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fRightDelay(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lPanDelay(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXDistortion (size: 24)
  */
@@ -1060,6 +2465,71 @@ export function allocDSFXDistortion(data?: Partial<DSFXDistortion>): Uint8Array 
   if (data?.fPreLowpassCutoff !== undefined) view.setFloat32(16, Number(data.fPreLowpassCutoff), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DSFXDistortionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fEdge(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fPostEQCenterFrequency(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fPostEQBandwidth(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get fPreLowpassCutoff(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: f32
+  set fGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fEdge(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fPostEQCenterFrequency(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fPostEQBandwidth(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set fPreLowpassCutoff(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -1100,6 +2570,77 @@ export function allocDSFXCompressor(data?: Partial<DSFXCompressor>): Uint8Array 
   return buf;
 }
 
+export class DSFXCompressorView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fAttack(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fRelease(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fThreshold(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get fRatio(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get fPredelay(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set fGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fAttack(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fRelease(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fThreshold(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set fRatio(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fPredelay(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXParamEq (size: 16)
  */
@@ -1125,6 +2666,51 @@ export function allocDSFXParamEq(data?: Partial<DSFXParamEq>): Uint8Array {
   if (data?.fGain !== undefined) view.setFloat32(8, Number(data.fGain), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class DSFXParamEqView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fCenter(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fBandwidth(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fGain(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set fCenter(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fBandwidth(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fGain(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -1189,6 +2775,137 @@ export function allocDSFXI3DL2Reverb(data?: Partial<DSFXI3DL2Reverb>): Uint8Arra
   return buf;
 }
 
+export class DSFXI3DL2ReverbView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get lRoom(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get lRoomHF(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: f32
+  get flRoomRolloffFactor(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get flDecayTime(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get flDecayHFRatio(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: i32
+  get lReflections(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: f32
+  get flReflectionsDelay(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: i32
+  get lReverb(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: f32
+  get flReverbDelay(): number {
+    return this.view.getFloat32(32, true);
+  }
+
+  // 0x24: f32
+  get flDiffusion(): number {
+    return this.view.getFloat32(36, true);
+  }
+
+  // 0x28: f32
+  get flDensity(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get flHFReference(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x00: i32
+  set lRoom(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lRoomHF(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: f32
+  set flRoomRolloffFactor(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set flDecayTime(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set flDecayHFRatio(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: i32
+  set lReflections(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: f32
+  set flReflectionsDelay(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set lReverb(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: f32
+  set flReverbDelay(value: number) {
+    this.view.setFloat32(32, value, true);
+  }
+
+  // 0x24: f32
+  set flDiffusion(value: number) {
+    this.view.setFloat32(36, value, true);
+  }
+
+  // 0x28: f32
+  set flDensity(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set flHFReference(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSFXWavesReverb (size: 16)
  */
@@ -1217,6 +2934,57 @@ export function allocDSFXWavesReverb(data?: Partial<DSFXWavesReverb>): Uint8Arra
   // 0x0c: f32
   if (data?.fHighFreqRTRatio !== undefined) view.setFloat32(12, Number(data.fHighFreqRTRatio), true);
   return buf;
+}
+
+export class DSFXWavesReverbView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get fInGain(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get fReverbMix(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get fReverbTime(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get fHighFreqRTRatio(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set fInGain(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set fReverbMix(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set fReverbTime(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set fHighFreqRTRatio(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 export type BOOL = number;
@@ -1248,6 +3016,51 @@ export function allocDSCFXAec(data?: Partial<DSCFXAec>): Uint8Array {
   return buf;
 }
 
+export class DSCFXAecView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get fNoiseFill(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get dwMode(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set fEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fNoiseFill(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwMode(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSCFXNoiseSuppress (size: 8)
  */
@@ -1265,6 +3078,31 @@ export function allocDSCFXNoiseSuppress(data?: Partial<DSCFXNoiseSuppress>): Uin
   if (data?.fEnable !== undefined) view.setInt32(0, Number(data.fEnable), true);
   // 0x04: pad4
   return buf;
+}
+
+export class DSCFXNoiseSuppressView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set fEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 export type HRESULT = number;

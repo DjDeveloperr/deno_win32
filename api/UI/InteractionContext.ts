@@ -154,6 +154,71 @@ export function allocMANIPULATION_TRANSFORM(data?: Partial<MANIPULATION_TRANSFOR
   return buf;
 }
 
+export class MANIPULATION_TRANSFORMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get translationX(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get translationY(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get scale(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get expansion(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get rotation(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: f32
+  set translationX(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set translationY(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set scale(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set expansion(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set rotation(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.UI.InteractionContext.MANIPULATION_VELOCITY (size: 16)
  */
@@ -182,6 +247,57 @@ export function allocMANIPULATION_VELOCITY(data?: Partial<MANIPULATION_VELOCITY>
   // 0x0c: f32
   if (data?.velocityAngular !== undefined) view.setFloat32(12, Number(data.velocityAngular), true);
   return buf;
+}
+
+export class MANIPULATION_VELOCITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get velocityX(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get velocityY(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get velocityExpansion(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get velocityAngular(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set velocityX(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set velocityY(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set velocityExpansion(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set velocityAngular(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 /**
@@ -215,6 +331,64 @@ export function allocINTERACTION_ARGUMENTS_MANIPULATION(data?: Partial<INTERACTI
   return buf;
 }
 
+export class INTERACTION_ARGUMENTS_MANIPULATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get delta(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get cumulative(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get velocity(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get railsState(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: pointer
+  set delta(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set cumulative(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set velocity(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set railsState(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.UI.InteractionContext.INTERACTION_ARGUMENTS_TAP (size: 8)
  */
@@ -234,6 +408,31 @@ export function allocINTERACTION_ARGUMENTS_TAP(data?: Partial<INTERACTION_ARGUME
   return buf;
 }
 
+export class INTERACTION_ARGUMENTS_TAPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get count(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set count(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.UI.InteractionContext.INTERACTION_ARGUMENTS_CROSS_SLIDE (size: 8)
  */
@@ -251,6 +450,31 @@ export function allocINTERACTION_ARGUMENTS_CROSS_SLIDE(data?: Partial<INTERACTIO
   if (data?.flags !== undefined) view.setUint32(0, Number(data.flags), true);
   // 0x04: pad4
   return buf;
+}
+
+export class INTERACTION_ARGUMENTS_CROSS_SLIDEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -277,6 +501,50 @@ export function alloc_arguments_e__Union(data?: Partial<_arguments_e__Union>): U
   // 0x10: pointer
   if (data?.crossSlide !== undefined) view.setBigUint64(16, data.crossSlide === null ? 0n : BigInt(util.toPointer(data.crossSlide)), true);
   return buf;
+}
+
+export class _arguments_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get manipulation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get tap(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get crossSlide(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set manipulation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set tap(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set crossSlide(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -316,6 +584,82 @@ export function allocINTERACTION_CONTEXT_OUTPUT(data?: Partial<INTERACTION_CONTE
   // 0x18: pointer
   if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
   return buf;
+}
+
+export class INTERACTION_CONTEXT_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get interactionId(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get interactionFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get inputType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: f32
+  get x(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get y(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get arguments__(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set interactionId(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set interactionFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set inputType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set x(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set y(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set arguments__(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -365,6 +709,102 @@ export function allocINTERACTION_CONTEXT_OUTPUT2(data?: Partial<INTERACTION_CONT
   return buf;
 }
 
+export class INTERACTION_CONTEXT_OUTPUT2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get interactionId(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get interactionFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get inputType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get contactCount(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get currentContactCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: f32
+  get x(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get y(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get arguments__(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set interactionId(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set interactionFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set inputType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set contactCount(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set currentContactCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: f32
+  set x(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set y(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set arguments__(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_CONFIGURATION (size: 8)
  */
@@ -387,6 +827,37 @@ export function allocINTERACTION_CONTEXT_CONFIGURATION(data?: Partial<INTERACTIO
   return buf;
 }
 
+export class INTERACTION_CONTEXT_CONFIGURATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get interactionId(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get enable(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: i32
+  set interactionId(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set enable(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.UI.InteractionContext.CROSS_SLIDE_PARAMETER (size: 8)
  */
@@ -407,6 +878,37 @@ export function allocCROSS_SLIDE_PARAMETER(data?: Partial<CROSS_SLIDE_PARAMETER>
   // 0x04: f32
   if (data?.distance !== undefined) view.setFloat32(4, Number(data.distance), true);
   return buf;
+}
+
+export class CROSS_SLIDE_PARAMETERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get threshold(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: f32
+  get distance(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x00: i32
+  set threshold(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: f32
+  set distance(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
 }
 
 export type HRESULT = number;

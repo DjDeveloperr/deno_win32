@@ -37,6 +37,47 @@ export function allocHARDWARE_COUNTER_DATA(data?: Partial<HARDWARE_COUNTER_DATA>
   return buf;
 }
 
+export class HARDWARE_COUNTER_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Type(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get Reserved(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get Value(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: i32
+  set Type(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Reserved(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set Value(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.System.Performance.HardwareCounterProfiling.PERFORMANCE_DATA (size: 40)
  */
@@ -85,6 +126,108 @@ export function allocPERFORMANCE_DATA(data?: Partial<PERFORMANCE_DATA>): Uint8Ar
   // 0x20: pointer
   if (data?.HwCounters !== undefined) view.setBigUint64(32, data.HwCounters === null ? 0n : BigInt(util.toPointer(data.HwCounters)), true);
   return buf;
+}
+
+export class PERFORMANCE_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get Size(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u8
+  get Version(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get HwCountersCount(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: u32
+  get ContextSwitchCount(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u64
+  get WaitReasonBitMap(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get CycleTime(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u32
+  get RetryCount(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Reserved(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get HwCounters(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set Size(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u8
+  set Version(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set HwCountersCount(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: u32
+  set ContextSwitchCount(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u64
+  set WaitReasonBitMap(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set CycleTime(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u32
+  set RetryCount(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Reserved(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set HwCounters(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HANDLE = Deno.PointerValue;

@@ -103,6 +103,42 @@ export function allocFDISPILLFILE(data?: Partial<FDISPILLFILE>): Uint8Array {
   return buf;
 }
 
+export class FDISPILLFILEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ach(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get cbFile(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set ach(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set cbFile(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 export type BOOL = number;
 
 /**
@@ -130,6 +166,51 @@ export function allocERF(data?: Partial<ERF>): Uint8Array {
   if (data?.fError !== undefined) view.setInt32(8, Number(data.fError), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class ERFView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get erfOper(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get erfType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get fError(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set erfOper(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set erfType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set fError(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -195,6 +276,144 @@ export function allocCCAB(data?: Partial<CCAB>): Uint8Array {
   return buf;
 }
 
+export class CCABView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cb(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cbFolderThresh(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cbReserveCFHeader(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbReserveCFFolder(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cbReserveCFData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get iCab(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get iDisk(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get fFailOnIncompressible(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u16
+  get setID(): number {
+    return this.view.getUint16(32, true);
+  }
+
+  // 0x22: pad6
+
+  // 0x28: pointer
+  get szDisk(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get szCab(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get szCabPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cb(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cbFolderThresh(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cbReserveCFHeader(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbReserveCFFolder(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cbReserveCFData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set iCab(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set iDisk(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set fFailOnIncompressible(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u16
+  set setID(value: number) {
+    this.view.setUint16(32, value, true);
+  }
+
+  // 0x22: pad6
+
+  // 0x28: pointer
+  set szDisk(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set szCab(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set szCabPath(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.Cabinets.FDICABINETINFO (size: 24)
  */
@@ -241,6 +460,97 @@ export function allocFDICABINETINFO(data?: Partial<FDICABINETINFO>): Uint8Array 
   return buf;
 }
 
+export class FDICABINETINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get cbCabinet(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u16
+  get cFolders(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get cFiles(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get setID(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get iCabinet(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: i32
+  get fReserve(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get hasprev(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get hasnext(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: i32
+  set cbCabinet(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u16
+  set cFolders(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set cFiles(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set setID(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set iCabinet(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: i32
+  set fReserve(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set hasprev(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set hasnext(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -263,6 +573,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -283,6 +624,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -310,6 +684,53 @@ export function allocFDIDECRYPT(data?: Partial<FDIDECRYPT>): Uint8Array {
   // 0x10: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class FDIDECRYPTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get fdidt(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pvUser(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set fdidt(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pvUser(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
@@ -388,6 +809,158 @@ export function allocFDINOTIFICATION(data?: Partial<FDINOTIFICATION>): Uint8Arra
   // 0x3c: i32
   if (data?.fdie !== undefined) view.setInt32(60, Number(data.fdie), true);
   return buf;
+}
+
+export class FDINOTIFICATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get cb(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get psz1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get psz2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get psz3(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pv(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: isize
+  get hf(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(40, true));
+  }
+
+  // 0x30: u16
+  get date(): number {
+    return this.view.getUint16(48, true);
+  }
+
+  // 0x32: u16
+  get time(): number {
+    return this.view.getUint16(50, true);
+  }
+
+  // 0x34: u16
+  get attribs(): number {
+    return this.view.getUint16(52, true);
+  }
+
+  // 0x36: u16
+  get setID(): number {
+    return this.view.getUint16(54, true);
+  }
+
+  // 0x38: u16
+  get iCabinet(): number {
+    return this.view.getUint16(56, true);
+  }
+
+  // 0x3a: u16
+  get iFolder(): number {
+    return this.view.getUint16(58, true);
+  }
+
+  // 0x3c: i32
+  get fdie(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x00: i32
+  set cb(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set psz1(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set psz2(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set psz3(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set pv(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: isize
+  set hf(value: Deno.PointerValue) {
+    this.view.setBigInt64(40, BigInt(value), true);
+  }
+
+  // 0x30: u16
+  set date(value: number) {
+    this.view.setUint16(48, value, true);
+  }
+
+  // 0x32: u16
+  set time(value: number) {
+    this.view.setUint16(50, value, true);
+  }
+
+  // 0x34: u16
+  set attribs(value: number) {
+    this.view.setUint16(52, value, true);
+  }
+
+  // 0x36: u16
+  set setID(value: number) {
+    this.view.setUint16(54, value, true);
+  }
+
+  // 0x38: u16
+  set iCabinet(value: number) {
+    this.view.setUint16(56, value, true);
+  }
+
+  // 0x3a: u16
+  set iFolder(value: number) {
+    this.view.setUint16(58, value, true);
+  }
+
+  // 0x3c: i32
+  set fdie(value: number) {
+    this.view.setInt32(60, value, true);
+  }
 }
 
 // Native Libraries

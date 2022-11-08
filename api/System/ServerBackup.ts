@@ -47,6 +47,43 @@ export function allocWSB_OB_STATUS_ENTRY_VALUE_TYPE_PAIR(data?: Partial<WSB_OB_S
   return buf;
 }
 
+export class WSB_OB_STATUS_ENTRY_VALUE_TYPE_PAIRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get m_wszObStatusEntryPairValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get m_ObStatusEntryPairType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: buffer
+  set m_wszObStatusEntryPairValue(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set m_ObStatusEntryPairType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.System.ServerBackup.WSB_OB_STATUS_ENTRY (size: 24)
  */
@@ -81,6 +118,68 @@ export function allocWSB_OB_STATUS_ENTRY(data?: Partial<WSB_OB_STATUS_ENTRY>): U
   return buf;
 }
 
+export class WSB_OB_STATUS_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_dwIcon(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get m_dwStatusEntryName(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get m_dwStatusEntryValue(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get m_cValueTypePair(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get m_rgValueTypePair(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set m_dwIcon(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set m_dwStatusEntryName(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set m_dwStatusEntryValue(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set m_cValueTypePair(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set m_rgValueTypePair(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.ServerBackup.WSB_OB_STATUS_INFO (size: 24)
  */
@@ -106,6 +205,53 @@ export function allocWSB_OB_STATUS_INFO(data?: Partial<WSB_OB_STATUS_INFO>): Uin
   // 0x10: pointer
   if (data?.m_rgStatusEntry !== undefined) view.setBigUint64(16, data.m_rgStatusEntry === null ? 0n : BigInt(util.toPointer(data.m_rgStatusEntry)), true);
   return buf;
+}
+
+export class WSB_OB_STATUS_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get m_guidSnapinId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get m_cStatusEntry(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get m_rgStatusEntry(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set m_guidSnapinId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set m_cStatusEntry(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set m_rgStatusEntry(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type BOOLEAN = number;
@@ -145,6 +291,71 @@ export function allocWSB_OB_REGISTRATION_INFO(data?: Partial<WSB_OB_REGISTRATION
   // 0x18: pointer
   if (data?.m_bSupportsRemoting !== undefined) view.setBigUint64(24, data.m_bSupportsRemoting === null ? 0n : BigInt(util.toPointer(data.m_bSupportsRemoting)), true);
   return buf;
+}
+
+export class WSB_OB_REGISTRATION_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get m_wszResourceDLL(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get m_guidSnapinId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get m_dwProviderName(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get m_dwProviderIcon(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get m_bSupportsRemoting(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set m_wszResourceDLL(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: pointer
+  set m_guidSnapinId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set m_dwProviderName(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set m_dwProviderIcon(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set m_bSupportsRemoting(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

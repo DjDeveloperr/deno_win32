@@ -2175,6 +2175,41 @@ export function allocCSEDB_RSTMAPW(data?: Partial<CSEDB_RSTMAPW>): Uint8Array {
   return buf;
 }
 
+export class CSEDB_RSTMAPWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get pwszDatabaseName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get pwszNewDatabaseName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set pwszDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set pwszNewDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.Security.Cryptography.Certificates.CERTTRANSBLOB (size: 16)
  */
@@ -2196,6 +2231,42 @@ export function allocCERTTRANSBLOB(data?: Partial<CERTTRANSBLOB>): Uint8Array {
   // 0x08: pointer
   if (data?.pb !== undefined) view.setBigUint64(8, data.pb === null ? 0n : BigInt(util.toPointer(data.pb)), true);
   return buf;
+}
+
+export class CERTTRANSBLOBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cb(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pb(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cb(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pb(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2232,6 +2303,76 @@ export function allocCERTVIEWRESTRICTION(data?: Partial<CERTVIEWRESTRICTION>): U
   if (data?.cbValue !== undefined) view.setUint32(24, Number(data.cbValue), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class CERTVIEWRESTRICTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ColumnIndex(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get SeekOperator(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get SortOrder(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pbValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get cbValue(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set ColumnIndex(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set SeekOperator(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set SortOrder(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pbValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set cbValue(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -2286,6 +2427,117 @@ export function allocCAINFO(data?: Partial<CAINFO>): Uint8Array {
   // 0x24: u32
   if (data?.fAdvancedServer !== undefined) view.setUint32(36, Number(data.fAdvancedServer), true);
   return buf;
+}
+
+export class CAINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get CAType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get cCASignatureCerts(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cCAExchangeCerts(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cExitModules(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get lPropIdMax(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get lRoleSeparationEnabled(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: u32
+  get cKRACertUsedCount(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get cKRACertCount(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get fAdvancedServer(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set CAType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cCASignatureCerts(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cCAExchangeCerts(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cExitModules(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set lPropIdMax(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set lRoleSeparationEnabled(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cKRACertUsedCount(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set cKRACertCount(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set fAdvancedServer(value: number) {
+    this.view.setUint32(36, value, true);
+  }
 }
 
 export type HRESULT = number;

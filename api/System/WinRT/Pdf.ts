@@ -34,6 +34,57 @@ export function allocD2D_RECT_F(data?: Partial<D2D_RECT_F>): Uint8Array {
   return buf;
 }
 
+export class D2D_RECT_FView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get left(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get top(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get right(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get bottom(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set left(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set top(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set right(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set bottom(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct2D.Common.D2D_COLOR_F (size: 16)
  */
@@ -62,6 +113,57 @@ export function allocD2D_COLOR_F(data?: Partial<D2D_COLOR_F>): Uint8Array {
   // 0x0c: f32
   if (data?.a !== undefined) view.setFloat32(12, Number(data.a), true);
   return buf;
+}
+
+export class D2D_COLOR_FView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get r(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get g(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get b(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get a(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x00: f32
+  set r(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set g(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set b(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set a(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
 }
 
 export type BOOLEAN = number;
@@ -98,6 +200,70 @@ export function allocPDF_RENDER_PARAMS(data?: Partial<PDF_RENDER_PARAMS>): Uint8
   // 0x18: pointer
   if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(util.toPointer(data.IgnoreHighContrast)), true);
   return buf;
+}
+
+export class PDF_RENDER_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get SourceRect(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get DestinationWidth(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get DestinationHeight(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get BackgroundColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get IgnoreHighContrast(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set SourceRect(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set DestinationWidth(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set DestinationHeight(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set BackgroundColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HRESULT = number;

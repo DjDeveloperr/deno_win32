@@ -167,6 +167,37 @@ export function allocGNSS_SUPL_VERSION(data?: Partial<GNSS_SUPL_VERSION>): Uint8
   return buf;
 }
 
+export class GNSS_SUPL_VERSIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MajorVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MinorVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MajorVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MinorVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_SUPL_VERSION_2 (size: 16)
  */
@@ -192,6 +223,51 @@ export function allocGNSS_SUPL_VERSION_2(data?: Partial<GNSS_SUPL_VERSION_2>): U
   if (data?.ServiceIndicator !== undefined) view.setUint32(8, Number(data.ServiceIndicator), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class GNSS_SUPL_VERSION_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MajorVersion(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MinorVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ServiceIndicator(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MajorVersion(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MinorVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ServiceIndicator(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 export type BOOL = number;
@@ -319,6 +395,293 @@ export function allocGNSS_DEVICE_CAPABILITY(data?: Partial<GNSS_DEVICE_CAPABILIT
   return buf;
 }
 
+export class GNSS_DEVICE_CAPABILITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get SupportMultipleFixSessions(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get SupportMultipleAppSessions(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get RequireAGnssInjection(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get AgnssFormatSupported(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get AgnssFormatPreferred(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: i32
+  get SupportDistanceTracking(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get SupportContinuousTracking(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: u32
+  get Reserved1(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: i32
+  get Reserved2(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: i32
+  get Reserved3(): number {
+    return this.view.getInt32(44, true);
+  }
+
+  // 0x30: i32
+  get Reserved4(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: i32
+  get Reserved5(): number {
+    return this.view.getInt32(52, true);
+  }
+
+  // 0x38: u32
+  get GeofencingSupport(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: i32
+  get Reserved6(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x40: i32
+  get Reserved7(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: i32
+  get SupportCpLocation(): number {
+    return this.view.getInt32(68, true);
+  }
+
+  // 0x48: i32
+  get SupportUplV2(): number {
+    return this.view.getInt32(72, true);
+  }
+
+  // 0x4c: i32
+  get SupportSuplV1(): number {
+    return this.view.getInt32(76, true);
+  }
+
+  // 0x50: i32
+  get SupportSuplV2(): number {
+    return this.view.getInt32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: pointer
+  get SupportedSuplVersion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: u32
+  get MaxGeofencesSupported(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: i32
+  get SupportMultipleSuplRootCert(): number {
+    return this.view.getInt32(100, true);
+  }
+
+  // 0x68: u32
+  get GnssBreadCrumbPayloadVersion(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: u32
+  get MaxGnssBreadCrumbFixes(): number {
+    return this.view.getUint32(108, true);
+  }
+
+  // 0x70: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set SupportMultipleFixSessions(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set SupportMultipleAppSessions(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set RequireAGnssInjection(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set AgnssFormatSupported(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set AgnssFormatPreferred(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set SupportDistanceTracking(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set SupportContinuousTracking(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: u32
+  set Reserved1(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: i32
+  set Reserved2(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: i32
+  set Reserved3(value: number) {
+    this.view.setInt32(44, value, true);
+  }
+
+  // 0x30: i32
+  set Reserved4(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: i32
+  set Reserved5(value: number) {
+    this.view.setInt32(52, value, true);
+  }
+
+  // 0x38: u32
+  set GeofencingSupport(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: i32
+  set Reserved6(value: number) {
+    this.view.setInt32(60, value, true);
+  }
+
+  // 0x40: i32
+  set Reserved7(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: i32
+  set SupportCpLocation(value: number) {
+    this.view.setInt32(68, value, true);
+  }
+
+  // 0x48: i32
+  set SupportUplV2(value: number) {
+    this.view.setInt32(72, value, true);
+  }
+
+  // 0x4c: i32
+  set SupportSuplV1(value: number) {
+    this.view.setInt32(76, value, true);
+  }
+
+  // 0x50: i32
+  set SupportSuplV2(value: number) {
+    this.view.setInt32(80, value, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: pointer
+  set SupportedSuplVersion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: u32
+  set MaxGeofencesSupported(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: i32
+  set SupportMultipleSuplRootCert(value: number) {
+    this.view.setInt32(100, value, true);
+  }
+
+  // 0x68: u32
+  set GnssBreadCrumbPayloadVersion(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: u32
+  set MaxGnssBreadCrumbFixes(value: number) {
+    this.view.setUint32(108, value, true);
+  }
+
+  // 0x70: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_PLATFORM_CAPABILITY (size: 24)
  */
@@ -351,6 +714,68 @@ export function allocGNSS_PLATFORM_CAPABILITY(data?: Partial<GNSS_PLATFORM_CAPAB
   // 0x10: pointer
   if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_PLATFORM_CAPABILITYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get SupportAgnssInjection(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get AgnssFormatSupported(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set SupportAgnssInjection(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set AgnssFormatSupported(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -396,6 +821,93 @@ export function allocGNSS_DRIVERCOMMAND_PARAM(data?: Partial<GNSS_DRIVERCOMMAND_
   return buf;
 }
 
+export class GNSS_DRIVERCOMMAND_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get CommandType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Reserved(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get CommandDataSize(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get CommandData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set CommandType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Reserved(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set CommandDataSize(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set CommandData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_SINGLESHOT_PARAM (size: 16)
  */
@@ -421,6 +933,51 @@ export function allocGNSS_SINGLESHOT_PARAM(data?: Partial<GNSS_SINGLESHOT_PARAM>
   if (data?.ResponseTime !== undefined) view.setUint32(8, Number(data.ResponseTime), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class GNSS_SINGLESHOT_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ResponseTime(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ResponseTime(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -450,6 +1007,51 @@ export function allocGNSS_DISTANCETRACKING_PARAM(data?: Partial<GNSS_DISTANCETRA
   return buf;
 }
 
+export class GNSS_DISTANCETRACKING_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get MovementThreshold(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set MovementThreshold(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_CONTINUOUSTRACKING_PARAM (size: 16)
  */
@@ -477,6 +1079,51 @@ export function allocGNSS_CONTINUOUSTRACKING_PARAM(data?: Partial<GNSS_CONTINUOU
   return buf;
 }
 
+export class GNSS_CONTINUOUSTRACKING_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get PreferredInterval(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set PreferredInterval(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_LKGFIX_PARAM (size: 8)
  */
@@ -497,6 +1144,37 @@ export function allocGNSS_LKGFIX_PARAM(data?: Partial<GNSS_LKGFIX_PARAM>): Uint8
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   return buf;
+}
+
+export class GNSS_LKGFIX_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -521,6 +1199,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -541,6 +1250,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -598,6 +1340,124 @@ export function allocGNSS_FIXSESSION_PARAM(data?: Partial<GNSS_FIXSESSION_PARAM>
   return buf;
 }
 
+export class GNSS_FIXSESSION_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FixSessionID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get SessionType(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get HorizontalAccuracy(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get HorizontalConfidence(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Reserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get FixLevelOfDetails(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FixSessionID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set SessionType(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set HorizontalAccuracy(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set HorizontalConfidence(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set FixLevelOfDetails(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_STOPFIXSESSION_PARAM (size: 24)
  */
@@ -627,6 +1487,62 @@ export function allocGNSS_STOPFIXSESSION_PARAM(data?: Partial<GNSS_STOPFIXSESSIO
   // 0x10: pointer
   if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_STOPFIXSESSION_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FixSessionID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FixSessionID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -669,6 +1585,87 @@ export function allocGNSS_FIXDATA_BASIC(data?: Partial<GNSS_FIXDATA_BASIC>): Uin
   // 0x28: f64
   if (data?.Heading !== undefined) view.setFloat64(40, Number(data.Heading), true);
   return buf;
+}
+
+export class GNSS_FIXDATA_BASICView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: f64
+  get Latitude(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get Longitude(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get Altitude(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x20: f64
+  get Speed(): number {
+    return this.view.getFloat64(32, true);
+  }
+
+  // 0x28: f64
+  get Heading(): number {
+    return this.view.getFloat64(40, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: f64
+  set Latitude(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set Longitude(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set Altitude(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+
+  // 0x20: f64
+  set Speed(value: number) {
+    this.view.setFloat64(32, value, true);
+  }
+
+  // 0x28: f64
+  set Heading(value: number) {
+    this.view.setFloat64(40, value, true);
+  }
 }
 
 /**
@@ -715,6 +1712,97 @@ export function allocGNSS_FIXDATA_BASIC_2(data?: Partial<GNSS_FIXDATA_BASIC_2>):
   // 0x30: f64
   if (data?.AltitudeEllipsoid !== undefined) view.setFloat64(48, Number(data.AltitudeEllipsoid), true);
   return buf;
+}
+
+export class GNSS_FIXDATA_BASIC_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: f64
+  get Latitude(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get Longitude(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get Altitude(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x20: f64
+  get Speed(): number {
+    return this.view.getFloat64(32, true);
+  }
+
+  // 0x28: f64
+  get Heading(): number {
+    return this.view.getFloat64(40, true);
+  }
+
+  // 0x30: f64
+  get AltitudeEllipsoid(): number {
+    return this.view.getFloat64(48, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: f64
+  set Latitude(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set Longitude(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set Altitude(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+
+  // 0x20: f64
+  set Speed(value: number) {
+    this.view.setFloat64(32, value, true);
+  }
+
+  // 0x28: f64
+  set Heading(value: number) {
+    this.view.setFloat64(40, value, true);
+  }
+
+  // 0x30: f64
+  set AltitudeEllipsoid(value: number) {
+    this.view.setFloat64(48, value, true);
+  }
 }
 
 /**
@@ -793,6 +1881,177 @@ export function allocGNSS_FIXDATA_ACCURACY(data?: Partial<GNSS_FIXDATA_ACCURACY>
   // 0x3c: f32
   if (data?.VerticalDilutionOfPrecision !== undefined) view.setFloat32(60, Number(data.VerticalDilutionOfPrecision), true);
   return buf;
+}
+
+export class GNSS_FIXDATA_ACCURACYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get HorizontalAccuracy(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get HorizontalErrorMajorAxis(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get HorizontalErrorMinorAxis(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get HorizontalErrorAngle(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get HeadingAccuracy(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get AltitudeAccuracy(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get SpeedAccuracy(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get HorizontalConfidence(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get HeadingConfidence(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get AltitudeConfidence(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get SpeedConfidence(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: f32
+  get PositionDilutionOfPrecision(): number {
+    return this.view.getFloat32(52, true);
+  }
+
+  // 0x38: f32
+  get HorizontalDilutionOfPrecision(): number {
+    return this.view.getFloat32(56, true);
+  }
+
+  // 0x3c: f32
+  get VerticalDilutionOfPrecision(): number {
+    return this.view.getFloat32(60, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set HorizontalAccuracy(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set HorizontalErrorMajorAxis(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set HorizontalErrorMinorAxis(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set HorizontalErrorAngle(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set HeadingAccuracy(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set AltitudeAccuracy(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set SpeedAccuracy(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set HorizontalConfidence(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set HeadingConfidence(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set AltitudeConfidence(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set SpeedConfidence(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: f32
+  set PositionDilutionOfPrecision(value: number) {
+    this.view.setFloat32(52, value, true);
+  }
+
+  // 0x38: f32
+  set HorizontalDilutionOfPrecision(value: number) {
+    this.view.setFloat32(56, value, true);
+  }
+
+  // 0x3c: f32
+  set VerticalDilutionOfPrecision(value: number) {
+    this.view.setFloat32(60, value, true);
+  }
 }
 
 /**
@@ -881,6 +2140,197 @@ export function allocGNSS_FIXDATA_ACCURACY_2(data?: Partial<GNSS_FIXDATA_ACCURAC
   return buf;
 }
 
+export class GNSS_FIXDATA_ACCURACY_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: f64
+  get HorizontalAccuracy(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get HorizontalErrorMajorAxis(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get HorizontalErrorMinorAxis(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x20: f64
+  get HorizontalErrorAngle(): number {
+    return this.view.getFloat64(32, true);
+  }
+
+  // 0x28: f64
+  get HeadingAccuracy(): number {
+    return this.view.getFloat64(40, true);
+  }
+
+  // 0x30: f64
+  get AltitudeAccuracy(): number {
+    return this.view.getFloat64(48, true);
+  }
+
+  // 0x38: f64
+  get SpeedAccuracy(): number {
+    return this.view.getFloat64(56, true);
+  }
+
+  // 0x40: u32
+  get HorizontalConfidence(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get HeadingConfidence(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get AltitudeConfidence(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get SpeedConfidence(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: f64
+  get PositionDilutionOfPrecision(): number {
+    return this.view.getFloat64(80, true);
+  }
+
+  // 0x58: f64
+  get HorizontalDilutionOfPrecision(): number {
+    return this.view.getFloat64(88, true);
+  }
+
+  // 0x60: f64
+  get VerticalDilutionOfPrecision(): number {
+    return this.view.getFloat64(96, true);
+  }
+
+  // 0x68: f64
+  get GeometricDilutionOfPrecision(): number {
+    return this.view.getFloat64(104, true);
+  }
+
+  // 0x70: f64
+  get TimeDilutionOfPrecision(): number {
+    return this.view.getFloat64(112, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: f64
+  set HorizontalAccuracy(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set HorizontalErrorMajorAxis(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set HorizontalErrorMinorAxis(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+
+  // 0x20: f64
+  set HorizontalErrorAngle(value: number) {
+    this.view.setFloat64(32, value, true);
+  }
+
+  // 0x28: f64
+  set HeadingAccuracy(value: number) {
+    this.view.setFloat64(40, value, true);
+  }
+
+  // 0x30: f64
+  set AltitudeAccuracy(value: number) {
+    this.view.setFloat64(48, value, true);
+  }
+
+  // 0x38: f64
+  set SpeedAccuracy(value: number) {
+    this.view.setFloat64(56, value, true);
+  }
+
+  // 0x40: u32
+  set HorizontalConfidence(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set HeadingConfidence(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set AltitudeConfidence(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set SpeedConfidence(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: f64
+  set PositionDilutionOfPrecision(value: number) {
+    this.view.setFloat64(80, value, true);
+  }
+
+  // 0x58: f64
+  set HorizontalDilutionOfPrecision(value: number) {
+    this.view.setFloat64(88, value, true);
+  }
+
+  // 0x60: f64
+  set VerticalDilutionOfPrecision(value: number) {
+    this.view.setFloat64(96, value, true);
+  }
+
+  // 0x68: f64
+  set GeometricDilutionOfPrecision(value: number) {
+    this.view.setFloat64(104, value, true);
+  }
+
+  // 0x70: f64
+  set TimeDilutionOfPrecision(value: number) {
+    this.view.setFloat64(112, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_SATELLITEINFO (size: 32)
  */
@@ -915,6 +2365,67 @@ export function allocGNSS_SATELLITEINFO(data?: Partial<GNSS_SATELLITEINFO>): Uin
   return buf;
 }
 
+export class GNSS_SATELLITEINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SatelliteId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get UsedInPositiong(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: f64
+  get Elevation(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get Azimuth(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get SignalToNoiseRatio(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x00: u32
+  set SatelliteId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set UsedInPositiong(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: f64
+  set Elevation(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set Azimuth(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set SignalToNoiseRatio(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_FIXDATA_SATELLITE (size: 24)
  */
@@ -946,6 +2457,62 @@ export function allocGNSS_FIXDATA_SATELLITE(data?: Partial<GNSS_FIXDATA_SATELLIT
   return buf;
 }
 
+export class GNSS_FIXDATA_SATELLITEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get SatelliteCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get SatelliteArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set SatelliteCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set SatelliteArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.FILETIME (size: 8)
  */
@@ -966,6 +2533,37 @@ export function allocFILETIME(data?: Partial<FILETIME>): Uint8Array {
   // 0x04: u32
   if (data?.dwHighDateTime !== undefined) view.setUint32(4, Number(data.dwHighDateTime), true);
   return buf;
+}
+
+export class FILETIMEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwLowDateTime(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwHighDateTime(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwLowDateTime(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwHighDateTime(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 export type NTSTATUS = number;
@@ -1027,6 +2625,134 @@ export function allocGNSS_FIXDATA(data?: Partial<GNSS_FIXDATA>): Uint8Array {
   return buf;
 }
 
+export class GNSS_FIXDATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FixSessionID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get FixTimeStamp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get IsFinalFix(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get FixStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get FixLevelOfDetails(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get BasicData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get AccuracyData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get SatelliteData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FixSessionID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set IsFinalFix(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set FixStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set FixLevelOfDetails(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set BasicData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set SatelliteData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_FIXDATA_2 (size: 72)
  */
@@ -1084,6 +2810,134 @@ export function allocGNSS_FIXDATA_2(data?: Partial<GNSS_FIXDATA_2>): Uint8Array 
   return buf;
 }
 
+export class GNSS_FIXDATA_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FixSessionID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get FixTimeStamp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get IsFinalFix(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get FixStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get FixLevelOfDetails(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get BasicData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get AccuracyData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get SatelliteData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FixSessionID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set IsFinalFix(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set FixStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set FixLevelOfDetails(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set BasicData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set SatelliteData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_BREADCRUMBING_PARAM (size: 32)
  */
@@ -1123,6 +2977,82 @@ export function allocGNSS_BREADCRUMBING_PARAM(data?: Partial<GNSS_BREADCRUMBING_
   return buf;
 }
 
+export class GNSS_BREADCRUMBING_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get MaximumHorizontalUncertainty(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MinDistanceBetweenFixes(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MaximumErrorTimeoutMs(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set MaximumHorizontalUncertainty(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MinDistanceBetweenFixes(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MaximumErrorTimeoutMs(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_BREADCRUMBING_ALERT_DATA (size: 16)
  */
@@ -1147,6 +3077,48 @@ export function allocGNSS_BREADCRUMBING_ALERT_DATA(data?: Partial<GNSS_BREADCRUM
   // 0x08: pointer
   if (data?.Unused !== undefined) view.setBigUint64(8, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_BREADCRUMBING_ALERT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1207,6 +3179,128 @@ export function allocGNSS_BREADCRUMB_V1(data?: Partial<GNSS_BREADCRUMB_V1>): Uin
   return buf;
 }
 
+export class GNSS_BREADCRUMB_V1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get FixTimeStamp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f64
+  get Latitude(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get Longitude(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: u32
+  get HorizontalAccuracy(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u16
+  get Speed(): number {
+    return this.view.getUint16(28, true);
+  }
+
+  // 0x1e: u16
+  get SpeedAccuracy(): number {
+    return this.view.getUint16(30, true);
+  }
+
+  // 0x20: i16
+  get Altitude(): number {
+    return this.view.getInt16(32, true);
+  }
+
+  // 0x22: u16
+  get AltitudeAccuracy(): number {
+    return this.view.getUint16(34, true);
+  }
+
+  // 0x24: i16
+  get Heading(): number {
+    return this.view.getInt16(36, true);
+  }
+
+  // 0x26: u8
+  get HeadingAccuracy(): number {
+    return this.view.getUint8(38);
+  }
+
+  // 0x27: u8
+  get FixSuccess(): number {
+    return this.view.getUint8(39);
+  }
+
+  // 0x00: pointer
+  set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f64
+  set Latitude(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set Longitude(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: u32
+  set HorizontalAccuracy(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u16
+  set Speed(value: number) {
+    this.view.setUint16(28, value, true);
+  }
+
+  // 0x1e: u16
+  set SpeedAccuracy(value: number) {
+    this.view.setUint16(30, value, true);
+  }
+
+  // 0x20: i16
+  set Altitude(value: number) {
+    this.view.setInt16(32, value, true);
+  }
+
+  // 0x22: u16
+  set AltitudeAccuracy(value: number) {
+    this.view.setUint16(34, value, true);
+  }
+
+  // 0x24: i16
+  set Heading(value: number) {
+    this.view.setInt16(36, value, true);
+  }
+
+  // 0x26: u8
+  set HeadingAccuracy(value: number) {
+    this.view.setUint8(38, value);
+  }
+
+  // 0x27: u8
+  set FixSuccess(value: number) {
+    this.view.setUint8(39, value);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_BREADCRUMB_LIST (size: 24)
  */
@@ -1238,6 +3332,62 @@ export function allocGNSS_BREADCRUMB_LIST(data?: Partial<GNSS_BREADCRUMB_LIST>):
   return buf;
 }
 
+export class GNSS_BREADCRUMB_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get NumCrumbs(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set NumCrumbs(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_GEOREGION_CIRCLE (size: 24)
  */
@@ -1262,6 +3412,47 @@ export function allocGNSS_GEOREGION_CIRCLE(data?: Partial<GNSS_GEOREGION_CIRCLE>
   // 0x10: f64
   if (data?.RadiusInMeters !== undefined) view.setFloat64(16, Number(data.RadiusInMeters), true);
   return buf;
+}
+
+export class GNSS_GEOREGION_CIRCLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f64
+  get Latitude(): number {
+    return this.view.getFloat64(0, true);
+  }
+
+  // 0x08: f64
+  get Longitude(): number {
+    return this.view.getFloat64(8, true);
+  }
+
+  // 0x10: f64
+  get RadiusInMeters(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x00: f64
+  set Latitude(value: number) {
+    this.view.setFloat64(0, value, true);
+  }
+
+  // 0x08: f64
+  set Longitude(value: number) {
+    this.view.setFloat64(8, value, true);
+  }
+
+  // 0x10: f64
+  set RadiusInMeters(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
 }
 
 /**
@@ -1293,6 +3484,62 @@ export function allocGNSS_GEOREGION(data?: Partial<GNSS_GEOREGION>): Uint8Array 
   // 0x10: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class GNSS_GEOREGIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get GeoRegionType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set GeoRegionType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1333,6 +3580,79 @@ export function allocGNSS_GEOFENCE_CREATE_PARAM(data?: Partial<GNSS_GEOFENCE_CRE
   return buf;
 }
 
+export class GNSS_GEOFENCE_CREATE_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get AlertTypes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get InitialState(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: pointer
+  get Boundary(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set AlertTypes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set InitialState(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set Boundary(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_GEOFENCE_CREATE_RESPONSE (size: 32)
  */
@@ -1368,6 +3688,73 @@ export function allocGNSS_GEOFENCE_CREATE_RESPONSE(data?: Partial<GNSS_GEOFENCE_
   return buf;
 }
 
+export class GNSS_GEOFENCE_CREATE_RESPONSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get CreationStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get GeofenceID(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set CreationStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set GeofenceID(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_GEOFENCE_DELETE_PARAM (size: 24)
  */
@@ -1397,6 +3784,62 @@ export function allocGNSS_GEOFENCE_DELETE_PARAM(data?: Partial<GNSS_GEOFENCE_DEL
   // 0x10: pointer
   if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_GEOFENCE_DELETE_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get GeofenceID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set GeofenceID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1441,6 +3884,90 @@ export function allocGNSS_GEOFENCE_ALERT_DATA(data?: Partial<GNSS_GEOFENCE_ALERT
   return buf;
 }
 
+export class GNSS_GEOFENCE_ALERT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get GeofenceID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get GeofenceState(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: pointer
+  get FixBasicData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get FixAccuracyData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set GeofenceID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set GeofenceState(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set FixBasicData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set FixAccuracyData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_GEOFENCES_TRACKINGSTATUS_DATA (size: 32)
  */
@@ -1473,6 +4000,70 @@ export function allocGNSS_GEOFENCES_TRACKINGSTATUS_DATA(data?: Partial<GNSS_GEOF
   // 0x18: pointer
   if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_GEOFENCES_TRACKINGSTATUS_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Status(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get StatusTimeStamp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Status(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set StatusTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1513,6 +4104,79 @@ export function allocGNSS_ERRORINFO(data?: Partial<GNSS_ERRORINFO>): Uint8Array 
   return buf;
 }
 
+export class GNSS_ERRORINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ErrorCode(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get IsRecoverable(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: pointer
+  get ErrorDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ErrorCode(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set IsRecoverable(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set ErrorDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_NMEA_DATA (size: 16)
  */
@@ -1537,6 +4201,48 @@ export function allocGNSS_NMEA_DATA(data?: Partial<GNSS_NMEA_DATA>): Uint8Array 
   // 0x08: pointer
   if (data?.NmeaSentences !== undefined) view.setBigUint64(8, data.NmeaSentences === null ? 0n : BigInt(util.toPointer(data.NmeaSentences)), true);
   return buf;
+}
+
+export class GNSS_NMEA_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get NmeaSentences(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set NmeaSentences(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1567,6 +4273,57 @@ export function allocGNSS_AGNSS_REQUEST_PARAM(data?: Partial<GNSS_AGNSS_REQUEST_
   // 0x0c: u32
   if (data?.BlobFormat !== undefined) view.setUint32(12, Number(data.BlobFormat), true);
   return buf;
+}
+
+export class GNSS_AGNSS_REQUEST_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get RequestType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get BlobFormat(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set RequestType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set BlobFormat(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -1603,6 +4360,70 @@ export function allocGNSS_SUPL_NI_INFO(data?: Partial<GNSS_SUPL_NI_INFO>): Uint8
   return buf;
 }
 
+export class GNSS_SUPL_NI_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get RequestorId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get SuplNiUrl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set SuplNiUrl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_CP_NI_INFO (size: 24)
  */
@@ -1633,6 +4454,59 @@ export function allocGNSS_CP_NI_INFO(data?: Partial<GNSS_CP_NI_INFO>): Uint8Arra
   return buf;
 }
 
+export class GNSS_CP_NI_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get RequestorId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get NotificationText(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set NotificationText(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_V2UPL_NI_INFO (size: 16)
  */
@@ -1657,6 +4531,48 @@ export function allocGNSS_V2UPL_NI_INFO(data?: Partial<GNSS_V2UPL_NI_INFO>): Uin
   // 0x08: pointer
   if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : BigInt(util.toPointer(data.RequestorId)), true);
   return buf;
+}
+
+export class GNSS_V2UPL_NI_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get RequestorId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1709,6 +4625,108 @@ export function allocGNSS_NI_REQUEST_PARAM(data?: Partial<GNSS_NI_REQUEST_PARAM>
   return buf;
 }
 
+export class GNSS_NI_REQUEST_PARAMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get RequestId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get RequestType(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get NotificationType(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get RequestPlaneType(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get ResponseTimeInSec(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get EmergencyLocation(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set RequestId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set RequestType(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set NotificationType(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set RequestPlaneType(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set ResponseTimeInSec(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set EmergencyLocation(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_DRIVER_REQUEST_DATA (size: 16)
  */
@@ -1737,6 +4755,57 @@ export function allocGNSS_DRIVER_REQUEST_DATA(data?: Partial<GNSS_DRIVER_REQUEST
   // 0x0c: u32
   if (data?.RequestFlag !== undefined) view.setUint32(12, Number(data.RequestFlag), true);
   return buf;
+}
+
+export class GNSS_DRIVER_REQUEST_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get Request(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get RequestFlag(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set Request(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set RequestFlag(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -1777,6 +4846,79 @@ export function allocGNSS_EVENT(data?: Partial<GNSS_EVENT>): Uint8Array {
   return buf;
 }
 
+export class GNSS_EVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get EventType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get EventDataSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set EventType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set EventDataSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_EVENT_2 (size: 32)
  */
@@ -1815,6 +4957,79 @@ export function allocGNSS_EVENT_2(data?: Partial<GNSS_EVENT_2>): Uint8Array {
   return buf;
 }
 
+export class GNSS_EVENT_2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get EventType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get EventDataSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set EventType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set EventDataSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_AGNSS_INJECTTIME (size: 24)
  */
@@ -1844,6 +5059,62 @@ export function allocGNSS_AGNSS_INJECTTIME(data?: Partial<GNSS_AGNSS_INJECTTIME>
   if (data?.TimeUncertainty !== undefined) view.setUint32(16, Number(data.TimeUncertainty), true);
   // 0x14: pad4
   return buf;
+}
+
+export class GNSS_AGNSS_INJECTTIMEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get UtcTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get TimeUncertainty(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set UtcTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set TimeUncertainty(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -1879,6 +5150,73 @@ export function allocGNSS_AGNSS_INJECTPOSITION(data?: Partial<GNSS_AGNSS_INJECTP
   // 0x18: pointer
   if (data?.AccuracyData !== undefined) view.setBigUint64(24, data.AccuracyData === null ? 0n : BigInt(util.toPointer(data.AccuracyData)), true);
   return buf;
+}
+
+export class GNSS_AGNSS_INJECTPOSITIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Age(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get BasicData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get AccuracyData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Age(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set BasicData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1921,6 +5259,88 @@ export function allocGNSS_AGNSS_INJECTBLOB(data?: Partial<GNSS_AGNSS_INJECTBLOB>
   // 0x18: pointer
   if (data?.BlobData !== undefined) view.setBigUint64(24, data.BlobData === null ? 0n : BigInt(util.toPointer(data.BlobData)), true);
   return buf;
+}
+
+export class GNSS_AGNSS_INJECTBLOBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get BlobOui(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get BlobVersion(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get AgnssFormat(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get BlobSize(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get BlobData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set BlobOui(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set BlobVersion(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set AgnssFormat(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set BlobSize(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set BlobData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1967,6 +5387,98 @@ export function allocGNSS_AGNSS_INJECT(data?: Partial<GNSS_AGNSS_INJECT>): Uint8
   return buf;
 }
 
+export class GNSS_AGNSS_INJECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get InjectionType(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get InjectionStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get InjectionDataSize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set InjectionType(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set InjectionStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set InjectionDataSize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_SUPL_HSLP_CONFIG (size: 40)
  */
@@ -2004,6 +5516,84 @@ export function allocGNSS_SUPL_HSLP_CONFIG(data?: Partial<GNSS_SUPL_HSLP_CONFIG>
   // 0x20: pointer
   if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_SUPL_HSLP_CONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get SuplHslp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get SuplHslpFromImsi(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get Reserved(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set SuplHslp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set SuplHslpFromImsi(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set Reserved(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2050,6 +5640,98 @@ export function allocGNSS_SUPL_CERT_CONFIG(data?: Partial<GNSS_SUPL_CERT_CONFIG>
   return buf;
 }
 
+export class GNSS_SUPL_CERT_CONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get CertAction(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get SuplCertName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get CertSize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get CertData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set CertAction(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set SuplCertName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set CertSize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set CertData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_V2UPL_CONFIG (size: 40)
  */
@@ -2089,6 +5771,84 @@ export function allocGNSS_V2UPL_CONFIG(data?: Partial<GNSS_V2UPL_CONFIG>): Uint8
   return buf;
 }
 
+export class GNSS_V2UPL_CONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get MPC(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get PDE(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u8
+  get ApplicationTypeIndicator_MR(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: pad7
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set MPC(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set PDE(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u8
+  set ApplicationTypeIndicator_MR(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: pad7
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_NI_RESPONSE (size: 16)
  */
@@ -2117,6 +5877,57 @@ export function allocGNSS_NI_RESPONSE(data?: Partial<GNSS_NI_RESPONSE>): Uint8Ar
   // 0x0c: i32
   if (data?.UserResponse !== undefined) view.setInt32(12, Number(data.UserResponse), true);
   return buf;
+}
+
+export class GNSS_NI_RESPONSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get RequestId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get UserResponse(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set RequestId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set UserResponse(value: number) {
+    this.view.setInt32(12, value, true);
+  }
 }
 
 /**
@@ -2157,6 +5968,79 @@ export function allocGNSS_CWTESTDATA(data?: Partial<GNSS_CWTESTDATA>): Uint8Arra
   return buf;
 }
 
+export class GNSS_CWTESTDATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get TestResultStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: f64
+  get SignalToNoiseRatio(): number {
+    return this.view.getFloat64(16, true);
+  }
+
+  // 0x18: f64
+  get Frequency(): number {
+    return this.view.getFloat64(24, true);
+  }
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set TestResultStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: f64
+  set SignalToNoiseRatio(value: number) {
+    this.view.setFloat64(16, value, true);
+  }
+
+  // 0x18: f64
+  set Frequency(value: number) {
+    this.view.setFloat64(24, value, true);
+  }
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_SELFTESTCONFIG (size: 40)
  */
@@ -2195,6 +6079,87 @@ export function allocGNSS_SELFTESTCONFIG(data?: Partial<GNSS_SELFTESTCONFIG>): U
   // 0x20: pointer
   if (data?.InBuffer !== undefined) view.setBigUint64(32, data.InBuffer === null ? 0n : BigInt(util.toPointer(data.InBuffer)), true);
   return buf;
+}
+
+export class GNSS_SELFTESTCONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get TestType(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get InBufLen(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get InBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set TestType(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set InBufLen(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set InBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2244,6 +6209,104 @@ export function allocGNSS_SELFTESTRESULT(data?: Partial<GNSS_SELFTESTRESULT>): U
   return buf;
 }
 
+export class GNSS_SELFTESTRESULTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get TestResultStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get Result(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get PinFailedBitMask(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get OutBufLen(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get OutBuffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set TestResultStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set Result(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set PinFailedBitMask(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set OutBufLen(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set OutBuffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Geolocation.GNSS_CHIPSETINFO (size: 40)
  */
@@ -2280,6 +6343,81 @@ export function allocGNSS_CHIPSETINFO(data?: Partial<GNSS_CHIPSETINFO>): Uint8Ar
   // 0x20: pointer
   if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
   return buf;
+}
+
+export class GNSS_CHIPSETINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Version(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ManufacturerID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get HardwareID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get FirmwareVersion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Unused(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Version(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ManufacturerID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set HardwareID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set FirmwareVersion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Unused(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

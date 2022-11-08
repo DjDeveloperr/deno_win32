@@ -878,6 +878,63 @@ export function allocTimedLevel(data?: Partial<TimedLevel>): Uint8Array {
   return buf;
 }
 
+export class TimedLevelView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get frequency(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get waveform(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get state(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: i64
+  get timeStamp(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(24, true));
+  }
+
+  // 0x00: pointer
+  set frequency(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set waveform(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set state(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: i64
+  set timeStamp(value: Deno.PointerValue) {
+    this.view.setBigInt64(24, BigInt(value), true);
+  }
+}
+
 export type BSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
@@ -907,6 +964,53 @@ export function allocWMPContextMenuInfo(data?: Partial<WMPContextMenuInfo>): Uin
   return buf;
 }
 
+export class WMPContextMenuInfoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get bstrMenuText(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get bstrHelpText(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set bstrMenuText(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set bstrHelpText(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Media.MediaPlayer.WMP_WMDM_METADATA_ROUND_TRIP_PC2DEVICE (size: 8)
  */
@@ -927,6 +1031,37 @@ export function allocWMP_WMDM_METADATA_ROUND_TRIP_PC2DEVICE(data?: Partial<WMP_W
   // 0x04: u32
   if (data?.dwResultSetStartingIndex !== undefined) view.setUint32(4, Number(data.dwResultSetStartingIndex), true);
   return buf;
+}
+
+export class WMP_WMDM_METADATA_ROUND_TRIP_PC2DEVICEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwChangesSinceTransactionID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwResultSetStartingIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwChangesSinceTransactionID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwResultSetStartingIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -966,6 +1101,82 @@ export function allocWMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC(data?: Partial<WMP_W
   // 0x18: pointer
   if (data?.wsObjectPathnameList !== undefined) view.setBigUint64(24, data.wsObjectPathnameList === null ? 0n : BigInt(util.toPointer(data.wsObjectPathnameList)), true);
   return buf;
+}
+
+export class WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwCurrentTransactionID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwReturnedObjectCount(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwUnretrievedObjectCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwDeletedObjectStartingOffset(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get wsObjectPathnameList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwCurrentTransactionID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwReturnedObjectCount(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwUnretrievedObjectCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwDeletedObjectStartingOffset(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set wsObjectPathnameList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

@@ -65,6 +65,27 @@ export function allocSystemInterruptTime(data?: Partial<SystemInterruptTime>): U
   return buf;
 }
 
+export class SystemInterruptTimeView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get value(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set value(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.CompositionSwapchain.PresentationTransform (size: 24)
  */
@@ -103,6 +124,77 @@ export function allocPresentationTransform(data?: Partial<PresentationTransform>
   return buf;
 }
 
+export class PresentationTransformView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get M11(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get M12(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get M21(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get M22(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get M31(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get M32(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set M11(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set M12(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set M21(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set M22(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set M31(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set M32(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.LUID (size: 8)
  */
@@ -123,6 +215,37 @@ export function allocLUID(data?: Partial<LUID>): Uint8Array {
   // 0x04: i32
   if (data?.HighPart !== undefined) view.setInt32(4, Number(data.HighPart), true);
   return buf;
+}
+
+export class LUIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get LowPart(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get HighPart(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u32
+  set LowPart(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set HighPart(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -171,6 +294,108 @@ export function allocCompositionFrameDisplayInstance(data?: Partial<CompositionF
   if (data?.colorSpace !== undefined) view.setInt32(41, Number(data.colorSpace), true);
   // 0x2d: pad3
   return buf;
+}
+
+export class CompositionFrameDisplayInstanceView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get displayAdapterLUID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get displayVidPnSourceId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get displayUniqueId(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get renderAdapterLUID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get instanceKind(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get finalTransform(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u8
+  get requiredCrossAdapterCopy(): number {
+    return this.view.getUint8(40);
+  }
+
+  // 0x29: i32
+  get colorSpace(): number {
+    return this.view.getInt32(41, true);
+  }
+
+  // 0x2d: pad3
+
+  // 0x00: pointer
+  set displayAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set displayVidPnSourceId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set displayUniqueId(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set renderAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set instanceKind(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set finalTransform(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u8
+  set requiredCrossAdapterCopy(value: number) {
+    this.view.setUint8(40, value);
+  }
+
+  // 0x29: i32
+  set colorSpace(value: number) {
+    this.view.setInt32(41, value, true);
+  }
+
+  // 0x2d: pad3
 }
 
 export type HRESULT = number;

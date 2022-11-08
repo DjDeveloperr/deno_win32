@@ -58,6 +58,48 @@ export function allocAVRF_BACKTRACE_INFORMATION(data?: Partial<AVRF_BACKTRACE_IN
   return buf;
 }
 
+export class AVRF_BACKTRACE_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Depth(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Index(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ReturnAddresses(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Depth(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Index(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ReturnAddresses(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.ApplicationVerifier.AVRF_HEAP_ALLOCATION (size: 64)
  */
@@ -108,6 +150,108 @@ export function allocAVRF_HEAP_ALLOCATION(data?: Partial<AVRF_HEAP_ALLOCATION>):
   return buf;
 }
 
+export class AVRF_HEAP_ALLOCATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get HeapHandle(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get UserAllocation(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get UserAllocationSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get Allocation(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u64
+  get AllocationSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: u32
+  get UserAllocationState(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get HeapState(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u64
+  get HeapContext(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(48, true));
+  }
+
+  // 0x38: pointer
+  get BackTraceInformation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u64
+  set HeapHandle(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set UserAllocation(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set UserAllocationSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set Allocation(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u64
+  set AllocationSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: u32
+  set UserAllocationState(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set HeapState(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u64
+  set HeapContext(value: Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(value), true);
+  }
+
+  // 0x38: pointer
+  set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.ApplicationVerifier.AVRF_HANDLE_OPERATION (size: 32)
  */
@@ -144,6 +288,78 @@ export function allocAVRF_HANDLE_OPERATION(data?: Partial<AVRF_HANDLE_OPERATION>
   // 0x18: pointer
   if (data?.BackTraceInformation !== undefined) view.setBigUint64(24, data.BackTraceInformation === null ? 0n : BigInt(util.toPointer(data.BackTraceInformation)), true);
   return buf;
+}
+
+export class AVRF_HANDLE_OPERATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Handle(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u32
+  get ProcessId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ThreadId(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get OperationType(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Spare0(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get BackTraceInformation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u64
+  set Handle(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u32
+  set ProcessId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ThreadId(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set OperationType(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Spare0(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HANDLE = Deno.PointerValue;

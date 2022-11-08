@@ -59,6 +59,82 @@ export function allocXPS_JOB_STATUS(data?: Partial<XPS_JOB_STATUS>): Uint8Array 
   return buf;
 }
 
+export class XPS_JOB_STATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get jobId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get currentDocument(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get currentPage(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get currentPageTotal(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get completion(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get jobStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set jobId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set currentDocument(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set currentPage(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set currentPageTotal(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set completion(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set jobStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.Xps.Printing.PrintDocumentPackageStatus (size: 32)
  */
@@ -96,6 +172,82 @@ export function allocPrintDocumentPackageStatus(data?: Partial<PrintDocumentPack
   // 0x18: pointer
   if (data?.PackageStatus !== undefined) view.setBigUint64(24, data.PackageStatus === null ? 0n : BigInt(util.toPointer(data.PackageStatus)), true);
   return buf;
+}
+
+export class PrintDocumentPackageStatusView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get JobId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get CurrentDocument(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get CurrentPage(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get CurrentPageTotal(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get Completion(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get PackageStatus(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set JobId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set CurrentDocument(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set CurrentPage(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set CurrentPageTotal(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set Completion(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set PackageStatus(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;

@@ -334,6 +334,42 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
+export class PROPERTYKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fmtid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get pid(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set pid(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.WindowsConnectNow.WCN_VALUE_TYPE_PRIMARY_DEVICE_TYPE (size: 8)
  */
@@ -358,6 +394,47 @@ export function allocWCN_VALUE_TYPE_PRIMARY_DEVICE_TYPE(data?: Partial<WCN_VALUE
   // 0x06: u16
   if (data?.SubCategory !== undefined) view.setUint16(6, Number(data.SubCategory), true);
   return buf;
+}
+
+export class WCN_VALUE_TYPE_PRIMARY_DEVICE_TYPEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get Category(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u32
+  get SubCategoryOUI(): number {
+    return this.view.getUint32(2, true);
+  }
+
+  // 0x06: u16
+  get SubCategory(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x00: u16
+  set Category(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u32
+  set SubCategoryOUI(value: number) {
+    this.view.setUint32(2, value, true);
+  }
+
+  // 0x06: u16
+  set SubCategory(value: number) {
+    this.view.setUint16(6, value, true);
+  }
 }
 
 /**
@@ -388,6 +465,57 @@ export function allocWCN_VENDOR_EXTENSION_SPEC(data?: Partial<WCN_VENDOR_EXTENSI
   // 0x0c: u32
   if (data?.Flags !== undefined) view.setUint32(12, Number(data.Flags), true);
   return buf;
+}
+
+export class WCN_VENDOR_EXTENSION_SPECView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get VendorId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Index(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Flags(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set VendorId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Index(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Flags(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 // Native Libraries

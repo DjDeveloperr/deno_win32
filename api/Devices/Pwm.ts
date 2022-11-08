@@ -63,6 +63,61 @@ export function allocPWM_CONTROLLER_INFO(data?: Partial<PWM_CONTROLLER_INFO>): U
   return buf;
 }
 
+export class PWM_CONTROLLER_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Size(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u32
+  get PinCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  get MinimumPeriod(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get MaximumPeriod(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: usize
+  set Size(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u32
+  set PinCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: u64
+  set MinimumPeriod(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set MaximumPeriod(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Pwm.PWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT (size: 8)
  */
@@ -79,6 +134,27 @@ export function allocPWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT(data?: Partial<PWM_
   // 0x00: u64
   if (data?.ActualPeriod !== undefined) view.setBigUint64(0, BigInt(data.ActualPeriod), true);
   return buf;
+}
+
+export class PWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get ActualPeriod(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set ActualPeriod(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
 }
 
 /**
@@ -99,6 +175,27 @@ export function allocPWM_CONTROLLER_SET_DESIRED_PERIOD_INPUT(data?: Partial<PWM_
   return buf;
 }
 
+export class PWM_CONTROLLER_SET_DESIRED_PERIOD_INPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get DesiredPeriod(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set DesiredPeriod(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Pwm.PWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT (size: 8)
  */
@@ -115,6 +212,27 @@ export function allocPWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT(data?: Partial<PWM
   // 0x00: u64
   if (data?.ActualPeriod !== undefined) view.setBigUint64(0, BigInt(data.ActualPeriod), true);
   return buf;
+}
+
+export class PWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get ActualPeriod(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set ActualPeriod(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
 }
 
 /**
@@ -135,6 +253,27 @@ export function allocPWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUT(data?: Part
   return buf;
 }
 
+export class PWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Percentage(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set Percentage(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Pwm.PWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT (size: 8)
  */
@@ -151,6 +290,27 @@ export function allocPWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT(data?: Parti
   // 0x00: u64
   if (data?.Percentage !== undefined) view.setBigUint64(0, BigInt(data.Percentage), true);
   return buf;
+}
+
+export class PWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Percentage(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x00: u64
+  set Percentage(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
 }
 
 /**
@@ -172,6 +332,31 @@ export function allocPWM_PIN_GET_POLARITY_OUTPUT(data?: Partial<PWM_PIN_GET_POLA
   return buf;
 }
 
+export class PWM_PIN_GET_POLARITY_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Polarity(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set Polarity(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Devices.Pwm.PWM_PIN_SET_POLARITY_INPUT (size: 8)
  */
@@ -189,6 +374,31 @@ export function allocPWM_PIN_SET_POLARITY_INPUT(data?: Partial<PWM_PIN_SET_POLAR
   if (data?.Polarity !== undefined) view.setInt32(0, Number(data.Polarity), true);
   // 0x04: pad4
   return buf;
+}
+
+export class PWM_PIN_SET_POLARITY_INPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Polarity(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: i32
+  set Polarity(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 export type BOOLEAN = number;
@@ -209,6 +419,28 @@ export function allocPWM_PIN_IS_STARTED_OUTPUT(data?: Partial<PWM_PIN_IS_STARTED
   // 0x00: pointer
   if (data?.IsStarted !== undefined) view.setBigUint64(0, data.IsStarted === null ? 0n : BigInt(util.toPointer(data.IsStarted)), true);
   return buf;
+}
+
+export class PWM_PIN_IS_STARTED_OUTPUTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IsStarted(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IsStarted(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

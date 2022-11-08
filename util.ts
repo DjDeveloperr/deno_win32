@@ -90,3 +90,11 @@ export function unwrap(hr: Deno.PointerValue | null): Deno.PointerValue {
   }
   return hr;
 }
+
+export function charToFfi(c: string | number): number {
+  return typeof c === "number" ? c : c.charCodeAt(0);
+}
+
+export function charFromFfi(c: number): string {
+  return String.fromCharCode(c);
+}

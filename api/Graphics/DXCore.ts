@@ -70,6 +70,57 @@ export function allocDXCoreHardwareID(data?: Partial<DXCoreHardwareID>): Uint8Ar
   return buf;
 }
 
+export class DXCoreHardwareIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get vendorID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get deviceID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get subSysID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get revision(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set vendorID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set deviceID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set subSysID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set revision(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.DXCore.DXCoreHardwareIDParts (size: 24)
  */
@@ -105,6 +156,71 @@ export function allocDXCoreHardwareIDParts(data?: Partial<DXCoreHardwareIDParts>
   return buf;
 }
 
+export class DXCoreHardwareIDPartsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get vendorID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get deviceID(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get subSystemID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get subVendorID(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get revisionID(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set vendorID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set deviceID(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set subSystemID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set subVendorID(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set revisionID(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.DXCore.DXCoreAdapterMemoryBudgetNodeSegmentGroup (size: 8)
  */
@@ -125,6 +241,37 @@ export function allocDXCoreAdapterMemoryBudgetNodeSegmentGroup(data?: Partial<DX
   // 0x04: u32
   if (data?.segmentGroup !== undefined) view.setUint32(4, Number(data.segmentGroup), true);
   return buf;
+}
+
+export class DXCoreAdapterMemoryBudgetNodeSegmentGroupView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nodeIndex(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get segmentGroup(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set nodeIndex(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set segmentGroup(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -155,6 +302,57 @@ export function allocDXCoreAdapterMemoryBudget(data?: Partial<DXCoreAdapterMemor
   // 0x18: u64
   if (data?.currentReservation !== undefined) view.setBigUint64(24, BigInt(data.currentReservation), true);
   return buf;
+}
+
+export class DXCoreAdapterMemoryBudgetView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get budget(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get currentUsage(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get availableForReservation(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get currentReservation(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: u64
+  set budget(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set currentUsage(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set availableForReservation(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set currentReservation(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
 }
 
 export type HRESULT = number;

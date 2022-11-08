@@ -87,6 +87,51 @@ export function allocRdcNeed(data?: Partial<RdcNeed>): Uint8Array {
   return buf;
 }
 
+export class RdcNeedView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get m_BlockType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  get m_FileOffset(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get m_BlockLength(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: i32
+  set m_BlockType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: u64
+  set m_FileOffset(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set m_BlockLength(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Networking.RemoteDifferentialCompression.RdcBufferPointer (size: 16)
  */
@@ -111,6 +156,48 @@ export function allocRdcBufferPointer(data?: Partial<RdcBufferPointer>): Uint8Ar
   // 0x08: pointer
   if (data?.m_Data !== undefined) view.setBigUint64(8, data.m_Data === null ? 0n : BigInt(util.toPointer(data.m_Data)), true);
   return buf;
+}
+
+export class RdcBufferPointerView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get m_Used(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set m_Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set m_Used(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -139,6 +226,48 @@ export function allocRdcNeedPointer(data?: Partial<RdcNeedPointer>): Uint8Array 
   return buf;
 }
 
+export class RdcNeedPointerView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get m_Used(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set m_Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set m_Used(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Networking.RemoteDifferentialCompression.RdcSignature (size: 16)
  */
@@ -160,6 +289,42 @@ export function allocRdcSignature(data?: Partial<RdcSignature>): Uint8Array {
   if (data?.m_BlockLength !== undefined) view.setUint16(8, Number(data.m_BlockLength), true);
   // 0x0a: pad6
   return buf;
+}
+
+export class RdcSignatureView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get m_Signature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get m_BlockLength(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: pointer
+  set m_Signature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set m_BlockLength(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -188,6 +353,48 @@ export function allocRdcSignaturePointer(data?: Partial<RdcSignaturePointer>): U
   return buf;
 }
 
+export class RdcSignaturePointerView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get m_Used(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set m_Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set m_Used(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Networking.RemoteDifferentialCompression.SimilarityMappedViewInfo (size: 16)
  */
@@ -211,6 +418,42 @@ export function allocSimilarityMappedViewInfo(data?: Partial<SimilarityMappedVie
   return buf;
 }
 
+export class SimilarityMappedViewInfoView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get m_Length(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set m_Length(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Networking.RemoteDifferentialCompression.SimilarityData (size: 8)
  */
@@ -227,6 +470,28 @@ export function allocSimilarityData(data?: Partial<SimilarityData>): Uint8Array 
   // 0x00: pointer
   if (data?.m_Data !== undefined) view.setBigUint64(0, data.m_Data === null ? 0n : BigInt(util.toPointer(data.m_Data)), true);
   return buf;
+}
+
+export class SimilarityDataView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -249,6 +514,37 @@ export function allocFindSimilarFileIndexResults(data?: Partial<FindSimilarFileI
   // 0x04: u32
   if (data?.m_MatchCount !== undefined) view.setUint32(4, Number(data.m_MatchCount), true);
   return buf;
+}
+
+export class FindSimilarFileIndexResultsView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_FileIndex(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get m_MatchCount(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set m_FileIndex(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set m_MatchCount(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -274,6 +570,42 @@ export function allocSimilarityDumpData(data?: Partial<SimilarityDumpData>): Uin
   return buf;
 }
 
+export class SimilarityDumpDataView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get m_FileIndex(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get m_Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set m_FileIndex(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set m_Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Networking.RemoteDifferentialCompression.SimilarityFileId (size: 8)
  */
@@ -290,6 +622,28 @@ export function allocSimilarityFileId(data?: Partial<SimilarityFileId>): Uint8Ar
   // 0x00: pointer
   if (data?.m_FileId !== undefined) view.setBigUint64(0, data.m_FileId === null ? 0n : BigInt(util.toPointer(data.m_FileId)), true);
   return buf;
+}
+
+export class SimilarityFileIdView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get m_FileId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set m_FileId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 // Native Libraries

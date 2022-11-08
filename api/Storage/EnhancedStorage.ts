@@ -287,6 +287,42 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
+export class PROPERTYKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fmtid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get pid(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set pid(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 export type BOOL = number;
 
 /**
@@ -408,6 +444,281 @@ export function allocENHANCED_STORAGE_PASSWORD_SILO_INFORMATION(data?: Partial<E
   return buf;
 }
 
+export class ENHANCED_STORAGE_PASSWORD_SILO_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get CurrentAdminFailures(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get CurrentUserFailures(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u32
+  get TotalUserAuthenticationCount(): number {
+    return this.view.getUint32(2, true);
+  }
+
+  // 0x06: u32
+  get TotalAdminAuthenticationCount(): number {
+    return this.view.getUint32(6, true);
+  }
+
+  // 0x0a: i32
+  get FipsCompliant(): number {
+    return this.view.getInt32(10, true);
+  }
+
+  // 0x0e: i32
+  get SecurityIDAvailable(): number {
+    return this.view.getInt32(14, true);
+  }
+
+  // 0x12: i32
+  get InitializeInProgress(): number {
+    return this.view.getInt32(18, true);
+  }
+
+  // 0x16: i32
+  get ITMSArmed(): number {
+    return this.view.getInt32(22, true);
+  }
+
+  // 0x1a: i32
+  get ITMSArmable(): number {
+    return this.view.getInt32(26, true);
+  }
+
+  // 0x1e: i32
+  get UserCreated(): number {
+    return this.view.getInt32(30, true);
+  }
+
+  // 0x22: i32
+  get ResetOnPORDefault(): number {
+    return this.view.getInt32(34, true);
+  }
+
+  // 0x26: i32
+  get ResetOnPORCurrent(): number {
+    return this.view.getInt32(38, true);
+  }
+
+  // 0x2a: u8
+  get MaxAdminFailures(): number {
+    return this.view.getUint8(42);
+  }
+
+  // 0x2b: u8
+  get MaxUserFailures(): number {
+    return this.view.getUint8(43);
+  }
+
+  // 0x2c: u32
+  get TimeToCompleteInitialization(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get TimeRemainingToCompleteInitialization(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get MinTimeToAuthenticate(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u8
+  get MaxAdminPasswordSize(): number {
+    return this.view.getUint8(56);
+  }
+
+  // 0x39: u8
+  get MinAdminPasswordSize(): number {
+    return this.view.getUint8(57);
+  }
+
+  // 0x3a: u8
+  get MaxAdminHintSize(): number {
+    return this.view.getUint8(58);
+  }
+
+  // 0x3b: u8
+  get MaxUserPasswordSize(): number {
+    return this.view.getUint8(59);
+  }
+
+  // 0x3c: u8
+  get MinUserPasswordSize(): number {
+    return this.view.getUint8(60);
+  }
+
+  // 0x3d: u8
+  get MaxUserHintSize(): number {
+    return this.view.getUint8(61);
+  }
+
+  // 0x3e: u8
+  get MaxUserNameSize(): number {
+    return this.view.getUint8(62);
+  }
+
+  // 0x3f: u8
+  get MaxSiloNameSize(): number {
+    return this.view.getUint8(63);
+  }
+
+  // 0x40: u16
+  get MaxChallengeSize(): number {
+    return this.view.getUint16(64, true);
+  }
+
+  // 0x42: pad6
+
+  // 0x00: u8
+  set CurrentAdminFailures(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set CurrentUserFailures(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u32
+  set TotalUserAuthenticationCount(value: number) {
+    this.view.setUint32(2, value, true);
+  }
+
+  // 0x06: u32
+  set TotalAdminAuthenticationCount(value: number) {
+    this.view.setUint32(6, value, true);
+  }
+
+  // 0x0a: i32
+  set FipsCompliant(value: number) {
+    this.view.setInt32(10, value, true);
+  }
+
+  // 0x0e: i32
+  set SecurityIDAvailable(value: number) {
+    this.view.setInt32(14, value, true);
+  }
+
+  // 0x12: i32
+  set InitializeInProgress(value: number) {
+    this.view.setInt32(18, value, true);
+  }
+
+  // 0x16: i32
+  set ITMSArmed(value: number) {
+    this.view.setInt32(22, value, true);
+  }
+
+  // 0x1a: i32
+  set ITMSArmable(value: number) {
+    this.view.setInt32(26, value, true);
+  }
+
+  // 0x1e: i32
+  set UserCreated(value: number) {
+    this.view.setInt32(30, value, true);
+  }
+
+  // 0x22: i32
+  set ResetOnPORDefault(value: number) {
+    this.view.setInt32(34, value, true);
+  }
+
+  // 0x26: i32
+  set ResetOnPORCurrent(value: number) {
+    this.view.setInt32(38, value, true);
+  }
+
+  // 0x2a: u8
+  set MaxAdminFailures(value: number) {
+    this.view.setUint8(42, value);
+  }
+
+  // 0x2b: u8
+  set MaxUserFailures(value: number) {
+    this.view.setUint8(43, value);
+  }
+
+  // 0x2c: u32
+  set TimeToCompleteInitialization(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set TimeRemainingToCompleteInitialization(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set MinTimeToAuthenticate(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u8
+  set MaxAdminPasswordSize(value: number) {
+    this.view.setUint8(56, value);
+  }
+
+  // 0x39: u8
+  set MinAdminPasswordSize(value: number) {
+    this.view.setUint8(57, value);
+  }
+
+  // 0x3a: u8
+  set MaxAdminHintSize(value: number) {
+    this.view.setUint8(58, value);
+  }
+
+  // 0x3b: u8
+  set MaxUserPasswordSize(value: number) {
+    this.view.setUint8(59, value);
+  }
+
+  // 0x3c: u8
+  set MinUserPasswordSize(value: number) {
+    this.view.setUint8(60, value);
+  }
+
+  // 0x3d: u8
+  set MaxUserHintSize(value: number) {
+    this.view.setUint8(61, value);
+  }
+
+  // 0x3e: u8
+  set MaxUserNameSize(value: number) {
+    this.view.setUint8(62, value);
+  }
+
+  // 0x3f: u8
+  set MaxSiloNameSize(value: number) {
+    this.view.setUint8(63, value);
+  }
+
+  // 0x40: u16
+  set MaxChallengeSize(value: number) {
+    this.view.setUint16(64, value, true);
+  }
+
+  // 0x42: pad6
+}
+
 /**
  * Windows.Win32.Storage.EnhancedStorage.ACT_AUTHORIZATION_STATE (size: 8)
  */
@@ -425,6 +736,31 @@ export function allocACT_AUTHORIZATION_STATE(data?: Partial<ACT_AUTHORIZATION_ST
   if (data?.ulState !== undefined) view.setUint32(0, Number(data.ulState), true);
   // 0x04: pad4
   return buf;
+}
+
+export class ACT_AUTHORIZATION_STATEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulState(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set ulState(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -468,6 +804,91 @@ export function allocSILO_INFO(data?: Partial<SILO_INFO>): Uint8Array {
   if (data?.capabilities !== undefined) view.setUint8(9, Number(data.capabilities));
   // 0x0a: pad6
   return buf;
+}
+
+export class SILO_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulSTID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u8
+  get SpecificationMajor(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: u8
+  get SpecificationMinor(): number {
+    return this.view.getUint8(5);
+  }
+
+  // 0x06: u8
+  get ImplementationMajor(): number {
+    return this.view.getUint8(6);
+  }
+
+  // 0x07: u8
+  get ImplementationMinor(): number {
+    return this.view.getUint8(7);
+  }
+
+  // 0x08: u8
+  get type(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: u8
+  get capabilities(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: u32
+  set ulSTID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u8
+  set SpecificationMajor(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: u8
+  set SpecificationMinor(value: number) {
+    this.view.setUint8(5, value);
+  }
+
+  // 0x06: u8
+  set ImplementationMajor(value: number) {
+    this.view.setUint8(6, value);
+  }
+
+  // 0x07: u8
+  set ImplementationMinor(value: number) {
+    this.view.setUint8(7, value);
+  }
+
+  // 0x08: u8
+  set type(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: u8
+  set capabilities(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
 }
 
 // Native Libraries

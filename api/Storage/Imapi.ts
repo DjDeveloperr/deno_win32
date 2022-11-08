@@ -639,6 +639,42 @@ export function allocSPropAttrArray(data?: Partial<SPropAttrArray>): Uint8Array 
   return buf;
 }
 
+export class SPropAttrArrayView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cValues(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get aPropAttr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cValues(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set aPropAttr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Storage.Imapi.IMMP_MPV_STORE_DRIVER_HANDLE (size: 8)
  */
@@ -655,6 +691,28 @@ export function allocIMMP_MPV_STORE_DRIVER_HANDLE(data?: Partial<IMMP_MPV_STORE_
   // 0x00: pointer
   if (data?.guidSignature !== undefined) view.setBigUint64(0, data.guidSignature === null ? 0n : BigInt(util.toPointer(data.guidSignature)), true);
   return buf;
+}
+
+export class IMMP_MPV_STORE_DRIVER_HANDLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get guidSignature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set guidSignature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -681,6 +739,48 @@ export function allocTagIMMPID_GUIDLIST_ITEM(data?: Partial<tagIMMPID_GUIDLIST_I
   // 0x0c: u32
   if (data?.dwLast !== undefined) view.setUint32(12, Number(data.dwLast), true);
   return buf;
+}
+
+export class tagIMMPID_GUIDLIST_ITEMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pguid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwStart(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwLast(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set pguid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwStart(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwLast(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 export type HRESULT = number;

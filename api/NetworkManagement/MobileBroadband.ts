@@ -299,6 +299,157 @@ export function allocMBN_INTERFACE_CAPS(data?: Partial<MBN_INTERFACE_CAPS>): Uin
   return buf;
 }
 
+export class MBN_INTERFACE_CAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get cellularClass(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get voiceClass(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get dataClass(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get customDataClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get gsmBandClass(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cdmaBandClass(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get customBandClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get smsCaps(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get controlCaps(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get deviceID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get manufacturer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get model(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get firmwareInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set cellularClass(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set voiceClass(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dataClass(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set customDataClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set gsmBandClass(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cdmaBandClass(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set customBandClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set smsCaps(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set controlCaps(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set deviceID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set manufacturer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set model(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set firmwareInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.MBN_PROVIDER (size: 32)
  */
@@ -329,6 +480,67 @@ export function allocMBN_PROVIDER(data?: Partial<MBN_PROVIDER>): Uint8Array {
   if (data?.dataClass !== undefined) view.setUint32(24, Number(data.dataClass), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class MBN_PROVIDERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get providerID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get providerState(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get providerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dataClass(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: pointer
+  set providerID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set providerState(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set providerName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dataClass(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -362,6 +574,62 @@ export function allocMBN_PROVIDER2(data?: Partial<MBN_PROVIDER2>): Uint8Array {
   return buf;
 }
 
+export class MBN_PROVIDER2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get provider(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get cellularClass(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get signalStrength(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get signalError(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set provider(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set cellularClass(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set signalStrength(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set signalError(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.MBN_PIN_INFO (size: 16)
  */
@@ -387,6 +655,51 @@ export function allocMBN_PIN_INFO(data?: Partial<MBN_PIN_INFO>): Uint8Array {
   if (data?.attemptsRemaining !== undefined) view.setUint32(8, Number(data.attemptsRemaining), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class MBN_PIN_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get pinState(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get pinType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get attemptsRemaining(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set pinState(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set pinType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set attemptsRemaining(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -431,6 +744,90 @@ export function allocMBN_CONTEXT(data?: Partial<MBN_CONTEXT>): Uint8Array {
   return buf;
 }
 
+export class MBN_CONTEXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get contextID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get contextType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get accessString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get userName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get password(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get compression(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get authType(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x00: u32
+  set contextID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set contextType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set accessString(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set userName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set password(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set compression(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set authType(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.MBN_SMS_FILTER (size: 8)
  */
@@ -453,6 +850,37 @@ export function allocMBN_SMS_FILTER(data?: Partial<MBN_SMS_FILTER>): Uint8Array 
   return buf;
 }
 
+export class MBN_SMS_FILTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get flag(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get messageIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: i32
+  set flag(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set messageIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.MBN_SMS_STATUS_INFO (size: 8)
  */
@@ -473,6 +901,37 @@ export function allocMBN_SMS_STATUS_INFO(data?: Partial<MBN_SMS_STATUS_INFO>): U
   // 0x04: u32
   if (data?.messageIndex !== undefined) view.setUint32(4, Number(data.messageIndex), true);
   return buf;
+}
+
+export class MBN_SMS_STATUS_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get flag(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get messageIndex(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set flag(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set messageIndex(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -500,6 +959,52 @@ export function allocMBN_DEVICE_SERVICE(data?: Partial<MBN_DEVICE_SERVICE>): Uin
   if (data?.dataReadSupported !== undefined) view.setInt16(10, Number(data.dataReadSupported), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class MBN_DEVICE_SERVICEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get deviceServiceID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i16
+  get dataWriteSupported(): number {
+    return this.view.getInt16(8, true);
+  }
+
+  // 0x0a: i16
+  get dataReadSupported(): number {
+    return this.view.getInt16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set deviceServiceID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i16
+  set dataWriteSupported(value: number) {
+    this.view.setInt16(8, value, true);
+  }
+
+  // 0x0a: i16
+  set dataReadSupported(value: number) {
+    this.view.setInt16(10, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -572,6 +1077,157 @@ export function alloc__mbnapi_ReferenceRemainingTypes__(data?: Partial<__mbnapi_
   return buf;
 }
 
+export class __mbnapi_ReferenceRemainingTypes__View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get bandClass(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get contextConstants(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get ctrlCaps(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get dataClass(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get interfaceCapsConstants(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get pinConstants(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get providerConstants(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get providerState(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get registrationConstants(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get signalConstants(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get smsCaps(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: i32
+  get smsConstants(): number {
+    return this.view.getInt32(44, true);
+  }
+
+  // 0x30: i32
+  get wwaextSmsConstants(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: i32
+  get smsStatusFlag(): number {
+    return this.view.getInt32(52, true);
+  }
+
+  // 0x00: i32
+  set bandClass(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set contextConstants(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set ctrlCaps(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set dataClass(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set interfaceCapsConstants(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set pinConstants(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set providerConstants(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set providerState(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set registrationConstants(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set signalConstants(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set smsCaps(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: i32
+  set smsConstants(value: number) {
+    this.view.setInt32(44, value, true);
+  }
+
+  // 0x30: i32
+  set wwaextSmsConstants(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: i32
+  set smsStatusFlag(value: number) {
+    this.view.setInt32(52, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.__DummyPinType__ (size: 8)
  */
@@ -589,6 +1245,31 @@ export function alloc__DummyPinType__(data?: Partial<__DummyPinType__>): Uint8Ar
   if (data?.pinType !== undefined) view.setUint32(0, Number(data.pinType), true);
   // 0x04: pad4
   return buf;
+}
+
+export class __DummyPinType__View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get pinType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set pinType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 // Native Libraries

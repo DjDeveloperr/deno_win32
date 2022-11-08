@@ -54,6 +54,41 @@ export function allocHCN_PORT_RANGE_RESERVATION(data?: Partial<HCN_PORT_RANGE_RE
   return buf;
 }
 
+export class HCN_PORT_RANGE_RESERVATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get startingPort(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get endingPort(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set startingPort(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set endingPort(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.System.HostComputeNetwork.HCN_PORT_RANGE_ENTRY (size: 48)
  */
@@ -103,6 +138,113 @@ export function allocHCN_PORT_RANGE_ENTRY(data?: Partial<HCN_PORT_RANGE_ENTRY>):
   // 0x2e: u16
   if (data?.EndingPort !== undefined) view.setUint16(46, Number(data.EndingPort), true);
   return buf;
+}
+
+export class HCN_PORT_RANGE_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get OwningPartitionId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get TargetPartitionId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get Protocol(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: u64
+  get Priority(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get ReservationType(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get SharingFlags(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get DeliveryMode(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u16
+  get StartingPort(): number {
+    return this.view.getUint16(44, true);
+  }
+
+  // 0x2e: u16
+  get EndingPort(): number {
+    return this.view.getUint16(46, true);
+  }
+
+  // 0x00: pointer
+  set OwningPartitionId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set TargetPartitionId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set Protocol(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: u64
+  set Priority(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set ReservationType(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set SharingFlags(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set DeliveryMode(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u16
+  set StartingPort(value: number) {
+    this.view.setUint16(44, value, true);
+  }
+
+  // 0x2e: u16
+  set EndingPort(value: number) {
+    this.view.setUint16(46, value, true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;

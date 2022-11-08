@@ -274,6 +274,222 @@ export function allocMODEMDEVCAPS(data?: Partial<MODEMDEVCAPS>): Uint8Array {
   return buf;
 }
 
+export class MODEMDEVCAPSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwActualSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwRequiredSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwDevSpecificOffset(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwDevSpecificSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwModemProviderVersion(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwModemManufacturerOffset(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwModemManufacturerSize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwModemModelOffset(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwModemModelSize(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwModemVersionOffset(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwModemVersionSize(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dwDialOptions(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get dwCallSetupFailTimer(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwInactivityTimeout(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get dwSpeakerVolume(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get dwSpeakerMode(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get dwModemOptions(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get dwMaxDTERate(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get dwMaxDCERate(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get abVariablePortion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwActualSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwRequiredSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwDevSpecificOffset(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwDevSpecificSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwModemProviderVersion(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwModemManufacturerOffset(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwModemManufacturerSize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwModemModelOffset(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwModemModelSize(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwModemVersionOffset(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwModemVersionSize(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dwDialOptions(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set dwCallSetupFailTimer(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwInactivityTimeout(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set dwSpeakerVolume(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set dwSpeakerMode(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set dwModemOptions(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set dwMaxDTERate(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set dwMaxDCERate(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Communication.MODEMSETTINGS (size: 56)
  */
@@ -335,6 +551,142 @@ export function allocMODEMSETTINGS(data?: Partial<MODEMSETTINGS>): Uint8Array {
   // 0x30: pointer
   if (data?.abVariablePortion !== undefined) view.setBigUint64(48, data.abVariablePortion === null ? 0n : BigInt(util.toPointer(data.abVariablePortion)), true);
   return buf;
+}
+
+export class MODEMSETTINGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwActualSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwRequiredSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwDevSpecificOffset(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwDevSpecificSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwCallSetupFailTimer(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwInactivityTimeout(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwSpeakerVolume(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwSpeakerMode(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwPreferredModemOptions(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwNegotiatedModemOptions(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwNegotiatedDCERate(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get abVariablePortion(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwActualSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwRequiredSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwDevSpecificOffset(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwDevSpecificSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwCallSetupFailTimer(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwInactivityTimeout(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwSpeakerVolume(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwSpeakerMode(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwPreferredModemOptions(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwNegotiatedModemOptions(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwNegotiatedDCERate(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -424,6 +776,202 @@ export function allocCOMMPROP(data?: Partial<COMMPROP>): Uint8Array {
   return buf;
 }
 
+export class COMMPROPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wPacketLength(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wPacketVersion(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u32
+  get dwServiceMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwReserved1(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwMaxTxQueue(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwMaxRxQueue(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwMaxBaud(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwProvSubType(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwProvCapabilities(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwSettableParams(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwSettableBaud(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u16
+  get wSettableData(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get wSettableStopParity(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u32
+  get dwCurrentTxQueue(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get dwCurrentRxQueue(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwProvSpec1(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get dwProvSpec2(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get wcProvChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wPacketLength(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wPacketVersion(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u32
+  set dwServiceMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwReserved1(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwMaxTxQueue(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwMaxRxQueue(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwMaxBaud(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwProvSubType(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwProvCapabilities(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwSettableParams(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwSettableBaud(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u16
+  set wSettableData(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set wSettableStopParity(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u32
+  set dwCurrentTxQueue(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set dwCurrentRxQueue(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwProvSpec1(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set dwProvSpec2(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set wcProvChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Devices.Communication.COMSTAT (size: 16)
  */
@@ -451,10 +999,55 @@ export function allocCOMSTAT(data?: Partial<COMSTAT>): Uint8Array {
   return buf;
 }
 
+export class COMSTATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get _bitfield(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get cbInQue(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cbOutQue(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set _bitfield(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set cbInQue(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cbOutQue(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 export type CHAR = number;
 
 /**
- * Windows.Win32.Devices.Communication.DCB (size: 72)
+ * Windows.Win32.Devices.Communication.DCB (size: 32)
  */
 export interface DCB {
   /** u32 */
@@ -476,20 +1069,20 @@ export interface DCB {
   /** Windows.Win32.Devices.Communication.DCB_STOP_BITS */
   StopBits: DCB_STOP_BITS;
   /** Windows.Win32.Foundation.CHAR */
-  XonChar: Uint8Array | Deno.PointerValue | null;
+  XonChar: string | number;
   /** Windows.Win32.Foundation.CHAR */
-  XoffChar: Uint8Array | Deno.PointerValue | null;
+  XoffChar: string | number;
   /** Windows.Win32.Foundation.CHAR */
-  ErrorChar: Uint8Array | Deno.PointerValue | null;
+  ErrorChar: string | number;
   /** Windows.Win32.Foundation.CHAR */
-  EofChar: Uint8Array | Deno.PointerValue | null;
+  EofChar: string | number;
   /** Windows.Win32.Foundation.CHAR */
-  EvtChar: Uint8Array | Deno.PointerValue | null;
+  EvtChar: string | number;
   /** u16 */
   wReserved1: number;
 }
 
-export const sizeofDCB = 72;
+export const sizeofDCB = 32;
 
 export function allocDCB(data?: Partial<DCB>): Uint8Array {
   const buf = new Uint8Array(sizeofDCB);
@@ -512,21 +1105,185 @@ export function allocDCB(data?: Partial<DCB>): Uint8Array {
   if (data?.Parity !== undefined) view.setUint8(19, Number(data.Parity));
   // 0x14: u8
   if (data?.StopBits !== undefined) view.setUint8(20, Number(data.StopBits));
-  // 0x15: pad3
-  // 0x18: pointer
-  if (data?.XonChar !== undefined) view.setBigUint64(24, data.XonChar === null ? 0n : BigInt(util.toPointer(data.XonChar)), true);
-  // 0x20: pointer
-  if (data?.XoffChar !== undefined) view.setBigUint64(32, data.XoffChar === null ? 0n : BigInt(util.toPointer(data.XoffChar)), true);
-  // 0x28: pointer
-  if (data?.ErrorChar !== undefined) view.setBigUint64(40, data.ErrorChar === null ? 0n : BigInt(util.toPointer(data.ErrorChar)), true);
-  // 0x30: pointer
-  if (data?.EofChar !== undefined) view.setBigUint64(48, data.EofChar === null ? 0n : BigInt(util.toPointer(data.EofChar)), true);
-  // 0x38: pointer
-  if (data?.EvtChar !== undefined) view.setBigUint64(56, data.EvtChar === null ? 0n : BigInt(util.toPointer(data.EvtChar)), true);
-  // 0x40: u16
-  if (data?.wReserved1 !== undefined) view.setUint16(64, Number(data.wReserved1), true);
-  // 0x42: pad6
+  // 0x15: u8
+  if (data?.XonChar !== undefined) view.setUint8(21, Number(data.XonChar));
+  // 0x16: u8
+  if (data?.XoffChar !== undefined) view.setUint8(22, Number(data.XoffChar));
+  // 0x17: u8
+  if (data?.ErrorChar !== undefined) view.setUint8(23, Number(data.ErrorChar));
+  // 0x18: u8
+  if (data?.EofChar !== undefined) view.setUint8(24, Number(data.EofChar));
+  // 0x19: u8
+  if (data?.EvtChar !== undefined) view.setUint8(25, Number(data.EvtChar));
+  // 0x1a: u16
+  if (data?.wReserved1 !== undefined) view.setUint16(26, Number(data.wReserved1), true);
+  // 0x1c: pad4
   return buf;
+}
+
+export class DCBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get DCBlength(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get BaudRate(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get _bitfield(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get wReserved(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get XonLim(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u16
+  get XoffLim(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u8
+  get ByteSize(): number {
+    return this.view.getUint8(18);
+  }
+
+  // 0x13: u8
+  get Parity(): number {
+    return this.view.getUint8(19);
+  }
+
+  // 0x14: u8
+  get StopBits(): number {
+    return this.view.getUint8(20);
+  }
+
+  // 0x15: u8
+  get XonChar(): number {
+    return this.view.getUint8(21);
+  }
+
+  // 0x16: u8
+  get XoffChar(): number {
+    return this.view.getUint8(22);
+  }
+
+  // 0x17: u8
+  get ErrorChar(): number {
+    return this.view.getUint8(23);
+  }
+
+  // 0x18: u8
+  get EofChar(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: u8
+  get EvtChar(): number {
+    return this.view.getUint8(25);
+  }
+
+  // 0x1a: u16
+  get wReserved1(): number {
+    return this.view.getUint16(26, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set DCBlength(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set BaudRate(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set _bitfield(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set wReserved(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set XonLim(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u16
+  set XoffLim(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u8
+  set ByteSize(value: number) {
+    this.view.setUint8(18, value);
+  }
+
+  // 0x13: u8
+  set Parity(value: number) {
+    this.view.setUint8(19, value);
+  }
+
+  // 0x14: u8
+  set StopBits(value: number) {
+    this.view.setUint8(20, value);
+  }
+
+  // 0x15: u8
+  set XonChar(value: number) {
+    this.view.setUint8(21, value);
+  }
+
+  // 0x16: u8
+  set XoffChar(value: number) {
+    this.view.setUint8(22, value);
+  }
+
+  // 0x17: u8
+  set ErrorChar(value: number) {
+    this.view.setUint8(23, value);
+  }
+
+  // 0x18: u8
+  set EofChar(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: u8
+  set EvtChar(value: number) {
+    this.view.setUint8(25, value);
+  }
+
+  // 0x1a: u16
+  set wReserved1(value: number) {
+    this.view.setUint16(26, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -562,6 +1319,71 @@ export function allocCOMMTIMEOUTS(data?: Partial<COMMTIMEOUTS>): Uint8Array {
   if (data?.WriteTotalTimeoutConstant !== undefined) view.setUint32(16, Number(data.WriteTotalTimeoutConstant), true);
   // 0x14: pad4
   return buf;
+}
+
+export class COMMTIMEOUTSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ReadIntervalTimeout(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ReadTotalTimeoutMultiplier(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ReadTotalTimeoutConstant(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get WriteTotalTimeoutMultiplier(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get WriteTotalTimeoutConstant(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set ReadIntervalTimeout(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ReadTotalTimeoutMultiplier(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ReadTotalTimeoutConstant(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set WriteTotalTimeoutMultiplier(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set WriteTotalTimeoutConstant(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -609,6 +1431,103 @@ export function allocCOMMCONFIG(data?: Partial<COMMCONFIG>): Uint8Array {
   // 0x20: pointer
   if (data?.wcProviderData !== undefined) view.setBigUint64(32, data.wcProviderData === null ? 0n : BigInt(util.toPointer(data.wcProviderData)), true);
   return buf;
+}
+
+export class COMMCONFIGView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get wVersion(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get wReserved(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: pointer
+  get dcb(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwProviderSubType(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwProviderOffset(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwProviderSize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get wcProviderData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set wVersion(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set wReserved(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: pointer
+  set dcb(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwProviderSubType(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwProviderOffset(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwProviderSize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set wcProviderData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HANDLE = Deno.PointerValue;
@@ -690,7 +1609,7 @@ try {
       result: "i32",
     },
     TransmitCommChar: {
-      parameters: ["pointer", "pointer"],
+      parameters: ["pointer", "u8"],
       result: "i32",
     },
     WaitCommEvent: {
@@ -876,9 +1795,9 @@ export function SetCommTimeouts(
 
 export function TransmitCommChar(
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  cChar: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.CHAR */,
+  cChar: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TransmitCommChar(util.toPointer(hFile), util.toPointer(cChar)));
+  return util.boolFromFfi(libKERNEL32_dll.TransmitCommChar(util.toPointer(hFile), util.charToFfi(cChar)));
 }
 
 export function WaitCommEvent(

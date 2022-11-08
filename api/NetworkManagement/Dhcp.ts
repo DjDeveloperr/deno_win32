@@ -500,6 +500,76 @@ export function allocDHCPV6CAPI_PARAMS(data?: Partial<DHCPV6CAPI_PARAMS>): Uint8
   return buf;
 }
 
+export class DHCPV6CAPI_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get OptionId(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get IsVendor(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get nBytesData(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set OptionId(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set IsVendor(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set nBytesData(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV6CAPI_PARAMS_ARRAY (size: 16)
  */
@@ -521,6 +591,42 @@ export function allocDHCPV6CAPI_PARAMS_ARRAY(data?: Partial<DHCPV6CAPI_PARAMS_AR
   // 0x08: pointer
   if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(util.toPointer(data.Params)), true);
   return buf;
+}
+
+export class DHCPV6CAPI_PARAMS_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nParams(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Params(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set nParams(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Params(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -549,6 +655,56 @@ export function allocDHCPV6CAPI_CLASSID(data?: Partial<DHCPV6CAPI_CLASSID>): Uin
   if (data?.nBytesData !== undefined) view.setUint32(16, Number(data.nBytesData), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DHCPV6CAPI_CLASSIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nBytesData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nBytesData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -583,6 +739,68 @@ export function allocDHCPV6Prefix(data?: Partial<DHCPV6Prefix>): Uint8Array {
   // 0x14: i32
   if (data?.status !== undefined) view.setInt32(20, Number(data.status), true);
   return buf;
+}
+
+export class DHCPV6PrefixView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get prefix(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get prefixLength(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get preferredLifeTime(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get validLifeTime(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get status(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: pointer
+  set prefix(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set prefixLength(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set preferredLifeTime(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set validLifeTime(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set status(value: number) {
+    this.view.setInt32(20, value, true);
+  }
 }
 
 /**
@@ -643,6 +861,135 @@ export function allocDHCPV6PrefixLeaseInformation(data?: Partial<DHCPV6PrefixLea
   return buf;
 }
 
+export class DHCPV6PrefixLeaseInformationView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nPrefixes(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get prefixArray(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get iaid(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: i64
+  get T1(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(24, true));
+  }
+
+  // 0x20: i64
+  get T2(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(32, true));
+  }
+
+  // 0x28: i64
+  get MaxLeaseExpirationTime(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(40, true));
+  }
+
+  // 0x30: i64
+  get LastRenewalTime(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(48, true));
+  }
+
+  // 0x38: i32
+  get status(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get ServerId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get ServerIdLen(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x00: u32
+  set nPrefixes(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set prefixArray(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set iaid(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: i64
+  set T1(value: Deno.PointerValue) {
+    this.view.setBigInt64(24, BigInt(value), true);
+  }
+
+  // 0x20: i64
+  set T2(value: Deno.PointerValue) {
+    this.view.setBigInt64(32, BigInt(value), true);
+  }
+
+  // 0x28: i64
+  set MaxLeaseExpirationTime(value: Deno.PointerValue) {
+    this.view.setBigInt64(40, BigInt(value), true);
+  }
+
+  // 0x30: i64
+  set LastRenewalTime(value: Deno.PointerValue) {
+    this.view.setBigInt64(48, BigInt(value), true);
+  }
+
+  // 0x38: i32
+  set status(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set ServerId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set ServerIdLen(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPAPI_PARAMS (size: 32)
  */
@@ -679,6 +1026,76 @@ export function allocDHCPAPI_PARAMS(data?: Partial<DHCPAPI_PARAMS>): Uint8Array 
   return buf;
 }
 
+export class DHCPAPI_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get OptionId(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get IsVendor(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get nBytesData(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set OptionId(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set IsVendor(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set nBytesData(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY (size: 16)
  */
@@ -700,6 +1117,42 @@ export function allocDHCPCAPI_PARAMS_ARRAY(data?: Partial<DHCPCAPI_PARAMS_ARRAY>
   // 0x08: pointer
   if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(util.toPointer(data.Params)), true);
   return buf;
+}
+
+export class DHCPCAPI_PARAMS_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get nParams(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Params(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set nParams(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Params(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -728,6 +1181,56 @@ export function allocDHCPCAPI_CLASSID(data?: Partial<DHCPCAPI_CLASSID>): Uint8Ar
   if (data?.nBytesData !== undefined) view.setUint32(16, Number(data.nBytesData), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DHCPCAPI_CLASSIDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nBytesData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nBytesData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
@@ -862,6 +1365,306 @@ export function allocDHCP_SERVER_OPTIONS(data?: Partial<DHCP_SERVER_OPTIONS>): U
   return buf;
 }
 
+export class DHCP_SERVER_OPTIONSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get MessageType(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get SubnetMask(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get RequestedAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get RequestLeaseTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get OverlayFields(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get RouterAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get Server(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get ParameterRequestList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get ParameterRequestListLength(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x48: buffer
+  get MachineName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u32
+  get MachineNameLength(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u8
+  get ClientHardwareAddressType(): number {
+    return this.view.getUint8(84);
+  }
+
+  // 0x55: u8
+  get ClientHardwareAddressLength(): number {
+    return this.view.getUint8(85);
+  }
+
+  // 0x56: pad2
+
+  // 0x58: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: buffer
+  get ClassIdentifier(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: u32
+  get ClassIdentifierLength(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: pad4
+
+  // 0x70: pointer
+  get VendorClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: u32
+  get VendorClassLength(): number {
+    return this.view.getUint32(120, true);
+  }
+
+  // 0x7c: u32
+  get DNSFlags(): number {
+    return this.view.getUint32(124, true);
+  }
+
+  // 0x80: u32
+  get DNSNameLength(): number {
+    return this.view.getUint32(128, true);
+  }
+
+  // 0x84: pad4
+
+  // 0x88: pointer
+  get DNSName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(136, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x90: pointer
+  get DSDomainNameRequested(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(144, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x98: buffer
+  get DSDomainName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: u32
+  get DSDomainNameLen(): number {
+    return this.view.getUint32(160, true);
+  }
+
+  // 0xa4: pad4
+
+  // 0xa8: pointer
+  get ScopeId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set MessageType(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set SubnetMask(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set RequestedAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set RequestLeaseTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set OverlayFields(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set RouterAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set Server(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set ParameterRequestList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set ParameterRequestListLength(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x48: buffer
+  set MachineName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f72 = value;
+    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+  }
+
+  // 0x50: u32
+  set MachineNameLength(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u8
+  set ClientHardwareAddressType(value: number) {
+    this.view.setUint8(84, value);
+  }
+
+  // 0x55: u8
+  set ClientHardwareAddressLength(value: number) {
+    this.view.setUint8(85, value);
+  }
+
+  // 0x56: pad2
+
+  // 0x58: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: buffer
+  set ClassIdentifier(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f96 = value;
+    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+  }
+
+  // 0x68: u32
+  set ClassIdentifierLength(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: pad4
+
+  // 0x70: pointer
+  set VendorClass(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: u32
+  set VendorClassLength(value: number) {
+    this.view.setUint32(120, value, true);
+  }
+
+  // 0x7c: u32
+  set DNSFlags(value: number) {
+    this.view.setUint32(124, value, true);
+  }
+
+  // 0x80: u32
+  set DNSNameLength(value: number) {
+    this.view.setUint32(128, value, true);
+  }
+
+  // 0x84: pad4
+
+  // 0x88: pointer
+  set DNSName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x90: pointer
+  set DSDomainNameRequested(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x98: buffer
+  set DSDomainName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f152 = value;
+    this.view.setBigUint64(152, BigInt(util.toPointer((this.buf as any)._f152)), true);
+  }
+
+  // 0xa0: u32
+  set DSDomainNameLen(value: number) {
+    this.view.setUint32(160, value, true);
+  }
+
+  // 0xa4: pad4
+
+  // 0xa8: pointer
+  set ScopeId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CALLOUT_TABLE (size: 80)
  */
@@ -916,6 +1719,127 @@ export function allocDHCP_CALLOUT_TABLE(data?: Partial<DHCP_CALLOUT_TABLE>): Uin
   return buf;
 }
 
+export class DHCP_CALLOUT_TABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get DhcpControlHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get DhcpNewPktHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DhcpPktDropHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get DhcpPktSendHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get DhcpAddressDelHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get DhcpAddressOfferHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get DhcpHandleOptionsHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get DhcpDeleteClientHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get DhcpExtensionHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get DhcpReservedHook(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set DhcpControlHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set DhcpNewPktHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DhcpPktDropHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set DhcpPktSendHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set DhcpAddressDelHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set DhcpAddressOfferHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set DhcpHandleOptionsHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set DhcpDeleteClientHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set DhcpExtensionHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set DhcpReservedHook(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DATE_TIME (size: 8)
  */
@@ -936,6 +1860,37 @@ export function allocDATE_TIME(data?: Partial<DATE_TIME>): Uint8Array {
   // 0x04: u32
   if (data?.dwHighDateTime !== undefined) view.setUint32(4, Number(data.dwHighDateTime), true);
   return buf;
+}
+
+export class DATE_TIMEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwLowDateTime(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwHighDateTime(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set dwLowDateTime(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwHighDateTime(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -960,6 +1915,37 @@ export function allocDHCP_IP_RANGE(data?: Partial<DHCP_IP_RANGE>): Uint8Array {
   return buf;
 }
 
+export class DHCP_IP_RANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get StartAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get EndAddress(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set StartAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set EndAddress(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA (size: 16)
  */
@@ -981,6 +1967,42 @@ export function allocDHCP_BINARY_DATA(data?: Partial<DHCP_BINARY_DATA>): Uint8Ar
   // 0x08: pointer
   if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class DHCP_BINARY_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get DataLength(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set DataLength(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -1018,6 +2040,55 @@ export function allocDHCP_HOST_INFO(data?: Partial<DHCP_HOST_INFO>): Uint8Array 
   return buf;
 }
 
+export class DHCP_HOST_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get IpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get NetBiosName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get HostName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set IpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set NetBiosName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set HostName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DWORD_DWORD (size: 8)
  */
@@ -1038,6 +2109,37 @@ export function allocDWORD_DWORD(data?: Partial<DWORD_DWORD>): Uint8Array {
   // 0x04: u32
   if (data?.DWord2 !== undefined) view.setUint32(4, Number(data.DWord2), true);
   return buf;
+}
+
+export class DWORD_DWORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get DWord1(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get DWord2(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set DWord1(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set DWord2(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -1083,6 +2185,86 @@ export function allocDHCP_SUBNET_INFO(data?: Partial<DHCP_SUBNET_INFO>): Uint8Ar
   if (data?.SubnetState !== undefined) view.setInt32(32, Number(data.SubnetState), true);
   // 0x24: pad4
   return buf;
+}
+
+export class DHCP_SUBNET_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SubnetAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: buffer
+  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get PrimaryHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get SubnetState(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set SubnetAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set PrimaryHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set SubnetState(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -1149,6 +2331,132 @@ export function allocDHCP_SUBNET_INFO_VQ(data?: Partial<DHCP_SUBNET_INFO_VQ>): U
   return buf;
 }
 
+export class DHCP_SUBNET_INFO_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SubnetAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: buffer
+  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get PrimaryHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get SubnetState(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: u32
+  get QuarantineOn(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get Reserved1(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get Reserved2(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: i64
+  get Reserved3(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(48, true));
+  }
+
+  // 0x38: i64
+  get Reserved4(): Deno.PointerValue {
+    return Number(this.view.getBigInt64(56, true));
+  }
+
+  // 0x00: u32
+  set SubnetAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: buffer
+  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set PrimaryHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set SubnetState(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: u32
+  set QuarantineOn(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set Reserved1(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set Reserved2(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: i64
+  set Reserved3(value: Deno.PointerValue) {
+    this.view.setBigInt64(48, BigInt(value), true);
+  }
+
+  // 0x38: i64
+  set Reserved4(value: Deno.PointerValue) {
+    this.view.setBigInt64(56, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_ARRAY (size: 16)
  */
@@ -1170,6 +2478,42 @@ export function allocDHCP_IP_ARRAY(data?: Partial<DHCP_IP_ARRAY>): Uint8Array {
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_IP_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1194,6 +2538,37 @@ export function allocDHCP_IP_CLUSTER(data?: Partial<DHCP_IP_CLUSTER>): Uint8Arra
   return buf;
 }
 
+export class DHCP_IP_CLUSTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClusterAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ClusterMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set ClusterAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ClusterMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_RESERVATION (size: 16)
  */
@@ -1215,6 +2590,42 @@ export function allocDHCP_IP_RESERVATION(data?: Partial<DHCP_IP_RESERVATION>): U
   // 0x08: pointer
   if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(util.toPointer(data.ReservedForClient)), true);
   return buf;
+}
+
+export class DHCP_IP_RESERVATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ReservedIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ReservedIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1251,6 +2662,72 @@ export function allocDHCP_SUBNET_ELEMENT_UNION(data?: Partial<DHCP_SUBNET_ELEMEN
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_DATA (size: 16)
  */
@@ -1272,6 +2749,42 @@ export function allocDHCP_SUBNET_ELEMENT_DATA(data?: Partial<DHCP_SUBNET_ELEMENT
   // 0x08: pointer
   if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
   return buf;
+}
+
+export class DHCP_SUBNET_ELEMENT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ElementType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ElementType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1297,6 +2810,42 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY(data?: Partial<DHCP_SUBNET_E
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS (size: 16)
  */
@@ -1317,6 +2866,37 @@ export function allocDHCP_IPV6_ADDRESS(data?: Partial<DHCP_IPV6_ADDRESS>): Uint8
   // 0x08: u64
   if (data?.LowOrderBits !== undefined) view.setBigUint64(8, BigInt(data.LowOrderBits), true);
   return buf;
+}
+
+export class DHCP_IPV6_ADDRESSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get HighOrderBits(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get LowOrderBits(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set HighOrderBits(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set LowOrderBits(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
 }
 
 /**
@@ -1354,6 +2934,72 @@ export function allocDHCP_ADDR_PATTERN(data?: Partial<DHCP_ADDR_PATTERN>): Uint8
   return buf;
 }
 
+export class DHCP_ADDR_PATTERNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get MatchHWType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u8
+  get HWType(): number {
+    return this.view.getUint8(4);
+  }
+
+  // 0x05: i32
+  get IsWildcard(): number {
+    return this.view.getInt32(5, true);
+  }
+
+  // 0x09: u8
+  get Length(): number {
+    return this.view.getUint8(9);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  get Pattern(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set MatchHWType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u8
+  set HWType(value: number) {
+    this.view.setUint8(4, value);
+  }
+
+  // 0x05: i32
+  set IsWildcard(value: number) {
+    this.view.setInt32(5, value, true);
+  }
+
+  // 0x09: u8
+  set Length(value: number) {
+    this.view.setUint8(9, value);
+  }
+
+  // 0x0a: pad6
+
+  // 0x10: pointer
+  set Pattern(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_FILTER_ADD_INFO (size: 24)
  */
@@ -1384,6 +3030,54 @@ export function allocDHCP_FILTER_ADD_INFO(data?: Partial<DHCP_FILTER_ADD_INFO>):
   return buf;
 }
 
+export class DHCP_FILTER_ADD_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AddrPatt(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get ListType(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set AddrPatt(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: i32
+  set ListType(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_FILTER_GLOBAL_INFO (size: 8)
  */
@@ -1404,6 +3098,37 @@ export function allocDHCP_FILTER_GLOBAL_INFO(data?: Partial<DHCP_FILTER_GLOBAL_I
   // 0x04: i32
   if (data?.EnforceDenyList !== undefined) view.setInt32(4, Number(data.EnforceDenyList), true);
   return buf;
+}
+
+export class DHCP_FILTER_GLOBAL_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get EnforceAllowList(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get EnforceDenyList(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set EnforceAllowList(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set EnforceDenyList(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -1431,6 +3156,40 @@ export function allocDHCP_FILTER_RECORD(data?: Partial<DHCP_FILTER_RECORD>): Uin
   return buf;
 }
 
+export class DHCP_FILTER_RECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AddrPatt(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Comment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set AddrPatt(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_FILTER_ENUM_INFO (size: 16)
  */
@@ -1452,6 +3211,42 @@ export function allocDHCP_FILTER_ENUM_INFO(data?: Partial<DHCP_FILTER_ENUM_INFO>
   // 0x08: pointer
   if (data?.pEnumRecords !== undefined) view.setBigUint64(8, data.pEnumRecords === null ? 0n : BigInt(util.toPointer(data.pEnumRecords)), true);
   return buf;
+}
+
+export class DHCP_FILTER_ENUM_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pEnumRecords(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pEnumRecords(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1512,6 +3307,122 @@ export function allocDHCP_OPTION_ELEMENT_UNION(data?: Partial<DHCP_OPTION_ELEMEN
   return buf;
 }
 
+export class DHCP_OPTION_ELEMENT_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get ByteOption(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get WordOption(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: u32
+  get DWordOption(): number {
+    return this.view.getUint32(3, true);
+  }
+
+  // 0x07: pad1
+
+  // 0x08: pointer
+  get DWordDWordOption(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get IpAddressOption(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  get StringDataOption(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get BinaryDataOption(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get EncapsulatedDataOption(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get Ipv6AddressDataOption(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set ByteOption(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set WordOption(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: u32
+  set DWordOption(value: number) {
+    this.view.setUint32(3, value, true);
+  }
+
+  // 0x07: pad1
+
+  // 0x08: pointer
+  set DWordDWordOption(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set IpAddressOption(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: buffer
+  set StringDataOption(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set BinaryDataOption(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set EncapsulatedDataOption(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: buffer
+  set Ipv6AddressDataOption(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_DATA_ELEMENT (size: 16)
  */
@@ -1535,6 +3446,42 @@ export function allocDHCP_OPTION_DATA_ELEMENT(data?: Partial<DHCP_OPTION_DATA_EL
   return buf;
 }
 
+export class DHCP_OPTION_DATA_ELEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get OptionType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set OptionType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_DATA (size: 16)
  */
@@ -1556,6 +3503,42 @@ export function allocDHCP_OPTION_DATA(data?: Partial<DHCP_OPTION_DATA>): Uint8Ar
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_OPTION_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1600,6 +3583,80 @@ export function allocDHCP_OPTION(data?: Partial<DHCP_OPTION>): Uint8Array {
   return buf;
 }
 
+export class DHCP_OPTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get OptionID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get OptionName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get OptionComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get DefaultValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get OptionType(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set OptionID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set OptionName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set OptionComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: pointer
+  set DefaultValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set OptionType(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_ARRAY (size: 16)
  */
@@ -1621,6 +3678,42 @@ export function allocDHCP_OPTION_ARRAY(data?: Partial<DHCP_OPTION_ARRAY>): Uint8
   // 0x08: pointer
   if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
   return buf;
+}
+
+export class DHCP_OPTION_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Options(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Options(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1646,6 +3739,42 @@ export function allocDHCP_OPTION_VALUE(data?: Partial<DHCP_OPTION_VALUE>): Uint8
   return buf;
 }
 
+export class DHCP_OPTION_VALUEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get OptionID(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Value(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set OptionID(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Value(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_VALUE_ARRAY (size: 16)
  */
@@ -1669,6 +3798,42 @@ export function allocDHCP_OPTION_VALUE_ARRAY(data?: Partial<DHCP_OPTION_VALUE_AR
   return buf;
 }
 
+export class DHCP_OPTION_VALUE_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Values(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Values(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_RESERVED_SCOPE (size: 8)
  */
@@ -1689,6 +3854,37 @@ export function allocDHCP_RESERVED_SCOPE(data?: Partial<DHCP_RESERVED_SCOPE>): U
   // 0x04: u32
   if (data?.ReservedIpSubnetAddress !== undefined) view.setUint32(4, Number(data.ReservedIpSubnetAddress), true);
   return buf;
+}
+
+export class DHCP_RESERVED_SCOPEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ReservedIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ReservedIpSubnetAddress(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set ReservedIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ReservedIpSubnetAddress(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -1729,6 +3925,76 @@ export function alloc_DHCP_OPTION_SCOPE_UNION(data?: Partial<_DHCP_OPTION_SCOPE_
   return buf;
 }
 
+export class _DHCP_OPTION_SCOPE_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get GlobalScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get SubnetScopeInfo(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get MScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set GlobalScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set SubnetScopeInfo(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: buffer
+  set MScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_SCOPE_INFO (size: 16)
  */
@@ -1752,6 +4018,42 @@ export function allocDHCP_OPTION_SCOPE_INFO(data?: Partial<DHCP_OPTION_SCOPE_INF
   return buf;
 }
 
+export class DHCP_OPTION_SCOPE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ScopeType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ScopeType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_RESERVED_SCOPE6 (size: 16)
  */
@@ -1772,6 +4074,39 @@ export function allocDHCP_RESERVED_SCOPE6(data?: Partial<DHCP_RESERVED_SCOPE6>):
   // 0x08: pointer
   if (data?.ReservedIpSubnetAddress !== undefined) view.setBigUint64(8, data.ReservedIpSubnetAddress === null ? 0n : BigInt(util.toPointer(data.ReservedIpSubnetAddress)), true);
   return buf;
+}
+
+export class DHCP_RESERVED_SCOPE6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ReservedIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ReservedIpSubnetAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ReservedIpSubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1800,6 +4135,50 @@ export function allocDHCP_OPTION_SCOPE_UNION6(data?: Partial<DHCP_OPTION_SCOPE_U
   return buf;
 }
 
+export class DHCP_OPTION_SCOPE_UNION6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get SubnetScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set SubnetScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_SCOPE_INFO6 (size: 16)
  */
@@ -1823,6 +4202,42 @@ export function allocDHCP_OPTION_SCOPE_INFO6(data?: Partial<DHCP_OPTION_SCOPE_IN
   return buf;
 }
 
+export class DHCP_OPTION_SCOPE_INFO6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ScopeType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ScopeType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_LIST (size: 16)
  */
@@ -1844,6 +4259,42 @@ export function allocDHCP_OPTION_LIST(data?: Partial<DHCP_OPTION_LIST>): Uint8Ar
   // 0x08: pointer
   if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
   return buf;
+}
+
+export class DHCP_OPTION_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumOptions(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Options(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumOptions(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Options(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1894,6 +4345,94 @@ export function allocDHCP_CLIENT_INFO(data?: Partial<DHCP_CLIENT_INFO>): Uint8Ar
   return buf;
 }
 
+export class DHCP_CLIENT_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_ARRAY (size: 16)
  */
@@ -1915,6 +4454,42 @@ export function allocDHCP_CLIENT_INFO_ARRAY(data?: Partial<DHCP_CLIENT_INFO_ARRA
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -1987,6 +4562,153 @@ export function allocDHCP_CLIENT_INFO_VQ(data?: Partial<DHCP_CLIENT_INFO_VQ>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_ARRAY_VQ (size: 16)
  */
@@ -2008,6 +4730,42 @@ export function allocDHCP_CLIENT_INFO_ARRAY_VQ(data?: Partial<DHCP_CLIENT_INFO_A
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_ARRAY_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2083,6 +4841,159 @@ export function allocDHCP_CLIENT_FILTER_STATUS_INFO(data?: Partial<DHCP_CLIENT_F
   return buf;
 }
 
+export class DHCP_CLIENT_FILTER_STATUS_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get FilterStatus(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set FilterStatus(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_FILTER_STATUS_INFO_ARRAY (size: 16)
  */
@@ -2104,6 +5015,42 @@ export function allocDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY(data?: Partial<DHCP_CL
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_FILTER_STATUS_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2186,6 +5133,171 @@ export function allocDHCP_CLIENT_INFO_PB(data?: Partial<DHCP_CLIENT_INFO_PB>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_PBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get FilterStatus(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set FilterStatus(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f72 = value;
+    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_PB_ARRAY (size: 16)
  */
@@ -2207,6 +5319,42 @@ export function allocDHCP_CLIENT_INFO_PB_ARRAY(data?: Partial<DHCP_CLIENT_INFO_P
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_PB_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2239,6 +5387,54 @@ export function allocDHCP_CLIENT_SEARCH_UNION(data?: Partial<DHCP_CLIENT_SEARCH_
   return buf;
 }
 
+export class DHCP_CLIENT_SEARCH_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SEARCH_INFO (size: 16)
  */
@@ -2260,6 +5456,42 @@ export function allocDHCP_SEARCH_INFO(data?: Partial<DHCP_SEARCH_INFO>): Uint8Ar
   // 0x08: pointer
   if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(util.toPointer(data.SearchInfo)), true);
   return buf;
+}
+
+export class DHCP_SEARCH_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get SearchType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get SearchInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set SearchType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set SearchInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2300,6 +5532,74 @@ export function alloc_DHCP_PROPERTY_VALUE_UNION(data?: Partial<_DHCP_PROPERTY_VA
   return buf;
 }
 
+export class _DHCP_PROPERTY_VALUE_UNIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get ByteValue(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u16
+  get WordValue(): number {
+    return this.view.getUint16(1, true);
+  }
+
+  // 0x03: u32
+  get DWordValue(): number {
+    return this.view.getUint32(3, true);
+  }
+
+  // 0x07: pad1
+
+  // 0x08: buffer
+  get StringValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get BinaryValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u8
+  set ByteValue(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u16
+  set WordValue(value: number) {
+    this.view.setUint16(1, value, true);
+  }
+
+  // 0x03: u32
+  set DWordValue(value: number) {
+    this.view.setUint32(3, value, true);
+  }
+
+  // 0x07: pad1
+
+  // 0x08: buffer
+  set StringValue(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set BinaryValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY (size: 16)
  */
@@ -2326,6 +5626,48 @@ export function allocDHCP_PROPERTY(data?: Partial<DHCP_PROPERTY>): Uint8Array {
   return buf;
 }
 
+export class DHCP_PROPERTYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ID(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get Type(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get Value(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ID(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Type(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Value(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_ARRAY (size: 16)
  */
@@ -2347,6 +5689,42 @@ export function allocDHCP_PROPERTY_ARRAY(data?: Partial<DHCP_PROPERTY_ARRAY>): U
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_PROPERTY_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2433,6 +5811,182 @@ export function allocDHCP_CLIENT_INFO_EX(data?: Partial<DHCP_CLIENT_INFO_EX>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_EXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get FilterStatus(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get Properties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set FilterStatus(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f72 = value;
+    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+  }
+
+  // 0x50: pointer
+  set Properties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_EX_ARRAY (size: 16)
  */
@@ -2454,6 +6008,42 @@ export function allocDHCP_CLIENT_INFO_EX_ARRAY(data?: Partial<DHCP_CLIENT_INFO_E
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_EX_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2484,6 +6074,57 @@ export function allocSCOPE_MIB_INFO(data?: Partial<SCOPE_MIB_INFO>): Uint8Array 
   // 0x0c: u32
   if (data?.NumPendingOffers !== undefined) view.setUint32(12, Number(data.NumPendingOffers), true);
   return buf;
+}
+
+export class SCOPE_MIB_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Subnet(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumAddressesInuse(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get NumAddressesFree(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumPendingOffers(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set Subnet(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumAddressesInuse(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set NumAddressesFree(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumPendingOffers(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -2542,6 +6183,127 @@ export function allocDHCP_MIB_INFO(data?: Partial<DHCP_MIB_INFO>): Uint8Array {
   return buf;
 }
 
+export class DHCP_MIB_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Discovers(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Offers(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Requests(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Acks(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Naks(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Declines(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Releases(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get Scopes(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Discovers(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Offers(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Requests(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Acks(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Naks(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Declines(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Releases(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set Scopes(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.SCOPE_MIB_INFO_VQ (size: 40)
  */
@@ -2594,6 +6356,117 @@ export function allocSCOPE_MIB_INFO_VQ(data?: Partial<SCOPE_MIB_INFO_VQ>): Uint8
   // 0x24: u32
   if (data?.QtnCapableClients !== undefined) view.setUint32(36, Number(data.QtnCapableClients), true);
   return buf;
+}
+
+export class SCOPE_MIB_INFO_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Subnet(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumAddressesInuse(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get NumAddressesFree(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumPendingOffers(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get QtnNumLeases(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get QtnPctQtnLeases(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get QtnProbationLeases(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get QtnNonQtnLeases(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get QtnExemptLeases(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get QtnCapableClients(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: u32
+  set Subnet(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumAddressesInuse(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set NumAddressesFree(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumPendingOffers(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set QtnNumLeases(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set QtnPctQtnLeases(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set QtnProbationLeases(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set QtnNonQtnLeases(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set QtnExemptLeases(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set QtnCapableClients(value: number) {
+    this.view.setUint32(36, value, true);
+  }
 }
 
 /**
@@ -2679,6 +6552,193 @@ export function allocDHCP_MIB_INFO_VQ(data?: Partial<DHCP_MIB_INFO_VQ>): Uint8Ar
   return buf;
 }
 
+export class DHCP_MIB_INFO_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Discovers(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Offers(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Requests(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Acks(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Naks(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Declines(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Releases(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get QtnNumLeases(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get QtnPctQtnLeases(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get QtnProbationLeases(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get QtnNonQtnLeases(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get QtnExemptLeases(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get QtnCapableClients(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get QtnIASErrors(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get Scopes(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Discovers(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Offers(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Requests(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Acks(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Naks(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Declines(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Releases(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set QtnNumLeases(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set QtnPctQtnLeases(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set QtnProbationLeases(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set QtnNonQtnLeases(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set QtnExemptLeases(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set QtnCapableClients(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set QtnIASErrors(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set Scopes(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.SCOPE_MIB_INFO_V5 (size: 16)
  */
@@ -2707,6 +6767,57 @@ export function allocSCOPE_MIB_INFO_V5(data?: Partial<SCOPE_MIB_INFO_V5>): Uint8
   // 0x0c: u32
   if (data?.NumPendingOffers !== undefined) view.setUint32(12, Number(data.NumPendingOffers), true);
   return buf;
+}
+
+export class SCOPE_MIB_INFO_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Subnet(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumAddressesInuse(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get NumAddressesFree(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumPendingOffers(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set Subnet(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumAddressesInuse(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set NumAddressesFree(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumPendingOffers(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -2800,6 +6911,213 @@ export function allocDHCP_MIB_INFO_V5(data?: Partial<DHCP_MIB_INFO_V5>): Uint8Ar
   return buf;
 }
 
+export class DHCP_MIB_INFO_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Discovers(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Offers(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Requests(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Acks(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Naks(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Declines(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Releases(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get QtnNumLeases(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get QtnPctQtnLeases(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get QtnProbationLeases(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get QtnNonQtnLeases(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get QtnExemptLeases(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get QtnCapableClients(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get QtnIASErrors(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get DelayedOffers(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get ScopesWithDelayedOffers(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get Scopes(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Discovers(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Offers(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Requests(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Acks(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Naks(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Declines(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Releases(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set QtnNumLeases(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set QtnPctQtnLeases(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set QtnProbationLeases(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set QtnNonQtnLeases(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set QtnExemptLeases(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set QtnCapableClients(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set QtnIASErrors(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set DelayedOffers(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set ScopesWithDelayedOffers(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set Scopes(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SERVER_CONFIG_INFO (size: 56)
  */
@@ -2861,6 +7179,121 @@ export function allocDHCP_SERVER_CONFIG_INFO(data?: Partial<DHCP_SERVER_CONFIG_I
   return buf;
 }
 
+export class DHCP_SERVER_CONFIG_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get APIProtocolSupport(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get BackupInterval(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get DatabaseLoggingFlag(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get RestoreFlag(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get DatabaseCleanupInterval(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get DebugFlag(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x00: u32
+  set APIProtocolSupport(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set BackupInterval(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set DatabaseLoggingFlag(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set RestoreFlag(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set DatabaseCleanupInterval(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set DebugFlag(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SCAN_ITEM (size: 8)
  */
@@ -2881,6 +7314,37 @@ export function allocDHCP_SCAN_ITEM(data?: Partial<DHCP_SCAN_ITEM>): Uint8Array 
   // 0x04: i32
   if (data?.ScanFlag !== undefined) view.setInt32(4, Number(data.ScanFlag), true);
   return buf;
+}
+
+export class DHCP_SCAN_ITEMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get IpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ScanFlag(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u32
+  set IpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ScanFlag(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -2904,6 +7368,42 @@ export function allocDHCP_SCAN_LIST(data?: Partial<DHCP_SCAN_LIST>): Uint8Array 
   // 0x08: pointer
   if (data?.ScanItems !== undefined) view.setBigUint64(8, data.ScanItems === null ? 0n : BigInt(util.toPointer(data.ScanItems)), true);
   return buf;
+}
+
+export class DHCP_SCAN_LISTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumScanItems(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ScanItems(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumScanItems(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ScanItems(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2951,6 +7451,86 @@ export function allocDHCP_CLASS_INFO(data?: Partial<DHCP_CLASS_INFO>): Uint8Arra
   return buf;
 }
 
+export class DHCP_CLASS_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get ClassName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get ClassComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ClassDataLength(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get IsVendor(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: u32
+  get Flags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get ClassData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set ClassName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set ClassComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set ClassDataLength(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set IsVendor(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Flags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set ClassData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLASS_INFO_ARRAY (size: 16)
  */
@@ -2972,6 +7552,42 @@ export function allocDHCP_CLASS_INFO_ARRAY(data?: Partial<DHCP_CLASS_INFO_ARRAY>
   // 0x08: pointer
   if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(util.toPointer(data.Classes)), true);
   return buf;
+}
+
+export class DHCP_CLASS_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Classes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Classes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3022,6 +7638,92 @@ export function allocDHCP_CLASS_INFO_V6(data?: Partial<DHCP_CLASS_INFO_V6>): Uin
   return buf;
 }
 
+export class DHCP_CLASS_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get ClassName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get ClassComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ClassDataLength(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get IsVendor(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: u32
+  get EnterpriseNumber(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Flags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get ClassData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set ClassName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set ClassComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set ClassDataLength(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set IsVendor(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: u32
+  set EnterpriseNumber(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Flags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set ClassData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLASS_INFO_ARRAY_V6 (size: 16)
  */
@@ -3043,6 +7745,42 @@ export function allocDHCP_CLASS_INFO_ARRAY_V6(data?: Partial<DHCP_CLASS_INFO_ARR
   // 0x08: pointer
   if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(util.toPointer(data.Classes)), true);
   return buf;
+}
+
+export class DHCP_CLASS_INFO_ARRAY_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Classes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Classes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3073,6 +7811,41 @@ export function allocDHCP_SERVER_SPECIFIC_STRINGS(data?: Partial<DHCP_SERVER_SPE
   return buf;
 }
 
+export class DHCP_SERVER_SPECIFIC_STRINGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get DefaultVendorClassName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get DefaultUserClassName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set DefaultVendorClassName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set DefaultUserClassName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_RESERVATION_V4 (size: 24)
  */
@@ -3099,6 +7872,56 @@ export function allocDHCP_IP_RESERVATION_V4(data?: Partial<DHCP_IP_RESERVATION_V
   if (data?.bAllowedClientTypes !== undefined) view.setUint8(16, Number(data.bAllowedClientTypes));
   // 0x11: pad7
   return buf;
+}
+
+export class DHCP_IP_RESERVATION_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ReservedIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get bAllowedClientTypes(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x00: u32
+  set ReservedIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u8
+  set bAllowedClientTypes(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
 }
 
 /**
@@ -3147,6 +7970,90 @@ export function allocDHCP_IP_RESERVATION_INFO(data?: Partial<DHCP_IP_RESERVATION
   return buf;
 }
 
+export class DHCP_IP_RESERVATION_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ReservedIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ReservedClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ReservedClientDesc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u8
+  get bAllowedClientTypes(): number {
+    return this.view.getUint8(32);
+  }
+
+  // 0x21: u8
+  get fOptionsPresent(): number {
+    return this.view.getUint8(33);
+  }
+
+  // 0x22: pad6
+
+  // 0x00: u32
+  set ReservedIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ReservedClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ReservedClientDesc(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u8
+  set bAllowedClientTypes(value: number) {
+    this.view.setUint8(32, value);
+  }
+
+  // 0x21: u8
+  set fOptionsPresent(value: number) {
+    this.view.setUint8(33, value);
+  }
+
+  // 0x22: pad6
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_RESERVATION_INFO_ARRAY (size: 16)
  */
@@ -3168,6 +8075,42 @@ export function allocDHCP_RESERVATION_INFO_ARRAY(data?: Partial<DHCP_RESERVATION
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_RESERVATION_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3204,6 +8147,72 @@ export function allocDHCP_SUBNET_ELEMENT_UNION_V4(data?: Partial<DHCP_SUBNET_ELE
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_UNION_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_DATA_V4 (size: 16)
  */
@@ -3227,6 +8236,42 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V4(data?: Partial<DHCP_SUBNET_ELEM
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_DATA_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ElementType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ElementType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4 (size: 16)
  */
@@ -3248,6 +8293,42 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4(data?: Partial<DHCP_SUBNE
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3303,6 +8384,108 @@ export function allocDHCP_CLIENT_INFO_V4(data?: Partial<DHCP_CLIENT_INFO_V4>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: pad7
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: pad7
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_ARRAY_V4 (size: 16)
  */
@@ -3324,6 +8507,42 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V4(data?: Partial<DHCP_CLIENT_INFO_A
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_ARRAY_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3405,6 +8624,167 @@ export function allocDHCP_SERVER_CONFIG_INFO_V4(data?: Partial<DHCP_SERVER_CONFI
   if (data?.fAuditLog !== undefined) view.setInt32(72, Number(data.fAuditLog), true);
   // 0x4c: pad4
   return buf;
+}
+
+export class DHCP_SERVER_CONFIG_INFO_V4View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get APIProtocolSupport(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get BackupInterval(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get DatabaseLoggingFlag(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get RestoreFlag(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get DatabaseCleanupInterval(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get DebugFlag(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwPingRetries(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get cbBootTableString(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: buffer
+  get wszBootTableString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: i32
+  get fAuditLog(): number {
+    return this.view.getInt32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x00: u32
+  set APIProtocolSupport(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set BackupInterval(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set DatabaseLoggingFlag(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set RestoreFlag(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set DatabaseCleanupInterval(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set DebugFlag(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwPingRetries(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set cbBootTableString(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: buffer
+  set wszBootTableString(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f64 = value;
+    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+  }
+
+  // 0x48: i32
+  set fAuditLog(value: number) {
+    this.view.setInt32(72, value, true);
+  }
+
+  // 0x4c: pad4
 }
 
 /**
@@ -3499,6 +8879,193 @@ export function allocDHCP_SERVER_CONFIG_INFO_VQ(data?: Partial<DHCP_SERVER_CONFI
   return buf;
 }
 
+export class DHCP_SERVER_CONFIG_INFO_VQView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get APIProtocolSupport(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get BackupInterval(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get DatabaseLoggingFlag(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get RestoreFlag(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get DatabaseCleanupInterval(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get DebugFlag(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwPingRetries(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get cbBootTableString(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: buffer
+  get wszBootTableString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: i32
+  get fAuditLog(): number {
+    return this.view.getInt32(72, true);
+  }
+
+  // 0x4c: i32
+  get QuarantineOn(): number {
+    return this.view.getInt32(76, true);
+  }
+
+  // 0x50: u32
+  get QuarDefFail(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: i32
+  get QuarRuntimeStatus(): number {
+    return this.view.getInt32(84, true);
+  }
+
+  // 0x00: u32
+  set APIProtocolSupport(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set BackupInterval(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set DatabaseLoggingFlag(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set RestoreFlag(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set DatabaseCleanupInterval(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set DebugFlag(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwPingRetries(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set cbBootTableString(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: buffer
+  set wszBootTableString(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f64 = value;
+    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+  }
+
+  // 0x48: i32
+  set fAuditLog(value: number) {
+    this.view.setInt32(72, value, true);
+  }
+
+  // 0x4c: i32
+  set QuarantineOn(value: number) {
+    this.view.setInt32(76, value, true);
+  }
+
+  // 0x50: u32
+  set QuarDefFail(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: i32
+  set QuarRuntimeStatus(value: number) {
+    this.view.setInt32(84, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SERVER_CONFIG_INFO_V6 (size: 40)
  */
@@ -3550,6 +9117,111 @@ export function allocDHCP_SERVER_CONFIG_INFO_V6(data?: Partial<DHCP_SERVER_CONFI
   return buf;
 }
 
+export class DHCP_SERVER_CONFIG_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get UnicastFlag(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get RapidCommitFlag(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get PreferredLifetime(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ValidLifetime(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get T1(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get T2(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get PreferredLifetimeIATA(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get ValidLifetimeIATA(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: i32
+  get fAuditLog(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: i32
+  set UnicastFlag(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set RapidCommitFlag(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set PreferredLifetime(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ValidLifetime(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set T1(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set T2(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set PreferredLifetimeIATA(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set ValidLifetimeIATA(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: i32
+  set fAuditLog(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUPER_SCOPE_TABLE_ENTRY (size: 24)
  */
@@ -3584,6 +9256,63 @@ export function allocDHCP_SUPER_SCOPE_TABLE_ENTRY(data?: Partial<DHCP_SUPER_SCOP
   return buf;
 }
 
+export class DHCP_SUPER_SCOPE_TABLE_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get SubnetAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SuperScopeNumber(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get NextInSuperScope(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get SuperScopeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set SubnetAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SuperScopeNumber(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set NextInSuperScope(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set SuperScopeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUPER_SCOPE_TABLE (size: 16)
  */
@@ -3605,6 +9334,42 @@ export function allocDHCP_SUPER_SCOPE_TABLE(data?: Partial<DHCP_SUPER_SCOPE_TABL
   // 0x08: pointer
   if (data?.pEntries !== undefined) view.setBigUint64(8, data.pEntries === null ? 0n : BigInt(util.toPointer(data.pEntries)), true);
   return buf;
+}
+
+export class DHCP_SUPER_SCOPE_TABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cEntries(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pEntries(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cEntries(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pEntries(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3664,6 +9429,118 @@ export function allocDHCP_CLIENT_INFO_V5(data?: Partial<DHCP_CLIENT_INFO_V5>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: pad6
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: pad6
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_ARRAY_V5 (size: 16)
  */
@@ -3685,6 +9562,42 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V5(data?: Partial<DHCP_CLIENT_INFO_A
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_ARRAY_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3719,6 +9632,67 @@ export function allocDHCP_ALL_OPTIONS(data?: Partial<DHCP_ALL_OPTIONS>): Uint8Ar
   return buf;
 }
 
+export class DHCP_ALL_OPTIONSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get NonVendorOptions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get NumVendorOptions(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get VendorOptions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set NonVendorOptions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set NumVendorOptions(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set VendorOptions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_ALL_OPTION_VALUES (size: 16)
  */
@@ -3745,6 +9719,48 @@ export function allocDHCP_ALL_OPTION_VALUES(data?: Partial<DHCP_ALL_OPTION_VALUE
   return buf;
 }
 
+export class DHCP_ALL_OPTION_VALUESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumElements(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Options(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumElements(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Options(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_ALL_OPTION_VALUES_PB (size: 16)
  */
@@ -3769,6 +9785,48 @@ export function allocDHCP_ALL_OPTION_VALUES_PB(data?: Partial<DHCP_ALL_OPTION_VA
   // 0x08: pointer
   if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
   return buf;
+}
+
+export class DHCP_ALL_OPTION_VALUES_PBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumElements(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Options(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumElements(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Options(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3822,6 +9880,103 @@ export function allocDHCPDS_SERVER(data?: Partial<DHCPDS_SERVER>): Uint8Array {
   return buf;
 }
 
+export class DHCPDS_SERVERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get ServerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get ServerAddress(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Flags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get State(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get DsLocation(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get DsLocType(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set ServerName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set ServerAddress(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Flags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set State(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set DsLocation(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set DsLocType(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPDS_SERVERS (size: 16)
  */
@@ -3848,6 +10003,48 @@ export function allocDHCPDS_SERVERS(data?: Partial<DHCPDS_SERVERS>): Uint8Array 
   return buf;
 }
 
+export class DHCPDS_SERVERSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get NumElements(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Servers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumElements(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Servers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -3870,6 +10067,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -3890,6 +10118,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3918,6 +10179,48 @@ export function allocDHCP_ATTRIB(data?: Partial<DHCP_ATTRIB>): Uint8Array {
   return buf;
 }
 
+export class DHCP_ATTRIBView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get DhcpAttribId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get DhcpAttribType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set DhcpAttribId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set DhcpAttribType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_ATTRIB_ARRAY (size: 16)
  */
@@ -3939,6 +10242,42 @@ export function allocDHCP_ATTRIB_ARRAY(data?: Partial<DHCP_ATTRIB_ARRAY>): Uint8
   // 0x08: pointer
   if (data?.DhcpAttribs !== undefined) view.setBigUint64(8, data.DhcpAttribs === null ? 0n : BigInt(util.toPointer(data.DhcpAttribs)), true);
   return buf;
+}
+
+export class DHCP_ATTRIB_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get DhcpAttribs(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set DhcpAttribs(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3969,6 +10308,57 @@ export function allocDHCP_BOOTP_IP_RANGE(data?: Partial<DHCP_BOOTP_IP_RANGE>): U
   // 0x0c: u32
   if (data?.MaxBootpAllowed !== undefined) view.setUint32(12, Number(data.MaxBootpAllowed), true);
   return buf;
+}
+
+export class DHCP_BOOTP_IP_RANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get StartAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get EndAddress(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get BootpAllocated(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MaxBootpAllowed(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set StartAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set EndAddress(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set BootpAllocated(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MaxBootpAllowed(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -4005,6 +10395,72 @@ export function alloc_DHCP_SUBNET_ELEMENT_UNION_V5(data?: Partial<_DHCP_SUBNET_E
   return buf;
 }
 
+export class _DHCP_SUBNET_ELEMENT_UNION_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_DATA_V5 (size: 16)
  */
@@ -4028,6 +10484,42 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V5(data?: Partial<DHCP_SUBNET_ELEM
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_DATA_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ElementType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ElementType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5 (size: 16)
  */
@@ -4049,6 +10541,42 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V5(data?: Partial<DHCP_SUBNE
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4142,6 +10670,211 @@ export function allocDHCP_PERF_STATS(data?: Partial<DHCP_PERF_STATS>): Uint8Arra
   return buf;
 }
 
+export class DHCP_PERF_STATSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwNumPacketsReceived(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwNumPacketsDuplicate(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get dwNumPacketsExpired(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwNumMilliSecondsProcessed(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get dwNumPacketsInActiveQueue(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get dwNumPacketsInPingQueue(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get dwNumDiscoversReceived(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get dwNumOffersSent(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get dwNumRequestsReceived(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get dwNumInformsReceived(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get dwNumAcksSent(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dwNumNacksSent(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get dwNumDeclinesReceived(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get dwNumReleasesReceived(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get dwNumDelayedOfferInQueue(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get dwNumPacketsProcessed(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get dwNumPacketsInQuarWaitingQueue(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get dwNumPacketsInQuarReadyQueue(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get dwNumPacketsInQuarDecisionQueue(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x00: u32
+  set dwNumPacketsReceived(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwNumPacketsDuplicate(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set dwNumPacketsExpired(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwNumMilliSecondsProcessed(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set dwNumPacketsInActiveQueue(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set dwNumPacketsInPingQueue(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set dwNumDiscoversReceived(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set dwNumOffersSent(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwNumRequestsReceived(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set dwNumInformsReceived(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set dwNumAcksSent(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dwNumNacksSent(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set dwNumDeclinesReceived(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set dwNumReleasesReceived(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set dwNumDelayedOfferInQueue(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set dwNumPacketsProcessed(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set dwNumPacketsInQuarWaitingQueue(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set dwNumPacketsInQuarReadyQueue(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set dwNumPacketsInQuarDecisionQueue(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_BIND_ELEMENT (size: 40)
  */
@@ -4188,6 +10921,94 @@ export function allocDHCP_BIND_ELEMENT(data?: Partial<DHCP_BIND_ELEMENT>): Uint8
   return buf;
 }
 
+export class DHCP_BIND_ELEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get fBoundToDHCPServer(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get AdapterPrimaryAddress(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get AdapterSubnetAddress(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: buffer
+  get IfDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get IfIdSize(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get IfId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fBoundToDHCPServer(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set AdapterPrimaryAddress(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set AdapterSubnetAddress(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: buffer
+  set IfDescription(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: u32
+  set IfIdSize(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set IfId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_BIND_ELEMENT_ARRAY (size: 16)
  */
@@ -4209,6 +11030,42 @@ export function allocDHCP_BIND_ELEMENT_ARRAY(data?: Partial<DHCP_BIND_ELEMENT_AR
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_BIND_ELEMENT_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4260,6 +11117,102 @@ export function allocDHCPV6_BIND_ELEMENT(data?: Partial<DHCPV6_BIND_ELEMENT>): U
   return buf;
 }
 
+export class DHCPV6_BIND_ELEMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Flags(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get fBoundToDHCPServer(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get AdapterPrimaryAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get AdapterSubnetAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get IfDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get IpV6IfIndex(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get IfIdSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get IfId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Flags(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set fBoundToDHCPServer(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set AdapterPrimaryAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set AdapterSubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: buffer
+  set IfDescription(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set IpV6IfIndex(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set IfIdSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set IfId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV6_BIND_ELEMENT_ARRAY (size: 16)
  */
@@ -4283,6 +11236,42 @@ export function allocDHCPV6_BIND_ELEMENT_ARRAY(data?: Partial<DHCPV6_BIND_ELEMEN
   return buf;
 }
 
+export class DHCPV6_BIND_ELEMENT_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_RANGE_V6 (size: 16)
  */
@@ -4303,6 +11292,39 @@ export function allocDHCP_IP_RANGE_V6(data?: Partial<DHCP_IP_RANGE_V6>): Uint8Ar
   // 0x08: pointer
   if (data?.EndAddress !== undefined) view.setBigUint64(8, data.EndAddress === null ? 0n : BigInt(util.toPointer(data.EndAddress)), true);
   return buf;
+}
+
+export class DHCP_IP_RANGE_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get StartAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get EndAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set StartAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set EndAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4335,6 +11357,52 @@ export function allocDHCP_HOST_INFO_V6(data?: Partial<DHCP_HOST_INFO_V6>): Uint8
     view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
+}
+
+export class DHCP_HOST_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get NetBiosName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get HostName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: buffer
+  set NetBiosName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: buffer
+  set HostName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
 }
 
 /**
@@ -4386,6 +11454,96 @@ export function allocDHCP_SUBNET_INFO_V6(data?: Partial<DHCP_SUBNET_INFO_V6>): U
   return buf;
 }
 
+export class DHCP_SUBNET_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get SubnetAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Prefix(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u16
+  get Preference(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x10: buffer
+  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get State(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get ScopeId(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: pointer
+  set SubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set Prefix(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set Preference(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x10: buffer
+  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: u32
+  set State(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set ScopeId(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.SCOPE_MIB_INFO_V6 (size: 32)
  */
@@ -4414,6 +11572,58 @@ export function allocSCOPE_MIB_INFO_V6(data?: Partial<SCOPE_MIB_INFO_V6>): Uint8
   // 0x18: u64
   if (data?.NumPendingAdvertises !== undefined) view.setBigUint64(24, BigInt(data.NumPendingAdvertises), true);
   return buf;
+}
+
+export class SCOPE_MIB_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Subnet(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u64
+  get NumAddressesInuse(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get NumAddressesFree(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get NumPendingAdvertises(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: pointer
+  set Subnet(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u64
+  set NumAddressesInuse(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set NumAddressesFree(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set NumPendingAdvertises(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
 }
 
 /**
@@ -4483,6 +11693,153 @@ export function allocDHCP_MIB_INFO_V6(data?: Partial<DHCP_MIB_INFO_V6>): Uint8Ar
   return buf;
 }
 
+export class DHCP_MIB_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Solicits(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Advertises(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Requests(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Renews(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Rebinds(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Replies(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Confirms(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Declines(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get Releases(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get Informs(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get Scopes(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Solicits(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Advertises(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Requests(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Renews(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Rebinds(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Replies(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Confirms(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Declines(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set Releases(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set Informs(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set Scopes(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_RESERVATION_V6 (size: 24)
  */
@@ -4508,6 +11865,53 @@ export function allocDHCP_IP_RESERVATION_V6(data?: Partial<DHCP_IP_RESERVATION_V
   if (data?.InterfaceId !== undefined) view.setUint32(16, Number(data.InterfaceId), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DHCP_IP_RESERVATION_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ReservedIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get InterfaceId(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set InterfaceId(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -4536,6 +11940,50 @@ export function allocDHCP_SUBNET_ELEMENT_UNION_V6(data?: Partial<DHCP_SUBNET_ELE
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_UNION_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get IpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_DATA_V6 (size: 16)
  */
@@ -4559,6 +12007,42 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V6(data?: Partial<DHCP_SUBNET_ELEM
   return buf;
 }
 
+export class DHCP_SUBNET_ELEMENT_DATA_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ElementType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Element(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set ElementType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Element(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6 (size: 16)
  */
@@ -4580,6 +12064,42 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6(data?: Partial<DHCP_SUBNE
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4638,6 +12158,116 @@ export function allocDHCP_CLIENT_INFO_V6(data?: Partial<DHCP_CLIENT_INFO_V6>): U
   return buf;
 }
 
+export class DHCP_CLIENT_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ClientIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ClientDUID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get AddressType(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get IAID(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get ClientValidLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get ClientPrefLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ClientIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ClientDUID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set AddressType(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set IAID(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: pointer
+  set ClientValidLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set ClientPrefLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV6_IP_ARRAY (size: 16)
  */
@@ -4661,6 +12291,42 @@ export function allocDHCPV6_IP_ARRAY(data?: Partial<DHCPV6_IP_ARRAY>): Uint8Arra
   return buf;
 }
 
+export class DHCPV6_IP_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_CLIENT_INFO_ARRAY_V6 (size: 16)
  */
@@ -4682,6 +12348,42 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V6(data?: Partial<DHCP_CLIENT_INFO_A
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCP_CLIENT_INFO_ARRAY_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4713,6 +12415,51 @@ export function alloc_DHCP_CLIENT_SEARCH_UNION_V6(data?: Partial<_DHCP_CLIENT_SE
   return buf;
 }
 
+export class _DHCP_CLIENT_SEARCH_UNION_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ClientIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ClientDUID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ClientIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ClientDUID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_SEARCH_INFO_V6 (size: 16)
  */
@@ -4734,6 +12481,42 @@ export function allocDHCP_SEARCH_INFO_V6(data?: Partial<DHCP_SEARCH_INFO_V6>): U
   // 0x08: pointer
   if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(util.toPointer(data.SearchInfo)), true);
   return buf;
+}
+
+export class DHCP_SEARCH_INFO_V6View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get SearchType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get SearchInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set SearchType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set SearchInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4787,6 +12570,108 @@ export function allocDHCP_POL_COND(data?: Partial<DHCP_POL_COND>): Uint8Array {
   return buf;
 }
 
+export class DHCP_POL_CONDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ParentExpr(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get Type(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get OptionID(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get SubOptionID(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: buffer
+  get VendorName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get Operator(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get Value(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get ValueLength(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set ParentExpr(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Type(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set OptionID(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set SubOptionID(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: buffer
+  set VendorName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: i32
+  set Operator(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set Value(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set ValueLength(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_COND_ARRAY (size: 16)
  */
@@ -4810,6 +12695,42 @@ export function allocDHCP_POL_COND_ARRAY(data?: Partial<DHCP_POL_COND_ARRAY>): U
   return buf;
 }
 
+export class DHCP_POL_COND_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_EXPR (size: 8)
  */
@@ -4830,6 +12751,37 @@ export function allocDHCP_POL_EXPR(data?: Partial<DHCP_POL_EXPR>): Uint8Array {
   // 0x04: i32
   if (data?.Operator !== undefined) view.setInt32(4, Number(data.Operator), true);
   return buf;
+}
+
+export class DHCP_POL_EXPRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ParentExpr(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get Operator(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u32
+  set ParentExpr(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Operator(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -4855,6 +12807,42 @@ export function allocDHCP_POL_EXPR_ARRAY(data?: Partial<DHCP_POL_EXPR_ARRAY>): U
   return buf;
 }
 
+export class DHCP_POL_EXPR_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_IP_RANGE_ARRAY (size: 16)
  */
@@ -4876,6 +12864,42 @@ export function allocDHCP_IP_RANGE_ARRAY(data?: Partial<DHCP_IP_RANGE_ARRAY>): U
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_IP_RANGE_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4936,6 +12960,122 @@ export function allocDHCP_POLICY(data?: Partial<DHCP_POLICY>): Uint8Array {
   return buf;
 }
 
+export class DHCP_POLICYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get IsGlobalPolicy(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Subnet(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ProcessingOrder(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Conditions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Expressions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Ranges(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: i32
+  get Enabled(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x00: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set IsGlobalPolicy(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Subnet(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ProcessingOrder(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Conditions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Expressions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Ranges(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: buffer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: i32
+  set Enabled(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: pad4
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_POLICY_ARRAY (size: 16)
  */
@@ -4957,6 +13097,42 @@ export function allocDHCP_POLICY_ARRAY(data?: Partial<DHCP_POLICY_ARRAY>): Uint8
   // 0x08: pointer
   if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
   return buf;
+}
+
+export class DHCP_POLICY_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5021,6 +13197,133 @@ export function allocDHCP_POLICY_EX(data?: Partial<DHCP_POLICY_EX>): Uint8Array 
   return buf;
 }
 
+export class DHCP_POLICY_EXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get IsGlobalPolicy(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Subnet(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ProcessingOrder(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Conditions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get Expressions(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get Ranges(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get Description(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: i32
+  get Enabled(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get Properties(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set IsGlobalPolicy(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Subnet(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ProcessingOrder(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Conditions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set Expressions(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set Ranges(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: buffer
+  set Description(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: i32
+  set Enabled(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set Properties(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_POLICY_EX_ARRAY (size: 16)
  */
@@ -5044,6 +13347,42 @@ export function allocDHCP_POLICY_EX_ARRAY(data?: Partial<DHCP_POLICY_EX_ARRAY>):
   return buf;
 }
 
+export class DHCP_POLICY_EX_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Elements(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Elements(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV6_STATELESS_PARAMS (size: 8)
  */
@@ -5064,6 +13403,37 @@ export function allocDHCPV6_STATELESS_PARAMS(data?: Partial<DHCPV6_STATELESS_PAR
   // 0x04: u32
   if (data?.PurgeInterval !== undefined) view.setUint32(4, Number(data.PurgeInterval), true);
   return buf;
+}
+
+export class DHCPV6_STATELESS_PARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Status(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get PurgeInterval(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: i32
+  set Status(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set PurgeInterval(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -5092,6 +13462,48 @@ export function allocDHCPV6_STATELESS_SCOPE_STATS(data?: Partial<DHCPV6_STATELES
   return buf;
 }
 
+export class DHCPV6_STATELESS_SCOPE_STATSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get SubnetAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u64
+  get NumStatelessClientsAdded(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get NumStatelessClientsRemoved(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: pointer
+  set SubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u64
+  set NumStatelessClientsAdded(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set NumStatelessClientsRemoved(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV6_STATELESS_STATS (size: 16)
  */
@@ -5113,6 +13525,42 @@ export function allocDHCPV6_STATELESS_STATS(data?: Partial<DHCPV6_STATELESS_STAT
   // 0x08: pointer
   if (data?.ScopeStats !== undefined) view.setBigUint64(8, data.ScopeStats === null ? 0n : BigInt(util.toPointer(data.ScopeStats)), true);
   return buf;
+}
+
+export class DHCPV6_STATELESS_STATSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumScopes(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ScopeStats(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumScopes(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ScopeStats(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5198,6 +13646,170 @@ export function allocDHCP_FAILOVER_RELATIONSHIP(data?: Partial<DHCP_FAILOVER_REL
   return buf;
 }
 
+export class DHCP_FAILOVER_RELATIONSHIPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PrimaryServer(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SecondaryServer(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get Mode(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get ServerType(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get State(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get PrevState(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: u32
+  get Mclt(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get SafePeriod(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: buffer
+  get RelationshipName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: buffer
+  get PrimaryServerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get SecondaryServerName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pScopes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u8
+  get Percentage(): number {
+    return this.view.getUint8(64);
+  }
+
+  // 0x41: pad7
+
+  // 0x48: buffer
+  get SharedSecret(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set PrimaryServer(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SecondaryServer(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set Mode(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set ServerType(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set State(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set PrevState(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Mclt(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set SafePeriod(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: buffer
+  set RelationshipName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: buffer
+  set PrimaryServerName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f40 = value;
+    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+  }
+
+  // 0x30: buffer
+  set SecondaryServerName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: pointer
+  set pScopes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u8
+  set Percentage(value: number) {
+    this.view.setUint8(64, value);
+  }
+
+  // 0x41: pad7
+
+  // 0x48: buffer
+  set SharedSecret(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f72 = value;
+    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+  }
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_FAILOVER_RELATIONSHIP_ARRAY (size: 16)
  */
@@ -5219,6 +13831,42 @@ export function allocDHCP_FAILOVER_RELATIONSHIP_ARRAY(data?: Partial<DHCP_FAILOV
   // 0x08: pointer
   if (data?.pRelationships !== undefined) view.setBigUint64(8, data.pRelationships === null ? 0n : BigInt(util.toPointer(data.pRelationships)), true);
   return buf;
+}
+
+export class DHCP_FAILOVER_RELATIONSHIP_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pRelationships(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pRelationships(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5330,6 +13978,245 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO(data?: Partial<DHCPV4_FAILOVER_
   return buf;
 }
 
+export class DHCPV4_FAILOVER_CLIENT_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get SentPotExpTime(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get AckPotExpTime(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get RecvPotExpTime(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get StartTime(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get CltLastTransTime(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get LastBndUpdTime(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get BndMsgStatus(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: u8
+  get Flags(): number {
+    return this.view.getUint8(104);
+  }
+
+  // 0x69: pad7
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set SentPotExpTime(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set AckPotExpTime(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set RecvPotExpTime(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set StartTime(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set CltLastTransTime(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set LastBndUpdTime(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set BndMsgStatus(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f96 = value;
+    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+  }
+
+  // 0x68: u8
+  set Flags(value: number) {
+    this.view.setUint8(104, value);
+  }
+
+  // 0x69: pad7
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCPV4_FAILOVER_CLIENT_INFO_ARRAY (size: 16)
  */
@@ -5351,6 +14238,42 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_ARRAY(data?: Partial<DHCPV4_FAI
   // 0x08: pointer
   if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
   return buf;
+}
+
+export class DHCPV4_FAILOVER_CLIENT_INFO_ARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumElements(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get Clients(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumElements(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set Clients(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5466,6 +14389,255 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_EX(data?: Partial<DHCPV4_FAILOV
   return buf;
 }
 
+export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ClientIpAddress(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get SubnetMask(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: buffer
+  get ClientName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: buffer
+  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u8
+  get bClientType(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get AddressState(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: i32
+  get Status(): number {
+    return this.view.getInt32(50, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: i32
+  get QuarantineCapable(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: u32
+  get SentPotExpTime(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get AckPotExpTime(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get RecvPotExpTime(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get StartTime(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get CltLastTransTime(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get LastBndUpdTime(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get BndMsgStatus(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: buffer
+  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: u8
+  get Flags(): number {
+    return this.view.getUint8(104);
+  }
+
+  // 0x69: u32
+  get AddressStateEx(): number {
+    return this.view.getUint32(105, true);
+  }
+
+  // 0x6d: pad3
+
+  // 0x00: u32
+  set ClientIpAddress(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set SubnetMask(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: buffer
+  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: buffer
+  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f24 = value;
+    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+  }
+
+  // 0x20: pointer
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u8
+  set bClientType(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set AddressState(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: i32
+  set Status(value: number) {
+    this.view.setInt32(50, value, true);
+  }
+
+  // 0x36: pad2
+
+  // 0x38: pointer
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: i32
+  set QuarantineCapable(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: u32
+  set SentPotExpTime(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set AckPotExpTime(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set RecvPotExpTime(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set StartTime(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set CltLastTransTime(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set LastBndUpdTime(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set BndMsgStatus(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: buffer
+  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f96 = value;
+    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+  }
+
+  // 0x68: u8
+  set Flags(value: number) {
+    this.view.setUint8(104, value);
+  }
+
+  // 0x69: u32
+  set AddressStateEx(value: number) {
+    this.view.setUint32(105, value, true);
+  }
+
+  // 0x6d: pad3
+}
+
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_FAILOVER_STATISTICS (size: 32)
  */
@@ -5507,6 +14679,91 @@ export function allocDHCP_FAILOVER_STATISTICS(data?: Partial<DHCP_FAILOVER_STATI
   if (data?.ThisAddrInUse !== undefined) view.setUint32(24, Number(data.ThisAddrInUse), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class DHCP_FAILOVER_STATISTICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumAddr(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get AddrFree(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get AddrInUse(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get PartnerAddrFree(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ThisAddrFree(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get PartnerAddrInUse(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get ThisAddrInUse(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set NumAddr(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set AddrFree(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set AddrInUse(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set PartnerAddrFree(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ThisAddrFree(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set PartnerAddrInUse(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set ThisAddrInUse(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 // Native Libraries

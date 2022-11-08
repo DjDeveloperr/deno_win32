@@ -233,6 +233,97 @@ export function alloc__ReferenceRemainingTypes__(data?: Partial<__ReferenceRemai
   return buf;
 }
 
+export class __ReferenceRemainingTypes__View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get __ctrlLevel__(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get __attendeeDisconnectReason__(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get __channelPriority__(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get __channelFlags__(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get __channelAccessEnum__(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get __rdpencomapiAttendeeFlags__(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get __rdpsrapiWndFlags__(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get __rdpsrapiAppFlags__(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x00: i32
+  set __ctrlLevel__(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set __attendeeDisconnectReason__(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set __channelPriority__(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set __channelFlags__(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set __channelAccessEnum__(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set __rdpencomapiAttendeeFlags__(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set __rdpsrapiWndFlags__(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set __rdpsrapiAppFlags__(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+}
+
 // Native Libraries
 
 // Symbols

@@ -1703,6 +1703,89 @@ export function allocD3D10_INPUT_ELEMENT_DESC(data?: Partial<D3D10_INPUT_ELEMENT
   return buf;
 }
 
+export class D3D10_INPUT_ELEMENT_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get SemanticIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Format(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get InputSlot(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get AlignedByteOffset(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get InputSlotClass(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: u32
+  get InstanceDataStepRate(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: buffer
+  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set SemanticIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Format(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set InputSlot(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set AlignedByteOffset(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set InputSlotClass(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set InstanceDataStepRate(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SO_DECLARATION_ENTRY (size: 16)
  */
@@ -1739,6 +1822,73 @@ export function allocD3D10_SO_DECLARATION_ENTRY(data?: Partial<D3D10_SO_DECLARAT
   if (data?.OutputSlot !== undefined) view.setUint8(14, Number(data.OutputSlot));
   // 0x0f: pad1
   return buf;
+}
+
+export class D3D10_SO_DECLARATION_ENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get SemanticIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u8
+  get StartComponent(): number {
+    return this.view.getUint8(12);
+  }
+
+  // 0x0d: u8
+  get ComponentCount(): number {
+    return this.view.getUint8(13);
+  }
+
+  // 0x0e: u8
+  get OutputSlot(): number {
+    return this.view.getUint8(14);
+  }
+
+  // 0x0f: pad1
+
+  // 0x00: buffer
+  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set SemanticIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u8
+  set StartComponent(value: number) {
+    this.view.setUint8(12, value);
+  }
+
+  // 0x0d: u8
+  set ComponentCount(value: number) {
+    this.view.setUint8(13, value);
+  }
+
+  // 0x0e: u8
+  set OutputSlot(value: number) {
+    this.view.setUint8(14, value);
+  }
+
+  // 0x0f: pad1
 }
 
 /**
@@ -1779,6 +1929,77 @@ export function allocD3D10_VIEWPORT(data?: Partial<D3D10_VIEWPORT>): Uint8Array 
   return buf;
 }
 
+export class D3D10_VIEWPORTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get TopLeftX(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get TopLeftY(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get Width(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Height(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: f32
+  get MinDepth(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get MaxDepth(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: i32
+  set TopLeftX(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set TopLeftY(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Width(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Height(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: f32
+  set MinDepth(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set MaxDepth(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_BOX (size: 24)
  */
@@ -1817,6 +2038,77 @@ export function allocD3D10_BOX(data?: Partial<D3D10_BOX>): Uint8Array {
   return buf;
 }
 
+export class D3D10_BOXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get left(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get top(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get front(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get right(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get bottom(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get back(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u32
+  set left(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set top(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set front(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set right(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set bottom(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set back(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_DEPTH_STENCILOP_DESC (size: 16)
  */
@@ -1845,6 +2137,57 @@ export function allocD3D10_DEPTH_STENCILOP_DESC(data?: Partial<D3D10_DEPTH_STENC
   // 0x0c: i32
   if (data?.StencilFunc !== undefined) view.setInt32(12, Number(data.StencilFunc), true);
   return buf;
+}
+
+export class D3D10_DEPTH_STENCILOP_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get StencilFailOp(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get StencilDepthFailOp(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get StencilPassOp(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get StencilFunc(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: i32
+  set StencilFailOp(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set StencilDepthFailOp(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set StencilPassOp(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set StencilFunc(value: number) {
+    this.view.setInt32(12, value, true);
+  }
 }
 
 export type BOOL = number;
@@ -1896,6 +2239,103 @@ export function allocD3D10_DEPTH_STENCIL_DESC(data?: Partial<D3D10_DEPTH_STENCIL
   return buf;
 }
 
+export class D3D10_DEPTH_STENCIL_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get DepthEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get DepthWriteMask(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get DepthFunc(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get StencilEnable(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u8
+  get StencilReadMask(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: u8
+  get StencilWriteMask(): number {
+    return this.view.getUint8(17);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: pointer
+  get FrontFace(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get BackFace(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set DepthEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set DepthWriteMask(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set DepthFunc(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set StencilEnable(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u8
+  set StencilReadMask(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: u8
+  set StencilWriteMask(value: number) {
+    this.view.setUint8(17, value);
+  }
+
+  // 0x12: pad6
+
+  // 0x18: pointer
+  set FrontFace(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set BackFace(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_BLEND_DESC (size: 48)
  */
@@ -1945,6 +2385,113 @@ export function allocD3D10_BLEND_DESC(data?: Partial<D3D10_BLEND_DESC>): Uint8Ar
   // 0x28: pointer
   if (data?.RenderTargetWriteMask !== undefined) view.setBigUint64(40, data.RenderTargetWriteMask === null ? 0n : BigInt(util.toPointer(data.RenderTargetWriteMask)), true);
   return buf;
+}
+
+export class D3D10_BLEND_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get AlphaToCoverageEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get BlendEnable(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get SrcBlend(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get DestBlend(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get BlendOp(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get SrcBlendAlpha(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get DestBlendAlpha(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get BlendOpAlpha(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: pointer
+  get RenderTargetWriteMask(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set AlphaToCoverageEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set BlendEnable(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set SrcBlend(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set DestBlend(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set BlendOp(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set SrcBlendAlpha(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set DestBlendAlpha(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set BlendOpAlpha(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set RenderTargetWriteMask(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2001,6 +2548,117 @@ export function allocD3D10_RASTERIZER_DESC(data?: Partial<D3D10_RASTERIZER_DESC>
   return buf;
 }
 
+export class D3D10_RASTERIZER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get FillMode(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get CullMode(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get FrontCounterClockwise(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get DepthBias(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: f32
+  get DepthBiasClamp(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get SlopeScaledDepthBias(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: i32
+  get DepthClipEnable(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get ScissorEnable(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get MultisampleEnable(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get AntialiasedLineEnable(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x00: i32
+  set FillMode(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set CullMode(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set FrontCounterClockwise(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set DepthBias(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: f32
+  set DepthBiasClamp(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set SlopeScaledDepthBias(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: i32
+  set DepthClipEnable(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set ScissorEnable(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set MultisampleEnable(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set AntialiasedLineEnable(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SUBRESOURCE_DATA (size: 16)
  */
@@ -2025,6 +2683,48 @@ export function allocD3D10_SUBRESOURCE_DATA(data?: Partial<D3D10_SUBRESOURCE_DAT
   // 0x0c: u32
   if (data?.SysMemSlicePitch !== undefined) view.setUint32(12, Number(data.SysMemSlicePitch), true);
   return buf;
+}
+
+export class D3D10_SUBRESOURCE_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pSysMem(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get SysMemPitch(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get SysMemSlicePitch(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set pSysMem(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set SysMemPitch(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set SysMemSlicePitch(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -2060,6 +2760,71 @@ export function allocD3D10_BUFFER_DESC(data?: Partial<D3D10_BUFFER_DESC>): Uint8
   if (data?.MiscFlags !== undefined) view.setUint32(16, Number(data.MiscFlags), true);
   // 0x14: pad4
   return buf;
+}
+
+export class D3D10_BUFFER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ByteWidth(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get Usage(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get BindFlags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get CPUAccessFlags(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set ByteWidth(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Usage(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set BindFlags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set CPUAccessFlags(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -2108,6 +2873,97 @@ export function allocD3D10_TEXTURE1D_DESC(data?: Partial<D3D10_TEXTURE1D_DESC>):
   return buf;
 }
 
+export class D3D10_TEXTURE1D_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Width(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ArraySize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Format(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: i32
+  get Usage(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get BindFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get CPUAccessFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: u32
+  set Width(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Format(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: i32
+  set Usage(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set BindFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set CPUAccessFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Dxgi.Common.DXGI_SAMPLE_DESC (size: 8)
  */
@@ -2128,6 +2984,37 @@ export function allocDXGI_SAMPLE_DESC(data?: Partial<DXGI_SAMPLE_DESC>): Uint8Ar
   // 0x04: u32
   if (data?.Quality !== undefined) view.setUint32(4, Number(data.Quality), true);
   return buf;
+}
+
+export class DXGI_SAMPLE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Count(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Quality(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set Count(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Quality(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2185,6 +3072,122 @@ export function allocD3D10_TEXTURE2D_DESC(data?: Partial<D3D10_TEXTURE2D_DESC>):
   return buf;
 }
 
+export class D3D10_TEXTURE2D_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Width(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Height(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get MipLevels(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ArraySize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Format(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get SampleDesc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: i32
+  get Usage(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: u32
+  get BindFlags(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get CPUAccessFlags(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x00: u32
+  set Width(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Height(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Format(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: i32
+  set Usage(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: u32
+  set BindFlags(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set CPUAccessFlags(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_MAPPED_TEXTURE2D (size: 16)
  */
@@ -2206,6 +3209,42 @@ export function allocD3D10_MAPPED_TEXTURE2D(data?: Partial<D3D10_MAPPED_TEXTURE2
   if (data?.RowPitch !== undefined) view.setUint32(8, Number(data.RowPitch), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class D3D10_MAPPED_TEXTURE2DView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get RowPitch(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set RowPitch(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -2259,6 +3298,111 @@ export function allocD3D10_TEXTURE3D_DESC(data?: Partial<D3D10_TEXTURE3D_DESC>):
   return buf;
 }
 
+export class D3D10_TEXTURE3D_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Width(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Height(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Depth(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MipLevels(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Format(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: i32
+  get Usage(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: u32
+  get BindFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get CPUAccessFlags(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set Width(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Height(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Depth(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Format(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: i32
+  set Usage(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: u32
+  set BindFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set CPUAccessFlags(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_MAPPED_TEXTURE3D (size: 16)
  */
@@ -2283,6 +3427,48 @@ export function allocD3D10_MAPPED_TEXTURE3D(data?: Partial<D3D10_MAPPED_TEXTURE3
   // 0x0c: u32
   if (data?.DepthPitch !== undefined) view.setUint32(12, Number(data.DepthPitch), true);
   return buf;
+}
+
+export class D3D10_MAPPED_TEXTURE3DView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get RowPitch(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get DepthPitch(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set pData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set RowPitch(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set DepthPitch(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
@@ -2337,6 +3523,107 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   return buf;
 }
 
+export class _Anonymous1_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data0(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: buffer
+  get String(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get u(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get psid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pguid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get LogonId_LowPart(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: usize
+  set Data0(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: buffer
+  set String(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: usize
+  set u(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set psid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pguid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set LogonId_LowPart(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous2_e__Union (size: 16)
  */
@@ -2358,6 +3645,41 @@ export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>):
   if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class _Anonymous2_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data1(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: i32
+  get LogonId_HighPart(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: usize
+  set Data1(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: i32
+  set LogonId_HighPart(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -2382,6 +3704,39 @@ export function allocD3D10_BUFFER_SRV(data?: Partial<D3D10_BUFFER_SRV>): Uint8Ar
   return buf;
 }
 
+export class D3D10_BUFFER_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX1D_SRV (size: 8)
  */
@@ -2402,6 +3757,37 @@ export function allocD3D10_TEX1D_SRV(data?: Partial<D3D10_TEX1D_SRV>): Uint8Arra
   // 0x04: u32
   if (data?.MipLevels !== undefined) view.setUint32(4, Number(data.MipLevels), true);
   return buf;
+}
+
+export class D3D10_TEX1D_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2434,6 +3820,57 @@ export function allocD3D10_TEX1D_ARRAY_SRV(data?: Partial<D3D10_TEX1D_ARRAY_SRV>
   return buf;
 }
 
+export class D3D10_TEX1D_ARRAY_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ArraySize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2D_SRV (size: 8)
  */
@@ -2454,6 +3891,37 @@ export function allocD3D10_TEX2D_SRV(data?: Partial<D3D10_TEX2D_SRV>): Uint8Arra
   // 0x04: u32
   if (data?.MipLevels !== undefined) view.setUint32(4, Number(data.MipLevels), true);
   return buf;
+}
+
+export class D3D10_TEX2D_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2486,6 +3954,57 @@ export function allocD3D10_TEX2D_ARRAY_SRV(data?: Partial<D3D10_TEX2D_ARRAY_SRV>
   return buf;
 }
 
+export class D3D10_TEX2D_ARRAY_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ArraySize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX3D_SRV (size: 8)
  */
@@ -2506,6 +4025,37 @@ export function allocD3D10_TEX3D_SRV(data?: Partial<D3D10_TEX3D_SRV>): Uint8Arra
   // 0x04: u32
   if (data?.MipLevels !== undefined) view.setUint32(4, Number(data.MipLevels), true);
   return buf;
+}
+
+export class D3D10_TEX3D_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2530,6 +4080,37 @@ export function allocD3D10_TEXCUBE_SRV(data?: Partial<D3D10_TEXCUBE_SRV>): Uint8
   return buf;
 }
 
+export class D3D10_TEXCUBE_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2DMS_SRV (size: 8)
  */
@@ -2547,6 +4128,31 @@ export function allocD3D10_TEX2DMS_SRV(data?: Partial<D3D10_TEX2DMS_SRV>): Uint8
   if (data?.UnusedField_NothingToDefine !== undefined) view.setUint32(0, Number(data.UnusedField_NothingToDefine), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX2DMS_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnusedField_NothingToDefine(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set UnusedField_NothingToDefine(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2571,6 +4177,37 @@ export function allocD3D10_TEX2DMS_ARRAY_SRV(data?: Partial<D3D10_TEX2DMS_ARRAY_
   return buf;
 }
 
+export class D3D10_TEX2DMS_ARRAY_SRVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ArraySize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * _Anonymous_e__Struct (size: 16)
  */
@@ -2593,6 +4230,37 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   return buf;
 }
 
+export class _Anonymous_e__StructView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Alignment(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get Region(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set Alignment(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set Region(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * _Anonymous_e__Union (size: 16)
  */
@@ -2613,6 +4281,39 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   // 0x08: pointer
   if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
   return buf;
+}
+
+export class _Anonymous_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get X(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set X(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2641,6 +4342,48 @@ export function allocD3D10_SHADER_RESOURCE_VIEW_DESC(data?: Partial<D3D10_SHADER
   return buf;
 }
 
+export class D3D10_SHADER_RESOURCE_VIEW_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Format(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ViewDimension(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Format(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ViewDimension(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_BUFFER_RTV (size: 16)
  */
@@ -2663,6 +4406,39 @@ export function allocD3D10_BUFFER_RTV(data?: Partial<D3D10_BUFFER_RTV>): Uint8Ar
   return buf;
 }
 
+export class D3D10_BUFFER_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX1D_RTV (size: 8)
  */
@@ -2680,6 +4456,31 @@ export function allocD3D10_TEX1D_RTV(data?: Partial<D3D10_TEX1D_RTV>): Uint8Arra
   if (data?.MipSlice !== undefined) view.setUint32(0, Number(data.MipSlice), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX1D_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2709,6 +4510,51 @@ export function allocD3D10_TEX1D_ARRAY_RTV(data?: Partial<D3D10_TEX1D_ARRAY_RTV>
   return buf;
 }
 
+export class D3D10_TEX1D_ARRAY_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ArraySize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2D_RTV (size: 8)
  */
@@ -2728,6 +4574,31 @@ export function allocD3D10_TEX2D_RTV(data?: Partial<D3D10_TEX2D_RTV>): Uint8Arra
   return buf;
 }
 
+export class D3D10_TEX2D_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2DMS_RTV (size: 8)
  */
@@ -2745,6 +4616,31 @@ export function allocD3D10_TEX2DMS_RTV(data?: Partial<D3D10_TEX2DMS_RTV>): Uint8
   if (data?.UnusedField_NothingToDefine !== undefined) view.setUint32(0, Number(data.UnusedField_NothingToDefine), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX2DMS_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnusedField_NothingToDefine(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set UnusedField_NothingToDefine(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2774,6 +4670,51 @@ export function allocD3D10_TEX2D_ARRAY_RTV(data?: Partial<D3D10_TEX2D_ARRAY_RTV>
   return buf;
 }
 
+export class D3D10_TEX2D_ARRAY_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ArraySize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2DMS_ARRAY_RTV (size: 8)
  */
@@ -2794,6 +4735,37 @@ export function allocD3D10_TEX2DMS_ARRAY_RTV(data?: Partial<D3D10_TEX2DMS_ARRAY_
   // 0x04: u32
   if (data?.ArraySize !== undefined) view.setUint32(4, Number(data.ArraySize), true);
   return buf;
+}
+
+export class D3D10_TEX2DMS_ARRAY_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ArraySize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -2823,6 +4795,51 @@ export function allocD3D10_TEX3D_RTV(data?: Partial<D3D10_TEX3D_RTV>): Uint8Arra
   return buf;
 }
 
+export class D3D10_TEX3D_RTVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FirstWSlice(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get WSize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FirstWSlice(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set WSize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_RENDER_TARGET_VIEW_DESC (size: 16)
  */
@@ -2849,6 +4866,48 @@ export function allocD3D10_RENDER_TARGET_VIEW_DESC(data?: Partial<D3D10_RENDER_T
   return buf;
 }
 
+export class D3D10_RENDER_TARGET_VIEW_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Format(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ViewDimension(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Format(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ViewDimension(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX1D_DSV (size: 8)
  */
@@ -2866,6 +4925,31 @@ export function allocD3D10_TEX1D_DSV(data?: Partial<D3D10_TEX1D_DSV>): Uint8Arra
   if (data?.MipSlice !== undefined) view.setUint32(0, Number(data.MipSlice), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX1D_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2895,6 +4979,51 @@ export function allocD3D10_TEX1D_ARRAY_DSV(data?: Partial<D3D10_TEX1D_ARRAY_DSV>
   return buf;
 }
 
+export class D3D10_TEX1D_ARRAY_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ArraySize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2D_DSV (size: 8)
  */
@@ -2912,6 +5041,31 @@ export function allocD3D10_TEX2D_DSV(data?: Partial<D3D10_TEX2D_DSV>): Uint8Arra
   if (data?.MipSlice !== undefined) view.setUint32(0, Number(data.MipSlice), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX2D_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2941,6 +5095,51 @@ export function allocD3D10_TEX2D_ARRAY_DSV(data?: Partial<D3D10_TEX2D_ARRAY_DSV>
   return buf;
 }
 
+export class D3D10_TEX2D_ARRAY_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MipSlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get ArraySize(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set MipSlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_TEX2DMS_DSV (size: 8)
  */
@@ -2958,6 +5157,31 @@ export function allocD3D10_TEX2DMS_DSV(data?: Partial<D3D10_TEX2DMS_DSV>): Uint8
   if (data?.UnusedField_NothingToDefine !== undefined) view.setUint32(0, Number(data.UnusedField_NothingToDefine), true);
   // 0x04: pad4
   return buf;
+}
+
+export class D3D10_TEX2DMS_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UnusedField_NothingToDefine(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u32
+  set UnusedField_NothingToDefine(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -2980,6 +5204,37 @@ export function allocD3D10_TEX2DMS_ARRAY_DSV(data?: Partial<D3D10_TEX2DMS_ARRAY_
   // 0x04: u32
   if (data?.ArraySize !== undefined) view.setUint32(4, Number(data.ArraySize), true);
   return buf;
+}
+
+export class D3D10_TEX2DMS_ARRAY_DSVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get FirstArraySlice(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get ArraySize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set FirstArraySlice(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ArraySize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -3006,6 +5261,48 @@ export function allocD3D10_DEPTH_STENCIL_VIEW_DESC(data?: Partial<D3D10_DEPTH_ST
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class D3D10_DEPTH_STENCIL_VIEW_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Format(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ViewDimension(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Format(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ViewDimension(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3063,6 +5360,122 @@ export function allocD3D10_SAMPLER_DESC(data?: Partial<D3D10_SAMPLER_DESC>): Uin
   return buf;
 }
 
+export class D3D10_SAMPLER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Filter(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get AddressU(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get AddressV(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get AddressW(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: f32
+  get MipLODBias(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: u32
+  get MaxAnisotropy(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get ComparisonFunc(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get BorderColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: f32
+  get MinLOD(): number {
+    return this.view.getFloat32(40, true);
+  }
+
+  // 0x2c: f32
+  get MaxLOD(): number {
+    return this.view.getFloat32(44, true);
+  }
+
+  // 0x00: i32
+  set Filter(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set AddressU(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set AddressV(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set AddressW(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: f32
+  set MipLODBias(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: u32
+  set MaxAnisotropy(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set ComparisonFunc(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set BorderColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: f32
+  set MinLOD(value: number) {
+    this.view.setFloat32(40, value, true);
+  }
+
+  // 0x2c: f32
+  set MaxLOD(value: number) {
+    this.view.setFloat32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_QUERY_DESC (size: 8)
  */
@@ -3083,6 +5496,37 @@ export function allocD3D10_QUERY_DESC(data?: Partial<D3D10_QUERY_DESC>): Uint8Ar
   // 0x04: u32
   if (data?.MiscFlags !== undefined) view.setUint32(4, Number(data.MiscFlags), true);
   return buf;
+}
+
+export class D3D10_QUERY_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Query(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: i32
+  set Query(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -3106,6 +5550,41 @@ export function allocD3D10_QUERY_DATA_TIMESTAMP_DISJOINT(data?: Partial<D3D10_QU
   if (data?.Disjoint !== undefined) view.setInt32(8, Number(data.Disjoint), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class D3D10_QUERY_DATA_TIMESTAMP_DISJOINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get Frequency(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: i32
+  get Disjoint(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u64
+  set Frequency(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: i32
+  set Disjoint(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -3154,6 +5633,97 @@ export function allocD3D10_QUERY_DATA_PIPELINE_STATISTICS(data?: Partial<D3D10_Q
   return buf;
 }
 
+export class D3D10_QUERY_DATA_PIPELINE_STATISTICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get IAVertices(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get IAPrimitives(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x10: u64
+  get VSInvocations(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: u64
+  get GSInvocations(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u64
+  get GSPrimitives(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(32, true));
+  }
+
+  // 0x28: u64
+  get CInvocations(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(40, true));
+  }
+
+  // 0x30: u64
+  get CPrimitives(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(48, true));
+  }
+
+  // 0x38: u64
+  get PSInvocations(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(56, true));
+  }
+
+  // 0x00: u64
+  set IAVertices(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set IAPrimitives(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+
+  // 0x10: u64
+  set VSInvocations(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: u64
+  set GSInvocations(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u64
+  set GSPrimitives(value: Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(value), true);
+  }
+
+  // 0x28: u64
+  set CInvocations(value: Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(value), true);
+  }
+
+  // 0x30: u64
+  set CPrimitives(value: Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(value), true);
+  }
+
+  // 0x38: u64
+  set PSInvocations(value: Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_QUERY_DATA_SO_STATISTICS (size: 16)
  */
@@ -3176,6 +5746,37 @@ export function allocD3D10_QUERY_DATA_SO_STATISTICS(data?: Partial<D3D10_QUERY_D
   return buf;
 }
 
+export class D3D10_QUERY_DATA_SO_STATISTICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u64
+  get NumPrimitivesWritten(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: u64
+  get PrimitivesStorageNeeded(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(8, true));
+  }
+
+  // 0x00: u64
+  set NumPrimitivesWritten(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: u64
+  set PrimitivesStorageNeeded(value: Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(value), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_COUNTER_DESC (size: 8)
  */
@@ -3196,6 +5797,37 @@ export function allocD3D10_COUNTER_DESC(data?: Partial<D3D10_COUNTER_DESC>): Uin
   // 0x04: u32
   if (data?.MiscFlags !== undefined) view.setUint32(4, Number(data.MiscFlags), true);
   return buf;
+}
+
+export class D3D10_COUNTER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Counter(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get MiscFlags(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: i32
+  set Counter(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MiscFlags(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -3223,6 +5855,51 @@ export function allocD3D10_COUNTER_INFO(data?: Partial<D3D10_COUNTER_INFO>): Uin
   if (data?.NumDetectableParallelUnits !== undefined) view.setUint8(8, Number(data.NumDetectableParallelUnits));
   // 0x09: pad7
   return buf;
+}
+
+export class D3D10_COUNTER_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get LastDeviceDependentCounter(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get NumSimultaneousCounters(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u8
+  get NumDetectableParallelUnits(): number {
+    return this.view.getUint8(8);
+  }
+
+  // 0x09: pad7
+
+  // 0x00: i32
+  set LastDeviceDependentCounter(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set NumSimultaneousCounters(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u8
+  set NumDetectableParallelUnits(value: number) {
+    this.view.setUint8(8, value);
+  }
+
+  // 0x09: pad7
 }
 
 /**
@@ -3258,6 +5935,72 @@ export function allocD3D10_MESSAGE(data?: Partial<D3D10_MESSAGE>): Uint8Array {
   // 0x18: usize
   if (data?.DescriptionByteLength !== undefined) view.setBigUint64(24, BigInt(data.DescriptionByteLength), true);
   return buf;
+}
+
+export class D3D10_MESSAGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Category(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get Severity(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get ID(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pDescription(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: usize
+  get DescriptionByteLength(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x00: i32
+  set Category(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Severity(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set ID(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pDescription(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: usize
+  set DescriptionByteLength(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
 }
 
 /**
@@ -3301,6 +6044,92 @@ export function allocD3D10_INFO_QUEUE_FILTER_DESC(data?: Partial<D3D10_INFO_QUEU
   return buf;
 }
 
+export class D3D10_INFO_QUEUE_FILTER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get NumCategories(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pCategoryList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get NumSeverities(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pSeverityList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get NumIDs(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get pIDList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set NumCategories(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pCategoryList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set NumSeverities(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pSeverityList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set NumIDs(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set pIDList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_INFO_QUEUE_FILTER (size: 16)
  */
@@ -3321,6 +6150,39 @@ export function allocD3D10_INFO_QUEUE_FILTER(data?: Partial<D3D10_INFO_QUEUE_FIL
   // 0x08: pointer
   if (data?.DenyList !== undefined) view.setBigUint64(8, data.DenyList === null ? 0n : BigInt(util.toPointer(data.DenyList)), true);
   return buf;
+}
+
+export class D3D10_INFO_QUEUE_FILTERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get AllowList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get DenyList(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set AllowList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set DenyList(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3453,6 +6315,303 @@ export function allocD3D10_SHADER_DESC(data?: Partial<D3D10_SHADER_DESC>): Uint8
   return buf;
 }
 
+export class D3D10_SHADER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Version(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get Creator(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get Flags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ConstantBuffers(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get BoundResources(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get InputParameters(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get OutputParameters(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get InstructionCount(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get TempRegisterCount(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get TempArrayCount(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get DefCount(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get DclCount(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get TextureNormalInstructions(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get TextureLoadInstructions(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get TextureCompInstructions(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get TextureBiasInstructions(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get TextureGradientInstructions(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get FloatInstructionCount(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get IntInstructionCount(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get UintInstructionCount(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get StaticFlowControlCount(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get DynamicFlowControlCount(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get MacroInstructionCount(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get ArrayInstructionCount(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: u32
+  get CutInstructionCount(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: u32
+  get EmitInstructionCount(): number {
+    return this.view.getUint32(108, true);
+  }
+
+  // 0x70: i32
+  get GSOutputTopology(): number {
+    return this.view.getInt32(112, true);
+  }
+
+  // 0x74: u32
+  get GSMaxOutputVertexCount(): number {
+    return this.view.getUint32(116, true);
+  }
+
+  // 0x00: u32
+  set Version(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set Creator(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set Flags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ConstantBuffers(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set BoundResources(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set InputParameters(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set OutputParameters(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set InstructionCount(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set TempRegisterCount(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set TempArrayCount(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set DefCount(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set DclCount(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set TextureNormalInstructions(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set TextureLoadInstructions(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set TextureCompInstructions(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set TextureBiasInstructions(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set TextureGradientInstructions(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set FloatInstructionCount(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set IntInstructionCount(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set UintInstructionCount(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set StaticFlowControlCount(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set DynamicFlowControlCount(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set MacroInstructionCount(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set ArrayInstructionCount(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: u32
+  set CutInstructionCount(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: u32
+  set EmitInstructionCount(value: number) {
+    this.view.setUint32(108, value, true);
+  }
+
+  // 0x70: i32
+  set GSOutputTopology(value: number) {
+    this.view.setInt32(112, value, true);
+  }
+
+  // 0x74: u32
+  set GSMaxOutputVertexCount(value: number) {
+    this.view.setUint32(116, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_BUFFER_DESC (size: 24)
  */
@@ -3488,6 +6647,69 @@ export function allocD3D10_SHADER_BUFFER_DESC(data?: Partial<D3D10_SHADER_BUFFER
   // 0x14: u32
   if (data?.uFlags !== undefined) view.setUint32(20, Number(data.uFlags), true);
   return buf;
+}
+
+export class D3D10_SHADER_BUFFER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get Type(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Variables(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Size(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get uFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set Type(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Variables(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Size(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set uFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -3526,6 +6748,74 @@ export function allocD3D10_SHADER_VARIABLE_DESC(data?: Partial<D3D10_SHADER_VARI
   // 0x18: pointer
   if (data?.DefaultValue !== undefined) view.setBigUint64(24, data.DefaultValue === null ? 0n : BigInt(util.toPointer(data.DefaultValue)), true);
   return buf;
+}
+
+export class D3D10_SHADER_VARIABLE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get StartOffset(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Size(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get uFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get DefaultValue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set StartOffset(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Size(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set uFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set DefaultValue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3569,6 +6859,91 @@ export function allocD3D10_SHADER_TYPE_DESC(data?: Partial<D3D10_SHADER_TYPE_DES
   if (data?.Offset !== undefined) view.setUint32(24, Number(data.Offset), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class D3D10_SHADER_TYPE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get Class(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get Type(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get Rows(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Columns(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Elements(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Members(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Offset(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: i32
+  set Class(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Type(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Rows(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Columns(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Elements(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Members(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Offset(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -3621,6 +6996,103 @@ export function allocD3D10_SHADER_INPUT_BIND_DESC(data?: Partial<D3D10_SHADER_IN
   return buf;
 }
 
+export class D3D10_SHADER_INPUT_BIND_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get Type(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get BindPoint(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get BindCount(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get uFlags(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get ReturnType(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get Dimension(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get NumSamples(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set Type(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set BindPoint(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set BindCount(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set uFlags(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set ReturnType(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set Dimension(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set NumSamples(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SIGNATURE_PARAMETER_DESC (size: 32)
  */
@@ -3665,6 +7137,93 @@ export function allocD3D10_SIGNATURE_PARAMETER_DESC(data?: Partial<D3D10_SIGNATU
   if (data?.ReadWriteMask !== undefined) view.setUint8(25, Number(data.ReadWriteMask));
   // 0x1a: pad6
   return buf;
+}
+
+export class D3D10_SIGNATURE_PARAMETER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get SemanticIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Register(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: i32
+  get SystemValueType(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get ComponentType(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: u8
+  get Mask(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: u8
+  get ReadWriteMask(): number {
+    return this.view.getUint8(25);
+  }
+
+  // 0x1a: pad6
+
+  // 0x00: buffer
+  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set SemanticIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Register(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: i32
+  set SystemValueType(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set ComponentType(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: u8
+  set Mask(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: u8
+  set ReadWriteMask(value: number) {
+    this.view.setUint8(25, value);
+  }
+
+  // 0x1a: pad6
 }
 
 /**
@@ -3781,6 +7340,283 @@ export function allocD3D10_STATE_BLOCK_MASK(data?: Partial<D3D10_STATE_BLOCK_MAS
   return buf;
 }
 
+export class D3D10_STATE_BLOCK_MASKView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get VS(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  get VSSamplers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get VSShaderResources(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get VSConstantBuffers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u8
+  get GS(): number {
+    return this.view.getUint8(32);
+  }
+
+  // 0x21: pad7
+
+  // 0x28: pointer
+  get GSSamplers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get GSShaderResources(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get GSConstantBuffers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u8
+  get PS(): number {
+    return this.view.getUint8(64);
+  }
+
+  // 0x41: pad7
+
+  // 0x48: pointer
+  get PSSamplers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: pointer
+  get PSShaderResources(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: pointer
+  get PSConstantBuffers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x60: pointer
+  get IAVertexBuffers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(96, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x68: u8
+  get IAIndexBuffer(): number {
+    return this.view.getUint8(104);
+  }
+
+  // 0x69: u8
+  get IAInputLayout(): number {
+    return this.view.getUint8(105);
+  }
+
+  // 0x6a: u8
+  get IAPrimitiveTopology(): number {
+    return this.view.getUint8(106);
+  }
+
+  // 0x6b: u8
+  get OMRenderTargets(): number {
+    return this.view.getUint8(107);
+  }
+
+  // 0x6c: u8
+  get OMDepthStencilState(): number {
+    return this.view.getUint8(108);
+  }
+
+  // 0x6d: u8
+  get OMBlendState(): number {
+    return this.view.getUint8(109);
+  }
+
+  // 0x6e: u8
+  get RSViewports(): number {
+    return this.view.getUint8(110);
+  }
+
+  // 0x6f: u8
+  get RSScissorRects(): number {
+    return this.view.getUint8(111);
+  }
+
+  // 0x70: u8
+  get RSRasterizerState(): number {
+    return this.view.getUint8(112);
+  }
+
+  // 0x71: u8
+  get SOBuffers(): number {
+    return this.view.getUint8(113);
+  }
+
+  // 0x72: u8
+  get Predication(): number {
+    return this.view.getUint8(114);
+  }
+
+  // 0x73: pad5
+
+  // 0x00: u8
+  set VS(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
+
+  // 0x08: pointer
+  set VSSamplers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set VSShaderResources(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set VSConstantBuffers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u8
+  set GS(value: number) {
+    this.view.setUint8(32, value);
+  }
+
+  // 0x21: pad7
+
+  // 0x28: pointer
+  set GSSamplers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set GSShaderResources(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set GSConstantBuffers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u8
+  set PS(value: number) {
+    this.view.setUint8(64, value);
+  }
+
+  // 0x41: pad7
+
+  // 0x48: pointer
+  set PSSamplers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: pointer
+  set PSShaderResources(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: pointer
+  set PSConstantBuffers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x60: pointer
+  set IAVertexBuffers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x68: u8
+  set IAIndexBuffer(value: number) {
+    this.view.setUint8(104, value);
+  }
+
+  // 0x69: u8
+  set IAInputLayout(value: number) {
+    this.view.setUint8(105, value);
+  }
+
+  // 0x6a: u8
+  set IAPrimitiveTopology(value: number) {
+    this.view.setUint8(106, value);
+  }
+
+  // 0x6b: u8
+  set OMRenderTargets(value: number) {
+    this.view.setUint8(107, value);
+  }
+
+  // 0x6c: u8
+  set OMDepthStencilState(value: number) {
+    this.view.setUint8(108, value);
+  }
+
+  // 0x6d: u8
+  set OMBlendState(value: number) {
+    this.view.setUint8(109, value);
+  }
+
+  // 0x6e: u8
+  set RSViewports(value: number) {
+    this.view.setUint8(110, value);
+  }
+
+  // 0x6f: u8
+  set RSScissorRects(value: number) {
+    this.view.setUint8(111, value);
+  }
+
+  // 0x70: u8
+  set RSRasterizerState(value: number) {
+    this.view.setUint8(112, value);
+  }
+
+  // 0x71: u8
+  set SOBuffers(value: number) {
+    this.view.setUint8(113, value);
+  }
+
+  // 0x72: u8
+  set Predication(value: number) {
+    this.view.setUint8(114, value);
+  }
+
+  // 0x73: pad5
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_EFFECT_TYPE_DESC (size: 48)
  */
@@ -3839,6 +7675,123 @@ export function allocD3D10_EFFECT_TYPE_DESC(data?: Partial<D3D10_EFFECT_TYPE_DES
   return buf;
 }
 
+export class D3D10_EFFECT_TYPE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get TypeName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get Class(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get Type(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get Elements(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Members(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get Rows(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Columns(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get PackedSize(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get UnpackedSize(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get Stride(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: buffer
+  set TypeName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: i32
+  set Class(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set Type(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Elements(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Members(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set Rows(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Columns(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set PackedSize(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set UnpackedSize(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set Stride(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_EFFECT_VARIABLE_DESC (size: 32)
  */
@@ -3881,6 +7834,81 @@ export function allocD3D10_EFFECT_VARIABLE_DESC(data?: Partial<D3D10_EFFECT_VARI
   // 0x1c: u32
   if (data?.ExplicitBindPoint !== undefined) view.setUint32(28, Number(data.ExplicitBindPoint), true);
   return buf;
+}
+
+export class D3D10_EFFECT_VARIABLE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: buffer
+  get Semantic(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get Flags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Annotations(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get BufferOffset(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get ExplicitBindPoint(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: buffer
+  set Semantic(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: u32
+  set Flags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Annotations(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set BufferOffset(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set ExplicitBindPoint(value: number) {
+    this.view.setUint32(28, value, true);
+  }
 }
 
 /**
@@ -3930,6 +7958,99 @@ export function allocD3D10_EFFECT_SHADER_DESC(data?: Partial<D3D10_EFFECT_SHADER
   return buf;
 }
 
+export class D3D10_EFFECT_SHADER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pInputSignature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get IsInline(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pBytecode(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get BytecodeLength(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  get SODecl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get NumInputSignatureEntries(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get NumOutputSignatureEntries(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x00: pointer
+  set pInputSignature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set IsInline(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pBytecode(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set BytecodeLength(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: buffer
+  set SODecl(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f32 = value;
+    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+  }
+
+  // 0x28: u32
+  set NumInputSignatureEntries(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set NumOutputSignatureEntries(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_PASS_DESC (size: 48)
  */
@@ -3976,6 +8097,95 @@ export function allocD3D10_PASS_DESC(data?: Partial<D3D10_PASS_DESC>): Uint8Arra
   return buf;
 }
 
+export class D3D10_PASS_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Annotations(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pIAInputSignature(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: usize
+  get IAInputSignatureSize(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get StencilRef(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get SampleMask(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get BlendFactor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set Annotations(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pIAInputSignature(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: usize
+  set IAInputSignatureSize(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set StencilRef(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set SampleMask(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set BlendFactor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_PASS_SHADER_DESC (size: 16)
  */
@@ -3997,6 +8207,42 @@ export function allocD3D10_PASS_SHADER_DESC(data?: Partial<D3D10_PASS_SHADER_DES
   if (data?.ShaderIndex !== undefined) view.setUint32(8, Number(data.ShaderIndex), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class D3D10_PASS_SHADER_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get pShaderVariable(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ShaderIndex(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set pShaderVariable(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ShaderIndex(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -4026,6 +8272,49 @@ export function allocD3D10_TECHNIQUE_DESC(data?: Partial<D3D10_TECHNIQUE_DESC>):
   // 0x0c: u32
   if (data?.Annotations !== undefined) view.setUint32(12, Number(data.Annotations), true);
   return buf;
+}
+
+export class D3D10_TECHNIQUE_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: buffer
+  get Name(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get Passes(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Annotations(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: buffer
+  set Name(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f0 = value;
+    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+  }
+
+  // 0x08: u32
+  set Passes(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Annotations(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -4064,6 +8353,77 @@ export function allocD3D10_EFFECT_DESC(data?: Partial<D3D10_EFFECT_DESC>): Uint8
   // 0x14: u32
   if (data?.Techniques !== undefined) view.setUint32(20, Number(data.Techniques), true);
   return buf;
+}
+
+export class D3D10_EFFECT_DESCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get IsChildEffect(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get ConstantBuffers(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get SharedConstantBuffers(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get GlobalVariables(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get SharedGlobalVariables(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Techniques(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: i32
+  set IsChildEffect(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set ConstantBuffers(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set SharedConstantBuffers(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set GlobalVariables(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set SharedGlobalVariables(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Techniques(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -4113,6 +8473,101 @@ export function allocD3D10_RENDER_TARGET_BLEND_DESC1(data?: Partial<D3D10_RENDER
   return buf;
 }
 
+export class D3D10_RENDER_TARGET_BLEND_DESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get BlendEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get SrcBlend(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get DestBlend(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get BlendOp(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get SrcBlendAlpha(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get DestBlendAlpha(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get BlendOpAlpha(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: u8
+  get RenderTargetWriteMask(): number {
+    return this.view.getUint8(28);
+  }
+
+  // 0x1d: pad3
+
+  // 0x00: i32
+  set BlendEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set SrcBlend(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set DestBlend(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set BlendOp(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set SrcBlendAlpha(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set DestBlendAlpha(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set BlendOpAlpha(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: u8
+  set RenderTargetWriteMask(value: number) {
+    this.view.setUint8(28, value);
+  }
+
+  // 0x1d: pad3
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_BLEND_DESC1 (size: 16)
  */
@@ -4137,6 +8592,48 @@ export function allocD3D10_BLEND_DESC1(data?: Partial<D3D10_BLEND_DESC1>): Uint8
   // 0x08: pointer
   if (data?.RenderTarget !== undefined) view.setBigUint64(8, data.RenderTarget === null ? 0n : BigInt(util.toPointer(data.RenderTarget)), true);
   return buf;
+}
+
+export class D3D10_BLEND_DESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get AlphaToCoverageEnable(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get IndependentBlendEnable(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get RenderTarget(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set AlphaToCoverageEnable(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set IndependentBlendEnable(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set RenderTarget(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4169,6 +8666,57 @@ export function allocD3D10_TEXCUBE_ARRAY_SRV1(data?: Partial<D3D10_TEXCUBE_ARRAY
   return buf;
 }
 
+export class D3D10_TEXCUBE_ARRAY_SRV1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get MostDetailedMip(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get MipLevels(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get First2DArrayFace(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get NumCubes(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set MostDetailedMip(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set MipLevels(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set First2DArrayFace(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set NumCubes(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_RESOURCE_VIEW_DESC1 (size: 16)
  */
@@ -4193,6 +8741,48 @@ export function allocD3D10_SHADER_RESOURCE_VIEW_DESC1(data?: Partial<D3D10_SHADE
   // 0x08: pointer
   if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
   return buf;
+}
+
+export class D3D10_SHADER_RESOURCE_VIEW_DESC1View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Format(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get ViewDimension(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set Format(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ViewDimension(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4228,6 +8818,71 @@ export function allocD3D10_SHADER_DEBUG_TOKEN_INFO(data?: Partial<D3D10_SHADER_D
   if (data?.TokenId !== undefined) view.setUint32(16, Number(data.TokenId), true);
   // 0x14: pad4
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_TOKEN_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get File(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Line(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Column(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get TokenLength(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get TokenId(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set File(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Line(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Column(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set TokenLength(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set TokenId(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -4268,6 +8923,77 @@ export function allocD3D10_SHADER_DEBUG_VAR_INFO(data?: Partial<D3D10_SHADER_DEB
   return buf;
 }
 
+export class D3D10_SHADER_DEBUG_VAR_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get TokenId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get Type(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get Register(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get Component(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get ScopeVar(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ScopeVarOffset(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u32
+  set TokenId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set Type(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Register(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Component(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set ScopeVar(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ScopeVarOffset(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_DEBUG_INPUT_INFO (size: 24)
  */
@@ -4304,6 +9030,77 @@ export function allocD3D10_SHADER_DEBUG_INPUT_INFO(data?: Partial<D3D10_SHADER_D
   // 0x14: u32
   if (data?.InitialValue !== undefined) view.setUint32(20, Number(data.InitialValue), true);
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_INPUT_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Var(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get InitialRegisterSet(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get InitialBank(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get InitialRegister(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get InitialComponent(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get InitialValue(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u32
+  set Var(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set InitialRegisterSet(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set InitialBank(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set InitialRegister(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set InitialComponent(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set InitialValue(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -4365,6 +9162,131 @@ export function allocD3D10_SHADER_DEBUG_SCOPEVAR_INFO(data?: Partial<D3D10_SHADE
   return buf;
 }
 
+export class D3D10_SHADER_DEBUG_SCOPEVAR_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get TokenId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get VarType(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get Class(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get Rows(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get Columns(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get StructMemberScope(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get uArrayIndices(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get ArrayElements(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get ArrayStrides(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get uVariables(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get uFirstVariable(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x00: u32
+  set TokenId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set VarType(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set Class(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set Rows(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set Columns(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set StructMemberScope(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set uArrayIndices(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set ArrayElements(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set ArrayStrides(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set uVariables(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set uFirstVariable(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_DEBUG_SCOPE_INFO (size: 24)
  */
@@ -4398,6 +9320,71 @@ export function allocD3D10_SHADER_DEBUG_SCOPE_INFO(data?: Partial<D3D10_SHADER_D
   if (data?.VariableData !== undefined) view.setUint32(16, Number(data.VariableData), true);
   // 0x14: pad4
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_SCOPE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ScopeType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get Name(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get uNameLen(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get uVariables(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get VariableData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: i32
+  set ScopeType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Name(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set uNameLen(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set uVariables(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set VariableData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 /**
@@ -4451,6 +9438,111 @@ export function allocD3D10_SHADER_DEBUG_OUTPUTVAR(data?: Partial<D3D10_SHADER_DE
   return buf;
 }
 
+export class D3D10_SHADER_DEBUG_OUTPUTVARView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Var(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get uValueMin(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get uValueMax(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get iValueMin(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get iValueMax(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: f32
+  get fValueMin(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get fValueMax(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: i32
+  get bNaNPossible(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get bInfPossible(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: u32
+  set Var(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set uValueMin(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set uValueMax(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set iValueMin(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set iValueMax(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: f32
+  set fValueMin(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set fValueMax(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set bNaNPossible(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set bInfPossible(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_DEBUG_OUTPUTREG_INFO (size: 40)
  */
@@ -4492,6 +9584,93 @@ export function allocD3D10_SHADER_DEBUG_OUTPUTREG_INFO(data?: Partial<D3D10_SHAD
   // 0x24: u32
   if (data?.IndexComp !== undefined) view.setUint32(36, Number(data.IndexComp), true);
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_OUTPUTREG_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get OutputRegisterSet(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get OutputReg(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get TempArrayReg(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get OutputComponents(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get OutputVars(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get IndexReg(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get IndexComp(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: i32
+  set OutputRegisterSet(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set OutputReg(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set TempArrayReg(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set OutputComponents(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set OutputVars(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set IndexReg(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set IndexComp(value: number) {
+    this.view.setUint32(36, value, true);
+  }
 }
 
 /**
@@ -4549,6 +9728,122 @@ export function allocD3D10_SHADER_DEBUG_INST_INFO(data?: Partial<D3D10_SHADER_DE
   return buf;
 }
 
+export class D3D10_SHADER_DEBUG_INST_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Id(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Opcode(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get uOutputs(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get pOutputs(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get TokenId(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get NestingLevel(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get Scopes(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get ScopeInfo(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get AccessedVars(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get AccessedVarsInfo(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x00: u32
+  set Id(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Opcode(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set uOutputs(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set pOutputs(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set TokenId(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set NestingLevel(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set Scopes(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set ScopeInfo(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set AccessedVars(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set AccessedVarsInfo(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Direct3D10.D3D10_SHADER_DEBUG_FILE_INFO (size: 16)
  */
@@ -4577,6 +9872,57 @@ export function allocD3D10_SHADER_DEBUG_FILE_INFO(data?: Partial<D3D10_SHADER_DE
   // 0x0c: u32
   if (data?.FileLen !== undefined) view.setUint32(12, Number(data.FileLen), true);
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_FILE_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get FileName(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get FileNameLen(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get FileData(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get FileLen(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set FileName(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set FileNameLen(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set FileData(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set FileLen(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -4676,6 +10022,231 @@ export function allocD3D10_SHADER_DEBUG_INFO(data?: Partial<D3D10_SHADER_DEBUG_I
   if (data?.StringOffset !== undefined) view.setUint32(80, Number(data.StringOffset), true);
   // 0x54: pad4
   return buf;
+}
+
+export class D3D10_SHADER_DEBUG_INFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Creator(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get EntrypointName(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ShaderTarget(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get CompileFlags(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get Files(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get FileInfo(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get Instructions(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get InstructionInfo(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get Variables(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get VariableInfo(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get InputVariables(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get InputVariableInfo(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get Tokens(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get TokenInfo(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get Scopes(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get ScopeInfo(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get ScopeVariables(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get ScopeVariableInfo(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get UintOffset(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get StringOffset(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x00: u32
+  set Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Creator(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set EntrypointName(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ShaderTarget(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set CompileFlags(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set Files(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set FileInfo(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set Instructions(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set InstructionInfo(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set Variables(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set VariableInfo(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set InputVariables(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set InputVariableInfo(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set Tokens(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set TokenInfo(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set Scopes(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set ScopeInfo(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set ScopeVariables(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set ScopeVariableInfo(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set UintOffset(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set StringOffset(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: pad4
 }
 
 export type HINSTANCE = Deno.PointerValue;

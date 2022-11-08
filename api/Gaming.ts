@@ -84,6 +84,37 @@ export function allocGAMING_DEVICE_MODEL_INFORMATION(data?: Partial<GAMING_DEVIC
   return buf;
 }
 
+export class GAMING_DEVICE_MODEL_INFORMATIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get vendorId(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get deviceId(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set vendorId(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set deviceId(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+}
+
 export type HRESULT = number;
 
 export type HSTRING = Deno.PointerValue;

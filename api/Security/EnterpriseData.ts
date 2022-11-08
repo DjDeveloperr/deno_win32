@@ -44,6 +44,42 @@ export function allocHTHREAD_NETWORK_CONTEXT(data?: Partial<HTHREAD_NETWORK_CONT
   return buf;
 }
 
+export class HTHREAD_NETWORK_CONTEXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ThreadId(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ThreadContext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ThreadId(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ThreadContext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Security.EnterpriseData.FILE_UNPROTECT_OPTIONS (size: 8)
  */
@@ -61,6 +97,31 @@ export function allocFILE_UNPROTECT_OPTIONS(data?: Partial<FILE_UNPROTECT_OPTION
   if (data?.audit !== undefined) view.setUint8(0, Number(data.audit));
   // 0x01: pad7
   return buf;
+}
+
+export class FILE_UNPROTECT_OPTIONSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get audit(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: pad7
+
+  // 0x00: u8
+  set audit(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: pad7
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;

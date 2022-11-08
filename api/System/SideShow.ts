@@ -60,6 +60,42 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   return buf;
 }
 
+export class PROPERTYKEYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get fmtid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get pid(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set pid(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.System.SideShow.SCF_EVENT_HEADER (size: 8)
  */
@@ -80,6 +116,37 @@ export function allocSCF_EVENT_HEADER(data?: Partial<SCF_EVENT_HEADER>): Uint8Ar
   // 0x04: u32
   if (data?.TargetPage !== undefined) view.setUint32(4, Number(data.TargetPage), true);
   return buf;
+}
+
+export class SCF_EVENT_HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PreviousPage(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get TargetPage(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set PreviousPage(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set TargetPage(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -107,6 +174,51 @@ export function allocSCF_NAVIGATION_EVENT(data?: Partial<SCF_NAVIGATION_EVENT>):
   if (data?.Button !== undefined) view.setUint32(8, Number(data.Button), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class SCF_NAVIGATION_EVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PreviousPage(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get TargetPage(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Button(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set PreviousPage(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set TargetPage(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Button(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -137,6 +249,57 @@ export function allocSCF_MENUACTION_EVENT(data?: Partial<SCF_MENUACTION_EVENT>):
   // 0x0c: u32
   if (data?.ItemId !== undefined) view.setUint32(12, Number(data.ItemId), true);
   return buf;
+}
+
+export class SCF_MENUACTION_EVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PreviousPage(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get TargetPage(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Button(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get ItemId(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set PreviousPage(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set TargetPage(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Button(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ItemId(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -174,6 +337,71 @@ export function allocSCF_CONTEXTMENU_EVENT(data?: Partial<SCF_CONTEXTMENU_EVENT>
   return buf;
 }
 
+export class SCF_CONTEXTMENU_EVENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get PreviousPage(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get TargetPage(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get PreviousItemId(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get MenuPage(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get MenuItemId(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set PreviousPage(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set TargetPage(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set PreviousItemId(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set MenuPage(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set MenuItemId(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.System.SideShow.CONTENT_MISSING_EVENT_DATA (size: 32)
  */
@@ -204,6 +432,67 @@ export function allocCONTENT_MISSING_EVENT_DATA(data?: Partial<CONTENT_MISSING_E
   if (data?.ContentId !== undefined) view.setUint32(24, Number(data.ContentId), true);
   // 0x1c: pad4
   return buf;
+}
+
+export class CONTENT_MISSING_EVENT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbContentMissingEventData(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ApplicationId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get EndpointId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get ContentId(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set cbContentMissingEventData(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ApplicationId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set EndpointId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set ContentId(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
 }
 
 /**
@@ -245,6 +534,84 @@ export function allocAPPLICATION_EVENT_DATA(data?: Partial<APPLICATION_EVENT_DAT
   return buf;
 }
 
+export class APPLICATION_EVENT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbApplicationEventData(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get ApplicationId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get EndpointId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwEventId(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cbEventData(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get bEventData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbApplicationEventData(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set ApplicationId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set EndpointId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwEventId(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cbEventData(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set bEventData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.SideShow.DEVICE_USER_CHANGE_EVENT_DATA (size: 16)
  */
@@ -268,6 +635,42 @@ export function allocDEVICE_USER_CHANGE_EVENT_DATA(data?: Partial<DEVICE_USER_CH
   return buf;
 }
 
+export class DEVICE_USER_CHANGE_EVENT_DATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbDeviceUserChangeEventData(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get wszUser(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbDeviceUserChangeEventData(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set wszUser(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.System.SideShow.NEW_EVENT_DATA_AVAILABLE (size: 8)
  */
@@ -288,6 +691,37 @@ export function allocNEW_EVENT_DATA_AVAILABLE(data?: Partial<NEW_EVENT_DATA_AVAI
   // 0x04: u32
   if (data?.dwVersion !== undefined) view.setUint32(4, Number(data.dwVersion), true);
   return buf;
+}
+
+export class NEW_EVENT_DATA_AVAILABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbNewEventDataAvailable(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set cbNewEventDataAvailable(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -319,6 +753,62 @@ export function allocEVENT_DATA_HEADER(data?: Partial<EVENT_DATA_HEADER>): Uint8
   // 0x14: u32
   if (data?.cbEventDataSid !== undefined) view.setUint32(20, Number(data.cbEventDataSid), true);
   return buf;
+}
+
+export class EVENT_DATA_HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbEventDataHeader(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get guidEventType(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get dwVersion(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbEventDataSid(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: u32
+  set cbEventDataHeader(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set guidEventType(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set dwVersion(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbEventDataSid(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 // Native Libraries

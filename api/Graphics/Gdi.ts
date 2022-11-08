@@ -1822,6 +1822,57 @@ export function allocRECT(data?: Partial<RECT>): Uint8Array {
   return buf;
 }
 
+export class RECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get left(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get top(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get right(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get bottom(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: i32
+  set left(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set top(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set right(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set bottom(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.MONITORINFO (size: 32)
  */
@@ -1854,6 +1905,67 @@ export function allocMONITORINFO(data?: Partial<MONITORINFO>): Uint8Array {
   return buf;
 }
 
+export class MONITORINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get rcMonitor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get rcWork(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dwFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set rcMonitor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set rcWork(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.MONITORINFOEXA (size: 16)
  */
@@ -1876,6 +1988,39 @@ export function allocMONITORINFOEXA(data?: Partial<MONITORINFOEXA>): Uint8Array 
   return buf;
 }
 
+export class MONITORINFOEXAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get monitorInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get szDevice(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set monitorInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set szDevice(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.MONITORINFOEXW (size: 16)
  */
@@ -1896,6 +2041,39 @@ export function allocMONITORINFOEXW(data?: Partial<MONITORINFOEXW>): Uint8Array 
   // 0x08: pointer
   if (data?.szDevice !== undefined) view.setBigUint64(8, data.szDevice === null ? 0n : BigInt(util.toPointer(data.szDevice)), true);
   return buf;
+}
+
+export class MONITORINFOEXWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get monitorInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get szDevice(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set monitorInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set szDevice(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 export type HDC = Deno.PointerValue;
@@ -1964,6 +2142,77 @@ export function allocXFORM(data?: Partial<XFORM>): Uint8Array {
   return buf;
 }
 
+export class XFORMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get eM11(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get eM12(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get eM21(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: f32
+  get eM22(): number {
+    return this.view.getFloat32(12, true);
+  }
+
+  // 0x10: f32
+  get eDx(): number {
+    return this.view.getFloat32(16, true);
+  }
+
+  // 0x14: f32
+  get eDy(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x00: f32
+  set eM11(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set eM12(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set eM21(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: f32
+  set eM22(value: number) {
+    this.view.setFloat32(12, value, true);
+  }
+
+  // 0x10: f32
+  set eDx(value: number) {
+    this.view.setFloat32(16, value, true);
+  }
+
+  // 0x14: f32
+  set eDy(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.BITMAP (size: 32)
  */
@@ -2007,6 +2256,92 @@ export function allocBITMAP(data?: Partial<BITMAP>): Uint8Array {
   return buf;
 }
 
+export class BITMAPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get bmType(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get bmWidth(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get bmHeight(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get bmWidthBytes(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u16
+  get bmPlanes(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get bmBitsPixel(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get bmBits(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set bmType(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set bmWidth(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set bmHeight(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set bmWidthBytes(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u16
+  set bmPlanes(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set bmBitsPixel(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set bmBits(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.RGBTRIPLE (size: 8)
  */
@@ -2032,6 +2367,51 @@ export function allocRGBTRIPLE(data?: Partial<RGBTRIPLE>): Uint8Array {
   if (data?.rgbtRed !== undefined) view.setUint8(2, Number(data.rgbtRed));
   // 0x03: pad5
   return buf;
+}
+
+export class RGBTRIPLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get rgbtBlue(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get rgbtGreen(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get rgbtRed(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: pad5
+
+  // 0x00: u8
+  set rgbtBlue(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set rgbtGreen(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set rgbtRed(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: pad5
 }
 
 /**
@@ -2065,6 +2445,61 @@ export function allocRGBQUAD(data?: Partial<RGBQUAD>): Uint8Array {
   return buf;
 }
 
+export class RGBQUADView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get rgbBlue(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get rgbGreen(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get rgbRed(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get rgbReserved(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u8
+  set rgbBlue(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set rgbGreen(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set rgbRed(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set rgbReserved(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.CIEXYZ (size: 16)
  */
@@ -2092,6 +2527,51 @@ export function allocCIEXYZ(data?: Partial<CIEXYZ>): Uint8Array {
   return buf;
 }
 
+export class CIEXYZView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get ciexyzX(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get ciexyzY(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get ciexyzZ(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set ciexyzX(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set ciexyzY(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set ciexyzZ(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.CIEXYZTRIPLE (size: 24)
  */
@@ -2116,6 +2596,50 @@ export function allocCIEXYZTRIPLE(data?: Partial<CIEXYZTRIPLE>): Uint8Array {
   // 0x10: pointer
   if (data?.ciexyzBlue !== undefined) view.setBigUint64(16, data.ciexyzBlue === null ? 0n : BigInt(util.toPointer(data.ciexyzBlue)), true);
   return buf;
+}
+
+export class CIEXYZTRIPLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ciexyzRed(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ciexyzGreen(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ciexyzBlue(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set ciexyzRed(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ciexyzGreen(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ciexyzBlue(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2151,6 +2675,71 @@ export function allocBITMAPCOREHEADER(data?: Partial<BITMAPCOREHEADER>): Uint8Ar
   if (data?.bcBitCount !== undefined) view.setUint16(10, Number(data.bcBitCount), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class BITMAPCOREHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get bcSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get bcWidth(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get bcHeight(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get bcPlanes(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get bcBitCount(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set bcSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set bcWidth(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set bcHeight(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set bcPlanes(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set bcBitCount(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -2209,6 +2798,127 @@ export function allocBITMAPINFOHEADER(data?: Partial<BITMAPINFOHEADER>): Uint8Ar
   // 0x24: u32
   if (data?.biClrImportant !== undefined) view.setUint32(36, Number(data.biClrImportant), true);
   return buf;
+}
+
+export class BITMAPINFOHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get biSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get biWidth(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get biHeight(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u16
+  get biPlanes(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get biBitCount(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i32
+  get biCompression(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get biSizeImage(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get biXPelsPerMeter(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get biYPelsPerMeter(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get biClrUsed(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get biClrImportant(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: u32
+  set biSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set biWidth(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set biHeight(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set biPlanes(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set biBitCount(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i32
+  set biCompression(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set biSizeImage(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set biXPelsPerMeter(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set biYPelsPerMeter(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set biClrUsed(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set biClrImportant(value: number) {
+    this.view.setUint32(36, value, true);
+  }
 }
 
 /**
@@ -2305,6 +3015,226 @@ export function allocBITMAPV4HEADER(data?: Partial<BITMAPV4HEADER>): Uint8Array 
   if (data?.bV4GammaBlue !== undefined) view.setUint32(80, Number(data.bV4GammaBlue), true);
   // 0x54: pad4
   return buf;
+}
+
+export class BITMAPV4HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get bV4Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get bV4Width(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get bV4Height(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u16
+  get bV4Planes(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get bV4BitCount(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i32
+  get bV4V4Compression(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get bV4SizeImage(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get bV4XPelsPerMeter(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get bV4YPelsPerMeter(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get bV4ClrUsed(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get bV4ClrImportant(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get bV4RedMask(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get bV4GreenMask(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get bV4BlueMask(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get bV4AlphaMask(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get bV4CSType(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get bV4Endpoints(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get bV4GammaRed(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get bV4GammaGreen(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get bV4GammaBlue(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x00: u32
+  set bV4Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set bV4Width(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set bV4Height(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set bV4Planes(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set bV4BitCount(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i32
+  set bV4V4Compression(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set bV4SizeImage(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set bV4XPelsPerMeter(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set bV4YPelsPerMeter(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set bV4ClrUsed(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set bV4ClrImportant(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set bV4RedMask(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set bV4GreenMask(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set bV4BlueMask(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set bV4AlphaMask(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set bV4CSType(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set bV4Endpoints(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set bV4GammaRed(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set bV4GammaGreen(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set bV4GammaBlue(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: pad4
 }
 
 /**
@@ -2419,6 +3349,266 @@ export function allocBITMAPV5HEADER(data?: Partial<BITMAPV5HEADER>): Uint8Array 
   return buf;
 }
 
+export class BITMAPV5HEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get bV5Size(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get bV5Width(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get bV5Height(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u16
+  get bV5Planes(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get bV5BitCount(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i32
+  get bV5Compression(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u32
+  get bV5SizeImage(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: i32
+  get bV5XPelsPerMeter(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get bV5YPelsPerMeter(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get bV5ClrUsed(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get bV5ClrImportant(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u32
+  get bV5RedMask(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get bV5GreenMask(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get bV5BlueMask(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get bV5AlphaMask(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get bV5CSType(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  get bV5Endpoints(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get bV5GammaRed(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get bV5GammaGreen(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get bV5GammaBlue(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get bV5Intent(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get bV5ProfileData(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get bV5ProfileSize(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get bV5Reserved(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: pad4
+
+  // 0x00: u32
+  set bV5Size(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set bV5Width(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set bV5Height(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u16
+  set bV5Planes(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set bV5BitCount(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i32
+  set bV5Compression(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u32
+  set bV5SizeImage(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: i32
+  set bV5XPelsPerMeter(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set bV5YPelsPerMeter(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set bV5ClrUsed(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set bV5ClrImportant(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u32
+  set bV5RedMask(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set bV5GreenMask(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set bV5BlueMask(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set bV5AlphaMask(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set bV5CSType(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: pad4
+
+  // 0x40: pointer
+  set bV5Endpoints(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set bV5GammaRed(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set bV5GammaGreen(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set bV5GammaBlue(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set bV5Intent(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set bV5ProfileData(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set bV5ProfileSize(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set bV5Reserved(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.BITMAPINFO (size: 16)
  */
@@ -2441,6 +3631,39 @@ export function allocBITMAPINFO(data?: Partial<BITMAPINFO>): Uint8Array {
   return buf;
 }
 
+export class BITMAPINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get bmiHeader(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get bmiColors(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set bmiHeader(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set bmiColors(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.BITMAPCOREINFO (size: 16)
  */
@@ -2461,6 +3684,39 @@ export function allocBITMAPCOREINFO(data?: Partial<BITMAPCOREINFO>): Uint8Array 
   // 0x08: pointer
   if (data?.bmciColors !== undefined) view.setBigUint64(8, data.bmciColors === null ? 0n : BigInt(util.toPointer(data.bmciColors)), true);
   return buf;
+}
+
+export class BITMAPCOREINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get bmciHeader(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get bmciColors(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set bmciHeader(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set bmciColors(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2498,6 +3754,71 @@ export function allocBITMAPFILEHEADER(data?: Partial<BITMAPFILEHEADER>): Uint8Ar
   return buf;
 }
 
+export class BITMAPFILEHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get bfType(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u32
+  get bfSize(): number {
+    return this.view.getUint32(2, true);
+  }
+
+  // 0x06: u16
+  get bfReserved1(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get bfReserved2(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u32
+  get bfOffBits(): number {
+    return this.view.getUint32(10, true);
+  }
+
+  // 0x0e: pad2
+
+  // 0x00: u16
+  set bfType(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u32
+  set bfSize(value: number) {
+    this.view.setUint32(2, value, true);
+  }
+
+  // 0x06: u16
+  set bfReserved1(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set bfReserved2(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u32
+  set bfOffBits(value: number) {
+    this.view.setUint32(10, value, true);
+  }
+
+  // 0x0e: pad2
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.HANDLETABLE (size: 8)
  */
@@ -2514,6 +3835,28 @@ export function allocHANDLETABLE(data?: Partial<HANDLETABLE>): Uint8Array {
   // 0x00: pointer
   if (data?.objectHandle !== undefined) view.setBigUint64(0, data.objectHandle === null ? 0n : BigInt(util.toPointer(data.objectHandle)), true);
   return buf;
+}
+
+export class HANDLETABLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get objectHandle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set objectHandle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2541,6 +3884,52 @@ export function allocMETARECORD(data?: Partial<METARECORD>): Uint8Array {
   // 0x08: pointer
   if (data?.rdParm !== undefined) view.setBigUint64(8, data.rdParm === null ? 0n : BigInt(util.toPointer(data.rdParm)), true);
   return buf;
+}
+
+export class METARECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get rdSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u16
+  get rdFunction(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x08: pointer
+  get rdParm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set rdSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u16
+  set rdFunction(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x08: pointer
+  set rdParm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2586,6 +3975,91 @@ export function allocMETAHEADER(data?: Partial<METAHEADER>): Uint8Array {
   return buf;
 }
 
+export class METAHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get mtType(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get mtHeaderSize(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get mtVersion(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u32
+  get mtSize(): number {
+    return this.view.getUint32(6, true);
+  }
+
+  // 0x0a: u16
+  get mtNoObjects(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u32
+  get mtMaxRecord(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get mtNoParameters(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: pad6
+
+  // 0x00: u16
+  set mtType(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set mtHeaderSize(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set mtVersion(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u32
+  set mtSize(value: number) {
+    this.view.setUint32(6, value, true);
+  }
+
+  // 0x0a: u16
+  set mtNoObjects(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u32
+  set mtMaxRecord(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set mtNoParameters(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: pad6
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENHMETARECORD (size: 16)
  */
@@ -2610,6 +4084,48 @@ export function allocENHMETARECORD(data?: Partial<ENHMETARECORD>): Uint8Array {
   // 0x08: pointer
   if (data?.dParm !== undefined) view.setBigUint64(8, data.dParm === null ? 0n : BigInt(util.toPointer(data.dParm)), true);
   return buf;
+}
+
+export class ENHMETARECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get iType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get nSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get dParm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set iType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set nSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set dParm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2642,6 +4158,57 @@ export function allocRECTL(data?: Partial<RECTL>): Uint8Array {
   return buf;
 }
 
+export class RECTLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get left(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get top(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get right(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get bottom(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x00: i32
+  set left(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set top(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set right(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set bottom(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.SIZE (size: 8)
  */
@@ -2662,6 +4229,37 @@ export function allocSIZE(data?: Partial<SIZE>): Uint8Array {
   // 0x04: i32
   if (data?.cy !== undefined) view.setInt32(4, Number(data.cy), true);
   return buf;
+}
+
+export class SIZEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get cx(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get cy(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set cx(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set cy(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -2753,6 +4351,216 @@ export function allocENHMETAHEADER(data?: Partial<ENHMETAHEADER>): Uint8Array {
   // 0x58: pointer
   if (data?.szlMicrometers !== undefined) view.setBigUint64(88, data.szlMicrometers === null ? 0n : BigInt(util.toPointer(data.szlMicrometers)), true);
   return buf;
+}
+
+export class ENHMETAHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get iType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get nSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get rclFrame(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get dSignature(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get nVersion(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get nBytes(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get nRecords(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: u16
+  get nHandles(): number {
+    return this.view.getUint16(40, true);
+  }
+
+  // 0x2a: u16
+  get sReserved(): number {
+    return this.view.getUint16(42, true);
+  }
+
+  // 0x2c: u32
+  get nDescription(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get offDescription(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get nPalEntries(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: pointer
+  get szlDevice(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get szlMillimeters(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: u32
+  get cbPixelFormat(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offPixelFormat(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get bOpenGL(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: pointer
+  get szlMicrometers(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(88, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set iType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set nSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set rclFrame(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set dSignature(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set nVersion(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set nBytes(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set nRecords(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: u16
+  set nHandles(value: number) {
+    this.view.setUint16(40, value, true);
+  }
+
+  // 0x2a: u16
+  set sReserved(value: number) {
+    this.view.setUint16(42, value, true);
+  }
+
+  // 0x2c: u32
+  set nDescription(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set offDescription(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set nPalEntries(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: pointer
+  set szlDevice(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set szlMillimeters(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: u32
+  set cbPixelFormat(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offPixelFormat(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set bOpenGL(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x58: pointer
+  set szlMicrometers(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -2850,6 +4658,221 @@ export function allocTEXTMETRICA(data?: Partial<TEXTMETRICA>): Uint8Array {
   return buf;
 }
 
+export class TEXTMETRICAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tmHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tmAscent(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get tmDescent(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tmInternalLeading(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tmExternalLeading(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tmAveCharWidth(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get tmMaxCharWidth(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get tmWeight(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get tmOverhang(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get tmDigitizedAspectX(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get tmDigitizedAspectY(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: u8
+  get tmFirstChar(): number {
+    return this.view.getUint8(44);
+  }
+
+  // 0x2d: u8
+  get tmLastChar(): number {
+    return this.view.getUint8(45);
+  }
+
+  // 0x2e: u8
+  get tmDefaultChar(): number {
+    return this.view.getUint8(46);
+  }
+
+  // 0x2f: u8
+  get tmBreakChar(): number {
+    return this.view.getUint8(47);
+  }
+
+  // 0x30: u8
+  get tmItalic(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get tmUnderlined(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: u8
+  get tmStruckOut(): number {
+    return this.view.getUint8(50);
+  }
+
+  // 0x33: u8
+  get tmPitchAndFamily(): number {
+    return this.view.getUint8(51);
+  }
+
+  // 0x34: u8
+  get tmCharSet(): number {
+    return this.view.getUint8(52);
+  }
+
+  // 0x35: pad3
+
+  // 0x00: i32
+  set tmHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tmAscent(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set tmDescent(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tmInternalLeading(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tmExternalLeading(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tmAveCharWidth(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set tmMaxCharWidth(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set tmWeight(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set tmOverhang(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set tmDigitizedAspectX(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set tmDigitizedAspectY(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: u8
+  set tmFirstChar(value: number) {
+    this.view.setUint8(44, value);
+  }
+
+  // 0x2d: u8
+  set tmLastChar(value: number) {
+    this.view.setUint8(45, value);
+  }
+
+  // 0x2e: u8
+  set tmDefaultChar(value: number) {
+    this.view.setUint8(46, value);
+  }
+
+  // 0x2f: u8
+  set tmBreakChar(value: number) {
+    this.view.setUint8(47, value);
+  }
+
+  // 0x30: u8
+  set tmItalic(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set tmUnderlined(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: u8
+  set tmStruckOut(value: number) {
+    this.view.setUint8(50, value);
+  }
+
+  // 0x33: u8
+  set tmPitchAndFamily(value: number) {
+    this.view.setUint8(51, value);
+  }
+
+  // 0x34: u8
+  set tmCharSet(value: number) {
+    this.view.setUint8(52, value);
+  }
+
+  // 0x35: pad3
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.TEXTMETRICW (size: 88)
  */
@@ -2944,6 +4967,229 @@ export function allocTEXTMETRICW(data?: Partial<TEXTMETRICW>): Uint8Array {
   if (data?.tmCharSet !== undefined) view.setUint8(84, Number(data.tmCharSet));
   // 0x55: pad3
   return buf;
+}
+
+export class TEXTMETRICWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tmHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tmAscent(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get tmDescent(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tmInternalLeading(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tmExternalLeading(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tmAveCharWidth(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get tmMaxCharWidth(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get tmWeight(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get tmOverhang(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get tmDigitizedAspectX(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get tmDigitizedAspectY(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get tmFirstChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get tmLastChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get tmDefaultChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get tmBreakChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u8
+  get tmItalic(): number {
+    return this.view.getUint8(80);
+  }
+
+  // 0x51: u8
+  get tmUnderlined(): number {
+    return this.view.getUint8(81);
+  }
+
+  // 0x52: u8
+  get tmStruckOut(): number {
+    return this.view.getUint8(82);
+  }
+
+  // 0x53: u8
+  get tmPitchAndFamily(): number {
+    return this.view.getUint8(83);
+  }
+
+  // 0x54: u8
+  get tmCharSet(): number {
+    return this.view.getUint8(84);
+  }
+
+  // 0x55: pad3
+
+  // 0x00: i32
+  set tmHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tmAscent(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set tmDescent(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tmInternalLeading(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tmExternalLeading(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tmAveCharWidth(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set tmMaxCharWidth(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set tmWeight(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set tmOverhang(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set tmDigitizedAspectX(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set tmDigitizedAspectY(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set tmFirstChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set tmLastChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set tmDefaultChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set tmBreakChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u8
+  set tmItalic(value: number) {
+    this.view.setUint8(80, value);
+  }
+
+  // 0x51: u8
+  set tmUnderlined(value: number) {
+    this.view.setUint8(81, value);
+  }
+
+  // 0x52: u8
+  set tmStruckOut(value: number) {
+    this.view.setUint8(82, value);
+  }
+
+  // 0x53: u8
+  set tmPitchAndFamily(value: number) {
+    this.view.setUint8(83, value);
+  }
+
+  // 0x54: u8
+  set tmCharSet(value: number) {
+    this.view.setUint8(84, value);
+  }
+
+  // 0x55: pad3
 }
 
 /**
@@ -3055,6 +5301,261 @@ export function allocNEWTEXTMETRICA(data?: Partial<NEWTEXTMETRICA>): Uint8Array 
   if (data?.ntmAvgWidth !== undefined) view.setUint32(65, Number(data.ntmAvgWidth), true);
   // 0x45: pad3
   return buf;
+}
+
+export class NEWTEXTMETRICAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tmHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tmAscent(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get tmDescent(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tmInternalLeading(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tmExternalLeading(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tmAveCharWidth(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get tmMaxCharWidth(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get tmWeight(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get tmOverhang(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get tmDigitizedAspectX(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get tmDigitizedAspectY(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: u8
+  get tmFirstChar(): number {
+    return this.view.getUint8(44);
+  }
+
+  // 0x2d: u8
+  get tmLastChar(): number {
+    return this.view.getUint8(45);
+  }
+
+  // 0x2e: u8
+  get tmDefaultChar(): number {
+    return this.view.getUint8(46);
+  }
+
+  // 0x2f: u8
+  get tmBreakChar(): number {
+    return this.view.getUint8(47);
+  }
+
+  // 0x30: u8
+  get tmItalic(): number {
+    return this.view.getUint8(48);
+  }
+
+  // 0x31: u8
+  get tmUnderlined(): number {
+    return this.view.getUint8(49);
+  }
+
+  // 0x32: u8
+  get tmStruckOut(): number {
+    return this.view.getUint8(50);
+  }
+
+  // 0x33: u8
+  get tmPitchAndFamily(): number {
+    return this.view.getUint8(51);
+  }
+
+  // 0x34: u8
+  get tmCharSet(): number {
+    return this.view.getUint8(52);
+  }
+
+  // 0x35: u32
+  get ntmFlags(): number {
+    return this.view.getUint32(53, true);
+  }
+
+  // 0x39: u32
+  get ntmSizeEM(): number {
+    return this.view.getUint32(57, true);
+  }
+
+  // 0x3d: u32
+  get ntmCellHeight(): number {
+    return this.view.getUint32(61, true);
+  }
+
+  // 0x41: u32
+  get ntmAvgWidth(): number {
+    return this.view.getUint32(65, true);
+  }
+
+  // 0x45: pad3
+
+  // 0x00: i32
+  set tmHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tmAscent(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set tmDescent(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tmInternalLeading(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tmExternalLeading(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tmAveCharWidth(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set tmMaxCharWidth(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set tmWeight(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set tmOverhang(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set tmDigitizedAspectX(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set tmDigitizedAspectY(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: u8
+  set tmFirstChar(value: number) {
+    this.view.setUint8(44, value);
+  }
+
+  // 0x2d: u8
+  set tmLastChar(value: number) {
+    this.view.setUint8(45, value);
+  }
+
+  // 0x2e: u8
+  set tmDefaultChar(value: number) {
+    this.view.setUint8(46, value);
+  }
+
+  // 0x2f: u8
+  set tmBreakChar(value: number) {
+    this.view.setUint8(47, value);
+  }
+
+  // 0x30: u8
+  set tmItalic(value: number) {
+    this.view.setUint8(48, value);
+  }
+
+  // 0x31: u8
+  set tmUnderlined(value: number) {
+    this.view.setUint8(49, value);
+  }
+
+  // 0x32: u8
+  set tmStruckOut(value: number) {
+    this.view.setUint8(50, value);
+  }
+
+  // 0x33: u8
+  set tmPitchAndFamily(value: number) {
+    this.view.setUint8(51, value);
+  }
+
+  // 0x34: u8
+  set tmCharSet(value: number) {
+    this.view.setUint8(52, value);
+  }
+
+  // 0x35: u32
+  set ntmFlags(value: number) {
+    this.view.setUint32(53, value, true);
+  }
+
+  // 0x39: u32
+  set ntmSizeEM(value: number) {
+    this.view.setUint32(57, value, true);
+  }
+
+  // 0x3d: u32
+  set ntmCellHeight(value: number) {
+    this.view.setUint32(61, value, true);
+  }
+
+  // 0x41: u32
+  set ntmAvgWidth(value: number) {
+    this.view.setUint32(65, value, true);
+  }
+
+  // 0x45: pad3
 }
 
 /**
@@ -3169,6 +5670,269 @@ export function allocNEWTEXTMETRICW(data?: Partial<NEWTEXTMETRICW>): Uint8Array 
   return buf;
 }
 
+export class NEWTEXTMETRICWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get tmHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get tmAscent(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get tmDescent(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get tmInternalLeading(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get tmExternalLeading(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get tmAveCharWidth(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get tmMaxCharWidth(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get tmWeight(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get tmOverhang(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get tmDigitizedAspectX(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get tmDigitizedAspectY(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get tmFirstChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get tmLastChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: pointer
+  get tmDefaultChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(64, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x48: pointer
+  get tmBreakChar(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u8
+  get tmItalic(): number {
+    return this.view.getUint8(80);
+  }
+
+  // 0x51: u8
+  get tmUnderlined(): number {
+    return this.view.getUint8(81);
+  }
+
+  // 0x52: u8
+  get tmStruckOut(): number {
+    return this.view.getUint8(82);
+  }
+
+  // 0x53: u8
+  get tmPitchAndFamily(): number {
+    return this.view.getUint8(83);
+  }
+
+  // 0x54: u8
+  get tmCharSet(): number {
+    return this.view.getUint8(84);
+  }
+
+  // 0x55: u32
+  get ntmFlags(): number {
+    return this.view.getUint32(85, true);
+  }
+
+  // 0x59: u32
+  get ntmSizeEM(): number {
+    return this.view.getUint32(89, true);
+  }
+
+  // 0x5d: u32
+  get ntmCellHeight(): number {
+    return this.view.getUint32(93, true);
+  }
+
+  // 0x61: u32
+  get ntmAvgWidth(): number {
+    return this.view.getUint32(97, true);
+  }
+
+  // 0x65: pad3
+
+  // 0x00: i32
+  set tmHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set tmAscent(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set tmDescent(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set tmInternalLeading(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set tmExternalLeading(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set tmAveCharWidth(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set tmMaxCharWidth(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set tmWeight(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set tmOverhang(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set tmDigitizedAspectX(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set tmDigitizedAspectY(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set tmFirstChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set tmLastChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: pointer
+  set tmDefaultChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x48: pointer
+  set tmBreakChar(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u8
+  set tmItalic(value: number) {
+    this.view.setUint8(80, value);
+  }
+
+  // 0x51: u8
+  set tmUnderlined(value: number) {
+    this.view.setUint8(81, value);
+  }
+
+  // 0x52: u8
+  set tmStruckOut(value: number) {
+    this.view.setUint8(82, value);
+  }
+
+  // 0x53: u8
+  set tmPitchAndFamily(value: number) {
+    this.view.setUint8(83, value);
+  }
+
+  // 0x54: u8
+  set tmCharSet(value: number) {
+    this.view.setUint8(84, value);
+  }
+
+  // 0x55: u32
+  set ntmFlags(value: number) {
+    this.view.setUint32(85, value, true);
+  }
+
+  // 0x59: u32
+  set ntmSizeEM(value: number) {
+    this.view.setUint32(89, value, true);
+  }
+
+  // 0x5d: u32
+  set ntmCellHeight(value: number) {
+    this.view.setUint32(93, value, true);
+  }
+
+  // 0x61: u32
+  set ntmAvgWidth(value: number) {
+    this.view.setUint32(97, value, true);
+  }
+
+  // 0x65: pad3
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.PELARRAY (size: 24)
  */
@@ -3204,6 +5968,71 @@ export function allocPELARRAY(data?: Partial<PELARRAY>): Uint8Array {
   return buf;
 }
 
+export class PELARRAYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get paXCount(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get paYCount(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get paXExt(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get paYExt(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u8
+  get paRGBs(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x00: i32
+  set paXCount(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set paYCount(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set paXExt(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set paYExt(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u8
+  set paRGBs(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
+}
+
 export type COLORREF = number;
 
 /**
@@ -3231,6 +6060,52 @@ export function allocLOGBRUSH(data?: Partial<LOGBRUSH>): Uint8Array {
   // 0x10: usize
   if (data?.lbHatch !== undefined) view.setBigUint64(16, BigInt(data.lbHatch), true);
   return buf;
+}
+
+export class LOGBRUSHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get lbStyle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get lbColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get lbHatch(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x00: u32
+  set lbStyle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set lbColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: usize
+  set lbHatch(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
 }
 
 /**
@@ -3261,6 +6136,56 @@ export function allocLOGBRUSH32(data?: Partial<LOGBRUSH32>): Uint8Array {
   return buf;
 }
 
+export class LOGBRUSH32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get lbStyle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get lbColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get lbHatch(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set lbStyle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set lbColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set lbHatch(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
  */
@@ -3281,6 +6206,37 @@ export function allocPOINT(data?: Partial<POINT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   return buf;
+}
+
+export class POINTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -3308,6 +6264,53 @@ export function allocLOGPEN(data?: Partial<LOGPEN>): Uint8Array {
   // 0x10: pointer
   if (data?.lopnColor !== undefined) view.setBigUint64(16, data.lopnColor === null ? 0n : BigInt(util.toPointer(data.lopnColor)), true);
   return buf;
+}
+
+export class LOGPENView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get lopnStyle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get lopnWidth(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get lopnColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set lopnStyle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set lopnWidth(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set lopnColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3354,6 +6357,97 @@ export function allocEXTLOGPEN(data?: Partial<EXTLOGPEN>): Uint8Array {
   return buf;
 }
 
+export class EXTLOGPENView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get elpPenStyle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get elpWidth(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get elpBrushStyle(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get elpColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: usize
+  get elpHatch(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(24, true));
+  }
+
+  // 0x20: u32
+  get elpNumEntries(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  get elpStyleEntry(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set elpPenStyle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set elpWidth(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set elpBrushStyle(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set elpColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: usize
+  set elpHatch(value: Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(value), true);
+  }
+
+  // 0x20: u32
+  set elpNumEntries(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x28: pointer
+  set elpStyleEntry(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EXTLOGPEN32 (size: 40)
  */
@@ -3397,6 +6491,93 @@ export function allocEXTLOGPEN32(data?: Partial<EXTLOGPEN32>): Uint8Array {
   return buf;
 }
 
+export class EXTLOGPEN32View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get elpPenStyle(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get elpWidth(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get elpBrushStyle(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get elpColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get elpHatch(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get elpNumEntries(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: pointer
+  get elpStyleEntry(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set elpPenStyle(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set elpWidth(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set elpBrushStyle(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set elpColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set elpHatch(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set elpNumEntries(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set elpStyleEntry(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.PALETTEENTRY (size: 8)
  */
@@ -3428,6 +6609,61 @@ export function allocPALETTEENTRY(data?: Partial<PALETTEENTRY>): Uint8Array {
   return buf;
 }
 
+export class PALETTEENTRYView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get peRed(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get peGreen(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get peBlue(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get peFlags(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u8
+  set peRed(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set peGreen(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set peBlue(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set peFlags(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.LOGPALETTE (size: 16)
  */
@@ -3453,6 +6689,52 @@ export function allocLOGPALETTE(data?: Partial<LOGPALETTE>): Uint8Array {
   // 0x08: pointer
   if (data?.palPalEntry !== undefined) view.setBigUint64(8, data.palPalEntry === null ? 0n : BigInt(util.toPointer(data.palPalEntry)), true);
   return buf;
+}
+
+export class LOGPALETTEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get palVersion(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get palNumEntries(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get palPalEntry(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set palVersion(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set palNumEntries(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set palPalEntry(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3526,6 +6808,162 @@ export function allocLOGFONTA(data?: Partial<LOGFONTA>): Uint8Array {
   return buf;
 }
 
+export class LOGFONTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get lfHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get lfWidth(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get lfEscapement(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get lfOrientation(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get lfWeight(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u8
+  get lfItalic(): number {
+    return this.view.getUint8(20);
+  }
+
+  // 0x15: u8
+  get lfUnderline(): number {
+    return this.view.getUint8(21);
+  }
+
+  // 0x16: u8
+  get lfStrikeOut(): number {
+    return this.view.getUint8(22);
+  }
+
+  // 0x17: u8
+  get lfCharSet(): number {
+    return this.view.getUint8(23);
+  }
+
+  // 0x18: u8
+  get lfOutPrecision(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: u8
+  get lfClipPrecision(): number {
+    return this.view.getUint8(25);
+  }
+
+  // 0x1a: u8
+  get lfQuality(): number {
+    return this.view.getUint8(26);
+  }
+
+  // 0x1b: u8
+  get lfPitchAndFamily(): number {
+    return this.view.getUint8(27);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get lfFaceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set lfHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lfWidth(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set lfEscapement(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set lfOrientation(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lfWeight(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u8
+  set lfItalic(value: number) {
+    this.view.setUint8(20, value);
+  }
+
+  // 0x15: u8
+  set lfUnderline(value: number) {
+    this.view.setUint8(21, value);
+  }
+
+  // 0x16: u8
+  set lfStrikeOut(value: number) {
+    this.view.setUint8(22, value);
+  }
+
+  // 0x17: u8
+  set lfCharSet(value: number) {
+    this.view.setUint8(23, value);
+  }
+
+  // 0x18: u8
+  set lfOutPrecision(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: u8
+  set lfClipPrecision(value: number) {
+    this.view.setUint8(25, value);
+  }
+
+  // 0x1a: u8
+  set lfQuality(value: number) {
+    this.view.setUint8(26, value);
+  }
+
+  // 0x1b: u8
+  set lfPitchAndFamily(value: number) {
+    this.view.setUint8(27, value);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set lfFaceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.LOGFONTW (size: 40)
  */
@@ -3597,6 +7035,162 @@ export function allocLOGFONTW(data?: Partial<LOGFONTW>): Uint8Array {
   return buf;
 }
 
+export class LOGFONTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get lfHeight(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get lfWidth(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get lfEscapement(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get lfOrientation(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get lfWeight(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: u8
+  get lfItalic(): number {
+    return this.view.getUint8(20);
+  }
+
+  // 0x15: u8
+  get lfUnderline(): number {
+    return this.view.getUint8(21);
+  }
+
+  // 0x16: u8
+  get lfStrikeOut(): number {
+    return this.view.getUint8(22);
+  }
+
+  // 0x17: u8
+  get lfCharSet(): number {
+    return this.view.getUint8(23);
+  }
+
+  // 0x18: u8
+  get lfOutPrecision(): number {
+    return this.view.getUint8(24);
+  }
+
+  // 0x19: u8
+  get lfClipPrecision(): number {
+    return this.view.getUint8(25);
+  }
+
+  // 0x1a: u8
+  get lfQuality(): number {
+    return this.view.getUint8(26);
+  }
+
+  // 0x1b: u8
+  get lfPitchAndFamily(): number {
+    return this.view.getUint8(27);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get lfFaceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set lfHeight(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lfWidth(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set lfEscapement(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set lfOrientation(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set lfWeight(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: u8
+  set lfItalic(value: number) {
+    this.view.setUint8(20, value);
+  }
+
+  // 0x15: u8
+  set lfUnderline(value: number) {
+    this.view.setUint8(21, value);
+  }
+
+  // 0x16: u8
+  set lfStrikeOut(value: number) {
+    this.view.setUint8(22, value);
+  }
+
+  // 0x17: u8
+  set lfCharSet(value: number) {
+    this.view.setUint8(23, value);
+  }
+
+  // 0x18: u8
+  set lfOutPrecision(value: number) {
+    this.view.setUint8(24, value);
+  }
+
+  // 0x19: u8
+  set lfClipPrecision(value: number) {
+    this.view.setUint8(25, value);
+  }
+
+  // 0x1a: u8
+  set lfQuality(value: number) {
+    this.view.setUint8(26, value);
+  }
+
+  // 0x1b: u8
+  set lfPitchAndFamily(value: number) {
+    this.view.setUint8(27, value);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set lfFaceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENUMLOGFONTA (size: 24)
  */
@@ -3623,6 +7217,50 @@ export function allocENUMLOGFONTA(data?: Partial<ENUMLOGFONTA>): Uint8Array {
   return buf;
 }
 
+export class ENUMLOGFONTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENUMLOGFONTW (size: 24)
  */
@@ -3647,6 +7285,50 @@ export function allocENUMLOGFONTW(data?: Partial<ENUMLOGFONTW>): Uint8Array {
   // 0x10: pointer
   if (data?.elfStyle !== undefined) view.setBigUint64(16, data.elfStyle === null ? 0n : BigInt(util.toPointer(data.elfStyle)), true);
   return buf;
+}
+
+export class ENUMLOGFONTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3679,6 +7361,61 @@ export function allocENUMLOGFONTEXA(data?: Partial<ENUMLOGFONTEXA>): Uint8Array 
   return buf;
 }
 
+export class ENUMLOGFONTEXAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get elfScript(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set elfScript(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENUMLOGFONTEXW (size: 32)
  */
@@ -3707,6 +7444,61 @@ export function allocENUMLOGFONTEXW(data?: Partial<ENUMLOGFONTEXW>): Uint8Array 
   // 0x18: pointer
   if (data?.elfScript !== undefined) view.setBigUint64(24, data.elfScript === null ? 0n : BigInt(util.toPointer(data.elfScript)), true);
   return buf;
+}
+
+export class ENUMLOGFONTEXWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get elfScript(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set elfScript(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -3761,6 +7553,117 @@ export function allocPANOSE(data?: Partial<PANOSE>): Uint8Array {
   // 0x24: u32
   if (data?.bXHeight !== undefined) view.setUint32(36, Number(data.bXHeight), true);
   return buf;
+}
+
+export class PANOSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get bFamilyType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get bSerifStyle(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get bWeight(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get bProportion(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get bContrast(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get bStrokeVariation(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get bArmStyle(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get bLetterform(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get bMidline(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get bXHeight(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x00: u32
+  set bFamilyType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set bSerifStyle(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set bWeight(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set bProportion(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set bContrast(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set bStrokeVariation(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set bArmStyle(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set bLetterform(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set bMidline(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set bXHeight(value: number) {
+    this.view.setUint32(36, value, true);
+  }
 }
 
 /**
@@ -3818,6 +7721,126 @@ export function allocEXTLOGFONTA(data?: Partial<EXTLOGFONTA>): Uint8Array {
   return buf;
 }
 
+export class EXTLOGFONTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get elfVersion(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get elfStyleSize(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get elfMatch(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get elfReserved(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get elfVendorId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get elfCulture(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  get elfPanose(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set elfVersion(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set elfStyleSize(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set elfMatch(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set elfReserved(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set elfVendorId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set elfCulture(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  set elfPanose(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EXTLOGFONTW (size: 64)
  */
@@ -3873,6 +7896,126 @@ export function allocEXTLOGFONTW(data?: Partial<EXTLOGFONTW>): Uint8Array {
   return buf;
 }
 
+export class EXTLOGFONTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfLogFont(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get elfStyle(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get elfVersion(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get elfStyleSize(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x20: u32
+  get elfMatch(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get elfReserved(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: pointer
+  get elfVendorId(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: u32
+  get elfCulture(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  get elfPanose(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfLogFont(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfFullName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set elfStyle(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set elfVersion(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set elfStyleSize(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+
+  // 0x20: u32
+  set elfMatch(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set elfReserved(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set elfVendorId(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: u32
+  set elfCulture(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: pad4
+
+  // 0x38: pointer
+  set elfPanose(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 /**
@@ -3925,6 +8068,107 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   return buf;
 }
 
+export class _Anonymous1_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data0(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: buffer
+  get String(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: usize
+  get u(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(16, true));
+  }
+
+  // 0x18: pointer
+  get psid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get pguid(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: u32
+  get LogonId_LowPart(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: usize
+  set Data0(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: buffer
+  set String(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: usize
+  set u(value: Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(value), true);
+  }
+
+  // 0x18: pointer
+  set psid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set pguid(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: u32
+  set LogonId_LowPart(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * _Anonymous2_e__Union (size: 16)
  */
@@ -3946,6 +8190,41 @@ export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>):
   if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class _Anonymous2_e__UnionView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: usize
+  get Data1(): Deno.PointerValue {
+    return Number(this.view.getBigUint64(0, true));
+  }
+
+  // 0x08: i32
+  get LogonId_HighPart(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: usize
+  set Data1(value: Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(value), true);
+  }
+
+  // 0x08: i32
+  set LogonId_HighPart(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -4073,6 +8352,303 @@ export function allocDEVMODEA(data?: Partial<DEVMODEA>): Uint8Array {
   return buf;
 }
 
+export class DEVMODEAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get dmDeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get dmSpecVersion(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get dmDriverVersion(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get dmSize(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get dmDriverExtra(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u32
+  get dmFields(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dmColor(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i16
+  get dmDuplex(): number {
+    return this.view.getInt16(36, true);
+  }
+
+  // 0x26: i16
+  get dmYResolution(): number {
+    return this.view.getInt16(38, true);
+  }
+
+  // 0x28: u32
+  get dmTTOption(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dmCollate(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get dmFormName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u16
+  get dmLogPixels(): number {
+    return this.view.getUint16(56, true);
+  }
+
+  // 0x3a: u32
+  get dmBitsPerPel(): number {
+    return this.view.getUint32(58, true);
+  }
+
+  // 0x3e: u32
+  get dmPelsWidth(): number {
+    return this.view.getUint32(62, true);
+  }
+
+  // 0x42: u32
+  get dmPelsHeight(): number {
+    return this.view.getUint32(66, true);
+  }
+
+  // 0x46: pad2
+
+  // 0x48: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u32
+  get dmDisplayFrequency(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get dmICMMethod(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get dmICMIntent(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get dmMediaType(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get dmDitherType(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get dmReserved1(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: u32
+  get dmReserved2(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: u32
+  get dmPanningWidth(): number {
+    return this.view.getUint32(108, true);
+  }
+
+  // 0x70: u32
+  get dmPanningHeight(): number {
+    return this.view.getUint32(112, true);
+  }
+
+  // 0x74: pad4
+
+  // 0x00: pointer
+  set dmDeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set dmSpecVersion(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set dmDriverVersion(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set dmSize(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set dmDriverExtra(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u32
+  set dmFields(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dmColor(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i16
+  set dmDuplex(value: number) {
+    this.view.setInt16(36, value, true);
+  }
+
+  // 0x26: i16
+  set dmYResolution(value: number) {
+    this.view.setInt16(38, value, true);
+  }
+
+  // 0x28: u32
+  set dmTTOption(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dmCollate(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set dmFormName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u16
+  set dmLogPixels(value: number) {
+    this.view.setUint16(56, value, true);
+  }
+
+  // 0x3a: u32
+  set dmBitsPerPel(value: number) {
+    this.view.setUint32(58, value, true);
+  }
+
+  // 0x3e: u32
+  set dmPelsWidth(value: number) {
+    this.view.setUint32(62, value, true);
+  }
+
+  // 0x42: u32
+  set dmPelsHeight(value: number) {
+    this.view.setUint32(66, value, true);
+  }
+
+  // 0x46: pad2
+
+  // 0x48: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u32
+  set dmDisplayFrequency(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set dmICMMethod(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set dmICMIntent(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set dmMediaType(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set dmDitherType(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set dmReserved1(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: u32
+  set dmReserved2(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: u32
+  set dmPanningWidth(value: number) {
+    this.view.setUint32(108, value, true);
+  }
+
+  // 0x70: u32
+  set dmPanningHeight(value: number) {
+    this.view.setUint32(112, value, true);
+  }
+
+  // 0x74: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.DEVMODEW (size: 120)
  */
@@ -4198,6 +8774,303 @@ export function allocDEVMODEW(data?: Partial<DEVMODEW>): Uint8Array {
   return buf;
 }
 
+export class DEVMODEWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get dmDeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get dmSpecVersion(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get dmDriverVersion(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get dmSize(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get dmDriverExtra(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: u32
+  get dmFields(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dmColor(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i16
+  get dmDuplex(): number {
+    return this.view.getInt16(36, true);
+  }
+
+  // 0x26: i16
+  get dmYResolution(): number {
+    return this.view.getInt16(38, true);
+  }
+
+  // 0x28: u32
+  get dmTTOption(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get dmCollate(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: pointer
+  get dmFormName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u16
+  get dmLogPixels(): number {
+    return this.view.getUint16(56, true);
+  }
+
+  // 0x3a: u32
+  get dmBitsPerPel(): number {
+    return this.view.getUint32(58, true);
+  }
+
+  // 0x3e: u32
+  get dmPelsWidth(): number {
+    return this.view.getUint32(62, true);
+  }
+
+  // 0x42: u32
+  get dmPelsHeight(): number {
+    return this.view.getUint32(66, true);
+  }
+
+  // 0x46: pad2
+
+  // 0x48: pointer
+  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(72, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x50: u32
+  get dmDisplayFrequency(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: u32
+  get dmICMMethod(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get dmICMIntent(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get dmMediaType(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get dmDitherType(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get dmReserved1(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: u32
+  get dmReserved2(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: u32
+  get dmPanningWidth(): number {
+    return this.view.getUint32(108, true);
+  }
+
+  // 0x70: u32
+  get dmPanningHeight(): number {
+    return this.view.getUint32(112, true);
+  }
+
+  // 0x74: pad4
+
+  // 0x00: pointer
+  set dmDeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set dmSpecVersion(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set dmDriverVersion(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set dmSize(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set dmDriverExtra(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: u32
+  set dmFields(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dmColor(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i16
+  set dmDuplex(value: number) {
+    this.view.setInt16(36, value, true);
+  }
+
+  // 0x26: i16
+  set dmYResolution(value: number) {
+    this.view.setInt16(38, value, true);
+  }
+
+  // 0x28: u32
+  set dmTTOption(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set dmCollate(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: pointer
+  set dmFormName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u16
+  set dmLogPixels(value: number) {
+    this.view.setUint16(56, value, true);
+  }
+
+  // 0x3a: u32
+  set dmBitsPerPel(value: number) {
+    this.view.setUint32(58, value, true);
+  }
+
+  // 0x3e: u32
+  set dmPelsWidth(value: number) {
+    this.view.setUint32(62, value, true);
+  }
+
+  // 0x42: u32
+  set dmPelsHeight(value: number) {
+    this.view.setUint32(66, value, true);
+  }
+
+  // 0x46: pad2
+
+  // 0x48: pointer
+  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x50: u32
+  set dmDisplayFrequency(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: u32
+  set dmICMMethod(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set dmICMIntent(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set dmMediaType(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set dmDitherType(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set dmReserved1(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: u32
+  set dmReserved2(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: u32
+  set dmPanningWidth(value: number) {
+    this.view.setUint32(108, value, true);
+  }
+
+  // 0x70: u32
+  set dmPanningHeight(value: number) {
+    this.view.setUint32(112, value, true);
+  }
+
+  // 0x74: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.DISPLAY_DEVICEA (size: 48)
  */
@@ -4236,6 +9109,89 @@ export function allocDISPLAY_DEVICEA(data?: Partial<DISPLAY_DEVICEA>): Uint8Arra
   // 0x28: pointer
   if (data?.DeviceKey !== undefined) view.setBigUint64(40, data.DeviceKey === null ? 0n : BigInt(util.toPointer(data.DeviceKey)), true);
   return buf;
+}
+
+export class DISPLAY_DEVICEAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cb(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get DeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DeviceString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get StateFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get DeviceID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get DeviceKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cb(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DeviceString(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set StateFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set DeviceID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set DeviceKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4278,6 +9234,89 @@ export function allocDISPLAY_DEVICEW(data?: Partial<DISPLAY_DEVICEW>): Uint8Arra
   return buf;
 }
 
+export class DISPLAY_DEVICEWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cb(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get DeviceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get DeviceString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get StateFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get DeviceID(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get DeviceKey(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cb(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set DeviceString(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set StateFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set DeviceID(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set DeviceKey(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.RGNDATAHEADER (size: 24)
  */
@@ -4312,6 +9351,68 @@ export function allocRGNDATAHEADER(data?: Partial<RGNDATAHEADER>): Uint8Array {
   return buf;
 }
 
+export class RGNDATAHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dwSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get iType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get nCount(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get nRgnSize(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get rcBound(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dwSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set iType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set nCount(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set nRgnSize(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set rcBound(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.RGNDATA (size: 16)
  */
@@ -4332,6 +9433,39 @@ export function allocRGNDATA(data?: Partial<RGNDATA>): Uint8Array {
   // 0x08: pointer
   if (data?.Buffer !== undefined) view.setBigUint64(8, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
   return buf;
+}
+
+export class RGNDATAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get rdh(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get Buffer(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set rdh(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4361,6 +9495,51 @@ export function allocABC(data?: Partial<ABC>): Uint8Array {
   return buf;
 }
 
+export class ABCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get abcA(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: u32
+  get abcB(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: i32
+  get abcC(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: i32
+  set abcA(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: u32
+  set abcB(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: i32
+  set abcC(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ABCFLOAT (size: 16)
  */
@@ -4386,6 +9565,51 @@ export function allocABCFLOAT(data?: Partial<ABCFLOAT>): Uint8Array {
   if (data?.abcfC !== undefined) view.setFloat32(8, Number(data.abcfC), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class ABCFLOATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: f32
+  get abcfA(): number {
+    return this.view.getFloat32(0, true);
+  }
+
+  // 0x04: f32
+  get abcfB(): number {
+    return this.view.getFloat32(4, true);
+  }
+
+  // 0x08: f32
+  get abcfC(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: f32
+  set abcfA(value: number) {
+    this.view.setFloat32(0, value, true);
+  }
+
+  // 0x04: f32
+  set abcfB(value: number) {
+    this.view.setFloat32(4, value, true);
+  }
+
+  // 0x08: f32
+  set abcfC(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
@@ -4547,6 +9771,364 @@ export function allocOUTLINETEXTMETRICA(data?: Partial<OUTLINETEXTMETRICA>): Uin
   return buf;
 }
 
+export class OUTLINETEXTMETRICAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get otmSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get otmTextMetrics(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get otmFiller(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  get otmPanoseNumber(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get otmfsSelection(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get otmfsType(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: i32
+  get otmsCharSlopeRise(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: i32
+  get otmsCharSlopeRun(): number {
+    return this.view.getInt32(44, true);
+  }
+
+  // 0x30: i32
+  get otmItalicAngle(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: u32
+  get otmEMSquare(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: i32
+  get otmAscent(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: i32
+  get otmDescent(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x40: u32
+  get otmLineGap(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get otmsCapEmHeight(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get otmsXHeight(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get otmrcFontBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: i32
+  get otmMacAscent(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: i32
+  get otmMacDescent(): number {
+    return this.view.getInt32(92, true);
+  }
+
+  // 0x60: u32
+  get otmMacLineGap(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get otmusMinimumPPEM(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: pointer
+  get otmptSubscriptSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get otmptSubscriptOffset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get otmptSuperscriptSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get otmptSuperscriptOffset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: u32
+  get otmsStrikeoutSize(): number {
+    return this.view.getUint32(136, true);
+  }
+
+  // 0x8c: i32
+  get otmsStrikeoutPosition(): number {
+    return this.view.getInt32(140, true);
+  }
+
+  // 0x90: i32
+  get otmsUnderscoreSize(): number {
+    return this.view.getInt32(144, true);
+  }
+
+  // 0x94: i32
+  get otmsUnderscorePosition(): number {
+    return this.view.getInt32(148, true);
+  }
+
+  // 0x98: buffer
+  get otmpFamilyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: buffer
+  get otmpFaceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: buffer
+  get otmpStyleName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: buffer
+  get otmpFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set otmSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set otmTextMetrics(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u8
+  set otmFiller(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  set otmPanoseNumber(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set otmfsSelection(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set otmfsType(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: i32
+  set otmsCharSlopeRise(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: i32
+  set otmsCharSlopeRun(value: number) {
+    this.view.setInt32(44, value, true);
+  }
+
+  // 0x30: i32
+  set otmItalicAngle(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: u32
+  set otmEMSquare(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: i32
+  set otmAscent(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: i32
+  set otmDescent(value: number) {
+    this.view.setInt32(60, value, true);
+  }
+
+  // 0x40: u32
+  set otmLineGap(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set otmsCapEmHeight(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set otmsXHeight(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set otmrcFontBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: i32
+  set otmMacAscent(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: i32
+  set otmMacDescent(value: number) {
+    this.view.setInt32(92, value, true);
+  }
+
+  // 0x60: u32
+  set otmMacLineGap(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set otmusMinimumPPEM(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: pointer
+  set otmptSubscriptSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set otmptSubscriptOffset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set otmptSuperscriptSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set otmptSuperscriptOffset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: u32
+  set otmsStrikeoutSize(value: number) {
+    this.view.setUint32(136, value, true);
+  }
+
+  // 0x8c: i32
+  set otmsStrikeoutPosition(value: number) {
+    this.view.setInt32(140, value, true);
+  }
+
+  // 0x90: i32
+  set otmsUnderscoreSize(value: number) {
+    this.view.setInt32(144, value, true);
+  }
+
+  // 0x94: i32
+  set otmsUnderscorePosition(value: number) {
+    this.view.setInt32(148, value, true);
+  }
+
+  // 0x98: buffer
+  set otmpFamilyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f152 = value;
+    this.view.setBigUint64(152, BigInt(util.toPointer((this.buf as any)._f152)), true);
+  }
+
+  // 0xa0: buffer
+  set otmpFaceName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f160 = value;
+    this.view.setBigUint64(160, BigInt(util.toPointer((this.buf as any)._f160)), true);
+  }
+
+  // 0xa8: buffer
+  set otmpStyleName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f168 = value;
+    this.view.setBigUint64(168, BigInt(util.toPointer((this.buf as any)._f168)), true);
+  }
+
+  // 0xb0: buffer
+  set otmpFullName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f176 = value;
+    this.view.setBigUint64(176, BigInt(util.toPointer((this.buf as any)._f176)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.OUTLINETEXTMETRICW (size: 184)
  */
@@ -4704,6 +10286,364 @@ export function allocOUTLINETEXTMETRICW(data?: Partial<OUTLINETEXTMETRICW>): Uin
   return buf;
 }
 
+export class OUTLINETEXTMETRICWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get otmSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get otmTextMetrics(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u8
+  get otmFiller(): number {
+    return this.view.getUint8(16);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  get otmPanoseNumber(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get otmfsSelection(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: u32
+  get otmfsType(): number {
+    return this.view.getUint32(36, true);
+  }
+
+  // 0x28: i32
+  get otmsCharSlopeRise(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: i32
+  get otmsCharSlopeRun(): number {
+    return this.view.getInt32(44, true);
+  }
+
+  // 0x30: i32
+  get otmItalicAngle(): number {
+    return this.view.getInt32(48, true);
+  }
+
+  // 0x34: u32
+  get otmEMSquare(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: i32
+  get otmAscent(): number {
+    return this.view.getInt32(56, true);
+  }
+
+  // 0x3c: i32
+  get otmDescent(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x40: u32
+  get otmLineGap(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get otmsCapEmHeight(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get otmsXHeight(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  get otmrcFontBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(80, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x58: i32
+  get otmMacAscent(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: i32
+  get otmMacDescent(): number {
+    return this.view.getInt32(92, true);
+  }
+
+  // 0x60: u32
+  get otmMacLineGap(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get otmusMinimumPPEM(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: pointer
+  get otmptSubscriptSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(104, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x70: pointer
+  get otmptSubscriptOffset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(112, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x78: pointer
+  get otmptSuperscriptSize(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(120, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x80: pointer
+  get otmptSuperscriptOffset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(128, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x88: u32
+  get otmsStrikeoutSize(): number {
+    return this.view.getUint32(136, true);
+  }
+
+  // 0x8c: i32
+  get otmsStrikeoutPosition(): number {
+    return this.view.getInt32(140, true);
+  }
+
+  // 0x90: i32
+  get otmsUnderscoreSize(): number {
+    return this.view.getInt32(144, true);
+  }
+
+  // 0x94: i32
+  get otmsUnderscorePosition(): number {
+    return this.view.getInt32(148, true);
+  }
+
+  // 0x98: buffer
+  get otmpFamilyName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(152, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa0: buffer
+  get otmpFaceName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(160, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xa8: buffer
+  get otmpStyleName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(168, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0xb0: buffer
+  get otmpFullName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(176, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set otmSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set otmTextMetrics(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u8
+  set otmFiller(value: number) {
+    this.view.setUint8(16, value);
+  }
+
+  // 0x11: pad7
+
+  // 0x18: pointer
+  set otmPanoseNumber(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set otmfsSelection(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: u32
+  set otmfsType(value: number) {
+    this.view.setUint32(36, value, true);
+  }
+
+  // 0x28: i32
+  set otmsCharSlopeRise(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: i32
+  set otmsCharSlopeRun(value: number) {
+    this.view.setInt32(44, value, true);
+  }
+
+  // 0x30: i32
+  set otmItalicAngle(value: number) {
+    this.view.setInt32(48, value, true);
+  }
+
+  // 0x34: u32
+  set otmEMSquare(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: i32
+  set otmAscent(value: number) {
+    this.view.setInt32(56, value, true);
+  }
+
+  // 0x3c: i32
+  set otmDescent(value: number) {
+    this.view.setInt32(60, value, true);
+  }
+
+  // 0x40: u32
+  set otmLineGap(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set otmsCapEmHeight(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set otmsXHeight(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: pad4
+
+  // 0x50: pointer
+  set otmrcFontBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x58: i32
+  set otmMacAscent(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: i32
+  set otmMacDescent(value: number) {
+    this.view.setInt32(92, value, true);
+  }
+
+  // 0x60: u32
+  set otmMacLineGap(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set otmusMinimumPPEM(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: pointer
+  set otmptSubscriptSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x70: pointer
+  set otmptSubscriptOffset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x78: pointer
+  set otmptSuperscriptSize(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x80: pointer
+  set otmptSuperscriptOffset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x88: u32
+  set otmsStrikeoutSize(value: number) {
+    this.view.setUint32(136, value, true);
+  }
+
+  // 0x8c: i32
+  set otmsStrikeoutPosition(value: number) {
+    this.view.setInt32(140, value, true);
+  }
+
+  // 0x90: i32
+  set otmsUnderscoreSize(value: number) {
+    this.view.setInt32(144, value, true);
+  }
+
+  // 0x94: i32
+  set otmsUnderscorePosition(value: number) {
+    this.view.setInt32(148, value, true);
+  }
+
+  // 0x98: buffer
+  set otmpFamilyName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f152 = value;
+    this.view.setBigUint64(152, BigInt(util.toPointer((this.buf as any)._f152)), true);
+  }
+
+  // 0xa0: buffer
+  set otmpFaceName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f160 = value;
+    this.view.setBigUint64(160, BigInt(util.toPointer((this.buf as any)._f160)), true);
+  }
+
+  // 0xa8: buffer
+  set otmpStyleName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f168 = value;
+    this.view.setBigUint64(168, BigInt(util.toPointer((this.buf as any)._f168)), true);
+  }
+
+  // 0xb0: buffer
+  set otmpFullName(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f176 = value;
+    this.view.setBigUint64(176, BigInt(util.toPointer((this.buf as any)._f176)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.POLYTEXTA (size: 48)
  */
@@ -4749,6 +10689,99 @@ export function allocPOLYTEXTA(data?: Partial<POLYTEXTA>): Uint8Array {
   // 0x28: pointer
   if (data?.pdx !== undefined) view.setBigUint64(40, data.pdx === null ? 0n : BigInt(util.toPointer(data.pdx)), true);
   return buf;
+}
+
+export class POLYTEXTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get n(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get lpstr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get uiFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get rcl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get pdx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set n(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set lpstr(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: u32
+  set uiFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set rcl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set pdx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4798,6 +10831,99 @@ export function allocPOLYTEXTW(data?: Partial<POLYTEXTW>): Uint8Array {
   return buf;
 }
 
+export class POLYTEXTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u32
+  get n(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  get lpstr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get uiFlags(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get rcl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: pointer
+  get pdx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u32
+  set n(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: buffer
+  set lpstr(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f16 = value;
+    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+  }
+
+  // 0x18: u32
+  set uiFlags(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set rcl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: pointer
+  set pdx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.FIXED (size: 8)
  */
@@ -4819,6 +10945,41 @@ export function allocFIXED(data?: Partial<FIXED>): Uint8Array {
   if (data?.value !== undefined) view.setInt16(2, Number(data.value), true);
   // 0x04: pad4
   return buf;
+}
+
+export class FIXEDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get fract(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: i16
+  get value(): number {
+    return this.view.getInt16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u16
+  set fract(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: i16
+  set value(value: number) {
+    this.view.setInt16(2, value, true);
+  }
+
+  // 0x04: pad4
 }
 
 /**
@@ -4849,6 +11010,61 @@ export function allocMAT2(data?: Partial<MAT2>): Uint8Array {
   // 0x18: pointer
   if (data?.eM22 !== undefined) view.setBigUint64(24, data.eM22 === null ? 0n : BigInt(util.toPointer(data.eM22)), true);
   return buf;
+}
+
+export class MAT2View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get eM11(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get eM12(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get eM21(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get eM22(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set eM11(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set eM12(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set eM21(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set eM22(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4886,6 +11102,72 @@ export function allocGLYPHMETRICS(data?: Partial<GLYPHMETRICS>): Uint8Array {
   return buf;
 }
 
+export class GLYPHMETRICSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get gmBlackBoxX(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get gmBlackBoxY(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get gmptGlyphOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i16
+  get gmCellIncX(): number {
+    return this.view.getInt16(16, true);
+  }
+
+  // 0x12: i16
+  get gmCellIncY(): number {
+    return this.view.getInt16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set gmBlackBoxX(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set gmBlackBoxY(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set gmptGlyphOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i16
+  set gmCellIncX(value: number) {
+    this.view.setInt16(16, value, true);
+  }
+
+  // 0x12: i16
+  set gmCellIncY(value: number) {
+    this.view.setInt16(18, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.POINTFX (size: 16)
  */
@@ -4906,6 +11188,39 @@ export function allocPOINTFX(data?: Partial<POINTFX>): Uint8Array {
   // 0x08: pointer
   if (data?.y !== undefined) view.setBigUint64(8, data.y === null ? 0n : BigInt(util.toPointer(data.y)), true);
   return buf;
+}
+
+export class POINTFXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get x(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get y(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set x(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set y(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -4935,6 +11250,52 @@ export function allocTTPOLYCURVE(data?: Partial<TTPOLYCURVE>): Uint8Array {
   return buf;
 }
 
+export class TTPOLYCURVEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wType(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get cpfx(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get apfx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set wType(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set cpfx(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set apfx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.TTPOLYGONHEADER (size: 16)
  */
@@ -4959,6 +11320,48 @@ export function allocTTPOLYGONHEADER(data?: Partial<TTPOLYGONHEADER>): Uint8Arra
   // 0x08: pointer
   if (data?.pfxStart !== undefined) view.setBigUint64(8, data.pfxStart === null ? 0n : BigInt(util.toPointer(data.pfxStart)), true);
   return buf;
+}
+
+export class TTPOLYGONHEADERView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cb(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dwType(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get pfxStart(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cb(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dwType(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set pfxStart(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5021,6 +11424,120 @@ export function allocGCP_RESULTSA(data?: Partial<GCP_RESULTSA>): Uint8Array {
   return buf;
 }
 
+export class GCP_RESULTSAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get lStructSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get lpOutString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get lpOrder(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get lpDx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get lpCaretPos(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: buffer
+  get lpClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get lpGlyphs(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u32
+  get nGlyphs(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: i32
+  get nMaxFit(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x00: u32
+  set lStructSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set lpOutString(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set lpOrder(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set lpDx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set lpCaretPos(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: buffer
+  set lpClass(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f40 = value;
+    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+  }
+
+  // 0x30: buffer
+  set lpGlyphs(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: u32
+  set nGlyphs(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: i32
+  set nMaxFit(value: number) {
+    this.view.setInt32(60, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.GCP_RESULTSW (size: 64)
  */
@@ -5081,6 +11598,120 @@ export function allocGCP_RESULTSW(data?: Partial<GCP_RESULTSW>): Uint8Array {
   return buf;
 }
 
+export class GCP_RESULTSWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get lStructSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  get lpOutString(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get lpOrder(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get lpDx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get lpCaretPos(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x28: buffer
+  get lpClass(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: buffer
+  get lpGlyphs(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u32
+  get nGlyphs(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: i32
+  get nMaxFit(): number {
+    return this.view.getInt32(60, true);
+  }
+
+  // 0x00: u32
+  set lStructSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: buffer
+  set lpOutString(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f8 = value;
+    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+  }
+
+  // 0x10: pointer
+  set lpOrder(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set lpDx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set lpCaretPos(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x28: buffer
+  set lpClass(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f40 = value;
+    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+  }
+
+  // 0x30: buffer
+  set lpGlyphs(value: Uint8Array | Deno.PointerValue | null) {
+    (this.buf as any)._f48 = value;
+    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+  }
+
+  // 0x38: u32
+  set nGlyphs(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: i32
+  set nMaxFit(value: number) {
+    this.view.setInt32(60, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.RASTERIZER_STATUS (size: 8)
  */
@@ -5108,6 +11739,51 @@ export function allocRASTERIZER_STATUS(data?: Partial<RASTERIZER_STATUS>): Uint8
   return buf;
 }
 
+export class RASTERIZER_STATUSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i16
+  get nSize(): number {
+    return this.view.getInt16(0, true);
+  }
+
+  // 0x02: i16
+  get wFlags(): number {
+    return this.view.getInt16(2, true);
+  }
+
+  // 0x04: i16
+  get nLanguageID(): number {
+    return this.view.getInt16(4, true);
+  }
+
+  // 0x06: pad2
+
+  // 0x00: i16
+  set nSize(value: number) {
+    this.view.setInt16(0, value, true);
+  }
+
+  // 0x02: i16
+  set wFlags(value: number) {
+    this.view.setInt16(2, value, true);
+  }
+
+  // 0x04: i16
+  set nLanguageID(value: number) {
+    this.view.setInt16(4, value, true);
+  }
+
+  // 0x06: pad2
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.WCRANGE (size: 16)
  */
@@ -5129,6 +11805,42 @@ export function allocWCRANGE(data?: Partial<WCRANGE>): Uint8Array {
   if (data?.cGlyphs !== undefined) view.setUint16(8, Number(data.cGlyphs), true);
   // 0x0a: pad6
   return buf;
+}
+
+export class WCRANGEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get wcLow(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u16
+  get cGlyphs(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: pad6
+
+  // 0x00: pointer
+  set wcLow(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u16
+  set cGlyphs(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: pad6
 }
 
 /**
@@ -5165,6 +11877,68 @@ export function allocGLYPHSET(data?: Partial<GLYPHSET>): Uint8Array {
   return buf;
 }
 
+export class GLYPHSETView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbThis(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get flAccel(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cGlyphsSupported(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cRanges(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: pointer
+  get ranges(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set cbThis(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set flAccel(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cGlyphsSupported(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cRanges(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set ranges(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.DESIGNVECTOR (size: 16)
  */
@@ -5189,6 +11963,48 @@ export function allocDESIGNVECTOR(data?: Partial<DESIGNVECTOR>): Uint8Array {
   // 0x08: pointer
   if (data?.dvValues !== undefined) view.setBigUint64(8, data.dvValues === null ? 0n : BigInt(util.toPointer(data.dvValues)), true);
   return buf;
+}
+
+export class DESIGNVECTORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dvReserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get dvNumAxes(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get dvValues(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set dvReserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set dvNumAxes(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set dvValues(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5217,6 +12033,48 @@ export function allocAXISINFOA(data?: Partial<AXISINFOA>): Uint8Array {
   return buf;
 }
 
+export class AXISINFOAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get axMinValue(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get axMaxValue(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get axAxisName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set axMinValue(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set axMaxValue(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set axAxisName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.AXISINFOW (size: 16)
  */
@@ -5241,6 +12099,48 @@ export function allocAXISINFOW(data?: Partial<AXISINFOW>): Uint8Array {
   // 0x08: pointer
   if (data?.axAxisName !== undefined) view.setBigUint64(8, data.axAxisName === null ? 0n : BigInt(util.toPointer(data.axAxisName)), true);
   return buf;
+}
+
+export class AXISINFOWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get axMinValue(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get axMaxValue(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: pointer
+  get axAxisName(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: i32
+  set axMinValue(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set axMaxValue(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set axAxisName(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5269,6 +12169,48 @@ export function allocAXESLISTA(data?: Partial<AXESLISTA>): Uint8Array {
   return buf;
 }
 
+export class AXESLISTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get axlReserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get axlNumAxes(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get axlAxisInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set axlReserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set axlNumAxes(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set axlAxisInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.AXESLISTW (size: 16)
  */
@@ -5295,6 +12237,48 @@ export function allocAXESLISTW(data?: Partial<AXESLISTW>): Uint8Array {
   return buf;
 }
 
+export class AXESLISTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get axlReserved(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get axlNumAxes(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: pointer
+  get axlAxisInfo(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set axlReserved(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set axlNumAxes(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: pointer
+  set axlAxisInfo(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENUMLOGFONTEXDVA (size: 16)
  */
@@ -5317,6 +12301,39 @@ export function allocENUMLOGFONTEXDVA(data?: Partial<ENUMLOGFONTEXDVA>): Uint8Ar
   return buf;
 }
 
+export class ENUMLOGFONTEXDVAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfEnumLogfontEx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfDesignVector(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfEnumLogfontEx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfDesignVector(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ENUMLOGFONTEXDVW (size: 16)
  */
@@ -5337,6 +12354,39 @@ export function allocENUMLOGFONTEXDVW(data?: Partial<ENUMLOGFONTEXDVW>): Uint8Ar
   // 0x08: pointer
   if (data?.elfDesignVector !== undefined) view.setBigUint64(8, data.elfDesignVector === null ? 0n : BigInt(util.toPointer(data.elfDesignVector)), true);
   return buf;
+}
+
+export class ENUMLOGFONTEXDVWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get elfEnumLogfontEx(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get elfDesignVector(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set elfEnumLogfontEx(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set elfDesignVector(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5377,6 +12427,77 @@ export function allocTRIVERTEX(data?: Partial<TRIVERTEX>): Uint8Array {
   return buf;
 }
 
+export class TRIVERTEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: u16
+  get Red(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get Green(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get Blue(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get Alpha(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: u16
+  set Red(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set Green(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set Blue(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set Alpha(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.GRADIENT_TRIANGLE (size: 16)
  */
@@ -5404,6 +12525,51 @@ export function allocGRADIENT_TRIANGLE(data?: Partial<GRADIENT_TRIANGLE>): Uint8
   return buf;
 }
 
+export class GRADIENT_TRIANGLEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get Vertex1(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get Vertex2(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get Vertex3(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: u32
+  set Vertex1(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set Vertex2(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set Vertex3(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.GRADIENT_RECT (size: 8)
  */
@@ -5424,6 +12590,37 @@ export function allocGRADIENT_RECT(data?: Partial<GRADIENT_RECT>): Uint8Array {
   // 0x04: u32
   if (data?.LowerRight !== undefined) view.setUint32(4, Number(data.LowerRight), true);
   return buf;
+}
+
+export class GRADIENT_RECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get UpperLeft(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get LowerRight(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set UpperLeft(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set LowerRight(value: number) {
+    this.view.setUint32(4, value, true);
+  }
 }
 
 /**
@@ -5455,6 +12652,61 @@ export function allocBLENDFUNCTION(data?: Partial<BLENDFUNCTION>): Uint8Array {
   if (data?.AlphaFormat !== undefined) view.setUint8(3, Number(data.AlphaFormat));
   // 0x04: pad4
   return buf;
+}
+
+export class BLENDFUNCTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u8
+  get BlendOp(): number {
+    return this.view.getUint8(0);
+  }
+
+  // 0x01: u8
+  get BlendFlags(): number {
+    return this.view.getUint8(1);
+  }
+
+  // 0x02: u8
+  get SourceConstantAlpha(): number {
+    return this.view.getUint8(2);
+  }
+
+  // 0x03: u8
+  get AlphaFormat(): number {
+    return this.view.getUint8(3);
+  }
+
+  // 0x04: pad4
+
+  // 0x00: u8
+  set BlendOp(value: number) {
+    this.view.setUint8(0, value);
+  }
+
+  // 0x01: u8
+  set BlendFlags(value: number) {
+    this.view.setUint8(1, value);
+  }
+
+  // 0x02: u8
+  set SourceConstantAlpha(value: number) {
+    this.view.setUint8(2, value);
+  }
+
+  // 0x03: u8
+  set AlphaFormat(value: number) {
+    this.view.setUint8(3, value);
+  }
+
+  // 0x04: pad4
 }
 
 export type HANDLE = Deno.PointerValue;
@@ -5492,6 +12744,75 @@ export function allocDIBSECTION(data?: Partial<DIBSECTION>): Uint8Array {
   if (data?.dsOffset !== undefined) view.setUint32(32, Number(data.dsOffset), true);
   // 0x24: pad4
   return buf;
+}
+
+export class DIBSECTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get dsBm(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get dsBmih(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get dsBitfields(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get dshSection(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get dsOffset(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: pointer
+  set dsBm(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set dsBmih(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set dsBitfields(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set dshSection(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set dsOffset(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
 }
 
 /**
@@ -5556,6 +12877,137 @@ export function allocCOLORADJUSTMENT(data?: Partial<COLORADJUSTMENT>): Uint8Arra
   return buf;
 }
 
+export class COLORADJUSTMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get caSize(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get caFlags(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: u16
+  get caIlluminantIndex(): number {
+    return this.view.getUint16(4, true);
+  }
+
+  // 0x06: u16
+  get caRedGamma(): number {
+    return this.view.getUint16(6, true);
+  }
+
+  // 0x08: u16
+  get caGreenGamma(): number {
+    return this.view.getUint16(8, true);
+  }
+
+  // 0x0a: u16
+  get caBlueGamma(): number {
+    return this.view.getUint16(10, true);
+  }
+
+  // 0x0c: u16
+  get caReferenceBlack(): number {
+    return this.view.getUint16(12, true);
+  }
+
+  // 0x0e: u16
+  get caReferenceWhite(): number {
+    return this.view.getUint16(14, true);
+  }
+
+  // 0x10: i16
+  get caContrast(): number {
+    return this.view.getInt16(16, true);
+  }
+
+  // 0x12: i16
+  get caBrightness(): number {
+    return this.view.getInt16(18, true);
+  }
+
+  // 0x14: i16
+  get caColorfulness(): number {
+    return this.view.getInt16(20, true);
+  }
+
+  // 0x16: i16
+  get caRedGreenTint(): number {
+    return this.view.getInt16(22, true);
+  }
+
+  // 0x00: u16
+  set caSize(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set caFlags(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: u16
+  set caIlluminantIndex(value: number) {
+    this.view.setUint16(4, value, true);
+  }
+
+  // 0x06: u16
+  set caRedGamma(value: number) {
+    this.view.setUint16(6, value, true);
+  }
+
+  // 0x08: u16
+  set caGreenGamma(value: number) {
+    this.view.setUint16(8, value, true);
+  }
+
+  // 0x0a: u16
+  set caBlueGamma(value: number) {
+    this.view.setUint16(10, value, true);
+  }
+
+  // 0x0c: u16
+  set caReferenceBlack(value: number) {
+    this.view.setUint16(12, value, true);
+  }
+
+  // 0x0e: u16
+  set caReferenceWhite(value: number) {
+    this.view.setUint16(14, value, true);
+  }
+
+  // 0x10: i16
+  set caContrast(value: number) {
+    this.view.setInt16(16, value, true);
+  }
+
+  // 0x12: i16
+  set caBrightness(value: number) {
+    this.view.setInt16(18, value, true);
+  }
+
+  // 0x14: i16
+  set caColorfulness(value: number) {
+    this.view.setInt16(20, value, true);
+  }
+
+  // 0x16: i16
+  set caRedGreenTint(value: number) {
+    this.view.setInt16(22, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.KERNINGPAIR (size: 8)
  */
@@ -5582,6 +13034,47 @@ export function allocKERNINGPAIR(data?: Partial<KERNINGPAIR>): Uint8Array {
   return buf;
 }
 
+export class KERNINGPAIRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get wFirst(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get wSecond(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: i32
+  get iKernAmount(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: u16
+  set wFirst(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set wSecond(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: i32
+  set iKernAmount(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMR (size: 8)
  */
@@ -5604,6 +13097,37 @@ export function allocEMR(data?: Partial<EMR>): Uint8Array {
   return buf;
 }
 
+export class EMRView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get iType(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get nSize(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x00: u32
+  set iType(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set nSize(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Foundation.POINTL (size: 8)
  */
@@ -5624,6 +13148,37 @@ export function allocPOINTL(data?: Partial<POINTL>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   return buf;
+}
+
+export class POINTLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: i32
+  get x(): number {
+    return this.view.getInt32(0, true);
+  }
+
+  // 0x04: i32
+  get y(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x00: i32
+  set x(value: number) {
+    this.view.setInt32(0, value, true);
+  }
+
+  // 0x04: i32
+  set y(value: number) {
+    this.view.setInt32(4, value, true);
+  }
 }
 
 /**
@@ -5666,6 +13221,87 @@ export function allocEMRTEXT(data?: Partial<EMRTEXT>): Uint8Array {
   return buf;
 }
 
+export class EMRTEXTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get ptlReference(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get nChars(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get offString(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get fOptions(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get rcl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: u32
+  get offDx(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: pad4
+
+  // 0x00: pointer
+  set ptlReference(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set nChars(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set offString(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set fOptions(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set rcl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: u32
+  set offDx(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.ABORTPATH (size: 8)
  */
@@ -5682,6 +13318,28 @@ export function allocABORTPATH(data?: Partial<ABORTPATH>): Uint8Array {
   // 0x00: pointer
   if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(util.toPointer(data.emr)), true);
   return buf;
+}
+
+export class ABORTPATHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5707,6 +13365,42 @@ export function allocEMRSELECTCLIPPATH(data?: Partial<EMRSELECTCLIPPATH>): Uint8
   return buf;
 }
 
+export class EMRSELECTCLIPPATHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get iMode(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set iMode(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETMITERLIMIT (size: 16)
  */
@@ -5728,6 +13422,42 @@ export function allocEMRSETMITERLIMIT(data?: Partial<EMRSETMITERLIMIT>): Uint8Ar
   if (data?.eMiterLimit !== undefined) view.setFloat32(8, Number(data.eMiterLimit), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class EMRSETMITERLIMITView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: f32
+  get eMiterLimit(): number {
+    return this.view.getFloat32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: f32
+  set eMiterLimit(value: number) {
+    this.view.setFloat32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5753,6 +13483,42 @@ export function allocEMRRESTOREDC(data?: Partial<EMRRESTOREDC>): Uint8Array {
   return buf;
 }
 
+export class EMRRESTOREDCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get iRelative(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set iRelative(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETARCDIRECTION (size: 16)
  */
@@ -5774,6 +13540,42 @@ export function allocEMRSETARCDIRECTION(data?: Partial<EMRSETARCDIRECTION>): Uin
   if (data?.iArcDirection !== undefined) view.setUint32(8, Number(data.iArcDirection), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class EMRSETARCDIRECTIONView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get iArcDirection(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set iArcDirection(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5799,6 +13601,42 @@ export function allocEMRSETMAPPERFLAGS(data?: Partial<EMRSETMAPPERFLAGS>): Uint8
   return buf;
 }
 
+export class EMRSETMAPPERFLAGSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwFlags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETTEXTCOLOR (size: 16)
  */
@@ -5819,6 +13657,39 @@ export function allocEMRSETTEXTCOLOR(data?: Partial<EMRSETTEXTCOLOR>): Uint8Arra
   // 0x08: pointer
   if (data?.crColor !== undefined) view.setBigUint64(8, data.crColor === null ? 0n : BigInt(util.toPointer(data.crColor)), true);
   return buf;
+}
+
+export class EMRSETTEXTCOLORView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get crColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set crColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5844,6 +13715,42 @@ export function allocEMRSELECTOBJECT(data?: Partial<EMRSELECTOBJECT>): Uint8Arra
   return buf;
 }
 
+export class EMRSELECTOBJECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihObject(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihObject(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSELECTPALETTE (size: 16)
  */
@@ -5865,6 +13772,42 @@ export function allocEMRSELECTPALETTE(data?: Partial<EMRSELECTPALETTE>): Uint8Ar
   if (data?.ihPal !== undefined) view.setUint32(8, Number(data.ihPal), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class EMRSELECTPALETTEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPal(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPal(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -5891,6 +13834,48 @@ export function allocEMRRESIZEPALETTE(data?: Partial<EMRRESIZEPALETTE>): Uint8Ar
   // 0x0c: u32
   if (data?.cEntries !== undefined) view.setUint32(12, Number(data.cEntries), true);
   return buf;
+}
+
+export class EMRRESIZEPALETTEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPal(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cEntries(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPal(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cEntries(value: number) {
+    this.view.setUint32(12, value, true);
+  }
 }
 
 /**
@@ -5928,6 +13913,73 @@ export function allocEMRSETPALETTEENTRIES(data?: Partial<EMRSETPALETTEENTRIES>):
   return buf;
 }
 
+export class EMRSETPALETTEENTRIESView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPal(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get iStart(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cEntries(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get aPalEntries(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPal(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set iStart(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cEntries(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set aPalEntries(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETCOLORADJUSTMENT (size: 16)
  */
@@ -5948,6 +14000,39 @@ export function allocEMRSETCOLORADJUSTMENT(data?: Partial<EMRSETCOLORADJUSTMENT>
   // 0x08: pointer
   if (data?.ColorAdjustment !== undefined) view.setBigUint64(8, data.ColorAdjustment === null ? 0n : BigInt(util.toPointer(data.ColorAdjustment)), true);
   return buf;
+}
+
+export class EMRSETCOLORADJUSTMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ColorAdjustment(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ColorAdjustment(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -5975,6 +14060,53 @@ export function allocEMRGDICOMMENT(data?: Partial<EMRGDICOMMENT>): Uint8Array {
   // 0x10: pointer
   if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class EMRGDICOMMENTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get cbData(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set cbData(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6008,6 +14140,62 @@ export function allocEMREOF(data?: Partial<EMREOF>): Uint8Array {
   return buf;
 }
 
+export class EMREOFView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get nPalEntries(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get offPalEntries(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get nSizeLast(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set nPalEntries(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set offPalEntries(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set nSizeLast(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRLINETO (size: 16)
  */
@@ -6028,6 +14216,39 @@ export function allocEMRLINETO(data?: Partial<EMRLINETO>): Uint8Array {
   // 0x08: pointer
   if (data?.ptl !== undefined) view.setBigUint64(8, data.ptl === null ? 0n : BigInt(util.toPointer(data.ptl)), true);
   return buf;
+}
+
+export class EMRLINETOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6052,6 +14273,39 @@ export function allocEMROFFSETCLIPRGN(data?: Partial<EMROFFSETCLIPRGN>): Uint8Ar
   return buf;
 }
 
+export class EMROFFSETCLIPRGNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptlOffset(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptlOffset(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRFILLPATH (size: 16)
  */
@@ -6072,6 +14326,39 @@ export function allocEMRFILLPATH(data?: Partial<EMRFILLPATH>): Uint8Array {
   // 0x08: pointer
   if (data?.rclBounds !== undefined) view.setBigUint64(8, data.rclBounds === null ? 0n : BigInt(util.toPointer(data.rclBounds)), true);
   return buf;
+}
+
+export class EMRFILLPATHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6096,6 +14383,39 @@ export function allocEMREXCLUDECLIPRECT(data?: Partial<EMREXCLUDECLIPRECT>): Uin
   return buf;
 }
 
+export class EMREXCLUDECLIPRECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclClip(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclClip(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETVIEWPORTORGEX (size: 16)
  */
@@ -6118,6 +14438,39 @@ export function allocEMRSETVIEWPORTORGEX(data?: Partial<EMRSETVIEWPORTORGEX>): U
   return buf;
 }
 
+export class EMRSETVIEWPORTORGEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptlOrigin(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptlOrigin(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETVIEWPORTEXTEX (size: 16)
  */
@@ -6138,6 +14491,39 @@ export function allocEMRSETVIEWPORTEXTEX(data?: Partial<EMRSETVIEWPORTEXTEX>): U
   // 0x08: pointer
   if (data?.szlExtent !== undefined) view.setBigUint64(8, data.szlExtent === null ? 0n : BigInt(util.toPointer(data.szlExtent)), true);
   return buf;
+}
+
+export class EMRSETVIEWPORTEXTEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get szlExtent(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set szlExtent(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6174,6 +14560,68 @@ export function allocEMRSCALEVIEWPORTEXTEX(data?: Partial<EMRSCALEVIEWPORTEXTEX>
   return buf;
 }
 
+export class EMRSCALEVIEWPORTEXTEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get xNum(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get xDenom(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get yNum(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDenom(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set xNum(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set xDenom(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set yNum(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDenom(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETWORLDTRANSFORM (size: 16)
  */
@@ -6194,6 +14642,39 @@ export function allocEMRSETWORLDTRANSFORM(data?: Partial<EMRSETWORLDTRANSFORM>):
   // 0x08: pointer
   if (data?.xform !== undefined) view.setBigUint64(8, data.xform === null ? 0n : BigInt(util.toPointer(data.xform)), true);
   return buf;
+}
+
+export class EMRSETWORLDTRANSFORMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get xform(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set xform(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6223,6 +14704,53 @@ export function allocEMRMODIFYWORLDTRANSFORM(data?: Partial<EMRMODIFYWORLDTRANSF
   return buf;
 }
 
+export class EMRMODIFYWORLDTRANSFORMView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get xform(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get iMode(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set xform(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set iMode(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETPIXELV (size: 24)
  */
@@ -6247,6 +14775,50 @@ export function allocEMRSETPIXELV(data?: Partial<EMRSETPIXELV>): Uint8Array {
   // 0x10: pointer
   if (data?.crColor !== undefined) view.setBigUint64(16, data.crColor === null ? 0n : BigInt(util.toPointer(data.crColor)), true);
   return buf;
+}
+
+export class EMRSETPIXELVView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptlPixel(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get crColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptlPixel(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set crColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6280,6 +14852,64 @@ export function allocEMREXTFLOODFILL(data?: Partial<EMREXTFLOODFILL>): Uint8Arra
   return buf;
 }
 
+export class EMREXTFLOODFILLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptlStart(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get crColor(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: u32
+  get iMode(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptlStart(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set crColor(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: u32
+  set iMode(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRELLIPSE (size: 16)
  */
@@ -6300,6 +14930,39 @@ export function allocEMRELLIPSE(data?: Partial<EMRELLIPSE>): Uint8Array {
   // 0x08: pointer
   if (data?.rclBox !== undefined) view.setBigUint64(8, data.rclBox === null ? 0n : BigInt(util.toPointer(data.rclBox)), true);
   return buf;
+}
+
+export class EMRELLIPSEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6326,6 +14989,50 @@ export function allocEMRROUNDRECT(data?: Partial<EMRROUNDRECT>): Uint8Array {
   // 0x10: pointer
   if (data?.szlCorner !== undefined) view.setBigUint64(16, data.szlCorner === null ? 0n : BigInt(util.toPointer(data.szlCorner)), true);
   return buf;
+}
+
+export class EMRROUNDRECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get szlCorner(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set szlCorner(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6356,6 +15063,61 @@ export function allocEMRARC(data?: Partial<EMRARC>): Uint8Array {
   // 0x18: pointer
   if (data?.ptlEnd !== undefined) view.setBigUint64(24, data.ptlEnd === null ? 0n : BigInt(util.toPointer(data.ptlEnd)), true);
   return buf;
+}
+
+export class EMRARCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBox(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get ptlStart(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: pointer
+  get ptlEnd(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBox(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set ptlStart(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: pointer
+  set ptlEnd(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6393,6 +15155,73 @@ export function allocEMRANGLEARC(data?: Partial<EMRANGLEARC>): Uint8Array {
   return buf;
 }
 
+export class EMRANGLEARCView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get ptlCenter(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nRadius(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: f32
+  get eStartAngle(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get eSweepAngle(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set ptlCenter(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nRadius(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: f32
+  set eStartAngle(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set eSweepAngle(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRPOLYLINE (size: 32)
  */
@@ -6424,6 +15253,64 @@ export function allocEMRPOLYLINE(data?: Partial<EMRPOLYLINE>): Uint8Array {
   return buf;
 }
 
+export class EMRPOLYLINEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cptl(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get aptl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cptl(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set aptl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRPOLYLINE16 (size: 32)
  */
@@ -6453,6 +15340,64 @@ export function allocEMRPOLYLINE16(data?: Partial<EMRPOLYLINE16>): Uint8Array {
   // 0x18: pointer
   if (data?.apts !== undefined) view.setBigUint64(24, data.apts === null ? 0n : BigInt(util.toPointer(data.apts)), true);
   return buf;
+}
+
+export class EMRPOLYLINE16View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cpts(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get apts(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cpts(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set apts(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6490,6 +15435,75 @@ export function allocEMRPOLYDRAW(data?: Partial<EMRPOLYDRAW>): Uint8Array {
   return buf;
 }
 
+export class EMRPOLYDRAWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cptl(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get aptl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get abTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cptl(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set aptl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set abTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRPOLYDRAW16 (size: 40)
  */
@@ -6523,6 +15537,75 @@ export function allocEMRPOLYDRAW16(data?: Partial<EMRPOLYDRAW16>): Uint8Array {
   // 0x20: pointer
   if (data?.abTypes !== undefined) view.setBigUint64(32, data.abTypes === null ? 0n : BigInt(util.toPointer(data.abTypes)), true);
   return buf;
+}
+
+export class EMRPOLYDRAW16View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cpts(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get apts(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get abTypes(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cpts(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set apts(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set abTypes(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6563,6 +15646,81 @@ export function allocEMRPOLYPOLYLINE(data?: Partial<EMRPOLYPOLYLINE>): Uint8Arra
   return buf;
 }
 
+export class EMRPOLYPOLYLINEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nPolys(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cptl(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get aPolyCounts(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get aptl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nPolys(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cptl(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set aPolyCounts(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set aptl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRPOLYPOLYLINE16 (size: 40)
  */
@@ -6601,6 +15759,81 @@ export function allocEMRPOLYPOLYLINE16(data?: Partial<EMRPOLYPOLYLINE16>): Uint8
   return buf;
 }
 
+export class EMRPOLYPOLYLINE16View {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nPolys(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cpts(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get aPolyCounts(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get apts(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nPolys(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cpts(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set aPolyCounts(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set apts(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRINVERTRGN (size: 32)
  */
@@ -6630,6 +15863,64 @@ export function allocEMRINVERTRGN(data?: Partial<EMRINVERTRGN>): Uint8Array {
   // 0x18: pointer
   if (data?.RgnData !== undefined) view.setBigUint64(24, data.RgnData === null ? 0n : BigInt(util.toPointer(data.RgnData)), true);
   return buf;
+}
+
+export class EMRINVERTRGNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbRgnData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get RgnData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbRgnData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set RgnData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6664,6 +15955,70 @@ export function allocEMRFILLRGN(data?: Partial<EMRFILLRGN>): Uint8Array {
   // 0x18: pointer
   if (data?.RgnData !== undefined) view.setBigUint64(24, data.RgnData === null ? 0n : BigInt(util.toPointer(data.RgnData)), true);
   return buf;
+}
+
+export class EMRFILLRGNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbRgnData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ihBrush(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get RgnData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbRgnData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ihBrush(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set RgnData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6704,6 +16059,81 @@ export function allocEMRFRAMERGN(data?: Partial<EMRFRAMERGN>): Uint8Array {
   return buf;
 }
 
+export class EMRFRAMERGNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbRgnData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get ihBrush(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get szlStroke(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x20: pointer
+  get RgnData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbRgnData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set ihBrush(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set szlStroke(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x20: pointer
+  set RgnData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMREXTSELECTCLIPRGN (size: 24)
  */
@@ -6732,6 +16162,59 @@ export function allocEMREXTSELECTCLIPRGN(data?: Partial<EMREXTSELECTCLIPRGN>): U
   // 0x10: pointer
   if (data?.RgnData !== undefined) view.setBigUint64(16, data.RgnData === null ? 0n : BigInt(util.toPointer(data.RgnData)), true);
   return buf;
+}
+
+export class EMREXTSELECTCLIPRGNView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get cbRgnData(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: i32
+  get iMode(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: pointer
+  get RgnData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set cbRgnData(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set iMode(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set RgnData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6771,6 +16254,84 @@ export function allocEMREXTTEXTOUTA(data?: Partial<EMREXTTEXTOUTA>): Uint8Array 
   // 0x20: pointer
   if (data?.emrtext !== undefined) view.setBigUint64(32, data.emrtext === null ? 0n : BigInt(util.toPointer(data.emrtext)), true);
   return buf;
+}
+
+export class EMREXTTEXTOUTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get iGraphicsMode(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: f32
+  get exScale(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get eyScale(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get emrtext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set iGraphicsMode(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: f32
+  set exScale(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set eyScale(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set emrtext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6813,6 +16374,90 @@ export function allocEMRPOLYTEXTOUTA(data?: Partial<EMRPOLYTEXTOUTA>): Uint8Arra
   // 0x20: pointer
   if (data?.aemrtext !== undefined) view.setBigUint64(32, data.aemrtext === null ? 0n : BigInt(util.toPointer(data.aemrtext)), true);
   return buf;
+}
+
+export class EMRPOLYTEXTOUTAView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get iGraphicsMode(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: f32
+  get exScale(): number {
+    return this.view.getFloat32(20, true);
+  }
+
+  // 0x18: f32
+  get eyScale(): number {
+    return this.view.getFloat32(24, true);
+  }
+
+  // 0x1c: i32
+  get cStrings(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: pointer
+  get aemrtext(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set iGraphicsMode(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: f32
+  set exScale(value: number) {
+    this.view.setFloat32(20, value, true);
+  }
+
+  // 0x18: f32
+  set eyScale(value: number) {
+    this.view.setFloat32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cStrings(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set aemrtext(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -6893,6 +16538,189 @@ export function allocEMRBITBLT(data?: Partial<EMRBITBLT>): Uint8Array {
   if (data?.cbBitsSrc !== undefined) view.setUint32(80, Number(data.cbBitsSrc), true);
   // 0x54: pad4
   return buf;
+}
+
+export class EMRBITBLTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cxDest(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cyDest(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwRop(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get xSrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get ySrc(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cxDest(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cyDest(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwRop(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set xSrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set ySrc(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: pad4
 }
 
 /**
@@ -6981,6 +16809,209 @@ export function allocEMRSTRETCHBLT(data?: Partial<EMRSTRETCHBLT>): Uint8Array {
   if (data?.cySrc !== undefined) view.setInt32(88, Number(data.cySrc), true);
   // 0x5c: pad4
   return buf;
+}
+
+export class EMRSTRETCHBLTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cxDest(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cyDest(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwRop(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get xSrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get ySrc(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: i32
+  get cxSrc(): number {
+    return this.view.getInt32(84, true);
+  }
+
+  // 0x58: i32
+  get cySrc(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cxDest(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cyDest(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwRop(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set xSrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set ySrc(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(84, value, true);
+  }
+
+  // 0x58: i32
+  set cySrc(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: pad4
 }
 
 /**
@@ -7090,6 +17121,255 @@ export function allocEMRMASKBLT(data?: Partial<EMRMASKBLT>): Uint8Array {
   return buf;
 }
 
+export class EMRMASKBLTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cxDest(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cyDest(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwRop(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get xSrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get ySrc(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: i32
+  get xMask(): number {
+    return this.view.getInt32(84, true);
+  }
+
+  // 0x58: i32
+  get yMask(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: u32
+  get iUsageMask(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get offBmiMask(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get cbBmiMask(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x68: u32
+  get offBitsMask(): number {
+    return this.view.getUint32(104, true);
+  }
+
+  // 0x6c: u32
+  get cbBitsMask(): number {
+    return this.view.getUint32(108, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cxDest(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cyDest(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwRop(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set xSrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set ySrc(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: i32
+  set xMask(value: number) {
+    this.view.setInt32(84, value, true);
+  }
+
+  // 0x58: i32
+  set yMask(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set iUsageMask(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set offBmiMask(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set cbBmiMask(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+
+  // 0x68: u32
+  set offBitsMask(value: number) {
+    this.view.setUint32(104, value, true);
+  }
+
+  // 0x6c: u32
+  set cbBitsMask(value: number) {
+    this.view.setUint32(108, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRPLGBLT (size: 104)
  */
@@ -7188,6 +17468,232 @@ export function allocEMRPLGBLT(data?: Partial<EMRPLGBLT>): Uint8Array {
   return buf;
 }
 
+export class EMRPLGBLTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: pointer
+  get aptlDest(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get xSrc(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get ySrc(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get cxSrc(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get cySrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(40, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x30: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: i32
+  get xMask(): number {
+    return this.view.getInt32(76, true);
+  }
+
+  // 0x50: i32
+  get yMask(): number {
+    return this.view.getInt32(80, true);
+  }
+
+  // 0x54: u32
+  get iUsageMask(): number {
+    return this.view.getUint32(84, true);
+  }
+
+  // 0x58: u32
+  get offBmiMask(): number {
+    return this.view.getUint32(88, true);
+  }
+
+  // 0x5c: u32
+  get cbBmiMask(): number {
+    return this.view.getUint32(92, true);
+  }
+
+  // 0x60: u32
+  get offBitsMask(): number {
+    return this.view.getUint32(96, true);
+  }
+
+  // 0x64: u32
+  get cbBitsMask(): number {
+    return this.view.getUint32(100, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: pointer
+  set aptlDest(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set xSrc(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set ySrc(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set cySrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x30: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: i32
+  set xMask(value: number) {
+    this.view.setInt32(76, value, true);
+  }
+
+  // 0x50: i32
+  set yMask(value: number) {
+    this.view.setInt32(80, value, true);
+  }
+
+  // 0x54: u32
+  set iUsageMask(value: number) {
+    this.view.setUint32(84, value, true);
+  }
+
+  // 0x58: u32
+  set offBmiMask(value: number) {
+    this.view.setUint32(88, value, true);
+  }
+
+  // 0x5c: u32
+  set cbBmiMask(value: number) {
+    this.view.setUint32(92, value, true);
+  }
+
+  // 0x60: u32
+  set offBitsMask(value: number) {
+    this.view.setUint32(96, value, true);
+  }
+
+  // 0x64: u32
+  set cbBitsMask(value: number) {
+    this.view.setUint32(100, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETDIBITSTODEVICE (size: 72)
  */
@@ -7261,6 +17767,173 @@ export function allocEMRSETDIBITSTODEVICE(data?: Partial<EMRSETDIBITSTODEVICE>):
   if (data?.cScans !== undefined) view.setUint32(64, Number(data.cScans), true);
   // 0x44: pad4
   return buf;
+}
+
+export class EMRSETDIBITSTODEVICEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get xSrc(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get ySrc(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get cxSrc(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get cySrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get iStartScan(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: u32
+  get cScans(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set xSrc(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set ySrc(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set cySrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set iStartScan(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: u32
+  set cScans(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: pad4
 }
 
 /**
@@ -7341,6 +18014,179 @@ export function allocEMRSTRETCHDIBITS(data?: Partial<EMRSTRETCHDIBITS>): Uint8Ar
   return buf;
 }
 
+export class EMRSTRETCHDIBITSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get xSrc(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get ySrc(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: i32
+  get cxSrc(): number {
+    return this.view.getInt32(32, true);
+  }
+
+  // 0x24: i32
+  get cySrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(40, true);
+  }
+
+  // 0x2c: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(44, true);
+  }
+
+  // 0x30: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(48, true);
+  }
+
+  // 0x34: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(52, true);
+  }
+
+  // 0x38: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(56, true);
+  }
+
+  // 0x3c: u32
+  get dwRop(): number {
+    return this.view.getUint32(60, true);
+  }
+
+  // 0x40: i32
+  get cxDest(): number {
+    return this.view.getInt32(64, true);
+  }
+
+  // 0x44: i32
+  get cyDest(): number {
+    return this.view.getInt32(68, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set xSrc(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set ySrc(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(32, value, true);
+  }
+
+  // 0x24: i32
+  set cySrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(40, value, true);
+  }
+
+  // 0x2c: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(44, value, true);
+  }
+
+  // 0x30: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(48, value, true);
+  }
+
+  // 0x34: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(52, value, true);
+  }
+
+  // 0x38: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(56, value, true);
+  }
+
+  // 0x3c: u32
+  set dwRop(value: number) {
+    this.view.setUint32(60, value, true);
+  }
+
+  // 0x40: i32
+  set cxDest(value: number) {
+    this.view.setInt32(64, value, true);
+  }
+
+  // 0x44: i32
+  set cyDest(value: number) {
+    this.view.setInt32(68, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMREXTCREATEFONTINDIRECTW (size: 24)
  */
@@ -7366,6 +18212,53 @@ export function allocEMREXTCREATEFONTINDIRECTW(data?: Partial<EMREXTCREATEFONTIN
   // 0x10: pointer
   if (data?.elfw !== undefined) view.setBigUint64(16, data.elfw === null ? 0n : BigInt(util.toPointer(data.elfw)), true);
   return buf;
+}
+
+export class EMREXTCREATEFONTINDIRECTWView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihFont(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get elfw(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihFont(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set elfw(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7395,6 +18288,53 @@ export function allocEMRCREATEPALETTE(data?: Partial<EMRCREATEPALETTE>): Uint8Ar
   return buf;
 }
 
+export class EMRCREATEPALETTEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPal(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get lgpl(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPal(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set lgpl(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRCREATEPEN (size: 24)
  */
@@ -7420,6 +18360,53 @@ export function allocEMRCREATEPEN(data?: Partial<EMRCREATEPEN>): Uint8Array {
   // 0x10: pointer
   if (data?.lopn !== undefined) view.setBigUint64(16, data.lopn === null ? 0n : BigInt(util.toPointer(data.lopn)), true);
   return buf;
+}
+
+export class EMRCREATEPENView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPen(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get lopn(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPen(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set lopn(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7465,6 +18452,93 @@ export function allocEMREXTCREATEPEN(data?: Partial<EMREXTCREATEPEN>): Uint8Arra
   return buf;
 }
 
+export class EMREXTCREATEPENView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPen(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get offBmi(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cbBmi(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get offBits(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get cbBits(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get elp(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPen(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set offBmi(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cbBmi(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set offBits(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set cbBits(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set elp(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRCREATEBRUSHINDIRECT (size: 24)
  */
@@ -7490,6 +18564,53 @@ export function allocEMRCREATEBRUSHINDIRECT(data?: Partial<EMRCREATEBRUSHINDIREC
   // 0x10: pointer
   if (data?.lb !== undefined) view.setBigUint64(16, data.lb === null ? 0n : BigInt(util.toPointer(data.lb)), true);
   return buf;
+}
+
+export class EMRCREATEBRUSHINDIRECTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihBrush(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get lb(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihBrush(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set lb(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7534,6 +18655,88 @@ export function allocEMRCREATEMONOBRUSH(data?: Partial<EMRCREATEMONOBRUSH>): Uin
   return buf;
 }
 
+export class EMRCREATEMONOBRUSHView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihBrush(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get iUsage(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get offBmi(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbBmi(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get offBits(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cbBits(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihBrush(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set iUsage(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set offBmi(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbBmi(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set offBits(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cbBits(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRCREATEDIBPATTERNBRUSHPT (size: 32)
  */
@@ -7576,6 +18779,88 @@ export function allocEMRCREATEDIBPATTERNBRUSHPT(data?: Partial<EMRCREATEDIBPATTE
   return buf;
 }
 
+export class EMRCREATEDIBPATTERNBRUSHPTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihBrush(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get iUsage(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get offBmi(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbBmi(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get offBits(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: u32
+  get cbBits(): number {
+    return this.view.getUint32(28, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihBrush(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set iUsage(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set offBmi(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbBmi(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set offBits(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: u32
+  set cbBits(value: number) {
+    this.view.setUint32(28, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRFORMAT (size: 16)
  */
@@ -7606,6 +18891,57 @@ export function allocEMRFORMAT(data?: Partial<EMRFORMAT>): Uint8Array {
   return buf;
 }
 
+export class EMRFORMATView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get dSignature(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: u32
+  get nVersion(): number {
+    return this.view.getUint32(4, true);
+  }
+
+  // 0x08: u32
+  get cbData(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get offData(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x00: u32
+  set dSignature(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: u32
+  set nVersion(value: number) {
+    this.view.setUint32(4, value, true);
+  }
+
+  // 0x08: u32
+  set cbData(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set offData(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRGLSRECORD (size: 24)
  */
@@ -7631,6 +18967,53 @@ export function allocEMRGLSRECORD(data?: Partial<EMRGLSRECORD>): Uint8Array {
   // 0x10: pointer
   if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class EMRGLSRECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get cbData(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set cbData(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7664,6 +19047,64 @@ export function allocEMRGLSBOUNDEDRECORD(data?: Partial<EMRGLSBOUNDEDRECORD>): U
   return buf;
 }
 
+export class EMRGLSBOUNDEDRECORDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get cbData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set cbData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETCOLORSPACE (size: 16)
  */
@@ -7685,6 +19126,42 @@ export function allocEMRSETCOLORSPACE(data?: Partial<EMRSETCOLORSPACE>): Uint8Ar
   if (data?.ihCS !== undefined) view.setUint32(8, Number(data.ihCS), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class EMRSETCOLORSPACEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihCS(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihCS(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -7715,6 +19192,59 @@ export function allocEMREXTESCAPE(data?: Partial<EMREXTESCAPE>): Uint8Array {
   // 0x10: pointer
   if (data?.EscData !== undefined) view.setBigUint64(16, data.EscData === null ? 0n : BigInt(util.toPointer(data.EscData)), true);
   return buf;
+}
+
+export class EMREXTESCAPEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get iEscape(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get cbEscData(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: pointer
+  get EscData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set iEscape(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set cbEscData(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: pointer
+  set EscData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7752,6 +19282,73 @@ export function allocEMRNAMEDESCAPE(data?: Partial<EMRNAMEDESCAPE>): Uint8Array 
   return buf;
 }
 
+export class EMRNAMEDESCAPEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get iEscape(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get cbDriver(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: i32
+  get cbEscData(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get EscData(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set iEscape(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set cbDriver(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: i32
+  set cbEscData(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set EscData(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRSETICMPROFILE (size: 32)
  */
@@ -7785,6 +19382,73 @@ export function allocEMRSETICMPROFILE(data?: Partial<EMRSETICMPROFILE>): Uint8Ar
   // 0x18: pointer
   if (data?.Data !== undefined) view.setBigUint64(24, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
   return buf;
+}
+
+export class EMRSETICMPROFILEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwFlags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get cbName(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cbData(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set cbName(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cbData(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -7825,6 +19489,79 @@ export function allocEMRCOLORMATCHTOTARGET(data?: Partial<EMRCOLORMATCHTOTARGET>
   return buf;
 }
 
+export class EMRCOLORMATCHTOTARGETView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get dwAction(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get dwFlags(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get cbName(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get cbData(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: pointer
+  get Data(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set dwAction(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set dwFlags(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set cbName(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set cbData(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: pointer
+  set Data(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRCOLORCORRECTPALETTE (size: 24)
  */
@@ -7857,6 +19594,68 @@ export function allocEMRCOLORCORRECTPALETTE(data?: Partial<EMRCOLORCORRECTPALETT
   // 0x14: u32
   if (data?.nReserved !== undefined) view.setUint32(20, Number(data.nReserved), true);
   return buf;
+}
+
+export class EMRCOLORCORRECTPALETTEView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get ihPalette(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: u32
+  get nFirstEntry(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u32
+  get nPalEntries(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get nReserved(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set ihPalette(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set nFirstEntry(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u32
+  set nPalEntries(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set nReserved(value: number) {
+    this.view.setUint32(20, value, true);
+  }
 }
 
 /**
@@ -7947,6 +19746,209 @@ export function allocEMRALPHABLEND(data?: Partial<EMRALPHABLEND>): Uint8Array {
   return buf;
 }
 
+export class EMRALPHABLENDView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cxDest(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cyDest(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwRop(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get xSrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get ySrc(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: i32
+  get cxSrc(): number {
+    return this.view.getInt32(84, true);
+  }
+
+  // 0x58: i32
+  get cySrc(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cxDest(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cyDest(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwRop(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set xSrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set ySrc(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(84, value, true);
+  }
+
+  // 0x58: i32
+  set cySrc(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.EMRGRADIENTFILL (size: 40)
  */
@@ -7984,6 +19986,84 @@ export function allocEMRGRADIENTFILL(data?: Partial<EMRGRADIENTFILL>): Uint8Arra
   // 0x20: pointer
   if (data?.Ver !== undefined) view.setBigUint64(32, data.Ver === null ? 0n : BigInt(util.toPointer(data.Ver)), true);
   return buf;
+}
+
+export class EMRGRADIENTFILLView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: u32
+  get nVer(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: u32
+  get nTri(): number {
+    return this.view.getUint32(20, true);
+  }
+
+  // 0x18: u32
+  get ulMode(): number {
+    return this.view.getUint32(24, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  get Ver(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: u32
+  set nVer(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: u32
+  set nTri(value: number) {
+    this.view.setUint32(20, value, true);
+  }
+
+  // 0x18: u32
+  set ulMode(value: number) {
+    this.view.setUint32(24, value, true);
+  }
+
+  // 0x1c: pad4
+
+  // 0x20: pointer
+  set Ver(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8074,6 +20154,209 @@ export function allocEMRTRANSPARENTBLT(data?: Partial<EMRTRANSPARENTBLT>): Uint8
   return buf;
 }
 
+export class EMRTRANSPARENTBLTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get emr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: pointer
+  get rclBounds(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x10: i32
+  get xDest(): number {
+    return this.view.getInt32(16, true);
+  }
+
+  // 0x14: i32
+  get yDest(): number {
+    return this.view.getInt32(20, true);
+  }
+
+  // 0x18: i32
+  get cxDest(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get cyDest(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: u32
+  get dwRop(): number {
+    return this.view.getUint32(32, true);
+  }
+
+  // 0x24: i32
+  get xSrc(): number {
+    return this.view.getInt32(36, true);
+  }
+
+  // 0x28: i32
+  get ySrc(): number {
+    return this.view.getInt32(40, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  get xformSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(48, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x38: pointer
+  get crBkColorSrc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(56, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x40: u32
+  get iUsageSrc(): number {
+    return this.view.getUint32(64, true);
+  }
+
+  // 0x44: u32
+  get offBmiSrc(): number {
+    return this.view.getUint32(68, true);
+  }
+
+  // 0x48: u32
+  get cbBmiSrc(): number {
+    return this.view.getUint32(72, true);
+  }
+
+  // 0x4c: u32
+  get offBitsSrc(): number {
+    return this.view.getUint32(76, true);
+  }
+
+  // 0x50: u32
+  get cbBitsSrc(): number {
+    return this.view.getUint32(80, true);
+  }
+
+  // 0x54: i32
+  get cxSrc(): number {
+    return this.view.getInt32(84, true);
+  }
+
+  // 0x58: i32
+  get cySrc(): number {
+    return this.view.getInt32(88, true);
+  }
+
+  // 0x5c: pad4
+
+  // 0x00: pointer
+  set emr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: pointer
+  set rclBounds(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x10: i32
+  set xDest(value: number) {
+    this.view.setInt32(16, value, true);
+  }
+
+  // 0x14: i32
+  set yDest(value: number) {
+    this.view.setInt32(20, value, true);
+  }
+
+  // 0x18: i32
+  set cxDest(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set cyDest(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: u32
+  set dwRop(value: number) {
+    this.view.setUint32(32, value, true);
+  }
+
+  // 0x24: i32
+  set xSrc(value: number) {
+    this.view.setInt32(36, value, true);
+  }
+
+  // 0x28: i32
+  set ySrc(value: number) {
+    this.view.setInt32(40, value, true);
+  }
+
+  // 0x2c: pad4
+
+  // 0x30: pointer
+  set xformSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x38: pointer
+  set crBkColorSrc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x40: u32
+  set iUsageSrc(value: number) {
+    this.view.setUint32(64, value, true);
+  }
+
+  // 0x44: u32
+  set offBmiSrc(value: number) {
+    this.view.setUint32(68, value, true);
+  }
+
+  // 0x48: u32
+  set cbBmiSrc(value: number) {
+    this.view.setUint32(72, value, true);
+  }
+
+  // 0x4c: u32
+  set offBitsSrc(value: number) {
+    this.view.setUint32(76, value, true);
+  }
+
+  // 0x50: u32
+  set cbBitsSrc(value: number) {
+    this.view.setUint32(80, value, true);
+  }
+
+  // 0x54: i32
+  set cxSrc(value: number) {
+    this.view.setInt32(84, value, true);
+  }
+
+  // 0x58: i32
+  set cySrc(value: number) {
+    this.view.setInt32(88, value, true);
+  }
+
+  // 0x5c: pad4
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.WGLSWAP (size: 16)
  */
@@ -8095,6 +20378,42 @@ export function allocWGLSWAP(data?: Partial<WGLSWAP>): Uint8Array {
   if (data?.uiFlags !== undefined) view.setUint32(8, Number(data.uiFlags), true);
   // 0x0c: pad4
   return buf;
+}
+
+export class WGLSWAPView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get hdc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: u32
+  get uiFlags(): number {
+    return this.view.getUint32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x00: pointer
+  set hdc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: u32
+  set uiFlags(value: number) {
+    this.view.setUint32(8, value, true);
+  }
+
+  // 0x0c: pad4
 }
 
 /**
@@ -8124,6 +20443,52 @@ export function allocTTLOADINFO(data?: Partial<TTLOADINFO>): Uint8Array {
   return buf;
 }
 
+export class TTLOADINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get usStructSize(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get usRefStrSize(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pusRefStr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set usStructSize(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set usRefStrSize(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pusRefStr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.TTEMBEDINFO (size: 16)
  */
@@ -8149,6 +20514,52 @@ export function allocTTEMBEDINFO(data?: Partial<TTEMBEDINFO>): Uint8Array {
   // 0x08: pointer
   if (data?.pusRootStr !== undefined) view.setBigUint64(8, data.pusRootStr === null ? 0n : BigInt(util.toPointer(data.pusRootStr)), true);
   return buf;
+}
+
+export class TTEMBEDINFOView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u16
+  get usStructSize(): number {
+    return this.view.getUint16(0, true);
+  }
+
+  // 0x02: u16
+  get usRootStrSize(): number {
+    return this.view.getUint16(2, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  get pusRootStr(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(8, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u16
+  set usStructSize(value: number) {
+    this.view.setUint16(0, value, true);
+  }
+
+  // 0x02: u16
+  set usRootStrSize(value: number) {
+    this.view.setUint16(2, value, true);
+  }
+
+  // 0x04: pad4
+
+  // 0x08: pointer
+  set pusRootStr(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  }
 }
 
 /**
@@ -8194,6 +20605,92 @@ export function allocTTVALIDATIONTESTSPARAMS(data?: Partial<TTVALIDATIONTESTSPAR
   return buf;
 }
 
+export class TTVALIDATIONTESTSPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulStructSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get lTestFromSize(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get lTestToSize(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulCharSet(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get usReserved1(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get usCharCodeCount(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pusCharCodeSet(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulStructSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lTestFromSize(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set lTestToSize(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulCharSet(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set usReserved1(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set usCharCodeCount(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pusCharCodeSet(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.TTVALIDATIONTESTSPARAMSEX (size: 32)
  */
@@ -8237,6 +20734,92 @@ export function allocTTVALIDATIONTESTSPARAMSEX(data?: Partial<TTVALIDATIONTESTSP
   return buf;
 }
 
+export class TTVALIDATIONTESTSPARAMSEXView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get ulStructSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get lTestFromSize(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get lTestToSize(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: u32
+  get ulCharSet(): number {
+    return this.view.getUint32(12, true);
+  }
+
+  // 0x10: u16
+  get usReserved1(): number {
+    return this.view.getUint16(16, true);
+  }
+
+  // 0x12: u16
+  get usCharCodeCount(): number {
+    return this.view.getUint16(18, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  get pulCharCodeSet(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(24, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: u32
+  set ulStructSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set lTestFromSize(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set lTestToSize(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: u32
+  set ulCharSet(value: number) {
+    this.view.setUint32(12, value, true);
+  }
+
+  // 0x10: u16
+  set usReserved1(value: number) {
+    this.view.setUint16(16, value, true);
+  }
+
+  // 0x12: u16
+  set usCharCodeCount(value: number) {
+    this.view.setUint16(18, value, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x18: pointer
+  set pulCharCodeSet(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  }
+}
+
 export type BOOL = number;
 
 /**
@@ -8278,6 +20861,84 @@ export function allocPAINTSTRUCT(data?: Partial<PAINTSTRUCT>): Uint8Array {
   return buf;
 }
 
+export class PAINTSTRUCTView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: pointer
+  get hdc(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(0, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x08: i32
+  get fErase(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  get rcPaint(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(16, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x18: i32
+  get fRestore(): number {
+    return this.view.getInt32(24, true);
+  }
+
+  // 0x1c: i32
+  get fIncUpdate(): number {
+    return this.view.getInt32(28, true);
+  }
+
+  // 0x20: pointer
+  get rgbReserved(): Uint8Array | Deno.PointerValue | null {
+    const ptr = this.view.getBigUint64(32, true);
+    return util.pointerFromFfi(ptr);
+  }
+
+  // 0x00: pointer
+  set hdc(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x08: i32
+  set fErase(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: pad4
+
+  // 0x10: pointer
+  set rcPaint(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  }
+
+  // 0x18: i32
+  set fRestore(value: number) {
+    this.view.setInt32(24, value, true);
+  }
+
+  // 0x1c: i32
+  set fIncUpdate(value: number) {
+    this.view.setInt32(28, value, true);
+  }
+
+  // 0x20: pointer
+  set rgbReserved(value: Uint8Array | Deno.PointerValue | null) {
+    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  }
+}
+
 /**
  * Windows.Win32.Graphics.Gdi.DRAWTEXTPARAMS (size: 24)
  */
@@ -8311,6 +20972,71 @@ export function allocDRAWTEXTPARAMS(data?: Partial<DRAWTEXTPARAMS>): Uint8Array 
   if (data?.uiLengthDrawn !== undefined) view.setUint32(16, Number(data.uiLengthDrawn), true);
   // 0x14: pad4
   return buf;
+}
+
+export class DRAWTEXTPARAMSView {
+  private readonly view: DataView;
+  constructor(private readonly buf: Uint8Array) {
+    this.view = new DataView(buf.buffer);
+  }
+
+  get buffer(): Uint8Array {
+    return this.buf;
+  }
+
+  // 0x00: u32
+  get cbSize(): number {
+    return this.view.getUint32(0, true);
+  }
+
+  // 0x04: i32
+  get iTabLength(): number {
+    return this.view.getInt32(4, true);
+  }
+
+  // 0x08: i32
+  get iLeftMargin(): number {
+    return this.view.getInt32(8, true);
+  }
+
+  // 0x0c: i32
+  get iRightMargin(): number {
+    return this.view.getInt32(12, true);
+  }
+
+  // 0x10: u32
+  get uiLengthDrawn(): number {
+    return this.view.getUint32(16, true);
+  }
+
+  // 0x14: pad4
+
+  // 0x00: u32
+  set cbSize(value: number) {
+    this.view.setUint32(0, value, true);
+  }
+
+  // 0x04: i32
+  set iTabLength(value: number) {
+    this.view.setInt32(4, value, true);
+  }
+
+  // 0x08: i32
+  set iLeftMargin(value: number) {
+    this.view.setInt32(8, value, true);
+  }
+
+  // 0x0c: i32
+  set iRightMargin(value: number) {
+    this.view.setInt32(12, value, true);
+  }
+
+  // 0x10: u32
+  set uiLengthDrawn(value: number) {
+    this.view.setUint32(16, value, true);
+  }
+
+  // 0x14: pad4
 }
 
 export type LPARAM = Deno.PointerValue;
