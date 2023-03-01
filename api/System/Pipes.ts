@@ -71,7 +71,7 @@ export const SECURITY_VALID_SQOS_FLAGS = 2031616;
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 

@@ -602,9 +602,9 @@ export class WICRectView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -613,9 +613,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -630,23 +630,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -673,7 +673,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -711,7 +711,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -724,7 +724,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -733,11 +733,11 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: u64
-  if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigUint64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -764,23 +764,23 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -808,14 +808,14 @@ export function allocWICBitmapPattern(data?: Partial<WICBitmapPattern>): Uint8Ar
   const buf = new Uint8Array(sizeofWICBitmapPattern);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : util.toBigInt(util.toPointer(data.Position)), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(util.toPointer(data.Pattern)), true);
+  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : util.toBigInt(util.toPointer(data.Pattern)), true);
   // 0x18: pointer
-  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(util.toPointer(data.Mask)), true);
+  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : util.toBigInt(util.toPointer(data.Mask)), true);
   // 0x20: i32
   if (data?.EndOfStream !== undefined) view.setInt32(32, Number(data.EndOfStream), true);
   // 0x24: pad4
@@ -866,7 +866,7 @@ export class WICBitmapPatternView {
 
   // 0x00: pointer
   set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -878,12 +878,12 @@ export class WICBitmapPatternView {
 
   // 0x10: pointer
   set Pattern(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Mask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: i32
@@ -973,7 +973,7 @@ export function allocWICImageParameters(data?: Partial<WICImageParameters>): Uin
   const buf = new Uint8Array(sizeofWICImageParameters);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.PixelFormat !== undefined) view.setBigUint64(0, data.PixelFormat === null ? 0n : BigInt(util.toPointer(data.PixelFormat)), true);
+  if (data?.PixelFormat !== undefined) view.setBigUint64(0, data.PixelFormat === null ? 0n : util.toBigInt(util.toPointer(data.PixelFormat)), true);
   // 0x08: f32
   if (data?.DpiX !== undefined) view.setFloat32(8, Number(data.DpiX), true);
   // 0x0c: f32
@@ -1037,7 +1037,7 @@ export class WICImageParametersView {
 
   // 0x00: pointer
   set PixelFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: f32
@@ -1089,7 +1089,7 @@ export function allocWICBitmapPlaneDescription(data?: Partial<WICBitmapPlaneDesc
   const buf = new Uint8Array(sizeofWICBitmapPlaneDescription);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(util.toPointer(data.Format)), true);
+  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : util.toBigInt(util.toPointer(data.Format)), true);
   // 0x08: u32
   if (data?.Width !== undefined) view.setUint32(8, Number(data.Width), true);
   // 0x0c: u32
@@ -1125,7 +1125,7 @@ export class WICBitmapPlaneDescriptionView {
 
   // 0x00: pointer
   set Format(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1159,9 +1159,9 @@ export function allocWICBitmapPlane(data?: Partial<WICBitmapPlane>): Uint8Array 
   const buf = new Uint8Array(sizeofWICBitmapPlane);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(util.toPointer(data.Format)), true);
+  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : util.toBigInt(util.toPointer(data.Format)), true);
   // 0x08: pointer
-  if (data?.pbBuffer !== undefined) view.setBigUint64(8, data.pbBuffer === null ? 0n : BigInt(util.toPointer(data.pbBuffer)), true);
+  if (data?.pbBuffer !== undefined) view.setBigUint64(8, data.pbBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pbBuffer)), true);
   // 0x10: u32
   if (data?.cbStride !== undefined) view.setUint32(16, Number(data.cbStride), true);
   // 0x14: u32
@@ -1203,12 +1203,12 @@ export class WICBitmapPlaneView {
 
   // 0x00: pointer
   set Format(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pbBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1850,7 +1850,7 @@ export function allocWICRawToneCurve(data?: Partial<WICRawToneCurve>): Uint8Arra
   if (data?.cPoints !== undefined) view.setUint32(0, Number(data.cPoints), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aPoints !== undefined) view.setBigUint64(8, data.aPoints === null ? 0n : BigInt(util.toPointer(data.aPoints)), true);
+  if (data?.aPoints !== undefined) view.setBigUint64(8, data.aPoints === null ? 0n : util.toBigInt(util.toPointer(data.aPoints)), true);
   return buf;
 }
 
@@ -1886,7 +1886,7 @@ export class WICRawToneCurveView {
 
   // 0x08: pointer
   set aPoints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2130,16 +2130,16 @@ export function allocWICMetadataPattern(data?: Partial<WICMetadataPattern>): Uin
   const buf = new Uint8Array(sizeofWICMetadataPattern);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : util.toBigInt(util.toPointer(data.Position)), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(util.toPointer(data.Pattern)), true);
+  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : util.toBigInt(util.toPointer(data.Pattern)), true);
   // 0x18: pointer
-  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(util.toPointer(data.Mask)), true);
+  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : util.toBigInt(util.toPointer(data.Mask)), true);
   // 0x20: pointer
-  if (data?.DataOffset !== undefined) view.setBigUint64(32, data.DataOffset === null ? 0n : BigInt(util.toPointer(data.DataOffset)), true);
+  if (data?.DataOffset !== undefined) view.setBigUint64(32, data.DataOffset === null ? 0n : util.toBigInt(util.toPointer(data.DataOffset)), true);
   return buf;
 }
 
@@ -2186,7 +2186,7 @@ export class WICMetadataPatternView {
 
   // 0x00: pointer
   set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -2198,17 +2198,17 @@ export class WICMetadataPatternView {
 
   // 0x10: pointer
   set Pattern(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Mask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set DataOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2232,14 +2232,14 @@ export function allocWICMetadataHeader(data?: Partial<WICMetadataHeader>): Uint8
   const buf = new Uint8Array(sizeofWICMetadataHeader);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : util.toBigInt(util.toPointer(data.Position)), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Header !== undefined) view.setBigUint64(16, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  if (data?.Header !== undefined) view.setBigUint64(16, data.Header === null ? 0n : util.toBigInt(util.toPointer(data.Header)), true);
   // 0x18: pointer
-  if (data?.DataOffset !== undefined) view.setBigUint64(24, data.DataOffset === null ? 0n : BigInt(util.toPointer(data.DataOffset)), true);
+  if (data?.DataOffset !== undefined) view.setBigUint64(24, data.DataOffset === null ? 0n : util.toBigInt(util.toPointer(data.DataOffset)), true);
   return buf;
 }
 
@@ -2280,7 +2280,7 @@ export class WICMetadataHeaderView {
 
   // 0x00: pointer
   set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -2292,18 +2292,18 @@ export class WICMetadataHeaderView {
 
   // 0x10: pointer
   set Header(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set DataOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

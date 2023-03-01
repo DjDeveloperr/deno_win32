@@ -52,7 +52,7 @@ export const DXGI_COLOR_SPACE_CUSTOM = `-1`;
  */
 export interface SystemInterruptTime {
   /** u64 */
-  value: Deno.PointerValue;
+  value: number | bigint;
 }
 
 export const sizeofSystemInterruptTime = 8;
@@ -61,7 +61,7 @@ export function allocSystemInterruptTime(data?: Partial<SystemInterruptTime>): U
   const buf = new Uint8Array(sizeofSystemInterruptTime);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.value !== undefined) view.setBigUint64(0, BigInt(data.value), true);
+  if (data?.value !== undefined) view.setBigUint64(0, util.toBigInt(data.value), true);
   return buf;
 }
 
@@ -76,13 +76,13 @@ export class SystemInterruptTimeView {
   }
 
   // 0x00: u64
-  get value(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get value(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set value(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set value(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -276,18 +276,18 @@ export function allocCompositionFrameDisplayInstance(data?: Partial<CompositionF
   const buf = new Uint8Array(sizeofCompositionFrameDisplayInstance);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.displayAdapterLUID !== undefined) view.setBigUint64(0, data.displayAdapterLUID === null ? 0n : BigInt(util.toPointer(data.displayAdapterLUID)), true);
+  if (data?.displayAdapterLUID !== undefined) view.setBigUint64(0, data.displayAdapterLUID === null ? 0n : util.toBigInt(util.toPointer(data.displayAdapterLUID)), true);
   // 0x08: u32
   if (data?.displayVidPnSourceId !== undefined) view.setUint32(8, Number(data.displayVidPnSourceId), true);
   // 0x0c: u32
   if (data?.displayUniqueId !== undefined) view.setUint32(12, Number(data.displayUniqueId), true);
   // 0x10: pointer
-  if (data?.renderAdapterLUID !== undefined) view.setBigUint64(16, data.renderAdapterLUID === null ? 0n : BigInt(util.toPointer(data.renderAdapterLUID)), true);
+  if (data?.renderAdapterLUID !== undefined) view.setBigUint64(16, data.renderAdapterLUID === null ? 0n : util.toBigInt(util.toPointer(data.renderAdapterLUID)), true);
   // 0x18: i32
   if (data?.instanceKind !== undefined) view.setInt32(24, Number(data.instanceKind), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.finalTransform !== undefined) view.setBigUint64(32, data.finalTransform === null ? 0n : BigInt(util.toPointer(data.finalTransform)), true);
+  if (data?.finalTransform !== undefined) view.setBigUint64(32, data.finalTransform === null ? 0n : util.toBigInt(util.toPointer(data.finalTransform)), true);
   // 0x28: u8
   if (data?.requiredCrossAdapterCopy !== undefined) view.setUint8(40, Number(data.requiredCrossAdapterCopy));
   // 0x29: i32
@@ -355,7 +355,7 @@ export class CompositionFrameDisplayInstanceView {
 
   // 0x00: pointer
   set displayAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -370,7 +370,7 @@ export class CompositionFrameDisplayInstanceView {
 
   // 0x10: pointer
   set renderAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -382,7 +382,7 @@ export class CompositionFrameDisplayInstanceView {
 
   // 0x20: pointer
   set finalTransform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u8

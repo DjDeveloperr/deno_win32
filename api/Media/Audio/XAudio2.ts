@@ -286,11 +286,11 @@ export function allocXAPO_REGISTRATION_PROPERTIES(data?: Partial<XAPO_REGISTRATI
   const buf = new Uint8Array(sizeofXAPO_REGISTRATION_PROPERTIES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(0, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  if (data?.clsid !== undefined) view.setBigUint64(0, data.clsid === null ? 0n : util.toBigInt(util.toPointer(data.clsid)), true);
   // 0x08: pointer
-  if (data?.FriendlyName !== undefined) view.setBigUint64(8, data.FriendlyName === null ? 0n : BigInt(util.toPointer(data.FriendlyName)), true);
+  if (data?.FriendlyName !== undefined) view.setBigUint64(8, data.FriendlyName === null ? 0n : util.toBigInt(util.toPointer(data.FriendlyName)), true);
   // 0x10: pointer
-  if (data?.CopyrightInfo !== undefined) view.setBigUint64(16, data.CopyrightInfo === null ? 0n : BigInt(util.toPointer(data.CopyrightInfo)), true);
+  if (data?.CopyrightInfo !== undefined) view.setBigUint64(16, data.CopyrightInfo === null ? 0n : util.toBigInt(util.toPointer(data.CopyrightInfo)), true);
   // 0x18: u32
   if (data?.MajorVersion !== undefined) view.setUint32(24, Number(data.MajorVersion), true);
   // 0x1c: u32
@@ -376,17 +376,17 @@ export class XAPO_REGISTRATION_PROPERTIESView {
 
   // 0x00: pointer
   set clsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set FriendlyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set CopyrightInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -443,7 +443,7 @@ export function allocXAPO_LOCKFORPROCESS_PARAMETERS(data?: Partial<XAPO_LOCKFORP
   const buf = new Uint8Array(sizeofXAPO_LOCKFORPROCESS_PARAMETERS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pFormat !== undefined) view.setBigUint64(0, data.pFormat === null ? 0n : BigInt(util.toPointer(data.pFormat)), true);
+  if (data?.pFormat !== undefined) view.setBigUint64(0, data.pFormat === null ? 0n : util.toBigInt(util.toPointer(data.pFormat)), true);
   // 0x08: u32
   if (data?.MaxFrameCount !== undefined) view.setUint32(8, Number(data.MaxFrameCount), true);
   // 0x0c: pad4
@@ -475,7 +475,7 @@ export class XAPO_LOCKFORPROCESS_PARAMETERSView {
 
   // 0x00: pointer
   set pFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -504,7 +504,7 @@ export function allocXAPO_PROCESS_BUFFER_PARAMETERS(data?: Partial<XAPO_PROCESS_
   const buf = new Uint8Array(sizeofXAPO_PROCESS_BUFFER_PARAMETERS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : BigInt(util.toPointer(data.pBuffer)), true);
+  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pBuffer)), true);
   // 0x08: i32
   if (data?.BufferFlags !== undefined) view.setInt32(8, Number(data.BufferFlags), true);
   // 0x0c: u32
@@ -540,7 +540,7 @@ export class XAPO_PROCESS_BUFFER_PARAMETERSView {
 
   // 0x00: pointer
   set pBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -1069,7 +1069,7 @@ export function allocXAUDIO2_SEND_DESCRIPTOR(data?: Partial<XAUDIO2_SEND_DESCRIP
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pOutputVoice !== undefined) view.setBigUint64(8, data.pOutputVoice === null ? 0n : BigInt(util.toPointer(data.pOutputVoice)), true);
+  if (data?.pOutputVoice !== undefined) view.setBigUint64(8, data.pOutputVoice === null ? 0n : util.toBigInt(util.toPointer(data.pOutputVoice)), true);
   return buf;
 }
 
@@ -1105,7 +1105,7 @@ export class XAUDIO2_SEND_DESCRIPTORView {
 
   // 0x08: pointer
   set pOutputVoice(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1128,7 +1128,7 @@ export function allocXAUDIO2_VOICE_SENDS(data?: Partial<XAUDIO2_VOICE_SENDS>): U
   if (data?.SendCount !== undefined) view.setUint32(0, Number(data.SendCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pSends !== undefined) view.setBigUint64(8, data.pSends === null ? 0n : BigInt(util.toPointer(data.pSends)), true);
+  if (data?.pSends !== undefined) view.setBigUint64(8, data.pSends === null ? 0n : util.toBigInt(util.toPointer(data.pSends)), true);
   return buf;
 }
 
@@ -1164,7 +1164,7 @@ export class XAUDIO2_VOICE_SENDSView {
 
   // 0x08: pointer
   set pSends(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1188,7 +1188,7 @@ export function allocXAUDIO2_EFFECT_DESCRIPTOR(data?: Partial<XAUDIO2_EFFECT_DES
   const buf = new Uint8Array(sizeofXAUDIO2_EFFECT_DESCRIPTOR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pEffect !== undefined) view.setBigUint64(0, data.pEffect === null ? 0n : BigInt(util.toPointer(data.pEffect)), true);
+  if (data?.pEffect !== undefined) view.setBigUint64(0, data.pEffect === null ? 0n : util.toBigInt(util.toPointer(data.pEffect)), true);
   // 0x08: i32
   if (data?.InitialState !== undefined) view.setInt32(8, Number(data.InitialState), true);
   // 0x0c: u32
@@ -1224,7 +1224,7 @@ export class XAUDIO2_EFFECT_DESCRIPTORView {
 
   // 0x00: pointer
   set pEffect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -1257,7 +1257,7 @@ export function allocXAUDIO2_EFFECT_CHAIN(data?: Partial<XAUDIO2_EFFECT_CHAIN>):
   if (data?.EffectCount !== undefined) view.setUint32(0, Number(data.EffectCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEffectDescriptors !== undefined) view.setBigUint64(8, data.pEffectDescriptors === null ? 0n : BigInt(util.toPointer(data.pEffectDescriptors)), true);
+  if (data?.pEffectDescriptors !== undefined) view.setBigUint64(8, data.pEffectDescriptors === null ? 0n : util.toBigInt(util.toPointer(data.pEffectDescriptors)), true);
   return buf;
 }
 
@@ -1293,7 +1293,7 @@ export class XAUDIO2_EFFECT_CHAINView {
 
   // 0x08: pointer
   set pEffectDescriptors(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1403,7 +1403,7 @@ export function allocXAUDIO2_BUFFER(data?: Partial<XAUDIO2_BUFFER>): Uint8Array 
   // 0x04: u32
   if (data?.AudioBytes !== undefined) view.setUint32(4, Number(data.AudioBytes), true);
   // 0x08: pointer
-  if (data?.pAudioData !== undefined) view.setBigUint64(8, data.pAudioData === null ? 0n : BigInt(util.toPointer(data.pAudioData)), true);
+  if (data?.pAudioData !== undefined) view.setBigUint64(8, data.pAudioData === null ? 0n : util.toBigInt(util.toPointer(data.pAudioData)), true);
   // 0x10: u32
   if (data?.PlayBegin !== undefined) view.setUint32(16, Number(data.PlayBegin), true);
   // 0x14: u32
@@ -1416,7 +1416,7 @@ export function allocXAUDIO2_BUFFER(data?: Partial<XAUDIO2_BUFFER>): Uint8Array 
   if (data?.LoopCount !== undefined) view.setUint32(32, Number(data.LoopCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pContext !== undefined) view.setBigUint64(40, data.pContext === null ? 0n : BigInt(util.toPointer(data.pContext)), true);
+  if (data?.pContext !== undefined) view.setBigUint64(40, data.pContext === null ? 0n : util.toBigInt(util.toPointer(data.pContext)), true);
   return buf;
 }
 
@@ -1491,7 +1491,7 @@ export class XAUDIO2_BUFFERView {
 
   // 0x08: pointer
   set pAudioData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1523,7 +1523,7 @@ export class XAUDIO2_BUFFERView {
 
   // 0x28: pointer
   set pContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1543,7 +1543,7 @@ export function allocXAUDIO2_BUFFER_WMA(data?: Partial<XAUDIO2_BUFFER_WMA>): Uin
   const buf = new Uint8Array(sizeofXAUDIO2_BUFFER_WMA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pDecodedPacketCumulativeBytes !== undefined) view.setBigUint64(0, data.pDecodedPacketCumulativeBytes === null ? 0n : BigInt(util.toPointer(data.pDecodedPacketCumulativeBytes)), true);
+  if (data?.pDecodedPacketCumulativeBytes !== undefined) view.setBigUint64(0, data.pDecodedPacketCumulativeBytes === null ? 0n : util.toBigInt(util.toPointer(data.pDecodedPacketCumulativeBytes)), true);
   // 0x08: u32
   if (data?.PacketCount !== undefined) view.setUint32(8, Number(data.PacketCount), true);
   // 0x0c: pad4
@@ -1575,7 +1575,7 @@ export class XAUDIO2_BUFFER_WMAView {
 
   // 0x00: pointer
   set pDecodedPacketCumulativeBytes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1595,7 +1595,7 @@ export interface XAUDIO2_VOICE_STATE {
   /** u32 */
   BuffersQueued: number;
   /** u64 */
-  SamplesPlayed: Deno.PointerValue;
+  SamplesPlayed: number | bigint;
 }
 
 export const sizeofXAUDIO2_VOICE_STATE = 24;
@@ -1604,12 +1604,12 @@ export function allocXAUDIO2_VOICE_STATE(data?: Partial<XAUDIO2_VOICE_STATE>): U
   const buf = new Uint8Array(sizeofXAUDIO2_VOICE_STATE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pCurrentBufferContext !== undefined) view.setBigUint64(0, data.pCurrentBufferContext === null ? 0n : BigInt(util.toPointer(data.pCurrentBufferContext)), true);
+  if (data?.pCurrentBufferContext !== undefined) view.setBigUint64(0, data.pCurrentBufferContext === null ? 0n : util.toBigInt(util.toPointer(data.pCurrentBufferContext)), true);
   // 0x08: u32
   if (data?.BuffersQueued !== undefined) view.setUint32(8, Number(data.BuffersQueued), true);
   // 0x0c: pad4
   // 0x10: u64
-  if (data?.SamplesPlayed !== undefined) view.setBigUint64(16, BigInt(data.SamplesPlayed), true);
+  if (data?.SamplesPlayed !== undefined) view.setBigUint64(16, util.toBigInt(data.SamplesPlayed), true);
   return buf;
 }
 
@@ -1637,13 +1637,13 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get SamplesPlayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get SamplesPlayed(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set pCurrentBufferContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1654,8 +1654,8 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set SamplesPlayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set SamplesPlayed(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -1664,9 +1664,9 @@ export class XAUDIO2_VOICE_STATEView {
  */
 export interface XAUDIO2_PERFORMANCE_DATA {
   /** u64 */
-  AudioCyclesSinceLastQuery: Deno.PointerValue;
+  AudioCyclesSinceLastQuery: number | bigint;
   /** u64 */
-  TotalCyclesSinceLastQuery: Deno.PointerValue;
+  TotalCyclesSinceLastQuery: number | bigint;
   /** u32 */
   MinimumCyclesPerQuantum: number;
   /** u32 */
@@ -1699,9 +1699,9 @@ export function allocXAUDIO2_PERFORMANCE_DATA(data?: Partial<XAUDIO2_PERFORMANCE
   const buf = new Uint8Array(sizeofXAUDIO2_PERFORMANCE_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.AudioCyclesSinceLastQuery !== undefined) view.setBigUint64(0, BigInt(data.AudioCyclesSinceLastQuery), true);
+  if (data?.AudioCyclesSinceLastQuery !== undefined) view.setBigUint64(0, util.toBigInt(data.AudioCyclesSinceLastQuery), true);
   // 0x08: u64
-  if (data?.TotalCyclesSinceLastQuery !== undefined) view.setBigUint64(8, BigInt(data.TotalCyclesSinceLastQuery), true);
+  if (data?.TotalCyclesSinceLastQuery !== undefined) view.setBigUint64(8, util.toBigInt(data.TotalCyclesSinceLastQuery), true);
   // 0x10: u32
   if (data?.MinimumCyclesPerQuantum !== undefined) view.setUint32(16, Number(data.MinimumCyclesPerQuantum), true);
   // 0x14: u32
@@ -1740,13 +1740,13 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  get AudioCyclesSinceLastQuery(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get AudioCyclesSinceLastQuery(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get TotalCyclesSinceLastQuery(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get TotalCyclesSinceLastQuery(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u32
@@ -1810,13 +1810,13 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  set AudioCyclesSinceLastQuery(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set AudioCyclesSinceLastQuery(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set TotalCyclesSinceLastQuery(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set TotalCyclesSinceLastQuery(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u32
@@ -2007,9 +2007,9 @@ export function allocXAUDIO2FX_VOLUMEMETER_LEVELS(data?: Partial<XAUDIO2FX_VOLUM
   const buf = new Uint8Array(sizeofXAUDIO2FX_VOLUMEMETER_LEVELS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pPeakLevels !== undefined) view.setBigUint64(0, data.pPeakLevels === null ? 0n : BigInt(util.toPointer(data.pPeakLevels)), true);
+  if (data?.pPeakLevels !== undefined) view.setBigUint64(0, data.pPeakLevels === null ? 0n : util.toBigInt(util.toPointer(data.pPeakLevels)), true);
   // 0x08: pointer
-  if (data?.pRMSLevels !== undefined) view.setBigUint64(8, data.pRMSLevels === null ? 0n : BigInt(util.toPointer(data.pRMSLevels)), true);
+  if (data?.pRMSLevels !== undefined) view.setBigUint64(8, data.pRMSLevels === null ? 0n : util.toBigInt(util.toPointer(data.pRMSLevels)), true);
   // 0x10: u32
   if (data?.ChannelCount !== undefined) view.setUint32(16, Number(data.ChannelCount), true);
   // 0x14: pad4
@@ -2047,12 +2047,12 @@ export class XAUDIO2FX_VOLUMEMETER_LEVELSView {
 
   // 0x00: pointer
   set pPeakLevels(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pRMSLevels(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -2727,7 +2727,7 @@ export function allocHrtfOrientation(data?: Partial<HrtfOrientation>): Uint8Arra
   const buf = new Uint8Array(sizeofHrtfOrientation);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.element !== undefined) view.setBigUint64(0, data.element === null ? 0n : BigInt(util.toPointer(data.element)), true);
+  if (data?.element !== undefined) view.setBigUint64(0, data.element === null ? 0n : util.toBigInt(util.toPointer(data.element)), true);
   return buf;
 }
 
@@ -2749,7 +2749,7 @@ export class HrtfOrientationView {
 
   // 0x00: pointer
   set element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2822,7 +2822,7 @@ export function allocHrtfDirectivityCardioid(data?: Partial<HrtfDirectivityCardi
   const buf = new Uint8Array(sizeofHrtfDirectivityCardioid);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.directivity !== undefined) view.setBigUint64(0, data.directivity === null ? 0n : BigInt(util.toPointer(data.directivity)), true);
+  if (data?.directivity !== undefined) view.setBigUint64(0, data.directivity === null ? 0n : util.toBigInt(util.toPointer(data.directivity)), true);
   // 0x08: f32
   if (data?.order !== undefined) view.setFloat32(8, Number(data.order), true);
   // 0x0c: pad4
@@ -2854,7 +2854,7 @@ export class HrtfDirectivityCardioidView {
 
   // 0x00: pointer
   set directivity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: f32
@@ -2883,7 +2883,7 @@ export function allocHrtfDirectivityCone(data?: Partial<HrtfDirectivityCone>): U
   const buf = new Uint8Array(sizeofHrtfDirectivityCone);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.directivity !== undefined) view.setBigUint64(0, data.directivity === null ? 0n : BigInt(util.toPointer(data.directivity)), true);
+  if (data?.directivity !== undefined) view.setBigUint64(0, data.directivity === null ? 0n : util.toBigInt(util.toPointer(data.directivity)), true);
   // 0x08: f32
   if (data?.innerAngle !== undefined) view.setFloat32(8, Number(data.innerAngle), true);
   // 0x0c: f32
@@ -2919,7 +2919,7 @@ export class HrtfDirectivityConeView {
 
   // 0x00: pointer
   set directivity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: f32
@@ -3049,9 +3049,9 @@ export function allocHrtfApoInit(data?: Partial<HrtfApoInit>): Uint8Array {
   const buf = new Uint8Array(sizeofHrtfApoInit);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.distanceDecay !== undefined) view.setBigUint64(0, data.distanceDecay === null ? 0n : BigInt(util.toPointer(data.distanceDecay)), true);
+  if (data?.distanceDecay !== undefined) view.setBigUint64(0, data.distanceDecay === null ? 0n : util.toBigInt(util.toPointer(data.distanceDecay)), true);
   // 0x08: pointer
-  if (data?.directivity !== undefined) view.setBigUint64(8, data.directivity === null ? 0n : BigInt(util.toPointer(data.directivity)), true);
+  if (data?.directivity !== undefined) view.setBigUint64(8, data.directivity === null ? 0n : util.toBigInt(util.toPointer(data.directivity)), true);
   return buf;
 }
 
@@ -3079,12 +3079,12 @@ export class HrtfApoInitView {
 
   // 0x00: pointer
   set distanceDecay(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set directivity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

@@ -109,7 +109,7 @@ export const DWMTWR_APP_COMPAT = 512;
 
 export type BOOL = number;
 
-export type HRGN = Deno.PointerValue;
+export type HRGN = number | bigint;
 
 /**
  * Windows.Win32.Graphics.Dwm.DWM_BLURBEHIND (size: 24)
@@ -135,7 +135,7 @@ export function allocDWM_BLURBEHIND(data?: Partial<DWM_BLURBEHIND>): Uint8Array 
   // 0x04: i32
   if (data?.fEnable !== undefined) view.setInt32(4, Number(data.fEnable), true);
   // 0x08: pointer
-  if (data?.hRgnBlur !== undefined) view.setBigUint64(8, data.hRgnBlur === null ? 0n : BigInt(util.toPointer(data.hRgnBlur)), true);
+  if (data?.hRgnBlur !== undefined) view.setBigUint64(8, data.hRgnBlur === null ? 0n : util.toBigInt(util.toPointer(data.hRgnBlur)), true);
   // 0x10: i32
   if (data?.fTransitionOnMaximized !== undefined) view.setInt32(16, Number(data.fTransitionOnMaximized), true);
   // 0x14: pad4
@@ -187,7 +187,7 @@ export class DWM_BLURBEHINDView {
 
   // 0x08: pointer
   set hRgnBlur(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -306,9 +306,9 @@ export function allocDWM_THUMBNAIL_PROPERTIES(data?: Partial<DWM_THUMBNAIL_PROPE
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rcDestination !== undefined) view.setBigUint64(8, data.rcDestination === null ? 0n : BigInt(util.toPointer(data.rcDestination)), true);
+  if (data?.rcDestination !== undefined) view.setBigUint64(8, data.rcDestination === null ? 0n : util.toBigInt(util.toPointer(data.rcDestination)), true);
   // 0x10: pointer
-  if (data?.rcSource !== undefined) view.setBigUint64(16, data.rcSource === null ? 0n : BigInt(util.toPointer(data.rcSource)), true);
+  if (data?.rcSource !== undefined) view.setBigUint64(16, data.rcSource === null ? 0n : util.toBigInt(util.toPointer(data.rcSource)), true);
   // 0x18: u8
   if (data?.opacity !== undefined) view.setUint8(24, Number(data.opacity));
   // 0x19: i32
@@ -374,12 +374,12 @@ export class DWM_THUMBNAIL_PROPERTIESView {
 
   // 0x08: pointer
   set rcDestination(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set rcSource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u8
@@ -462,81 +462,81 @@ export interface DWM_TIMING_INFO {
   /** Windows.Win32.Graphics.Dwm.UNSIGNED_RATIO */
   rateRefresh: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  qpcRefreshPeriod: Deno.PointerValue;
+  qpcRefreshPeriod: number | bigint;
   /** Windows.Win32.Graphics.Dwm.UNSIGNED_RATIO */
   rateCompose: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  qpcVBlank: Deno.PointerValue;
+  qpcVBlank: number | bigint;
   /** u64 */
-  cRefresh: Deno.PointerValue;
+  cRefresh: number | bigint;
   /** u32 */
   cDXRefresh: number;
   /** u64 */
-  qpcCompose: Deno.PointerValue;
+  qpcCompose: number | bigint;
   /** u64 */
-  cFrame: Deno.PointerValue;
+  cFrame: number | bigint;
   /** u32 */
   cDXPresent: number;
   /** u64 */
-  cRefreshFrame: Deno.PointerValue;
+  cRefreshFrame: number | bigint;
   /** u64 */
-  cFrameSubmitted: Deno.PointerValue;
+  cFrameSubmitted: number | bigint;
   /** u32 */
   cDXPresentSubmitted: number;
   /** u64 */
-  cFrameConfirmed: Deno.PointerValue;
+  cFrameConfirmed: number | bigint;
   /** u32 */
   cDXPresentConfirmed: number;
   /** u64 */
-  cRefreshConfirmed: Deno.PointerValue;
+  cRefreshConfirmed: number | bigint;
   /** u32 */
   cDXRefreshConfirmed: number;
   /** u64 */
-  cFramesLate: Deno.PointerValue;
+  cFramesLate: number | bigint;
   /** u32 */
   cFramesOutstanding: number;
   /** u64 */
-  cFrameDisplayed: Deno.PointerValue;
+  cFrameDisplayed: number | bigint;
   /** u64 */
-  qpcFrameDisplayed: Deno.PointerValue;
+  qpcFrameDisplayed: number | bigint;
   /** u64 */
-  cRefreshFrameDisplayed: Deno.PointerValue;
+  cRefreshFrameDisplayed: number | bigint;
   /** u64 */
-  cFrameComplete: Deno.PointerValue;
+  cFrameComplete: number | bigint;
   /** u64 */
-  qpcFrameComplete: Deno.PointerValue;
+  qpcFrameComplete: number | bigint;
   /** u64 */
-  cFramePending: Deno.PointerValue;
+  cFramePending: number | bigint;
   /** u64 */
-  qpcFramePending: Deno.PointerValue;
+  qpcFramePending: number | bigint;
   /** u64 */
-  cFramesDisplayed: Deno.PointerValue;
+  cFramesDisplayed: number | bigint;
   /** u64 */
-  cFramesComplete: Deno.PointerValue;
+  cFramesComplete: number | bigint;
   /** u64 */
-  cFramesPending: Deno.PointerValue;
+  cFramesPending: number | bigint;
   /** u64 */
-  cFramesAvailable: Deno.PointerValue;
+  cFramesAvailable: number | bigint;
   /** u64 */
-  cFramesDropped: Deno.PointerValue;
+  cFramesDropped: number | bigint;
   /** u64 */
-  cFramesMissed: Deno.PointerValue;
+  cFramesMissed: number | bigint;
   /** u64 */
-  cRefreshNextDisplayed: Deno.PointerValue;
+  cRefreshNextDisplayed: number | bigint;
   /** u64 */
-  cRefreshNextPresented: Deno.PointerValue;
+  cRefreshNextPresented: number | bigint;
   /** u64 */
-  cRefreshesDisplayed: Deno.PointerValue;
+  cRefreshesDisplayed: number | bigint;
   /** u64 */
-  cRefreshesPresented: Deno.PointerValue;
+  cRefreshesPresented: number | bigint;
   /** u64 */
-  cRefreshStarted: Deno.PointerValue;
+  cRefreshStarted: number | bigint;
   /** u64 */
-  cPixelsReceived: Deno.PointerValue;
+  cPixelsReceived: number | bigint;
   /** u64 */
-  cPixelsDrawn: Deno.PointerValue;
+  cPixelsDrawn: number | bigint;
   /** u64 */
-  cBuffersEmpty: Deno.PointerValue;
+  cBuffersEmpty: number | bigint;
 }
 
 export const sizeofDWM_TIMING_INFO = 320;
@@ -548,89 +548,89 @@ export function allocDWM_TIMING_INFO(data?: Partial<DWM_TIMING_INFO>): Uint8Arra
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rateRefresh !== undefined) view.setBigUint64(8, data.rateRefresh === null ? 0n : BigInt(util.toPointer(data.rateRefresh)), true);
+  if (data?.rateRefresh !== undefined) view.setBigUint64(8, data.rateRefresh === null ? 0n : util.toBigInt(util.toPointer(data.rateRefresh)), true);
   // 0x10: u64
-  if (data?.qpcRefreshPeriod !== undefined) view.setBigUint64(16, BigInt(data.qpcRefreshPeriod), true);
+  if (data?.qpcRefreshPeriod !== undefined) view.setBigUint64(16, util.toBigInt(data.qpcRefreshPeriod), true);
   // 0x18: pointer
-  if (data?.rateCompose !== undefined) view.setBigUint64(24, data.rateCompose === null ? 0n : BigInt(util.toPointer(data.rateCompose)), true);
+  if (data?.rateCompose !== undefined) view.setBigUint64(24, data.rateCompose === null ? 0n : util.toBigInt(util.toPointer(data.rateCompose)), true);
   // 0x20: u64
-  if (data?.qpcVBlank !== undefined) view.setBigUint64(32, BigInt(data.qpcVBlank), true);
+  if (data?.qpcVBlank !== undefined) view.setBigUint64(32, util.toBigInt(data.qpcVBlank), true);
   // 0x28: u64
-  if (data?.cRefresh !== undefined) view.setBigUint64(40, BigInt(data.cRefresh), true);
+  if (data?.cRefresh !== undefined) view.setBigUint64(40, util.toBigInt(data.cRefresh), true);
   // 0x30: u32
   if (data?.cDXRefresh !== undefined) view.setUint32(48, Number(data.cDXRefresh), true);
   // 0x34: pad4
   // 0x38: u64
-  if (data?.qpcCompose !== undefined) view.setBigUint64(56, BigInt(data.qpcCompose), true);
+  if (data?.qpcCompose !== undefined) view.setBigUint64(56, util.toBigInt(data.qpcCompose), true);
   // 0x40: u64
-  if (data?.cFrame !== undefined) view.setBigUint64(64, BigInt(data.cFrame), true);
+  if (data?.cFrame !== undefined) view.setBigUint64(64, util.toBigInt(data.cFrame), true);
   // 0x48: u32
   if (data?.cDXPresent !== undefined) view.setUint32(72, Number(data.cDXPresent), true);
   // 0x4c: pad4
   // 0x50: u64
-  if (data?.cRefreshFrame !== undefined) view.setBigUint64(80, BigInt(data.cRefreshFrame), true);
+  if (data?.cRefreshFrame !== undefined) view.setBigUint64(80, util.toBigInt(data.cRefreshFrame), true);
   // 0x58: u64
-  if (data?.cFrameSubmitted !== undefined) view.setBigUint64(88, BigInt(data.cFrameSubmitted), true);
+  if (data?.cFrameSubmitted !== undefined) view.setBigUint64(88, util.toBigInt(data.cFrameSubmitted), true);
   // 0x60: u32
   if (data?.cDXPresentSubmitted !== undefined) view.setUint32(96, Number(data.cDXPresentSubmitted), true);
   // 0x64: pad4
   // 0x68: u64
-  if (data?.cFrameConfirmed !== undefined) view.setBigUint64(104, BigInt(data.cFrameConfirmed), true);
+  if (data?.cFrameConfirmed !== undefined) view.setBigUint64(104, util.toBigInt(data.cFrameConfirmed), true);
   // 0x70: u32
   if (data?.cDXPresentConfirmed !== undefined) view.setUint32(112, Number(data.cDXPresentConfirmed), true);
   // 0x74: pad4
   // 0x78: u64
-  if (data?.cRefreshConfirmed !== undefined) view.setBigUint64(120, BigInt(data.cRefreshConfirmed), true);
+  if (data?.cRefreshConfirmed !== undefined) view.setBigUint64(120, util.toBigInt(data.cRefreshConfirmed), true);
   // 0x80: u32
   if (data?.cDXRefreshConfirmed !== undefined) view.setUint32(128, Number(data.cDXRefreshConfirmed), true);
   // 0x84: pad4
   // 0x88: u64
-  if (data?.cFramesLate !== undefined) view.setBigUint64(136, BigInt(data.cFramesLate), true);
+  if (data?.cFramesLate !== undefined) view.setBigUint64(136, util.toBigInt(data.cFramesLate), true);
   // 0x90: u32
   if (data?.cFramesOutstanding !== undefined) view.setUint32(144, Number(data.cFramesOutstanding), true);
   // 0x94: pad4
   // 0x98: u64
-  if (data?.cFrameDisplayed !== undefined) view.setBigUint64(152, BigInt(data.cFrameDisplayed), true);
+  if (data?.cFrameDisplayed !== undefined) view.setBigUint64(152, util.toBigInt(data.cFrameDisplayed), true);
   // 0xa0: u64
-  if (data?.qpcFrameDisplayed !== undefined) view.setBigUint64(160, BigInt(data.qpcFrameDisplayed), true);
+  if (data?.qpcFrameDisplayed !== undefined) view.setBigUint64(160, util.toBigInt(data.qpcFrameDisplayed), true);
   // 0xa8: u64
-  if (data?.cRefreshFrameDisplayed !== undefined) view.setBigUint64(168, BigInt(data.cRefreshFrameDisplayed), true);
+  if (data?.cRefreshFrameDisplayed !== undefined) view.setBigUint64(168, util.toBigInt(data.cRefreshFrameDisplayed), true);
   // 0xb0: u64
-  if (data?.cFrameComplete !== undefined) view.setBigUint64(176, BigInt(data.cFrameComplete), true);
+  if (data?.cFrameComplete !== undefined) view.setBigUint64(176, util.toBigInt(data.cFrameComplete), true);
   // 0xb8: u64
-  if (data?.qpcFrameComplete !== undefined) view.setBigUint64(184, BigInt(data.qpcFrameComplete), true);
+  if (data?.qpcFrameComplete !== undefined) view.setBigUint64(184, util.toBigInt(data.qpcFrameComplete), true);
   // 0xc0: u64
-  if (data?.cFramePending !== undefined) view.setBigUint64(192, BigInt(data.cFramePending), true);
+  if (data?.cFramePending !== undefined) view.setBigUint64(192, util.toBigInt(data.cFramePending), true);
   // 0xc8: u64
-  if (data?.qpcFramePending !== undefined) view.setBigUint64(200, BigInt(data.qpcFramePending), true);
+  if (data?.qpcFramePending !== undefined) view.setBigUint64(200, util.toBigInt(data.qpcFramePending), true);
   // 0xd0: u64
-  if (data?.cFramesDisplayed !== undefined) view.setBigUint64(208, BigInt(data.cFramesDisplayed), true);
+  if (data?.cFramesDisplayed !== undefined) view.setBigUint64(208, util.toBigInt(data.cFramesDisplayed), true);
   // 0xd8: u64
-  if (data?.cFramesComplete !== undefined) view.setBigUint64(216, BigInt(data.cFramesComplete), true);
+  if (data?.cFramesComplete !== undefined) view.setBigUint64(216, util.toBigInt(data.cFramesComplete), true);
   // 0xe0: u64
-  if (data?.cFramesPending !== undefined) view.setBigUint64(224, BigInt(data.cFramesPending), true);
+  if (data?.cFramesPending !== undefined) view.setBigUint64(224, util.toBigInt(data.cFramesPending), true);
   // 0xe8: u64
-  if (data?.cFramesAvailable !== undefined) view.setBigUint64(232, BigInt(data.cFramesAvailable), true);
+  if (data?.cFramesAvailable !== undefined) view.setBigUint64(232, util.toBigInt(data.cFramesAvailable), true);
   // 0xf0: u64
-  if (data?.cFramesDropped !== undefined) view.setBigUint64(240, BigInt(data.cFramesDropped), true);
+  if (data?.cFramesDropped !== undefined) view.setBigUint64(240, util.toBigInt(data.cFramesDropped), true);
   // 0xf8: u64
-  if (data?.cFramesMissed !== undefined) view.setBigUint64(248, BigInt(data.cFramesMissed), true);
+  if (data?.cFramesMissed !== undefined) view.setBigUint64(248, util.toBigInt(data.cFramesMissed), true);
   // 0x100: u64
-  if (data?.cRefreshNextDisplayed !== undefined) view.setBigUint64(256, BigInt(data.cRefreshNextDisplayed), true);
+  if (data?.cRefreshNextDisplayed !== undefined) view.setBigUint64(256, util.toBigInt(data.cRefreshNextDisplayed), true);
   // 0x108: u64
-  if (data?.cRefreshNextPresented !== undefined) view.setBigUint64(264, BigInt(data.cRefreshNextPresented), true);
+  if (data?.cRefreshNextPresented !== undefined) view.setBigUint64(264, util.toBigInt(data.cRefreshNextPresented), true);
   // 0x110: u64
-  if (data?.cRefreshesDisplayed !== undefined) view.setBigUint64(272, BigInt(data.cRefreshesDisplayed), true);
+  if (data?.cRefreshesDisplayed !== undefined) view.setBigUint64(272, util.toBigInt(data.cRefreshesDisplayed), true);
   // 0x118: u64
-  if (data?.cRefreshesPresented !== undefined) view.setBigUint64(280, BigInt(data.cRefreshesPresented), true);
+  if (data?.cRefreshesPresented !== undefined) view.setBigUint64(280, util.toBigInt(data.cRefreshesPresented), true);
   // 0x120: u64
-  if (data?.cRefreshStarted !== undefined) view.setBigUint64(288, BigInt(data.cRefreshStarted), true);
+  if (data?.cRefreshStarted !== undefined) view.setBigUint64(288, util.toBigInt(data.cRefreshStarted), true);
   // 0x128: u64
-  if (data?.cPixelsReceived !== undefined) view.setBigUint64(296, BigInt(data.cPixelsReceived), true);
+  if (data?.cPixelsReceived !== undefined) view.setBigUint64(296, util.toBigInt(data.cPixelsReceived), true);
   // 0x130: u64
-  if (data?.cPixelsDrawn !== undefined) view.setBigUint64(304, BigInt(data.cPixelsDrawn), true);
+  if (data?.cPixelsDrawn !== undefined) view.setBigUint64(304, util.toBigInt(data.cPixelsDrawn), true);
   // 0x138: u64
-  if (data?.cBuffersEmpty !== undefined) view.setBigUint64(312, BigInt(data.cBuffersEmpty), true);
+  if (data?.cBuffersEmpty !== undefined) view.setBigUint64(312, util.toBigInt(data.cBuffersEmpty), true);
   return buf;
 }
 
@@ -658,8 +658,8 @@ export class DWM_TIMING_INFOView {
   }
 
   // 0x10: u64
-  get qpcRefreshPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get qpcRefreshPeriod(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: pointer
@@ -669,13 +669,13 @@ export class DWM_TIMING_INFOView {
   }
 
   // 0x20: u64
-  get qpcVBlank(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get qpcVBlank(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u64
-  get cRefresh(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get cRefresh(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: u32
@@ -686,13 +686,13 @@ export class DWM_TIMING_INFOView {
   // 0x34: pad4
 
   // 0x38: u64
-  get qpcCompose(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get qpcCompose(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: u64
-  get cFrame(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get cFrame(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: u32
@@ -703,13 +703,13 @@ export class DWM_TIMING_INFOView {
   // 0x4c: pad4
 
   // 0x50: u64
-  get cRefreshFrame(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(80, true));
+  get cRefreshFrame(): number | bigint {
+    return this.view.getBigUint64(80, true);
   }
 
   // 0x58: u64
-  get cFrameSubmitted(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get cFrameSubmitted(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x60: u32
@@ -720,8 +720,8 @@ export class DWM_TIMING_INFOView {
   // 0x64: pad4
 
   // 0x68: u64
-  get cFrameConfirmed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(104, true));
+  get cFrameConfirmed(): number | bigint {
+    return this.view.getBigUint64(104, true);
   }
 
   // 0x70: u32
@@ -732,8 +732,8 @@ export class DWM_TIMING_INFOView {
   // 0x74: pad4
 
   // 0x78: u64
-  get cRefreshConfirmed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(120, true));
+  get cRefreshConfirmed(): number | bigint {
+    return this.view.getBigUint64(120, true);
   }
 
   // 0x80: u32
@@ -744,8 +744,8 @@ export class DWM_TIMING_INFOView {
   // 0x84: pad4
 
   // 0x88: u64
-  get cFramesLate(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(136, true));
+  get cFramesLate(): number | bigint {
+    return this.view.getBigUint64(136, true);
   }
 
   // 0x90: u32
@@ -756,108 +756,108 @@ export class DWM_TIMING_INFOView {
   // 0x94: pad4
 
   // 0x98: u64
-  get cFrameDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(152, true));
+  get cFrameDisplayed(): number | bigint {
+    return this.view.getBigUint64(152, true);
   }
 
   // 0xa0: u64
-  get qpcFrameDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(160, true));
+  get qpcFrameDisplayed(): number | bigint {
+    return this.view.getBigUint64(160, true);
   }
 
   // 0xa8: u64
-  get cRefreshFrameDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(168, true));
+  get cRefreshFrameDisplayed(): number | bigint {
+    return this.view.getBigUint64(168, true);
   }
 
   // 0xb0: u64
-  get cFrameComplete(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(176, true));
+  get cFrameComplete(): number | bigint {
+    return this.view.getBigUint64(176, true);
   }
 
   // 0xb8: u64
-  get qpcFrameComplete(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(184, true));
+  get qpcFrameComplete(): number | bigint {
+    return this.view.getBigUint64(184, true);
   }
 
   // 0xc0: u64
-  get cFramePending(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(192, true));
+  get cFramePending(): number | bigint {
+    return this.view.getBigUint64(192, true);
   }
 
   // 0xc8: u64
-  get qpcFramePending(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(200, true));
+  get qpcFramePending(): number | bigint {
+    return this.view.getBigUint64(200, true);
   }
 
   // 0xd0: u64
-  get cFramesDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(208, true));
+  get cFramesDisplayed(): number | bigint {
+    return this.view.getBigUint64(208, true);
   }
 
   // 0xd8: u64
-  get cFramesComplete(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(216, true));
+  get cFramesComplete(): number | bigint {
+    return this.view.getBigUint64(216, true);
   }
 
   // 0xe0: u64
-  get cFramesPending(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(224, true));
+  get cFramesPending(): number | bigint {
+    return this.view.getBigUint64(224, true);
   }
 
   // 0xe8: u64
-  get cFramesAvailable(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(232, true));
+  get cFramesAvailable(): number | bigint {
+    return this.view.getBigUint64(232, true);
   }
 
   // 0xf0: u64
-  get cFramesDropped(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(240, true));
+  get cFramesDropped(): number | bigint {
+    return this.view.getBigUint64(240, true);
   }
 
   // 0xf8: u64
-  get cFramesMissed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(248, true));
+  get cFramesMissed(): number | bigint {
+    return this.view.getBigUint64(248, true);
   }
 
   // 0x100: u64
-  get cRefreshNextDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(256, true));
+  get cRefreshNextDisplayed(): number | bigint {
+    return this.view.getBigUint64(256, true);
   }
 
   // 0x108: u64
-  get cRefreshNextPresented(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(264, true));
+  get cRefreshNextPresented(): number | bigint {
+    return this.view.getBigUint64(264, true);
   }
 
   // 0x110: u64
-  get cRefreshesDisplayed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(272, true));
+  get cRefreshesDisplayed(): number | bigint {
+    return this.view.getBigUint64(272, true);
   }
 
   // 0x118: u64
-  get cRefreshesPresented(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(280, true));
+  get cRefreshesPresented(): number | bigint {
+    return this.view.getBigUint64(280, true);
   }
 
   // 0x120: u64
-  get cRefreshStarted(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(288, true));
+  get cRefreshStarted(): number | bigint {
+    return this.view.getBigUint64(288, true);
   }
 
   // 0x128: u64
-  get cPixelsReceived(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(296, true));
+  get cPixelsReceived(): number | bigint {
+    return this.view.getBigUint64(296, true);
   }
 
   // 0x130: u64
-  get cPixelsDrawn(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(304, true));
+  get cPixelsDrawn(): number | bigint {
+    return this.view.getBigUint64(304, true);
   }
 
   // 0x138: u64
-  get cBuffersEmpty(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(312, true));
+  get cBuffersEmpty(): number | bigint {
+    return this.view.getBigUint64(312, true);
   }
 
   // 0x00: u32
@@ -869,27 +869,27 @@ export class DWM_TIMING_INFOView {
 
   // 0x08: pointer
   set rateRefresh(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u64
-  set qpcRefreshPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set qpcRefreshPeriod(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set rateCompose(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u64
-  set qpcVBlank(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set qpcVBlank(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u64
-  set cRefresh(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set cRefresh(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: u32
@@ -900,13 +900,13 @@ export class DWM_TIMING_INFOView {
   // 0x34: pad4
 
   // 0x38: u64
-  set qpcCompose(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set qpcCompose(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: u64
-  set cFrame(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set cFrame(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: u32
@@ -917,13 +917,13 @@ export class DWM_TIMING_INFOView {
   // 0x4c: pad4
 
   // 0x50: u64
-  set cRefreshFrame(value: Deno.PointerValue) {
-    this.view.setBigUint64(80, BigInt(value), true);
+  set cRefreshFrame(value: number | bigint) {
+    this.view.setBigUint64(80, util.toBigInt(value), true);
   }
 
   // 0x58: u64
-  set cFrameSubmitted(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set cFrameSubmitted(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 
   // 0x60: u32
@@ -934,8 +934,8 @@ export class DWM_TIMING_INFOView {
   // 0x64: pad4
 
   // 0x68: u64
-  set cFrameConfirmed(value: Deno.PointerValue) {
-    this.view.setBigUint64(104, BigInt(value), true);
+  set cFrameConfirmed(value: number | bigint) {
+    this.view.setBigUint64(104, util.toBigInt(value), true);
   }
 
   // 0x70: u32
@@ -946,8 +946,8 @@ export class DWM_TIMING_INFOView {
   // 0x74: pad4
 
   // 0x78: u64
-  set cRefreshConfirmed(value: Deno.PointerValue) {
-    this.view.setBigUint64(120, BigInt(value), true);
+  set cRefreshConfirmed(value: number | bigint) {
+    this.view.setBigUint64(120, util.toBigInt(value), true);
   }
 
   // 0x80: u32
@@ -958,8 +958,8 @@ export class DWM_TIMING_INFOView {
   // 0x84: pad4
 
   // 0x88: u64
-  set cFramesLate(value: Deno.PointerValue) {
-    this.view.setBigUint64(136, BigInt(value), true);
+  set cFramesLate(value: number | bigint) {
+    this.view.setBigUint64(136, util.toBigInt(value), true);
   }
 
   // 0x90: u32
@@ -970,108 +970,108 @@ export class DWM_TIMING_INFOView {
   // 0x94: pad4
 
   // 0x98: u64
-  set cFrameDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(152, BigInt(value), true);
+  set cFrameDisplayed(value: number | bigint) {
+    this.view.setBigUint64(152, util.toBigInt(value), true);
   }
 
   // 0xa0: u64
-  set qpcFrameDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(160, BigInt(value), true);
+  set qpcFrameDisplayed(value: number | bigint) {
+    this.view.setBigUint64(160, util.toBigInt(value), true);
   }
 
   // 0xa8: u64
-  set cRefreshFrameDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(168, BigInt(value), true);
+  set cRefreshFrameDisplayed(value: number | bigint) {
+    this.view.setBigUint64(168, util.toBigInt(value), true);
   }
 
   // 0xb0: u64
-  set cFrameComplete(value: Deno.PointerValue) {
-    this.view.setBigUint64(176, BigInt(value), true);
+  set cFrameComplete(value: number | bigint) {
+    this.view.setBigUint64(176, util.toBigInt(value), true);
   }
 
   // 0xb8: u64
-  set qpcFrameComplete(value: Deno.PointerValue) {
-    this.view.setBigUint64(184, BigInt(value), true);
+  set qpcFrameComplete(value: number | bigint) {
+    this.view.setBigUint64(184, util.toBigInt(value), true);
   }
 
   // 0xc0: u64
-  set cFramePending(value: Deno.PointerValue) {
-    this.view.setBigUint64(192, BigInt(value), true);
+  set cFramePending(value: number | bigint) {
+    this.view.setBigUint64(192, util.toBigInt(value), true);
   }
 
   // 0xc8: u64
-  set qpcFramePending(value: Deno.PointerValue) {
-    this.view.setBigUint64(200, BigInt(value), true);
+  set qpcFramePending(value: number | bigint) {
+    this.view.setBigUint64(200, util.toBigInt(value), true);
   }
 
   // 0xd0: u64
-  set cFramesDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(208, BigInt(value), true);
+  set cFramesDisplayed(value: number | bigint) {
+    this.view.setBigUint64(208, util.toBigInt(value), true);
   }
 
   // 0xd8: u64
-  set cFramesComplete(value: Deno.PointerValue) {
-    this.view.setBigUint64(216, BigInt(value), true);
+  set cFramesComplete(value: number | bigint) {
+    this.view.setBigUint64(216, util.toBigInt(value), true);
   }
 
   // 0xe0: u64
-  set cFramesPending(value: Deno.PointerValue) {
-    this.view.setBigUint64(224, BigInt(value), true);
+  set cFramesPending(value: number | bigint) {
+    this.view.setBigUint64(224, util.toBigInt(value), true);
   }
 
   // 0xe8: u64
-  set cFramesAvailable(value: Deno.PointerValue) {
-    this.view.setBigUint64(232, BigInt(value), true);
+  set cFramesAvailable(value: number | bigint) {
+    this.view.setBigUint64(232, util.toBigInt(value), true);
   }
 
   // 0xf0: u64
-  set cFramesDropped(value: Deno.PointerValue) {
-    this.view.setBigUint64(240, BigInt(value), true);
+  set cFramesDropped(value: number | bigint) {
+    this.view.setBigUint64(240, util.toBigInt(value), true);
   }
 
   // 0xf8: u64
-  set cFramesMissed(value: Deno.PointerValue) {
-    this.view.setBigUint64(248, BigInt(value), true);
+  set cFramesMissed(value: number | bigint) {
+    this.view.setBigUint64(248, util.toBigInt(value), true);
   }
 
   // 0x100: u64
-  set cRefreshNextDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(256, BigInt(value), true);
+  set cRefreshNextDisplayed(value: number | bigint) {
+    this.view.setBigUint64(256, util.toBigInt(value), true);
   }
 
   // 0x108: u64
-  set cRefreshNextPresented(value: Deno.PointerValue) {
-    this.view.setBigUint64(264, BigInt(value), true);
+  set cRefreshNextPresented(value: number | bigint) {
+    this.view.setBigUint64(264, util.toBigInt(value), true);
   }
 
   // 0x110: u64
-  set cRefreshesDisplayed(value: Deno.PointerValue) {
-    this.view.setBigUint64(272, BigInt(value), true);
+  set cRefreshesDisplayed(value: number | bigint) {
+    this.view.setBigUint64(272, util.toBigInt(value), true);
   }
 
   // 0x118: u64
-  set cRefreshesPresented(value: Deno.PointerValue) {
-    this.view.setBigUint64(280, BigInt(value), true);
+  set cRefreshesPresented(value: number | bigint) {
+    this.view.setBigUint64(280, util.toBigInt(value), true);
   }
 
   // 0x120: u64
-  set cRefreshStarted(value: Deno.PointerValue) {
-    this.view.setBigUint64(288, BigInt(value), true);
+  set cRefreshStarted(value: number | bigint) {
+    this.view.setBigUint64(288, util.toBigInt(value), true);
   }
 
   // 0x128: u64
-  set cPixelsReceived(value: Deno.PointerValue) {
-    this.view.setBigUint64(296, BigInt(value), true);
+  set cPixelsReceived(value: number | bigint) {
+    this.view.setBigUint64(296, util.toBigInt(value), true);
   }
 
   // 0x130: u64
-  set cPixelsDrawn(value: Deno.PointerValue) {
-    this.view.setBigUint64(304, BigInt(value), true);
+  set cPixelsDrawn(value: number | bigint) {
+    this.view.setBigUint64(304, util.toBigInt(value), true);
   }
 
   // 0x138: u64
-  set cBuffersEmpty(value: Deno.PointerValue) {
-    this.view.setBigUint64(312, BigInt(value), true);
+  set cBuffersEmpty(value: number | bigint) {
+    this.view.setBigUint64(312, util.toBigInt(value), true);
   }
 }
 
@@ -1084,7 +1084,7 @@ export interface DWM_PRESENT_PARAMETERS {
   /** Windows.Win32.Foundation.BOOL */
   fQueue: boolean;
   /** u64 */
-  cRefreshStart: Deno.PointerValue;
+  cRefreshStart: number | bigint;
   /** u32 */
   cBuffer: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -1107,13 +1107,13 @@ export function allocDWM_PRESENT_PARAMETERS(data?: Partial<DWM_PRESENT_PARAMETER
   // 0x04: i32
   if (data?.fQueue !== undefined) view.setInt32(4, Number(data.fQueue), true);
   // 0x08: u64
-  if (data?.cRefreshStart !== undefined) view.setBigUint64(8, BigInt(data.cRefreshStart), true);
+  if (data?.cRefreshStart !== undefined) view.setBigUint64(8, util.toBigInt(data.cRefreshStart), true);
   // 0x10: u32
   if (data?.cBuffer !== undefined) view.setUint32(16, Number(data.cBuffer), true);
   // 0x14: i32
   if (data?.fUseSourceRate !== undefined) view.setInt32(20, Number(data.fUseSourceRate), true);
   // 0x18: pointer
-  if (data?.rateSource !== undefined) view.setBigUint64(24, data.rateSource === null ? 0n : BigInt(util.toPointer(data.rateSource)), true);
+  if (data?.rateSource !== undefined) view.setBigUint64(24, data.rateSource === null ? 0n : util.toBigInt(util.toPointer(data.rateSource)), true);
   // 0x20: u32
   if (data?.cRefreshesPerFrame !== undefined) view.setUint32(32, Number(data.cRefreshesPerFrame), true);
   // 0x24: i32
@@ -1142,8 +1142,8 @@ export class DWM_PRESENT_PARAMETERSView {
   }
 
   // 0x08: u64
-  get cRefreshStart(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get cRefreshStart(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u32
@@ -1183,8 +1183,8 @@ export class DWM_PRESENT_PARAMETERSView {
   }
 
   // 0x08: u64
-  set cRefreshStart(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set cRefreshStart(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u32
@@ -1199,7 +1199,7 @@ export class DWM_PRESENT_PARAMETERSView {
 
   // 0x18: pointer
   set rateSource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -1322,15 +1322,15 @@ export class MilMatrix3x2DView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = number | bigint;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = number | bigint;
 
 export type HRESULT = number;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = number | bigint;
 
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
@@ -1592,10 +1592,10 @@ export function DwmModifyPreviousDxFrameDuration(
 }
 
 export function DwmQueryThumbnailSourceSize(
-  hThumbnail: Deno.PointerValue /* isize */,
+  hThumbnail: number | bigint /* isize */,
   pSize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdwmapi_dll.DwmQueryThumbnailSourceSize(hThumbnail, util.toPointer(pSize)));
+  return util.pointerFromFfi(libdwmapi_dll.DwmQueryThumbnailSourceSize(util.toBigInt(util.toPointer(hThumbnail)), util.toPointer(pSize)));
 }
 
 export function DwmRegisterThumbnail(
@@ -1630,16 +1630,16 @@ export function DwmSetWindowAttribute(
 }
 
 export function DwmUnregisterThumbnail(
-  hThumbnailId: Deno.PointerValue /* isize */,
+  hThumbnailId: number | bigint /* isize */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdwmapi_dll.DwmUnregisterThumbnail(hThumbnailId));
+  return util.pointerFromFfi(libdwmapi_dll.DwmUnregisterThumbnail(util.toBigInt(util.toPointer(hThumbnailId))));
 }
 
 export function DwmUpdateThumbnailProperties(
-  hThumbnailId: Deno.PointerValue /* isize */,
+  hThumbnailId: number | bigint /* isize */,
   ptnProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdwmapi_dll.DwmUpdateThumbnailProperties(hThumbnailId, util.toPointer(ptnProperties)));
+  return util.pointerFromFfi(libdwmapi_dll.DwmUpdateThumbnailProperties(util.toBigInt(util.toPointer(hThumbnailId)), util.toPointer(ptnProperties)));
 }
 
 export function DwmSetIconicThumbnail(

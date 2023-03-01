@@ -48,7 +48,7 @@ export const WEB_SOCKET_INDICATE_RECEIVE_COMPLETE_ACTION = 4;
 
 // Structs
 
-export type WEB_SOCKET_HANDLE = Deno.PointerValue;
+export type WEB_SOCKET_HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Networking.WebSocket.WEB_SOCKET_PROPERTY (size: 24)
@@ -71,7 +71,7 @@ export function allocWEB_SOCKET_PROPERTY(data?: Partial<WEB_SOCKET_PROPERTY>): U
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvValue !== undefined) view.setBigUint64(8, data.pvValue === null ? 0n : BigInt(util.toPointer(data.pvValue)), true);
+  if (data?.pvValue !== undefined) view.setBigUint64(8, data.pvValue === null ? 0n : util.toBigInt(util.toPointer(data.pvValue)), true);
   // 0x10: u32
   if (data?.ulValueSize !== undefined) view.setUint32(16, Number(data.ulValueSize), true);
   // 0x14: pad4
@@ -117,7 +117,7 @@ export class WEB_SOCKET_PROPERTYView {
 
   // 0x08: pointer
   set pvValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -152,7 +152,7 @@ export function allocWEB_SOCKET_HTTP_HEADER(data?: Partial<WEB_SOCKET_HTTP_HEADE
   // 0x00: buffer
   if (data?.pcName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pcName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.ulNameLength !== undefined) view.setUint32(8, Number(data.ulNameLength), true);
@@ -160,7 +160,7 @@ export function allocWEB_SOCKET_HTTP_HEADER(data?: Partial<WEB_SOCKET_HTTP_HEADE
   // 0x10: buffer
   if (data?.pcValue !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pcValue);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: u32
   if (data?.ulValueLength !== undefined) view.setUint32(24, Number(data.ulValueLength), true);
@@ -207,7 +207,7 @@ export class WEB_SOCKET_HTTP_HEADERView {
   // 0x00: buffer
   set pcName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -220,7 +220,7 @@ export class WEB_SOCKET_HTTP_HEADERView {
   // 0x10: buffer
   set pcValue(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: u32
@@ -247,7 +247,7 @@ export function alloc_Data_e__Struct(data?: Partial<_Data_e__Struct>): Uint8Arra
   const buf = new Uint8Array(sizeof_Data_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pbBuffer !== undefined) view.setBigUint64(0, data.pbBuffer === null ? 0n : BigInt(util.toPointer(data.pbBuffer)), true);
+  if (data?.pbBuffer !== undefined) view.setBigUint64(0, data.pbBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pbBuffer)), true);
   // 0x08: u32
   if (data?.ulBufferLength !== undefined) view.setUint32(8, Number(data.ulBufferLength), true);
   // 0x0c: pad4
@@ -279,7 +279,7 @@ export class _Data_e__StructView {
 
   // 0x00: pointer
   set pbBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -308,7 +308,7 @@ export function alloc_CloseStatus_e__Struct(data?: Partial<_CloseStatus_e__Struc
   const buf = new Uint8Array(sizeof_CloseStatus_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pbReason !== undefined) view.setBigUint64(0, data.pbReason === null ? 0n : BigInt(util.toPointer(data.pbReason)), true);
+  if (data?.pbReason !== undefined) view.setBigUint64(0, data.pbReason === null ? 0n : util.toBigInt(util.toPointer(data.pbReason)), true);
   // 0x08: u32
   if (data?.ulReasonLength !== undefined) view.setUint32(8, Number(data.ulReasonLength), true);
   // 0x0c: u16
@@ -347,7 +347,7 @@ export class _CloseStatus_e__StructView {
 
   // 0x00: pointer
   set pbReason(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -379,9 +379,9 @@ export function allocWEB_SOCKET_BUFFER(data?: Partial<WEB_SOCKET_BUFFER>): Uint8
   const buf = new Uint8Array(sizeofWEB_SOCKET_BUFFER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   // 0x08: pointer
-  if (data?.CloseStatus !== undefined) view.setBigUint64(8, data.CloseStatus === null ? 0n : BigInt(util.toPointer(data.CloseStatus)), true);
+  if (data?.CloseStatus !== undefined) view.setBigUint64(8, data.CloseStatus === null ? 0n : util.toBigInt(util.toPointer(data.CloseStatus)), true);
   return buf;
 }
 
@@ -409,12 +409,12 @@ export class WEB_SOCKET_BUFFERView {
 
   // 0x00: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set CloseStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

@@ -31,7 +31,7 @@ export function allocMAGTRANSFORM(data?: Partial<MAGTRANSFORM>): Uint8Array {
   const buf = new Uint8Array(sizeofMAGTRANSFORM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.v !== undefined) view.setBigUint64(0, data.v === null ? 0n : BigInt(util.toPointer(data.v)), true);
+  if (data?.v !== undefined) view.setBigUint64(0, data.v === null ? 0n : util.toBigInt(util.toPointer(data.v)), true);
   return buf;
 }
 
@@ -53,7 +53,7 @@ export class MAGTRANSFORMView {
 
   // 0x00: pointer
   set v(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -72,7 +72,7 @@ export interface MAGIMAGEHEADER {
   /** u32 */
   offset: number;
   /** usize */
-  cbSize: Deno.PointerValue;
+  cbSize: number | bigint;
 }
 
 export const sizeofMAGIMAGEHEADER = 32;
@@ -85,13 +85,13 @@ export function allocMAGIMAGEHEADER(data?: Partial<MAGIMAGEHEADER>): Uint8Array 
   // 0x04: u32
   if (data?.height !== undefined) view.setUint32(4, Number(data.height), true);
   // 0x08: pointer
-  if (data?.format !== undefined) view.setBigUint64(8, data.format === null ? 0n : BigInt(util.toPointer(data.format)), true);
+  if (data?.format !== undefined) view.setBigUint64(8, data.format === null ? 0n : util.toBigInt(util.toPointer(data.format)), true);
   // 0x10: u32
   if (data?.stride !== undefined) view.setUint32(16, Number(data.stride), true);
   // 0x14: u32
   if (data?.offset !== undefined) view.setUint32(20, Number(data.offset), true);
   // 0x18: usize
-  if (data?.cbSize !== undefined) view.setBigUint64(24, BigInt(data.cbSize), true);
+  if (data?.cbSize !== undefined) view.setBigUint64(24, util.toBigInt(data.cbSize), true);
   return buf;
 }
 
@@ -132,8 +132,8 @@ export class MAGIMAGEHEADERView {
   }
 
   // 0x18: usize
-  get cbSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get cbSize(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: u32
@@ -148,7 +148,7 @@ export class MAGIMAGEHEADERView {
 
   // 0x08: pointer
   set format(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -162,8 +162,8 @@ export class MAGIMAGEHEADERView {
   }
 
   // 0x18: usize
-  set cbSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set cbSize(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 
@@ -181,7 +181,7 @@ export function allocMAGCOLOREFFECT(data?: Partial<MAGCOLOREFFECT>): Uint8Array 
   const buf = new Uint8Array(sizeofMAGCOLOREFFECT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.transform !== undefined) view.setBigUint64(0, data.transform === null ? 0n : BigInt(util.toPointer(data.transform)), true);
+  if (data?.transform !== undefined) view.setBigUint64(0, data.transform === null ? 0n : util.toBigInt(util.toPointer(data.transform)), true);
   return buf;
 }
 
@@ -203,13 +203,13 @@ export class MAGCOLOREFFECTView {
 
   // 0x00: pointer
   set transform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)

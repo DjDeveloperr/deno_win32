@@ -37,7 +37,7 @@ export function allocDAV_CALLBACK_AUTH_BLOB(data?: Partial<DAV_CALLBACK_AUTH_BLO
   const buf = new Uint8Array(sizeofDAV_CALLBACK_AUTH_BLOB);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : BigInt(util.toPointer(data.pBuffer)), true);
+  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pBuffer)), true);
   // 0x08: u32
   if (data?.ulSize !== undefined) view.setUint32(8, Number(data.ulSize), true);
   // 0x0c: u32
@@ -73,7 +73,7 @@ export class DAV_CALLBACK_AUTH_BLOBView {
 
   // 0x00: pointer
   set pBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -111,7 +111,7 @@ export function allocDAV_CALLBACK_AUTH_UNP(data?: Partial<DAV_CALLBACK_AUTH_UNP>
   // 0x00: buffer
   if (data?.pszUserName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszUserName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.ulUserNameLength !== undefined) view.setUint32(8, Number(data.ulUserNameLength), true);
@@ -119,7 +119,7 @@ export function allocDAV_CALLBACK_AUTH_UNP(data?: Partial<DAV_CALLBACK_AUTH_UNP>
   // 0x10: buffer
   if (data?.pszPassword !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszPassword);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: u32
   if (data?.ulPasswordLength !== undefined) view.setUint32(24, Number(data.ulPasswordLength), true);
@@ -166,7 +166,7 @@ export class DAV_CALLBACK_AUTH_UNPView {
   // 0x00: buffer
   set pszUserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -179,7 +179,7 @@ export class DAV_CALLBACK_AUTH_UNPView {
   // 0x10: buffer
   set pszPassword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: u32
@@ -212,9 +212,9 @@ export function allocDAV_CALLBACK_CRED(data?: Partial<DAV_CALLBACK_CRED>): Uint8
   const buf = new Uint8Array(sizeofDAV_CALLBACK_CRED);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AuthBlob !== undefined) view.setBigUint64(0, data.AuthBlob === null ? 0n : BigInt(util.toPointer(data.AuthBlob)), true);
+  if (data?.AuthBlob !== undefined) view.setBigUint64(0, data.AuthBlob === null ? 0n : util.toBigInt(util.toPointer(data.AuthBlob)), true);
   // 0x08: pointer
-  if (data?.UNPBlob !== undefined) view.setBigUint64(8, data.UNPBlob === null ? 0n : BigInt(util.toPointer(data.UNPBlob)), true);
+  if (data?.UNPBlob !== undefined) view.setBigUint64(8, data.UNPBlob === null ? 0n : util.toBigInt(util.toPointer(data.UNPBlob)), true);
   // 0x10: i32
   if (data?.bAuthBlobValid !== undefined) view.setInt32(16, Number(data.bAuthBlobValid), true);
   // 0x14: i32
@@ -256,12 +256,12 @@ export class DAV_CALLBACK_CREDView {
 
   // 0x00: pointer
   set AuthBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set UNPBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -275,7 +275,7 @@ export class DAV_CALLBACK_CREDView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

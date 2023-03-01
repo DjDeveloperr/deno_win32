@@ -34,9 +34,9 @@ export function allocD3D9ON12_ARGS(data?: Partial<D3D9ON12_ARGS>): Uint8Array {
   if (data?.Enable9On12 !== undefined) view.setInt32(0, Number(data.Enable9On12), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pD3D12Device !== undefined) view.setBigUint64(8, data.pD3D12Device === null ? 0n : BigInt(util.toPointer(data.pD3D12Device)), true);
+  if (data?.pD3D12Device !== undefined) view.setBigUint64(8, data.pD3D12Device === null ? 0n : util.toBigInt(util.toPointer(data.pD3D12Device)), true);
   // 0x10: pointer
-  if (data?.ppD3D12Queues !== undefined) view.setBigUint64(16, data.ppD3D12Queues === null ? 0n : BigInt(util.toPointer(data.ppD3D12Queues)), true);
+  if (data?.ppD3D12Queues !== undefined) view.setBigUint64(16, data.ppD3D12Queues === null ? 0n : util.toBigInt(util.toPointer(data.ppD3D12Queues)), true);
   // 0x18: u32
   if (data?.NumQueues !== undefined) view.setUint32(24, Number(data.NumQueues), true);
   // 0x1c: u32
@@ -92,12 +92,12 @@ export class D3D9ON12_ARGSView {
 
   // 0x08: pointer
   set pD3D12Device(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set ppD3D12Queues(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32

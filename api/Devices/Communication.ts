@@ -270,7 +270,7 @@ export function allocMODEMDEVCAPS(data?: Partial<MODEMDEVCAPS>): Uint8Array {
   if (data?.dwMaxDCERate !== undefined) view.setUint32(72, Number(data.dwMaxDCERate), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.abVariablePortion !== undefined) view.setBigUint64(80, data.abVariablePortion === null ? 0n : BigInt(util.toPointer(data.abVariablePortion)), true);
+  if (data?.abVariablePortion !== undefined) view.setBigUint64(80, data.abVariablePortion === null ? 0n : util.toBigInt(util.toPointer(data.abVariablePortion)), true);
   return buf;
 }
 
@@ -486,7 +486,7 @@ export class MODEMDEVCAPSView {
 
   // 0x50: pointer
   set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -549,7 +549,7 @@ export function allocMODEMSETTINGS(data?: Partial<MODEMSETTINGS>): Uint8Array {
   if (data?.dwNegotiatedDCERate !== undefined) view.setUint32(40, Number(data.dwNegotiatedDCERate), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.abVariablePortion !== undefined) view.setBigUint64(48, data.abVariablePortion === null ? 0n : BigInt(util.toPointer(data.abVariablePortion)), true);
+  if (data?.abVariablePortion !== undefined) view.setBigUint64(48, data.abVariablePortion === null ? 0n : util.toBigInt(util.toPointer(data.abVariablePortion)), true);
   return buf;
 }
 
@@ -685,7 +685,7 @@ export class MODEMSETTINGSView {
 
   // 0x30: pointer
   set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -772,7 +772,7 @@ export function allocCOMMPROP(data?: Partial<COMMPROP>): Uint8Array {
   if (data?.dwProvSpec2 !== undefined) view.setUint32(56, Number(data.dwProvSpec2), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.wcProvChar !== undefined) view.setBigUint64(64, data.wcProvChar === null ? 0n : BigInt(util.toPointer(data.wcProvChar)), true);
+  if (data?.wcProvChar !== undefined) view.setBigUint64(64, data.wcProvChar === null ? 0n : util.toBigInt(util.toPointer(data.wcProvChar)), true);
   return buf;
 }
 
@@ -968,7 +968,7 @@ export class COMMPROPView {
 
   // 0x40: pointer
   set wcProvChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1420,7 +1420,7 @@ export function allocCOMMCONFIG(data?: Partial<COMMCONFIG>): Uint8Array {
   // 0x06: u16
   if (data?.wReserved !== undefined) view.setUint16(6, Number(data.wReserved), true);
   // 0x08: pointer
-  if (data?.dcb !== undefined) view.setBigUint64(8, data.dcb === null ? 0n : BigInt(util.toPointer(data.dcb)), true);
+  if (data?.dcb !== undefined) view.setBigUint64(8, data.dcb === null ? 0n : util.toBigInt(util.toPointer(data.dcb)), true);
   // 0x10: u32
   if (data?.dwProviderSubType !== undefined) view.setUint32(16, Number(data.dwProviderSubType), true);
   // 0x14: u32
@@ -1429,7 +1429,7 @@ export function allocCOMMCONFIG(data?: Partial<COMMCONFIG>): Uint8Array {
   if (data?.dwProviderSize !== undefined) view.setUint32(24, Number(data.dwProviderSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.wcProviderData !== undefined) view.setBigUint64(32, data.wcProviderData === null ? 0n : BigInt(util.toPointer(data.wcProviderData)), true);
+  if (data?.wcProviderData !== undefined) view.setBigUint64(32, data.wcProviderData === null ? 0n : util.toBigInt(util.toPointer(data.wcProviderData)), true);
   return buf;
 }
 
@@ -1504,7 +1504,7 @@ export class COMMCONFIGView {
 
   // 0x08: pointer
   set dcb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1526,11 +1526,11 @@ export class COMMCONFIGView {
 
   // 0x20: pointer
   set wcProviderData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type BOOL = number;
 
@@ -1538,7 +1538,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 // Native Libraries
 

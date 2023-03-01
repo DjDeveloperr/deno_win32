@@ -9,9 +9,9 @@ import * as util from "../../util.ts";
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -20,9 +20,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -37,23 +37,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -73,9 +73,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -103,25 +103,25 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.System.IO.OVERLAPPED (size: 32)
  */
 export interface OVERLAPPED {
   /** usize */
-  Internal: Deno.PointerValue;
+  Internal: number | bigint;
   /** usize */
-  InternalHigh: Deno.PointerValue;
+  InternalHigh: number | bigint;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.HANDLE */
@@ -134,13 +134,13 @@ export function allocOVERLAPPED(data?: Partial<OVERLAPPED>): Uint8Array {
   const buf = new Uint8Array(sizeofOVERLAPPED);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Internal !== undefined) view.setBigUint64(0, BigInt(data.Internal), true);
+  if (data?.Internal !== undefined) view.setBigUint64(0, util.toBigInt(data.Internal), true);
   // 0x08: usize
-  if (data?.InternalHigh !== undefined) view.setBigUint64(8, BigInt(data.InternalHigh), true);
+  if (data?.InternalHigh !== undefined) view.setBigUint64(8, util.toBigInt(data.InternalHigh), true);
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x18: pointer
-  if (data?.hEvent !== undefined) view.setBigUint64(24, data.hEvent === null ? 0n : BigInt(util.toPointer(data.hEvent)), true);
+  if (data?.hEvent !== undefined) view.setBigUint64(24, data.hEvent === null ? 0n : util.toBigInt(util.toPointer(data.hEvent)), true);
   return buf;
 }
 
@@ -155,13 +155,13 @@ export class OVERLAPPEDView {
   }
 
   // 0x00: usize
-  get Internal(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Internal(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: usize
-  get InternalHigh(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get InternalHigh(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -177,23 +177,23 @@ export class OVERLAPPEDView {
   }
 
   // 0x00: usize
-  set Internal(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Internal(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: usize
-  set InternalHigh(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set InternalHigh(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set hEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -202,11 +202,11 @@ export class OVERLAPPEDView {
  */
 export interface OVERLAPPED_ENTRY {
   /** usize */
-  lpCompletionKey: Deno.PointerValue;
+  lpCompletionKey: number | bigint;
   /** ptr */
   lpOverlapped: Deno.PointerValue | Uint8Array | null;
   /** usize */
-  Internal: Deno.PointerValue;
+  Internal: number | bigint;
   /** u32 */
   dwNumberOfBytesTransferred: number;
 }
@@ -217,11 +217,11 @@ export function allocOVERLAPPED_ENTRY(data?: Partial<OVERLAPPED_ENTRY>): Uint8Ar
   const buf = new Uint8Array(sizeofOVERLAPPED_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.lpCompletionKey !== undefined) view.setBigUint64(0, BigInt(data.lpCompletionKey), true);
+  if (data?.lpCompletionKey !== undefined) view.setBigUint64(0, util.toBigInt(data.lpCompletionKey), true);
   // 0x08: pointer
-  if (data?.lpOverlapped !== undefined) view.setBigUint64(8, data.lpOverlapped === null ? 0n : BigInt(util.toPointer(data.lpOverlapped)), true);
+  if (data?.lpOverlapped !== undefined) view.setBigUint64(8, data.lpOverlapped === null ? 0n : util.toBigInt(util.toPointer(data.lpOverlapped)), true);
   // 0x10: usize
-  if (data?.Internal !== undefined) view.setBigUint64(16, BigInt(data.Internal), true);
+  if (data?.Internal !== undefined) view.setBigUint64(16, util.toBigInt(data.Internal), true);
   // 0x18: u32
   if (data?.dwNumberOfBytesTransferred !== undefined) view.setUint32(24, Number(data.dwNumberOfBytesTransferred), true);
   // 0x1c: pad4
@@ -239,8 +239,8 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x00: usize
-  get lpCompletionKey(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get lpCompletionKey(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -250,8 +250,8 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x10: usize
-  get Internal(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Internal(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -262,18 +262,18 @@ export class OVERLAPPED_ENTRYView {
   // 0x1c: pad4
 
   // 0x00: usize
-  set lpCompletionKey(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set lpCompletionKey(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set lpOverlapped(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set Internal(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Internal(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -348,10 +348,10 @@ try {
 export function CreateIoCompletionPort(
   FileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ExistingCompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  CompletionKey: Deno.PointerValue /* usize */,
+  CompletionKey: number | bigint /* usize */,
   NumberOfConcurrentThreads: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), util.toBigInt(util.toPointer(CompletionKey)), NumberOfConcurrentThreads));
 }
 
 export function GetQueuedCompletionStatus(
@@ -378,10 +378,10 @@ export function GetQueuedCompletionStatusEx(
 export function PostQueuedCompletionStatus(
   CompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   dwNumberOfBytesTransferred: number /* u32 */,
-  dwCompletionKey: Deno.PointerValue /* usize */,
+  dwCompletionKey: number | bigint /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, dwCompletionKey, util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, util.toBigInt(util.toPointer(dwCompletionKey)), util.toPointer(lpOverlapped)));
 }
 
 export function DeviceIoControl(

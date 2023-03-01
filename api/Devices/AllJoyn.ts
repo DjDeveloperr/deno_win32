@@ -514,13 +514,13 @@ export interface alljoyn_certificateid {
   /** ptr */
   serial: Deno.PointerValue | Uint8Array | null;
   /** usize */
-  serialLen: Deno.PointerValue;
+  serialLen: number | bigint;
   /** ptr */
   issuerPublicKey: Deno.PointerValue | Uint8Array | null;
   /** ptr */
   issuerAki: Deno.PointerValue | Uint8Array | null;
   /** usize */
-  issuerAkiLen: Deno.PointerValue;
+  issuerAkiLen: number | bigint;
 }
 
 export const sizeofAlljoyn_certificateid = 40;
@@ -529,15 +529,15 @@ export function allocAlljoyn_certificateid(data?: Partial<alljoyn_certificateid>
   const buf = new Uint8Array(sizeofAlljoyn_certificateid);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.serial !== undefined) view.setBigUint64(0, data.serial === null ? 0n : BigInt(util.toPointer(data.serial)), true);
+  if (data?.serial !== undefined) view.setBigUint64(0, data.serial === null ? 0n : util.toBigInt(util.toPointer(data.serial)), true);
   // 0x08: usize
-  if (data?.serialLen !== undefined) view.setBigUint64(8, BigInt(data.serialLen), true);
+  if (data?.serialLen !== undefined) view.setBigUint64(8, util.toBigInt(data.serialLen), true);
   // 0x10: pointer
-  if (data?.issuerPublicKey !== undefined) view.setBigUint64(16, data.issuerPublicKey === null ? 0n : BigInt(util.toPointer(data.issuerPublicKey)), true);
+  if (data?.issuerPublicKey !== undefined) view.setBigUint64(16, data.issuerPublicKey === null ? 0n : util.toBigInt(util.toPointer(data.issuerPublicKey)), true);
   // 0x18: pointer
-  if (data?.issuerAki !== undefined) view.setBigUint64(24, data.issuerAki === null ? 0n : BigInt(util.toPointer(data.issuerAki)), true);
+  if (data?.issuerAki !== undefined) view.setBigUint64(24, data.issuerAki === null ? 0n : util.toBigInt(util.toPointer(data.issuerAki)), true);
   // 0x20: usize
-  if (data?.issuerAkiLen !== undefined) view.setBigUint64(32, BigInt(data.issuerAkiLen), true);
+  if (data?.issuerAkiLen !== undefined) view.setBigUint64(32, util.toBigInt(data.issuerAkiLen), true);
   return buf;
 }
 
@@ -558,8 +558,8 @@ export class alljoyn_certificateidView {
   }
 
   // 0x08: usize
-  get serialLen(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get serialLen(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -575,33 +575,33 @@ export class alljoyn_certificateidView {
   }
 
   // 0x20: usize
-  get issuerAkiLen(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get issuerAkiLen(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x00: pointer
   set serial(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: usize
-  set serialLen(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set serialLen(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set issuerPublicKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set issuerAki(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: usize
-  set issuerAkiLen(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set issuerAkiLen(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 }
 
@@ -610,7 +610,7 @@ export class alljoyn_certificateidView {
  */
 export interface alljoyn_certificateidarray {
   /** usize */
-  count: Deno.PointerValue;
+  count: number | bigint;
   /** ptr */
   ids: Deno.PointerValue | Uint8Array | null;
 }
@@ -621,9 +621,9 @@ export function allocAlljoyn_certificateidarray(data?: Partial<alljoyn_certifica
   const buf = new Uint8Array(sizeofAlljoyn_certificateidarray);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.count !== undefined) view.setBigUint64(0, BigInt(data.count), true);
+  if (data?.count !== undefined) view.setBigUint64(0, util.toBigInt(data.count), true);
   // 0x08: pointer
-  if (data?.ids !== undefined) view.setBigUint64(8, data.ids === null ? 0n : BigInt(util.toPointer(data.ids)), true);
+  if (data?.ids !== undefined) view.setBigUint64(8, data.ids === null ? 0n : util.toBigInt(util.toPointer(data.ids)), true);
   return buf;
 }
 
@@ -638,8 +638,8 @@ export class alljoyn_certificateidarrayView {
   }
 
   // 0x00: usize
-  get count(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get count(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -649,13 +649,13 @@ export class alljoyn_certificateidarrayView {
   }
 
   // 0x00: usize
-  set count(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set count(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set ids(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -664,7 +664,7 @@ export class alljoyn_certificateidarrayView {
  */
 export interface alljoyn_manifestarray {
   /** usize */
-  count: Deno.PointerValue;
+  count: number | bigint;
   /** ptr */
   xmls: Deno.PointerValue | Uint8Array | null;
 }
@@ -675,9 +675,9 @@ export function allocAlljoyn_manifestarray(data?: Partial<alljoyn_manifestarray>
   const buf = new Uint8Array(sizeofAlljoyn_manifestarray);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.count !== undefined) view.setBigUint64(0, BigInt(data.count), true);
+  if (data?.count !== undefined) view.setBigUint64(0, util.toBigInt(data.count), true);
   // 0x08: pointer
-  if (data?.xmls !== undefined) view.setBigUint64(8, data.xmls === null ? 0n : BigInt(util.toPointer(data.xmls)), true);
+  if (data?.xmls !== undefined) view.setBigUint64(8, data.xmls === null ? 0n : util.toBigInt(util.toPointer(data.xmls)), true);
   return buf;
 }
 
@@ -692,8 +692,8 @@ export class alljoyn_manifestarrayView {
   }
 
   // 0x00: usize
-  get count(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get count(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -703,13 +703,13 @@ export class alljoyn_manifestarrayView {
   }
 
   // 0x00: usize
-  set count(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set count(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set xmls(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -727,7 +727,7 @@ export function allocAlljoyn_applicationstatelistener_callbacks(data?: Partial<a
   const buf = new Uint8Array(sizeofAlljoyn_applicationstatelistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.state !== undefined) view.setBigUint64(0, data.state === null ? 0n : BigInt(util.toPointer(data.state)), true);
+  if (data?.state !== undefined) view.setBigUint64(0, data.state === null ? 0n : util.toBigInt(util.toPointer(data.state)), true);
   return buf;
 }
 
@@ -749,7 +749,7 @@ export class alljoyn_applicationstatelistener_callbacksView {
 
   // 0x00: pointer
   set state(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -769,9 +769,9 @@ export function allocAlljoyn_keystorelistener_callbacks(data?: Partial<alljoyn_k
   const buf = new Uint8Array(sizeofAlljoyn_keystorelistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.load_request !== undefined) view.setBigUint64(0, data.load_request === null ? 0n : BigInt(util.toPointer(data.load_request)), true);
+  if (data?.load_request !== undefined) view.setBigUint64(0, data.load_request === null ? 0n : util.toBigInt(util.toPointer(data.load_request)), true);
   // 0x08: pointer
-  if (data?.store_request !== undefined) view.setBigUint64(8, data.store_request === null ? 0n : BigInt(util.toPointer(data.store_request)), true);
+  if (data?.store_request !== undefined) view.setBigUint64(8, data.store_request === null ? 0n : util.toBigInt(util.toPointer(data.store_request)), true);
   return buf;
 }
 
@@ -799,12 +799,12 @@ export class alljoyn_keystorelistener_callbacksView {
 
   // 0x00: pointer
   set load_request(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set store_request(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -828,13 +828,13 @@ export function allocAlljoyn_keystorelistener_with_synchronization_callbacks(dat
   const buf = new Uint8Array(sizeofAlljoyn_keystorelistener_with_synchronization_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.load_request !== undefined) view.setBigUint64(0, data.load_request === null ? 0n : BigInt(util.toPointer(data.load_request)), true);
+  if (data?.load_request !== undefined) view.setBigUint64(0, data.load_request === null ? 0n : util.toBigInt(util.toPointer(data.load_request)), true);
   // 0x08: pointer
-  if (data?.store_request !== undefined) view.setBigUint64(8, data.store_request === null ? 0n : BigInt(util.toPointer(data.store_request)), true);
+  if (data?.store_request !== undefined) view.setBigUint64(8, data.store_request === null ? 0n : util.toBigInt(util.toPointer(data.store_request)), true);
   // 0x10: pointer
-  if (data?.acquire_exclusive_lock !== undefined) view.setBigUint64(16, data.acquire_exclusive_lock === null ? 0n : BigInt(util.toPointer(data.acquire_exclusive_lock)), true);
+  if (data?.acquire_exclusive_lock !== undefined) view.setBigUint64(16, data.acquire_exclusive_lock === null ? 0n : util.toBigInt(util.toPointer(data.acquire_exclusive_lock)), true);
   // 0x18: pointer
-  if (data?.release_exclusive_lock !== undefined) view.setBigUint64(24, data.release_exclusive_lock === null ? 0n : BigInt(util.toPointer(data.release_exclusive_lock)), true);
+  if (data?.release_exclusive_lock !== undefined) view.setBigUint64(24, data.release_exclusive_lock === null ? 0n : util.toBigInt(util.toPointer(data.release_exclusive_lock)), true);
   return buf;
 }
 
@@ -874,22 +874,22 @@ export class alljoyn_keystorelistener_with_synchronization_callbacksView {
 
   // 0x00: pointer
   set load_request(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set store_request(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set acquire_exclusive_lock(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set release_exclusive_lock(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -913,13 +913,13 @@ export function allocAlljoyn_authlistener_callbacks(data?: Partial<alljoyn_authl
   const buf = new Uint8Array(sizeofAlljoyn_authlistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.request_credentials !== undefined) view.setBigUint64(0, data.request_credentials === null ? 0n : BigInt(util.toPointer(data.request_credentials)), true);
+  if (data?.request_credentials !== undefined) view.setBigUint64(0, data.request_credentials === null ? 0n : util.toBigInt(util.toPointer(data.request_credentials)), true);
   // 0x08: pointer
-  if (data?.verify_credentials !== undefined) view.setBigUint64(8, data.verify_credentials === null ? 0n : BigInt(util.toPointer(data.verify_credentials)), true);
+  if (data?.verify_credentials !== undefined) view.setBigUint64(8, data.verify_credentials === null ? 0n : util.toBigInt(util.toPointer(data.verify_credentials)), true);
   // 0x10: pointer
-  if (data?.security_violation !== undefined) view.setBigUint64(16, data.security_violation === null ? 0n : BigInt(util.toPointer(data.security_violation)), true);
+  if (data?.security_violation !== undefined) view.setBigUint64(16, data.security_violation === null ? 0n : util.toBigInt(util.toPointer(data.security_violation)), true);
   // 0x18: pointer
-  if (data?.authentication_complete !== undefined) view.setBigUint64(24, data.authentication_complete === null ? 0n : BigInt(util.toPointer(data.authentication_complete)), true);
+  if (data?.authentication_complete !== undefined) view.setBigUint64(24, data.authentication_complete === null ? 0n : util.toBigInt(util.toPointer(data.authentication_complete)), true);
   return buf;
 }
 
@@ -959,22 +959,22 @@ export class alljoyn_authlistener_callbacksView {
 
   // 0x00: pointer
   set request_credentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set verify_credentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set security_violation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set authentication_complete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -998,13 +998,13 @@ export function allocAlljoyn_authlistenerasync_callbacks(data?: Partial<alljoyn_
   const buf = new Uint8Array(sizeofAlljoyn_authlistenerasync_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.request_credentials !== undefined) view.setBigUint64(0, data.request_credentials === null ? 0n : BigInt(util.toPointer(data.request_credentials)), true);
+  if (data?.request_credentials !== undefined) view.setBigUint64(0, data.request_credentials === null ? 0n : util.toBigInt(util.toPointer(data.request_credentials)), true);
   // 0x08: pointer
-  if (data?.verify_credentials !== undefined) view.setBigUint64(8, data.verify_credentials === null ? 0n : BigInt(util.toPointer(data.verify_credentials)), true);
+  if (data?.verify_credentials !== undefined) view.setBigUint64(8, data.verify_credentials === null ? 0n : util.toBigInt(util.toPointer(data.verify_credentials)), true);
   // 0x10: pointer
-  if (data?.security_violation !== undefined) view.setBigUint64(16, data.security_violation === null ? 0n : BigInt(util.toPointer(data.security_violation)), true);
+  if (data?.security_violation !== undefined) view.setBigUint64(16, data.security_violation === null ? 0n : util.toBigInt(util.toPointer(data.security_violation)), true);
   // 0x18: pointer
-  if (data?.authentication_complete !== undefined) view.setBigUint64(24, data.authentication_complete === null ? 0n : BigInt(util.toPointer(data.authentication_complete)), true);
+  if (data?.authentication_complete !== undefined) view.setBigUint64(24, data.authentication_complete === null ? 0n : util.toBigInt(util.toPointer(data.authentication_complete)), true);
   return buf;
 }
 
@@ -1044,22 +1044,22 @@ export class alljoyn_authlistenerasync_callbacksView {
 
   // 0x00: pointer
   set request_credentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set verify_credentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set security_violation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set authentication_complete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1091,21 +1091,21 @@ export function allocAlljoyn_buslistener_callbacks(data?: Partial<alljoyn_buslis
   const buf = new Uint8Array(sizeofAlljoyn_buslistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.listener_registered !== undefined) view.setBigUint64(0, data.listener_registered === null ? 0n : BigInt(util.toPointer(data.listener_registered)), true);
+  if (data?.listener_registered !== undefined) view.setBigUint64(0, data.listener_registered === null ? 0n : util.toBigInt(util.toPointer(data.listener_registered)), true);
   // 0x08: pointer
-  if (data?.listener_unregistered !== undefined) view.setBigUint64(8, data.listener_unregistered === null ? 0n : BigInt(util.toPointer(data.listener_unregistered)), true);
+  if (data?.listener_unregistered !== undefined) view.setBigUint64(8, data.listener_unregistered === null ? 0n : util.toBigInt(util.toPointer(data.listener_unregistered)), true);
   // 0x10: pointer
-  if (data?.found_advertised_name !== undefined) view.setBigUint64(16, data.found_advertised_name === null ? 0n : BigInt(util.toPointer(data.found_advertised_name)), true);
+  if (data?.found_advertised_name !== undefined) view.setBigUint64(16, data.found_advertised_name === null ? 0n : util.toBigInt(util.toPointer(data.found_advertised_name)), true);
   // 0x18: pointer
-  if (data?.lost_advertised_name !== undefined) view.setBigUint64(24, data.lost_advertised_name === null ? 0n : BigInt(util.toPointer(data.lost_advertised_name)), true);
+  if (data?.lost_advertised_name !== undefined) view.setBigUint64(24, data.lost_advertised_name === null ? 0n : util.toBigInt(util.toPointer(data.lost_advertised_name)), true);
   // 0x20: pointer
-  if (data?.name_owner_changed !== undefined) view.setBigUint64(32, data.name_owner_changed === null ? 0n : BigInt(util.toPointer(data.name_owner_changed)), true);
+  if (data?.name_owner_changed !== undefined) view.setBigUint64(32, data.name_owner_changed === null ? 0n : util.toBigInt(util.toPointer(data.name_owner_changed)), true);
   // 0x28: pointer
-  if (data?.bus_stopping !== undefined) view.setBigUint64(40, data.bus_stopping === null ? 0n : BigInt(util.toPointer(data.bus_stopping)), true);
+  if (data?.bus_stopping !== undefined) view.setBigUint64(40, data.bus_stopping === null ? 0n : util.toBigInt(util.toPointer(data.bus_stopping)), true);
   // 0x30: pointer
-  if (data?.bus_disconnected !== undefined) view.setBigUint64(48, data.bus_disconnected === null ? 0n : BigInt(util.toPointer(data.bus_disconnected)), true);
+  if (data?.bus_disconnected !== undefined) view.setBigUint64(48, data.bus_disconnected === null ? 0n : util.toBigInt(util.toPointer(data.bus_disconnected)), true);
   // 0x38: pointer
-  if (data?.property_changed !== undefined) view.setBigUint64(56, data.property_changed === null ? 0n : BigInt(util.toPointer(data.property_changed)), true);
+  if (data?.property_changed !== undefined) view.setBigUint64(56, data.property_changed === null ? 0n : util.toBigInt(util.toPointer(data.property_changed)), true);
   return buf;
 }
 
@@ -1169,46 +1169,46 @@ export class alljoyn_buslistener_callbacksView {
 
   // 0x00: pointer
   set listener_registered(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set listener_unregistered(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set found_advertised_name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set lost_advertised_name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set name_owner_changed(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set bus_stopping(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set bus_disconnected(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set property_changed(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type alljoyn_interfacedescription = Deno.PointerValue;
+export type alljoyn_interfacedescription = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -1238,32 +1238,32 @@ export function allocAlljoyn_interfacedescription_member(data?: Partial<alljoyn_
   const buf = new Uint8Array(sizeofAlljoyn_interfacedescription_member);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.iface !== undefined) view.setBigUint64(0, data.iface === null ? 0n : BigInt(util.toPointer(data.iface)), true);
+  if (data?.iface !== undefined) view.setBigUint64(0, data.iface === null ? 0n : util.toBigInt(util.toPointer(data.iface)), true);
   // 0x08: i32
   if (data?.memberType !== undefined) view.setInt32(8, Number(data.memberType), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.name !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.signature !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.signature);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.returnSignature !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.returnSignature);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.argNames !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.argNames);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: pointer
-  if (data?.internal_member !== undefined) view.setBigUint64(48, data.internal_member === null ? 0n : BigInt(util.toPointer(data.internal_member)), true);
+  if (data?.internal_member !== undefined) view.setBigUint64(48, data.internal_member === null ? 0n : util.toBigInt(util.toPointer(data.internal_member)), true);
   return buf;
 }
 
@@ -1322,7 +1322,7 @@ export class alljoyn_interfacedescription_memberView {
 
   // 0x00: pointer
   set iface(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -1335,30 +1335,30 @@ export class alljoyn_interfacedescription_memberView {
   // 0x10: buffer
   set name(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set signature(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set returnSignature(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set argNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: pointer
   set internal_member(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1384,18 +1384,18 @@ export function allocAlljoyn_interfacedescription_property(data?: Partial<alljoy
   // 0x00: buffer
   if (data?.name !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.signature !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.signature);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u8
   if (data?.access !== undefined) view.setUint8(16, Number(data.access));
   // 0x11: pad7
   // 0x18: pointer
-  if (data?.internal_property !== undefined) view.setBigUint64(24, data.internal_property === null ? 0n : BigInt(util.toPointer(data.internal_property)), true);
+  if (data?.internal_property !== undefined) view.setBigUint64(24, data.internal_property === null ? 0n : util.toBigInt(util.toPointer(data.internal_property)), true);
   return buf;
 }
 
@@ -1437,13 +1437,13 @@ export class alljoyn_interfacedescription_propertyView {
   // 0x00: buffer
   set name(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set signature(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u8
@@ -1455,7 +1455,7 @@ export class alljoyn_interfacedescription_propertyView {
 
   // 0x18: pointer
   set internal_property(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1479,13 +1479,13 @@ export function allocAlljoyn_busobject_callbacks(data?: Partial<alljoyn_busobjec
   const buf = new Uint8Array(sizeofAlljoyn_busobject_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.property_get !== undefined) view.setBigUint64(0, data.property_get === null ? 0n : BigInt(util.toPointer(data.property_get)), true);
+  if (data?.property_get !== undefined) view.setBigUint64(0, data.property_get === null ? 0n : util.toBigInt(util.toPointer(data.property_get)), true);
   // 0x08: pointer
-  if (data?.property_set !== undefined) view.setBigUint64(8, data.property_set === null ? 0n : BigInt(util.toPointer(data.property_set)), true);
+  if (data?.property_set !== undefined) view.setBigUint64(8, data.property_set === null ? 0n : util.toBigInt(util.toPointer(data.property_set)), true);
   // 0x10: pointer
-  if (data?.object_registered !== undefined) view.setBigUint64(16, data.object_registered === null ? 0n : BigInt(util.toPointer(data.object_registered)), true);
+  if (data?.object_registered !== undefined) view.setBigUint64(16, data.object_registered === null ? 0n : util.toBigInt(util.toPointer(data.object_registered)), true);
   // 0x18: pointer
-  if (data?.object_unregistered !== undefined) view.setBigUint64(24, data.object_unregistered === null ? 0n : BigInt(util.toPointer(data.object_unregistered)), true);
+  if (data?.object_unregistered !== undefined) view.setBigUint64(24, data.object_unregistered === null ? 0n : util.toBigInt(util.toPointer(data.object_unregistered)), true);
   return buf;
 }
 
@@ -1525,22 +1525,22 @@ export class alljoyn_busobject_callbacksView {
 
   // 0x00: pointer
   set property_get(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set property_set(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set object_registered(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set object_unregistered(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1560,9 +1560,9 @@ export function allocAlljoyn_busobject_methodentry(data?: Partial<alljoyn_busobj
   const buf = new Uint8Array(sizeofAlljoyn_busobject_methodentry);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.member !== undefined) view.setBigUint64(0, data.member === null ? 0n : BigInt(util.toPointer(data.member)), true);
+  if (data?.member !== undefined) view.setBigUint64(0, data.member === null ? 0n : util.toBigInt(util.toPointer(data.member)), true);
   // 0x08: pointer
-  if (data?.method_handler !== undefined) view.setBigUint64(8, data.method_handler === null ? 0n : BigInt(util.toPointer(data.method_handler)), true);
+  if (data?.method_handler !== undefined) view.setBigUint64(8, data.method_handler === null ? 0n : util.toBigInt(util.toPointer(data.method_handler)), true);
   return buf;
 }
 
@@ -1590,12 +1590,12 @@ export class alljoyn_busobject_methodentryView {
 
   // 0x00: pointer
   set member(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set method_handler(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1619,13 +1619,13 @@ export function allocAlljoyn_permissionconfigurationlistener_callbacks(data?: Pa
   const buf = new Uint8Array(sizeofAlljoyn_permissionconfigurationlistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.factory_reset !== undefined) view.setBigUint64(0, data.factory_reset === null ? 0n : BigInt(util.toPointer(data.factory_reset)), true);
+  if (data?.factory_reset !== undefined) view.setBigUint64(0, data.factory_reset === null ? 0n : util.toBigInt(util.toPointer(data.factory_reset)), true);
   // 0x08: pointer
-  if (data?.policy_changed !== undefined) view.setBigUint64(8, data.policy_changed === null ? 0n : BigInt(util.toPointer(data.policy_changed)), true);
+  if (data?.policy_changed !== undefined) view.setBigUint64(8, data.policy_changed === null ? 0n : util.toBigInt(util.toPointer(data.policy_changed)), true);
   // 0x10: pointer
-  if (data?.start_management !== undefined) view.setBigUint64(16, data.start_management === null ? 0n : BigInt(util.toPointer(data.start_management)), true);
+  if (data?.start_management !== undefined) view.setBigUint64(16, data.start_management === null ? 0n : util.toBigInt(util.toPointer(data.start_management)), true);
   // 0x18: pointer
-  if (data?.end_management !== undefined) view.setBigUint64(24, data.end_management === null ? 0n : BigInt(util.toPointer(data.end_management)), true);
+  if (data?.end_management !== undefined) view.setBigUint64(24, data.end_management === null ? 0n : util.toBigInt(util.toPointer(data.end_management)), true);
   return buf;
 }
 
@@ -1665,22 +1665,22 @@ export class alljoyn_permissionconfigurationlistener_callbacksView {
 
   // 0x00: pointer
   set factory_reset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set policy_changed(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set start_management(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set end_management(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1702,11 +1702,11 @@ export function allocAlljoyn_sessionlistener_callbacks(data?: Partial<alljoyn_se
   const buf = new Uint8Array(sizeofAlljoyn_sessionlistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.session_lost !== undefined) view.setBigUint64(0, data.session_lost === null ? 0n : BigInt(util.toPointer(data.session_lost)), true);
+  if (data?.session_lost !== undefined) view.setBigUint64(0, data.session_lost === null ? 0n : util.toBigInt(util.toPointer(data.session_lost)), true);
   // 0x08: pointer
-  if (data?.session_member_added !== undefined) view.setBigUint64(8, data.session_member_added === null ? 0n : BigInt(util.toPointer(data.session_member_added)), true);
+  if (data?.session_member_added !== undefined) view.setBigUint64(8, data.session_member_added === null ? 0n : util.toBigInt(util.toPointer(data.session_member_added)), true);
   // 0x10: pointer
-  if (data?.session_member_removed !== undefined) view.setBigUint64(16, data.session_member_removed === null ? 0n : BigInt(util.toPointer(data.session_member_removed)), true);
+  if (data?.session_member_removed !== undefined) view.setBigUint64(16, data.session_member_removed === null ? 0n : util.toBigInt(util.toPointer(data.session_member_removed)), true);
   return buf;
 }
 
@@ -1740,17 +1740,17 @@ export class alljoyn_sessionlistener_callbacksView {
 
   // 0x00: pointer
   set session_lost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set session_member_added(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set session_member_removed(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1770,9 +1770,9 @@ export function allocAlljoyn_sessionportlistener_callbacks(data?: Partial<alljoy
   const buf = new Uint8Array(sizeofAlljoyn_sessionportlistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.accept_session_joiner !== undefined) view.setBigUint64(0, data.accept_session_joiner === null ? 0n : BigInt(util.toPointer(data.accept_session_joiner)), true);
+  if (data?.accept_session_joiner !== undefined) view.setBigUint64(0, data.accept_session_joiner === null ? 0n : util.toBigInt(util.toPointer(data.accept_session_joiner)), true);
   // 0x08: pointer
-  if (data?.session_joined !== undefined) view.setBigUint64(8, data.session_joined === null ? 0n : BigInt(util.toPointer(data.session_joined)), true);
+  if (data?.session_joined !== undefined) view.setBigUint64(8, data.session_joined === null ? 0n : util.toBigInt(util.toPointer(data.session_joined)), true);
   return buf;
 }
 
@@ -1800,12 +1800,12 @@ export class alljoyn_sessionportlistener_callbacksView {
 
   // 0x00: pointer
   set accept_session_joiner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set session_joined(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1823,7 +1823,7 @@ export function allocAlljoyn_aboutlistener_callback(data?: Partial<alljoyn_about
   const buf = new Uint8Array(sizeofAlljoyn_aboutlistener_callback);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.about_listener_announced !== undefined) view.setBigUint64(0, data.about_listener_announced === null ? 0n : BigInt(util.toPointer(data.about_listener_announced)), true);
+  if (data?.about_listener_announced !== undefined) view.setBigUint64(0, data.about_listener_announced === null ? 0n : util.toBigInt(util.toPointer(data.about_listener_announced)), true);
   return buf;
 }
 
@@ -1845,7 +1845,7 @@ export class alljoyn_aboutlistener_callbackView {
 
   // 0x00: pointer
   set about_listener_announced(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1865,9 +1865,9 @@ export function allocAlljoyn_aboutdatalistener_callbacks(data?: Partial<alljoyn_
   const buf = new Uint8Array(sizeofAlljoyn_aboutdatalistener_callbacks);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.about_datalistener_getaboutdata !== undefined) view.setBigUint64(0, data.about_datalistener_getaboutdata === null ? 0n : BigInt(util.toPointer(data.about_datalistener_getaboutdata)), true);
+  if (data?.about_datalistener_getaboutdata !== undefined) view.setBigUint64(0, data.about_datalistener_getaboutdata === null ? 0n : util.toBigInt(util.toPointer(data.about_datalistener_getaboutdata)), true);
   // 0x08: pointer
-  if (data?.about_datalistener_getannouncedaboutdata !== undefined) view.setBigUint64(8, data.about_datalistener_getannouncedaboutdata === null ? 0n : BigInt(util.toPointer(data.about_datalistener_getannouncedaboutdata)), true);
+  if (data?.about_datalistener_getannouncedaboutdata !== undefined) view.setBigUint64(8, data.about_datalistener_getannouncedaboutdata === null ? 0n : util.toBigInt(util.toPointer(data.about_datalistener_getannouncedaboutdata)), true);
   return buf;
 }
 
@@ -1895,12 +1895,12 @@ export class alljoyn_aboutdatalistener_callbacksView {
 
   // 0x00: pointer
   set about_datalistener_getaboutdata(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set about_datalistener_getannouncedaboutdata(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1920,9 +1920,9 @@ export function allocAlljoyn_pinglistener_callback(data?: Partial<alljoyn_pingli
   const buf = new Uint8Array(sizeofAlljoyn_pinglistener_callback);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.destination_found !== undefined) view.setBigUint64(0, data.destination_found === null ? 0n : BigInt(util.toPointer(data.destination_found)), true);
+  if (data?.destination_found !== undefined) view.setBigUint64(0, data.destination_found === null ? 0n : util.toBigInt(util.toPointer(data.destination_found)), true);
   // 0x08: pointer
-  if (data?.destination_lost !== undefined) view.setBigUint64(8, data.destination_lost === null ? 0n : BigInt(util.toPointer(data.destination_lost)), true);
+  if (data?.destination_lost !== undefined) view.setBigUint64(8, data.destination_lost === null ? 0n : util.toBigInt(util.toPointer(data.destination_lost)), true);
   return buf;
 }
 
@@ -1950,12 +1950,12 @@ export class alljoyn_pinglistener_callbackView {
 
   // 0x00: pointer
   set destination_found(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set destination_lost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1975,9 +1975,9 @@ export function allocAlljoyn_observerlistener_callback(data?: Partial<alljoyn_ob
   const buf = new Uint8Array(sizeofAlljoyn_observerlistener_callback);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.object_discovered !== undefined) view.setBigUint64(0, data.object_discovered === null ? 0n : BigInt(util.toPointer(data.object_discovered)), true);
+  if (data?.object_discovered !== undefined) view.setBigUint64(0, data.object_discovered === null ? 0n : util.toBigInt(util.toPointer(data.object_discovered)), true);
   // 0x08: pointer
-  if (data?.object_lost !== undefined) view.setBigUint64(8, data.object_lost === null ? 0n : BigInt(util.toPointer(data.object_lost)), true);
+  if (data?.object_lost !== undefined) view.setBigUint64(8, data.object_lost === null ? 0n : util.toBigInt(util.toPointer(data.object_lost)), true);
   return buf;
 }
 
@@ -2005,74 +2005,74 @@ export class alljoyn_observerlistener_callbackView {
 
   // 0x00: pointer
   set object_discovered(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set object_lost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type alljoyn_aboutdata = Deno.PointerValue;
+export type alljoyn_aboutdata = number | bigint;
 
-export type alljoyn_aboutdatalistener = Deno.PointerValue;
+export type alljoyn_aboutdatalistener = number | bigint;
 
-export type alljoyn_aboutlistener = Deno.PointerValue;
+export type alljoyn_aboutlistener = number | bigint;
 
-export type alljoyn_aboutobj = Deno.PointerValue;
+export type alljoyn_aboutobj = number | bigint;
 
-export type alljoyn_aboutobjectdescription = Deno.PointerValue;
+export type alljoyn_aboutobjectdescription = number | bigint;
 
-export type alljoyn_aboutproxy = Deno.PointerValue;
+export type alljoyn_aboutproxy = number | bigint;
 
-export type alljoyn_applicationstatelistener = Deno.PointerValue;
+export type alljoyn_applicationstatelistener = number | bigint;
 
-export type alljoyn_authlistener = Deno.PointerValue;
+export type alljoyn_authlistener = number | bigint;
 
-export type alljoyn_autopinger = Deno.PointerValue;
+export type alljoyn_autopinger = number | bigint;
 
-export type alljoyn_busattachment = Deno.PointerValue;
+export type alljoyn_busattachment = number | bigint;
 
-export type alljoyn_buslistener = Deno.PointerValue;
+export type alljoyn_buslistener = number | bigint;
 
-export type alljoyn_busobject = Deno.PointerValue;
+export type alljoyn_busobject = number | bigint;
 
-export type alljoyn_credentials = Deno.PointerValue;
+export type alljoyn_credentials = number | bigint;
 
-export type alljoyn_keystore = Deno.PointerValue;
+export type alljoyn_keystore = number | bigint;
 
-export type alljoyn_keystorelistener = Deno.PointerValue;
+export type alljoyn_keystorelistener = number | bigint;
 
-export type alljoyn_message = Deno.PointerValue;
+export type alljoyn_message = number | bigint;
 
-export type alljoyn_msgarg = Deno.PointerValue;
+export type alljoyn_msgarg = number | bigint;
 
-export type alljoyn_observer = Deno.PointerValue;
+export type alljoyn_observer = number | bigint;
 
-export type alljoyn_observerlistener = Deno.PointerValue;
+export type alljoyn_observerlistener = number | bigint;
 
-export type alljoyn_permissionconfigurationlistener = Deno.PointerValue;
+export type alljoyn_permissionconfigurationlistener = number | bigint;
 
-export type alljoyn_permissionconfigurator = Deno.PointerValue;
+export type alljoyn_permissionconfigurator = number | bigint;
 
-export type alljoyn_pinglistener = Deno.PointerValue;
+export type alljoyn_pinglistener = number | bigint;
 
-export type alljoyn_proxybusobject = Deno.PointerValue;
+export type alljoyn_proxybusobject = number | bigint;
 
-export type alljoyn_proxybusobject_ref = Deno.PointerValue;
+export type alljoyn_proxybusobject_ref = number | bigint;
 
-export type alljoyn_securityapplicationproxy = Deno.PointerValue;
+export type alljoyn_securityapplicationproxy = number | bigint;
 
-export type alljoyn_sessionlistener = Deno.PointerValue;
+export type alljoyn_sessionlistener = number | bigint;
 
-export type alljoyn_sessionopts = Deno.PointerValue;
+export type alljoyn_sessionopts = number | bigint;
 
-export type alljoyn_sessionportlistener = Deno.PointerValue;
+export type alljoyn_sessionportlistener = number | bigint;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type BOOL = number;
 
@@ -4369,16 +4369,16 @@ export function alljoyn_msgarg_destroy(
 }
 
 export function alljoyn_msgarg_array_create(
-  size: Deno.PointerValue /* usize */,
+  size: number | bigint /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_create(size));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_create(util.toBigInt(util.toPointer(size))));
 }
 
 export function alljoyn_msgarg_array_element(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_element(util.toPointer(arg), index));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_array_element(util.toPointer(arg), util.toBigInt(util.toPointer(index))));
 }
 
 export function alljoyn_msgarg_set(
@@ -4425,46 +4425,46 @@ export function alljoyn_msgarg_array_set(
 
 export function alljoyn_msgarg_array_get(
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   signature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_array_get(util.toPointer(args), numArgs, util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_array_get(util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_tostring(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_msgarg_tostring(util.toPointer(arg), util.pstrToFfi(str), buf, indent);
+  buf: number | bigint /* usize */,
+  indent: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_msgarg_tostring(util.toPointer(arg), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)), util.toBigInt(util.toPointer(indent)));
 }
 
 export function alljoyn_msgarg_array_tostring(
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_msgarg_array_tostring(util.toPointer(args), numArgs, util.pstrToFfi(str), buf, indent);
+  buf: number | bigint /* usize */,
+  indent: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_msgarg_array_tostring(util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)), util.toBigInt(util.toPointer(indent)));
 }
 
 export function alljoyn_msgarg_signature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_msgarg_signature(util.toPointer(arg), util.pstrToFfi(str), buf);
+  buf: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_msgarg_signature(util.toPointer(arg), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)));
 }
 
 export function alljoyn_msgarg_array_signature(
   values: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numValues: Deno.PointerValue /* usize */,
+  numValues: number | bigint /* usize */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_msgarg_array_signature(util.toPointer(values), numValues, util.pstrToFfi(str), buf);
+  buf: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_msgarg_array_signature(util.toPointer(values), util.toBigInt(util.toPointer(numValues)), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)));
 }
 
 export function alljoyn_msgarg_hassignature(
@@ -4501,11 +4501,11 @@ export function alljoyn_msgarg_stabilize(
 
 export function alljoyn_msgarg_array_set_offset(
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  argOffset: Deno.PointerValue /* usize */,
+  argOffset: number | bigint /* usize */,
   numArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
   signature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_array_set_offset(util.toPointer(args), argOffset, util.toPointer(numArgs), util.pstrToFfi(signature));
+  return libMSAJApi_dll.alljoyn_msgarg_array_set_offset(util.toPointer(args), util.toBigInt(util.toPointer(argOffset)), util.toPointer(numArgs), util.pstrToFfi(signature));
 }
 
 export function alljoyn_msgarg_set_and_stabilize(
@@ -4559,16 +4559,16 @@ export function alljoyn_msgarg_set_uint32(
 
 export function alljoyn_msgarg_set_int64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  x: Deno.PointerValue /* i64 */,
+  x: number | bigint /* i64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_int64(util.toPointer(arg), x);
+  return libMSAJApi_dll.alljoyn_msgarg_set_int64(util.toPointer(arg), util.toBigInt(util.toPointer(x)));
 }
 
 export function alljoyn_msgarg_set_uint64(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  t: Deno.PointerValue /* u64 */,
+  t: number | bigint /* u64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_uint64(util.toPointer(arg), t);
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint64(util.toPointer(arg), util.toBigInt(util.toPointer(t)));
 }
 
 export function alljoyn_msgarg_set_double(
@@ -4692,98 +4692,98 @@ export function alljoyn_msgarg_get_variant(
 
 export function alljoyn_msgarg_set_uint8_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ay: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_uint8_array(util.toPointer(arg), length, util.toPointer(ay));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint8_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ay));
 }
 
 export function alljoyn_msgarg_set_bool_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ab: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_bool_array(util.toPointer(arg), length, util.toPointer(ab));
+  return libMSAJApi_dll.alljoyn_msgarg_set_bool_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ab));
 }
 
 export function alljoyn_msgarg_set_int16_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   an: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_int16_array(util.toPointer(arg), length, util.toPointer(an));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int16_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(an));
 }
 
 export function alljoyn_msgarg_set_uint16_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   aq: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_uint16_array(util.toPointer(arg), length, util.toPointer(aq));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint16_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(aq));
 }
 
 export function alljoyn_msgarg_set_int32_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ai: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_int32_array(util.toPointer(arg), length, util.toPointer(ai));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int32_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ai));
 }
 
 export function alljoyn_msgarg_set_uint32_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   au: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_uint32_array(util.toPointer(arg), length, util.toPointer(au));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint32_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(au));
 }
 
 export function alljoyn_msgarg_set_int64_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ax: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_int64_array(util.toPointer(arg), length, util.toPointer(ax));
+  return libMSAJApi_dll.alljoyn_msgarg_set_int64_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ax));
 }
 
 export function alljoyn_msgarg_set_uint64_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   at: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_uint64_array(util.toPointer(arg), length, util.toPointer(at));
+  return libMSAJApi_dll.alljoyn_msgarg_set_uint64_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(at));
 }
 
 export function alljoyn_msgarg_set_double_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ad: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_double_array(util.toPointer(arg), length, util.toPointer(ad));
+  return libMSAJApi_dll.alljoyn_msgarg_set_double_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ad));
 }
 
 export function alljoyn_msgarg_set_string_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   as: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_string_array(util.toPointer(arg), length, util.toPointer(as));
+  return libMSAJApi_dll.alljoyn_msgarg_set_string_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(as));
 }
 
 export function alljoyn_msgarg_set_objectpath_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ao: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_objectpath_array(util.toPointer(arg), length, util.toPointer(ao));
+  return libMSAJApi_dll.alljoyn_msgarg_set_objectpath_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ao));
 }
 
 export function alljoyn_msgarg_set_signature_array(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: number | bigint /* usize */,
   ag: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_set_signature_array(util.toPointer(arg), length, util.toPointer(ag));
+  return libMSAJApi_dll.alljoyn_msgarg_set_signature_array(util.toPointer(arg), util.toBigInt(util.toPointer(length)), util.toPointer(ag));
 }
 
 export function alljoyn_msgarg_get_uint8_array(
@@ -4869,23 +4869,23 @@ export function alljoyn_msgarg_get_variant_array(
 
 export function alljoyn_msgarg_get_array_numberofelements(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_get_array_numberofelements(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_get_array_element(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
   element: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_msgarg_get_array_element(util.toPointer(arg), index, util.toPointer(element));
+  return libMSAJApi_dll.alljoyn_msgarg_get_array_element(util.toPointer(arg), util.toBigInt(util.toPointer(index)), util.toPointer(element));
 }
 
 export function alljoyn_msgarg_get_array_elementsignature(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_msgarg_get_array_elementsignature(util.toPointer(arg), index));
+  return util.pstrFromFfi(libMSAJApi_dll.alljoyn_msgarg_get_array_elementsignature(util.toPointer(arg), util.toBigInt(util.toPointer(index))));
 }
 
 export function alljoyn_msgarg_getkey(
@@ -4911,22 +4911,22 @@ export function alljoyn_msgarg_setdictentry(
 export function alljoyn_msgarg_setstruct(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   struct_members: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  num_members: Deno.PointerValue /* usize */,
+  num_members: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_msgarg_setstruct(util.toPointer(arg), util.toPointer(struct_members), num_members);
+  return libMSAJApi_dll.alljoyn_msgarg_setstruct(util.toPointer(arg), util.toPointer(struct_members), util.toBigInt(util.toPointer(num_members)));
 }
 
 export function alljoyn_msgarg_getnummembers(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_getnummembers(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_getmember(
   arg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_getmember(util.toPointer(arg), index));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_msgarg_getmember(util.toPointer(arg), util.toBigInt(util.toPointer(index))));
 }
 
 export function alljoyn_aboutdata_create_empty(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */ {
@@ -4977,9 +4977,9 @@ export function alljoyn_aboutdata_createfrommsgarg(
 export function alljoyn_aboutdata_setappid(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   appId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  num: Deno.PointerValue /* usize */,
+  num: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_aboutdata_setappid(util.toPointer(data), util.toPointer(appId), num);
+  return libMSAJApi_dll.alljoyn_aboutdata_setappid(util.toPointer(data), util.toPointer(appId), util.toBigInt(util.toPointer(num)));
 }
 
 export function alljoyn_aboutdata_setappid_fromstring(
@@ -5097,9 +5097,9 @@ export function alljoyn_aboutdata_setsupportedlanguage(
 export function alljoyn_aboutdata_getsupportedlanguages(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   languageTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  num: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_aboutdata_getsupportedlanguages(util.toPointer(data), util.toPointer(languageTags), num);
+  num: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_aboutdata_getsupportedlanguages(util.toPointer(data), util.toPointer(languageTags), util.toBigInt(util.toPointer(num)));
 }
 
 export function alljoyn_aboutdata_setdescription(
@@ -5202,9 +5202,9 @@ export function alljoyn_aboutdata_getfield(
 export function alljoyn_aboutdata_getfields(
   data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fields: Deno.PointerValue | Uint8Array | null /* ptr */,
-  num_fields: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_aboutdata_getfields(util.toPointer(data), util.toPointer(fields), num_fields);
+  num_fields: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_aboutdata_getfields(util.toPointer(data), util.toPointer(fields), util.toBigInt(util.toPointer(num_fields)));
 }
 
 export function alljoyn_aboutdata_getaboutdata(
@@ -5272,10 +5272,10 @@ export function alljoyn_abouticon_setcontent(
   icon: Deno.PointerValue | Uint8Array | null /* ptr */,
   type: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  csize: Deno.PointerValue /* usize */,
+  csize: number | bigint /* usize */,
   ownsData: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_abouticon_setcontent(util.toPointer(icon), util.pstrToFfi(type), util.toPointer(data), csize, ownsData);
+  return libMSAJApi_dll.alljoyn_abouticon_setcontent(util.toPointer(icon), util.pstrToFfi(type), util.toPointer(data), util.toBigInt(util.toPointer(csize)), ownsData);
 }
 
 export function alljoyn_abouticon_geturl(
@@ -5397,21 +5397,21 @@ export function alljoyn_permissionconfigurator_claim(
   caKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   identityCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   groupId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupSize: Deno.PointerValue /* usize */,
+  groupSize: number | bigint /* usize */,
   groupAuthority: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_permissionconfigurator_claim(util.toPointer(configurator), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_claim(util.toPointer(configurator), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), util.toBigInt(util.toPointer(groupSize)), util.toPointer(groupAuthority), util.toPointer(manifestsXmls), util.toBigInt(util.toPointer(manifestsCount)));
 }
 
 export function alljoyn_permissionconfigurator_updateidentity(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   identityCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_permissionconfigurator_updateidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_updateidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), util.toBigInt(util.toPointer(manifestsCount)));
 }
 
 export function alljoyn_permissionconfigurator_getidentity(
@@ -5443,10 +5443,10 @@ export function alljoyn_permissionconfigurator_manifestarray_cleanup(
 export function alljoyn_permissionconfigurator_installmanifests(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: number | bigint /* usize */,
   append: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_permissionconfigurator_installmanifests(util.toPointer(configurator), util.toPointer(manifestsXmls), manifestsCount, append);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_installmanifests(util.toPointer(configurator), util.toPointer(manifestsXmls), util.toBigInt(util.toPointer(manifestsCount)), append);
 }
 
 export function alljoyn_permissionconfigurator_getidentitycertificateid(
@@ -5518,12 +5518,12 @@ export function alljoyn_permissionconfigurator_installmembership(
 export function alljoyn_permissionconfigurator_removemembership(
   configurator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   serial: Deno.PointerValue | Uint8Array | null /* ptr */,
-  serialLen: Deno.PointerValue /* usize */,
+  serialLen: number | bigint /* usize */,
   issuerPublicKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   issuerAki: Deno.PointerValue | Uint8Array | null /* ptr */,
-  issuerAkiLen: Deno.PointerValue /* usize */,
+  issuerAkiLen: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_permissionconfigurator_removemembership(util.toPointer(configurator), util.toPointer(serial), serialLen, util.toPointer(issuerPublicKey), util.toPointer(issuerAki), issuerAkiLen);
+  return libMSAJApi_dll.alljoyn_permissionconfigurator_removemembership(util.toPointer(configurator), util.toPointer(serial), util.toBigInt(util.toPointer(serialLen)), util.toPointer(issuerPublicKey), util.toPointer(issuerAki), util.toBigInt(util.toPointer(issuerAkiLen)));
 }
 
 export function alljoyn_permissionconfigurator_startmanagement(
@@ -5747,9 +5747,9 @@ export function alljoyn_message_getargs(
 
 export function alljoyn_message_getarg(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
-  argN: Deno.PointerValue /* usize */,
+  argN: number | bigint /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
-  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_message_getarg(util.toPointer(msg), argN));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_message_getarg(util.toPointer(msg), util.toBigInt(util.toPointer(argN))));
 }
 
 export function alljoyn_message_parseargs(
@@ -5836,17 +5836,17 @@ export function alljoyn_message_geterrorname(
 export function alljoyn_message_tostring(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_message_tostring(util.toPointer(msg), util.pstrToFfi(str), buf);
+  buf: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_message_tostring(util.toPointer(msg), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)));
 }
 
 export function alljoyn_message_description(
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_message_description(util.toPointer(msg), util.pstrToFfi(str), buf);
+  buf: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_message_description(util.toPointer(msg), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)));
 }
 
 export function alljoyn_message_gettimestamp(
@@ -5914,9 +5914,9 @@ export function alljoyn_authlistenerasync_destroy(
 export function alljoyn_authlistener_setsharedsecret(
   listener: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */,
   sharedSecret: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sharedSecretSize: Deno.PointerValue /* usize */,
+  sharedSecretSize: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_authlistener_setsharedsecret(util.toPointer(listener), util.toPointer(sharedSecret), sharedSecretSize);
+  return libMSAJApi_dll.alljoyn_authlistener_setsharedsecret(util.toPointer(listener), util.toPointer(sharedSecret), util.toBigInt(util.toPointer(sharedSecretSize)));
 }
 
 export function alljoyn_credentials_create(): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_credentials */ {
@@ -6035,19 +6035,19 @@ export function alljoyn_buslistener_destroy(
 
 export function alljoyn_interfacedescription_member_getannotationscount(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationscount(util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_member_getannotationatindex(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationatindex(util.toPointer(member), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationatindex(util.toPointer(member), util.toBigInt(util.toPointer(index)), util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_member_getannotation(
@@ -6062,20 +6062,20 @@ export function alljoyn_interfacedescription_member_getannotation(
 export function alljoyn_interfacedescription_member_getargannotationscount(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   argName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationscount(util.toPointer(member), util.pstrToFfi(argName));
 }
 
 export function alljoyn_interfacedescription_member_getargannotationatindex(
   member: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   argName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationatindex(util.toPointer(member), util.pstrToFfi(argName), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationatindex(util.toPointer(member), util.pstrToFfi(argName), util.toBigInt(util.toPointer(index)), util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_member_getargannotation(
@@ -6090,19 +6090,19 @@ export function alljoyn_interfacedescription_member_getargannotation(
 
 export function alljoyn_interfacedescription_property_getannotationscount(
   property: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationscount(util.toPointer(property));
 }
 
 export function alljoyn_interfacedescription_property_getannotationatindex(
   property: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationatindex(util.toPointer(property), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationatindex(util.toPointer(property), util.toBigInt(util.toPointer(index)), util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_property_getannotation(
@@ -6139,19 +6139,19 @@ export function alljoyn_interfacedescription_getannotation(
 
 export function alljoyn_interfacedescription_getannotationscount(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
-): Deno.PointerValue /* usize */ {
+): number | bigint /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getannotationscount(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_getannotationatindex(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
-  index: Deno.PointerValue /* usize */,
+  index: number | bigint /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value_size: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getannotationatindex(util.toPointer(iface), index, util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
+  return libMSAJApi_dll.alljoyn_interfacedescription_getannotationatindex(util.toPointer(iface), util.toBigInt(util.toPointer(index)), util.pstrToFfi(name), util.toPointer(name_size), util.pstrToFfi(value), util.toPointer(value_size));
 }
 
 export function alljoyn_interfacedescription_getmember(
@@ -6196,9 +6196,9 @@ export function alljoyn_interfacedescription_getmemberannotation(
 export function alljoyn_interfacedescription_getmembers(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   members: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numMembers: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getmembers(util.toPointer(iface), util.toPointer(members), numMembers);
+  numMembers: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmembers(util.toPointer(iface), util.toPointer(members), util.toBigInt(util.toPointer(numMembers)));
 }
 
 export function alljoyn_interfacedescription_hasmember(
@@ -6260,9 +6260,9 @@ export function alljoyn_interfacedescription_getproperty(
 export function alljoyn_interfacedescription_getproperties(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   props: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numProps: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getproperties(util.toPointer(iface), util.toPointer(props), numProps);
+  numProps: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getproperties(util.toPointer(iface), util.toPointer(props), util.toBigInt(util.toPointer(numProps)));
 }
 
 export function alljoyn_interfacedescription_addproperty(
@@ -6315,10 +6315,10 @@ export function alljoyn_interfacedescription_getname(
 export function alljoyn_interfacedescription_introspect(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_introspect(util.toPointer(iface), util.pstrToFfi(str), buf, indent);
+  buf: number | bigint /* usize */,
+  indent: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_introspect(util.toPointer(iface), util.pstrToFfi(str), util.toBigInt(util.toPointer(buf)), util.toBigInt(util.toPointer(indent)));
 }
 
 export function alljoyn_interfacedescription_issecure(
@@ -6343,17 +6343,17 @@ export function alljoyn_interfacedescription_setdescriptionlanguage(
 export function alljoyn_interfacedescription_getdescriptionlanguages(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   languages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  size: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages(util.toPointer(iface), util.toPointer(languages), size);
+  size: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages(util.toPointer(iface), util.toPointer(languages), util.toBigInt(util.toPointer(size)));
 }
 
 export function alljoyn_interfacedescription_getdescriptionlanguages2(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   languages: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  languagesSize: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages2(util.toPointer(iface), util.pstrToFfi(languages), languagesSize);
+  languagesSize: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages2(util.toPointer(iface), util.pstrToFfi(languages), util.toBigInt(util.toPointer(languagesSize)));
 }
 
 export function alljoyn_interfacedescription_setdescription(
@@ -6374,10 +6374,10 @@ export function alljoyn_interfacedescription_setdescriptionforlanguage(
 export function alljoyn_interfacedescription_getdescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: number | bigint /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), util.toBigInt(util.toPointer(maxLanguageLength)), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setmemberdescription(
@@ -6401,10 +6401,10 @@ export function alljoyn_interfacedescription_getmemberdescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   member: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: number | bigint /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), util.toBigInt(util.toPointer(maxLanguageLength)), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setargdescription(
@@ -6431,10 +6431,10 @@ export function alljoyn_interfacedescription_getargdescriptionforlanguage(
   member: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arg: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: number | bigint /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), util.toBigInt(util.toPointer(maxLanguageLength)), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setpropertydescription(
@@ -6458,10 +6458,10 @@ export function alljoyn_interfacedescription_getpropertydescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   property: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: number | bigint /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_interfacedescription_getpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_interfacedescription_getpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(description), util.toBigInt(util.toPointer(maxLanguageLength)), util.pstrToFfi(languageTag));
 }
 
 export function alljoyn_interfacedescription_setdescriptiontranslationcallback(
@@ -6560,18 +6560,18 @@ export function alljoyn_busobject_emitpropertieschanged(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   ifcName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   propNames: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numProps: Deno.PointerValue /* usize */,
+  numProps: number | bigint /* usize */,
   id: number /* u32 */,
 ): void /* void */ {
-  return libMSAJApi_dll.alljoyn_busobject_emitpropertieschanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.toPointer(propNames), numProps, id);
+  return libMSAJApi_dll.alljoyn_busobject_emitpropertieschanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.toPointer(propNames), util.toBigInt(util.toPointer(numProps)), id);
 }
 
 export function alljoyn_busobject_getname(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  bufferSz: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_busobject_getname(util.toPointer(bus), util.pstrToFfi(buffer), bufferSz);
+  bufferSz: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_busobject_getname(util.toPointer(bus), util.pstrToFfi(buffer), util.toBigInt(util.toPointer(bufferSz)));
 }
 
 export function alljoyn_busobject_addinterface(
@@ -6593,18 +6593,18 @@ export function alljoyn_busobject_addmethodhandler(
 export function alljoyn_busobject_addmethodhandlers(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   entries: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numEntries: Deno.PointerValue /* usize */,
+  numEntries: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_busobject_addmethodhandlers(util.toPointer(bus), util.toPointer(entries), numEntries);
+  return libMSAJApi_dll.alljoyn_busobject_addmethodhandlers(util.toPointer(bus), util.toPointer(entries), util.toBigInt(util.toPointer(numEntries)));
 }
 
 export function alljoyn_busobject_methodreply_args(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_busobject_methodreply_args(util.toPointer(bus), util.toPointer(msg), util.toPointer(args), numArgs);
+  return libMSAJApi_dll.alljoyn_busobject_methodreply_args(util.toPointer(bus), util.toPointer(msg), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)));
 }
 
 export function alljoyn_busobject_methodreply_err(
@@ -6636,12 +6636,12 @@ export function alljoyn_busobject_signal(
   sessionId: number /* u32 */,
   signal: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   timeToLive: number /* u16 */,
   flags: number /* u8 */,
   msg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_busobject_signal(util.toPointer(bus), util.pstrToFfi(destination), sessionId, util.toPointer(signal), util.toPointer(args), numArgs, timeToLive, flags, util.toPointer(msg));
+  return libMSAJApi_dll.alljoyn_busobject_signal(util.toPointer(bus), util.pstrToFfi(destination), sessionId, util.toPointer(signal), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), timeToLive, flags, util.toPointer(msg));
 }
 
 export function alljoyn_busobject_cancelsessionlessmessage_serial(
@@ -6667,9 +6667,9 @@ export function alljoyn_busobject_issecure(
 export function alljoyn_busobject_getannouncedinterfacenames(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   interfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numInterfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_busobject_getannouncedinterfacenames(util.toPointer(bus), util.toPointer(interfaces), numInterfaces);
+  numInterfaces: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_busobject_getannouncedinterfacenames(util.toPointer(bus), util.toPointer(interfaces), util.toBigInt(util.toPointer(numInterfaces)));
 }
 
 export function alljoyn_busobject_setannounceflag(
@@ -6728,9 +6728,9 @@ export function alljoyn_proxybusobject_addinterface_by_name(
 export function alljoyn_proxybusobject_getchildren(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   children: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numChildren: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_getchildren(util.toPointer(proxyObj), util.toPointer(children), numChildren);
+  numChildren: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_proxybusobject_getchildren(util.toPointer(proxyObj), util.toPointer(children), util.toBigInt(util.toPointer(numChildren)));
 }
 
 export function alljoyn_proxybusobject_getchild(
@@ -6819,11 +6819,11 @@ export function alljoyn_proxybusobject_registerpropertieschangedlistener(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   iface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   properties: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numProperties: Deno.PointerValue /* usize */,
+  numProperties: number | bigint /* usize */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_listener_propertieschanged_ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_registerpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(properties), numProperties, util.toPointer(callback), util.toPointer(context));
+  return libMSAJApi_dll.alljoyn_proxybusobject_registerpropertieschangedlistener(util.toPointer(proxyObj), util.pstrToFfi(iface), util.toPointer(properties), util.toBigInt(util.toPointer(numProperties)), util.toPointer(callback), util.toPointer(context));
 }
 
 export function alljoyn_proxybusobject_unregisterpropertieschangedlistener(
@@ -6851,24 +6851,24 @@ export function alljoyn_proxybusobject_methodcall(
   ifaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   replyMsg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.toPointer(replyMsg), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_member(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   method: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   replyMsg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, util.toPointer(replyMsg), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.toPointer(replyMsg), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_noreply(
@@ -6876,20 +6876,20 @@ export function alljoyn_proxybusobject_methodcall_noreply(
   ifaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_noreply(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_noreply(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), flags);
 }
 
 export function alljoyn_proxybusobject_methodcall_member_noreply(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   method: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member_noreply(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member_noreply(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), flags);
 }
 
 export function alljoyn_proxybusobject_methodcallasync(
@@ -6898,12 +6898,12 @@ export function alljoyn_proxybusobject_methodcallasync(
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   replyFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_messagereceiver_replyhandler_ptr */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(replyFunc), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.toPointer(context), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_methodcallasync_member(
@@ -6911,12 +6911,12 @@ export function alljoyn_proxybusobject_methodcallasync_member(
   method: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   replyFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_messagereceiver_replyhandler_ptr */,
   args: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: number | bigint /* usize */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(replyFunc), util.toPointer(args), numArgs, util.toPointer(context), timeout, flags);
+  return libMSAJApi_dll.alljoyn_proxybusobject_methodcallasync_member(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(replyFunc), util.toPointer(args), util.toBigInt(util.toPointer(numArgs)), util.toPointer(context), timeout, flags);
 }
 
 export function alljoyn_proxybusobject_parsexml(
@@ -6951,9 +6951,9 @@ export function alljoyn_proxybusobject_getinterface(
 export function alljoyn_proxybusobject_getinterfaces(
   proxyObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   ifaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numIfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_proxybusobject_getinterfaces(util.toPointer(proxyObj), util.toPointer(ifaces), numIfaces);
+  numIfaces: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_proxybusobject_getinterfaces(util.toPointer(proxyObj), util.toPointer(ifaces), util.toBigInt(util.toPointer(numIfaces)));
 }
 
 export function alljoyn_proxybusobject_getpath(
@@ -7323,9 +7323,9 @@ export function alljoyn_busattachment_createinterfacesfromxml(
 export function alljoyn_busattachment_getinterfaces(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   ifaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numIfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_busattachment_getinterfaces(util.toPointer(bus), util.toPointer(ifaces), numIfaces);
+  numIfaces: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_busattachment_getinterfaces(util.toPointer(bus), util.toPointer(ifaces), util.toBigInt(util.toPointer(numIfaces)));
 }
 
 export function alljoyn_busattachment_deleteinterface(
@@ -7614,9 +7614,9 @@ export function alljoyn_busattachment_unregisterallaboutlisteners(
 export function alljoyn_busattachment_whoimplements_interfaces(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberInterfaces: Deno.PointerValue /* usize */,
+  numberInterfaces: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_busattachment_whoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
+  return libMSAJApi_dll.alljoyn_busattachment_whoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), util.toBigInt(util.toPointer(numberInterfaces)));
 }
 
 export function alljoyn_busattachment_whoimplements_interface(
@@ -7629,9 +7629,9 @@ export function alljoyn_busattachment_whoimplements_interface(
 export function alljoyn_busattachment_cancelwhoimplements_interfaces(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberInterfaces: Deno.PointerValue /* usize */,
+  numberInterfaces: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_busattachment_cancelwhoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
+  return libMSAJApi_dll.alljoyn_busattachment_cancelwhoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), util.toBigInt(util.toPointer(numberInterfaces)));
 }
 
 export function alljoyn_busattachment_cancelwhoimplements_interface(
@@ -7782,27 +7782,27 @@ export function alljoyn_aboutobjectdescription_destroy(
 export function alljoyn_aboutobjectdescription_getpaths(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   paths: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numPaths: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getpaths(util.toPointer(description), util.toPointer(paths), numPaths);
+  numPaths: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getpaths(util.toPointer(description), util.toPointer(paths), util.toBigInt(util.toPointer(numPaths)));
 }
 
 export function alljoyn_aboutobjectdescription_getinterfaces(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   interfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numInterfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfaces(util.toPointer(description), util.pstrToFfi(path), util.toPointer(interfaces), numInterfaces);
+  numInterfaces: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfaces(util.toPointer(description), util.pstrToFfi(path), util.toPointer(interfaces), util.toBigInt(util.toPointer(numInterfaces)));
 }
 
 export function alljoyn_aboutobjectdescription_getinterfacepaths(
   description: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   interfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   paths: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numPaths: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
-  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfacepaths(util.toPointer(description), util.pstrToFfi(interfaceName), util.toPointer(paths), numPaths);
+  numPaths: number | bigint /* usize */,
+): number | bigint /* usize */ {
+  return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfacepaths(util.toPointer(description), util.pstrToFfi(interfaceName), util.toPointer(paths), util.toBigInt(util.toPointer(numPaths)));
 }
 
 export function alljoyn_aboutobjectdescription_clear(
@@ -8028,9 +8028,9 @@ export function alljoyn_observerlistener_destroy(
 export function alljoyn_observer_create(
   bus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   mandatoryInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numMandatoryInterfaces: Deno.PointerValue /* usize */,
+  numMandatoryInterfaces: number | bigint /* usize */,
 ): Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */ {
-  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_create(util.toPointer(bus), util.toPointer(mandatoryInterfaces), numMandatoryInterfaces));
+  return util.pointerFromFfi(libMSAJApi_dll.alljoyn_observer_create(util.toPointer(bus), util.toPointer(mandatoryInterfaces), util.toBigInt(util.toPointer(numMandatoryInterfaces))));
 }
 
 export function alljoyn_observer_destroy(
@@ -8111,12 +8111,12 @@ export function alljoyn_securityapplicationproxy_claim(
   caKey: Deno.PointerValue | Uint8Array | null /* ptr */,
   identityCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   groupId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupSize: Deno.PointerValue /* usize */,
+  groupSize: number | bigint /* usize */,
   groupAuthority: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_securityapplicationproxy_claim(util.toPointer(proxy), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_claim(util.toPointer(proxy), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), util.toBigInt(util.toPointer(groupSize)), util.toPointer(groupAuthority), util.toPointer(manifestsXmls), util.toBigInt(util.toPointer(manifestsCount)));
 }
 
 export function alljoyn_securityapplicationproxy_getmanifesttemplate(
@@ -8184,9 +8184,9 @@ export function alljoyn_securityapplicationproxy_updateidentity(
   proxy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   identityCertificateChain: Deno.PointerValue | Uint8Array | null /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: number | bigint /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_securityapplicationproxy_updateidentity(util.toPointer(proxy), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_updateidentity(util.toPointer(proxy), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), util.toBigInt(util.toPointer(manifestsCount)));
 }
 
 export function alljoyn_securityapplicationproxy_installmembership(
@@ -8267,9 +8267,9 @@ export function alljoyn_securityapplicationproxy_setmanifestsignature(
   unsignedManifestXml: Deno.PointerValue | Uint8Array | null /* ptr */,
   identityCertificatePem: Deno.PointerValue | Uint8Array | null /* ptr */,
   signature: Deno.PointerValue | Uint8Array | null /* ptr */,
-  signatureSize: Deno.PointerValue /* usize */,
+  signatureSize: number | bigint /* usize */,
   signedManifestXml: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
-  return libMSAJApi_dll.alljoyn_securityapplicationproxy_setmanifestsignature(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signature), signatureSize, util.toPointer(signedManifestXml));
+  return libMSAJApi_dll.alljoyn_securityapplicationproxy_setmanifestsignature(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signature), util.toBigInt(util.toPointer(signatureSize)), util.toPointer(signedManifestXml));
 }
 

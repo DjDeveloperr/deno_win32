@@ -51,7 +51,7 @@ export const CRYPTCAT_ADDCATALOG_HARDLINK = 1;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Security.Cryptography.Catalog.CRYPTCATSTORE (size: 64)
@@ -64,7 +64,7 @@ export interface CRYPTCATSTORE {
   /** Windows.Win32.Foundation.PWSTR */
   pwszP7File: string | null | Uint8Array | Uint16Array;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: number | bigint;
   /** u32 */
   dwEncodingType: number;
   /** Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_OPEN_FLAGS */
@@ -91,22 +91,22 @@ export function allocCRYPTCATSTORE(data?: Partial<CRYPTCATSTORE>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszP7File !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszP7File);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: usize
-  if (data?.hProv !== undefined) view.setBigUint64(16, BigInt(data.hProv), true);
+  if (data?.hProv !== undefined) view.setBigUint64(16, util.toBigInt(data.hProv), true);
   // 0x18: u32
   if (data?.dwEncodingType !== undefined) view.setUint32(24, Number(data.dwEncodingType), true);
   // 0x1c: u32
   if (data?.fdwStoreFlags !== undefined) view.setUint32(28, Number(data.fdwStoreFlags), true);
   // 0x20: pointer
-  if (data?.hReserved !== undefined) view.setBigUint64(32, data.hReserved === null ? 0n : BigInt(util.toPointer(data.hReserved)), true);
+  if (data?.hReserved !== undefined) view.setBigUint64(32, data.hReserved === null ? 0n : util.toBigInt(util.toPointer(data.hReserved)), true);
   // 0x28: pointer
-  if (data?.hAttrs !== undefined) view.setBigUint64(40, data.hAttrs === null ? 0n : BigInt(util.toPointer(data.hAttrs)), true);
+  if (data?.hAttrs !== undefined) view.setBigUint64(40, data.hAttrs === null ? 0n : util.toBigInt(util.toPointer(data.hAttrs)), true);
   // 0x30: pointer
-  if (data?.hCryptMsg !== undefined) view.setBigUint64(48, data.hCryptMsg === null ? 0n : BigInt(util.toPointer(data.hCryptMsg)), true);
+  if (data?.hCryptMsg !== undefined) view.setBigUint64(48, data.hCryptMsg === null ? 0n : util.toBigInt(util.toPointer(data.hCryptMsg)), true);
   // 0x38: pointer
-  if (data?.hSorted !== undefined) view.setBigUint64(56, data.hSorted === null ? 0n : BigInt(util.toPointer(data.hSorted)), true);
+  if (data?.hSorted !== undefined) view.setBigUint64(56, data.hSorted === null ? 0n : util.toBigInt(util.toPointer(data.hSorted)), true);
   return buf;
 }
 
@@ -137,8 +137,8 @@ export class CRYPTCATSTOREView {
   }
 
   // 0x10: usize
-  get hProv(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get hProv(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -188,12 +188,12 @@ export class CRYPTCATSTOREView {
   // 0x08: buffer
   set pwszP7File(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: usize
-  set hProv(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set hProv(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -208,22 +208,22 @@ export class CRYPTCATSTOREView {
 
   // 0x20: pointer
   set hReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set hAttrs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set hCryptMsg(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set hSorted(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -246,7 +246,7 @@ export function allocCRYPTOAPI_BLOB(data?: Partial<CRYPTOAPI_BLOB>): Uint8Array 
   if (data?.cbData !== undefined) view.setUint32(0, Number(data.cbData), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pbData !== undefined) view.setBigUint64(8, data.pbData === null ? 0n : BigInt(util.toPointer(data.pbData)), true);
+  if (data?.pbData !== undefined) view.setBigUint64(8, data.pbData === null ? 0n : util.toBigInt(util.toPointer(data.pbData)), true);
   return buf;
 }
 
@@ -282,7 +282,7 @@ export class CRYPTOAPI_BLOBView {
 
   // 0x08: pointer
   set pbData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -325,30 +325,30 @@ export function allocCRYPTCATMEMBER(data?: Partial<CRYPTCATMEMBER>): Uint8Array 
   // 0x08: buffer
   if (data?.pwszReferenceTag !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszReferenceTag);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pwszFileName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszFileName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: pointer
-  if (data?.gSubjectType !== undefined) view.setBigUint64(24, data.gSubjectType === null ? 0n : BigInt(util.toPointer(data.gSubjectType)), true);
+  if (data?.gSubjectType !== undefined) view.setBigUint64(24, data.gSubjectType === null ? 0n : util.toBigInt(util.toPointer(data.gSubjectType)), true);
   // 0x20: u32
   if (data?.fdwMemberFlags !== undefined) view.setUint32(32, Number(data.fdwMemberFlags), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pIndirectData !== undefined) view.setBigUint64(40, data.pIndirectData === null ? 0n : BigInt(util.toPointer(data.pIndirectData)), true);
+  if (data?.pIndirectData !== undefined) view.setBigUint64(40, data.pIndirectData === null ? 0n : util.toBigInt(util.toPointer(data.pIndirectData)), true);
   // 0x30: u32
   if (data?.dwCertVersion !== undefined) view.setUint32(48, Number(data.dwCertVersion), true);
   // 0x34: u32
   if (data?.dwReserved !== undefined) view.setUint32(52, Number(data.dwReserved), true);
   // 0x38: pointer
-  if (data?.hReserved !== undefined) view.setBigUint64(56, data.hReserved === null ? 0n : BigInt(util.toPointer(data.hReserved)), true);
+  if (data?.hReserved !== undefined) view.setBigUint64(56, data.hReserved === null ? 0n : util.toBigInt(util.toPointer(data.hReserved)), true);
   // 0x40: pointer
-  if (data?.sEncodedIndirectData !== undefined) view.setBigUint64(64, data.sEncodedIndirectData === null ? 0n : BigInt(util.toPointer(data.sEncodedIndirectData)), true);
+  if (data?.sEncodedIndirectData !== undefined) view.setBigUint64(64, data.sEncodedIndirectData === null ? 0n : util.toBigInt(util.toPointer(data.sEncodedIndirectData)), true);
   // 0x48: pointer
-  if (data?.sEncodedMemberInfo !== undefined) view.setBigUint64(72, data.sEncodedMemberInfo === null ? 0n : BigInt(util.toPointer(data.sEncodedMemberInfo)), true);
+  if (data?.sEncodedMemberInfo !== undefined) view.setBigUint64(72, data.sEncodedMemberInfo === null ? 0n : util.toBigInt(util.toPointer(data.sEncodedMemberInfo)), true);
   return buf;
 }
 
@@ -438,18 +438,18 @@ export class CRYPTCATMEMBERView {
   // 0x08: buffer
   set pwszReferenceTag(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pwszFileName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: pointer
   set gSubjectType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -461,7 +461,7 @@ export class CRYPTCATMEMBERView {
 
   // 0x28: pointer
   set pIndirectData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -476,17 +476,17 @@ export class CRYPTCATMEMBERView {
 
   // 0x38: pointer
   set hReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set sEncodedIndirectData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set sEncodedMemberInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -519,14 +519,14 @@ export function allocCRYPTCATATTRIBUTE(data?: Partial<CRYPTCATATTRIBUTE>): Uint8
   // 0x08: buffer
   if (data?.pwszReferenceTag !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszReferenceTag);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.dwAttrTypeAndAction !== undefined) view.setUint32(16, Number(data.dwAttrTypeAndAction), true);
   // 0x14: u32
   if (data?.cbValue !== undefined) view.setUint32(20, Number(data.cbValue), true);
   // 0x18: pointer
-  if (data?.pbValue !== undefined) view.setBigUint64(24, data.pbValue === null ? 0n : BigInt(util.toPointer(data.pbValue)), true);
+  if (data?.pbValue !== undefined) view.setBigUint64(24, data.pbValue === null ? 0n : util.toBigInt(util.toPointer(data.pbValue)), true);
   // 0x20: u32
   if (data?.dwReserved !== undefined) view.setUint32(32, Number(data.dwReserved), true);
   // 0x24: pad4
@@ -589,7 +589,7 @@ export class CRYPTCATATTRIBUTEView {
   // 0x08: buffer
   set pwszReferenceTag(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -604,7 +604,7 @@ export class CRYPTCATATTRIBUTEView {
 
   // 0x18: pointer
   set pbValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -646,7 +646,7 @@ export function allocCRYPTCATCDF(data?: Partial<CRYPTCATCDF>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hFile !== undefined) view.setBigUint64(8, data.hFile === null ? 0n : BigInt(util.toPointer(data.hFile)), true);
+  if (data?.hFile !== undefined) view.setBigUint64(8, data.hFile === null ? 0n : util.toBigInt(util.toPointer(data.hFile)), true);
   // 0x10: u32
   if (data?.dwCurFilePos !== undefined) view.setUint32(16, Number(data.dwCurFilePos), true);
   // 0x14: u32
@@ -657,10 +657,10 @@ export function allocCRYPTCATCDF(data?: Partial<CRYPTCATCDF>): Uint8Array {
   // 0x20: buffer
   if (data?.pwszResultDir !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pwszResultDir);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: pointer
-  if (data?.hCATStore !== undefined) view.setBigUint64(40, data.hCATStore === null ? 0n : BigInt(util.toPointer(data.hCATStore)), true);
+  if (data?.hCATStore !== undefined) view.setBigUint64(40, data.hCATStore === null ? 0n : util.toBigInt(util.toPointer(data.hCATStore)), true);
   return buf;
 }
 
@@ -725,7 +725,7 @@ export class CRYPTCATCDFView {
 
   // 0x08: pointer
   set hFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -748,12 +748,12 @@ export class CRYPTCATCDFView {
   // 0x20: buffer
   set pwszResultDir(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: pointer
   set hCATStore(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -776,7 +776,7 @@ export function allocCATALOG_INFO(data?: Partial<CATALOG_INFO>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.wszCatalogFile !== undefined) view.setBigUint64(8, data.wszCatalogFile === null ? 0n : BigInt(util.toPointer(data.wszCatalogFile)), true);
+  if (data?.wszCatalogFile !== undefined) view.setBigUint64(8, data.wszCatalogFile === null ? 0n : util.toBigInt(util.toPointer(data.wszCatalogFile)), true);
   return buf;
 }
 
@@ -812,7 +812,7 @@ export class CATALOG_INFOView {
 
   // 0x08: pointer
   set wszCatalogFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -837,9 +837,9 @@ export function allocMS_ADDINFO_CATALOGMEMBER(data?: Partial<MS_ADDINFO_CATALOGM
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : BigInt(util.toPointer(data.pStore)), true);
+  if (data?.pStore !== undefined) view.setBigUint64(8, data.pStore === null ? 0n : util.toBigInt(util.toPointer(data.pStore)), true);
   // 0x10: pointer
-  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : BigInt(util.toPointer(data.pMember)), true);
+  if (data?.pMember !== undefined) view.setBigUint64(16, data.pMember === null ? 0n : util.toBigInt(util.toPointer(data.pMember)), true);
   return buf;
 }
 
@@ -881,12 +881,12 @@ export class MS_ADDINFO_CATALOGMEMBERView {
 
   // 0x08: pointer
   set pStore(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pMember(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1038,11 +1038,11 @@ try {
 export function CryptCATOpen(
   pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fdwOpenFlags: CRYPTCAT_OPEN_FLAGS /* Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_OPEN_FLAGS */,
-  hProv: Deno.PointerValue /* usize */,
+  hProv: number | bigint /* usize */,
   dwPublicVersion: CRYPTCAT_VERSION /* Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_VERSION */,
   dwEncodingType: number /* u32 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWINTRUST_dll.CryptCATOpen(util.pwstrToFfi(pwszFileName), fdwOpenFlags, hProv, dwPublicVersion, dwEncodingType));
+  return util.pointerFromFfi(libWINTRUST_dll.CryptCATOpen(util.pwstrToFfi(pwszFileName), fdwOpenFlags, util.toBigInt(util.toPointer(hProv)), dwPublicVersion, dwEncodingType));
 }
 
 export function CryptCATClose(
@@ -1224,28 +1224,28 @@ export function CryptCATAdminAcquireContext2(
 }
 
 export function CryptCATAdminReleaseContext(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseContext(hCatAdmin, dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseContext(util.toBigInt(util.toPointer(hCatAdmin)), dwFlags));
 }
 
 export function CryptCATAdminReleaseCatalogContext(
-  hCatAdmin: Deno.PointerValue /* isize */,
-  hCatInfo: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
+  hCatInfo: number | bigint /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseCatalogContext(hCatAdmin, hCatInfo, dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseCatalogContext(util.toBigInt(util.toPointer(hCatAdmin)), util.toBigInt(util.toPointer(hCatInfo)), dwFlags));
 }
 
 export function CryptCATAdminEnumCatalogFromHash(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   pbHash: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbHash: number /* u32 */,
   dwFlags: number /* u32 */,
   phPrevCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue /* isize */ {
-  return libWINTRUST_dll.CryptCATAdminEnumCatalogFromHash(hCatAdmin, util.toPointer(pbHash), cbHash, dwFlags, util.toPointer(phPrevCatInfo));
+): number | bigint /* isize */ {
+  return libWINTRUST_dll.CryptCATAdminEnumCatalogFromHash(util.toBigInt(util.toPointer(hCatAdmin)), util.toPointer(pbHash), cbHash, dwFlags, util.toPointer(phPrevCatInfo));
 }
 
 export function CryptCATAdminCalcHashFromFileHandle(
@@ -1258,47 +1258,47 @@ export function CryptCATAdminCalcHashFromFileHandle(
 }
 
 export function CryptCATAdminCalcHashFromFileHandle2(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   pcbHash: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbHash: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminCalcHashFromFileHandle2(hCatAdmin, util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminCalcHashFromFileHandle2(util.toBigInt(util.toPointer(hCatAdmin)), util.toPointer(hFile), util.toPointer(pcbHash), util.toPointer(pbHash), dwFlags));
 }
 
 export function CryptCATAdminAddCatalog(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszSelectBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libWINTRUST_dll.CryptCATAdminAddCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.pwstrToFfi(pwszSelectBaseName), dwFlags);
+): number | bigint /* isize */ {
+  return libWINTRUST_dll.CryptCATAdminAddCatalog(util.toBigInt(util.toPointer(hCatAdmin)), util.pwstrToFfi(pwszCatalogFile), util.pwstrToFfi(pwszSelectBaseName), dwFlags);
 }
 
 export function CryptCATAdminRemoveCatalog(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminRemoveCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminRemoveCatalog(util.toBigInt(util.toPointer(hCatAdmin)), util.pwstrToFfi(pwszCatalogFile), dwFlags));
 }
 
 export function CryptCATCatalogInfoFromContext(
-  hCatInfo: Deno.PointerValue /* isize */,
+  hCatInfo: number | bigint /* isize */,
   psCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATCatalogInfoFromContext(hCatInfo, util.toPointer(psCatInfo), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATCatalogInfoFromContext(util.toBigInt(util.toPointer(hCatInfo)), util.toPointer(psCatInfo), dwFlags));
 }
 
 export function CryptCATAdminResolveCatalogPath(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: number | bigint /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psCatInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminResolveCatalogPath(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.toPointer(psCatInfo), dwFlags));
+  return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminResolveCatalogPath(util.toBigInt(util.toPointer(hCatAdmin)), util.pwstrToFfi(pwszCatalogFile), util.toPointer(psCatInfo), dwFlags));
 }
 
 export function CryptCATAdminPauseServiceForBackup(

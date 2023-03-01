@@ -224,18 +224,18 @@ export const EvtEventPropertyIdEND = 2;
 
 // Structs
 
-export type EventLogHandle = Deno.PointerValue;
+export type EventLogHandle = number | bigint;
 
-export type EventSourceHandle = Deno.PointerValue;
+export type EventSourceHandle = number | bigint;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -244,9 +244,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -261,23 +261,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -297,9 +297,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -327,12 +327,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -354,7 +354,7 @@ export function allocEVT_VARIANT(data?: Partial<EVT_VARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofEVT_VARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: u32
   if (data?.Count !== undefined) view.setUint32(8, Number(data.Count), true);
   // 0x0c: u32
@@ -390,7 +390,7 @@ export class EVT_VARIANTView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -430,22 +430,22 @@ export function allocEVT_RPC_LOGIN(data?: Partial<EVT_RPC_LOGIN>): Uint8Array {
   // 0x00: buffer
   if (data?.Server !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.Server);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.User !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.User);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.Domain !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.Domain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.Password !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.Password);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
@@ -497,25 +497,25 @@ export class EVT_RPC_LOGINView {
   // 0x00: buffer
   set Server(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set User(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set Domain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set Password(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -798,12 +798,12 @@ export function allocEVENTSFORLOGFILE(data?: Partial<EVENTSFORLOGFILE>): Uint8Ar
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.szLogicalLogFile !== undefined) view.setBigUint64(8, data.szLogicalLogFile === null ? 0n : BigInt(util.toPointer(data.szLogicalLogFile)), true);
+  if (data?.szLogicalLogFile !== undefined) view.setBigUint64(8, data.szLogicalLogFile === null ? 0n : util.toBigInt(util.toPointer(data.szLogicalLogFile)), true);
   // 0x10: u32
   if (data?.ulNumRecords !== undefined) view.setUint32(16, Number(data.ulNumRecords), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pEventLogRecords !== undefined) view.setBigUint64(24, data.pEventLogRecords === null ? 0n : BigInt(util.toPointer(data.pEventLogRecords)), true);
+  if (data?.pEventLogRecords !== undefined) view.setBigUint64(24, data.pEventLogRecords === null ? 0n : util.toBigInt(util.toPointer(data.pEventLogRecords)), true);
   return buf;
 }
 
@@ -852,7 +852,7 @@ export class EVENTSFORLOGFILEView {
 
   // 0x08: pointer
   set szLogicalLogFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -864,7 +864,7 @@ export class EVENTSFORLOGFILEView {
 
   // 0x18: pointer
   set pEventLogRecords(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -914,7 +914,7 @@ export class EVENTLOG_FULL_INFORMATIONView {
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -1159,20 +1159,20 @@ export function EvtOpenSession(
   Login: Deno.PointerValue | Uint8Array | null /* ptr */,
   Timeout: number /* u32 */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libwevtapi_dll.EvtOpenSession(LoginClass, util.toPointer(Login), Timeout, Flags);
 }
 
 export function EvtClose(
-  Object: Deno.PointerValue /* isize */,
+  Object: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtClose(Object));
+  return util.boolFromFfi(libwevtapi_dll.EvtClose(util.toBigInt(util.toPointer(Object))));
 }
 
 export function EvtCancel(
-  Object: Deno.PointerValue /* isize */,
+  Object: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtCancel(Object));
+  return util.boolFromFfi(libwevtapi_dll.EvtCancel(util.toBigInt(util.toPointer(Object))));
 }
 
 export function EvtGetExtendedStatus(
@@ -1184,71 +1184,71 @@ export function EvtGetExtendedStatus(
 }
 
 export function EvtQuery(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtQuery(Session, util.pwstrToFfi(Path), util.pwstrToFfi(Query), Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtQuery(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(Path), util.pwstrToFfi(Query), Flags);
 }
 
 export function EvtNext(
-  ResultSet: Deno.PointerValue /* isize */,
+  ResultSet: number | bigint /* isize */,
   EventsSize: number /* u32 */,
   Events: Deno.PointerValue | Uint8Array | null /* ptr */,
   Timeout: number /* u32 */,
   Flags: number /* u32 */,
   Returned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtNext(ResultSet, EventsSize, util.toPointer(Events), Timeout, Flags, util.toPointer(Returned)));
+  return util.boolFromFfi(libwevtapi_dll.EvtNext(util.toBigInt(util.toPointer(ResultSet)), EventsSize, util.toPointer(Events), Timeout, Flags, util.toPointer(Returned)));
 }
 
 export function EvtSeek(
-  ResultSet: Deno.PointerValue /* isize */,
-  Position: Deno.PointerValue /* i64 */,
-  Bookmark: Deno.PointerValue /* isize */,
+  ResultSet: number | bigint /* isize */,
+  Position: number | bigint /* i64 */,
+  Bookmark: number | bigint /* isize */,
   Timeout: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtSeek(ResultSet, Position, Bookmark, Timeout, Flags));
+  return util.boolFromFfi(libwevtapi_dll.EvtSeek(util.toBigInt(util.toPointer(ResultSet)), util.toBigInt(util.toPointer(Position)), util.toBigInt(util.toPointer(Bookmark)), Timeout, Flags));
 }
 
 export function EvtSubscribe(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   SignalEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Bookmark: Deno.PointerValue /* isize */,
+  Bookmark: number | bigint /* isize */,
   Context: Deno.PointerValue | Uint8Array | null /* ptr */,
   Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.EventLog.EVT_SUBSCRIBE_CALLBACK */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtSubscribe(Session, util.toPointer(SignalEvent), util.pwstrToFfi(ChannelPath), util.pwstrToFfi(Query), Bookmark, util.toPointer(Context), util.toPointer(Callback), Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtSubscribe(util.toBigInt(util.toPointer(Session)), util.toPointer(SignalEvent), util.pwstrToFfi(ChannelPath), util.pwstrToFfi(Query), util.toBigInt(util.toPointer(Bookmark)), util.toPointer(Context), util.toPointer(Callback), Flags);
 }
 
 export function EvtCreateRenderContext(
   ValuePathsCount: number /* u32 */,
   ValuePaths: Deno.PointerValue | Uint8Array | null /* ptr */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libwevtapi_dll.EvtCreateRenderContext(ValuePathsCount, util.toPointer(ValuePaths), Flags);
 }
 
 export function EvtRender(
-  Context: Deno.PointerValue /* isize */,
-  Fragment: Deno.PointerValue /* isize */,
+  Context: number | bigint /* isize */,
+  Fragment: number | bigint /* isize */,
   Flags: number /* u32 */,
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   BufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtRender(Context, Fragment, Flags, BufferSize, util.toPointer(Buffer), util.toPointer(BufferUsed), util.toPointer(PropertyCount)));
+  return util.boolFromFfi(libwevtapi_dll.EvtRender(util.toBigInt(util.toPointer(Context)), util.toBigInt(util.toPointer(Fragment)), Flags, BufferSize, util.toPointer(Buffer), util.toPointer(BufferUsed), util.toPointer(PropertyCount)));
 }
 
 export function EvtFormatMessage(
-  PublisherMetadata: Deno.PointerValue /* isize */,
-  Event: Deno.PointerValue /* isize */,
+  PublisherMetadata: number | bigint /* isize */,
+  Event: number | bigint /* isize */,
   MessageId: number /* u32 */,
   ValueCount: number /* u32 */,
   Values: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -1257,177 +1257,177 @@ export function EvtFormatMessage(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtFormatMessage(PublisherMetadata, Event, MessageId, ValueCount, util.toPointer(Values), Flags, BufferSize, util.pwstrToFfi(Buffer), util.toPointer(BufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtFormatMessage(util.toBigInt(util.toPointer(PublisherMetadata)), util.toBigInt(util.toPointer(Event)), MessageId, ValueCount, util.toPointer(Values), Flags, BufferSize, util.pwstrToFfi(Buffer), util.toPointer(BufferUsed)));
 }
 
 export function EvtOpenLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenLog(Session, util.pwstrToFfi(Path), Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenLog(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(Path), Flags);
 }
 
 export function EvtGetLogInfo(
-  Log: Deno.PointerValue /* isize */,
+  Log: number | bigint /* isize */,
   PropertyId: EVT_LOG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_LOG_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetLogInfo(Log, PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetLogInfo(util.toBigInt(util.toPointer(Log)), PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EvtClearLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtClearLog(Session, util.pwstrToFfi(ChannelPath), util.pwstrToFfi(TargetFilePath), Flags));
+  return util.boolFromFfi(libwevtapi_dll.EvtClearLog(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(ChannelPath), util.pwstrToFfi(TargetFilePath), Flags));
 }
 
 export function EvtExportLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtExportLog(Session, util.pwstrToFfi(Path), util.pwstrToFfi(Query), util.pwstrToFfi(TargetFilePath), Flags));
+  return util.boolFromFfi(libwevtapi_dll.EvtExportLog(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(Path), util.pwstrToFfi(Query), util.pwstrToFfi(TargetFilePath), Flags));
 }
 
 export function EvtArchiveExportedLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtArchiveExportedLog(Session, util.pwstrToFfi(LogFilePath), Locale, Flags));
+  return util.boolFromFfi(libwevtapi_dll.EvtArchiveExportedLog(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(LogFilePath), Locale, Flags));
 }
 
 export function EvtOpenChannelEnum(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenChannelEnum(Session, Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenChannelEnum(util.toBigInt(util.toPointer(Session)), Flags);
 }
 
 export function EvtNextChannelPath(
-  ChannelEnum: Deno.PointerValue /* isize */,
+  ChannelEnum: number | bigint /* isize */,
   ChannelPathBufferSize: number /* u32 */,
   ChannelPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ChannelPathBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtNextChannelPath(ChannelEnum, ChannelPathBufferSize, util.pwstrToFfi(ChannelPathBuffer), util.toPointer(ChannelPathBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtNextChannelPath(util.toBigInt(util.toPointer(ChannelEnum)), ChannelPathBufferSize, util.pwstrToFfi(ChannelPathBuffer), util.toPointer(ChannelPathBufferUsed)));
 }
 
 export function EvtOpenChannelConfig(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenChannelConfig(Session, util.pwstrToFfi(ChannelPath), Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenChannelConfig(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(ChannelPath), Flags);
 }
 
 export function EvtSaveChannelConfig(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: number | bigint /* isize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtSaveChannelConfig(ChannelConfig, Flags));
+  return util.boolFromFfi(libwevtapi_dll.EvtSaveChannelConfig(util.toBigInt(util.toPointer(ChannelConfig)), Flags));
 }
 
 export function EvtSetChannelConfigProperty(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: number | bigint /* isize */,
   PropertyId: EVT_CHANNEL_CONFIG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_CHANNEL_CONFIG_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtSetChannelConfigProperty(ChannelConfig, PropertyId, Flags, util.toPointer(PropertyValue)));
+  return util.boolFromFfi(libwevtapi_dll.EvtSetChannelConfigProperty(util.toBigInt(util.toPointer(ChannelConfig)), PropertyId, Flags, util.toPointer(PropertyValue)));
 }
 
 export function EvtGetChannelConfigProperty(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: number | bigint /* isize */,
   PropertyId: EVT_CHANNEL_CONFIG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_CHANNEL_CONFIG_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetChannelConfigProperty(ChannelConfig, PropertyId, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetChannelConfigProperty(util.toBigInt(util.toPointer(ChannelConfig)), PropertyId, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EvtOpenPublisherEnum(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenPublisherEnum(Session, Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenPublisherEnum(util.toBigInt(util.toPointer(Session)), Flags);
 }
 
 export function EvtNextPublisherId(
-  PublisherEnum: Deno.PointerValue /* isize */,
+  PublisherEnum: number | bigint /* isize */,
   PublisherIdBufferSize: number /* u32 */,
   PublisherIdBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PublisherIdBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtNextPublisherId(PublisherEnum, PublisherIdBufferSize, util.pwstrToFfi(PublisherIdBuffer), util.toPointer(PublisherIdBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtNextPublisherId(util.toBigInt(util.toPointer(PublisherEnum)), PublisherIdBufferSize, util.pwstrToFfi(PublisherIdBuffer), util.toPointer(PublisherIdBufferUsed)));
 }
 
 export function EvtOpenPublisherMetadata(
-  Session: Deno.PointerValue /* isize */,
+  Session: number | bigint /* isize */,
   PublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenPublisherMetadata(Session, util.pwstrToFfi(PublisherId), util.pwstrToFfi(LogFilePath), Locale, Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenPublisherMetadata(util.toBigInt(util.toPointer(Session)), util.pwstrToFfi(PublisherId), util.pwstrToFfi(LogFilePath), Locale, Flags);
 }
 
 export function EvtGetPublisherMetadataProperty(
-  PublisherMetadata: Deno.PointerValue /* isize */,
+  PublisherMetadata: number | bigint /* isize */,
   PropertyId: EVT_PUBLISHER_METADATA_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_PUBLISHER_METADATA_PROPERTY_ID */,
   Flags: number /* u32 */,
   PublisherMetadataPropertyBufferSize: number /* u32 */,
   PublisherMetadataPropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PublisherMetadataPropertyBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetPublisherMetadataProperty(PublisherMetadata, PropertyId, Flags, PublisherMetadataPropertyBufferSize, util.toPointer(PublisherMetadataPropertyBuffer), util.toPointer(PublisherMetadataPropertyBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetPublisherMetadataProperty(util.toBigInt(util.toPointer(PublisherMetadata)), PropertyId, Flags, PublisherMetadataPropertyBufferSize, util.toPointer(PublisherMetadataPropertyBuffer), util.toPointer(PublisherMetadataPropertyBufferUsed)));
 }
 
 export function EvtOpenEventMetadataEnum(
-  PublisherMetadata: Deno.PointerValue /* isize */,
+  PublisherMetadata: number | bigint /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtOpenEventMetadataEnum(PublisherMetadata, Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtOpenEventMetadataEnum(util.toBigInt(util.toPointer(PublisherMetadata)), Flags);
 }
 
 export function EvtNextEventMetadata(
-  EventMetadataEnum: Deno.PointerValue /* isize */,
+  EventMetadataEnum: number | bigint /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
-  return libwevtapi_dll.EvtNextEventMetadata(EventMetadataEnum, Flags);
+): number | bigint /* isize */ {
+  return libwevtapi_dll.EvtNextEventMetadata(util.toBigInt(util.toPointer(EventMetadataEnum)), Flags);
 }
 
 export function EvtGetEventMetadataProperty(
-  EventMetadata: Deno.PointerValue /* isize */,
+  EventMetadata: number | bigint /* isize */,
   PropertyId: EVT_EVENT_METADATA_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_EVENT_METADATA_PROPERTY_ID */,
   Flags: number /* u32 */,
   EventMetadataPropertyBufferSize: number /* u32 */,
   EventMetadataPropertyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   EventMetadataPropertyBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetEventMetadataProperty(EventMetadata, PropertyId, Flags, EventMetadataPropertyBufferSize, util.toPointer(EventMetadataPropertyBuffer), util.toPointer(EventMetadataPropertyBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetEventMetadataProperty(util.toBigInt(util.toPointer(EventMetadata)), PropertyId, Flags, EventMetadataPropertyBufferSize, util.toPointer(EventMetadataPropertyBuffer), util.toPointer(EventMetadataPropertyBufferUsed)));
 }
 
 export function EvtGetObjectArraySize(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: number | bigint /* isize */,
   ObjectArraySize: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetObjectArraySize(ObjectArray, util.toPointer(ObjectArraySize)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetObjectArraySize(util.toBigInt(util.toPointer(ObjectArray)), util.toPointer(ObjectArraySize)));
 }
 
 export function EvtGetObjectArrayProperty(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: number | bigint /* isize */,
   PropertyId: number /* u32 */,
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
@@ -1435,40 +1435,40 @@ export function EvtGetObjectArrayProperty(
   PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetObjectArrayProperty(ObjectArray, PropertyId, ArrayIndex, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetObjectArrayProperty(util.toBigInt(util.toPointer(ObjectArray)), PropertyId, ArrayIndex, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EvtGetQueryInfo(
-  QueryOrSubscription: Deno.PointerValue /* isize */,
+  QueryOrSubscription: number | bigint /* isize */,
   PropertyId: EVT_QUERY_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_QUERY_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetQueryInfo(QueryOrSubscription, PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetQueryInfo(util.toBigInt(util.toPointer(QueryOrSubscription)), PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EvtCreateBookmark(
   BookmarkXml: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libwevtapi_dll.EvtCreateBookmark(util.pwstrToFfi(BookmarkXml));
 }
 
 export function EvtUpdateBookmark(
-  Bookmark: Deno.PointerValue /* isize */,
-  Event: Deno.PointerValue /* isize */,
+  Bookmark: number | bigint /* isize */,
+  Event: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtUpdateBookmark(Bookmark, Event));
+  return util.boolFromFfi(libwevtapi_dll.EvtUpdateBookmark(util.toBigInt(util.toPointer(Bookmark)), util.toBigInt(util.toPointer(Event))));
 }
 
 export function EvtGetEventInfo(
-  Event: Deno.PointerValue /* isize */,
+  Event: number | bigint /* isize */,
   PropertyId: EVT_EVENT_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_EVENT_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwevtapi_dll.EvtGetEventInfo(Event, PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libwevtapi_dll.EvtGetEventInfo(util.toBigInt(util.toPointer(Event)), PropertyId, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function ClearEventLogA(

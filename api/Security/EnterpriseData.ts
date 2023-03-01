@@ -19,7 +19,7 @@ export const SRPHOSTING_VERSION1 = 1;
 
 // Structs
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Security.EnterpriseData.HTHREAD_NETWORK_CONTEXT (size: 16)
@@ -40,7 +40,7 @@ export function allocHTHREAD_NETWORK_CONTEXT(data?: Partial<HTHREAD_NETWORK_CONT
   if (data?.ThreadId !== undefined) view.setUint32(0, Number(data.ThreadId), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ThreadContext !== undefined) view.setBigUint64(8, data.ThreadContext === null ? 0n : BigInt(util.toPointer(data.ThreadContext)), true);
+  if (data?.ThreadContext !== undefined) view.setBigUint64(8, data.ThreadContext === null ? 0n : util.toBigInt(util.toPointer(data.ThreadContext)), true);
   return buf;
 }
 
@@ -76,7 +76,7 @@ export class HTHREAD_NETWORK_CONTEXTView {
 
   // 0x08: pointer
   set ThreadContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

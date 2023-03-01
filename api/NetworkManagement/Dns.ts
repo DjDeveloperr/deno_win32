@@ -394,7 +394,7 @@ export const TAG_DNS_CONNECTION_POLICY_TAG_WWWPT = 2;
 
 // Structs
 
-export type DnsContextHandle = Deno.PointerValue;
+export type DnsContextHandle = number | bigint;
 
 /**
  * Windows.Win32.NetworkManagement.Dns.IP6_ADDRESS (size: 32)
@@ -416,13 +416,13 @@ export function allocIP6_ADDRESS(data?: Partial<IP6_ADDRESS>): Uint8Array {
   const buf = new Uint8Array(sizeofIP6_ADDRESS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IP6Qword !== undefined) view.setBigUint64(0, data.IP6Qword === null ? 0n : BigInt(util.toPointer(data.IP6Qword)), true);
+  if (data?.IP6Qword !== undefined) view.setBigUint64(0, data.IP6Qword === null ? 0n : util.toBigInt(util.toPointer(data.IP6Qword)), true);
   // 0x08: pointer
-  if (data?.IP6Dword !== undefined) view.setBigUint64(8, data.IP6Dword === null ? 0n : BigInt(util.toPointer(data.IP6Dword)), true);
+  if (data?.IP6Dword !== undefined) view.setBigUint64(8, data.IP6Dword === null ? 0n : util.toBigInt(util.toPointer(data.IP6Dword)), true);
   // 0x10: pointer
-  if (data?.IP6Word !== undefined) view.setBigUint64(16, data.IP6Word === null ? 0n : BigInt(util.toPointer(data.IP6Word)), true);
+  if (data?.IP6Word !== undefined) view.setBigUint64(16, data.IP6Word === null ? 0n : util.toBigInt(util.toPointer(data.IP6Word)), true);
   // 0x18: pointer
-  if (data?.IP6Byte !== undefined) view.setBigUint64(24, data.IP6Byte === null ? 0n : BigInt(util.toPointer(data.IP6Byte)), true);
+  if (data?.IP6Byte !== undefined) view.setBigUint64(24, data.IP6Byte === null ? 0n : util.toBigInt(util.toPointer(data.IP6Byte)), true);
   return buf;
 }
 
@@ -462,22 +462,22 @@ export class IP6_ADDRESSView {
 
   // 0x00: pointer
   set IP6Qword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set IP6Dword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set IP6Word(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set IP6Byte(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -500,7 +500,7 @@ export function allocIP4_ARRAY(data?: Partial<IP4_ARRAY>): Uint8Array {
   if (data?.AddrCount !== undefined) view.setUint32(0, Number(data.AddrCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.AddrArray !== undefined) view.setBigUint64(8, data.AddrArray === null ? 0n : BigInt(util.toPointer(data.AddrArray)), true);
+  if (data?.AddrArray !== undefined) view.setBigUint64(8, data.AddrArray === null ? 0n : util.toBigInt(util.toPointer(data.AddrArray)), true);
   return buf;
 }
 
@@ -536,7 +536,7 @@ export class IP4_ARRAYView {
 
   // 0x08: pointer
   set AddrArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -788,11 +788,11 @@ export function alloc_Data_e__Union(data?: Partial<_Data_e__Union>): Uint8Array 
   const buf = new Uint8Array(sizeof_Data_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MSC !== undefined) view.setBigUint64(0, data.MSC === null ? 0n : BigInt(util.toPointer(data.MSC)), true);
+  if (data?.MSC !== undefined) view.setBigUint64(0, data.MSC === null ? 0n : util.toBigInt(util.toPointer(data.MSC)), true);
   // 0x08: pointer
-  if (data?.RLS !== undefined) view.setBigUint64(8, data.RLS === null ? 0n : BigInt(util.toPointer(data.RLS)), true);
+  if (data?.RLS !== undefined) view.setBigUint64(8, data.RLS === null ? 0n : util.toBigInt(util.toPointer(data.RLS)), true);
   // 0x10: pointer
-  if (data?.RPN !== undefined) view.setBigUint64(16, data.RPN === null ? 0n : BigInt(util.toPointer(data.RPN)), true);
+  if (data?.RPN !== undefined) view.setBigUint64(16, data.RPN === null ? 0n : util.toBigInt(util.toPointer(data.RPN)), true);
   return buf;
 }
 
@@ -826,17 +826,17 @@ export class _Data_e__UnionView {
 
   // 0x00: pointer
   set MSC(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set RLS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set RPN(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -856,9 +856,9 @@ export function allocDNS_ADDR(data?: Partial<DNS_ADDR>): Uint8Array {
   const buf = new Uint8Array(sizeofDNS_ADDR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MaxSa !== undefined) view.setBigUint64(0, data.MaxSa === null ? 0n : BigInt(util.toPointer(data.MaxSa)), true);
+  if (data?.MaxSa !== undefined) view.setBigUint64(0, data.MaxSa === null ? 0n : util.toBigInt(util.toPointer(data.MaxSa)), true);
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -886,12 +886,12 @@ export class DNS_ADDRView {
 
   // 0x00: pointer
   set MaxSa(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -945,7 +945,7 @@ export function allocDNS_ADDR_ARRAY(data?: Partial<DNS_ADDR_ARRAY>): Uint8Array 
   // 0x1c: u32
   if (data?.Reserved2 !== undefined) view.setUint32(28, Number(data.Reserved2), true);
   // 0x20: pointer
-  if (data?.AddrArray !== undefined) view.setBigUint64(32, data.AddrArray === null ? 0n : BigInt(util.toPointer(data.AddrArray)), true);
+  if (data?.AddrArray !== undefined) view.setBigUint64(32, data.AddrArray === null ? 0n : util.toBigInt(util.toPointer(data.AddrArray)), true);
   return buf;
 }
 
@@ -1057,7 +1057,7 @@ export class DNS_ADDR_ARRAYView {
 
   // 0x20: pointer
   set AddrArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1467,7 +1467,7 @@ export function allocDNS_PTR_DATAW(data?: Partial<DNS_PTR_DATAW>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameHost !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameHost);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
 }
@@ -1491,7 +1491,7 @@ export class DNS_PTR_DATAWView {
   // 0x00: buffer
   set pNameHost(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 }
 
@@ -1513,7 +1513,7 @@ export function allocDNS_PTR_DATAA(data?: Partial<DNS_PTR_DATAA>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameHost !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameHost);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
 }
@@ -1537,7 +1537,7 @@ export class DNS_PTR_DATAAView {
   // 0x00: buffer
   set pNameHost(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 }
 
@@ -1569,12 +1569,12 @@ export function allocDNS_SOA_DATAW(data?: Partial<DNS_SOA_DATAW>): Uint8Array {
   // 0x00: buffer
   if (data?.pNamePrimaryServer !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNamePrimaryServer);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pNameAdministrator !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pNameAdministrator);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.dwSerialNo !== undefined) view.setUint32(16, Number(data.dwSerialNo), true);
@@ -1642,13 +1642,13 @@ export class DNS_SOA_DATAWView {
   // 0x00: buffer
   set pNamePrimaryServer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pNameAdministrator(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -1707,12 +1707,12 @@ export function allocDNS_SOA_DATAA(data?: Partial<DNS_SOA_DATAA>): Uint8Array {
   // 0x00: buffer
   if (data?.pNamePrimaryServer !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNamePrimaryServer);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pNameAdministrator !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pNameAdministrator);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.dwSerialNo !== undefined) view.setUint32(16, Number(data.dwSerialNo), true);
@@ -1780,13 +1780,13 @@ export class DNS_SOA_DATAAView {
   // 0x00: buffer
   set pNamePrimaryServer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pNameAdministrator(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -1835,12 +1835,12 @@ export function allocDNS_MINFO_DATAW(data?: Partial<DNS_MINFO_DATAW>): Uint8Arra
   // 0x00: buffer
   if (data?.pNameMailbox !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameMailbox);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pNameErrorsMailbox !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pNameErrorsMailbox);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -1870,13 +1870,13 @@ export class DNS_MINFO_DATAWView {
   // 0x00: buffer
   set pNameMailbox(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pNameErrorsMailbox(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -1898,12 +1898,12 @@ export function allocDNS_MINFO_DATAA(data?: Partial<DNS_MINFO_DATAA>): Uint8Arra
   // 0x00: buffer
   if (data?.pNameMailbox !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameMailbox);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pNameErrorsMailbox !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pNameErrorsMailbox);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -1933,13 +1933,13 @@ export class DNS_MINFO_DATAAView {
   // 0x00: buffer
   set pNameMailbox(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pNameErrorsMailbox(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -1963,7 +1963,7 @@ export function allocDNS_MX_DATAW(data?: Partial<DNS_MX_DATAW>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameExchange !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameExchange);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wPreference !== undefined) view.setUint16(8, Number(data.wPreference), true);
@@ -2004,7 +2004,7 @@ export class DNS_MX_DATAWView {
   // 0x00: buffer
   set pNameExchange(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -2040,7 +2040,7 @@ export function allocDNS_MX_DATAA(data?: Partial<DNS_MX_DATAA>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameExchange !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameExchange);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wPreference !== undefined) view.setUint16(8, Number(data.wPreference), true);
@@ -2081,7 +2081,7 @@ export class DNS_MX_DATAAView {
   // 0x00: buffer
   set pNameExchange(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -2116,7 +2116,7 @@ export function allocDNS_TXT_DATAW(data?: Partial<DNS_TXT_DATAW>): Uint8Array {
   if (data?.dwStringCount !== undefined) view.setUint32(0, Number(data.dwStringCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pStringArray !== undefined) view.setBigUint64(8, data.pStringArray === null ? 0n : BigInt(util.toPointer(data.pStringArray)), true);
+  if (data?.pStringArray !== undefined) view.setBigUint64(8, data.pStringArray === null ? 0n : util.toBigInt(util.toPointer(data.pStringArray)), true);
   return buf;
 }
 
@@ -2152,7 +2152,7 @@ export class DNS_TXT_DATAWView {
 
   // 0x08: pointer
   set pStringArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2175,7 +2175,7 @@ export function allocDNS_TXT_DATAA(data?: Partial<DNS_TXT_DATAA>): Uint8Array {
   if (data?.dwStringCount !== undefined) view.setUint32(0, Number(data.dwStringCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pStringArray !== undefined) view.setBigUint64(8, data.pStringArray === null ? 0n : BigInt(util.toPointer(data.pStringArray)), true);
+  if (data?.pStringArray !== undefined) view.setBigUint64(8, data.pStringArray === null ? 0n : util.toBigInt(util.toPointer(data.pStringArray)), true);
   return buf;
 }
 
@@ -2211,7 +2211,7 @@ export class DNS_TXT_DATAAView {
 
   // 0x08: pointer
   set pStringArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2234,7 +2234,7 @@ export function allocDNS_NULL_DATA(data?: Partial<DNS_NULL_DATA>): Uint8Array {
   if (data?.dwByteCount !== undefined) view.setUint32(0, Number(data.dwByteCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -2270,7 +2270,7 @@ export class DNS_NULL_DATAView {
 
   // 0x08: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2297,7 +2297,7 @@ export function allocDNS_WKS_DATA(data?: Partial<DNS_WKS_DATA>): Uint8Array {
   if (data?.chProtocol !== undefined) view.setUint8(4, Number(data.chProtocol));
   // 0x05: pad3
   // 0x08: pointer
-  if (data?.BitMask !== undefined) view.setBigUint64(8, data.BitMask === null ? 0n : BigInt(util.toPointer(data.BitMask)), true);
+  if (data?.BitMask !== undefined) view.setBigUint64(8, data.BitMask === null ? 0n : util.toBigInt(util.toPointer(data.BitMask)), true);
   return buf;
 }
 
@@ -2343,7 +2343,7 @@ export class DNS_WKS_DATAView {
 
   // 0x08: pointer
   set BitMask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2361,7 +2361,7 @@ export function allocDNS_AAAA_DATA(data?: Partial<DNS_AAAA_DATA>): Uint8Array {
   const buf = new Uint8Array(sizeofDNS_AAAA_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Ip6Address !== undefined) view.setBigUint64(0, data.Ip6Address === null ? 0n : BigInt(util.toPointer(data.Ip6Address)), true);
+  if (data?.Ip6Address !== undefined) view.setBigUint64(0, data.Ip6Address === null ? 0n : util.toBigInt(util.toPointer(data.Ip6Address)), true);
   return buf;
 }
 
@@ -2383,7 +2383,7 @@ export class DNS_AAAA_DATAView {
 
   // 0x00: pointer
   set Ip6Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2438,10 +2438,10 @@ export function allocDNS_SIG_DATAW(data?: Partial<DNS_SIG_DATAW>): Uint8Array {
   // 0x18: buffer
   if (data?.pNameSigner !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pNameSigner);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.Signature !== undefined) view.setBigUint64(32, data.Signature === null ? 0n : BigInt(util.toPointer(data.Signature)), true);
+  if (data?.Signature !== undefined) view.setBigUint64(32, data.Signature === null ? 0n : util.toBigInt(util.toPointer(data.Signature)), true);
   return buf;
 }
 
@@ -2554,12 +2554,12 @@ export class DNS_SIG_DATAWView {
   // 0x18: buffer
   set pNameSigner(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set Signature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2614,10 +2614,10 @@ export function allocDNS_SIG_DATAA(data?: Partial<DNS_SIG_DATAA>): Uint8Array {
   // 0x18: buffer
   if (data?.pNameSigner !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pNameSigner);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.Signature !== undefined) view.setBigUint64(32, data.Signature === null ? 0n : BigInt(util.toPointer(data.Signature)), true);
+  if (data?.Signature !== undefined) view.setBigUint64(32, data.Signature === null ? 0n : util.toBigInt(util.toPointer(data.Signature)), true);
   return buf;
 }
 
@@ -2730,12 +2730,12 @@ export class DNS_SIG_DATAAView {
   // 0x18: buffer
   set pNameSigner(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set Signature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2773,7 +2773,7 @@ export function allocDNS_KEY_DATA(data?: Partial<DNS_KEY_DATA>): Uint8Array {
   // 0x06: u16
   if (data?.wPad !== undefined) view.setUint16(6, Number(data.wPad), true);
   // 0x08: pointer
-  if (data?.Key !== undefined) view.setBigUint64(8, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(8, data.Key === null ? 0n : util.toBigInt(util.toPointer(data.Key)), true);
   return buf;
 }
 
@@ -2845,7 +2845,7 @@ export class DNS_KEY_DATAView {
 
   // 0x08: pointer
   set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2868,7 +2868,7 @@ export function allocDNS_DHCID_DATA(data?: Partial<DNS_DHCID_DATA>): Uint8Array 
   if (data?.dwByteCount !== undefined) view.setUint32(0, Number(data.dwByteCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DHCID !== undefined) view.setBigUint64(8, data.DHCID === null ? 0n : BigInt(util.toPointer(data.DHCID)), true);
+  if (data?.DHCID !== undefined) view.setBigUint64(8, data.DHCID === null ? 0n : util.toBigInt(util.toPointer(data.DHCID)), true);
   return buf;
 }
 
@@ -2904,7 +2904,7 @@ export class DNS_DHCID_DATAView {
 
   // 0x08: pointer
   set DHCID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2930,7 +2930,7 @@ export function allocDNS_NSEC_DATAW(data?: Partial<DNS_NSEC_DATAW>): Uint8Array 
   // 0x00: buffer
   if (data?.pNextDomainName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNextDomainName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wTypeBitMapsLength !== undefined) view.setUint16(8, Number(data.wTypeBitMapsLength), true);
@@ -2938,7 +2938,7 @@ export function allocDNS_NSEC_DATAW(data?: Partial<DNS_NSEC_DATAW>): Uint8Array 
   if (data?.wPad !== undefined) view.setUint16(10, Number(data.wPad), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.TypeBitMaps !== undefined) view.setBigUint64(16, data.TypeBitMaps === null ? 0n : BigInt(util.toPointer(data.TypeBitMaps)), true);
+  if (data?.TypeBitMaps !== undefined) view.setBigUint64(16, data.TypeBitMaps === null ? 0n : util.toBigInt(util.toPointer(data.TypeBitMaps)), true);
   return buf;
 }
 
@@ -2979,7 +2979,7 @@ export class DNS_NSEC_DATAWView {
   // 0x00: buffer
   set pNextDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -2996,7 +2996,7 @@ export class DNS_NSEC_DATAWView {
 
   // 0x10: pointer
   set TypeBitMaps(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3022,7 +3022,7 @@ export function allocDNS_NSEC_DATAA(data?: Partial<DNS_NSEC_DATAA>): Uint8Array 
   // 0x00: buffer
   if (data?.pNextDomainName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNextDomainName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wTypeBitMapsLength !== undefined) view.setUint16(8, Number(data.wTypeBitMapsLength), true);
@@ -3030,7 +3030,7 @@ export function allocDNS_NSEC_DATAA(data?: Partial<DNS_NSEC_DATAA>): Uint8Array 
   if (data?.wPad !== undefined) view.setUint16(10, Number(data.wPad), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.TypeBitMaps !== undefined) view.setBigUint64(16, data.TypeBitMaps === null ? 0n : BigInt(util.toPointer(data.TypeBitMaps)), true);
+  if (data?.TypeBitMaps !== undefined) view.setBigUint64(16, data.TypeBitMaps === null ? 0n : util.toBigInt(util.toPointer(data.TypeBitMaps)), true);
   return buf;
 }
 
@@ -3071,7 +3071,7 @@ export class DNS_NSEC_DATAAView {
   // 0x00: buffer
   set pNextDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -3088,7 +3088,7 @@ export class DNS_NSEC_DATAAView {
 
   // 0x10: pointer
   set TypeBitMaps(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3130,7 +3130,7 @@ export function allocDNS_NSEC3_DATA(data?: Partial<DNS_NSEC3_DATA>): Uint8Array 
   // 0x06: u16
   if (data?.wTypeBitMapsLength !== undefined) view.setUint16(6, Number(data.wTypeBitMapsLength), true);
   // 0x08: pointer
-  if (data?.chData !== undefined) view.setBigUint64(8, data.chData === null ? 0n : BigInt(util.toPointer(data.chData)), true);
+  if (data?.chData !== undefined) view.setBigUint64(8, data.chData === null ? 0n : util.toBigInt(util.toPointer(data.chData)), true);
   return buf;
 }
 
@@ -3212,7 +3212,7 @@ export class DNS_NSEC3_DATAView {
 
   // 0x08: pointer
   set chData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3249,9 +3249,9 @@ export function allocDNS_NSEC3PARAM_DATA(data?: Partial<DNS_NSEC3PARAM_DATA>): U
   if (data?.bSaltLength !== undefined) view.setUint8(4, Number(data.bSaltLength));
   // 0x05: pad3
   // 0x08: pointer
-  if (data?.bPad !== undefined) view.setBigUint64(8, data.bPad === null ? 0n : BigInt(util.toPointer(data.bPad)), true);
+  if (data?.bPad !== undefined) view.setBigUint64(8, data.bPad === null ? 0n : util.toBigInt(util.toPointer(data.bPad)), true);
   // 0x10: pointer
-  if (data?.pbSalt !== undefined) view.setBigUint64(16, data.pbSalt === null ? 0n : BigInt(util.toPointer(data.pbSalt)), true);
+  if (data?.pbSalt !== undefined) view.setBigUint64(16, data.pbSalt === null ? 0n : util.toBigInt(util.toPointer(data.pbSalt)), true);
   return buf;
 }
 
@@ -3323,12 +3323,12 @@ export class DNS_NSEC3PARAM_DATAView {
 
   // 0x08: pointer
   set bPad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pbSalt(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3365,9 +3365,9 @@ export function allocDNS_TLSA_DATA(data?: Partial<DNS_TLSA_DATA>): Uint8Array {
   if (data?.bCertificateAssociationDataLength !== undefined) view.setUint16(3, Number(data.bCertificateAssociationDataLength), true);
   // 0x05: pad3
   // 0x08: pointer
-  if (data?.bPad !== undefined) view.setBigUint64(8, data.bPad === null ? 0n : BigInt(util.toPointer(data.bPad)), true);
+  if (data?.bPad !== undefined) view.setBigUint64(8, data.bPad === null ? 0n : util.toBigInt(util.toPointer(data.bPad)), true);
   // 0x10: pointer
-  if (data?.bCertificateAssociationData !== undefined) view.setBigUint64(16, data.bCertificateAssociationData === null ? 0n : BigInt(util.toPointer(data.bCertificateAssociationData)), true);
+  if (data?.bCertificateAssociationData !== undefined) view.setBigUint64(16, data.bCertificateAssociationData === null ? 0n : util.toBigInt(util.toPointer(data.bCertificateAssociationData)), true);
   return buf;
 }
 
@@ -3439,12 +3439,12 @@ export class DNS_TLSA_DATAView {
 
   // 0x08: pointer
   set bPad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set bCertificateAssociationData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3482,7 +3482,7 @@ export function allocDNS_DS_DATA(data?: Partial<DNS_DS_DATA>): Uint8Array {
   // 0x06: u16
   if (data?.wPad !== undefined) view.setUint16(6, Number(data.wPad), true);
   // 0x08: pointer
-  if (data?.Digest !== undefined) view.setBigUint64(8, data.Digest === null ? 0n : BigInt(util.toPointer(data.Digest)), true);
+  if (data?.Digest !== undefined) view.setBigUint64(8, data.Digest === null ? 0n : util.toBigInt(util.toPointer(data.Digest)), true);
   return buf;
 }
 
@@ -3554,7 +3554,7 @@ export class DNS_DS_DATAView {
 
   // 0x08: pointer
   set Digest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3581,7 +3581,7 @@ export function allocDNS_OPT_DATA(data?: Partial<DNS_OPT_DATA>): Uint8Array {
   if (data?.wPad !== undefined) view.setUint16(2, Number(data.wPad), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -3627,7 +3627,7 @@ export class DNS_OPT_DATAView {
 
   // 0x08: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3779,13 +3779,13 @@ export function allocDNS_NXT_DATAW(data?: Partial<DNS_NXT_DATAW>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameNext !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameNext);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wNumTypes !== undefined) view.setUint16(8, Number(data.wNumTypes), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.wTypes !== undefined) view.setBigUint64(16, data.wTypes === null ? 0n : BigInt(util.toPointer(data.wTypes)), true);
+  if (data?.wTypes !== undefined) view.setBigUint64(16, data.wTypes === null ? 0n : util.toBigInt(util.toPointer(data.wTypes)), true);
   return buf;
 }
 
@@ -3821,7 +3821,7 @@ export class DNS_NXT_DATAWView {
   // 0x00: buffer
   set pNameNext(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -3833,7 +3833,7 @@ export class DNS_NXT_DATAWView {
 
   // 0x10: pointer
   set wTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3857,13 +3857,13 @@ export function allocDNS_NXT_DATAA(data?: Partial<DNS_NXT_DATAA>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameNext !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameNext);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wNumTypes !== undefined) view.setUint16(8, Number(data.wNumTypes), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.wTypes !== undefined) view.setBigUint64(16, data.wTypes === null ? 0n : BigInt(util.toPointer(data.wTypes)), true);
+  if (data?.wTypes !== undefined) view.setBigUint64(16, data.wTypes === null ? 0n : util.toBigInt(util.toPointer(data.wTypes)), true);
   return buf;
 }
 
@@ -3899,7 +3899,7 @@ export class DNS_NXT_DATAAView {
   // 0x00: buffer
   set pNameNext(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -3911,7 +3911,7 @@ export class DNS_NXT_DATAAView {
 
   // 0x10: pointer
   set wTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3939,7 +3939,7 @@ export function allocDNS_SRV_DATAW(data?: Partial<DNS_SRV_DATAW>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameTarget !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameTarget);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wPriority !== undefined) view.setUint16(8, Number(data.wPriority), true);
@@ -3991,7 +3991,7 @@ export class DNS_SRV_DATAWView {
   // 0x00: buffer
   set pNameTarget(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -4039,7 +4039,7 @@ export function allocDNS_SRV_DATAA(data?: Partial<DNS_SRV_DATAA>): Uint8Array {
   // 0x00: buffer
   if (data?.pNameTarget !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameTarget);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u16
   if (data?.wPriority !== undefined) view.setUint16(8, Number(data.wPriority), true);
@@ -4091,7 +4091,7 @@ export class DNS_SRV_DATAAView {
   // 0x00: buffer
   set pNameTarget(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u16
@@ -4146,22 +4146,22 @@ export function allocDNS_NAPTR_DATAW(data?: Partial<DNS_NAPTR_DATAW>): Uint8Arra
   // 0x08: buffer
   if (data?.pFlags !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pFlags);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pService !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pService);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pRegularExpression !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pRegularExpression);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.pReplacement !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pReplacement);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   return buf;
 }
@@ -4227,25 +4227,25 @@ export class DNS_NAPTR_DATAWView {
   // 0x08: buffer
   set pFlags(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pService(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pRegularExpression(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set pReplacement(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 }
 
@@ -4280,22 +4280,22 @@ export function allocDNS_NAPTR_DATAA(data?: Partial<DNS_NAPTR_DATAA>): Uint8Arra
   // 0x08: buffer
   if (data?.pFlags !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pFlags);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pService !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pService);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pRegularExpression !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pRegularExpression);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.pReplacement !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.pReplacement);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   return buf;
 }
@@ -4361,25 +4361,25 @@ export class DNS_NAPTR_DATAAView {
   // 0x08: buffer
   set pFlags(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pService(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pRegularExpression(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set pReplacement(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 }
 
@@ -4402,7 +4402,7 @@ export function allocDNS_ATMA_DATA(data?: Partial<DNS_ATMA_DATA>): Uint8Array {
   if (data?.AddressType !== undefined) view.setUint8(0, Number(data.AddressType));
   // 0x01: pad7
   // 0x08: pointer
-  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : util.toBigInt(util.toPointer(data.Address)), true);
   return buf;
 }
 
@@ -4438,7 +4438,7 @@ export class DNS_ATMA_DATAView {
 
   // 0x08: pointer
   set Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4482,14 +4482,14 @@ export function allocDNS_TKEY_DATAW(data?: Partial<DNS_TKEY_DATAW>): Uint8Array 
   // 0x00: buffer
   if (data?.pNameAlgorithm !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameAlgorithm);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : BigInt(util.toPointer(data.pAlgorithmPacket)), true);
+  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : util.toBigInt(util.toPointer(data.pAlgorithmPacket)), true);
   // 0x10: pointer
-  if (data?.pKey !== undefined) view.setBigUint64(16, data.pKey === null ? 0n : BigInt(util.toPointer(data.pKey)), true);
+  if (data?.pKey !== undefined) view.setBigUint64(16, data.pKey === null ? 0n : util.toBigInt(util.toPointer(data.pKey)), true);
   // 0x18: pointer
-  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : BigInt(util.toPointer(data.pOtherData)), true);
+  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : util.toBigInt(util.toPointer(data.pOtherData)), true);
   // 0x20: u32
   if (data?.dwCreateTime !== undefined) view.setUint32(32, Number(data.dwCreateTime), true);
   // 0x24: u32
@@ -4589,22 +4589,22 @@ export class DNS_TKEY_DATAWView {
   // 0x00: buffer
   set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4688,14 +4688,14 @@ export function allocDNS_TKEY_DATAA(data?: Partial<DNS_TKEY_DATAA>): Uint8Array 
   // 0x00: buffer
   if (data?.pNameAlgorithm !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameAlgorithm);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : BigInt(util.toPointer(data.pAlgorithmPacket)), true);
+  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : util.toBigInt(util.toPointer(data.pAlgorithmPacket)), true);
   // 0x10: pointer
-  if (data?.pKey !== undefined) view.setBigUint64(16, data.pKey === null ? 0n : BigInt(util.toPointer(data.pKey)), true);
+  if (data?.pKey !== undefined) view.setBigUint64(16, data.pKey === null ? 0n : util.toBigInt(util.toPointer(data.pKey)), true);
   // 0x18: pointer
-  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : BigInt(util.toPointer(data.pOtherData)), true);
+  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : util.toBigInt(util.toPointer(data.pOtherData)), true);
   // 0x20: u32
   if (data?.dwCreateTime !== undefined) view.setUint32(32, Number(data.dwCreateTime), true);
   // 0x24: u32
@@ -4795,22 +4795,22 @@ export class DNS_TKEY_DATAAView {
   // 0x00: buffer
   set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4869,7 +4869,7 @@ export interface DNS_TSIG_DATAW {
   /** ptr */
   pOtherData: Deno.PointerValue | Uint8Array | null;
   /** i64 */
-  i64CreateTime: Deno.PointerValue;
+  i64CreateTime: number | bigint;
   /** u16 */
   wFudgeTime: number;
   /** u16 */
@@ -4894,16 +4894,16 @@ export function allocDNS_TSIG_DATAW(data?: Partial<DNS_TSIG_DATAW>): Uint8Array 
   // 0x00: buffer
   if (data?.pNameAlgorithm !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pNameAlgorithm);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : BigInt(util.toPointer(data.pAlgorithmPacket)), true);
+  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : util.toBigInt(util.toPointer(data.pAlgorithmPacket)), true);
   // 0x10: pointer
-  if (data?.pSignature !== undefined) view.setBigUint64(16, data.pSignature === null ? 0n : BigInt(util.toPointer(data.pSignature)), true);
+  if (data?.pSignature !== undefined) view.setBigUint64(16, data.pSignature === null ? 0n : util.toBigInt(util.toPointer(data.pSignature)), true);
   // 0x18: pointer
-  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : BigInt(util.toPointer(data.pOtherData)), true);
+  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : util.toBigInt(util.toPointer(data.pOtherData)), true);
   // 0x20: i64
-  if (data?.i64CreateTime !== undefined) view.setBigInt64(32, BigInt(data.i64CreateTime), true);
+  if (data?.i64CreateTime !== undefined) view.setBigInt64(32, util.toBigInt(data.i64CreateTime), true);
   // 0x28: u16
   if (data?.wFudgeTime !== undefined) view.setUint16(40, Number(data.wFudgeTime), true);
   // 0x2a: u16
@@ -4957,8 +4957,8 @@ export class DNS_TSIG_DATAWView {
   }
 
   // 0x20: i64
-  get i64CreateTime(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(32, true));
+  get i64CreateTime(): number | bigint {
+    return this.view.getBigInt64(32, true);
   }
 
   // 0x28: u16
@@ -5001,27 +5001,27 @@ export class DNS_TSIG_DATAWView {
   // 0x00: buffer
   set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: i64
-  set i64CreateTime(value: Deno.PointerValue) {
-    this.view.setBigInt64(32, BigInt(value), true);
+  set i64CreateTime(value: number | bigint) {
+    this.view.setBigInt64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u16
@@ -5075,7 +5075,7 @@ export interface DNS_TSIG_DATAA {
   /** ptr */
   pOtherData: Deno.PointerValue | Uint8Array | null;
   /** i64 */
-  i64CreateTime: Deno.PointerValue;
+  i64CreateTime: number | bigint;
   /** u16 */
   wFudgeTime: number;
   /** u16 */
@@ -5100,16 +5100,16 @@ export function allocDNS_TSIG_DATAA(data?: Partial<DNS_TSIG_DATAA>): Uint8Array 
   // 0x00: buffer
   if (data?.pNameAlgorithm !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pNameAlgorithm);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : BigInt(util.toPointer(data.pAlgorithmPacket)), true);
+  if (data?.pAlgorithmPacket !== undefined) view.setBigUint64(8, data.pAlgorithmPacket === null ? 0n : util.toBigInt(util.toPointer(data.pAlgorithmPacket)), true);
   // 0x10: pointer
-  if (data?.pSignature !== undefined) view.setBigUint64(16, data.pSignature === null ? 0n : BigInt(util.toPointer(data.pSignature)), true);
+  if (data?.pSignature !== undefined) view.setBigUint64(16, data.pSignature === null ? 0n : util.toBigInt(util.toPointer(data.pSignature)), true);
   // 0x18: pointer
-  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : BigInt(util.toPointer(data.pOtherData)), true);
+  if (data?.pOtherData !== undefined) view.setBigUint64(24, data.pOtherData === null ? 0n : util.toBigInt(util.toPointer(data.pOtherData)), true);
   // 0x20: i64
-  if (data?.i64CreateTime !== undefined) view.setBigInt64(32, BigInt(data.i64CreateTime), true);
+  if (data?.i64CreateTime !== undefined) view.setBigInt64(32, util.toBigInt(data.i64CreateTime), true);
   // 0x28: u16
   if (data?.wFudgeTime !== undefined) view.setUint16(40, Number(data.wFudgeTime), true);
   // 0x2a: u16
@@ -5163,8 +5163,8 @@ export class DNS_TSIG_DATAAView {
   }
 
   // 0x20: i64
-  get i64CreateTime(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(32, true));
+  get i64CreateTime(): number | bigint {
+    return this.view.getBigInt64(32, true);
   }
 
   // 0x28: u16
@@ -5207,27 +5207,27 @@ export class DNS_TSIG_DATAAView {
   // 0x00: buffer
   set pNameAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pAlgorithmPacket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pOtherData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: i64
-  set i64CreateTime(value: Deno.PointerValue) {
-    this.view.setBigInt64(32, BigInt(value), true);
+  set i64CreateTime(value: number | bigint) {
+    this.view.setBigInt64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u16
@@ -5287,7 +5287,7 @@ export function allocDNS_UNKNOWN_DATA(data?: Partial<DNS_UNKNOWN_DATA>): Uint8Ar
   if (data?.dwByteCount !== undefined) view.setUint32(0, Number(data.dwByteCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.bData !== undefined) view.setBigUint64(8, data.bData === null ? 0n : BigInt(util.toPointer(data.bData)), true);
+  if (data?.bData !== undefined) view.setBigUint64(8, data.bData === null ? 0n : util.toBigInt(util.toPointer(data.bData)), true);
   return buf;
 }
 
@@ -5323,7 +5323,7 @@ export class DNS_UNKNOWN_DATAView {
 
   // 0x08: pointer
   set bData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5357,7 +5357,7 @@ export function allocDNS_WINS_DATA(data?: Partial<DNS_WINS_DATA>): Uint8Array {
   // 0x0c: u32
   if (data?.cWinsServerCount !== undefined) view.setUint32(12, Number(data.cWinsServerCount), true);
   // 0x10: pointer
-  if (data?.WinsServers !== undefined) view.setBigUint64(16, data.WinsServers === null ? 0n : BigInt(util.toPointer(data.WinsServers)), true);
+  if (data?.WinsServers !== undefined) view.setBigUint64(16, data.WinsServers === null ? 0n : util.toBigInt(util.toPointer(data.WinsServers)), true);
   return buf;
 }
 
@@ -5419,7 +5419,7 @@ export class DNS_WINS_DATAView {
 
   // 0x10: pointer
   set WinsServers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5452,7 +5452,7 @@ export function allocDNS_WINSR_DATAW(data?: Partial<DNS_WINSR_DATAW>): Uint8Arra
   // 0x10: buffer
   if (data?.pNameResultDomain !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pNameResultDomain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -5510,7 +5510,7 @@ export class DNS_WINSR_DATAWView {
   // 0x10: buffer
   set pNameResultDomain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -5543,7 +5543,7 @@ export function allocDNS_WINSR_DATAA(data?: Partial<DNS_WINSR_DATAA>): Uint8Arra
   // 0x10: buffer
   if (data?.pNameResultDomain !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pNameResultDomain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -5601,7 +5601,7 @@ export class DNS_WINSR_DATAAView {
   // 0x10: buffer
   set pNameResultDomain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -5654,9 +5654,9 @@ export class DNS_RECORD_FLAGSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -5665,9 +5665,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -5682,23 +5682,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -5721,7 +5721,7 @@ export function alloc_Flags_e__Union(data?: Partial<_Flags_e__Union>): Uint8Arra
   if (data?.AsWORD !== undefined) view.setUint16(0, Number(data.AsWORD), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -5757,7 +5757,7 @@ export class _Flags_e__UnionView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5789,11 +5789,11 @@ export function allocDNS_RECORDW(data?: Partial<DNS_RECORDW>): Uint8Array {
   const buf = new Uint8Array(sizeofDNS_RECORDW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : util.toBigInt(util.toPointer(data.pNext)), true);
   // 0x08: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.wType !== undefined) view.setUint16(16, Number(data.wType), true);
@@ -5801,13 +5801,13 @@ export function allocDNS_RECORDW(data?: Partial<DNS_RECORDW>): Uint8Array {
   if (data?.wDataLength !== undefined) view.setUint16(18, Number(data.wDataLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x20: u32
   if (data?.dwTtl !== undefined) view.setUint32(32, Number(data.dwTtl), true);
   // 0x24: u32
   if (data?.dwReserved !== undefined) view.setUint32(36, Number(data.dwReserved), true);
   // 0x28: pointer
-  if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -5869,13 +5869,13 @@ export class DNS_RECORDWView {
 
   // 0x00: pointer
   set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set pName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -5892,7 +5892,7 @@ export class DNS_RECORDWView {
 
   // 0x18: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -5907,7 +5907,7 @@ export class DNS_RECORDWView {
 
   // 0x28: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5941,11 +5941,11 @@ export function allocDNS_RECORD_OPTW(data?: Partial<DNS_RECORD_OPTW>): Uint8Arra
   const buf = new Uint8Array(sizeofDNS_RECORD_OPTW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : util.toBigInt(util.toPointer(data.pNext)), true);
   // 0x08: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.wType !== undefined) view.setUint16(16, Number(data.wType), true);
@@ -5953,16 +5953,16 @@ export function allocDNS_RECORD_OPTW(data?: Partial<DNS_RECORD_OPTW>): Uint8Arra
   if (data?.wDataLength !== undefined) view.setUint16(18, Number(data.wDataLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x20: pointer
-  if (data?.ExtHeader !== undefined) view.setBigUint64(32, data.ExtHeader === null ? 0n : BigInt(util.toPointer(data.ExtHeader)), true);
+  if (data?.ExtHeader !== undefined) view.setBigUint64(32, data.ExtHeader === null ? 0n : util.toBigInt(util.toPointer(data.ExtHeader)), true);
   // 0x28: u16
   if (data?.wPayloadSize !== undefined) view.setUint16(40, Number(data.wPayloadSize), true);
   // 0x2a: u16
   if (data?.wReserved !== undefined) view.setUint16(42, Number(data.wReserved), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.Data !== undefined) view.setBigUint64(48, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(48, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -6032,13 +6032,13 @@ export class DNS_RECORD_OPTWView {
 
   // 0x00: pointer
   set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set pName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -6055,12 +6055,12 @@ export class DNS_RECORD_OPTWView {
 
   // 0x18: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ExtHeader(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u16
@@ -6077,7 +6077,7 @@ export class DNS_RECORD_OPTWView {
 
   // 0x30: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6109,11 +6109,11 @@ export function allocDNS_RECORDA(data?: Partial<DNS_RECORDA>): Uint8Array {
   const buf = new Uint8Array(sizeofDNS_RECORDA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : util.toBigInt(util.toPointer(data.pNext)), true);
   // 0x08: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.wType !== undefined) view.setUint16(16, Number(data.wType), true);
@@ -6121,13 +6121,13 @@ export function allocDNS_RECORDA(data?: Partial<DNS_RECORDA>): Uint8Array {
   if (data?.wDataLength !== undefined) view.setUint16(18, Number(data.wDataLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x20: u32
   if (data?.dwTtl !== undefined) view.setUint32(32, Number(data.dwTtl), true);
   // 0x24: u32
   if (data?.dwReserved !== undefined) view.setUint32(36, Number(data.dwReserved), true);
   // 0x28: pointer
-  if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(40, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -6189,13 +6189,13 @@ export class DNS_RECORDAView {
 
   // 0x00: pointer
   set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set pName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -6212,7 +6212,7 @@ export class DNS_RECORDAView {
 
   // 0x18: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -6227,7 +6227,7 @@ export class DNS_RECORDAView {
 
   // 0x28: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6261,11 +6261,11 @@ export function alloc_DnsRecordOptA(data?: Partial<_DnsRecordOptA>): Uint8Array 
   const buf = new Uint8Array(sizeof_DnsRecordOptA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(0, data.pNext === null ? 0n : util.toBigInt(util.toPointer(data.pNext)), true);
   // 0x08: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.wType !== undefined) view.setUint16(16, Number(data.wType), true);
@@ -6273,16 +6273,16 @@ export function alloc_DnsRecordOptA(data?: Partial<_DnsRecordOptA>): Uint8Array 
   if (data?.wDataLength !== undefined) view.setUint16(18, Number(data.wDataLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(24, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x20: pointer
-  if (data?.ExtHeader !== undefined) view.setBigUint64(32, data.ExtHeader === null ? 0n : BigInt(util.toPointer(data.ExtHeader)), true);
+  if (data?.ExtHeader !== undefined) view.setBigUint64(32, data.ExtHeader === null ? 0n : util.toBigInt(util.toPointer(data.ExtHeader)), true);
   // 0x28: u16
   if (data?.wPayloadSize !== undefined) view.setUint16(40, Number(data.wPayloadSize), true);
   // 0x2a: u16
   if (data?.wReserved !== undefined) view.setUint16(42, Number(data.wReserved), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.Data !== undefined) view.setBigUint64(48, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(48, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -6352,13 +6352,13 @@ export class _DnsRecordOptAView {
 
   // 0x00: pointer
   set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set pName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -6375,12 +6375,12 @@ export class _DnsRecordOptAView {
 
   // 0x18: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ExtHeader(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u16
@@ -6397,7 +6397,7 @@ export class _DnsRecordOptAView {
 
   // 0x30: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6417,9 +6417,9 @@ export function allocDNS_RRSET(data?: Partial<DNS_RRSET>): Uint8Array {
   const buf = new Uint8Array(sizeofDNS_RRSET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pFirstRR !== undefined) view.setBigUint64(0, data.pFirstRR === null ? 0n : BigInt(util.toPointer(data.pFirstRR)), true);
+  if (data?.pFirstRR !== undefined) view.setBigUint64(0, data.pFirstRR === null ? 0n : util.toBigInt(util.toPointer(data.pFirstRR)), true);
   // 0x08: pointer
-  if (data?.pLastRR !== undefined) view.setBigUint64(8, data.pLastRR === null ? 0n : BigInt(util.toPointer(data.pLastRR)), true);
+  if (data?.pLastRR !== undefined) view.setBigUint64(8, data.pLastRR === null ? 0n : util.toBigInt(util.toPointer(data.pLastRR)), true);
   return buf;
 }
 
@@ -6447,12 +6447,12 @@ export class DNS_RRSETView {
 
   // 0x00: pointer
   set pFirstRR(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pLastRR(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6480,7 +6480,7 @@ export function allocDNS_PROXY_INFORMATION(data?: Partial<DNS_PROXY_INFORMATION>
   // 0x08: buffer
   if (data?.proxyName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.proxyName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -6524,7 +6524,7 @@ export class DNS_PROXY_INFORMATIONView {
   // 0x08: buffer
   set proxyName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -6537,7 +6537,7 @@ export interface DNS_QUERY_RESULT {
   /** i32 */
   QueryStatus: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: number | bigint;
   /** ptr */
   pQueryRecords: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -6554,11 +6554,11 @@ export function allocDNS_QUERY_RESULT(data?: Partial<DNS_QUERY_RESULT>): Uint8Ar
   // 0x04: i32
   if (data?.QueryStatus !== undefined) view.setInt32(4, Number(data.QueryStatus), true);
   // 0x08: u64
-  if (data?.QueryOptions !== undefined) view.setBigUint64(8, BigInt(data.QueryOptions), true);
+  if (data?.QueryOptions !== undefined) view.setBigUint64(8, util.toBigInt(data.QueryOptions), true);
   // 0x10: pointer
-  if (data?.pQueryRecords !== undefined) view.setBigUint64(16, data.pQueryRecords === null ? 0n : BigInt(util.toPointer(data.pQueryRecords)), true);
+  if (data?.pQueryRecords !== undefined) view.setBigUint64(16, data.pQueryRecords === null ? 0n : util.toBigInt(util.toPointer(data.pQueryRecords)), true);
   // 0x18: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(24, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(24, data.Reserved === null ? 0n : util.toBigInt(util.toPointer(data.Reserved)), true);
   return buf;
 }
 
@@ -6583,8 +6583,8 @@ export class DNS_QUERY_RESULTView {
   }
 
   // 0x08: u64
-  get QueryOptions(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get QueryOptions(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -6610,18 +6610,18 @@ export class DNS_QUERY_RESULTView {
   }
 
   // 0x08: u64
-  set QueryOptions(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set QueryOptions(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set pQueryRecords(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6636,7 +6636,7 @@ export interface DNS_QUERY_REQUEST {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: number | bigint;
   /** ptr */
   pDnsServerList: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -6658,22 +6658,22 @@ export function allocDNS_QUERY_REQUEST(data?: Partial<DNS_QUERY_REQUEST>): Uint8
   // 0x08: buffer
   if (data?.QueryName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.QueryName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.QueryType !== undefined) view.setUint16(16, Number(data.QueryType), true);
   // 0x12: pad6
   // 0x18: u64
-  if (data?.QueryOptions !== undefined) view.setBigUint64(24, BigInt(data.QueryOptions), true);
+  if (data?.QueryOptions !== undefined) view.setBigUint64(24, util.toBigInt(data.QueryOptions), true);
   // 0x20: pointer
-  if (data?.pDnsServerList !== undefined) view.setBigUint64(32, data.pDnsServerList === null ? 0n : BigInt(util.toPointer(data.pDnsServerList)), true);
+  if (data?.pDnsServerList !== undefined) view.setBigUint64(32, data.pDnsServerList === null ? 0n : util.toBigInt(util.toPointer(data.pDnsServerList)), true);
   // 0x28: u32
   if (data?.InterfaceIndex !== undefined) view.setUint32(40, Number(data.InterfaceIndex), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pQueryCompletionCallback !== undefined) view.setBigUint64(48, data.pQueryCompletionCallback === null ? 0n : BigInt(util.toPointer(data.pQueryCompletionCallback)), true);
+  if (data?.pQueryCompletionCallback !== undefined) view.setBigUint64(48, data.pQueryCompletionCallback === null ? 0n : util.toBigInt(util.toPointer(data.pQueryCompletionCallback)), true);
   // 0x38: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(56, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(56, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   return buf;
 }
 
@@ -6708,8 +6708,8 @@ export class DNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get QueryOptions(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: pointer
@@ -6747,7 +6747,7 @@ export class DNS_QUERY_REQUESTView {
   // 0x08: buffer
   set QueryName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -6758,13 +6758,13 @@ export class DNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set QueryOptions(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: pointer
   set pDnsServerList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -6776,12 +6776,12 @@ export class DNS_QUERY_REQUESTView {
 
   // 0x30: pointer
   set pQueryCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6799,7 +6799,7 @@ export function allocDNS_QUERY_CANCEL(data?: Partial<DNS_QUERY_CANCEL>): Uint8Ar
   const buf = new Uint8Array(sizeofDNS_QUERY_CANCEL);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(0, data.Reserved === null ? 0n : util.toBigInt(util.toPointer(data.Reserved)), true);
   return buf;
 }
 
@@ -6821,7 +6821,7 @@ export class DNS_QUERY_CANCELView {
 
   // 0x00: pointer
   set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6830,11 +6830,11 @@ export class DNS_QUERY_CANCELView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: number | bigint;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -6853,25 +6853,25 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   const buf = new Uint8Array(sizeof_Anonymous1_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Data0 !== undefined) view.setBigUint64(0, BigInt(data.Data0), true);
+  if (data?.Data0 !== undefined) view.setBigUint64(0, util.toBigInt(data.Data0), true);
   // 0x08: buffer
   if (data?.String !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.String);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: usize
-  if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
+  if (data?.u !== undefined) view.setBigUint64(16, util.toBigInt(data.u), true);
   // 0x18: pointer
-  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : util.toBigInt(util.toPointer(data.psid)), true);
   // 0x20: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : util.toBigInt(util.toPointer(data.pguid)), true);
   // 0x28: u32
   if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : util.toBigInt(util.toPointer(data.pObjectTypes)), true);
   // 0x38: pointer
-  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : util.toBigInt(util.toPointer(data.pIpAddress)), true);
   return buf;
 }
 
@@ -6886,8 +6886,8 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Data0(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: buffer
@@ -6897,8 +6897,8 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get u(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: pointer
@@ -6933,29 +6933,29 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Data0(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: buffer
   set String(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set u(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set psid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -6967,12 +6967,12 @@ export class _Anonymous1_e__UnionView {
 
   // 0x30: pointer
   set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6981,7 +6981,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: number | bigint;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -6992,7 +6992,7 @@ export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>):
   const buf = new Uint8Array(sizeof_Anonymous2_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Data1 !== undefined) view.setBigUint64(0, BigInt(data.Data1), true);
+  if (data?.Data1 !== undefined) view.setBigUint64(0, util.toBigInt(data.Data1), true);
   // 0x08: i32
   if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
   // 0x0c: pad4
@@ -7010,8 +7010,8 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Data1(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: i32
@@ -7022,8 +7022,8 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Data1(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i32
@@ -7041,7 +7041,7 @@ export interface DNS_CUSTOM_SERVER {
   /** u32 */
   dwServerType: number;
   /** u64 */
-  ullFlags: Deno.PointerValue;
+  ullFlags: number | bigint;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous2_e__Union */
@@ -7057,11 +7057,11 @@ export function allocDNS_CUSTOM_SERVER(data?: Partial<DNS_CUSTOM_SERVER>): Uint8
   if (data?.dwServerType !== undefined) view.setUint32(0, Number(data.dwServerType), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.ullFlags !== undefined) view.setBigUint64(8, BigInt(data.ullFlags), true);
+  if (data?.ullFlags !== undefined) view.setBigUint64(8, util.toBigInt(data.ullFlags), true);
   // 0x10: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(16, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(16, data.Anonymous1 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous1)), true);
   // 0x18: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous2)), true);
   return buf;
 }
 
@@ -7083,8 +7083,8 @@ export class DNS_CUSTOM_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ullFlags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ullFlags(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -7107,18 +7107,18 @@ export class DNS_CUSTOM_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ullFlags(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ullFlags(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7133,7 +7133,7 @@ export interface DNS_QUERY_REQUEST3 {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: number | bigint;
   /** ptr */
   pDnsServerList: Deno.PointerValue | Uint8Array | null;
   /** u32 */
@@ -7163,22 +7163,22 @@ export function allocDNS_QUERY_REQUEST3(data?: Partial<DNS_QUERY_REQUEST3>): Uin
   // 0x08: buffer
   if (data?.QueryName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.QueryName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.QueryType !== undefined) view.setUint16(16, Number(data.QueryType), true);
   // 0x12: pad6
   // 0x18: u64
-  if (data?.QueryOptions !== undefined) view.setBigUint64(24, BigInt(data.QueryOptions), true);
+  if (data?.QueryOptions !== undefined) view.setBigUint64(24, util.toBigInt(data.QueryOptions), true);
   // 0x20: pointer
-  if (data?.pDnsServerList !== undefined) view.setBigUint64(32, data.pDnsServerList === null ? 0n : BigInt(util.toPointer(data.pDnsServerList)), true);
+  if (data?.pDnsServerList !== undefined) view.setBigUint64(32, data.pDnsServerList === null ? 0n : util.toBigInt(util.toPointer(data.pDnsServerList)), true);
   // 0x28: u32
   if (data?.InterfaceIndex !== undefined) view.setUint32(40, Number(data.InterfaceIndex), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pQueryCompletionCallback !== undefined) view.setBigUint64(48, data.pQueryCompletionCallback === null ? 0n : BigInt(util.toPointer(data.pQueryCompletionCallback)), true);
+  if (data?.pQueryCompletionCallback !== undefined) view.setBigUint64(48, data.pQueryCompletionCallback === null ? 0n : util.toBigInt(util.toPointer(data.pQueryCompletionCallback)), true);
   // 0x38: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(56, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(56, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   // 0x40: i32
   if (data?.IsNetworkQueryRequired !== undefined) view.setInt32(64, Number(data.IsNetworkQueryRequired), true);
   // 0x44: u32
@@ -7187,7 +7187,7 @@ export function allocDNS_QUERY_REQUEST3(data?: Partial<DNS_QUERY_REQUEST3>): Uin
   if (data?.cCustomServers !== undefined) view.setUint32(72, Number(data.cCustomServers), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pCustomServers !== undefined) view.setBigUint64(80, data.pCustomServers === null ? 0n : BigInt(util.toPointer(data.pCustomServers)), true);
+  if (data?.pCustomServers !== undefined) view.setBigUint64(80, data.pCustomServers === null ? 0n : util.toBigInt(util.toPointer(data.pCustomServers)), true);
   return buf;
 }
 
@@ -7222,8 +7222,8 @@ export class DNS_QUERY_REQUEST3View {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get QueryOptions(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: pointer
@@ -7284,7 +7284,7 @@ export class DNS_QUERY_REQUEST3View {
   // 0x08: buffer
   set QueryName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -7295,13 +7295,13 @@ export class DNS_QUERY_REQUEST3View {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set QueryOptions(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: pointer
   set pDnsServerList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -7313,12 +7313,12 @@ export class DNS_QUERY_REQUEST3View {
 
   // 0x30: pointer
   set pQueryCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: i32
@@ -7340,7 +7340,7 @@ export class DNS_QUERY_REQUEST3View {
 
   // 0x50: pointer
   set pCustomServers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7351,7 +7351,7 @@ export interface DNS_APPLICATION_SETTINGS {
   /** u32 */
   Version: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
 }
 
 export const sizeofDNS_APPLICATION_SETTINGS = 16;
@@ -7363,7 +7363,7 @@ export function allocDNS_APPLICATION_SETTINGS(data?: Partial<DNS_APPLICATION_SET
   if (data?.Version !== undefined) view.setUint32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.Flags !== undefined) view.setBigUint64(8, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(8, util.toBigInt(data.Flags), true);
   return buf;
 }
 
@@ -7385,8 +7385,8 @@ export class DNS_APPLICATION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u32
@@ -7397,8 +7397,8 @@ export class DNS_APPLICATION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -7418,9 +7418,9 @@ export function allocDNS_MESSAGE_BUFFER(data?: Partial<DNS_MESSAGE_BUFFER>): Uin
   const buf = new Uint8Array(sizeofDNS_MESSAGE_BUFFER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MessageHead !== undefined) view.setBigUint64(0, data.MessageHead === null ? 0n : BigInt(util.toPointer(data.MessageHead)), true);
+  if (data?.MessageHead !== undefined) view.setBigUint64(0, data.MessageHead === null ? 0n : util.toBigInt(util.toPointer(data.MessageHead)), true);
   // 0x08: pointer
-  if (data?.MessageBody !== undefined) view.setBigUint64(8, data.MessageBody === null ? 0n : BigInt(util.toPointer(data.MessageBody)), true);
+  if (data?.MessageBody !== undefined) view.setBigUint64(8, data.MessageBody === null ? 0n : util.toBigInt(util.toPointer(data.MessageBody)), true);
   return buf;
 }
 
@@ -7448,12 +7448,12 @@ export class DNS_MESSAGE_BUFFERView {
 
   // 0x00: pointer
   set MessageHead(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set MessageBody(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7473,9 +7473,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -7503,12 +7503,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7539,14 +7539,14 @@ export function allocDNS_CONNECTION_PROXY_INFO(data?: Partial<DNS_CONNECTION_PRO
   // 0x08: buffer
   if (data?.pwszFriendlyName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszFriendlyName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
   // 0x14: i32
   if (data?.Switch !== undefined) view.setInt32(20, Number(data.Switch), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -7599,7 +7599,7 @@ export class DNS_CONNECTION_PROXY_INFOView {
   // 0x08: buffer
   set pwszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -7614,11 +7614,11 @@ export class DNS_CONNECTION_PROXY_INFOView {
 
   // 0x18: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_INFO_EX (size: 40)
@@ -7642,20 +7642,20 @@ export function allocDNS_CONNECTION_PROXY_INFO_EX(data?: Partial<DNS_CONNECTION_
   const buf = new Uint8Array(sizeofDNS_CONNECTION_PROXY_INFO_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProxyInfo !== undefined) view.setBigUint64(0, data.ProxyInfo === null ? 0n : BigInt(util.toPointer(data.ProxyInfo)), true);
+  if (data?.ProxyInfo !== undefined) view.setBigUint64(0, data.ProxyInfo === null ? 0n : util.toBigInt(util.toPointer(data.ProxyInfo)), true);
   // 0x08: u32
   if (data?.dwInterfaceIndex !== undefined) view.setUint32(8, Number(data.dwInterfaceIndex), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.pwszConnectionName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszConnectionName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: i32
   if (data?.fDirectConfiguration !== undefined) view.setInt32(24, Number(data.fDirectConfiguration), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.hConnection !== undefined) view.setBigUint64(32, data.hConnection === null ? 0n : BigInt(util.toPointer(data.hConnection)), true);
+  if (data?.hConnection !== undefined) view.setBigUint64(32, data.hConnection === null ? 0n : util.toBigInt(util.toPointer(data.hConnection)), true);
   return buf;
 }
 
@@ -7703,7 +7703,7 @@ export class DNS_CONNECTION_PROXY_INFO_EXView {
 
   // 0x00: pointer
   set ProxyInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -7716,7 +7716,7 @@ export class DNS_CONNECTION_PROXY_INFO_EXView {
   // 0x10: buffer
   set pwszConnectionName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: i32
@@ -7728,7 +7728,7 @@ export class DNS_CONNECTION_PROXY_INFO_EXView {
 
   // 0x20: pointer
   set hConnection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7751,7 +7751,7 @@ export function allocDNS_CONNECTION_PROXY_ELEMENT(data?: Partial<DNS_CONNECTION_
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Info !== undefined) view.setBigUint64(8, data.Info === null ? 0n : BigInt(util.toPointer(data.Info)), true);
+  if (data?.Info !== undefined) view.setBigUint64(8, data.Info === null ? 0n : util.toBigInt(util.toPointer(data.Info)), true);
   return buf;
 }
 
@@ -7787,7 +7787,7 @@ export class DNS_CONNECTION_PROXY_ELEMENTView {
 
   // 0x08: pointer
   set Info(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7810,7 +7810,7 @@ export function allocDNS_CONNECTION_PROXY_LIST(data?: Partial<DNS_CONNECTION_PRO
   if (data?.cProxies !== undefined) view.setUint32(0, Number(data.cProxies), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pProxies !== undefined) view.setBigUint64(8, data.pProxies === null ? 0n : BigInt(util.toPointer(data.pProxies)), true);
+  if (data?.pProxies !== undefined) view.setBigUint64(8, data.pProxies === null ? 0n : util.toBigInt(util.toPointer(data.pProxies)), true);
   return buf;
 }
 
@@ -7846,7 +7846,7 @@ export class DNS_CONNECTION_PROXY_LISTView {
 
   // 0x08: pointer
   set pProxies(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7864,7 +7864,7 @@ export function allocDNS_CONNECTION_NAME(data?: Partial<DNS_CONNECTION_NAME>): U
   const buf = new Uint8Array(sizeofDNS_CONNECTION_NAME);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.wszName !== undefined) view.setBigUint64(0, data.wszName === null ? 0n : BigInt(util.toPointer(data.wszName)), true);
+  if (data?.wszName !== undefined) view.setBigUint64(0, data.wszName === null ? 0n : util.toBigInt(util.toPointer(data.wszName)), true);
   return buf;
 }
 
@@ -7886,7 +7886,7 @@ export class DNS_CONNECTION_NAMEView {
 
   // 0x00: pointer
   set wszName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7909,7 +7909,7 @@ export function allocDNS_CONNECTION_NAME_LIST(data?: Partial<DNS_CONNECTION_NAME
   if (data?.cNames !== undefined) view.setUint32(0, Number(data.cNames), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pNames !== undefined) view.setBigUint64(8, data.pNames === null ? 0n : BigInt(util.toPointer(data.pNames)), true);
+  if (data?.pNames !== undefined) view.setBigUint64(8, data.pNames === null ? 0n : util.toBigInt(util.toPointer(data.pNames)), true);
   return buf;
 }
 
@@ -7945,7 +7945,7 @@ export class DNS_CONNECTION_NAME_LISTView {
 
   // 0x08: pointer
   set pNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7967,7 +7967,7 @@ export function allocDNS_CONNECTION_IFINDEX_ENTRY(data?: Partial<DNS_CONNECTION_
   // 0x00: buffer
   if (data?.pwszConnectionName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszConnectionName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.dwIfIndex !== undefined) view.setUint32(8, Number(data.dwIfIndex), true);
@@ -8001,7 +8001,7 @@ export class DNS_CONNECTION_IFINDEX_ENTRYView {
   // 0x00: buffer
   set pwszConnectionName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -8028,7 +8028,7 @@ export function allocDNS_CONNECTION_IFINDEX_LIST(data?: Partial<DNS_CONNECTION_I
   const buf = new Uint8Array(sizeofDNS_CONNECTION_IFINDEX_LIST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pConnectionIfIndexEntries !== undefined) view.setBigUint64(0, data.pConnectionIfIndexEntries === null ? 0n : BigInt(util.toPointer(data.pConnectionIfIndexEntries)), true);
+  if (data?.pConnectionIfIndexEntries !== undefined) view.setBigUint64(0, data.pConnectionIfIndexEntries === null ? 0n : util.toBigInt(util.toPointer(data.pConnectionIfIndexEntries)), true);
   // 0x08: u32
   if (data?.nEntries !== undefined) view.setUint32(8, Number(data.nEntries), true);
   // 0x0c: pad4
@@ -8060,7 +8060,7 @@ export class DNS_CONNECTION_IFINDEX_LISTView {
 
   // 0x00: pointer
   set pConnectionIfIndexEntries(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -8099,23 +8099,23 @@ export function allocDNS_CONNECTION_POLICY_ENTRY(data?: Partial<DNS_CONNECTION_P
   // 0x00: buffer
   if (data?.pwszHost !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszHost);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pwszAppId !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszAppId);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.cbAppSid !== undefined) view.setUint32(16, Number(data.cbAppSid), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pbAppSid !== undefined) view.setBigUint64(24, data.pbAppSid === null ? 0n : BigInt(util.toPointer(data.pbAppSid)), true);
+  if (data?.pbAppSid !== undefined) view.setBigUint64(24, data.pbAppSid === null ? 0n : util.toBigInt(util.toPointer(data.pbAppSid)), true);
   // 0x20: u32
   if (data?.nConnections !== undefined) view.setUint32(32, Number(data.nConnections), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.ppwszConnections !== undefined) view.setBigUint64(40, data.ppwszConnections === null ? 0n : BigInt(util.toPointer(data.ppwszConnections)), true);
+  if (data?.ppwszConnections !== undefined) view.setBigUint64(40, data.ppwszConnections === null ? 0n : util.toBigInt(util.toPointer(data.ppwszConnections)), true);
   // 0x30: u32
   if (data?.dwPolicyEntryFlags !== undefined) view.setUint32(48, Number(data.dwPolicyEntryFlags), true);
   // 0x34: pad4
@@ -8180,13 +8180,13 @@ export class DNS_CONNECTION_POLICY_ENTRYView {
   // 0x00: buffer
   set pwszHost(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pwszAppId(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -8198,7 +8198,7 @@ export class DNS_CONNECTION_POLICY_ENTRYView {
 
   // 0x18: pointer
   set pbAppSid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -8210,7 +8210,7 @@ export class DNS_CONNECTION_POLICY_ENTRYView {
 
   // 0x28: pointer
   set ppwszConnections(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -8237,7 +8237,7 @@ export function allocDNS_CONNECTION_POLICY_ENTRY_LIST(data?: Partial<DNS_CONNECT
   const buf = new Uint8Array(sizeofDNS_CONNECTION_POLICY_ENTRY_LIST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pPolicyEntries !== undefined) view.setBigUint64(0, data.pPolicyEntries === null ? 0n : BigInt(util.toPointer(data.pPolicyEntries)), true);
+  if (data?.pPolicyEntries !== undefined) view.setBigUint64(0, data.pPolicyEntries === null ? 0n : util.toBigInt(util.toPointer(data.pPolicyEntries)), true);
   // 0x08: u32
   if (data?.nEntries !== undefined) view.setUint32(8, Number(data.nEntries), true);
   // 0x0c: pad4
@@ -8269,7 +8269,7 @@ export class DNS_CONNECTION_POLICY_ENTRY_LISTView {
 
   // 0x00: pointer
   set pPolicyEntries(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -8316,17 +8316,17 @@ export function allocDNS_SERVICE_INSTANCE(data?: Partial<DNS_SERVICE_INSTANCE>):
   // 0x00: buffer
   if (data?.pszInstanceName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszInstanceName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pszHostName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszHostName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.ip4Address !== undefined) view.setBigUint64(16, data.ip4Address === null ? 0n : BigInt(util.toPointer(data.ip4Address)), true);
+  if (data?.ip4Address !== undefined) view.setBigUint64(16, data.ip4Address === null ? 0n : util.toBigInt(util.toPointer(data.ip4Address)), true);
   // 0x18: pointer
-  if (data?.ip6Address !== undefined) view.setBigUint64(24, data.ip6Address === null ? 0n : BigInt(util.toPointer(data.ip6Address)), true);
+  if (data?.ip6Address !== undefined) view.setBigUint64(24, data.ip6Address === null ? 0n : util.toBigInt(util.toPointer(data.ip6Address)), true);
   // 0x20: u16
   if (data?.wPort !== undefined) view.setUint16(32, Number(data.wPort), true);
   // 0x22: u16
@@ -8337,9 +8337,9 @@ export function allocDNS_SERVICE_INSTANCE(data?: Partial<DNS_SERVICE_INSTANCE>):
   if (data?.dwPropertyCount !== undefined) view.setUint32(38, Number(data.dwPropertyCount), true);
   // 0x2a: pad6
   // 0x30: pointer
-  if (data?.keys !== undefined) view.setBigUint64(48, data.keys === null ? 0n : BigInt(util.toPointer(data.keys)), true);
+  if (data?.keys !== undefined) view.setBigUint64(48, data.keys === null ? 0n : util.toBigInt(util.toPointer(data.keys)), true);
   // 0x38: pointer
-  if (data?.values !== undefined) view.setBigUint64(56, data.values === null ? 0n : BigInt(util.toPointer(data.values)), true);
+  if (data?.values !== undefined) view.setBigUint64(56, data.values === null ? 0n : util.toBigInt(util.toPointer(data.values)), true);
   // 0x40: u32
   if (data?.dwInterfaceIndex !== undefined) view.setUint32(64, Number(data.dwInterfaceIndex), true);
   // 0x44: pad4
@@ -8424,23 +8424,23 @@ export class DNS_SERVICE_INSTANCEView {
   // 0x00: buffer
   set pszInstanceName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pszHostName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set ip4Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ip6Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u16
@@ -8467,12 +8467,12 @@ export class DNS_SERVICE_INSTANCEView {
 
   // 0x30: pointer
   set keys(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set values(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: u32
@@ -8497,7 +8497,7 @@ export function allocDNS_SERVICE_CANCEL(data?: Partial<DNS_SERVICE_CANCEL>): Uin
   const buf = new Uint8Array(sizeofDNS_SERVICE_CANCEL);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
+  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : util.toBigInt(util.toPointer(data.reserved)), true);
   return buf;
 }
 
@@ -8519,7 +8519,7 @@ export class DNS_SERVICE_CANCELView {
 
   // 0x00: pointer
   set reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8551,12 +8551,12 @@ export function allocDNS_SERVICE_BROWSE_REQUEST(data?: Partial<DNS_SERVICE_BROWS
   // 0x08: buffer
   if (data?.QueryName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.QueryName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x18: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   return buf;
 }
 
@@ -8611,17 +8611,17 @@ export class DNS_SERVICE_BROWSE_REQUESTView {
   // 0x08: buffer
   set QueryName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8653,12 +8653,12 @@ export function allocDNS_SERVICE_RESOLVE_REQUEST(data?: Partial<DNS_SERVICE_RESO
   // 0x08: buffer
   if (data?.QueryName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.QueryName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.pResolveCompletionCallback !== undefined) view.setBigUint64(16, data.pResolveCompletionCallback === null ? 0n : BigInt(util.toPointer(data.pResolveCompletionCallback)), true);
+  if (data?.pResolveCompletionCallback !== undefined) view.setBigUint64(16, data.pResolveCompletionCallback === null ? 0n : util.toBigInt(util.toPointer(data.pResolveCompletionCallback)), true);
   // 0x18: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   return buf;
 }
 
@@ -8713,17 +8713,17 @@ export class DNS_SERVICE_RESOLVE_REQUESTView {
   // 0x08: buffer
   set QueryName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set pResolveCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8757,13 +8757,13 @@ export function allocDNS_SERVICE_REGISTER_REQUEST(data?: Partial<DNS_SERVICE_REG
   // 0x04: u32
   if (data?.InterfaceIndex !== undefined) view.setUint32(4, Number(data.InterfaceIndex), true);
   // 0x08: pointer
-  if (data?.pServiceInstance !== undefined) view.setBigUint64(8, data.pServiceInstance === null ? 0n : BigInt(util.toPointer(data.pServiceInstance)), true);
+  if (data?.pServiceInstance !== undefined) view.setBigUint64(8, data.pServiceInstance === null ? 0n : util.toBigInt(util.toPointer(data.pServiceInstance)), true);
   // 0x10: pointer
-  if (data?.pRegisterCompletionCallback !== undefined) view.setBigUint64(16, data.pRegisterCompletionCallback === null ? 0n : BigInt(util.toPointer(data.pRegisterCompletionCallback)), true);
+  if (data?.pRegisterCompletionCallback !== undefined) view.setBigUint64(16, data.pRegisterCompletionCallback === null ? 0n : util.toBigInt(util.toPointer(data.pRegisterCompletionCallback)), true);
   // 0x18: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(24, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   // 0x20: pointer
-  if (data?.hCredentials !== undefined) view.setBigUint64(32, data.hCredentials === null ? 0n : BigInt(util.toPointer(data.hCredentials)), true);
+  if (data?.hCredentials !== undefined) view.setBigUint64(32, data.hCredentials === null ? 0n : util.toBigInt(util.toPointer(data.hCredentials)), true);
   // 0x28: i32
   if (data?.unicastEnabled !== undefined) view.setInt32(40, Number(data.unicastEnabled), true);
   // 0x2c: pad4
@@ -8833,22 +8833,22 @@ export class DNS_SERVICE_REGISTER_REQUESTView {
 
   // 0x08: pointer
   set pServiceInstance(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pRegisterCompletionCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set hCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: i32
@@ -8881,16 +8881,16 @@ export function allocMDNS_QUERY_HANDLE(data?: Partial<MDNS_QUERY_HANDLE>): Uint8
   const buf = new Uint8Array(sizeofMDNS_QUERY_HANDLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.nameBuf !== undefined) view.setBigUint64(0, data.nameBuf === null ? 0n : BigInt(util.toPointer(data.nameBuf)), true);
+  if (data?.nameBuf !== undefined) view.setBigUint64(0, data.nameBuf === null ? 0n : util.toBigInt(util.toPointer(data.nameBuf)), true);
   // 0x08: u16
   if (data?.wType !== undefined) view.setUint16(8, Number(data.wType), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.pSubscription !== undefined) view.setBigUint64(16, data.pSubscription === null ? 0n : BigInt(util.toPointer(data.pSubscription)), true);
+  if (data?.pSubscription !== undefined) view.setBigUint64(16, data.pSubscription === null ? 0n : util.toBigInt(util.toPointer(data.pSubscription)), true);
   // 0x18: pointer
-  if (data?.pWnfCallbackParams !== undefined) view.setBigUint64(24, data.pWnfCallbackParams === null ? 0n : BigInt(util.toPointer(data.pWnfCallbackParams)), true);
+  if (data?.pWnfCallbackParams !== undefined) view.setBigUint64(24, data.pWnfCallbackParams === null ? 0n : util.toBigInt(util.toPointer(data.pWnfCallbackParams)), true);
   // 0x20: pointer
-  if (data?.stateNameData !== undefined) view.setBigUint64(32, data.stateNameData === null ? 0n : BigInt(util.toPointer(data.stateNameData)), true);
+  if (data?.stateNameData !== undefined) view.setBigUint64(32, data.stateNameData === null ? 0n : util.toBigInt(util.toPointer(data.stateNameData)), true);
   return buf;
 }
 
@@ -8937,7 +8937,7 @@ export class MDNS_QUERY_HANDLEView {
 
   // 0x00: pointer
   set nameBuf(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -8949,17 +8949,17 @@ export class MDNS_QUERY_HANDLEView {
 
   // 0x10: pointer
   set pSubscription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pWnfCallbackParams(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set stateNameData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8976,7 +8976,7 @@ export interface MDNS_QUERY_REQUEST {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: number | bigint;
   /** u32 */
   InterfaceIndex: number;
   /** Windows.Win32.NetworkManagement.Dns.PMDNS_QUERY_CALLBACK */
@@ -9001,20 +9001,20 @@ export function allocMDNS_QUERY_REQUEST(data?: Partial<MDNS_QUERY_REQUEST>): Uin
   // 0x08: buffer
   if (data?.Query !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Query);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.QueryType !== undefined) view.setUint16(16, Number(data.QueryType), true);
   // 0x12: pad6
   // 0x18: u64
-  if (data?.QueryOptions !== undefined) view.setBigUint64(24, BigInt(data.QueryOptions), true);
+  if (data?.QueryOptions !== undefined) view.setBigUint64(24, util.toBigInt(data.QueryOptions), true);
   // 0x20: u32
   if (data?.InterfaceIndex !== undefined) view.setUint32(32, Number(data.InterfaceIndex), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pQueryCallback !== undefined) view.setBigUint64(40, data.pQueryCallback === null ? 0n : BigInt(util.toPointer(data.pQueryCallback)), true);
+  if (data?.pQueryCallback !== undefined) view.setBigUint64(40, data.pQueryCallback === null ? 0n : util.toBigInt(util.toPointer(data.pQueryCallback)), true);
   // 0x30: pointer
-  if (data?.pQueryContext !== undefined) view.setBigUint64(48, data.pQueryContext === null ? 0n : BigInt(util.toPointer(data.pQueryContext)), true);
+  if (data?.pQueryContext !== undefined) view.setBigUint64(48, data.pQueryContext === null ? 0n : util.toBigInt(util.toPointer(data.pQueryContext)), true);
   // 0x38: i32
   if (data?.fAnswerReceived !== undefined) view.setInt32(56, Number(data.fAnswerReceived), true);
   // 0x3c: u32
@@ -9056,8 +9056,8 @@ export class MDNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get QueryOptions(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u32
@@ -9102,7 +9102,7 @@ export class MDNS_QUERY_REQUESTView {
   // 0x08: buffer
   set Query(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -9113,8 +9113,8 @@ export class MDNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set QueryOptions(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u32
@@ -9126,12 +9126,12 @@ export class MDNS_QUERY_REQUESTView {
 
   // 0x28: pointer
   set pQueryCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set pQueryContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: i32

@@ -32,7 +32,7 @@ export function allocCORRELATION_VECTOR(data?: Partial<CORRELATION_VECTOR>): Uin
   if (data?.Version !== undefined) view.setUint8(0, Number(data.Version));
   // 0x01: pad7
   // 0x08: pointer
-  if (data?.Vector !== undefined) view.setBigUint64(8, data.Vector === null ? 0n : BigInt(util.toPointer(data.Vector)), true);
+  if (data?.Vector !== undefined) view.setBigUint64(8, data.Vector === null ? 0n : util.toBigInt(util.toPointer(data.Vector)), true);
   return buf;
 }
 
@@ -68,7 +68,7 @@ export class CORRELATION_VECTORView {
 
   // 0x08: pointer
   set Vector(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

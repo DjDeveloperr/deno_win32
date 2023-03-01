@@ -254,7 +254,7 @@ export function allocDLSID(data?: Partial<DLSID>): Uint8Array {
   // 0x06: u16
   if (data?.usData3 !== undefined) view.setUint16(6, Number(data.usData3), true);
   // 0x08: pointer
-  if (data?.abData4 !== undefined) view.setBigUint64(8, data.abData4 === null ? 0n : BigInt(util.toPointer(data.abData4)), true);
+  if (data?.abData4 !== undefined) view.setBigUint64(8, data.abData4 === null ? 0n : util.toBigInt(util.toPointer(data.abData4)), true);
   return buf;
 }
 
@@ -306,7 +306,7 @@ export class DLSIDView {
 
   // 0x08: pointer
   set abData4(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -647,9 +647,9 @@ export function allocRGNHEADER(data?: Partial<RGNHEADER>): Uint8Array {
   const buf = new Uint8Array(sizeofRGNHEADER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RangeKey !== undefined) view.setBigUint64(0, data.RangeKey === null ? 0n : BigInt(util.toPointer(data.RangeKey)), true);
+  if (data?.RangeKey !== undefined) view.setBigUint64(0, data.RangeKey === null ? 0n : util.toBigInt(util.toPointer(data.RangeKey)), true);
   // 0x08: pointer
-  if (data?.RangeVelocity !== undefined) view.setBigUint64(8, data.RangeVelocity === null ? 0n : BigInt(util.toPointer(data.RangeVelocity)), true);
+  if (data?.RangeVelocity !== undefined) view.setBigUint64(8, data.RangeVelocity === null ? 0n : util.toBigInt(util.toPointer(data.RangeVelocity)), true);
   // 0x10: u16
   if (data?.fusOptions !== undefined) view.setUint16(16, Number(data.fusOptions), true);
   // 0x12: u16
@@ -694,12 +694,12 @@ export class RGNHEADERView {
 
   // 0x00: pointer
   set RangeKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set RangeVelocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -734,7 +734,7 @@ export function allocINSTHEADER(data?: Partial<INSTHEADER>): Uint8Array {
   if (data?.cRegions !== undefined) view.setUint32(0, Number(data.cRegions), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Locale !== undefined) view.setBigUint64(8, data.Locale === null ? 0n : BigInt(util.toPointer(data.Locale)), true);
+  if (data?.Locale !== undefined) view.setBigUint64(8, data.Locale === null ? 0n : util.toBigInt(util.toPointer(data.Locale)), true);
   return buf;
 }
 
@@ -770,7 +770,7 @@ export class INSTHEADERView {
 
   // 0x08: pointer
   set Locale(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1291,7 +1291,7 @@ export function allocDMUS_OFFSETTABLE(data?: Partial<DMUS_OFFSETTABLE>): Uint8Ar
   const buf = new Uint8Array(sizeofDMUS_OFFSETTABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ulOffsetTable !== undefined) view.setBigUint64(0, data.ulOffsetTable === null ? 0n : BigInt(util.toPointer(data.ulOffsetTable)), true);
+  if (data?.ulOffsetTable !== undefined) view.setBigUint64(0, data.ulOffsetTable === null ? 0n : util.toBigInt(util.toPointer(data.ulOffsetTable)), true);
   return buf;
 }
 
@@ -1313,7 +1313,7 @@ export class DMUS_OFFSETTABLEView {
 
   // 0x00: pointer
   set ulOffsetTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1458,9 +1458,9 @@ export function allocDMUS_REGION(data?: Partial<DMUS_REGION>): Uint8Array {
   const buf = new Uint8Array(sizeofDMUS_REGION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RangeKey !== undefined) view.setBigUint64(0, data.RangeKey === null ? 0n : BigInt(util.toPointer(data.RangeKey)), true);
+  if (data?.RangeKey !== undefined) view.setBigUint64(0, data.RangeKey === null ? 0n : util.toBigInt(util.toPointer(data.RangeKey)), true);
   // 0x08: pointer
-  if (data?.RangeVelocity !== undefined) view.setBigUint64(8, data.RangeVelocity === null ? 0n : BigInt(util.toPointer(data.RangeVelocity)), true);
+  if (data?.RangeVelocity !== undefined) view.setBigUint64(8, data.RangeVelocity === null ? 0n : util.toBigInt(util.toPointer(data.RangeVelocity)), true);
   // 0x10: u16
   if (data?.fusOptions !== undefined) view.setUint16(16, Number(data.fusOptions), true);
   // 0x12: u16
@@ -1472,11 +1472,11 @@ export function allocDMUS_REGION(data?: Partial<DMUS_REGION>): Uint8Array {
   // 0x1c: u32
   if (data?.ulFirstExtCkIdx !== undefined) view.setUint32(28, Number(data.ulFirstExtCkIdx), true);
   // 0x20: pointer
-  if (data?.WaveLink !== undefined) view.setBigUint64(32, data.WaveLink === null ? 0n : BigInt(util.toPointer(data.WaveLink)), true);
+  if (data?.WaveLink !== undefined) view.setBigUint64(32, data.WaveLink === null ? 0n : util.toBigInt(util.toPointer(data.WaveLink)), true);
   // 0x28: pointer
-  if (data?.WSMP !== undefined) view.setBigUint64(40, data.WSMP === null ? 0n : BigInt(util.toPointer(data.WSMP)), true);
+  if (data?.WSMP !== undefined) view.setBigUint64(40, data.WSMP === null ? 0n : util.toBigInt(util.toPointer(data.WSMP)), true);
   // 0x30: pointer
-  if (data?.WLOOP !== undefined) view.setBigUint64(48, data.WLOOP === null ? 0n : BigInt(util.toPointer(data.WLOOP)), true);
+  if (data?.WLOOP !== undefined) view.setBigUint64(48, data.WLOOP === null ? 0n : util.toBigInt(util.toPointer(data.WLOOP)), true);
   return buf;
 }
 
@@ -1547,12 +1547,12 @@ export class DMUS_REGIONView {
 
   // 0x00: pointer
   set RangeKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set RangeVelocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -1582,17 +1582,17 @@ export class DMUS_REGIONView {
 
   // 0x20: pointer
   set WaveLink(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WSMP(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WLOOP(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2006,13 +2006,13 @@ export function allocDMUS_ARTICPARAMS(data?: Partial<DMUS_ARTICPARAMS>): Uint8Ar
   const buf = new Uint8Array(sizeofDMUS_ARTICPARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.LFO !== undefined) view.setBigUint64(0, data.LFO === null ? 0n : BigInt(util.toPointer(data.LFO)), true);
+  if (data?.LFO !== undefined) view.setBigUint64(0, data.LFO === null ? 0n : util.toBigInt(util.toPointer(data.LFO)), true);
   // 0x08: pointer
-  if (data?.VolEG !== undefined) view.setBigUint64(8, data.VolEG === null ? 0n : BigInt(util.toPointer(data.VolEG)), true);
+  if (data?.VolEG !== undefined) view.setBigUint64(8, data.VolEG === null ? 0n : util.toBigInt(util.toPointer(data.VolEG)), true);
   // 0x10: pointer
-  if (data?.PitchEG !== undefined) view.setBigUint64(16, data.PitchEG === null ? 0n : BigInt(util.toPointer(data.PitchEG)), true);
+  if (data?.PitchEG !== undefined) view.setBigUint64(16, data.PitchEG === null ? 0n : util.toBigInt(util.toPointer(data.PitchEG)), true);
   // 0x18: pointer
-  if (data?.Misc !== undefined) view.setBigUint64(24, data.Misc === null ? 0n : BigInt(util.toPointer(data.Misc)), true);
+  if (data?.Misc !== undefined) view.setBigUint64(24, data.Misc === null ? 0n : util.toBigInt(util.toPointer(data.Misc)), true);
   return buf;
 }
 
@@ -2052,22 +2052,22 @@ export class DMUS_ARTICPARAMSView {
 
   // 0x00: pointer
   set LFO(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set VolEG(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set PitchEG(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Misc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2223,7 +2223,7 @@ export function allocDMUS_EXTENSIONCHUNK(data?: Partial<DMUS_EXTENSIONCHUNK>): U
   if (data?.ExtCkID !== undefined) view.setUint32(8, Number(data.ExtCkID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.byExtCk !== undefined) view.setBigUint64(16, data.byExtCk === null ? 0n : BigInt(util.toPointer(data.byExtCk)), true);
+  if (data?.byExtCk !== undefined) view.setBigUint64(16, data.byExtCk === null ? 0n : util.toBigInt(util.toPointer(data.byExtCk)), true);
   return buf;
 }
 
@@ -2279,7 +2279,7 @@ export class DMUS_EXTENSIONCHUNKView {
 
   // 0x10: pointer
   set byExtCk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2302,7 +2302,7 @@ export function allocDMUS_COPYRIGHT(data?: Partial<DMUS_COPYRIGHT>): Uint8Array 
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.byCopyright !== undefined) view.setBigUint64(8, data.byCopyright === null ? 0n : BigInt(util.toPointer(data.byCopyright)), true);
+  if (data?.byCopyright !== undefined) view.setBigUint64(8, data.byCopyright === null ? 0n : util.toBigInt(util.toPointer(data.byCopyright)), true);
   return buf;
 }
 
@@ -2338,7 +2338,7 @@ export class DMUS_COPYRIGHTView {
 
   // 0x08: pointer
   set byCopyright(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2361,7 +2361,7 @@ export function allocDMUS_WAVEDATA(data?: Partial<DMUS_WAVEDATA>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.byData !== undefined) view.setBigUint64(8, data.byData === null ? 0n : BigInt(util.toPointer(data.byData)), true);
+  if (data?.byData !== undefined) view.setBigUint64(8, data.byData === null ? 0n : util.toBigInt(util.toPointer(data.byData)), true);
   return buf;
 }
 
@@ -2397,7 +2397,7 @@ export class DMUS_WAVEDATAView {
 
   // 0x08: pointer
   set byData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2556,7 +2556,7 @@ export function allocDMUS_WAVE(data?: Partial<DMUS_WAVE>): Uint8Array {
   if (data?.ulWaveDataIdx !== undefined) view.setUint32(8, Number(data.ulWaveDataIdx), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.WaveformatEx !== undefined) view.setBigUint64(16, data.WaveformatEx === null ? 0n : BigInt(util.toPointer(data.WaveformatEx)), true);
+  if (data?.WaveformatEx !== undefined) view.setBigUint64(16, data.WaveformatEx === null ? 0n : util.toBigInt(util.toPointer(data.WaveformatEx)), true);
   return buf;
 }
 
@@ -2612,7 +2612,7 @@ export class DMUS_WAVEView {
 
   // 0x10: pointer
   set WaveformatEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2822,7 +2822,7 @@ export interface DMUS_EVENTHEADER {
   /** u32 */
   dwChannelGroup: number;
   /** i64 */
-  rtDelta: Deno.PointerValue;
+  rtDelta: number | bigint;
   /** u32 */
   dwFlags: number;
 }
@@ -2837,7 +2837,7 @@ export function allocDMUS_EVENTHEADER(data?: Partial<DMUS_EVENTHEADER>): Uint8Ar
   // 0x04: u32
   if (data?.dwChannelGroup !== undefined) view.setUint32(4, Number(data.dwChannelGroup), true);
   // 0x08: i64
-  if (data?.rtDelta !== undefined) view.setBigInt64(8, BigInt(data.rtDelta), true);
+  if (data?.rtDelta !== undefined) view.setBigInt64(8, util.toBigInt(data.rtDelta), true);
   // 0x10: u32
   if (data?.dwFlags !== undefined) view.setUint32(16, Number(data.dwFlags), true);
   // 0x14: pad4
@@ -2865,8 +2865,8 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  get rtDelta(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get rtDelta(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: u32
@@ -2887,8 +2887,8 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  set rtDelta(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set rtDelta(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u32
@@ -2923,7 +2923,7 @@ export function allocDMUS_BUFFERDESC(data?: Partial<DMUS_BUFFERDESC>): Uint8Arra
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.guidBufferFormat !== undefined) view.setBigUint64(8, data.guidBufferFormat === null ? 0n : BigInt(util.toPointer(data.guidBufferFormat)), true);
+  if (data?.guidBufferFormat !== undefined) view.setBigUint64(8, data.guidBufferFormat === null ? 0n : util.toBigInt(util.toPointer(data.guidBufferFormat)), true);
   // 0x10: u32
   if (data?.cbBuffer !== undefined) view.setUint32(16, Number(data.cbBuffer), true);
   // 0x14: pad4
@@ -2975,7 +2975,7 @@ export class DMUS_BUFFERDESCView {
 
   // 0x08: pointer
   set guidBufferFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3024,7 +3024,7 @@ export function allocDMUS_PORTCAPS(data?: Partial<DMUS_PORTCAPS>): Uint8Array {
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.guidPort !== undefined) view.setBigUint64(8, data.guidPort === null ? 0n : BigInt(util.toPointer(data.guidPort)), true);
+  if (data?.guidPort !== undefined) view.setBigUint64(8, data.guidPort === null ? 0n : util.toBigInt(util.toPointer(data.guidPort)), true);
   // 0x10: u32
   if (data?.dwClass !== undefined) view.setUint32(16, Number(data.dwClass), true);
   // 0x14: u32
@@ -3041,7 +3041,7 @@ export function allocDMUS_PORTCAPS(data?: Partial<DMUS_PORTCAPS>): Uint8Array {
   if (data?.dwEffectFlags !== undefined) view.setUint32(40, Number(data.dwEffectFlags), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.wszDescription !== undefined) view.setBigUint64(48, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
+  if (data?.wszDescription !== undefined) view.setBigUint64(48, data.wszDescription === null ? 0n : util.toBigInt(util.toPointer(data.wszDescription)), true);
   return buf;
 }
 
@@ -3126,7 +3126,7 @@ export class DMUS_PORTCAPSView {
 
   // 0x08: pointer
   set guidPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3168,7 +3168,7 @@ export class DMUS_PORTCAPSView {
 
   // 0x30: pointer
   set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3865,9 +3865,9 @@ export function allocDMUS_CLOCKINFO7(data?: Partial<DMUS_CLOCKINFO7>): Uint8Arra
   // 0x04: i32
   if (data?.ctType !== undefined) view.setInt32(4, Number(data.ctType), true);
   // 0x08: pointer
-  if (data?.guidClock !== undefined) view.setBigUint64(8, data.guidClock === null ? 0n : BigInt(util.toPointer(data.guidClock)), true);
+  if (data?.guidClock !== undefined) view.setBigUint64(8, data.guidClock === null ? 0n : util.toBigInt(util.toPointer(data.guidClock)), true);
   // 0x10: pointer
-  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
+  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : util.toBigInt(util.toPointer(data.wszDescription)), true);
   return buf;
 }
 
@@ -3915,12 +3915,12 @@ export class DMUS_CLOCKINFO7View {
 
   // 0x08: pointer
   set guidClock(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3950,9 +3950,9 @@ export function allocDMUS_CLOCKINFO8(data?: Partial<DMUS_CLOCKINFO8>): Uint8Arra
   // 0x04: i32
   if (data?.ctType !== undefined) view.setInt32(4, Number(data.ctType), true);
   // 0x08: pointer
-  if (data?.guidClock !== undefined) view.setBigUint64(8, data.guidClock === null ? 0n : BigInt(util.toPointer(data.guidClock)), true);
+  if (data?.guidClock !== undefined) view.setBigUint64(8, data.guidClock === null ? 0n : util.toBigInt(util.toPointer(data.guidClock)), true);
   // 0x10: pointer
-  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
+  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : util.toBigInt(util.toPointer(data.wszDescription)), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: pad4
@@ -4010,12 +4010,12 @@ export class DMUS_CLOCKINFO8View {
 
   // 0x08: pointer
   set guidClock(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -4033,7 +4033,7 @@ export interface DMUS_VOICE_STATE {
   /** Windows.Win32.Foundation.BOOL */
   bExists: boolean;
   /** u64 */
-  spPosition: Deno.PointerValue;
+  spPosition: number | bigint;
 }
 
 export const sizeofDMUS_VOICE_STATE = 16;
@@ -4045,7 +4045,7 @@ export function allocDMUS_VOICE_STATE(data?: Partial<DMUS_VOICE_STATE>): Uint8Ar
   if (data?.bExists !== undefined) view.setInt32(0, Number(data.bExists), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.spPosition !== undefined) view.setBigUint64(8, BigInt(data.spPosition), true);
+  if (data?.spPosition !== undefined) view.setBigUint64(8, util.toBigInt(data.spPosition), true);
   return buf;
 }
 
@@ -4067,8 +4067,8 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  get spPosition(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get spPosition(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: i32
@@ -4079,8 +4079,8 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  set spPosition(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set spPosition(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -4106,13 +4106,13 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA(data?
   // 0x00: buffer
   if (data?.DeviceName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.DeviceName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: i32
   if (data?.DataFlow !== undefined) view.setInt32(8, Number(data.DataFlow), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(16, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(16, data.DeviceId === null ? 0n : util.toBigInt(util.toPointer(data.DeviceId)), true);
   return buf;
 }
 
@@ -4148,7 +4148,7 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATAView {
   // 0x00: buffer
   set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: i32
@@ -4160,7 +4160,7 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATAView {
 
   // 0x10: pointer
   set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4186,13 +4186,13 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA(data?
   // 0x00: buffer
   if (data?.DeviceName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.DeviceName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: i32
   if (data?.DataFlow !== undefined) view.setInt32(8, Number(data.DataFlow), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(16, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(16, data.DeviceId === null ? 0n : util.toBigInt(util.toPointer(data.DeviceId)), true);
   return buf;
 }
 
@@ -4228,7 +4228,7 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATAView {
   // 0x00: buffer
   set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: i32
@@ -4240,7 +4240,7 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATAView {
 
   // 0x10: pointer
   set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4274,15 +4274,15 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATA(data?: Part
   const buf = new Uint8Array(sizeofDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(0, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(0, data.DeviceId === null ? 0n : util.toBigInt(util.toPointer(data.DeviceId)), true);
   // 0x08: pointer
-  if (data?.DescriptionA !== undefined) view.setBigUint64(8, data.DescriptionA === null ? 0n : BigInt(util.toPointer(data.DescriptionA)), true);
+  if (data?.DescriptionA !== undefined) view.setBigUint64(8, data.DescriptionA === null ? 0n : util.toBigInt(util.toPointer(data.DescriptionA)), true);
   // 0x10: pointer
-  if (data?.DescriptionW !== undefined) view.setBigUint64(16, data.DescriptionW === null ? 0n : BigInt(util.toPointer(data.DescriptionW)), true);
+  if (data?.DescriptionW !== undefined) view.setBigUint64(16, data.DescriptionW === null ? 0n : util.toBigInt(util.toPointer(data.DescriptionW)), true);
   // 0x18: pointer
-  if (data?.ModuleA !== undefined) view.setBigUint64(24, data.ModuleA === null ? 0n : BigInt(util.toPointer(data.ModuleA)), true);
+  if (data?.ModuleA !== undefined) view.setBigUint64(24, data.ModuleA === null ? 0n : util.toBigInt(util.toPointer(data.ModuleA)), true);
   // 0x20: pointer
-  if (data?.ModuleW !== undefined) view.setBigUint64(32, data.ModuleW === null ? 0n : BigInt(util.toPointer(data.ModuleW)), true);
+  if (data?.ModuleW !== undefined) view.setBigUint64(32, data.ModuleW === null ? 0n : util.toBigInt(util.toPointer(data.ModuleW)), true);
   // 0x28: i32
   if (data?.Type !== undefined) view.setInt32(40, Number(data.Type), true);
   // 0x2c: i32
@@ -4356,27 +4356,27 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATAView {
 
   // 0x00: pointer
   set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DescriptionA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set DescriptionW(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ModuleA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ModuleW(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: i32
@@ -4430,21 +4430,21 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA(data?: Part
   // 0x04: i32
   if (data?.DataFlow !== undefined) view.setInt32(4, Number(data.DataFlow), true);
   // 0x08: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(8, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(8, data.DeviceId === null ? 0n : util.toBigInt(util.toPointer(data.DeviceId)), true);
   // 0x10: buffer
   if (data?.Description !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.Description);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.Module !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.Module);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.Interface !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.Interface);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: u32
   if (data?.WaveDeviceId !== undefined) view.setUint32(40, Number(data.WaveDeviceId), true);
@@ -4515,25 +4515,25 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATAView {
 
   // 0x08: pointer
   set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set Module(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set Interface(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: u32
@@ -4574,21 +4574,21 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA(data?: Part
   // 0x04: i32
   if (data?.DataFlow !== undefined) view.setInt32(4, Number(data.DataFlow), true);
   // 0x08: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(8, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(8, data.DeviceId === null ? 0n : util.toBigInt(util.toPointer(data.DeviceId)), true);
   // 0x10: buffer
   if (data?.Description !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.Description);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.Module !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.Module);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.Interface !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.Interface);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: u32
   if (data?.WaveDeviceId !== undefined) view.setUint32(40, Number(data.WaveDeviceId), true);
@@ -4659,25 +4659,25 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATAView {
 
   // 0x08: pointer
   set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set Module(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set Interface(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: u32
@@ -4704,9 +4704,9 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATA(data?: Partia
   const buf = new Uint8Array(sizeofDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : BigInt(util.toPointer(data.Callback)), true);
+  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : util.toBigInt(util.toPointer(data.Callback)), true);
   // 0x08: pointer
-  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
+  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : util.toBigInt(util.toPointer(data.Context)), true);
   return buf;
 }
 
@@ -4734,12 +4734,12 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATAView {
 
   // 0x00: pointer
   set Callback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4759,9 +4759,9 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATA(data?: Partia
   const buf = new Uint8Array(sizeofDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : BigInt(util.toPointer(data.Callback)), true);
+  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : util.toBigInt(util.toPointer(data.Callback)), true);
   // 0x08: pointer
-  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
+  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : util.toBigInt(util.toPointer(data.Context)), true);
   return buf;
 }
 
@@ -4789,12 +4789,12 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATAView {
 
   // 0x00: pointer
   set Callback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4814,9 +4814,9 @@ export function allocDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA(data?: Partia
   const buf = new Uint8Array(sizeofDSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : BigInt(util.toPointer(data.Callback)), true);
+  if (data?.Callback !== undefined) view.setBigUint64(0, data.Callback === null ? 0n : util.toBigInt(util.toPointer(data.Callback)), true);
   // 0x08: pointer
-  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
+  if (data?.Context !== undefined) view.setBigUint64(8, data.Context === null ? 0n : util.toBigInt(util.toPointer(data.Context)), true);
   return buf;
 }
 
@@ -4844,12 +4844,12 @@ export class DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATAView {
 
   // 0x00: pointer
   set Callback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4879,14 +4879,14 @@ export function allocDVAudInfo(data?: Partial<DVAudInfo>): Uint8Array {
   const buf = new Uint8Array(sizeofDVAudInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.bAudStyle !== undefined) view.setBigUint64(0, data.bAudStyle === null ? 0n : BigInt(util.toPointer(data.bAudStyle)), true);
+  if (data?.bAudStyle !== undefined) view.setBigUint64(0, data.bAudStyle === null ? 0n : util.toBigInt(util.toPointer(data.bAudStyle)), true);
   // 0x08: pointer
-  if (data?.bAudQu !== undefined) view.setBigUint64(8, data.bAudQu === null ? 0n : BigInt(util.toPointer(data.bAudQu)), true);
+  if (data?.bAudQu !== undefined) view.setBigUint64(8, data.bAudQu === null ? 0n : util.toBigInt(util.toPointer(data.bAudQu)), true);
   // 0x10: u8
   if (data?.bNumAudPin !== undefined) view.setUint8(16, Number(data.bNumAudPin));
   // 0x11: pad7
   // 0x18: pointer
-  if (data?.wAvgSamplesPerPinPerFrm !== undefined) view.setBigUint64(24, data.wAvgSamplesPerPinPerFrm === null ? 0n : BigInt(util.toPointer(data.wAvgSamplesPerPinPerFrm)), true);
+  if (data?.wAvgSamplesPerPinPerFrm !== undefined) view.setBigUint64(24, data.wAvgSamplesPerPinPerFrm === null ? 0n : util.toBigInt(util.toPointer(data.wAvgSamplesPerPinPerFrm)), true);
   // 0x20: u16
   if (data?.wBlkMode !== undefined) view.setUint16(32, Number(data.wBlkMode), true);
   // 0x22: u16
@@ -4951,12 +4951,12 @@ export class DVAudInfoView {
 
   // 0x00: pointer
   set bAudStyle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set bAudQu(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u8
@@ -4968,7 +4968,7 @@ export class DVAudInfoView {
 
   // 0x18: pointer
   set wAvgSamplesPerPinPerFrm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u16
@@ -5008,7 +5008,7 @@ export function allocMDEVICECAPSEX(data?: Partial<MDEVICECAPSEX>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pCaps !== undefined) view.setBigUint64(8, data.pCaps === null ? 0n : BigInt(util.toPointer(data.pCaps)), true);
+  if (data?.pCaps !== undefined) view.setBigUint64(8, data.pCaps === null ? 0n : util.toBigInt(util.toPointer(data.pCaps)), true);
   return buf;
 }
 
@@ -5044,11 +5044,11 @@ export class MDEVICECAPSEXView {
 
   // 0x08: pointer
   set pCaps(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HMIDI = Deno.PointerValue;
+export type HMIDI = number | bigint;
 
 /**
  * Windows.Win32.Media.Audio.DirectMusic.MIDIOPENDESC (size: 48)
@@ -5057,11 +5057,11 @@ export interface MIDIOPENDESC {
   /** Windows.Win32.Media.Audio.HMIDI */
   hMidi: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: number | bigint;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: number | bigint;
   /** usize */
-  dnDevNode: Deno.PointerValue;
+  dnDevNode: number | bigint;
   /** u32 */
   cIds: number;
   /** array */
@@ -5074,18 +5074,18 @@ export function allocMIDIOPENDESC(data?: Partial<MIDIOPENDESC>): Uint8Array {
   const buf = new Uint8Array(sizeofMIDIOPENDESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hMidi !== undefined) view.setBigUint64(0, data.hMidi === null ? 0n : BigInt(util.toPointer(data.hMidi)), true);
+  if (data?.hMidi !== undefined) view.setBigUint64(0, data.hMidi === null ? 0n : util.toBigInt(util.toPointer(data.hMidi)), true);
   // 0x08: usize
-  if (data?.dwCallback !== undefined) view.setBigUint64(8, BigInt(data.dwCallback), true);
+  if (data?.dwCallback !== undefined) view.setBigUint64(8, util.toBigInt(data.dwCallback), true);
   // 0x10: usize
-  if (data?.dwInstance !== undefined) view.setBigUint64(16, BigInt(data.dwInstance), true);
+  if (data?.dwInstance !== undefined) view.setBigUint64(16, util.toBigInt(data.dwInstance), true);
   // 0x18: usize
-  if (data?.dnDevNode !== undefined) view.setBigUint64(24, BigInt(data.dnDevNode), true);
+  if (data?.dnDevNode !== undefined) view.setBigUint64(24, util.toBigInt(data.dnDevNode), true);
   // 0x20: u32
   if (data?.cIds !== undefined) view.setUint32(32, Number(data.cIds), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.rgIds !== undefined) view.setBigUint64(40, data.rgIds === null ? 0n : BigInt(util.toPointer(data.rgIds)), true);
+  if (data?.rgIds !== undefined) view.setBigUint64(40, data.rgIds === null ? 0n : util.toBigInt(util.toPointer(data.rgIds)), true);
   return buf;
 }
 
@@ -5106,18 +5106,18 @@ export class MIDIOPENDESCView {
   }
 
   // 0x08: usize
-  get dwCallback(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get dwCallback(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get dwInstance(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get dwInstance(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get dnDevNode(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get dnDevNode(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u32
@@ -5135,22 +5135,22 @@ export class MIDIOPENDESCView {
 
   // 0x00: pointer
   set hMidi(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: usize
-  set dwCallback(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set dwCallback(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set dwInstance(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set dwInstance(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set dnDevNode(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set dnDevNode(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u32
@@ -5162,7 +5162,7 @@ export class MIDIOPENDESCView {
 
   // 0x28: pointer
   set rgIds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

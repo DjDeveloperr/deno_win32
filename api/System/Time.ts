@@ -182,16 +182,16 @@ export function allocTIME_ZONE_INFORMATION(data?: Partial<TIME_ZONE_INFORMATION>
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : util.toBigInt(util.toPointer(data.StandardName)), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : util.toBigInt(util.toPointer(data.StandardDate)), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : util.toBigInt(util.toPointer(data.DaylightName)), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : util.toBigInt(util.toPointer(data.DaylightDate)), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
@@ -262,12 +262,12 @@ export class TIME_ZONE_INFORMATIONView {
 
   // 0x08: pointer
   set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -279,12 +279,12 @@ export class TIME_ZONE_INFORMATIONView {
 
   // 0x20: pointer
   set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: i32
@@ -330,23 +330,23 @@ export function allocDYNAMIC_TIME_ZONE_INFORMATION(data?: Partial<DYNAMIC_TIME_Z
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : util.toBigInt(util.toPointer(data.StandardName)), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : util.toBigInt(util.toPointer(data.StandardDate)), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : util.toBigInt(util.toPointer(data.DaylightName)), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : util.toBigInt(util.toPointer(data.DaylightDate)), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : BigInt(util.toPointer(data.TimeZoneKeyName)), true);
+  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : util.toBigInt(util.toPointer(data.TimeZoneKeyName)), true);
   // 0x40: pointer
-  if (data?.DynamicDaylightTimeDisabled !== undefined) view.setBigUint64(64, data.DynamicDaylightTimeDisabled === null ? 0n : BigInt(util.toPointer(data.DynamicDaylightTimeDisabled)), true);
+  if (data?.DynamicDaylightTimeDisabled !== undefined) view.setBigUint64(64, data.DynamicDaylightTimeDisabled === null ? 0n : util.toBigInt(util.toPointer(data.DynamicDaylightTimeDisabled)), true);
   return buf;
 }
 
@@ -426,12 +426,12 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
 
   // 0x08: pointer
   set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -443,12 +443,12 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
 
   // 0x20: pointer
   set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: i32
@@ -460,12 +460,12 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
 
   // 0x38: pointer
   set TimeZoneKeyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set DynamicDaylightTimeDisabled(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

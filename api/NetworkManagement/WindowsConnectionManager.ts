@@ -116,9 +116,9 @@ export function allocWCM_PROFILE_INFO(data?: Partial<WCM_PROFILE_INFO>): Uint8Ar
   const buf = new Uint8Array(sizeofWCM_PROFILE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.strProfileName !== undefined) view.setBigUint64(0, data.strProfileName === null ? 0n : BigInt(util.toPointer(data.strProfileName)), true);
+  if (data?.strProfileName !== undefined) view.setBigUint64(0, data.strProfileName === null ? 0n : util.toBigInt(util.toPointer(data.strProfileName)), true);
   // 0x08: pointer
-  if (data?.AdapterGUID !== undefined) view.setBigUint64(8, data.AdapterGUID === null ? 0n : BigInt(util.toPointer(data.AdapterGUID)), true);
+  if (data?.AdapterGUID !== undefined) view.setBigUint64(8, data.AdapterGUID === null ? 0n : util.toBigInt(util.toPointer(data.AdapterGUID)), true);
   // 0x10: i32
   if (data?.Media !== undefined) view.setInt32(16, Number(data.Media), true);
   // 0x14: pad4
@@ -156,12 +156,12 @@ export class WCM_PROFILE_INFOView {
 
   // 0x00: pointer
   set strProfileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set AdapterGUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -191,7 +191,7 @@ export function allocWCM_PROFILE_INFO_LIST(data?: Partial<WCM_PROFILE_INFO_LIST>
   if (data?.dwNumberOfItems !== undefined) view.setUint32(0, Number(data.dwNumberOfItems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ProfileInfo !== undefined) view.setBigUint64(8, data.ProfileInfo === null ? 0n : BigInt(util.toPointer(data.ProfileInfo)), true);
+  if (data?.ProfileInfo !== undefined) view.setBigUint64(8, data.ProfileInfo === null ? 0n : util.toBigInt(util.toPointer(data.ProfileInfo)), true);
   return buf;
 }
 
@@ -227,7 +227,7 @@ export class WCM_PROFILE_INFO_LISTView {
 
   // 0x08: pointer
   set ProfileInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -484,7 +484,7 @@ export function allocWCM_USAGE_DATA(data?: Partial<WCM_USAGE_DATA>): Uint8Array 
   if (data?.UsageInMegabytes !== undefined) view.setUint32(0, Number(data.UsageInMegabytes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.LastSyncTime !== undefined) view.setBigUint64(8, data.LastSyncTime === null ? 0n : BigInt(util.toPointer(data.LastSyncTime)), true);
+  if (data?.LastSyncTime !== undefined) view.setBigUint64(8, data.LastSyncTime === null ? 0n : util.toBigInt(util.toPointer(data.LastSyncTime)), true);
   return buf;
 }
 
@@ -520,7 +520,7 @@ export class WCM_USAGE_DATAView {
 
   // 0x08: pointer
   set LastSyncTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -542,9 +542,9 @@ export function allocWCM_BILLING_CYCLE_INFO(data?: Partial<WCM_BILLING_CYCLE_INF
   const buf = new Uint8Array(sizeofWCM_BILLING_CYCLE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.StartDate !== undefined) view.setBigUint64(0, data.StartDate === null ? 0n : BigInt(util.toPointer(data.StartDate)), true);
+  if (data?.StartDate !== undefined) view.setBigUint64(0, data.StartDate === null ? 0n : util.toBigInt(util.toPointer(data.StartDate)), true);
   // 0x08: pointer
-  if (data?.Duration !== undefined) view.setBigUint64(8, data.Duration === null ? 0n : BigInt(util.toPointer(data.Duration)), true);
+  if (data?.Duration !== undefined) view.setBigUint64(8, data.Duration === null ? 0n : util.toBigInt(util.toPointer(data.Duration)), true);
   // 0x10: i32
   if (data?.Reset !== undefined) view.setInt32(16, Number(data.Reset), true);
   // 0x14: pad4
@@ -582,12 +582,12 @@ export class WCM_BILLING_CYCLE_INFOView {
 
   // 0x00: pointer
   set StartDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Duration(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -624,7 +624,7 @@ export function allocWCM_DATAPLAN_STATUS(data?: Partial<WCM_DATAPLAN_STATUS>): U
   const buf = new Uint8Array(sizeofWCM_DATAPLAN_STATUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UsageData !== undefined) view.setBigUint64(0, data.UsageData === null ? 0n : BigInt(util.toPointer(data.UsageData)), true);
+  if (data?.UsageData !== undefined) view.setBigUint64(0, data.UsageData === null ? 0n : util.toBigInt(util.toPointer(data.UsageData)), true);
   // 0x08: u32
   if (data?.DataLimitInMegabytes !== undefined) view.setUint32(8, Number(data.DataLimitInMegabytes), true);
   // 0x0c: u32
@@ -633,7 +633,7 @@ export function allocWCM_DATAPLAN_STATUS(data?: Partial<WCM_DATAPLAN_STATUS>): U
   if (data?.OutboundBandwidthInKbps !== undefined) view.setUint32(16, Number(data.OutboundBandwidthInKbps), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.BillingCycle !== undefined) view.setBigUint64(24, data.BillingCycle === null ? 0n : BigInt(util.toPointer(data.BillingCycle)), true);
+  if (data?.BillingCycle !== undefined) view.setBigUint64(24, data.BillingCycle === null ? 0n : util.toBigInt(util.toPointer(data.BillingCycle)), true);
   // 0x20: u32
   if (data?.MaxTransferSizeInMegabytes !== undefined) view.setUint32(32, Number(data.MaxTransferSizeInMegabytes), true);
   // 0x24: u32
@@ -692,7 +692,7 @@ export class WCM_DATAPLAN_STATUSView {
 
   // 0x00: pointer
   set UsageData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -714,7 +714,7 @@ export class WCM_DATAPLAN_STATUSView {
 
   // 0x18: pointer
   set BillingCycle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -751,7 +751,7 @@ export function allocNET_INTERFACE_CONTEXT(data?: Partial<NET_INTERFACE_CONTEXT>
   // 0x08: buffer
   if (data?.ConfigurationName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ConfigurationName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -789,11 +789,11 @@ export class NET_INTERFACE_CONTEXTView {
   // 0x08: buffer
   set ConfigurationName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.NetworkManagement.WindowsConnectionManager.NET_INTERFACE_CONTEXT_TABLE (size: 24)
@@ -813,12 +813,12 @@ export function allocNET_INTERFACE_CONTEXT_TABLE(data?: Partial<NET_INTERFACE_CO
   const buf = new Uint8Array(sizeofNET_INTERFACE_CONTEXT_TABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InterfaceContextHandle !== undefined) view.setBigUint64(0, data.InterfaceContextHandle === null ? 0n : BigInt(util.toPointer(data.InterfaceContextHandle)), true);
+  if (data?.InterfaceContextHandle !== undefined) view.setBigUint64(0, data.InterfaceContextHandle === null ? 0n : util.toBigInt(util.toPointer(data.InterfaceContextHandle)), true);
   // 0x08: u32
   if (data?.NumberOfEntries !== undefined) view.setUint32(8, Number(data.NumberOfEntries), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.InterfaceContextArray !== undefined) view.setBigUint64(16, data.InterfaceContextArray === null ? 0n : BigInt(util.toPointer(data.InterfaceContextArray)), true);
+  if (data?.InterfaceContextArray !== undefined) view.setBigUint64(16, data.InterfaceContextArray === null ? 0n : util.toBigInt(util.toPointer(data.InterfaceContextArray)), true);
   return buf;
 }
 
@@ -853,7 +853,7 @@ export class NET_INTERFACE_CONTEXT_TABLEView {
 
   // 0x00: pointer
   set InterfaceContextHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -865,7 +865,7 @@ export class NET_INTERFACE_CONTEXT_TABLEView {
 
   // 0x10: pointer
   set InterfaceContextArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

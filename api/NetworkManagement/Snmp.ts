@@ -200,7 +200,7 @@ export function allocAsnOctetString(data?: Partial<AsnOctetString>): Uint8Array 
   const buf = new Uint8Array(sizeofAsnOctetString);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.stream !== undefined) view.setBigUint64(0, data.stream === null ? 0n : BigInt(util.toPointer(data.stream)), true);
+  if (data?.stream !== undefined) view.setBigUint64(0, data.stream === null ? 0n : util.toBigInt(util.toPointer(data.stream)), true);
   // 0x08: u32
   if (data?.length !== undefined) view.setUint32(8, Number(data.length), true);
   // 0x0c: i32
@@ -236,7 +236,7 @@ export class AsnOctetStringView {
 
   // 0x00: pointer
   set stream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -269,7 +269,7 @@ export function allocAsnObjectIdentifier(data?: Partial<AsnObjectIdentifier>): U
   if (data?.idLength !== undefined) view.setUint32(0, Number(data.idLength), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ids !== undefined) view.setBigUint64(8, data.ids === null ? 0n : BigInt(util.toPointer(data.ids)), true);
+  if (data?.ids !== undefined) view.setBigUint64(8, data.ids === null ? 0n : util.toBigInt(util.toPointer(data.ids)), true);
   return buf;
 }
 
@@ -305,7 +305,7 @@ export class AsnObjectIdentifierView {
 
   // 0x08: pointer
   set ids(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -314,9 +314,9 @@ export class AsnObjectIdentifierView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -325,9 +325,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -342,23 +342,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -385,7 +385,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -423,7 +423,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -436,7 +436,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -445,11 +445,11 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: u64
-  if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigUint64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -476,23 +476,23 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -536,17 +536,17 @@ export function alloc_asnValue_e__Union(data?: Partial<_asnValue_e__Union>): Uin
   // 0x04: u32
   if (data?.unsigned32 !== undefined) view.setUint32(4, Number(data.unsigned32), true);
   // 0x08: pointer
-  if (data?.counter64 !== undefined) view.setBigUint64(8, data.counter64 === null ? 0n : BigInt(util.toPointer(data.counter64)), true);
+  if (data?.counter64 !== undefined) view.setBigUint64(8, data.counter64 === null ? 0n : util.toBigInt(util.toPointer(data.counter64)), true);
   // 0x10: pointer
-  if (data?.string !== undefined) view.setBigUint64(16, data.string === null ? 0n : BigInt(util.toPointer(data.string)), true);
+  if (data?.string !== undefined) view.setBigUint64(16, data.string === null ? 0n : util.toBigInt(util.toPointer(data.string)), true);
   // 0x18: pointer
-  if (data?.bits !== undefined) view.setBigUint64(24, data.bits === null ? 0n : BigInt(util.toPointer(data.bits)), true);
+  if (data?.bits !== undefined) view.setBigUint64(24, data.bits === null ? 0n : util.toBigInt(util.toPointer(data.bits)), true);
   // 0x20: pointer
-  if (data?.object !== undefined) view.setBigUint64(32, data.object === null ? 0n : BigInt(util.toPointer(data.object)), true);
+  if (data?.object !== undefined) view.setBigUint64(32, data.object === null ? 0n : util.toBigInt(util.toPointer(data.object)), true);
   // 0x28: pointer
-  if (data?.sequence !== undefined) view.setBigUint64(40, data.sequence === null ? 0n : BigInt(util.toPointer(data.sequence)), true);
+  if (data?.sequence !== undefined) view.setBigUint64(40, data.sequence === null ? 0n : util.toBigInt(util.toPointer(data.sequence)), true);
   // 0x30: pointer
-  if (data?.address !== undefined) view.setBigUint64(48, data.address === null ? 0n : BigInt(util.toPointer(data.address)), true);
+  if (data?.address !== undefined) view.setBigUint64(48, data.address === null ? 0n : util.toBigInt(util.toPointer(data.address)), true);
   // 0x38: u32
   if (data?.counter !== undefined) view.setUint32(56, Number(data.counter), true);
   // 0x3c: u32
@@ -555,7 +555,7 @@ export function alloc_asnValue_e__Union(data?: Partial<_asnValue_e__Union>): Uin
   if (data?.ticks !== undefined) view.setUint32(64, Number(data.ticks), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.arbitrary !== undefined) view.setBigUint64(72, data.arbitrary === null ? 0n : BigInt(util.toPointer(data.arbitrary)), true);
+  if (data?.arbitrary !== undefined) view.setBigUint64(72, data.arbitrary === null ? 0n : util.toBigInt(util.toPointer(data.arbitrary)), true);
   return buf;
 }
 
@@ -650,32 +650,32 @@ export class _asnValue_e__UnionView {
 
   // 0x08: pointer
   set counter64(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set string(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set bits(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set object(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set sequence(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u32
@@ -697,7 +697,7 @@ export class _asnValue_e__UnionView {
 
   // 0x48: pointer
   set arbitrary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -720,7 +720,7 @@ export function allocAsnAny(data?: Partial<AsnAny>): Uint8Array {
   if (data?.asnType !== undefined) view.setUint8(0, Number(data.asnType));
   // 0x01: pad7
   // 0x08: pointer
-  if (data?.asnValue !== undefined) view.setBigUint64(8, data.asnValue === null ? 0n : BigInt(util.toPointer(data.asnValue)), true);
+  if (data?.asnValue !== undefined) view.setBigUint64(8, data.asnValue === null ? 0n : util.toBigInt(util.toPointer(data.asnValue)), true);
   return buf;
 }
 
@@ -756,7 +756,7 @@ export class AsnAnyView {
 
   // 0x08: pointer
   set asnValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -776,9 +776,9 @@ export function allocSnmpVarBind(data?: Partial<SnmpVarBind>): Uint8Array {
   const buf = new Uint8Array(sizeofSnmpVarBind);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(util.toPointer(data.name)), true);
+  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : util.toBigInt(util.toPointer(data.name)), true);
   // 0x08: pointer
-  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(util.toPointer(data.value)), true);
+  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : util.toBigInt(util.toPointer(data.value)), true);
   return buf;
 }
 
@@ -806,12 +806,12 @@ export class SnmpVarBindView {
 
   // 0x00: pointer
   set name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -831,7 +831,7 @@ export function allocSnmpVarBindList(data?: Partial<SnmpVarBindList>): Uint8Arra
   const buf = new Uint8Array(sizeofSnmpVarBindList);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.list !== undefined) view.setBigUint64(0, data.list === null ? 0n : BigInt(util.toPointer(data.list)), true);
+  if (data?.list !== undefined) view.setBigUint64(0, data.list === null ? 0n : util.toBigInt(util.toPointer(data.list)), true);
   // 0x08: u32
   if (data?.len !== undefined) view.setUint32(8, Number(data.len), true);
   // 0x0c: pad4
@@ -863,7 +863,7 @@ export class SnmpVarBindListView {
 
   // 0x00: pointer
   set list(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -893,7 +893,7 @@ export function allocSmiOCTETS(data?: Partial<smiOCTETS>): Uint8Array {
   if (data?.len !== undefined) view.setUint32(0, Number(data.len), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
+  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : util.toBigInt(util.toPointer(data.ptr)), true);
   return buf;
 }
 
@@ -929,7 +929,7 @@ export class smiOCTETSView {
 
   // 0x08: pointer
   set ptr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -952,7 +952,7 @@ export function allocSmiOID(data?: Partial<smiOID>): Uint8Array {
   if (data?.len !== undefined) view.setUint32(0, Number(data.len), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
+  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : util.toBigInt(util.toPointer(data.ptr)), true);
   return buf;
 }
 
@@ -988,7 +988,7 @@ export class smiOIDView {
 
   // 0x08: pointer
   set ptr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1064,7 +1064,7 @@ export function alloc_propertyBlob_e__Struct(data?: Partial<_propertyBlob_e__Str
   if (data?.cbBuf !== undefined) view.setUint32(0, Number(data.cbBuf), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pBuf !== undefined) view.setBigUint64(8, data.pBuf === null ? 0n : BigInt(util.toPointer(data.pBuf)), true);
+  if (data?.pBuf !== undefined) view.setBigUint64(8, data.pBuf === null ? 0n : util.toBigInt(util.toPointer(data.pBuf)), true);
   return buf;
 }
 
@@ -1100,7 +1100,7 @@ export class _propertyBlob_e__StructView {
 
   // 0x08: pointer
   set pBuf(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1115,7 +1115,7 @@ export interface _value_e__Union {
   /** i32 */
   propertyInt32: number;
   /** i64 */
-  propertyInt64: Deno.PointerValue;
+  propertyInt64: number | bigint;
   /** _propertyBlob_e__Struct */
   propertyBlob: Uint8Array | Deno.PointerValue | null;
 }
@@ -1131,15 +1131,15 @@ export function alloc_value_e__Union(data?: Partial<_value_e__Union>): Uint8Arra
   // 0x08: buffer
   if (data?.propertyString !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.propertyString);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: i32
   if (data?.propertyInt32 !== undefined) view.setInt32(16, Number(data.propertyInt32), true);
   // 0x14: pad4
   // 0x18: i64
-  if (data?.propertyInt64 !== undefined) view.setBigInt64(24, BigInt(data.propertyInt64), true);
+  if (data?.propertyInt64 !== undefined) view.setBigInt64(24, util.toBigInt(data.propertyInt64), true);
   // 0x20: pointer
-  if (data?.propertyBlob !== undefined) view.setBigUint64(32, data.propertyBlob === null ? 0n : BigInt(util.toPointer(data.propertyBlob)), true);
+  if (data?.propertyBlob !== undefined) view.setBigUint64(32, data.propertyBlob === null ? 0n : util.toBigInt(util.toPointer(data.propertyBlob)), true);
   return buf;
 }
 
@@ -1174,8 +1174,8 @@ export class _value_e__UnionView {
   // 0x14: pad4
 
   // 0x18: i64
-  get propertyInt64(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get propertyInt64(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x20: pointer
@@ -1194,7 +1194,7 @@ export class _value_e__UnionView {
   // 0x08: buffer
   set propertyString(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: i32
@@ -1205,13 +1205,13 @@ export class _value_e__UnionView {
   // 0x14: pad4
 
   // 0x18: i64
-  set propertyInt64(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set propertyInt64(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 
   // 0x20: pointer
   set propertyBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1234,7 +1234,7 @@ export function allocSmiVALUE(data?: Partial<smiVALUE>): Uint8Array {
   if (data?.syntax !== undefined) view.setUint32(0, Number(data.syntax), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(util.toPointer(data.value)), true);
+  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : util.toBigInt(util.toPointer(data.value)), true);
   return buf;
 }
 
@@ -1270,7 +1270,7 @@ export class smiVALUEView {
 
   // 0x08: pointer
   set value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1296,13 +1296,13 @@ export function allocSmiVENDORINFO(data?: Partial<smiVENDORINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofSmiVENDORINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.vendorName !== undefined) view.setBigUint64(0, data.vendorName === null ? 0n : BigInt(util.toPointer(data.vendorName)), true);
+  if (data?.vendorName !== undefined) view.setBigUint64(0, data.vendorName === null ? 0n : util.toBigInt(util.toPointer(data.vendorName)), true);
   // 0x08: pointer
-  if (data?.vendorContact !== undefined) view.setBigUint64(8, data.vendorContact === null ? 0n : BigInt(util.toPointer(data.vendorContact)), true);
+  if (data?.vendorContact !== undefined) view.setBigUint64(8, data.vendorContact === null ? 0n : util.toBigInt(util.toPointer(data.vendorContact)), true);
   // 0x10: pointer
-  if (data?.vendorVersionId !== undefined) view.setBigUint64(16, data.vendorVersionId === null ? 0n : BigInt(util.toPointer(data.vendorVersionId)), true);
+  if (data?.vendorVersionId !== undefined) view.setBigUint64(16, data.vendorVersionId === null ? 0n : util.toBigInt(util.toPointer(data.vendorVersionId)), true);
   // 0x18: pointer
-  if (data?.vendorVersionDate !== undefined) view.setBigUint64(24, data.vendorVersionDate === null ? 0n : BigInt(util.toPointer(data.vendorVersionDate)), true);
+  if (data?.vendorVersionDate !== undefined) view.setBigUint64(24, data.vendorVersionDate === null ? 0n : util.toBigInt(util.toPointer(data.vendorVersionDate)), true);
   // 0x20: u32
   if (data?.vendorEnterprise !== undefined) view.setUint32(32, Number(data.vendorEnterprise), true);
   // 0x24: pad4
@@ -1352,22 +1352,22 @@ export class smiVENDORINFOView {
 
   // 0x00: pointer
   set vendorName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set vendorContact(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set vendorVersionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set vendorVersionDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -1380,7 +1380,7 @@ export class smiVENDORINFOView {
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 // Native Libraries
 
@@ -2012,33 +2012,33 @@ export function SnmpSetRetransmitMode(
 }
 
 export function SnmpGetTimeout(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   nPolicyTimeout: Deno.PointerValue | Uint8Array | null /* ptr */,
   nActualTimeout: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetTimeout(hEntity, util.toPointer(nPolicyTimeout), util.toPointer(nActualTimeout));
+  return libwsnmp32_dll.SnmpGetTimeout(util.toBigInt(util.toPointer(hEntity)), util.toPointer(nPolicyTimeout), util.toPointer(nActualTimeout));
 }
 
 export function SnmpSetTimeout(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   nPolicyTimeout: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetTimeout(hEntity, nPolicyTimeout);
+  return libwsnmp32_dll.SnmpSetTimeout(util.toBigInt(util.toPointer(hEntity)), nPolicyTimeout);
 }
 
 export function SnmpGetRetry(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   nPolicyRetry: Deno.PointerValue | Uint8Array | null /* ptr */,
   nActualRetry: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetRetry(hEntity, util.toPointer(nPolicyRetry), util.toPointer(nActualRetry));
+  return libwsnmp32_dll.SnmpGetRetry(util.toBigInt(util.toPointer(hEntity)), util.toPointer(nPolicyRetry), util.toPointer(nActualRetry));
 }
 
 export function SnmpSetRetry(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   nPolicyRetry: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetRetry(hEntity, nPolicyRetry);
+  return libwsnmp32_dll.SnmpSetRetry(util.toBigInt(util.toPointer(hEntity)), nPolicyRetry);
 }
 
 export function SnmpGetVendorInfo(
@@ -2064,45 +2064,45 @@ export function SnmpCleanup(): number /* u32 */ {
 export function SnmpOpen(
   hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libwsnmp32_dll.SnmpOpen(util.hwndToFfi(hWnd), wMsg);
 }
 
 export function SnmpClose(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpClose(session);
+  return libwsnmp32_dll.SnmpClose(util.toBigInt(util.toPointer(session)));
 }
 
 export function SnmpSendMsg(
-  session: Deno.PointerValue /* isize */,
-  srcEntity: Deno.PointerValue /* isize */,
-  dstEntity: Deno.PointerValue /* isize */,
-  context: Deno.PointerValue /* isize */,
-  PDU: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
+  srcEntity: number | bigint /* isize */,
+  dstEntity: number | bigint /* isize */,
+  context: number | bigint /* isize */,
+  PDU: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSendMsg(session, srcEntity, dstEntity, context, PDU);
+  return libwsnmp32_dll.SnmpSendMsg(util.toBigInt(util.toPointer(session)), util.toBigInt(util.toPointer(srcEntity)), util.toBigInt(util.toPointer(dstEntity)), util.toBigInt(util.toPointer(context)), util.toBigInt(util.toPointer(PDU)));
 }
 
 export function SnmpRecvMsg(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   srcEntity: Deno.PointerValue | Uint8Array | null /* ptr */,
   dstEntity: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   PDU: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpRecvMsg(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(PDU));
+  return libwsnmp32_dll.SnmpRecvMsg(util.toBigInt(util.toPointer(session)), util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(PDU));
 }
 
 export function SnmpRegister(
-  session: Deno.PointerValue /* isize */,
-  srcEntity: Deno.PointerValue /* isize */,
-  dstEntity: Deno.PointerValue /* isize */,
-  context: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
+  srcEntity: number | bigint /* isize */,
+  dstEntity: number | bigint /* isize */,
+  context: number | bigint /* isize */,
   notification: Deno.PointerValue | Uint8Array | null /* ptr */,
   state: SNMP_STATUS /* Windows.Win32.NetworkManagement.Snmp.SNMP_STATUS */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpRegister(session, srcEntity, dstEntity, context, util.toPointer(notification), state);
+  return libwsnmp32_dll.SnmpRegister(util.toBigInt(util.toPointer(session)), util.toBigInt(util.toPointer(srcEntity)), util.toBigInt(util.toPointer(dstEntity)), util.toBigInt(util.toPointer(context)), util.toPointer(notification), state);
 }
 
 export function SnmpCreateSession(
@@ -2110,30 +2110,30 @@ export function SnmpCreateSession(
   wMsg: number /* u32 */,
   fCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Snmp.SNMPAPI_CALLBACK */,
   lpClientData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libwsnmp32_dll.SnmpCreateSession(util.hwndToFfi(hWnd), wMsg, util.toPointer(fCallBack), util.toPointer(lpClientData));
 }
 
 export function SnmpListen(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   lStatus: SNMP_STATUS /* Windows.Win32.NetworkManagement.Snmp.SNMP_STATUS */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpListen(hEntity, lStatus);
+  return libwsnmp32_dll.SnmpListen(util.toBigInt(util.toPointer(hEntity)), lStatus);
 }
 
 export function SnmpListenEx(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   lStatus: number /* u32 */,
   nUseEntityAddr: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpListenEx(hEntity, lStatus, nUseEntityAddr);
+  return libwsnmp32_dll.SnmpListenEx(util.toBigInt(util.toPointer(hEntity)), lStatus, nUseEntityAddr);
 }
 
 export function SnmpCancelMsg(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   reqId: number /* i32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCancelMsg(session, reqId);
+  return libwsnmp32_dll.SnmpCancelMsg(util.toBigInt(util.toPointer(session)), reqId);
 }
 
 export function SnmpStartupEx(
@@ -2151,155 +2151,155 @@ export function SnmpCleanupEx(): number /* u32 */ {
 }
 
 export function SnmpStrToEntity(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpStrToEntity(session, util.pstrToFfi(string));
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpStrToEntity(util.toBigInt(util.toPointer(session)), util.pstrToFfi(string));
 }
 
 export function SnmpEntityToStr(
-  entity: Deno.PointerValue /* isize */,
+  entity: number | bigint /* isize */,
   size: number /* u32 */,
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpEntityToStr(entity, size, util.pstrToFfi(string));
+  return libwsnmp32_dll.SnmpEntityToStr(util.toBigInt(util.toPointer(entity)), size, util.pstrToFfi(string));
 }
 
 export function SnmpFreeEntity(
-  entity: Deno.PointerValue /* isize */,
+  entity: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeEntity(entity);
+  return libwsnmp32_dll.SnmpFreeEntity(util.toBigInt(util.toPointer(entity)));
 }
 
 export function SnmpStrToContext(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpStrToContext(session, util.toPointer(string));
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpStrToContext(util.toBigInt(util.toPointer(session)), util.toPointer(string));
 }
 
 export function SnmpContextToStr(
-  context: Deno.PointerValue /* isize */,
+  context: number | bigint /* isize */,
   string: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpContextToStr(context, util.toPointer(string));
+  return libwsnmp32_dll.SnmpContextToStr(util.toBigInt(util.toPointer(context)), util.toPointer(string));
 }
 
 export function SnmpFreeContext(
-  context: Deno.PointerValue /* isize */,
+  context: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeContext(context);
+  return libwsnmp32_dll.SnmpFreeContext(util.toBigInt(util.toPointer(context)));
 }
 
 export function SnmpSetPort(
-  hEntity: Deno.PointerValue /* isize */,
+  hEntity: number | bigint /* isize */,
   nPort: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetPort(hEntity, nPort);
+  return libwsnmp32_dll.SnmpSetPort(util.toBigInt(util.toPointer(hEntity)), nPort);
 }
 
 export function SnmpCreatePdu(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   PDU_type: SNMP_PDU_TYPE /* Windows.Win32.NetworkManagement.Snmp.SNMP_PDU_TYPE */,
   request_id: number /* i32 */,
   error_status: number /* i32 */,
   error_index: number /* i32 */,
-  varbindlist: Deno.PointerValue /* isize */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpCreatePdu(session, PDU_type, request_id, error_status, error_index, varbindlist);
+  varbindlist: number | bigint /* isize */,
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpCreatePdu(util.toBigInt(util.toPointer(session)), PDU_type, request_id, error_status, error_index, util.toBigInt(util.toPointer(varbindlist)));
 }
 
 export function SnmpGetPduData(
-  PDU: Deno.PointerValue /* isize */,
+  PDU: number | bigint /* isize */,
   PDU_type: Deno.PointerValue | Uint8Array | null /* ptr */,
   request_id: Deno.PointerValue | Uint8Array | null /* ptr */,
   error_status: Deno.PointerValue | Uint8Array | null /* ptr */,
   error_index: Deno.PointerValue | Uint8Array | null /* ptr */,
   varbindlist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetPduData(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(error_status), util.toPointer(error_index), util.toPointer(varbindlist));
+  return libwsnmp32_dll.SnmpGetPduData(util.toBigInt(util.toPointer(PDU)), util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(error_status), util.toPointer(error_index), util.toPointer(varbindlist));
 }
 
 export function SnmpSetPduData(
-  PDU: Deno.PointerValue /* isize */,
+  PDU: number | bigint /* isize */,
   PDU_type: Deno.PointerValue | Uint8Array | null /* ptr */,
   request_id: Deno.PointerValue | Uint8Array | null /* ptr */,
   non_repeaters: Deno.PointerValue | Uint8Array | null /* ptr */,
   max_repetitions: Deno.PointerValue | Uint8Array | null /* ptr */,
   varbindlist: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetPduData(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(non_repeaters), util.toPointer(max_repetitions), util.toPointer(varbindlist));
+  return libwsnmp32_dll.SnmpSetPduData(util.toBigInt(util.toPointer(PDU)), util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(non_repeaters), util.toPointer(max_repetitions), util.toPointer(varbindlist));
 }
 
 export function SnmpDuplicatePdu(
-  session: Deno.PointerValue /* isize */,
-  PDU: Deno.PointerValue /* isize */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpDuplicatePdu(session, PDU);
+  session: number | bigint /* isize */,
+  PDU: number | bigint /* isize */,
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpDuplicatePdu(util.toBigInt(util.toPointer(session)), util.toBigInt(util.toPointer(PDU)));
 }
 
 export function SnmpFreePdu(
-  PDU: Deno.PointerValue /* isize */,
+  PDU: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreePdu(PDU);
+  return libwsnmp32_dll.SnmpFreePdu(util.toBigInt(util.toPointer(PDU)));
 }
 
 export function SnmpCreateVbl(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   name: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpCreateVbl(session, util.toPointer(name), util.toPointer(value));
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpCreateVbl(util.toBigInt(util.toPointer(session)), util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpDuplicateVbl(
-  session: Deno.PointerValue /* isize */,
-  vbl: Deno.PointerValue /* isize */,
-): Deno.PointerValue /* isize */ {
-  return libwsnmp32_dll.SnmpDuplicateVbl(session, vbl);
+  session: number | bigint /* isize */,
+  vbl: number | bigint /* isize */,
+): number | bigint /* isize */ {
+  return libwsnmp32_dll.SnmpDuplicateVbl(util.toBigInt(util.toPointer(session)), util.toBigInt(util.toPointer(vbl)));
 }
 
 export function SnmpFreeVbl(
-  vbl: Deno.PointerValue /* isize */,
+  vbl: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeVbl(vbl);
+  return libwsnmp32_dll.SnmpFreeVbl(util.toBigInt(util.toPointer(vbl)));
 }
 
 export function SnmpCountVbl(
-  vbl: Deno.PointerValue /* isize */,
+  vbl: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCountVbl(vbl);
+  return libwsnmp32_dll.SnmpCountVbl(util.toBigInt(util.toPointer(vbl)));
 }
 
 export function SnmpGetVb(
-  vbl: Deno.PointerValue /* isize */,
+  vbl: number | bigint /* isize */,
   index: number /* u32 */,
   name: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetVb(vbl, index, util.toPointer(name), util.toPointer(value));
+  return libwsnmp32_dll.SnmpGetVb(util.toBigInt(util.toPointer(vbl)), index, util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpSetVb(
-  vbl: Deno.PointerValue /* isize */,
+  vbl: number | bigint /* isize */,
   index: number /* u32 */,
   name: Deno.PointerValue | Uint8Array | null /* ptr */,
   value: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetVb(vbl, index, util.toPointer(name), util.toPointer(value));
+  return libwsnmp32_dll.SnmpSetVb(util.toBigInt(util.toPointer(vbl)), index, util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpDeleteVb(
-  vbl: Deno.PointerValue /* isize */,
+  vbl: number | bigint /* isize */,
   index: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpDeleteVb(vbl, index);
+  return libwsnmp32_dll.SnmpDeleteVb(util.toBigInt(util.toPointer(vbl)), index);
 }
 
 export function SnmpGetLastError(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetLastError(session);
+  return libwsnmp32_dll.SnmpGetLastError(util.toBigInt(util.toPointer(session)));
 }
 
 export function SnmpStrToOid(
@@ -2334,25 +2334,25 @@ export function SnmpOidCompare(
 }
 
 export function SnmpEncodeMsg(
-  session: Deno.PointerValue /* isize */,
-  srcEntity: Deno.PointerValue /* isize */,
-  dstEntity: Deno.PointerValue /* isize */,
-  context: Deno.PointerValue /* isize */,
-  pdu: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
+  srcEntity: number | bigint /* isize */,
+  dstEntity: number | bigint /* isize */,
+  context: number | bigint /* isize */,
+  pdu: number | bigint /* isize */,
   msgBufDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpEncodeMsg(session, srcEntity, dstEntity, context, pdu, util.toPointer(msgBufDesc));
+  return libwsnmp32_dll.SnmpEncodeMsg(util.toBigInt(util.toPointer(session)), util.toBigInt(util.toPointer(srcEntity)), util.toBigInt(util.toPointer(dstEntity)), util.toBigInt(util.toPointer(context)), util.toBigInt(util.toPointer(pdu)), util.toPointer(msgBufDesc));
 }
 
 export function SnmpDecodeMsg(
-  session: Deno.PointerValue /* isize */,
+  session: number | bigint /* isize */,
   srcEntity: Deno.PointerValue | Uint8Array | null /* ptr */,
   dstEntity: Deno.PointerValue | Uint8Array | null /* ptr */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdu: Deno.PointerValue | Uint8Array | null /* ptr */,
   msgBufDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpDecodeMsg(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(pdu), util.toPointer(msgBufDesc));
+  return libwsnmp32_dll.SnmpDecodeMsg(util.toBigInt(util.toPointer(session)), util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(pdu), util.toPointer(msgBufDesc));
 }
 
 export function SnmpFreeDescriptor(

@@ -445,7 +445,7 @@ export function allocHTTP_STATE_INFO(data?: Partial<HTTP_STATE_INFO>): Uint8Arra
   const buf = new Uint8Array(sizeofHTTP_STATE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: i32
   if (data?.State !== undefined) view.setInt32(8, Number(data.State), true);
   // 0x0c: pad4
@@ -477,7 +477,7 @@ export class HTTP_STATE_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -507,7 +507,7 @@ export function allocHTTP_QOS_SETTING_INFO(data?: Partial<HTTP_QOS_SETTING_INFO>
   if (data?.QosType !== undefined) view.setInt32(0, Number(data.QosType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.QosSetting !== undefined) view.setBigUint64(8, data.QosSetting === null ? 0n : BigInt(util.toPointer(data.QosSetting)), true);
+  if (data?.QosSetting !== undefined) view.setBigUint64(8, data.QosSetting === null ? 0n : util.toBigInt(util.toPointer(data.QosSetting)), true);
   return buf;
 }
 
@@ -543,7 +543,7 @@ export class HTTP_QOS_SETTING_INFOView {
 
   // 0x08: pointer
   set QosSetting(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -563,7 +563,7 @@ export function allocHTTP_CONNECTION_LIMIT_INFO(data?: Partial<HTTP_CONNECTION_L
   const buf = new Uint8Array(sizeofHTTP_CONNECTION_LIMIT_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u32
   if (data?.MaxConnections !== undefined) view.setUint32(8, Number(data.MaxConnections), true);
   // 0x0c: pad4
@@ -595,7 +595,7 @@ export class HTTP_CONNECTION_LIMIT_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -622,7 +622,7 @@ export function allocHTTP_BANDWIDTH_LIMIT_INFO(data?: Partial<HTTP_BANDWIDTH_LIM
   const buf = new Uint8Array(sizeofHTTP_BANDWIDTH_LIMIT_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u32
   if (data?.MaxBandwidth !== undefined) view.setUint32(8, Number(data.MaxBandwidth), true);
   // 0x0c: pad4
@@ -654,7 +654,7 @@ export class HTTP_BANDWIDTH_LIMIT_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -685,7 +685,7 @@ export function allocHTTP_FLOWRATE_INFO(data?: Partial<HTTP_FLOWRATE_INFO>): Uin
   const buf = new Uint8Array(sizeofHTTP_FLOWRATE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u32
   if (data?.MaxBandwidth !== undefined) view.setUint32(8, Number(data.MaxBandwidth), true);
   // 0x0c: u32
@@ -731,7 +731,7 @@ export class HTTP_FLOWRATE_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -836,7 +836,7 @@ export function allocHTTP_TIMEOUT_LIMIT_INFO(data?: Partial<HTTP_TIMEOUT_LIMIT_I
   const buf = new Uint8Array(sizeofHTTP_TIMEOUT_LIMIT_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u16
   if (data?.EntityBody !== undefined) view.setUint16(8, Number(data.EntityBody), true);
   // 0x0a: u16
@@ -903,7 +903,7 @@ export class HTTP_TIMEOUT_LIMIT_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -1010,9 +1010,9 @@ export function allocHTTP_LISTEN_ENDPOINT_INFO(data?: Partial<HTTP_LISTEN_ENDPOI
   const buf = new Uint8Array(sizeofHTTP_LISTEN_ENDPOINT_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: pointer
-  if (data?.EnableSharing !== undefined) view.setBigUint64(8, data.EnableSharing === null ? 0n : BigInt(util.toPointer(data.EnableSharing)), true);
+  if (data?.EnableSharing !== undefined) view.setBigUint64(8, data.EnableSharing === null ? 0n : util.toBigInt(util.toPointer(data.EnableSharing)), true);
   return buf;
 }
 
@@ -1040,12 +1040,12 @@ export class HTTP_LISTEN_ENDPOINT_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set EnableSharing(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1076,7 +1076,7 @@ export function allocHTTP_SERVER_AUTHENTICATION_DIGEST_PARAMS(data?: Partial<HTT
   // 0x08: buffer
   if (data?.DomainName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.DomainName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u16
   if (data?.RealmLength !== undefined) view.setUint16(16, Number(data.RealmLength), true);
@@ -1084,7 +1084,7 @@ export function allocHTTP_SERVER_AUTHENTICATION_DIGEST_PARAMS(data?: Partial<HTT
   // 0x18: buffer
   if (data?.Realm !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.Realm);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   return buf;
 }
@@ -1135,7 +1135,7 @@ export class HTTP_SERVER_AUTHENTICATION_DIGEST_PARAMSView {
   // 0x08: buffer
   set DomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u16
@@ -1148,7 +1148,7 @@ export class HTTP_SERVER_AUTHENTICATION_DIGEST_PARAMSView {
   // 0x18: buffer
   set Realm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 }
 
@@ -1173,7 +1173,7 @@ export function allocHTTP_SERVER_AUTHENTICATION_BASIC_PARAMS(data?: Partial<HTTP
   // 0x08: buffer
   if (data?.Realm !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Realm);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -1211,7 +1211,7 @@ export class HTTP_SERVER_AUTHENTICATION_BASIC_PARAMSView {
   // 0x08: buffer
   set Realm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -1243,23 +1243,23 @@ export function allocHTTP_SERVER_AUTHENTICATION_INFO(data?: Partial<HTTP_SERVER_
   const buf = new Uint8Array(sizeofHTTP_SERVER_AUTHENTICATION_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u32
   if (data?.AuthSchemes !== undefined) view.setUint32(8, Number(data.AuthSchemes), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ReceiveMutualAuth !== undefined) view.setBigUint64(16, data.ReceiveMutualAuth === null ? 0n : BigInt(util.toPointer(data.ReceiveMutualAuth)), true);
+  if (data?.ReceiveMutualAuth !== undefined) view.setBigUint64(16, data.ReceiveMutualAuth === null ? 0n : util.toBigInt(util.toPointer(data.ReceiveMutualAuth)), true);
   // 0x18: pointer
-  if (data?.ReceiveContextHandle !== undefined) view.setBigUint64(24, data.ReceiveContextHandle === null ? 0n : BigInt(util.toPointer(data.ReceiveContextHandle)), true);
+  if (data?.ReceiveContextHandle !== undefined) view.setBigUint64(24, data.ReceiveContextHandle === null ? 0n : util.toBigInt(util.toPointer(data.ReceiveContextHandle)), true);
   // 0x20: pointer
-  if (data?.DisableNTLMCredentialCaching !== undefined) view.setBigUint64(32, data.DisableNTLMCredentialCaching === null ? 0n : BigInt(util.toPointer(data.DisableNTLMCredentialCaching)), true);
+  if (data?.DisableNTLMCredentialCaching !== undefined) view.setBigUint64(32, data.DisableNTLMCredentialCaching === null ? 0n : util.toBigInt(util.toPointer(data.DisableNTLMCredentialCaching)), true);
   // 0x28: u8
   if (data?.ExFlags !== undefined) view.setUint8(40, Number(data.ExFlags));
   // 0x29: pad7
   // 0x30: pointer
-  if (data?.DigestParams !== undefined) view.setBigUint64(48, data.DigestParams === null ? 0n : BigInt(util.toPointer(data.DigestParams)), true);
+  if (data?.DigestParams !== undefined) view.setBigUint64(48, data.DigestParams === null ? 0n : util.toBigInt(util.toPointer(data.DigestParams)), true);
   // 0x38: pointer
-  if (data?.BasicParams !== undefined) view.setBigUint64(56, data.BasicParams === null ? 0n : BigInt(util.toPointer(data.BasicParams)), true);
+  if (data?.BasicParams !== undefined) view.setBigUint64(56, data.BasicParams === null ? 0n : util.toBigInt(util.toPointer(data.BasicParams)), true);
   return buf;
 }
 
@@ -1325,7 +1325,7 @@ export class HTTP_SERVER_AUTHENTICATION_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1337,17 +1337,17 @@ export class HTTP_SERVER_AUTHENTICATION_INFOView {
 
   // 0x10: pointer
   set ReceiveMutualAuth(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ReceiveContextHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set DisableNTLMCredentialCaching(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u8
@@ -1359,12 +1359,12 @@ export class HTTP_SERVER_AUTHENTICATION_INFOView {
 
   // 0x30: pointer
   set DigestParams(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set BasicParams(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1432,11 +1432,11 @@ export function allocHTTP_SERVICE_BINDING_A(data?: Partial<HTTP_SERVICE_BINDING_
   const buf = new Uint8Array(sizeofHTTP_SERVICE_BINDING_A);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : util.toBigInt(util.toPointer(data.Base)), true);
   // 0x08: buffer
   if (data?.Buffer !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.Buffer);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.BufferSize !== undefined) view.setUint32(16, Number(data.BufferSize), true);
@@ -1475,13 +1475,13 @@ export class HTTP_SERVICE_BINDING_AView {
 
   // 0x00: pointer
   set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -1510,11 +1510,11 @@ export function allocHTTP_SERVICE_BINDING_W(data?: Partial<HTTP_SERVICE_BINDING_
   const buf = new Uint8Array(sizeofHTTP_SERVICE_BINDING_W);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : util.toBigInt(util.toPointer(data.Base)), true);
   // 0x08: buffer
   if (data?.Buffer !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Buffer);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.BufferSize !== undefined) view.setUint32(16, Number(data.BufferSize), true);
@@ -1553,13 +1553,13 @@ export class HTTP_SERVICE_BINDING_WView {
 
   // 0x00: pointer
   set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -1594,7 +1594,7 @@ export function allocHTTP_CHANNEL_BIND_INFO(data?: Partial<HTTP_CHANNEL_BIND_INF
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.ServiceNames !== undefined) view.setBigUint64(8, data.ServiceNames === null ? 0n : BigInt(util.toPointer(data.ServiceNames)), true);
+  if (data?.ServiceNames !== undefined) view.setBigUint64(8, data.ServiceNames === null ? 0n : util.toBigInt(util.toPointer(data.ServiceNames)), true);
   // 0x10: u32
   if (data?.NumberOfServiceNames !== undefined) view.setUint32(16, Number(data.NumberOfServiceNames), true);
   // 0x14: pad4
@@ -1646,7 +1646,7 @@ export class HTTP_CHANNEL_BIND_INFOView {
 
   // 0x08: pointer
   set ServiceNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1677,9 +1677,9 @@ export function allocHTTP_REQUEST_CHANNEL_BIND_STATUS(data?: Partial<HTTP_REQUES
   const buf = new Uint8Array(sizeofHTTP_REQUEST_CHANNEL_BIND_STATUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ServiceName !== undefined) view.setBigUint64(0, data.ServiceName === null ? 0n : BigInt(util.toPointer(data.ServiceName)), true);
+  if (data?.ServiceName !== undefined) view.setBigUint64(0, data.ServiceName === null ? 0n : util.toBigInt(util.toPointer(data.ServiceName)), true);
   // 0x08: pointer
-  if (data?.ChannelToken !== undefined) view.setBigUint64(8, data.ChannelToken === null ? 0n : BigInt(util.toPointer(data.ChannelToken)), true);
+  if (data?.ChannelToken !== undefined) view.setBigUint64(8, data.ChannelToken === null ? 0n : util.toBigInt(util.toPointer(data.ChannelToken)), true);
   // 0x10: u32
   if (data?.ChannelTokenSize !== undefined) view.setUint32(16, Number(data.ChannelTokenSize), true);
   // 0x14: u32
@@ -1721,12 +1721,12 @@ export class HTTP_REQUEST_CHANNEL_BIND_STATUSView {
 
   // 0x00: pointer
   set ServiceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ChannelToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1762,12 +1762,12 @@ export function allocHTTP_REQUEST_TOKEN_BINDING_INFO(data?: Partial<HTTP_REQUEST
   const buf = new Uint8Array(sizeofHTTP_REQUEST_TOKEN_BINDING_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.TokenBinding !== undefined) view.setBigUint64(0, data.TokenBinding === null ? 0n : BigInt(util.toPointer(data.TokenBinding)), true);
+  if (data?.TokenBinding !== undefined) view.setBigUint64(0, data.TokenBinding === null ? 0n : util.toBigInt(util.toPointer(data.TokenBinding)), true);
   // 0x08: u32
   if (data?.TokenBindingSize !== undefined) view.setUint32(8, Number(data.TokenBindingSize), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.EKM !== undefined) view.setBigUint64(16, data.EKM === null ? 0n : BigInt(util.toPointer(data.EKM)), true);
+  if (data?.EKM !== undefined) view.setBigUint64(16, data.EKM === null ? 0n : util.toBigInt(util.toPointer(data.EKM)), true);
   // 0x18: u32
   if (data?.EKMSize !== undefined) view.setUint32(24, Number(data.EKMSize), true);
   // 0x1c: u8
@@ -1819,7 +1819,7 @@ export class HTTP_REQUEST_TOKEN_BINDING_INFOView {
 
   // 0x00: pointer
   set TokenBinding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1831,7 +1831,7 @@ export class HTTP_REQUEST_TOKEN_BINDING_INFOView {
 
   // 0x10: pointer
   set EKM(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -1889,14 +1889,14 @@ export function allocHTTP_LOGGING_INFO(data?: Partial<HTTP_LOGGING_INFO>): Uint8
   const buf = new Uint8Array(sizeofHTTP_LOGGING_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: u32
   if (data?.LoggingFlags !== undefined) view.setUint32(8, Number(data.LoggingFlags), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.SoftwareName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.SoftwareName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: u16
   if (data?.SoftwareNameLength !== undefined) view.setUint16(24, Number(data.SoftwareNameLength), true);
@@ -1906,14 +1906,14 @@ export function allocHTTP_LOGGING_INFO(data?: Partial<HTTP_LOGGING_INFO>): Uint8
   // 0x20: buffer
   if (data?.DirectoryName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.DirectoryName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: i32
   if (data?.Format !== undefined) view.setInt32(40, Number(data.Format), true);
   // 0x2c: u32
   if (data?.Fields !== undefined) view.setUint32(44, Number(data.Fields), true);
   // 0x30: pointer
-  if (data?.pExtFields !== undefined) view.setBigUint64(48, data.pExtFields === null ? 0n : BigInt(util.toPointer(data.pExtFields)), true);
+  if (data?.pExtFields !== undefined) view.setBigUint64(48, data.pExtFields === null ? 0n : util.toBigInt(util.toPointer(data.pExtFields)), true);
   // 0x38: u16
   if (data?.NumOfExtFields !== undefined) view.setUint16(56, Number(data.NumOfExtFields), true);
   // 0x3a: u16
@@ -1924,7 +1924,7 @@ export function allocHTTP_LOGGING_INFO(data?: Partial<HTTP_LOGGING_INFO>): Uint8
   if (data?.RolloverSize !== undefined) view.setUint32(64, Number(data.RolloverSize), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(72, data.pSecurityDescriptor === null ? 0n : BigInt(util.toPointer(data.pSecurityDescriptor)), true);
+  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(72, data.pSecurityDescriptor === null ? 0n : util.toBigInt(util.toPointer(data.pSecurityDescriptor)), true);
   return buf;
 }
 
@@ -2021,7 +2021,7 @@ export class HTTP_LOGGING_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -2034,7 +2034,7 @@ export class HTTP_LOGGING_INFOView {
   // 0x10: buffer
   set SoftwareName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: u16
@@ -2052,7 +2052,7 @@ export class HTTP_LOGGING_INFOView {
   // 0x20: buffer
   set DirectoryName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: i32
@@ -2067,7 +2067,7 @@ export class HTTP_LOGGING_INFOView {
 
   // 0x30: pointer
   set pExtFields(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u16
@@ -2094,11 +2094,11 @@ export class HTTP_LOGGING_INFOView {
 
   // 0x48: pointer
   set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Networking.HttpServer.HTTP_BINDING_INFO (size: 16)
@@ -2116,9 +2116,9 @@ export function allocHTTP_BINDING_INFO(data?: Partial<HTTP_BINDING_INFO>): Uint8
   const buf = new Uint8Array(sizeofHTTP_BINDING_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: pointer
-  if (data?.RequestQueueHandle !== undefined) view.setBigUint64(8, data.RequestQueueHandle === null ? 0n : BigInt(util.toPointer(data.RequestQueueHandle)), true);
+  if (data?.RequestQueueHandle !== undefined) view.setBigUint64(8, data.RequestQueueHandle === null ? 0n : util.toBigInt(util.toPointer(data.RequestQueueHandle)), true);
   return buf;
 }
 
@@ -2146,12 +2146,12 @@ export class HTTP_BINDING_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set RequestQueueHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2171,7 +2171,7 @@ export function allocHTTP_PROTECTION_LEVEL_INFO(data?: Partial<HTTP_PROTECTION_L
   const buf = new Uint8Array(sizeofHTTP_PROTECTION_LEVEL_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : BigInt(util.toPointer(data.Flags)), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, data.Flags === null ? 0n : util.toBigInt(util.toPointer(data.Flags)), true);
   // 0x08: i32
   if (data?.Level !== undefined) view.setInt32(8, Number(data.Level), true);
   // 0x0c: pad4
@@ -2203,7 +2203,7 @@ export class HTTP_PROTECTION_LEVEL_INFOView {
 
   // 0x00: pointer
   set Flags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -2219,9 +2219,9 @@ export class HTTP_PROTECTION_LEVEL_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2230,9 +2230,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -2247,23 +2247,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -2288,7 +2288,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -2326,7 +2326,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -2339,7 +2339,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -2348,11 +2348,11 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: u64
-  if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigUint64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -2379,23 +2379,23 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -2415,9 +2415,9 @@ export function allocHTTP_BYTE_RANGE(data?: Partial<HTTP_BYTE_RANGE>): Uint8Arra
   const buf = new Uint8Array(sizeofHTTP_BYTE_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.StartingOffset !== undefined) view.setBigUint64(0, data.StartingOffset === null ? 0n : BigInt(util.toPointer(data.StartingOffset)), true);
+  if (data?.StartingOffset !== undefined) view.setBigUint64(0, data.StartingOffset === null ? 0n : util.toBigInt(util.toPointer(data.StartingOffset)), true);
   // 0x08: pointer
-  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(util.toPointer(data.Length)), true);
+  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : util.toBigInt(util.toPointer(data.Length)), true);
   return buf;
 }
 
@@ -2445,12 +2445,12 @@ export class HTTP_BYTE_RANGEView {
 
   // 0x00: pointer
   set StartingOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Length(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2533,7 +2533,7 @@ export function allocHTTP_KNOWN_HEADER(data?: Partial<HTTP_KNOWN_HEADER>): Uint8
   // 0x08: buffer
   if (data?.pRawValue !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pRawValue);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -2571,7 +2571,7 @@ export class HTTP_KNOWN_HEADERView {
   // 0x08: buffer
   set pRawValue(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -2602,12 +2602,12 @@ export function allocHTTP_UNKNOWN_HEADER(data?: Partial<HTTP_UNKNOWN_HEADER>): U
   // 0x08: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pRawValue !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pRawValue);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -2661,13 +2661,13 @@ export class HTTP_UNKNOWN_HEADERView {
   // 0x08: buffer
   set pName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pRawValue(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -2787,7 +2787,7 @@ export function allocHTTP_LOG_FIELDS_DATA(data?: Partial<HTTP_LOG_FIELDS_DATA>):
   const buf = new Uint8Array(sizeofHTTP_LOG_FIELDS_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : util.toBigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.UserNameLength !== undefined) view.setUint16(8, Number(data.UserNameLength), true);
   // 0x0a: u16
@@ -2815,62 +2815,62 @@ export function allocHTTP_LOG_FIELDS_DATA(data?: Partial<HTTP_LOG_FIELDS_DATA>):
   // 0x20: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.UriStem !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.UriStem);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: buffer
   if (data?.ClientIp !== undefined) {
     (buf as any)._f48 = util.pstrToFfi(data.ClientIp);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: buffer
   if (data?.ServerName !== undefined) {
     (buf as any)._f56 = util.pstrToFfi(data.ServerName);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
   }
   // 0x40: buffer
   if (data?.ServiceName !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.ServiceName);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   // 0x48: buffer
   if (data?.ServerIp !== undefined) {
     (buf as any)._f72 = util.pstrToFfi(data.ServerIp);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
   }
   // 0x50: buffer
   if (data?.Method !== undefined) {
     (buf as any)._f80 = util.pstrToFfi(data.Method);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
   }
   // 0x58: buffer
   if (data?.UriQuery !== undefined) {
     (buf as any)._f88 = util.pstrToFfi(data.UriQuery);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
   // 0x60: buffer
   if (data?.Host !== undefined) {
     (buf as any)._f96 = util.pstrToFfi(data.Host);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
   }
   // 0x68: buffer
   if (data?.UserAgent !== undefined) {
     (buf as any)._f104 = util.pstrToFfi(data.UserAgent);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
   }
   // 0x70: buffer
   if (data?.Cookie !== undefined) {
     (buf as any)._f112 = util.pstrToFfi(data.Cookie);
-    view.setBigUint64(112, (buf as any)._f112 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f112)), true);
+    view.setBigUint64(112, (buf as any)._f112 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f112)), true);
   }
   // 0x78: buffer
   if (data?.Referrer !== undefined) {
     (buf as any)._f120 = util.pstrToFfi(data.Referrer);
-    view.setBigUint64(120, (buf as any)._f120 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f120)), true);
+    view.setBigUint64(120, (buf as any)._f120 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f120)), true);
   }
   // 0x80: u16
   if (data?.ServerPort !== undefined) view.setUint16(128, Number(data.ServerPort), true);
@@ -3063,7 +3063,7 @@ export class HTTP_LOG_FIELDS_DATAView {
 
   // 0x00: pointer
   set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -3129,73 +3129,73 @@ export class HTTP_LOG_FIELDS_DATAView {
   // 0x20: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set UriStem(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: buffer
   set ClientIp(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: buffer
   set ServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer((this.buf as any)._f56)), true);
   }
 
   // 0x40: buffer
   set ServiceName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer((this.buf as any)._f64)), true);
   }
 
   // 0x48: buffer
   set ServerIp(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer((this.buf as any)._f72)), true);
   }
 
   // 0x50: buffer
   set Method(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f80 = value;
-    this.view.setBigUint64(80, BigInt(util.toPointer((this.buf as any)._f80)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer((this.buf as any)._f80)), true);
   }
 
   // 0x58: buffer
   set UriQuery(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer((this.buf as any)._f88)), true);
   }
 
   // 0x60: buffer
   set Host(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer((this.buf as any)._f96)), true);
   }
 
   // 0x68: buffer
   set UserAgent(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer((this.buf as any)._f104)), true);
   }
 
   // 0x70: buffer
   set Cookie(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f112 = value;
-    this.view.setBigUint64(112, BigInt(util.toPointer((this.buf as any)._f112)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer((this.buf as any)._f112)), true);
   }
 
   // 0x78: buffer
   set Referrer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f120 = value;
-    this.view.setBigUint64(120, BigInt(util.toPointer((this.buf as any)._f120)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer((this.buf as any)._f120)), true);
   }
 
   // 0x80: u16
@@ -3242,9 +3242,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -3272,12 +3272,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3300,7 +3300,7 @@ export function allocHTTP_DATA_CHUNK(data?: Partial<HTTP_DATA_CHUNK>): Uint8Arra
   if (data?.DataChunkType !== undefined) view.setInt32(0, Number(data.DataChunkType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3336,7 +3336,7 @@ export class HTTP_DATA_CHUNKView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3365,14 +3365,14 @@ export function allocHTTP_REQUEST_HEADERS(data?: Partial<HTTP_REQUEST_HEADERS>):
   if (data?.UnknownHeaderCount !== undefined) view.setUint16(0, Number(data.UnknownHeaderCount), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.pUnknownHeaders !== undefined) view.setBigUint64(8, data.pUnknownHeaders === null ? 0n : BigInt(util.toPointer(data.pUnknownHeaders)), true);
+  if (data?.pUnknownHeaders !== undefined) view.setBigUint64(8, data.pUnknownHeaders === null ? 0n : util.toBigInt(util.toPointer(data.pUnknownHeaders)), true);
   // 0x10: u16
   if (data?.TrailerCount !== undefined) view.setUint16(16, Number(data.TrailerCount), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.pTrailers !== undefined) view.setBigUint64(24, data.pTrailers === null ? 0n : BigInt(util.toPointer(data.pTrailers)), true);
+  if (data?.pTrailers !== undefined) view.setBigUint64(24, data.pTrailers === null ? 0n : util.toBigInt(util.toPointer(data.pTrailers)), true);
   // 0x20: pointer
-  if (data?.KnownHeaders !== undefined) view.setBigUint64(32, data.KnownHeaders === null ? 0n : BigInt(util.toPointer(data.KnownHeaders)), true);
+  if (data?.KnownHeaders !== undefined) view.setBigUint64(32, data.KnownHeaders === null ? 0n : util.toBigInt(util.toPointer(data.KnownHeaders)), true);
   return buf;
 }
 
@@ -3427,7 +3427,7 @@ export class HTTP_REQUEST_HEADERSView {
 
   // 0x08: pointer
   set pUnknownHeaders(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -3439,12 +3439,12 @@ export class HTTP_REQUEST_HEADERSView {
 
   // 0x18: pointer
   set pTrailers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set KnownHeaders(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3473,14 +3473,14 @@ export function allocHTTP_RESPONSE_HEADERS(data?: Partial<HTTP_RESPONSE_HEADERS>
   if (data?.UnknownHeaderCount !== undefined) view.setUint16(0, Number(data.UnknownHeaderCount), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.pUnknownHeaders !== undefined) view.setBigUint64(8, data.pUnknownHeaders === null ? 0n : BigInt(util.toPointer(data.pUnknownHeaders)), true);
+  if (data?.pUnknownHeaders !== undefined) view.setBigUint64(8, data.pUnknownHeaders === null ? 0n : util.toBigInt(util.toPointer(data.pUnknownHeaders)), true);
   // 0x10: u16
   if (data?.TrailerCount !== undefined) view.setUint16(16, Number(data.TrailerCount), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.pTrailers !== undefined) view.setBigUint64(24, data.pTrailers === null ? 0n : BigInt(util.toPointer(data.pTrailers)), true);
+  if (data?.pTrailers !== undefined) view.setBigUint64(24, data.pTrailers === null ? 0n : util.toBigInt(util.toPointer(data.pTrailers)), true);
   // 0x20: pointer
-  if (data?.KnownHeaders !== undefined) view.setBigUint64(32, data.KnownHeaders === null ? 0n : BigInt(util.toPointer(data.KnownHeaders)), true);
+  if (data?.KnownHeaders !== undefined) view.setBigUint64(32, data.KnownHeaders === null ? 0n : util.toBigInt(util.toPointer(data.KnownHeaders)), true);
   return buf;
 }
 
@@ -3535,7 +3535,7 @@ export class HTTP_RESPONSE_HEADERSView {
 
   // 0x08: pointer
   set pUnknownHeaders(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -3547,12 +3547,12 @@ export class HTTP_RESPONSE_HEADERSView {
 
   // 0x18: pointer
   set pTrailers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set KnownHeaders(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3578,7 +3578,7 @@ export function allocHTTP_DELEGATE_REQUEST_PROPERTY_INFO(data?: Partial<HTTP_DEL
   // 0x04: u32
   if (data?.PropertyInfoLength !== undefined) view.setUint32(4, Number(data.PropertyInfoLength), true);
   // 0x08: pointer
-  if (data?.PropertyInfo !== undefined) view.setBigUint64(8, data.PropertyInfo === null ? 0n : BigInt(util.toPointer(data.PropertyInfo)), true);
+  if (data?.PropertyInfo !== undefined) view.setBigUint64(8, data.PropertyInfo === null ? 0n : util.toBigInt(util.toPointer(data.PropertyInfo)), true);
   return buf;
 }
 
@@ -3620,7 +3620,7 @@ export class HTTP_DELEGATE_REQUEST_PROPERTY_INFOView {
 
   // 0x08: pointer
   set PropertyInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3646,7 +3646,7 @@ export function allocHTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFO(data?: Partial<HTTP
   // 0x04: u32
   if (data?.PropertyInfoLength !== undefined) view.setUint32(4, Number(data.PropertyInfoLength), true);
   // 0x08: pointer
-  if (data?.PropertyInfo !== undefined) view.setBigUint64(8, data.PropertyInfo === null ? 0n : BigInt(util.toPointer(data.PropertyInfo)), true);
+  if (data?.PropertyInfo !== undefined) view.setBigUint64(8, data.PropertyInfo === null ? 0n : util.toBigInt(util.toPointer(data.PropertyInfo)), true);
   return buf;
 }
 
@@ -3688,7 +3688,7 @@ export class HTTP_CREATE_REQUEST_QUEUE_PROPERTY_INFOView {
 
   // 0x08: pointer
   set PropertyInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3708,9 +3708,9 @@ export function allocHTTP_TRANSPORT_ADDRESS(data?: Partial<HTTP_TRANSPORT_ADDRES
   const buf = new Uint8Array(sizeofHTTP_TRANSPORT_ADDRESS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pRemoteAddress !== undefined) view.setBigUint64(0, data.pRemoteAddress === null ? 0n : BigInt(util.toPointer(data.pRemoteAddress)), true);
+  if (data?.pRemoteAddress !== undefined) view.setBigUint64(0, data.pRemoteAddress === null ? 0n : util.toBigInt(util.toPointer(data.pRemoteAddress)), true);
   // 0x08: pointer
-  if (data?.pLocalAddress !== undefined) view.setBigUint64(8, data.pLocalAddress === null ? 0n : BigInt(util.toPointer(data.pLocalAddress)), true);
+  if (data?.pLocalAddress !== undefined) view.setBigUint64(8, data.pLocalAddress === null ? 0n : util.toBigInt(util.toPointer(data.pLocalAddress)), true);
   return buf;
 }
 
@@ -3738,12 +3738,12 @@ export class HTTP_TRANSPORT_ADDRESSView {
 
   // 0x00: pointer
   set pRemoteAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pLocalAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3785,22 +3785,22 @@ export function allocHTTP_COOKED_URL(data?: Partial<HTTP_COOKED_URL>): Uint8Arra
   // 0x08: buffer
   if (data?.pFullUrl !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pFullUrl);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pHost !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pHost);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pAbsPath !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pAbsPath);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.pQueryString !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pQueryString);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   return buf;
 }
@@ -3882,25 +3882,25 @@ export class HTTP_COOKED_URLView {
   // 0x08: buffer
   set pFullUrl(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pHost(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pAbsPath(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set pQueryString(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 }
 
@@ -3930,11 +3930,11 @@ export function allocHTTP_SSL_CLIENT_CERT_INFO(data?: Partial<HTTP_SSL_CLIENT_CE
   // 0x04: u32
   if (data?.CertEncodedSize !== undefined) view.setUint32(4, Number(data.CertEncodedSize), true);
   // 0x08: pointer
-  if (data?.pCertEncoded !== undefined) view.setBigUint64(8, data.pCertEncoded === null ? 0n : BigInt(util.toPointer(data.pCertEncoded)), true);
+  if (data?.pCertEncoded !== undefined) view.setBigUint64(8, data.pCertEncoded === null ? 0n : util.toBigInt(util.toPointer(data.pCertEncoded)), true);
   // 0x10: pointer
-  if (data?.Token !== undefined) view.setBigUint64(16, data.Token === null ? 0n : BigInt(util.toPointer(data.Token)), true);
+  if (data?.Token !== undefined) view.setBigUint64(16, data.Token === null ? 0n : util.toBigInt(util.toPointer(data.Token)), true);
   // 0x18: pointer
-  if (data?.CertDeniedByMapper !== undefined) view.setBigUint64(24, data.CertDeniedByMapper === null ? 0n : BigInt(util.toPointer(data.CertDeniedByMapper)), true);
+  if (data?.CertDeniedByMapper !== undefined) view.setBigUint64(24, data.CertDeniedByMapper === null ? 0n : util.toBigInt(util.toPointer(data.CertDeniedByMapper)), true);
   return buf;
 }
 
@@ -3988,17 +3988,17 @@ export class HTTP_SSL_CLIENT_CERT_INFOView {
 
   // 0x08: pointer
   set pCertEncoded(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set Token(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set CertDeniedByMapper(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4041,15 +4041,15 @@ export function allocHTTP_SSL_INFO(data?: Partial<HTTP_SSL_INFO>): Uint8Array {
   // 0x10: buffer
   if (data?.pServerCertIssuer !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pServerCertIssuer);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pServerCertSubject !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pServerCertSubject);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.pClientCertInfo !== undefined) view.setBigUint64(32, data.pClientCertInfo === null ? 0n : BigInt(util.toPointer(data.pClientCertInfo)), true);
+  if (data?.pClientCertInfo !== undefined) view.setBigUint64(32, data.pClientCertInfo === null ? 0n : util.toBigInt(util.toPointer(data.pClientCertInfo)), true);
   // 0x28: u32
   if (data?.SslClientCertNegotiated !== undefined) view.setUint32(40, Number(data.SslClientCertNegotiated), true);
   // 0x2c: pad4
@@ -4138,18 +4138,18 @@ export class HTTP_SSL_INFOView {
   // 0x10: buffer
   set pServerCertIssuer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pServerCertSubject(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set pClientCertInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -4293,7 +4293,7 @@ export class HTTP_SSL_PROTOCOL_INFOView {
  */
 export interface HTTP_REQUEST_SIZING_INFO {
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
   /** u32 */
   RequestIndex: number;
   /** u32 */
@@ -4308,13 +4308,13 @@ export function allocHTTP_REQUEST_SIZING_INFO(data?: Partial<HTTP_REQUEST_SIZING
   const buf = new Uint8Array(sizeofHTTP_REQUEST_SIZING_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Flags !== undefined) view.setBigUint64(0, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, util.toBigInt(data.Flags), true);
   // 0x08: u32
   if (data?.RequestIndex !== undefined) view.setUint32(8, Number(data.RequestIndex), true);
   // 0x0c: u32
   if (data?.RequestSizingCount !== undefined) view.setUint32(12, Number(data.RequestSizingCount), true);
   // 0x10: pointer
-  if (data?.RequestSizing !== undefined) view.setBigUint64(16, data.RequestSizing === null ? 0n : BigInt(util.toPointer(data.RequestSizing)), true);
+  if (data?.RequestSizing !== undefined) view.setBigUint64(16, data.RequestSizing === null ? 0n : util.toBigInt(util.toPointer(data.RequestSizing)), true);
   return buf;
 }
 
@@ -4329,8 +4329,8 @@ export class HTTP_REQUEST_SIZING_INFOView {
   }
 
   // 0x00: u64
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u32
@@ -4350,8 +4350,8 @@ export class HTTP_REQUEST_SIZING_INFOView {
   }
 
   // 0x00: u64
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u32
@@ -4366,7 +4366,7 @@ export class HTTP_REQUEST_SIZING_INFOView {
 
   // 0x10: pointer
   set RequestSizing(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4389,7 +4389,7 @@ export function allocHTTP_REQUEST_TIMING_INFO(data?: Partial<HTTP_REQUEST_TIMING
   if (data?.RequestTimingCount !== undefined) view.setUint32(0, Number(data.RequestTimingCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.RequestTiming !== undefined) view.setBigUint64(8, data.RequestTiming === null ? 0n : BigInt(util.toPointer(data.RequestTiming)), true);
+  if (data?.RequestTiming !== undefined) view.setBigUint64(8, data.RequestTiming === null ? 0n : util.toBigInt(util.toPointer(data.RequestTiming)), true);
   return buf;
 }
 
@@ -4425,7 +4425,7 @@ export class HTTP_REQUEST_TIMING_INFOView {
 
   // 0x08: pointer
   set RequestTiming(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4451,7 +4451,7 @@ export function allocHTTP_REQUEST_INFO(data?: Partial<HTTP_REQUEST_INFO>): Uint8
   // 0x04: u32
   if (data?.InfoLength !== undefined) view.setUint32(4, Number(data.InfoLength), true);
   // 0x08: pointer
-  if (data?.pInfo !== undefined) view.setBigUint64(8, data.pInfo === null ? 0n : BigInt(util.toPointer(data.pInfo)), true);
+  if (data?.pInfo !== undefined) view.setBigUint64(8, data.pInfo === null ? 0n : util.toBigInt(util.toPointer(data.pInfo)), true);
   return buf;
 }
 
@@ -4493,7 +4493,7 @@ export class HTTP_REQUEST_INFOView {
 
   // 0x08: pointer
   set pInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4540,13 +4540,13 @@ export function allocHTTP_REQUEST_AUTH_INFO(data?: Partial<HTTP_REQUEST_AUTH_INF
   if (data?.AuthStatus !== undefined) view.setInt32(0, Number(data.AuthStatus), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.SecStatus !== undefined) view.setBigUint64(8, data.SecStatus === null ? 0n : BigInt(util.toPointer(data.SecStatus)), true);
+  if (data?.SecStatus !== undefined) view.setBigUint64(8, data.SecStatus === null ? 0n : util.toBigInt(util.toPointer(data.SecStatus)), true);
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
   // 0x14: i32
   if (data?.AuthType !== undefined) view.setInt32(20, Number(data.AuthType), true);
   // 0x18: pointer
-  if (data?.AccessToken !== undefined) view.setBigUint64(24, data.AccessToken === null ? 0n : BigInt(util.toPointer(data.AccessToken)), true);
+  if (data?.AccessToken !== undefined) view.setBigUint64(24, data.AccessToken === null ? 0n : util.toBigInt(util.toPointer(data.AccessToken)), true);
   // 0x20: u32
   if (data?.ContextAttributes !== undefined) view.setUint32(32, Number(data.ContextAttributes), true);
   // 0x24: u32
@@ -4555,14 +4555,14 @@ export function allocHTTP_REQUEST_AUTH_INFO(data?: Partial<HTTP_REQUEST_AUTH_INF
   if (data?.PackedContextType !== undefined) view.setUint32(40, Number(data.PackedContextType), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.PackedContext !== undefined) view.setBigUint64(48, data.PackedContext === null ? 0n : BigInt(util.toPointer(data.PackedContext)), true);
+  if (data?.PackedContext !== undefined) view.setBigUint64(48, data.PackedContext === null ? 0n : util.toBigInt(util.toPointer(data.PackedContext)), true);
   // 0x38: u32
   if (data?.MutualAuthDataLength !== undefined) view.setUint32(56, Number(data.MutualAuthDataLength), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.pMutualAuthData !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.pMutualAuthData);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   // 0x48: u16
   if (data?.PackageNameLength !== undefined) view.setUint16(72, Number(data.PackageNameLength), true);
@@ -4570,7 +4570,7 @@ export function allocHTTP_REQUEST_AUTH_INFO(data?: Partial<HTTP_REQUEST_AUTH_INF
   // 0x50: buffer
   if (data?.pPackageName !== undefined) {
     (buf as any)._f80 = util.pwstrToFfi(data.pPackageName);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
   }
   return buf;
 }
@@ -4672,7 +4672,7 @@ export class HTTP_REQUEST_AUTH_INFOView {
 
   // 0x08: pointer
   set SecStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -4687,7 +4687,7 @@ export class HTTP_REQUEST_AUTH_INFOView {
 
   // 0x18: pointer
   set AccessToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4709,7 +4709,7 @@ export class HTTP_REQUEST_AUTH_INFOView {
 
   // 0x30: pointer
   set PackedContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u32
@@ -4722,7 +4722,7 @@ export class HTTP_REQUEST_AUTH_INFOView {
   // 0x40: buffer
   set pMutualAuthData(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer((this.buf as any)._f64)), true);
   }
 
   // 0x48: u16
@@ -4735,7 +4735,7 @@ export class HTTP_REQUEST_AUTH_INFOView {
   // 0x50: buffer
   set pPackageName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f80 = value;
-    this.view.setBigUint64(80, BigInt(util.toPointer((this.buf as any)._f80)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer((this.buf as any)._f80)), true);
   }
 }
 
@@ -4746,11 +4746,11 @@ export interface HTTP_REQUEST_V1 {
   /** u32 */
   Flags: number;
   /** u64 */
-  ConnectionId: Deno.PointerValue;
+  ConnectionId: number | bigint;
   /** u64 */
-  RequestId: Deno.PointerValue;
+  RequestId: number | bigint;
   /** u64 */
-  UrlContext: Deno.PointerValue;
+  UrlContext: number | bigint;
   /** Windows.Win32.Networking.HttpServer.HTTP_VERSION */
   Version: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Networking.HttpServer.HTTP_VERB */
@@ -4770,13 +4770,13 @@ export interface HTTP_REQUEST_V1 {
   /** Windows.Win32.Networking.HttpServer.HTTP_REQUEST_HEADERS */
   Headers: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  BytesReceived: Deno.PointerValue;
+  BytesReceived: number | bigint;
   /** u16 */
   EntityChunkCount: number;
   /** ptr */
   pEntityChunks: Deno.PointerValue | Uint8Array | null;
   /** u64 */
-  RawConnectionId: Deno.PointerValue;
+  RawConnectionId: number | bigint;
   /** ptr */
   pSslInfo: Deno.PointerValue | Uint8Array | null;
 }
@@ -4790,13 +4790,13 @@ export function allocHTTP_REQUEST_V1(data?: Partial<HTTP_REQUEST_V1>): Uint8Arra
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.ConnectionId !== undefined) view.setBigUint64(8, BigInt(data.ConnectionId), true);
+  if (data?.ConnectionId !== undefined) view.setBigUint64(8, util.toBigInt(data.ConnectionId), true);
   // 0x10: u64
-  if (data?.RequestId !== undefined) view.setBigUint64(16, BigInt(data.RequestId), true);
+  if (data?.RequestId !== undefined) view.setBigUint64(16, util.toBigInt(data.RequestId), true);
   // 0x18: u64
-  if (data?.UrlContext !== undefined) view.setBigUint64(24, BigInt(data.UrlContext), true);
+  if (data?.UrlContext !== undefined) view.setBigUint64(24, util.toBigInt(data.UrlContext), true);
   // 0x20: pointer
-  if (data?.Version !== undefined) view.setBigUint64(32, data.Version === null ? 0n : BigInt(util.toPointer(data.Version)), true);
+  if (data?.Version !== undefined) view.setBigUint64(32, data.Version === null ? 0n : util.toBigInt(util.toPointer(data.Version)), true);
   // 0x28: i32
   if (data?.Verb !== undefined) view.setInt32(40, Number(data.Verb), true);
   // 0x2c: u16
@@ -4806,30 +4806,30 @@ export function allocHTTP_REQUEST_V1(data?: Partial<HTTP_REQUEST_V1>): Uint8Arra
   // 0x30: buffer
   if (data?.pUnknownVerb !== undefined) {
     (buf as any)._f48 = util.pstrToFfi(data.pUnknownVerb);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: buffer
   if (data?.pRawUrl !== undefined) {
     (buf as any)._f56 = util.pstrToFfi(data.pRawUrl);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
   }
   // 0x40: pointer
-  if (data?.CookedUrl !== undefined) view.setBigUint64(64, data.CookedUrl === null ? 0n : BigInt(util.toPointer(data.CookedUrl)), true);
+  if (data?.CookedUrl !== undefined) view.setBigUint64(64, data.CookedUrl === null ? 0n : util.toBigInt(util.toPointer(data.CookedUrl)), true);
   // 0x48: pointer
-  if (data?.Address !== undefined) view.setBigUint64(72, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  if (data?.Address !== undefined) view.setBigUint64(72, data.Address === null ? 0n : util.toBigInt(util.toPointer(data.Address)), true);
   // 0x50: pointer
-  if (data?.Headers !== undefined) view.setBigUint64(80, data.Headers === null ? 0n : BigInt(util.toPointer(data.Headers)), true);
+  if (data?.Headers !== undefined) view.setBigUint64(80, data.Headers === null ? 0n : util.toBigInt(util.toPointer(data.Headers)), true);
   // 0x58: u64
-  if (data?.BytesReceived !== undefined) view.setBigUint64(88, BigInt(data.BytesReceived), true);
+  if (data?.BytesReceived !== undefined) view.setBigUint64(88, util.toBigInt(data.BytesReceived), true);
   // 0x60: u16
   if (data?.EntityChunkCount !== undefined) view.setUint16(96, Number(data.EntityChunkCount), true);
   // 0x62: pad6
   // 0x68: pointer
-  if (data?.pEntityChunks !== undefined) view.setBigUint64(104, data.pEntityChunks === null ? 0n : BigInt(util.toPointer(data.pEntityChunks)), true);
+  if (data?.pEntityChunks !== undefined) view.setBigUint64(104, data.pEntityChunks === null ? 0n : util.toBigInt(util.toPointer(data.pEntityChunks)), true);
   // 0x70: u64
-  if (data?.RawConnectionId !== undefined) view.setBigUint64(112, BigInt(data.RawConnectionId), true);
+  if (data?.RawConnectionId !== undefined) view.setBigUint64(112, util.toBigInt(data.RawConnectionId), true);
   // 0x78: pointer
-  if (data?.pSslInfo !== undefined) view.setBigUint64(120, data.pSslInfo === null ? 0n : BigInt(util.toPointer(data.pSslInfo)), true);
+  if (data?.pSslInfo !== undefined) view.setBigUint64(120, data.pSslInfo === null ? 0n : util.toBigInt(util.toPointer(data.pSslInfo)), true);
   return buf;
 }
 
@@ -4851,18 +4851,18 @@ export class HTTP_REQUEST_V1View {
   // 0x04: pad4
 
   // 0x08: u64
-  get ConnectionId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ConnectionId(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get RequestId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get RequestId(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get UrlContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get UrlContext(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: pointer
@@ -4917,8 +4917,8 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x58: u64
-  get BytesReceived(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get BytesReceived(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x60: u16
@@ -4935,8 +4935,8 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x70: u64
-  get RawConnectionId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(112, true));
+  get RawConnectionId(): number | bigint {
+    return this.view.getBigUint64(112, true);
   }
 
   // 0x78: pointer
@@ -4953,23 +4953,23 @@ export class HTTP_REQUEST_V1View {
   // 0x04: pad4
 
   // 0x08: u64
-  set ConnectionId(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ConnectionId(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set RequestId(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set RequestId(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set UrlContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set UrlContext(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: pointer
   set Version(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: i32
@@ -4990,33 +4990,33 @@ export class HTTP_REQUEST_V1View {
   // 0x30: buffer
   set pUnknownVerb(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: buffer
   set pRawUrl(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer((this.buf as any)._f56)), true);
   }
 
   // 0x40: pointer
   set CookedUrl(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set Headers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: u64
-  set BytesReceived(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set BytesReceived(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 
   // 0x60: u16
@@ -5028,17 +5028,17 @@ export class HTTP_REQUEST_V1View {
 
   // 0x68: pointer
   set pEntityChunks(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: u64
-  set RawConnectionId(value: Deno.PointerValue) {
-    this.view.setBigUint64(112, BigInt(value), true);
+  set RawConnectionId(value: number | bigint) {
+    this.view.setBigUint64(112, util.toBigInt(value), true);
   }
 
   // 0x78: pointer
   set pSslInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5060,12 +5060,12 @@ export function allocHTTP_REQUEST_V2(data?: Partial<HTTP_REQUEST_V2>): Uint8Arra
   const buf = new Uint8Array(sizeofHTTP_REQUEST_V2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : util.toBigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.RequestInfoCount !== undefined) view.setUint16(8, Number(data.RequestInfoCount), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.pRequestInfo !== undefined) view.setBigUint64(16, data.pRequestInfo === null ? 0n : BigInt(util.toPointer(data.pRequestInfo)), true);
+  if (data?.pRequestInfo !== undefined) view.setBigUint64(16, data.pRequestInfo === null ? 0n : util.toBigInt(util.toPointer(data.pRequestInfo)), true);
   return buf;
 }
 
@@ -5100,7 +5100,7 @@ export class HTTP_REQUEST_V2View {
 
   // 0x00: pointer
   set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -5112,7 +5112,7 @@ export class HTTP_REQUEST_V2View {
 
   // 0x10: pointer
   set pRequestInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5147,7 +5147,7 @@ export function allocHTTP_RESPONSE_V1(data?: Partial<HTTP_RESPONSE_V1>): Uint8Ar
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Version !== undefined) view.setBigUint64(8, data.Version === null ? 0n : BigInt(util.toPointer(data.Version)), true);
+  if (data?.Version !== undefined) view.setBigUint64(8, data.Version === null ? 0n : util.toBigInt(util.toPointer(data.Version)), true);
   // 0x10: u16
   if (data?.StatusCode !== undefined) view.setUint16(16, Number(data.StatusCode), true);
   // 0x12: u16
@@ -5156,15 +5156,15 @@ export function allocHTTP_RESPONSE_V1(data?: Partial<HTTP_RESPONSE_V1>): Uint8Ar
   // 0x18: buffer
   if (data?.pReason !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pReason);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.Headers !== undefined) view.setBigUint64(32, data.Headers === null ? 0n : BigInt(util.toPointer(data.Headers)), true);
+  if (data?.Headers !== undefined) view.setBigUint64(32, data.Headers === null ? 0n : util.toBigInt(util.toPointer(data.Headers)), true);
   // 0x28: u16
   if (data?.EntityChunkCount !== undefined) view.setUint16(40, Number(data.EntityChunkCount), true);
   // 0x2a: pad6
   // 0x30: pointer
-  if (data?.pEntityChunks !== undefined) view.setBigUint64(48, data.pEntityChunks === null ? 0n : BigInt(util.toPointer(data.pEntityChunks)), true);
+  if (data?.pEntityChunks !== undefined) view.setBigUint64(48, data.pEntityChunks === null ? 0n : util.toBigInt(util.toPointer(data.pEntityChunks)), true);
   return buf;
 }
 
@@ -5237,7 +5237,7 @@ export class HTTP_RESPONSE_V1View {
 
   // 0x08: pointer
   set Version(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -5255,12 +5255,12 @@ export class HTTP_RESPONSE_V1View {
   // 0x18: buffer
   set pReason(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set Headers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u16
@@ -5272,7 +5272,7 @@ export class HTTP_RESPONSE_V1View {
 
   // 0x30: pointer
   set pEntityChunks(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5298,7 +5298,7 @@ export function allocHTTP_RESPONSE_INFO(data?: Partial<HTTP_RESPONSE_INFO>): Uin
   // 0x04: u32
   if (data?.Length !== undefined) view.setUint32(4, Number(data.Length), true);
   // 0x08: pointer
-  if (data?.pInfo !== undefined) view.setBigUint64(8, data.pInfo === null ? 0n : BigInt(util.toPointer(data.pInfo)), true);
+  if (data?.pInfo !== undefined) view.setBigUint64(8, data.pInfo === null ? 0n : util.toBigInt(util.toPointer(data.pInfo)), true);
   return buf;
 }
 
@@ -5340,7 +5340,7 @@ export class HTTP_RESPONSE_INFOView {
 
   // 0x08: pointer
   set pInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5371,7 +5371,7 @@ export function allocHTTP_MULTIPLE_KNOWN_HEADERS(data?: Partial<HTTP_MULTIPLE_KN
   if (data?.KnownHeaderCount !== undefined) view.setUint16(8, Number(data.KnownHeaderCount), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.KnownHeaders !== undefined) view.setBigUint64(16, data.KnownHeaders === null ? 0n : BigInt(util.toPointer(data.KnownHeaders)), true);
+  if (data?.KnownHeaders !== undefined) view.setBigUint64(16, data.KnownHeaders === null ? 0n : util.toBigInt(util.toPointer(data.KnownHeaders)), true);
   return buf;
 }
 
@@ -5427,7 +5427,7 @@ export class HTTP_MULTIPLE_KNOWN_HEADERSView {
 
   // 0x10: pointer
   set KnownHeaders(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5449,12 +5449,12 @@ export function allocHTTP_RESPONSE_V2(data?: Partial<HTTP_RESPONSE_V2>): Uint8Ar
   const buf = new Uint8Array(sizeofHTTP_RESPONSE_V2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : util.toBigInt(util.toPointer(data.Base)), true);
   // 0x08: u16
   if (data?.ResponseInfoCount !== undefined) view.setUint16(8, Number(data.ResponseInfoCount), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.pResponseInfo !== undefined) view.setBigUint64(16, data.pResponseInfo === null ? 0n : BigInt(util.toPointer(data.pResponseInfo)), true);
+  if (data?.pResponseInfo !== undefined) view.setBigUint64(16, data.pResponseInfo === null ? 0n : util.toBigInt(util.toPointer(data.pResponseInfo)), true);
   return buf;
 }
 
@@ -5489,7 +5489,7 @@ export class HTTP_RESPONSE_V2View {
 
   // 0x00: pointer
   set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -5501,7 +5501,7 @@ export class HTTP_RESPONSE_V2View {
 
   // 0x10: pointer
   set pResponseInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5630,7 +5630,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_KEY(data?: Partial<HTTP_SERVICE_CON
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_KEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pIpPort !== undefined) view.setBigUint64(0, data.pIpPort === null ? 0n : BigInt(util.toPointer(data.pIpPort)), true);
+  if (data?.pIpPort !== undefined) view.setBigUint64(0, data.pIpPort === null ? 0n : util.toBigInt(util.toPointer(data.pIpPort)), true);
   return buf;
 }
 
@@ -5652,7 +5652,7 @@ export class HTTP_SERVICE_CONFIG_SSL_KEYView {
 
   // 0x00: pointer
   set pIpPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5665,7 +5665,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue | null;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: number | bigint;
   /** array */
   __ss_pad2: Deno.PointerValue | null;
 }
@@ -5679,11 +5679,11 @@ export function allocSOCKADDR_STORAGE(data?: Partial<SOCKADDR_STORAGE>): Uint8Ar
   if (data?.ss_family !== undefined) view.setUint16(0, Number(data.ss_family), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.__ss_pad1 !== undefined) view.setBigUint64(8, data.__ss_pad1 === null ? 0n : BigInt(util.toPointer(data.__ss_pad1)), true);
+  if (data?.__ss_pad1 !== undefined) view.setBigUint64(8, data.__ss_pad1 === null ? 0n : util.toBigInt(util.toPointer(data.__ss_pad1)), true);
   // 0x10: i64
-  if (data?.__ss_align !== undefined) view.setBigInt64(16, BigInt(data.__ss_align), true);
+  if (data?.__ss_align !== undefined) view.setBigInt64(16, util.toBigInt(data.__ss_align), true);
   // 0x18: pointer
-  if (data?.__ss_pad2 !== undefined) view.setBigUint64(24, data.__ss_pad2 === null ? 0n : BigInt(util.toPointer(data.__ss_pad2)), true);
+  if (data?.__ss_pad2 !== undefined) view.setBigUint64(24, data.__ss_pad2 === null ? 0n : util.toBigInt(util.toPointer(data.__ss_pad2)), true);
   return buf;
 }
 
@@ -5711,8 +5711,8 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get __ss_align(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: pointer
@@ -5730,17 +5730,17 @@ export class SOCKADDR_STORAGEView {
 
   // 0x08: pointer
   set __ss_pad1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set __ss_align(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set __ss_pad2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5758,7 +5758,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_KEY_EX(data?: Partial<HTTP_SERVICE_
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_KEY_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpPort !== undefined) view.setBigUint64(0, data.IpPort === null ? 0n : BigInt(util.toPointer(data.IpPort)), true);
+  if (data?.IpPort !== undefined) view.setBigUint64(0, data.IpPort === null ? 0n : util.toBigInt(util.toPointer(data.IpPort)), true);
   return buf;
 }
 
@@ -5780,7 +5780,7 @@ export class HTTP_SERVICE_CONFIG_SSL_KEY_EXView {
 
   // 0x00: pointer
   set IpPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5800,11 +5800,11 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SNI_KEY(data?: Partial<HTTP_SERVICE
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_SNI_KEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpPort !== undefined) view.setBigUint64(0, data.IpPort === null ? 0n : BigInt(util.toPointer(data.IpPort)), true);
+  if (data?.IpPort !== undefined) view.setBigUint64(0, data.IpPort === null ? 0n : util.toBigInt(util.toPointer(data.IpPort)), true);
   // 0x08: buffer
   if (data?.Host !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Host);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -5833,13 +5833,13 @@ export class HTTP_SERVICE_CONFIG_SSL_SNI_KEYView {
 
   // 0x00: pointer
   set IpPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set Host(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -5857,7 +5857,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_CCS_KEY(data?: Partial<HTTP_SERVICE
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_CCS_KEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.LocalAddress !== undefined) view.setBigUint64(0, data.LocalAddress === null ? 0n : BigInt(util.toPointer(data.LocalAddress)), true);
+  if (data?.LocalAddress !== undefined) view.setBigUint64(0, data.LocalAddress === null ? 0n : util.toBigInt(util.toPointer(data.LocalAddress)), true);
   return buf;
 }
 
@@ -5879,7 +5879,7 @@ export class HTTP_SERVICE_CONFIG_SSL_CCS_KEYView {
 
   // 0x00: pointer
   set LocalAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5918,13 +5918,13 @@ export function allocHTTP_SERVICE_CONFIG_SSL_PARAM(data?: Partial<HTTP_SERVICE_C
   if (data?.SslHashLength !== undefined) view.setUint32(0, Number(data.SslHashLength), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pSslHash !== undefined) view.setBigUint64(8, data.pSslHash === null ? 0n : BigInt(util.toPointer(data.pSslHash)), true);
+  if (data?.pSslHash !== undefined) view.setBigUint64(8, data.pSslHash === null ? 0n : util.toBigInt(util.toPointer(data.pSslHash)), true);
   // 0x10: pointer
-  if (data?.AppId !== undefined) view.setBigUint64(16, data.AppId === null ? 0n : BigInt(util.toPointer(data.AppId)), true);
+  if (data?.AppId !== undefined) view.setBigUint64(16, data.AppId === null ? 0n : util.toBigInt(util.toPointer(data.AppId)), true);
   // 0x18: buffer
   if (data?.pSslCertStoreName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pSslCertStoreName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.DefaultCertCheckMode !== undefined) view.setUint32(32, Number(data.DefaultCertCheckMode), true);
@@ -5936,12 +5936,12 @@ export function allocHTTP_SERVICE_CONFIG_SSL_PARAM(data?: Partial<HTTP_SERVICE_C
   // 0x30: buffer
   if (data?.pDefaultSslCtlIdentifier !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pDefaultSslCtlIdentifier);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: buffer
   if (data?.pDefaultSslCtlStoreName !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pDefaultSslCtlStoreName);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
   }
   // 0x40: u32
   if (data?.DefaultFlags !== undefined) view.setUint32(64, Number(data.DefaultFlags), true);
@@ -6029,18 +6029,18 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAMView {
 
   // 0x08: pointer
   set pSslHash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set AppId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: buffer
   set pSslCertStoreName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -6063,13 +6063,13 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAMView {
   // 0x30: buffer
   set pDefaultSslCtlIdentifier(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: buffer
   set pDefaultSslCtlStoreName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer((this.buf as any)._f56)), true);
   }
 
   // 0x40: u32
@@ -6199,7 +6199,7 @@ export function allocHTTP_PERFORMANCE_PARAM(data?: Partial<HTTP_PERFORMANCE_PARA
   // 0x04: u32
   if (data?.BufferSize !== undefined) view.setUint32(4, Number(data.BufferSize), true);
   // 0x08: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(8, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(8, data.Buffer === null ? 0n : util.toBigInt(util.toPointer(data.Buffer)), true);
   return buf;
 }
 
@@ -6241,7 +6241,7 @@ export class HTTP_PERFORMANCE_PARAMView {
 
   // 0x08: pointer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6264,7 +6264,7 @@ export function allocHTTP_TLS_RESTRICTIONS_PARAM(data?: Partial<HTTP_TLS_RESTRIC
   if (data?.RestrictionCount !== undefined) view.setUint32(0, Number(data.RestrictionCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.TlsRestrictions !== undefined) view.setBigUint64(8, data.TlsRestrictions === null ? 0n : BigInt(util.toPointer(data.TlsRestrictions)), true);
+  if (data?.TlsRestrictions !== undefined) view.setBigUint64(8, data.TlsRestrictions === null ? 0n : util.toBigInt(util.toPointer(data.TlsRestrictions)), true);
   return buf;
 }
 
@@ -6300,7 +6300,7 @@ export class HTTP_TLS_RESTRICTIONS_PARAMView {
 
   // 0x08: pointer
   set TlsRestrictions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6327,7 +6327,7 @@ export function allocHTTP_ERROR_HEADERS_PARAM(data?: Partial<HTTP_ERROR_HEADERS_
   if (data?.HeaderCount !== undefined) view.setUint16(2, Number(data.HeaderCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Headers !== undefined) view.setBigUint64(8, data.Headers === null ? 0n : BigInt(util.toPointer(data.Headers)), true);
+  if (data?.Headers !== undefined) view.setBigUint64(8, data.Headers === null ? 0n : util.toBigInt(util.toPointer(data.Headers)), true);
   return buf;
 }
 
@@ -6373,7 +6373,7 @@ export class HTTP_ERROR_HEADERS_PARAMView {
 
   // 0x08: pointer
   set Headers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6396,7 +6396,7 @@ export function allocHTTP_TLS_SESSION_TICKET_KEYS_PARAM(data?: Partial<HTTP_TLS_
   if (data?.SessionTicketKeyCount !== undefined) view.setUint32(0, Number(data.SessionTicketKeyCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.SessionTicketKeys !== undefined) view.setBigUint64(8, data.SessionTicketKeys === null ? 0n : BigInt(util.toPointer(data.SessionTicketKeys)), true);
+  if (data?.SessionTicketKeys !== undefined) view.setBigUint64(8, data.SessionTicketKeys === null ? 0n : util.toBigInt(util.toPointer(data.SessionTicketKeys)), true);
   return buf;
 }
 
@@ -6432,7 +6432,7 @@ export class HTTP_TLS_SESSION_TICKET_KEYS_PARAMView {
 
   // 0x08: pointer
   set SessionTicketKeys(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6443,7 +6443,7 @@ export interface HTTP_SERVICE_CONFIG_SSL_PARAM_EX {
   /** Windows.Win32.Networking.HttpServer.HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE */
   ParamType: HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -6457,9 +6457,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_PARAM_EX(data?: Partial<HTTP_SERVIC
   if (data?.ParamType !== undefined) view.setInt32(0, Number(data.ParamType), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.Flags !== undefined) view.setBigUint64(8, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(8, util.toBigInt(data.Flags), true);
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -6481,8 +6481,8 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAM_EXView {
   // 0x04: pad4
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -6499,13 +6499,13 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAM_EXView {
   // 0x04: pad4
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6525,9 +6525,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SET(data?: Partial<HTTP_SERVICE_CON
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_SET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6555,12 +6555,12 @@ export class HTTP_SERVICE_CONFIG_SSL_SETView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6580,9 +6580,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SNI_SET(data?: Partial<HTTP_SERVICE
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_SNI_SET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6610,12 +6610,12 @@ export class HTTP_SERVICE_CONFIG_SSL_SNI_SETView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6635,9 +6635,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_CCS_SET(data?: Partial<HTTP_SERVICE
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_CCS_SET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6665,12 +6665,12 @@ export class HTTP_SERVICE_CONFIG_SSL_CCS_SETView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6690,9 +6690,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SET_EX(data?: Partial<HTTP_SERVICE_
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_SET_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6720,12 +6720,12 @@ export class HTTP_SERVICE_CONFIG_SSL_SET_EXView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6745,9 +6745,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SNI_SET_EX(data?: Partial<HTTP_SERV
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_SNI_SET_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6775,12 +6775,12 @@ export class HTTP_SERVICE_CONFIG_SSL_SNI_SET_EXView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6800,9 +6800,9 @@ export function allocHTTP_SERVICE_CONFIG_SSL_CCS_SET_EX(data?: Partial<HTTP_SERV
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_SSL_CCS_SET_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -6830,12 +6830,12 @@ export class HTTP_SERVICE_CONFIG_SSL_CCS_SET_EXView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6860,7 +6860,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_QUERY(data?: Partial<HTTP_SERVICE_C
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: pad4
@@ -6906,7 +6906,7 @@ export class HTTP_SERVICE_CONFIG_SSL_QUERYView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -6938,7 +6938,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SNI_QUERY(data?: Partial<HTTP_SERVI
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: pad4
@@ -6984,7 +6984,7 @@ export class HTTP_SERVICE_CONFIG_SSL_SNI_QUERYView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7016,7 +7016,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_CCS_QUERY(data?: Partial<HTTP_SERVI
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: pad4
@@ -7062,7 +7062,7 @@ export class HTTP_SERVICE_CONFIG_SSL_CCS_QUERYView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7096,7 +7096,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_QUERY_EX(data?: Partial<HTTP_SERVIC
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: i32
@@ -7146,7 +7146,7 @@ export class HTTP_SERVICE_CONFIG_SSL_QUERY_EXView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7183,7 +7183,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_SNI_QUERY_EX(data?: Partial<HTTP_SE
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: i32
@@ -7233,7 +7233,7 @@ export class HTTP_SERVICE_CONFIG_SSL_SNI_QUERY_EXView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7270,7 +7270,7 @@ export function allocHTTP_SERVICE_CONFIG_SSL_CCS_QUERY_EX(data?: Partial<HTTP_SE
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: i32
@@ -7320,7 +7320,7 @@ export class HTTP_SERVICE_CONFIG_SSL_CCS_QUERY_EXView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7353,7 +7353,7 @@ export function allocHTTP_SERVICE_CONFIG_IP_LISTEN_PARAM(data?: Partial<HTTP_SER
   if (data?.AddrLength !== undefined) view.setUint16(0, Number(data.AddrLength), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.pAddress !== undefined) view.setBigUint64(8, data.pAddress === null ? 0n : BigInt(util.toPointer(data.pAddress)), true);
+  if (data?.pAddress !== undefined) view.setBigUint64(8, data.pAddress === null ? 0n : util.toBigInt(util.toPointer(data.pAddress)), true);
   return buf;
 }
 
@@ -7389,7 +7389,7 @@ export class HTTP_SERVICE_CONFIG_IP_LISTEN_PARAMView {
 
   // 0x08: pointer
   set pAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7412,7 +7412,7 @@ export function allocHTTP_SERVICE_CONFIG_IP_LISTEN_QUERY(data?: Partial<HTTP_SER
   if (data?.AddrCount !== undefined) view.setUint32(0, Number(data.AddrCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.AddrList !== undefined) view.setBigUint64(8, data.AddrList === null ? 0n : BigInt(util.toPointer(data.AddrList)), true);
+  if (data?.AddrList !== undefined) view.setBigUint64(8, data.AddrList === null ? 0n : util.toBigInt(util.toPointer(data.AddrList)), true);
   return buf;
 }
 
@@ -7448,7 +7448,7 @@ export class HTTP_SERVICE_CONFIG_IP_LISTEN_QUERYView {
 
   // 0x08: pointer
   set AddrList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7468,7 +7468,7 @@ export function allocHTTP_SERVICE_CONFIG_URLACL_KEY(data?: Partial<HTTP_SERVICE_
   // 0x00: buffer
   if (data?.pUrlPrefix !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pUrlPrefix);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
 }
@@ -7492,7 +7492,7 @@ export class HTTP_SERVICE_CONFIG_URLACL_KEYView {
   // 0x00: buffer
   set pUrlPrefix(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 }
 
@@ -7512,7 +7512,7 @@ export function allocHTTP_SERVICE_CONFIG_URLACL_PARAM(data?: Partial<HTTP_SERVIC
   // 0x00: buffer
   if (data?.pStringSecurityDescriptor !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pStringSecurityDescriptor);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
 }
@@ -7536,7 +7536,7 @@ export class HTTP_SERVICE_CONFIG_URLACL_PARAMView {
   // 0x00: buffer
   set pStringSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 }
 
@@ -7556,9 +7556,9 @@ export function allocHTTP_SERVICE_CONFIG_URLACL_SET(data?: Partial<HTTP_SERVICE_
   const buf = new Uint8Array(sizeofHTTP_SERVICE_CONFIG_URLACL_SET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(0, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x08: pointer
-  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : BigInt(util.toPointer(data.ParamDesc)), true);
+  if (data?.ParamDesc !== undefined) view.setBigUint64(8, data.ParamDesc === null ? 0n : util.toBigInt(util.toPointer(data.ParamDesc)), true);
   return buf;
 }
 
@@ -7586,12 +7586,12 @@ export class HTTP_SERVICE_CONFIG_URLACL_SETView {
 
   // 0x00: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ParamDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -7616,7 +7616,7 @@ export function allocHTTP_SERVICE_CONFIG_URLACL_QUERY(data?: Partial<HTTP_SERVIC
   if (data?.QueryDesc !== undefined) view.setInt32(0, Number(data.QueryDesc), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : BigInt(util.toPointer(data.KeyDesc)), true);
+  if (data?.KeyDesc !== undefined) view.setBigUint64(8, data.KeyDesc === null ? 0n : util.toBigInt(util.toPointer(data.KeyDesc)), true);
   // 0x10: u32
   if (data?.dwToken !== undefined) view.setUint32(16, Number(data.dwToken), true);
   // 0x14: pad4
@@ -7662,7 +7662,7 @@ export class HTTP_SERVICE_CONFIG_URLACL_QUERYView {
 
   // 0x08: pointer
   set KeyDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -7731,7 +7731,7 @@ export class HTTP_SERVICE_CONFIG_CACHE_SETView {
  */
 export interface HTTP_QUERY_REQUEST_QUALIFIER_TCP {
   /** u64 */
-  Freshness: Deno.PointerValue;
+  Freshness: number | bigint;
 }
 
 export const sizeofHTTP_QUERY_REQUEST_QUALIFIER_TCP = 8;
@@ -7740,7 +7740,7 @@ export function allocHTTP_QUERY_REQUEST_QUALIFIER_TCP(data?: Partial<HTTP_QUERY_
   const buf = new Uint8Array(sizeofHTTP_QUERY_REQUEST_QUALIFIER_TCP);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Freshness !== undefined) view.setBigUint64(0, BigInt(data.Freshness), true);
+  if (data?.Freshness !== undefined) view.setBigUint64(0, util.toBigInt(data.Freshness), true);
   return buf;
 }
 
@@ -7755,13 +7755,13 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_TCPView {
   }
 
   // 0x00: u64
-  get Freshness(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Freshness(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set Freshness(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Freshness(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -7770,7 +7770,7 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_TCPView {
  */
 export interface HTTP_QUERY_REQUEST_QUALIFIER_QUIC {
   /** u64 */
-  Freshness: Deno.PointerValue;
+  Freshness: number | bigint;
 }
 
 export const sizeofHTTP_QUERY_REQUEST_QUALIFIER_QUIC = 8;
@@ -7779,7 +7779,7 @@ export function allocHTTP_QUERY_REQUEST_QUALIFIER_QUIC(data?: Partial<HTTP_QUERY
   const buf = new Uint8Array(sizeofHTTP_QUERY_REQUEST_QUALIFIER_QUIC);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Freshness !== undefined) view.setBigUint64(0, BigInt(data.Freshness), true);
+  if (data?.Freshness !== undefined) view.setBigUint64(0, util.toBigInt(data.Freshness), true);
   return buf;
 }
 
@@ -7794,13 +7794,13 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_QUICView {
   }
 
   // 0x00: u64
-  get Freshness(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Freshness(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set Freshness(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Freshness(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -7820,7 +7820,7 @@ export function allocHTTP_REQUEST_PROPERTY_SNI(data?: Partial<HTTP_REQUEST_PROPE
   const buf = new Uint8Array(sizeofHTTP_REQUEST_PROPERTY_SNI);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hostname !== undefined) view.setBigUint64(0, data.Hostname === null ? 0n : BigInt(util.toPointer(data.Hostname)), true);
+  if (data?.Hostname !== undefined) view.setBigUint64(0, data.Hostname === null ? 0n : util.toBigInt(util.toPointer(data.Hostname)), true);
   // 0x08: u32
   if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
   // 0x0c: pad4
@@ -7852,7 +7852,7 @@ export class HTTP_REQUEST_PROPERTY_SNIView {
 
   // 0x00: pointer
   set Hostname(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -7912,29 +7912,29 @@ export class HTTP_REQUEST_PROPERTY_STREAM_ERRORView {
  */
 export interface HTTP_WSK_API_TIMINGS {
   /** u64 */
-  ConnectCount: Deno.PointerValue;
+  ConnectCount: number | bigint;
   /** u64 */
-  ConnectSum: Deno.PointerValue;
+  ConnectSum: number | bigint;
   /** u64 */
-  DisconnectCount: Deno.PointerValue;
+  DisconnectCount: number | bigint;
   /** u64 */
-  DisconnectSum: Deno.PointerValue;
+  DisconnectSum: number | bigint;
   /** u64 */
-  SendCount: Deno.PointerValue;
+  SendCount: number | bigint;
   /** u64 */
-  SendSum: Deno.PointerValue;
+  SendSum: number | bigint;
   /** u64 */
-  ReceiveCount: Deno.PointerValue;
+  ReceiveCount: number | bigint;
   /** u64 */
-  ReceiveSum: Deno.PointerValue;
+  ReceiveSum: number | bigint;
   /** u64 */
-  ReleaseCount: Deno.PointerValue;
+  ReleaseCount: number | bigint;
   /** u64 */
-  ReleaseSum: Deno.PointerValue;
+  ReleaseSum: number | bigint;
   /** u64 */
-  ControlSocketCount: Deno.PointerValue;
+  ControlSocketCount: number | bigint;
   /** u64 */
-  ControlSocketSum: Deno.PointerValue;
+  ControlSocketSum: number | bigint;
 }
 
 export const sizeofHTTP_WSK_API_TIMINGS = 96;
@@ -7943,29 +7943,29 @@ export function allocHTTP_WSK_API_TIMINGS(data?: Partial<HTTP_WSK_API_TIMINGS>):
   const buf = new Uint8Array(sizeofHTTP_WSK_API_TIMINGS);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.ConnectCount !== undefined) view.setBigUint64(0, BigInt(data.ConnectCount), true);
+  if (data?.ConnectCount !== undefined) view.setBigUint64(0, util.toBigInt(data.ConnectCount), true);
   // 0x08: u64
-  if (data?.ConnectSum !== undefined) view.setBigUint64(8, BigInt(data.ConnectSum), true);
+  if (data?.ConnectSum !== undefined) view.setBigUint64(8, util.toBigInt(data.ConnectSum), true);
   // 0x10: u64
-  if (data?.DisconnectCount !== undefined) view.setBigUint64(16, BigInt(data.DisconnectCount), true);
+  if (data?.DisconnectCount !== undefined) view.setBigUint64(16, util.toBigInt(data.DisconnectCount), true);
   // 0x18: u64
-  if (data?.DisconnectSum !== undefined) view.setBigUint64(24, BigInt(data.DisconnectSum), true);
+  if (data?.DisconnectSum !== undefined) view.setBigUint64(24, util.toBigInt(data.DisconnectSum), true);
   // 0x20: u64
-  if (data?.SendCount !== undefined) view.setBigUint64(32, BigInt(data.SendCount), true);
+  if (data?.SendCount !== undefined) view.setBigUint64(32, util.toBigInt(data.SendCount), true);
   // 0x28: u64
-  if (data?.SendSum !== undefined) view.setBigUint64(40, BigInt(data.SendSum), true);
+  if (data?.SendSum !== undefined) view.setBigUint64(40, util.toBigInt(data.SendSum), true);
   // 0x30: u64
-  if (data?.ReceiveCount !== undefined) view.setBigUint64(48, BigInt(data.ReceiveCount), true);
+  if (data?.ReceiveCount !== undefined) view.setBigUint64(48, util.toBigInt(data.ReceiveCount), true);
   // 0x38: u64
-  if (data?.ReceiveSum !== undefined) view.setBigUint64(56, BigInt(data.ReceiveSum), true);
+  if (data?.ReceiveSum !== undefined) view.setBigUint64(56, util.toBigInt(data.ReceiveSum), true);
   // 0x40: u64
-  if (data?.ReleaseCount !== undefined) view.setBigUint64(64, BigInt(data.ReleaseCount), true);
+  if (data?.ReleaseCount !== undefined) view.setBigUint64(64, util.toBigInt(data.ReleaseCount), true);
   // 0x48: u64
-  if (data?.ReleaseSum !== undefined) view.setBigUint64(72, BigInt(data.ReleaseSum), true);
+  if (data?.ReleaseSum !== undefined) view.setBigUint64(72, util.toBigInt(data.ReleaseSum), true);
   // 0x50: u64
-  if (data?.ControlSocketCount !== undefined) view.setBigUint64(80, BigInt(data.ControlSocketCount), true);
+  if (data?.ControlSocketCount !== undefined) view.setBigUint64(80, util.toBigInt(data.ControlSocketCount), true);
   // 0x58: u64
-  if (data?.ControlSocketSum !== undefined) view.setBigUint64(88, BigInt(data.ControlSocketSum), true);
+  if (data?.ControlSocketSum !== undefined) view.setBigUint64(88, util.toBigInt(data.ControlSocketSum), true);
   return buf;
 }
 
@@ -7980,123 +7980,123 @@ export class HTTP_WSK_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get ConnectCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get ConnectCount(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get ConnectSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ConnectSum(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get DisconnectCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get DisconnectCount(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get DisconnectSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get DisconnectSum(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get SendCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get SendCount(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u64
-  get SendSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SendSum(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: u64
-  get ReceiveCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get ReceiveCount(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: u64
-  get ReceiveSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get ReceiveSum(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: u64
-  get ReleaseCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get ReleaseCount(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: u64
-  get ReleaseSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(72, true));
+  get ReleaseSum(): number | bigint {
+    return this.view.getBigUint64(72, true);
   }
 
   // 0x50: u64
-  get ControlSocketCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(80, true));
+  get ControlSocketCount(): number | bigint {
+    return this.view.getBigUint64(80, true);
   }
 
   // 0x58: u64
-  get ControlSocketSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get ControlSocketSum(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x00: u64
-  set ConnectCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set ConnectCount(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set ConnectSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ConnectSum(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set DisconnectCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set DisconnectCount(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set DisconnectSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set DisconnectSum(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set SendCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set SendCount(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u64
-  set SendSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SendSum(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: u64
-  set ReceiveCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set ReceiveCount(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: u64
-  set ReceiveSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set ReceiveSum(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: u64
-  set ReleaseCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set ReleaseCount(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: u64
-  set ReleaseSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(72, BigInt(value), true);
+  set ReleaseSum(value: number | bigint) {
+    this.view.setBigUint64(72, util.toBigInt(value), true);
   }
 
   // 0x50: u64
-  set ControlSocketCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(80, BigInt(value), true);
+  set ControlSocketCount(value: number | bigint) {
+    this.view.setBigUint64(80, util.toBigInt(value), true);
   }
 
   // 0x58: u64
-  set ControlSocketSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set ControlSocketSum(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 }
 
@@ -8105,41 +8105,41 @@ export class HTTP_WSK_API_TIMINGSView {
  */
 export interface HTTP_QUIC_STREAM_API_TIMINGS {
   /** u64 */
-  OpenCount: Deno.PointerValue;
+  OpenCount: number | bigint;
   /** u64 */
-  OpenSum: Deno.PointerValue;
+  OpenSum: number | bigint;
   /** u64 */
-  CloseCount: Deno.PointerValue;
+  CloseCount: number | bigint;
   /** u64 */
-  CloseSum: Deno.PointerValue;
+  CloseSum: number | bigint;
   /** u64 */
-  StartCount: Deno.PointerValue;
+  StartCount: number | bigint;
   /** u64 */
-  StartSum: Deno.PointerValue;
+  StartSum: number | bigint;
   /** u64 */
-  ShutdownCount: Deno.PointerValue;
+  ShutdownCount: number | bigint;
   /** u64 */
-  ShutdownSum: Deno.PointerValue;
+  ShutdownSum: number | bigint;
   /** u64 */
-  SendCount: Deno.PointerValue;
+  SendCount: number | bigint;
   /** u64 */
-  SendSum: Deno.PointerValue;
+  SendSum: number | bigint;
   /** u64 */
-  ReceiveSetEnabledCount: Deno.PointerValue;
+  ReceiveSetEnabledCount: number | bigint;
   /** u64 */
-  ReceiveSetEnabledSum: Deno.PointerValue;
+  ReceiveSetEnabledSum: number | bigint;
   /** u64 */
-  GetParamCount: Deno.PointerValue;
+  GetParamCount: number | bigint;
   /** u64 */
-  GetParamSum: Deno.PointerValue;
+  GetParamSum: number | bigint;
   /** u64 */
-  SetParamCount: Deno.PointerValue;
+  SetParamCount: number | bigint;
   /** u64 */
-  SetParamSum: Deno.PointerValue;
+  SetParamSum: number | bigint;
   /** u64 */
-  SetCallbackHandlerCount: Deno.PointerValue;
+  SetCallbackHandlerCount: number | bigint;
   /** u64 */
-  SetCallbackHandlerSum: Deno.PointerValue;
+  SetCallbackHandlerSum: number | bigint;
 }
 
 export const sizeofHTTP_QUIC_STREAM_API_TIMINGS = 144;
@@ -8148,41 +8148,41 @@ export function allocHTTP_QUIC_STREAM_API_TIMINGS(data?: Partial<HTTP_QUIC_STREA
   const buf = new Uint8Array(sizeofHTTP_QUIC_STREAM_API_TIMINGS);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.OpenCount !== undefined) view.setBigUint64(0, BigInt(data.OpenCount), true);
+  if (data?.OpenCount !== undefined) view.setBigUint64(0, util.toBigInt(data.OpenCount), true);
   // 0x08: u64
-  if (data?.OpenSum !== undefined) view.setBigUint64(8, BigInt(data.OpenSum), true);
+  if (data?.OpenSum !== undefined) view.setBigUint64(8, util.toBigInt(data.OpenSum), true);
   // 0x10: u64
-  if (data?.CloseCount !== undefined) view.setBigUint64(16, BigInt(data.CloseCount), true);
+  if (data?.CloseCount !== undefined) view.setBigUint64(16, util.toBigInt(data.CloseCount), true);
   // 0x18: u64
-  if (data?.CloseSum !== undefined) view.setBigUint64(24, BigInt(data.CloseSum), true);
+  if (data?.CloseSum !== undefined) view.setBigUint64(24, util.toBigInt(data.CloseSum), true);
   // 0x20: u64
-  if (data?.StartCount !== undefined) view.setBigUint64(32, BigInt(data.StartCount), true);
+  if (data?.StartCount !== undefined) view.setBigUint64(32, util.toBigInt(data.StartCount), true);
   // 0x28: u64
-  if (data?.StartSum !== undefined) view.setBigUint64(40, BigInt(data.StartSum), true);
+  if (data?.StartSum !== undefined) view.setBigUint64(40, util.toBigInt(data.StartSum), true);
   // 0x30: u64
-  if (data?.ShutdownCount !== undefined) view.setBigUint64(48, BigInt(data.ShutdownCount), true);
+  if (data?.ShutdownCount !== undefined) view.setBigUint64(48, util.toBigInt(data.ShutdownCount), true);
   // 0x38: u64
-  if (data?.ShutdownSum !== undefined) view.setBigUint64(56, BigInt(data.ShutdownSum), true);
+  if (data?.ShutdownSum !== undefined) view.setBigUint64(56, util.toBigInt(data.ShutdownSum), true);
   // 0x40: u64
-  if (data?.SendCount !== undefined) view.setBigUint64(64, BigInt(data.SendCount), true);
+  if (data?.SendCount !== undefined) view.setBigUint64(64, util.toBigInt(data.SendCount), true);
   // 0x48: u64
-  if (data?.SendSum !== undefined) view.setBigUint64(72, BigInt(data.SendSum), true);
+  if (data?.SendSum !== undefined) view.setBigUint64(72, util.toBigInt(data.SendSum), true);
   // 0x50: u64
-  if (data?.ReceiveSetEnabledCount !== undefined) view.setBigUint64(80, BigInt(data.ReceiveSetEnabledCount), true);
+  if (data?.ReceiveSetEnabledCount !== undefined) view.setBigUint64(80, util.toBigInt(data.ReceiveSetEnabledCount), true);
   // 0x58: u64
-  if (data?.ReceiveSetEnabledSum !== undefined) view.setBigUint64(88, BigInt(data.ReceiveSetEnabledSum), true);
+  if (data?.ReceiveSetEnabledSum !== undefined) view.setBigUint64(88, util.toBigInt(data.ReceiveSetEnabledSum), true);
   // 0x60: u64
-  if (data?.GetParamCount !== undefined) view.setBigUint64(96, BigInt(data.GetParamCount), true);
+  if (data?.GetParamCount !== undefined) view.setBigUint64(96, util.toBigInt(data.GetParamCount), true);
   // 0x68: u64
-  if (data?.GetParamSum !== undefined) view.setBigUint64(104, BigInt(data.GetParamSum), true);
+  if (data?.GetParamSum !== undefined) view.setBigUint64(104, util.toBigInt(data.GetParamSum), true);
   // 0x70: u64
-  if (data?.SetParamCount !== undefined) view.setBigUint64(112, BigInt(data.SetParamCount), true);
+  if (data?.SetParamCount !== undefined) view.setBigUint64(112, util.toBigInt(data.SetParamCount), true);
   // 0x78: u64
-  if (data?.SetParamSum !== undefined) view.setBigUint64(120, BigInt(data.SetParamSum), true);
+  if (data?.SetParamSum !== undefined) view.setBigUint64(120, util.toBigInt(data.SetParamSum), true);
   // 0x80: u64
-  if (data?.SetCallbackHandlerCount !== undefined) view.setBigUint64(128, BigInt(data.SetCallbackHandlerCount), true);
+  if (data?.SetCallbackHandlerCount !== undefined) view.setBigUint64(128, util.toBigInt(data.SetCallbackHandlerCount), true);
   // 0x88: u64
-  if (data?.SetCallbackHandlerSum !== undefined) view.setBigUint64(136, BigInt(data.SetCallbackHandlerSum), true);
+  if (data?.SetCallbackHandlerSum !== undefined) view.setBigUint64(136, util.toBigInt(data.SetCallbackHandlerSum), true);
   return buf;
 }
 
@@ -8197,183 +8197,183 @@ export class HTTP_QUIC_STREAM_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get OpenCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get OpenCount(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get OpenSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get OpenSum(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get CloseCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get CloseCount(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get CloseSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get CloseSum(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get StartCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get StartCount(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u64
-  get StartSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get StartSum(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: u64
-  get ShutdownCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get ShutdownCount(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: u64
-  get ShutdownSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get ShutdownSum(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: u64
-  get SendCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get SendCount(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: u64
-  get SendSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(72, true));
+  get SendSum(): number | bigint {
+    return this.view.getBigUint64(72, true);
   }
 
   // 0x50: u64
-  get ReceiveSetEnabledCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(80, true));
+  get ReceiveSetEnabledCount(): number | bigint {
+    return this.view.getBigUint64(80, true);
   }
 
   // 0x58: u64
-  get ReceiveSetEnabledSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get ReceiveSetEnabledSum(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x60: u64
-  get GetParamCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(96, true));
+  get GetParamCount(): number | bigint {
+    return this.view.getBigUint64(96, true);
   }
 
   // 0x68: u64
-  get GetParamSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(104, true));
+  get GetParamSum(): number | bigint {
+    return this.view.getBigUint64(104, true);
   }
 
   // 0x70: u64
-  get SetParamCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(112, true));
+  get SetParamCount(): number | bigint {
+    return this.view.getBigUint64(112, true);
   }
 
   // 0x78: u64
-  get SetParamSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(120, true));
+  get SetParamSum(): number | bigint {
+    return this.view.getBigUint64(120, true);
   }
 
   // 0x80: u64
-  get SetCallbackHandlerCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(128, true));
+  get SetCallbackHandlerCount(): number | bigint {
+    return this.view.getBigUint64(128, true);
   }
 
   // 0x88: u64
-  get SetCallbackHandlerSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(136, true));
+  get SetCallbackHandlerSum(): number | bigint {
+    return this.view.getBigUint64(136, true);
   }
 
   // 0x00: u64
-  set OpenCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set OpenCount(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set OpenSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set OpenSum(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set CloseCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set CloseCount(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set CloseSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set CloseSum(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set StartCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set StartCount(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u64
-  set StartSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set StartSum(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: u64
-  set ShutdownCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set ShutdownCount(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: u64
-  set ShutdownSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set ShutdownSum(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: u64
-  set SendCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set SendCount(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: u64
-  set SendSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(72, BigInt(value), true);
+  set SendSum(value: number | bigint) {
+    this.view.setBigUint64(72, util.toBigInt(value), true);
   }
 
   // 0x50: u64
-  set ReceiveSetEnabledCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(80, BigInt(value), true);
+  set ReceiveSetEnabledCount(value: number | bigint) {
+    this.view.setBigUint64(80, util.toBigInt(value), true);
   }
 
   // 0x58: u64
-  set ReceiveSetEnabledSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set ReceiveSetEnabledSum(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 
   // 0x60: u64
-  set GetParamCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(96, BigInt(value), true);
+  set GetParamCount(value: number | bigint) {
+    this.view.setBigUint64(96, util.toBigInt(value), true);
   }
 
   // 0x68: u64
-  set GetParamSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(104, BigInt(value), true);
+  set GetParamSum(value: number | bigint) {
+    this.view.setBigUint64(104, util.toBigInt(value), true);
   }
 
   // 0x70: u64
-  set SetParamCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(112, BigInt(value), true);
+  set SetParamCount(value: number | bigint) {
+    this.view.setBigUint64(112, util.toBigInt(value), true);
   }
 
   // 0x78: u64
-  set SetParamSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(120, BigInt(value), true);
+  set SetParamSum(value: number | bigint) {
+    this.view.setBigUint64(120, util.toBigInt(value), true);
   }
 
   // 0x80: u64
-  set SetCallbackHandlerCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(128, BigInt(value), true);
+  set SetCallbackHandlerCount(value: number | bigint) {
+    this.view.setBigUint64(128, util.toBigInt(value), true);
   }
 
   // 0x88: u64
-  set SetCallbackHandlerSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(136, BigInt(value), true);
+  set SetCallbackHandlerSum(value: number | bigint) {
+    this.view.setBigUint64(136, util.toBigInt(value), true);
   }
 }
 
@@ -8382,29 +8382,29 @@ export class HTTP_QUIC_STREAM_API_TIMINGSView {
  */
 export interface HTTP_QUIC_CONNECTION_API_TIMINGS {
   /** u64 */
-  OpenTime: Deno.PointerValue;
+  OpenTime: number | bigint;
   /** u64 */
-  CloseTime: Deno.PointerValue;
+  CloseTime: number | bigint;
   /** u64 */
-  StartTime: Deno.PointerValue;
+  StartTime: number | bigint;
   /** u64 */
-  ShutdownTime: Deno.PointerValue;
+  ShutdownTime: number | bigint;
   /** u64 */
-  SecConfigCreateTime: Deno.PointerValue;
+  SecConfigCreateTime: number | bigint;
   /** u64 */
-  SecConfigDeleteTime: Deno.PointerValue;
+  SecConfigDeleteTime: number | bigint;
   /** u64 */
-  GetParamCount: Deno.PointerValue;
+  GetParamCount: number | bigint;
   /** u64 */
-  GetParamSum: Deno.PointerValue;
+  GetParamSum: number | bigint;
   /** u64 */
-  SetParamCount: Deno.PointerValue;
+  SetParamCount: number | bigint;
   /** u64 */
-  SetParamSum: Deno.PointerValue;
+  SetParamSum: number | bigint;
   /** u64 */
-  SetCallbackHandlerCount: Deno.PointerValue;
+  SetCallbackHandlerCount: number | bigint;
   /** u64 */
-  SetCallbackHandlerSum: Deno.PointerValue;
+  SetCallbackHandlerSum: number | bigint;
   /** Windows.Win32.Networking.HttpServer.HTTP_QUIC_STREAM_API_TIMINGS */
   ControlStreamTimings: Uint8Array | Deno.PointerValue | null;
 }
@@ -8415,31 +8415,31 @@ export function allocHTTP_QUIC_CONNECTION_API_TIMINGS(data?: Partial<HTTP_QUIC_C
   const buf = new Uint8Array(sizeofHTTP_QUIC_CONNECTION_API_TIMINGS);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.OpenTime !== undefined) view.setBigUint64(0, BigInt(data.OpenTime), true);
+  if (data?.OpenTime !== undefined) view.setBigUint64(0, util.toBigInt(data.OpenTime), true);
   // 0x08: u64
-  if (data?.CloseTime !== undefined) view.setBigUint64(8, BigInt(data.CloseTime), true);
+  if (data?.CloseTime !== undefined) view.setBigUint64(8, util.toBigInt(data.CloseTime), true);
   // 0x10: u64
-  if (data?.StartTime !== undefined) view.setBigUint64(16, BigInt(data.StartTime), true);
+  if (data?.StartTime !== undefined) view.setBigUint64(16, util.toBigInt(data.StartTime), true);
   // 0x18: u64
-  if (data?.ShutdownTime !== undefined) view.setBigUint64(24, BigInt(data.ShutdownTime), true);
+  if (data?.ShutdownTime !== undefined) view.setBigUint64(24, util.toBigInt(data.ShutdownTime), true);
   // 0x20: u64
-  if (data?.SecConfigCreateTime !== undefined) view.setBigUint64(32, BigInt(data.SecConfigCreateTime), true);
+  if (data?.SecConfigCreateTime !== undefined) view.setBigUint64(32, util.toBigInt(data.SecConfigCreateTime), true);
   // 0x28: u64
-  if (data?.SecConfigDeleteTime !== undefined) view.setBigUint64(40, BigInt(data.SecConfigDeleteTime), true);
+  if (data?.SecConfigDeleteTime !== undefined) view.setBigUint64(40, util.toBigInt(data.SecConfigDeleteTime), true);
   // 0x30: u64
-  if (data?.GetParamCount !== undefined) view.setBigUint64(48, BigInt(data.GetParamCount), true);
+  if (data?.GetParamCount !== undefined) view.setBigUint64(48, util.toBigInt(data.GetParamCount), true);
   // 0x38: u64
-  if (data?.GetParamSum !== undefined) view.setBigUint64(56, BigInt(data.GetParamSum), true);
+  if (data?.GetParamSum !== undefined) view.setBigUint64(56, util.toBigInt(data.GetParamSum), true);
   // 0x40: u64
-  if (data?.SetParamCount !== undefined) view.setBigUint64(64, BigInt(data.SetParamCount), true);
+  if (data?.SetParamCount !== undefined) view.setBigUint64(64, util.toBigInt(data.SetParamCount), true);
   // 0x48: u64
-  if (data?.SetParamSum !== undefined) view.setBigUint64(72, BigInt(data.SetParamSum), true);
+  if (data?.SetParamSum !== undefined) view.setBigUint64(72, util.toBigInt(data.SetParamSum), true);
   // 0x50: u64
-  if (data?.SetCallbackHandlerCount !== undefined) view.setBigUint64(80, BigInt(data.SetCallbackHandlerCount), true);
+  if (data?.SetCallbackHandlerCount !== undefined) view.setBigUint64(80, util.toBigInt(data.SetCallbackHandlerCount), true);
   // 0x58: u64
-  if (data?.SetCallbackHandlerSum !== undefined) view.setBigUint64(88, BigInt(data.SetCallbackHandlerSum), true);
+  if (data?.SetCallbackHandlerSum !== undefined) view.setBigUint64(88, util.toBigInt(data.SetCallbackHandlerSum), true);
   // 0x60: pointer
-  if (data?.ControlStreamTimings !== undefined) view.setBigUint64(96, data.ControlStreamTimings === null ? 0n : BigInt(util.toPointer(data.ControlStreamTimings)), true);
+  if (data?.ControlStreamTimings !== undefined) view.setBigUint64(96, data.ControlStreamTimings === null ? 0n : util.toBigInt(util.toPointer(data.ControlStreamTimings)), true);
   return buf;
 }
 
@@ -8454,63 +8454,63 @@ export class HTTP_QUIC_CONNECTION_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get OpenTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get OpenTime(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get CloseTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get CloseTime(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get StartTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get StartTime(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get ShutdownTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get ShutdownTime(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get SecConfigCreateTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get SecConfigCreateTime(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u64
-  get SecConfigDeleteTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SecConfigDeleteTime(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: u64
-  get GetParamCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get GetParamCount(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: u64
-  get GetParamSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get GetParamSum(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: u64
-  get SetParamCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get SetParamCount(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: u64
-  get SetParamSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(72, true));
+  get SetParamSum(): number | bigint {
+    return this.view.getBigUint64(72, true);
   }
 
   // 0x50: u64
-  get SetCallbackHandlerCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(80, true));
+  get SetCallbackHandlerCount(): number | bigint {
+    return this.view.getBigUint64(80, true);
   }
 
   // 0x58: u64
-  get SetCallbackHandlerSum(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get SetCallbackHandlerSum(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x60: pointer
@@ -8520,68 +8520,68 @@ export class HTTP_QUIC_CONNECTION_API_TIMINGSView {
   }
 
   // 0x00: u64
-  set OpenTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set OpenTime(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set CloseTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set CloseTime(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set StartTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set StartTime(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set ShutdownTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set ShutdownTime(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set SecConfigCreateTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set SecConfigCreateTime(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u64
-  set SecConfigDeleteTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SecConfigDeleteTime(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: u64
-  set GetParamCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set GetParamCount(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: u64
-  set GetParamSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set GetParamSum(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: u64
-  set SetParamCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set SetParamCount(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: u64
-  set SetParamSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(72, BigInt(value), true);
+  set SetParamSum(value: number | bigint) {
+    this.view.setBigUint64(72, util.toBigInt(value), true);
   }
 
   // 0x50: u64
-  set SetCallbackHandlerCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(80, BigInt(value), true);
+  set SetCallbackHandlerCount(value: number | bigint) {
+    this.view.setBigUint64(80, util.toBigInt(value), true);
   }
 
   // 0x58: u64
-  set SetCallbackHandlerSum(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set SetCallbackHandlerSum(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 
   // 0x60: pointer
   set ControlStreamTimings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8601,9 +8601,9 @@ export function allocHTTP_QUIC_API_TIMINGS(data?: Partial<HTTP_QUIC_API_TIMINGS>
   const buf = new Uint8Array(sizeofHTTP_QUIC_API_TIMINGS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ConnectionTimings !== undefined) view.setBigUint64(0, data.ConnectionTimings === null ? 0n : BigInt(util.toPointer(data.ConnectionTimings)), true);
+  if (data?.ConnectionTimings !== undefined) view.setBigUint64(0, data.ConnectionTimings === null ? 0n : util.toBigInt(util.toPointer(data.ConnectionTimings)), true);
   // 0x08: pointer
-  if (data?.StreamTimings !== undefined) view.setBigUint64(8, data.StreamTimings === null ? 0n : BigInt(util.toPointer(data.StreamTimings)), true);
+  if (data?.StreamTimings !== undefined) view.setBigUint64(8, data.StreamTimings === null ? 0n : util.toBigInt(util.toPointer(data.StreamTimings)), true);
   return buf;
 }
 
@@ -8631,12 +8631,12 @@ export class HTTP_QUIC_API_TIMINGSView {
 
   // 0x00: pointer
   set ConnectionTimings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set StreamTimings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -8886,13 +8886,13 @@ export function HttpQueryRequestQueueProperty(
 
 export function HttpSetRequestProperty(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Id: Deno.PointerValue /* u64 */,
+  Id: number | bigint /* u64 */,
   PropertyId: HTTP_REQUEST_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_REQUEST_PROPERTY */,
   Input: Deno.PointerValue | Uint8Array | null /* ptr */,
   InputPropertySize: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpSetRequestProperty(util.toPointer(RequestQueueHandle), Id, PropertyId, util.toPointer(Input), InputPropertySize, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpSetRequestProperty(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(Id)), PropertyId, util.toPointer(Input), InputPropertySize, util.toPointer(Overlapped));
 }
 
 export function HttpShutdownRequestQueue(
@@ -8903,14 +8903,14 @@ export function HttpShutdownRequestQueue(
 
 export function HttpReceiveClientCertificate(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: number | bigint /* u64 */,
   Flags: number /* u32 */,
   SslClientCertInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
   SslClientCertInfoSize: number /* u32 */,
   BytesReceived: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpReceiveClientCertificate(util.toPointer(RequestQueueHandle), ConnectionId, Flags, util.toPointer(SslClientCertInfo), SslClientCertInfoSize, util.toPointer(BytesReceived), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveClientCertificate(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(ConnectionId)), Flags, util.toPointer(SslClientCertInfo), SslClientCertInfoSize, util.toPointer(BytesReceived), util.toPointer(Overlapped));
 }
 
 export function HttpCreateServerSession(
@@ -8922,28 +8922,28 @@ export function HttpCreateServerSession(
 }
 
 export function HttpCloseServerSession(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: number | bigint /* u64 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpCloseServerSession(ServerSessionId);
+  return libHTTPAPI_dll.HttpCloseServerSession(util.toBigInt(util.toPointer(ServerSessionId)));
 }
 
 export function HttpQueryServerSessionProperty(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: number | bigint /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpQueryServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
+  return libHTTPAPI_dll.HttpQueryServerSessionProperty(util.toBigInt(util.toPointer(ServerSessionId)), Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
 }
 
 export function HttpSetServerSessionProperty(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: number | bigint /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpSetServerSessionProperty(ServerSessionId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
+  return libHTTPAPI_dll.HttpSetServerSessionProperty(util.toBigInt(util.toPointer(ServerSessionId)), Property, util.toPointer(PropertyInformation), PropertyInformationLength);
 }
 
 export function HttpAddUrl(
@@ -8962,53 +8962,53 @@ export function HttpRemoveUrl(
 }
 
 export function HttpCreateUrlGroup(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: number | bigint /* u64 */,
   pUrlGroupId: Deno.PointerValue | Uint8Array | null /* ptr */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpCreateUrlGroup(ServerSessionId, util.toPointer(pUrlGroupId), Reserved);
+  return libHTTPAPI_dll.HttpCreateUrlGroup(util.toBigInt(util.toPointer(ServerSessionId)), util.toPointer(pUrlGroupId), Reserved);
 }
 
 export function HttpCloseUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: number | bigint /* u64 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpCloseUrlGroup(UrlGroupId);
+  return libHTTPAPI_dll.HttpCloseUrlGroup(util.toBigInt(util.toPointer(UrlGroupId)));
 }
 
 export function HttpAddUrlToUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: number | bigint /* u64 */,
   pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  UrlContext: Deno.PointerValue /* u64 */,
+  UrlContext: number | bigint /* u64 */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpAddUrlToUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), UrlContext, Reserved);
+  return libHTTPAPI_dll.HttpAddUrlToUrlGroup(util.toBigInt(util.toPointer(UrlGroupId)), util.pwstrToFfi(pFullyQualifiedUrl), util.toBigInt(util.toPointer(UrlContext)), Reserved);
 }
 
 export function HttpRemoveUrlFromUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: number | bigint /* u64 */,
   pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpRemoveUrlFromUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), Flags);
+  return libHTTPAPI_dll.HttpRemoveUrlFromUrlGroup(util.toBigInt(util.toPointer(UrlGroupId)), util.pwstrToFfi(pFullyQualifiedUrl), Flags);
 }
 
 export function HttpSetUrlGroupProperty(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: number | bigint /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpSetUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength);
+  return libHTTPAPI_dll.HttpSetUrlGroupProperty(util.toBigInt(util.toPointer(UrlGroupId)), Property, util.toPointer(PropertyInformation), PropertyInformationLength);
 }
 
 export function HttpQueryUrlGroupProperty(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: number | bigint /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   PropertyInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpQueryUrlGroupProperty(UrlGroupId, Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
+  return libHTTPAPI_dll.HttpQueryUrlGroupProperty(util.toBigInt(util.toPointer(UrlGroupId)), Property, util.toPointer(PropertyInformation), PropertyInformationLength, util.toPointer(ReturnLength));
 }
 
 export function HttpPrepareUrl(
@@ -9022,31 +9022,31 @@ export function HttpPrepareUrl(
 
 export function HttpReceiveHttpRequest(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Flags: HTTP_RECEIVE_HTTP_REQUEST_FLAGS /* Windows.Win32.Networking.HttpServer.HTTP_RECEIVE_HTTP_REQUEST_FLAGS */,
   RequestBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   RequestBufferLength: number /* u32 */,
   BytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpReceiveHttpRequest(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(RequestBuffer), RequestBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveHttpRequest(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), Flags, util.toPointer(RequestBuffer), RequestBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
 }
 
 export function HttpReceiveRequestEntityBody(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Flags: number /* u32 */,
   EntityBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   EntityBufferLength: number /* u32 */,
   BytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpReceiveRequestEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(EntityBuffer), EntityBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpReceiveRequestEntityBody(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), Flags, util.toPointer(EntityBuffer), EntityBufferLength, util.toPointer(BytesReturned), util.toPointer(Overlapped));
 }
 
 export function HttpSendHttpResponse(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Flags: number /* u32 */,
   HttpResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
   CachePolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9056,12 +9056,12 @@ export function HttpSendHttpResponse(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   LogData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpSendHttpResponse(util.toPointer(RequestQueueHandle), RequestId, Flags, util.toPointer(HttpResponse), util.toPointer(CachePolicy), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
+  return libHTTPAPI_dll.HttpSendHttpResponse(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), Flags, util.toPointer(HttpResponse), util.toPointer(CachePolicy), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
 }
 
 export function HttpSendResponseEntityBody(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Flags: number /* u32 */,
   EntityChunkCount: number /* u16 */,
   EntityChunks: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -9071,43 +9071,43 @@ export function HttpSendResponseEntityBody(
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
   LogData: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpSendResponseEntityBody(util.toPointer(RequestQueueHandle), RequestId, Flags, EntityChunkCount, util.toPointer(EntityChunks), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
+  return libHTTPAPI_dll.HttpSendResponseEntityBody(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), Flags, EntityChunkCount, util.toPointer(EntityChunks), util.toPointer(BytesSent), util.toPointer(Reserved1), Reserved2, util.toPointer(Overlapped), util.toPointer(LogData));
 }
 
 export function HttpDeclarePush(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Verb: HTTP_VERB /* Windows.Win32.Networking.HttpServer.HTTP_VERB */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Headers: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpDeclarePush(util.toPointer(RequestQueueHandle), RequestId, Verb, util.pwstrToFfi(Path), util.pstrToFfi(Query), util.toPointer(Headers));
+  return libHTTPAPI_dll.HttpDeclarePush(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), Verb, util.pwstrToFfi(Path), util.pstrToFfi(Query), util.toPointer(Headers));
 }
 
 export function HttpWaitForDisconnect(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: number | bigint /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpWaitForDisconnect(util.toPointer(RequestQueueHandle), ConnectionId, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpWaitForDisconnect(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(ConnectionId)), util.toPointer(Overlapped));
 }
 
 export function HttpWaitForDisconnectEx(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: number | bigint /* u64 */,
   Reserved: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpWaitForDisconnectEx(util.toPointer(RequestQueueHandle), ConnectionId, Reserved, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpWaitForDisconnectEx(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(ConnectionId)), Reserved, util.toPointer(Overlapped));
 }
 
 export function HttpCancelHttpRequest(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpCancelHttpRequest(util.toPointer(RequestQueueHandle), RequestId, util.toPointer(Overlapped));
+  return libHTTPAPI_dll.HttpCancelHttpRequest(util.toPointer(RequestQueueHandle), util.toBigInt(util.toPointer(RequestId)), util.toPointer(Overlapped));
 }
 
 export function HttpWaitForDemandStart(
@@ -9126,12 +9126,12 @@ export function HttpIsFeatureSupported(
 export function HttpDelegateRequestEx(
   RequestQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   DelegateQueueHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
-  DelegateUrlGroupId: Deno.PointerValue /* u64 */,
+  RequestId: number | bigint /* u64 */,
+  DelegateUrlGroupId: number | bigint /* u64 */,
   PropertyInfoSetSize: number /* u32 */,
   PropertyInfoSet: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libHTTPAPI_dll.HttpDelegateRequestEx(util.toPointer(RequestQueueHandle), util.toPointer(DelegateQueueHandle), RequestId, DelegateUrlGroupId, PropertyInfoSetSize, util.toPointer(PropertyInfoSet));
+  return libHTTPAPI_dll.HttpDelegateRequestEx(util.toPointer(RequestQueueHandle), util.toPointer(DelegateQueueHandle), util.toBigInt(util.toPointer(RequestId)), util.toBigInt(util.toPointer(DelegateUrlGroupId)), PropertyInfoSetSize, util.toPointer(PropertyInfoSet));
 }
 
 export function HttpFindUrlGroupId(

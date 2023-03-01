@@ -644,9 +644,9 @@ export const repAuthorization = 1;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -655,9 +655,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -672,23 +672,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -708,9 +708,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -738,12 +738,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -774,7 +774,7 @@ export function allocRADIUS_ATTRIBUTE(data?: Partial<RADIUS_ATTRIBUTE>): Uint8Ar
   if (data?.cbDataLength !== undefined) view.setUint32(8, Number(data.cbDataLength), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -830,7 +830,7 @@ export class RADIUS_ATTRIBUTEView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -854,14 +854,14 @@ export function allocRADIUS_VSA_FORMAT(data?: Partial<RADIUS_VSA_FORMAT>): Uint8
   const buf = new Uint8Array(sizeofRADIUS_VSA_FORMAT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.VendorId !== undefined) view.setBigUint64(0, data.VendorId === null ? 0n : BigInt(util.toPointer(data.VendorId)), true);
+  if (data?.VendorId !== undefined) view.setBigUint64(0, data.VendorId === null ? 0n : util.toBigInt(util.toPointer(data.VendorId)), true);
   // 0x08: u8
   if (data?.VendorType !== undefined) view.setUint8(8, Number(data.VendorType));
   // 0x09: u8
   if (data?.VendorLength !== undefined) view.setUint8(9, Number(data.VendorLength));
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.AttributeSpecific !== undefined) view.setBigUint64(16, data.AttributeSpecific === null ? 0n : BigInt(util.toPointer(data.AttributeSpecific)), true);
+  if (data?.AttributeSpecific !== undefined) view.setBigUint64(16, data.AttributeSpecific === null ? 0n : util.toBigInt(util.toPointer(data.AttributeSpecific)), true);
   return buf;
 }
 
@@ -901,7 +901,7 @@ export class RADIUS_VSA_FORMATView {
 
   // 0x00: pointer
   set VendorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u8
@@ -918,7 +918,7 @@ export class RADIUS_VSA_FORMATView {
 
   // 0x10: pointer
   set AttributeSpecific(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -929,17 +929,17 @@ export interface RADIUS_ATTRIBUTE_ARRAY {
   /** u32 */
   cbSize: number;
   /** isize */
-  Add: Deno.PointerValue;
+  Add: number | bigint;
   /** isize */
-  AttributeAt: Deno.PointerValue;
+  AttributeAt: number | bigint;
   /** isize */
-  GetSize: Deno.PointerValue;
+  GetSize: number | bigint;
   /** isize */
-  InsertAt: Deno.PointerValue;
+  InsertAt: number | bigint;
   /** isize */
-  RemoveAt: Deno.PointerValue;
+  RemoveAt: number | bigint;
   /** isize */
-  SetAt: Deno.PointerValue;
+  SetAt: number | bigint;
 }
 
 export const sizeofRADIUS_ATTRIBUTE_ARRAY = 56;
@@ -951,17 +951,17 @@ export function allocRADIUS_ATTRIBUTE_ARRAY(data?: Partial<RADIUS_ATTRIBUTE_ARRA
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: isize
-  if (data?.Add !== undefined) view.setBigInt64(8, BigInt(data.Add), true);
+  if (data?.Add !== undefined) view.setBigInt64(8, util.toBigInt(data.Add), true);
   // 0x10: isize
-  if (data?.AttributeAt !== undefined) view.setBigInt64(16, BigInt(data.AttributeAt), true);
+  if (data?.AttributeAt !== undefined) view.setBigInt64(16, util.toBigInt(data.AttributeAt), true);
   // 0x18: isize
-  if (data?.GetSize !== undefined) view.setBigInt64(24, BigInt(data.GetSize), true);
+  if (data?.GetSize !== undefined) view.setBigInt64(24, util.toBigInt(data.GetSize), true);
   // 0x20: isize
-  if (data?.InsertAt !== undefined) view.setBigInt64(32, BigInt(data.InsertAt), true);
+  if (data?.InsertAt !== undefined) view.setBigInt64(32, util.toBigInt(data.InsertAt), true);
   // 0x28: isize
-  if (data?.RemoveAt !== undefined) view.setBigInt64(40, BigInt(data.RemoveAt), true);
+  if (data?.RemoveAt !== undefined) view.setBigInt64(40, util.toBigInt(data.RemoveAt), true);
   // 0x30: isize
-  if (data?.SetAt !== undefined) view.setBigInt64(48, BigInt(data.SetAt), true);
+  if (data?.SetAt !== undefined) view.setBigInt64(48, util.toBigInt(data.SetAt), true);
   return buf;
 }
 
@@ -983,33 +983,33 @@ export class RADIUS_ATTRIBUTE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: isize
-  get Add(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get Add(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: isize
-  get AttributeAt(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get AttributeAt(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: isize
-  get GetSize(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get GetSize(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x20: isize
-  get InsertAt(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(32, true));
+  get InsertAt(): number | bigint {
+    return this.view.getBigInt64(32, true);
   }
 
   // 0x28: isize
-  get RemoveAt(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(40, true));
+  get RemoveAt(): number | bigint {
+    return this.view.getBigInt64(40, true);
   }
 
   // 0x30: isize
-  get SetAt(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(48, true));
+  get SetAt(): number | bigint {
+    return this.view.getBigInt64(48, true);
   }
 
   // 0x00: u32
@@ -1020,33 +1020,33 @@ export class RADIUS_ATTRIBUTE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: isize
-  set Add(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set Add(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: isize
-  set AttributeAt(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set AttributeAt(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: isize
-  set GetSize(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set GetSize(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 
   // 0x20: isize
-  set InsertAt(value: Deno.PointerValue) {
-    this.view.setBigInt64(32, BigInt(value), true);
+  set InsertAt(value: number | bigint) {
+    this.view.setBigInt64(32, util.toBigInt(value), true);
   }
 
   // 0x28: isize
-  set RemoveAt(value: Deno.PointerValue) {
-    this.view.setBigInt64(40, BigInt(value), true);
+  set RemoveAt(value: number | bigint) {
+    this.view.setBigInt64(40, util.toBigInt(value), true);
   }
 
   // 0x30: isize
-  set SetAt(value: Deno.PointerValue) {
-    this.view.setBigInt64(48, BigInt(value), true);
+  set SetAt(value: number | bigint) {
+    this.view.setBigInt64(48, util.toBigInt(value), true);
   }
 }
 
@@ -1065,11 +1065,11 @@ export interface RADIUS_EXTENSION_CONTROL_BLOCK {
   /** Windows.Win32.NetworkManagement.NetworkPolicyServer.RADIUS_CODE */
   rcResponseType: RADIUS_CODE;
   /** isize */
-  GetRequest: Deno.PointerValue;
+  GetRequest: number | bigint;
   /** isize */
-  GetResponse: Deno.PointerValue;
+  GetResponse: number | bigint;
   /** isize */
-  SetResponseType: Deno.PointerValue;
+  SetResponseType: number | bigint;
 }
 
 export const sizeofRADIUS_EXTENSION_CONTROL_BLOCK = 48;
@@ -1089,11 +1089,11 @@ export function allocRADIUS_EXTENSION_CONTROL_BLOCK(data?: Partial<RADIUS_EXTENS
   if (data?.rcResponseType !== undefined) view.setInt32(16, Number(data.rcResponseType), true);
   // 0x14: pad4
   // 0x18: isize
-  if (data?.GetRequest !== undefined) view.setBigInt64(24, BigInt(data.GetRequest), true);
+  if (data?.GetRequest !== undefined) view.setBigInt64(24, util.toBigInt(data.GetRequest), true);
   // 0x20: isize
-  if (data?.GetResponse !== undefined) view.setBigInt64(32, BigInt(data.GetResponse), true);
+  if (data?.GetResponse !== undefined) view.setBigInt64(32, util.toBigInt(data.GetResponse), true);
   // 0x28: isize
-  if (data?.SetResponseType !== undefined) view.setBigInt64(40, BigInt(data.SetResponseType), true);
+  if (data?.SetResponseType !== undefined) view.setBigInt64(40, util.toBigInt(data.SetResponseType), true);
   return buf;
 }
 
@@ -1135,18 +1135,18 @@ export class RADIUS_EXTENSION_CONTROL_BLOCKView {
   // 0x14: pad4
 
   // 0x18: isize
-  get GetRequest(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get GetRequest(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x20: isize
-  get GetResponse(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(32, true));
+  get GetResponse(): number | bigint {
+    return this.view.getBigInt64(32, true);
   }
 
   // 0x28: isize
-  get SetResponseType(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(40, true));
+  get SetResponseType(): number | bigint {
+    return this.view.getBigInt64(40, true);
   }
 
   // 0x00: u32
@@ -1177,18 +1177,18 @@ export class RADIUS_EXTENSION_CONTROL_BLOCKView {
   // 0x14: pad4
 
   // 0x18: isize
-  set GetRequest(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set GetRequest(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 
   // 0x20: isize
-  set GetResponse(value: Deno.PointerValue) {
-    this.view.setBigInt64(32, BigInt(value), true);
+  set GetResponse(value: number | bigint) {
+    this.view.setBigInt64(32, util.toBigInt(value), true);
   }
 
   // 0x28: isize
-  set SetResponseType(value: Deno.PointerValue) {
-    this.view.setBigInt64(40, BigInt(value), true);
+  set SetResponseType(value: number | bigint) {
+    this.view.setBigInt64(40, util.toBigInt(value), true);
   }
 }
 

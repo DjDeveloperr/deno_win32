@@ -635,7 +635,7 @@ export function allocSPropAttrArray(data?: Partial<SPropAttrArray>): Uint8Array 
   if (data?.cValues !== undefined) view.setUint32(0, Number(data.cValues), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aPropAttr !== undefined) view.setBigUint64(8, data.aPropAttr === null ? 0n : BigInt(util.toPointer(data.aPropAttr)), true);
+  if (data?.aPropAttr !== undefined) view.setBigUint64(8, data.aPropAttr === null ? 0n : util.toBigInt(util.toPointer(data.aPropAttr)), true);
   return buf;
 }
 
@@ -671,7 +671,7 @@ export class SPropAttrArrayView {
 
   // 0x08: pointer
   set aPropAttr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -689,7 +689,7 @@ export function allocIMMP_MPV_STORE_DRIVER_HANDLE(data?: Partial<IMMP_MPV_STORE_
   const buf = new Uint8Array(sizeofIMMP_MPV_STORE_DRIVER_HANDLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guidSignature !== undefined) view.setBigUint64(0, data.guidSignature === null ? 0n : BigInt(util.toPointer(data.guidSignature)), true);
+  if (data?.guidSignature !== undefined) view.setBigUint64(0, data.guidSignature === null ? 0n : util.toBigInt(util.toPointer(data.guidSignature)), true);
   return buf;
 }
 
@@ -711,7 +711,7 @@ export class IMMP_MPV_STORE_DRIVER_HANDLEView {
 
   // 0x00: pointer
   set guidSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -733,7 +733,7 @@ export function allocTagIMMPID_GUIDLIST_ITEM(data?: Partial<tagIMMPID_GUIDLIST_I
   const buf = new Uint8Array(sizeofTagIMMPID_GUIDLIST_ITEM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(0, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(0, data.pguid === null ? 0n : util.toBigInt(util.toPointer(data.pguid)), true);
   // 0x08: u32
   if (data?.dwStart !== undefined) view.setUint32(8, Number(data.dwStart), true);
   // 0x0c: u32
@@ -769,7 +769,7 @@ export class tagIMMPID_GUIDLIST_ITEMView {
 
   // 0x00: pointer
   set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32

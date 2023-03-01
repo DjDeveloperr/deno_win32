@@ -994,11 +994,11 @@ export function allocDXGI_GAMMA_CONTROL(data?: Partial<DXGI_GAMMA_CONTROL>): Uin
   const buf = new Uint8Array(sizeofDXGI_GAMMA_CONTROL);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Scale !== undefined) view.setBigUint64(0, data.Scale === null ? 0n : BigInt(util.toPointer(data.Scale)), true);
+  if (data?.Scale !== undefined) view.setBigUint64(0, data.Scale === null ? 0n : util.toBigInt(util.toPointer(data.Scale)), true);
   // 0x08: pointer
-  if (data?.Offset !== undefined) view.setBigUint64(8, data.Offset === null ? 0n : BigInt(util.toPointer(data.Offset)), true);
+  if (data?.Offset !== undefined) view.setBigUint64(8, data.Offset === null ? 0n : util.toBigInt(util.toPointer(data.Offset)), true);
   // 0x10: pointer
-  if (data?.GammaCurve !== undefined) view.setBigUint64(16, data.GammaCurve === null ? 0n : BigInt(util.toPointer(data.GammaCurve)), true);
+  if (data?.GammaCurve !== undefined) view.setBigUint64(16, data.GammaCurve === null ? 0n : util.toBigInt(util.toPointer(data.GammaCurve)), true);
   return buf;
 }
 
@@ -1032,17 +1032,17 @@ export class DXGI_GAMMA_CONTROLView {
 
   // 0x00: pointer
   set Scale(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Offset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set GammaCurve(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1078,7 +1078,7 @@ export function allocDXGI_GAMMA_CONTROL_CAPABILITIES(data?: Partial<DXGI_GAMMA_C
   // 0x0c: u32
   if (data?.NumGammaControlPoints !== undefined) view.setUint32(12, Number(data.NumGammaControlPoints), true);
   // 0x10: pointer
-  if (data?.ControlPointPositions !== undefined) view.setBigUint64(16, data.ControlPointPositions === null ? 0n : BigInt(util.toPointer(data.ControlPointPositions)), true);
+  if (data?.ControlPointPositions !== undefined) view.setBigUint64(16, data.ControlPointPositions === null ? 0n : util.toBigInt(util.toPointer(data.ControlPointPositions)), true);
   return buf;
 }
 
@@ -1140,7 +1140,7 @@ export class DXGI_GAMMA_CONTROL_CAPABILITIESView {
 
   // 0x10: pointer
   set ControlPointPositions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1172,7 +1172,7 @@ export function allocDXGI_MODE_DESC(data?: Partial<DXGI_MODE_DESC>): Uint8Array 
   // 0x04: u32
   if (data?.Height !== undefined) view.setUint32(4, Number(data.Height), true);
   // 0x08: pointer
-  if (data?.RefreshRate !== undefined) view.setBigUint64(8, data.RefreshRate === null ? 0n : BigInt(util.toPointer(data.RefreshRate)), true);
+  if (data?.RefreshRate !== undefined) view.setBigUint64(8, data.RefreshRate === null ? 0n : util.toBigInt(util.toPointer(data.RefreshRate)), true);
   // 0x10: u32
   if (data?.Format !== undefined) view.setUint32(16, Number(data.Format), true);
   // 0x14: i32
@@ -1238,7 +1238,7 @@ export class DXGI_MODE_DESCView {
 
   // 0x08: pointer
   set RefreshRate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1275,9 +1275,9 @@ export function allocDXGI_JPEG_DC_HUFFMAN_TABLE(data?: Partial<DXGI_JPEG_DC_HUFF
   const buf = new Uint8Array(sizeofDXGI_JPEG_DC_HUFFMAN_TABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CodeCounts !== undefined) view.setBigUint64(0, data.CodeCounts === null ? 0n : BigInt(util.toPointer(data.CodeCounts)), true);
+  if (data?.CodeCounts !== undefined) view.setBigUint64(0, data.CodeCounts === null ? 0n : util.toBigInt(util.toPointer(data.CodeCounts)), true);
   // 0x08: pointer
-  if (data?.CodeValues !== undefined) view.setBigUint64(8, data.CodeValues === null ? 0n : BigInt(util.toPointer(data.CodeValues)), true);
+  if (data?.CodeValues !== undefined) view.setBigUint64(8, data.CodeValues === null ? 0n : util.toBigInt(util.toPointer(data.CodeValues)), true);
   return buf;
 }
 
@@ -1305,12 +1305,12 @@ export class DXGI_JPEG_DC_HUFFMAN_TABLEView {
 
   // 0x00: pointer
   set CodeCounts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set CodeValues(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1330,9 +1330,9 @@ export function allocDXGI_JPEG_AC_HUFFMAN_TABLE(data?: Partial<DXGI_JPEG_AC_HUFF
   const buf = new Uint8Array(sizeofDXGI_JPEG_AC_HUFFMAN_TABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CodeCounts !== undefined) view.setBigUint64(0, data.CodeCounts === null ? 0n : BigInt(util.toPointer(data.CodeCounts)), true);
+  if (data?.CodeCounts !== undefined) view.setBigUint64(0, data.CodeCounts === null ? 0n : util.toBigInt(util.toPointer(data.CodeCounts)), true);
   // 0x08: pointer
-  if (data?.CodeValues !== undefined) view.setBigUint64(8, data.CodeValues === null ? 0n : BigInt(util.toPointer(data.CodeValues)), true);
+  if (data?.CodeValues !== undefined) view.setBigUint64(8, data.CodeValues === null ? 0n : util.toBigInt(util.toPointer(data.CodeValues)), true);
   return buf;
 }
 
@@ -1360,12 +1360,12 @@ export class DXGI_JPEG_AC_HUFFMAN_TABLEView {
 
   // 0x00: pointer
   set CodeCounts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set CodeValues(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1383,7 +1383,7 @@ export function allocDXGI_JPEG_QUANTIZATION_TABLE(data?: Partial<DXGI_JPEG_QUANT
   const buf = new Uint8Array(sizeofDXGI_JPEG_QUANTIZATION_TABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(0, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(0, data.Elements === null ? 0n : util.toBigInt(util.toPointer(data.Elements)), true);
   return buf;
 }
 
@@ -1405,7 +1405,7 @@ export class DXGI_JPEG_QUANTIZATION_TABLEView {
 
   // 0x00: pointer
   set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1414,9 +1414,9 @@ export class DXGI_JPEG_QUANTIZATION_TABLEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1425,9 +1425,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -1442,23 +1442,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -1485,7 +1485,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -1523,7 +1523,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -1536,7 +1536,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1545,11 +1545,11 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: i64
-  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigInt64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -1576,23 +1576,23 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 }
 
@@ -1625,9 +1625,9 @@ export function allocDXGI_FRAME_STATISTICS(data?: Partial<DXGI_FRAME_STATISTICS>
   if (data?.SyncRefreshCount !== undefined) view.setUint32(8, Number(data.SyncRefreshCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : BigInt(util.toPointer(data.SyncQPCTime)), true);
+  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : util.toBigInt(util.toPointer(data.SyncQPCTime)), true);
   // 0x18: pointer
-  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : BigInt(util.toPointer(data.SyncGPUTime)), true);
+  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : util.toBigInt(util.toPointer(data.SyncGPUTime)), true);
   return buf;
 }
 
@@ -1689,12 +1689,12 @@ export class DXGI_FRAME_STATISTICSView {
 
   // 0x10: pointer
   set SyncQPCTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set SyncGPUTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1717,7 +1717,7 @@ export function allocDXGI_MAPPED_RECT(data?: Partial<DXGI_MAPPED_RECT>): Uint8Ar
   if (data?.Pitch !== undefined) view.setInt32(0, Number(data.Pitch), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pBits !== undefined) view.setBigUint64(8, data.pBits === null ? 0n : BigInt(util.toPointer(data.pBits)), true);
+  if (data?.pBits !== undefined) view.setBigUint64(8, data.pBits === null ? 0n : util.toBigInt(util.toPointer(data.pBits)), true);
   return buf;
 }
 
@@ -1753,7 +1753,7 @@ export class DXGI_MAPPED_RECTView {
 
   // 0x08: pointer
   set pBits(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1825,11 +1825,11 @@ export interface DXGI_ADAPTER_DESC {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: number | bigint;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: number | bigint;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: number | bigint;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue | null;
 }
@@ -1840,7 +1840,7 @@ export function allocDXGI_ADAPTER_DESC(data?: Partial<DXGI_ADAPTER_DESC>): Uint8
   const buf = new Uint8Array(sizeofDXGI_ADAPTER_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
+  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : util.toBigInt(util.toPointer(data.Description)), true);
   // 0x08: u32
   if (data?.VendorId !== undefined) view.setUint32(8, Number(data.VendorId), true);
   // 0x0c: u32
@@ -1850,13 +1850,13 @@ export function allocDXGI_ADAPTER_DESC(data?: Partial<DXGI_ADAPTER_DESC>): Uint8
   // 0x14: u32
   if (data?.Revision !== undefined) view.setUint32(20, Number(data.Revision), true);
   // 0x18: usize
-  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, BigInt(data.DedicatedVideoMemory), true);
+  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, util.toBigInt(data.DedicatedVideoMemory), true);
   // 0x20: usize
-  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, BigInt(data.DedicatedSystemMemory), true);
+  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, util.toBigInt(data.DedicatedSystemMemory), true);
   // 0x28: usize
-  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, BigInt(data.SharedSystemMemory), true);
+  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, util.toBigInt(data.SharedSystemMemory), true);
   // 0x30: pointer
-  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : BigInt(util.toPointer(data.AdapterLuid)), true);
+  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : util.toBigInt(util.toPointer(data.AdapterLuid)), true);
   return buf;
 }
 
@@ -1897,18 +1897,18 @@ export class DXGI_ADAPTER_DESCView {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get DedicatedVideoMemory(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get DedicatedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SharedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: pointer
@@ -1919,7 +1919,7 @@ export class DXGI_ADAPTER_DESCView {
 
   // 0x00: pointer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -1943,23 +1943,23 @@ export class DXGI_ADAPTER_DESCView {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set DedicatedVideoMemory(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set DedicatedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SharedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: pointer
   set AdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2044,7 +2044,7 @@ export class RECTView {
   }
 }
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = number | bigint;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_OUTPUT_DESC (size: 32)
@@ -2068,15 +2068,15 @@ export function allocDXGI_OUTPUT_DESC(data?: Partial<DXGI_OUTPUT_DESC>): Uint8Ar
   const buf = new Uint8Array(sizeofDXGI_OUTPUT_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceName !== undefined) view.setBigUint64(0, data.DeviceName === null ? 0n : BigInt(util.toPointer(data.DeviceName)), true);
+  if (data?.DeviceName !== undefined) view.setBigUint64(0, data.DeviceName === null ? 0n : util.toBigInt(util.toPointer(data.DeviceName)), true);
   // 0x08: pointer
-  if (data?.DesktopCoordinates !== undefined) view.setBigUint64(8, data.DesktopCoordinates === null ? 0n : BigInt(util.toPointer(data.DesktopCoordinates)), true);
+  if (data?.DesktopCoordinates !== undefined) view.setBigUint64(8, data.DesktopCoordinates === null ? 0n : util.toBigInt(util.toPointer(data.DesktopCoordinates)), true);
   // 0x10: i32
   if (data?.AttachedToDesktop !== undefined) view.setInt32(16, Number(data.AttachedToDesktop), true);
   // 0x14: i32
   if (data?.Rotation !== undefined) view.setInt32(20, Number(data.Rotation), true);
   // 0x18: pointer
-  if (data?.Monitor !== undefined) view.setBigUint64(24, data.Monitor === null ? 0n : BigInt(util.toPointer(data.Monitor)), true);
+  if (data?.Monitor !== undefined) view.setBigUint64(24, data.Monitor === null ? 0n : util.toBigInt(util.toPointer(data.Monitor)), true);
   return buf;
 }
 
@@ -2120,12 +2120,12 @@ export class DXGI_OUTPUT_DESCView {
 
   // 0x00: pointer
   set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DesktopCoordinates(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -2140,11 +2140,11 @@ export class DXGI_OUTPUT_DESCView {
 
   // 0x18: pointer
   set Monitor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_SHARED_RESOURCE (size: 8)
@@ -2160,7 +2160,7 @@ export function allocDXGI_SHARED_RESOURCE(data?: Partial<DXGI_SHARED_RESOURCE>):
   const buf = new Uint8Array(sizeofDXGI_SHARED_RESOURCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Handle !== undefined) view.setBigUint64(0, data.Handle === null ? 0n : BigInt(util.toPointer(data.Handle)), true);
+  if (data?.Handle !== undefined) view.setBigUint64(0, data.Handle === null ? 0n : util.toBigInt(util.toPointer(data.Handle)), true);
   return buf;
 }
 
@@ -2182,7 +2182,7 @@ export class DXGI_SHARED_RESOURCEView {
 
   // 0x00: pointer
   set Handle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2213,7 +2213,7 @@ export function allocDXGI_SURFACE_DESC(data?: Partial<DXGI_SURFACE_DESC>): Uint8
   if (data?.Format !== undefined) view.setUint32(8, Number(data.Format), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(16, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(16, data.SampleDesc === null ? 0n : util.toBigInt(util.toPointer(data.SampleDesc)), true);
   return buf;
 }
 
@@ -2269,11 +2269,11 @@ export class DXGI_SURFACE_DESCView {
 
   // 0x10: pointer
   set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_SWAP_CHAIN_DESC (size: 48)
@@ -2303,15 +2303,15 @@ export function allocDXGI_SWAP_CHAIN_DESC(data?: Partial<DXGI_SWAP_CHAIN_DESC>):
   const buf = new Uint8Array(sizeofDXGI_SWAP_CHAIN_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BufferDesc !== undefined) view.setBigUint64(0, data.BufferDesc === null ? 0n : BigInt(util.toPointer(data.BufferDesc)), true);
+  if (data?.BufferDesc !== undefined) view.setBigUint64(0, data.BufferDesc === null ? 0n : util.toBigInt(util.toPointer(data.BufferDesc)), true);
   // 0x08: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(8, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(8, data.SampleDesc === null ? 0n : util.toBigInt(util.toPointer(data.SampleDesc)), true);
   // 0x10: u32
   if (data?.BufferUsage !== undefined) view.setUint32(16, Number(data.BufferUsage), true);
   // 0x14: u32
   if (data?.BufferCount !== undefined) view.setUint32(20, Number(data.BufferCount), true);
   // 0x18: pointer
-  if (data?.OutputWindow !== undefined) view.setBigUint64(24, data.OutputWindow === null ? 0n : BigInt(util.toPointer(data.OutputWindow)), true);
+  if (data?.OutputWindow !== undefined) view.setBigUint64(24, data.OutputWindow === null ? 0n : util.toBigInt(util.toPointer(data.OutputWindow)), true);
   // 0x20: i32
   if (data?.Windowed !== undefined) view.setInt32(32, Number(data.Windowed), true);
   // 0x24: i32
@@ -2379,12 +2379,12 @@ export class DXGI_SWAP_CHAIN_DESCView {
 
   // 0x00: pointer
   set BufferDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -2399,7 +2399,7 @@ export class DXGI_SWAP_CHAIN_DESCView {
 
   // 0x18: pointer
   set OutputWindow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: i32
@@ -2435,11 +2435,11 @@ export interface DXGI_ADAPTER_DESC1 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: number | bigint;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: number | bigint;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: number | bigint;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -2452,7 +2452,7 @@ export function allocDXGI_ADAPTER_DESC1(data?: Partial<DXGI_ADAPTER_DESC1>): Uin
   const buf = new Uint8Array(sizeofDXGI_ADAPTER_DESC1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
+  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : util.toBigInt(util.toPointer(data.Description)), true);
   // 0x08: u32
   if (data?.VendorId !== undefined) view.setUint32(8, Number(data.VendorId), true);
   // 0x0c: u32
@@ -2462,13 +2462,13 @@ export function allocDXGI_ADAPTER_DESC1(data?: Partial<DXGI_ADAPTER_DESC1>): Uin
   // 0x14: u32
   if (data?.Revision !== undefined) view.setUint32(20, Number(data.Revision), true);
   // 0x18: usize
-  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, BigInt(data.DedicatedVideoMemory), true);
+  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, util.toBigInt(data.DedicatedVideoMemory), true);
   // 0x20: usize
-  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, BigInt(data.DedicatedSystemMemory), true);
+  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, util.toBigInt(data.DedicatedSystemMemory), true);
   // 0x28: usize
-  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, BigInt(data.SharedSystemMemory), true);
+  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, util.toBigInt(data.SharedSystemMemory), true);
   // 0x30: pointer
-  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : BigInt(util.toPointer(data.AdapterLuid)), true);
+  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : util.toBigInt(util.toPointer(data.AdapterLuid)), true);
   // 0x38: u32
   if (data?.Flags !== undefined) view.setUint32(56, Number(data.Flags), true);
   // 0x3c: pad4
@@ -2512,18 +2512,18 @@ export class DXGI_ADAPTER_DESC1View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get DedicatedVideoMemory(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get DedicatedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SharedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: pointer
@@ -2541,7 +2541,7 @@ export class DXGI_ADAPTER_DESC1View {
 
   // 0x00: pointer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -2565,23 +2565,23 @@ export class DXGI_ADAPTER_DESC1View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set DedicatedVideoMemory(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set DedicatedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SharedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: pointer
   set AdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u32
@@ -2608,9 +2608,9 @@ export function allocDXGI_DISPLAY_COLOR_SPACE(data?: Partial<DXGI_DISPLAY_COLOR_
   const buf = new Uint8Array(sizeofDXGI_DISPLAY_COLOR_SPACE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.PrimaryCoordinates !== undefined) view.setBigUint64(0, data.PrimaryCoordinates === null ? 0n : BigInt(util.toPointer(data.PrimaryCoordinates)), true);
+  if (data?.PrimaryCoordinates !== undefined) view.setBigUint64(0, data.PrimaryCoordinates === null ? 0n : util.toBigInt(util.toPointer(data.PrimaryCoordinates)), true);
   // 0x08: pointer
-  if (data?.WhitePoints !== undefined) view.setBigUint64(8, data.WhitePoints === null ? 0n : BigInt(util.toPointer(data.WhitePoints)), true);
+  if (data?.WhitePoints !== undefined) view.setBigUint64(8, data.WhitePoints === null ? 0n : util.toBigInt(util.toPointer(data.WhitePoints)), true);
   return buf;
 }
 
@@ -2638,12 +2638,12 @@ export class DXGI_DISPLAY_COLOR_SPACEView {
 
   // 0x00: pointer
   set PrimaryCoordinates(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WhitePoints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2716,9 +2716,9 @@ export function allocDXGI_OUTDUPL_MOVE_RECT(data?: Partial<DXGI_OUTDUPL_MOVE_REC
   const buf = new Uint8Array(sizeofDXGI_OUTDUPL_MOVE_RECT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SourcePoint !== undefined) view.setBigUint64(0, data.SourcePoint === null ? 0n : BigInt(util.toPointer(data.SourcePoint)), true);
+  if (data?.SourcePoint !== undefined) view.setBigUint64(0, data.SourcePoint === null ? 0n : util.toBigInt(util.toPointer(data.SourcePoint)), true);
   // 0x08: pointer
-  if (data?.DestinationRect !== undefined) view.setBigUint64(8, data.DestinationRect === null ? 0n : BigInt(util.toPointer(data.DestinationRect)), true);
+  if (data?.DestinationRect !== undefined) view.setBigUint64(8, data.DestinationRect === null ? 0n : util.toBigInt(util.toPointer(data.DestinationRect)), true);
   return buf;
 }
 
@@ -2746,12 +2746,12 @@ export class DXGI_OUTDUPL_MOVE_RECTView {
 
   // 0x00: pointer
   set SourcePoint(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DestinationRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2773,7 +2773,7 @@ export function allocDXGI_OUTDUPL_DESC(data?: Partial<DXGI_OUTDUPL_DESC>): Uint8
   const buf = new Uint8Array(sizeofDXGI_OUTDUPL_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ModeDesc !== undefined) view.setBigUint64(0, data.ModeDesc === null ? 0n : BigInt(util.toPointer(data.ModeDesc)), true);
+  if (data?.ModeDesc !== undefined) view.setBigUint64(0, data.ModeDesc === null ? 0n : util.toBigInt(util.toPointer(data.ModeDesc)), true);
   // 0x08: i32
   if (data?.Rotation !== undefined) view.setInt32(8, Number(data.Rotation), true);
   // 0x0c: i32
@@ -2809,7 +2809,7 @@ export class DXGI_OUTDUPL_DESCView {
 
   // 0x00: pointer
   set ModeDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -2839,7 +2839,7 @@ export function allocDXGI_OUTDUPL_POINTER_POSITION(data?: Partial<DXGI_OUTDUPL_P
   const buf = new Uint8Array(sizeofDXGI_OUTDUPL_POINTER_POSITION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : util.toBigInt(util.toPointer(data.Position)), true);
   // 0x08: i32
   if (data?.Visible !== undefined) view.setInt32(8, Number(data.Visible), true);
   // 0x0c: pad4
@@ -2871,7 +2871,7 @@ export class DXGI_OUTDUPL_POINTER_POSITIONView {
 
   // 0x00: pointer
   set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -2912,7 +2912,7 @@ export function allocDXGI_OUTDUPL_POINTER_SHAPE_INFO(data?: Partial<DXGI_OUTDUPL
   // 0x0c: u32
   if (data?.Pitch !== undefined) view.setUint32(12, Number(data.Pitch), true);
   // 0x10: pointer
-  if (data?.HotSpot !== undefined) view.setBigUint64(16, data.HotSpot === null ? 0n : BigInt(util.toPointer(data.HotSpot)), true);
+  if (data?.HotSpot !== undefined) view.setBigUint64(16, data.HotSpot === null ? 0n : util.toBigInt(util.toPointer(data.HotSpot)), true);
   return buf;
 }
 
@@ -2974,7 +2974,7 @@ export class DXGI_OUTDUPL_POINTER_SHAPE_INFOView {
 
   // 0x10: pointer
   set HotSpot(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3006,9 +3006,9 @@ export function allocDXGI_OUTDUPL_FRAME_INFO(data?: Partial<DXGI_OUTDUPL_FRAME_I
   const buf = new Uint8Array(sizeofDXGI_OUTDUPL_FRAME_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.LastPresentTime !== undefined) view.setBigUint64(0, data.LastPresentTime === null ? 0n : BigInt(util.toPointer(data.LastPresentTime)), true);
+  if (data?.LastPresentTime !== undefined) view.setBigUint64(0, data.LastPresentTime === null ? 0n : util.toBigInt(util.toPointer(data.LastPresentTime)), true);
   // 0x08: pointer
-  if (data?.LastMouseUpdateTime !== undefined) view.setBigUint64(8, data.LastMouseUpdateTime === null ? 0n : BigInt(util.toPointer(data.LastMouseUpdateTime)), true);
+  if (data?.LastMouseUpdateTime !== undefined) view.setBigUint64(8, data.LastMouseUpdateTime === null ? 0n : util.toBigInt(util.toPointer(data.LastMouseUpdateTime)), true);
   // 0x10: u32
   if (data?.AccumulatedFrames !== undefined) view.setUint32(16, Number(data.AccumulatedFrames), true);
   // 0x14: i32
@@ -3017,7 +3017,7 @@ export function allocDXGI_OUTDUPL_FRAME_INFO(data?: Partial<DXGI_OUTDUPL_FRAME_I
   if (data?.ProtectedContentMaskedOut !== undefined) view.setInt32(24, Number(data.ProtectedContentMaskedOut), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.PointerPosition !== undefined) view.setBigUint64(32, data.PointerPosition === null ? 0n : BigInt(util.toPointer(data.PointerPosition)), true);
+  if (data?.PointerPosition !== undefined) view.setBigUint64(32, data.PointerPosition === null ? 0n : util.toBigInt(util.toPointer(data.PointerPosition)), true);
   // 0x28: u32
   if (data?.TotalMetadataBufferSize !== undefined) view.setUint32(40, Number(data.TotalMetadataBufferSize), true);
   // 0x2c: u32
@@ -3082,12 +3082,12 @@ export class DXGI_OUTDUPL_FRAME_INFOView {
 
   // 0x00: pointer
   set LastPresentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set LastMouseUpdateTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3109,7 +3109,7 @@ export class DXGI_OUTDUPL_FRAME_INFOView {
 
   // 0x20: pointer
   set PointerPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -3153,7 +3153,7 @@ export function allocDXGI_MODE_DESC1(data?: Partial<DXGI_MODE_DESC1>): Uint8Arra
   // 0x04: u32
   if (data?.Height !== undefined) view.setUint32(4, Number(data.Height), true);
   // 0x08: pointer
-  if (data?.RefreshRate !== undefined) view.setBigUint64(8, data.RefreshRate === null ? 0n : BigInt(util.toPointer(data.RefreshRate)), true);
+  if (data?.RefreshRate !== undefined) view.setBigUint64(8, data.RefreshRate === null ? 0n : util.toBigInt(util.toPointer(data.RefreshRate)), true);
   // 0x10: u32
   if (data?.Format !== undefined) view.setUint32(16, Number(data.Format), true);
   // 0x14: i32
@@ -3223,7 +3223,7 @@ export class DXGI_MODE_DESC1View {
 
   // 0x08: pointer
   set RefreshRate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3289,7 +3289,7 @@ export function allocDXGI_SWAP_CHAIN_DESC1(data?: Partial<DXGI_SWAP_CHAIN_DESC1>
   // 0x0c: i32
   if (data?.Stereo !== undefined) view.setInt32(12, Number(data.Stereo), true);
   // 0x10: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(16, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(16, data.SampleDesc === null ? 0n : util.toBigInt(util.toPointer(data.SampleDesc)), true);
   // 0x18: u32
   if (data?.BufferUsage !== undefined) view.setUint32(24, Number(data.BufferUsage), true);
   // 0x1c: u32
@@ -3393,7 +3393,7 @@ export class DXGI_SWAP_CHAIN_DESC1View {
 
   // 0x10: pointer
   set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -3447,7 +3447,7 @@ export function allocDXGI_SWAP_CHAIN_FULLSCREEN_DESC(data?: Partial<DXGI_SWAP_CH
   const buf = new Uint8Array(sizeofDXGI_SWAP_CHAIN_FULLSCREEN_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RefreshRate !== undefined) view.setBigUint64(0, data.RefreshRate === null ? 0n : BigInt(util.toPointer(data.RefreshRate)), true);
+  if (data?.RefreshRate !== undefined) view.setBigUint64(0, data.RefreshRate === null ? 0n : util.toBigInt(util.toPointer(data.RefreshRate)), true);
   // 0x08: i32
   if (data?.ScanlineOrdering !== undefined) view.setInt32(8, Number(data.ScanlineOrdering), true);
   // 0x0c: i32
@@ -3493,7 +3493,7 @@ export class DXGI_SWAP_CHAIN_FULLSCREEN_DESCView {
 
   // 0x00: pointer
   set RefreshRate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -3537,11 +3537,11 @@ export function allocDXGI_PRESENT_PARAMETERS(data?: Partial<DXGI_PRESENT_PARAMET
   if (data?.DirtyRectsCount !== undefined) view.setUint32(0, Number(data.DirtyRectsCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pDirtyRects !== undefined) view.setBigUint64(8, data.pDirtyRects === null ? 0n : BigInt(util.toPointer(data.pDirtyRects)), true);
+  if (data?.pDirtyRects !== undefined) view.setBigUint64(8, data.pDirtyRects === null ? 0n : util.toBigInt(util.toPointer(data.pDirtyRects)), true);
   // 0x10: pointer
-  if (data?.pScrollRect !== undefined) view.setBigUint64(16, data.pScrollRect === null ? 0n : BigInt(util.toPointer(data.pScrollRect)), true);
+  if (data?.pScrollRect !== undefined) view.setBigUint64(16, data.pScrollRect === null ? 0n : util.toBigInt(util.toPointer(data.pScrollRect)), true);
   // 0x18: pointer
-  if (data?.pScrollOffset !== undefined) view.setBigUint64(24, data.pScrollOffset === null ? 0n : BigInt(util.toPointer(data.pScrollOffset)), true);
+  if (data?.pScrollOffset !== undefined) view.setBigUint64(24, data.pScrollOffset === null ? 0n : util.toBigInt(util.toPointer(data.pScrollOffset)), true);
   return buf;
 }
 
@@ -3589,17 +3589,17 @@ export class DXGI_PRESENT_PARAMETERSView {
 
   // 0x08: pointer
   set pDirtyRects(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pScrollRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pScrollOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3618,11 +3618,11 @@ export interface DXGI_ADAPTER_DESC2 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: number | bigint;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: number | bigint;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: number | bigint;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -3639,7 +3639,7 @@ export function allocDXGI_ADAPTER_DESC2(data?: Partial<DXGI_ADAPTER_DESC2>): Uin
   const buf = new Uint8Array(sizeofDXGI_ADAPTER_DESC2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
+  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : util.toBigInt(util.toPointer(data.Description)), true);
   // 0x08: u32
   if (data?.VendorId !== undefined) view.setUint32(8, Number(data.VendorId), true);
   // 0x0c: u32
@@ -3649,13 +3649,13 @@ export function allocDXGI_ADAPTER_DESC2(data?: Partial<DXGI_ADAPTER_DESC2>): Uin
   // 0x14: u32
   if (data?.Revision !== undefined) view.setUint32(20, Number(data.Revision), true);
   // 0x18: usize
-  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, BigInt(data.DedicatedVideoMemory), true);
+  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, util.toBigInt(data.DedicatedVideoMemory), true);
   // 0x20: usize
-  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, BigInt(data.DedicatedSystemMemory), true);
+  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, util.toBigInt(data.DedicatedSystemMemory), true);
   // 0x28: usize
-  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, BigInt(data.SharedSystemMemory), true);
+  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, util.toBigInt(data.SharedSystemMemory), true);
   // 0x30: pointer
-  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : BigInt(util.toPointer(data.AdapterLuid)), true);
+  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : util.toBigInt(util.toPointer(data.AdapterLuid)), true);
   // 0x38: u32
   if (data?.Flags !== undefined) view.setUint32(56, Number(data.Flags), true);
   // 0x3c: i32
@@ -3703,18 +3703,18 @@ export class DXGI_ADAPTER_DESC2View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get DedicatedVideoMemory(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get DedicatedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SharedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: pointer
@@ -3742,7 +3742,7 @@ export class DXGI_ADAPTER_DESC2View {
 
   // 0x00: pointer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -3766,23 +3766,23 @@ export class DXGI_ADAPTER_DESC2View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set DedicatedVideoMemory(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set DedicatedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SharedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: pointer
   set AdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u32
@@ -3989,9 +3989,9 @@ export function allocDXGI_FRAME_STATISTICS_MEDIA(data?: Partial<DXGI_FRAME_STATI
   if (data?.SyncRefreshCount !== undefined) view.setUint32(8, Number(data.SyncRefreshCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : BigInt(util.toPointer(data.SyncQPCTime)), true);
+  if (data?.SyncQPCTime !== undefined) view.setBigUint64(16, data.SyncQPCTime === null ? 0n : util.toBigInt(util.toPointer(data.SyncQPCTime)), true);
   // 0x18: pointer
-  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : BigInt(util.toPointer(data.SyncGPUTime)), true);
+  if (data?.SyncGPUTime !== undefined) view.setBigUint64(24, data.SyncGPUTime === null ? 0n : util.toBigInt(util.toPointer(data.SyncGPUTime)), true);
   // 0x20: i32
   if (data?.CompositionMode !== undefined) view.setInt32(32, Number(data.CompositionMode), true);
   // 0x24: u32
@@ -4067,12 +4067,12 @@ export class DXGI_FRAME_STATISTICS_MEDIAView {
 
   // 0x10: pointer
   set SyncQPCTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set SyncGPUTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: i32
@@ -4091,13 +4091,13 @@ export class DXGI_FRAME_STATISTICS_MEDIAView {
  */
 export interface DXGI_QUERY_VIDEO_MEMORY_INFO {
   /** u64 */
-  Budget: Deno.PointerValue;
+  Budget: number | bigint;
   /** u64 */
-  CurrentUsage: Deno.PointerValue;
+  CurrentUsage: number | bigint;
   /** u64 */
-  AvailableForReservation: Deno.PointerValue;
+  AvailableForReservation: number | bigint;
   /** u64 */
-  CurrentReservation: Deno.PointerValue;
+  CurrentReservation: number | bigint;
 }
 
 export const sizeofDXGI_QUERY_VIDEO_MEMORY_INFO = 32;
@@ -4106,13 +4106,13 @@ export function allocDXGI_QUERY_VIDEO_MEMORY_INFO(data?: Partial<DXGI_QUERY_VIDE
   const buf = new Uint8Array(sizeofDXGI_QUERY_VIDEO_MEMORY_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Budget !== undefined) view.setBigUint64(0, BigInt(data.Budget), true);
+  if (data?.Budget !== undefined) view.setBigUint64(0, util.toBigInt(data.Budget), true);
   // 0x08: u64
-  if (data?.CurrentUsage !== undefined) view.setBigUint64(8, BigInt(data.CurrentUsage), true);
+  if (data?.CurrentUsage !== undefined) view.setBigUint64(8, util.toBigInt(data.CurrentUsage), true);
   // 0x10: u64
-  if (data?.AvailableForReservation !== undefined) view.setBigUint64(16, BigInt(data.AvailableForReservation), true);
+  if (data?.AvailableForReservation !== undefined) view.setBigUint64(16, util.toBigInt(data.AvailableForReservation), true);
   // 0x18: u64
-  if (data?.CurrentReservation !== undefined) view.setBigUint64(24, BigInt(data.CurrentReservation), true);
+  if (data?.CurrentReservation !== undefined) view.setBigUint64(24, util.toBigInt(data.CurrentReservation), true);
   return buf;
 }
 
@@ -4127,43 +4127,43 @@ export class DXGI_QUERY_VIDEO_MEMORY_INFOView {
   }
 
   // 0x00: u64
-  get Budget(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Budget(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get CurrentUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get CurrentUsage(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get AvailableForReservation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get AvailableForReservation(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get CurrentReservation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get CurrentReservation(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: u64
-  set Budget(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Budget(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set CurrentUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set CurrentUsage(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set AvailableForReservation(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set AvailableForReservation(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set CurrentReservation(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set CurrentReservation(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 
@@ -4195,13 +4195,13 @@ export function allocDXGI_HDR_METADATA_HDR10(data?: Partial<DXGI_HDR_METADATA_HD
   const buf = new Uint8Array(sizeofDXGI_HDR_METADATA_HDR10);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RedPrimary !== undefined) view.setBigUint64(0, data.RedPrimary === null ? 0n : BigInt(util.toPointer(data.RedPrimary)), true);
+  if (data?.RedPrimary !== undefined) view.setBigUint64(0, data.RedPrimary === null ? 0n : util.toBigInt(util.toPointer(data.RedPrimary)), true);
   // 0x08: pointer
-  if (data?.GreenPrimary !== undefined) view.setBigUint64(8, data.GreenPrimary === null ? 0n : BigInt(util.toPointer(data.GreenPrimary)), true);
+  if (data?.GreenPrimary !== undefined) view.setBigUint64(8, data.GreenPrimary === null ? 0n : util.toBigInt(util.toPointer(data.GreenPrimary)), true);
   // 0x10: pointer
-  if (data?.BluePrimary !== undefined) view.setBigUint64(16, data.BluePrimary === null ? 0n : BigInt(util.toPointer(data.BluePrimary)), true);
+  if (data?.BluePrimary !== undefined) view.setBigUint64(16, data.BluePrimary === null ? 0n : util.toBigInt(util.toPointer(data.BluePrimary)), true);
   // 0x18: pointer
-  if (data?.WhitePoint !== undefined) view.setBigUint64(24, data.WhitePoint === null ? 0n : BigInt(util.toPointer(data.WhitePoint)), true);
+  if (data?.WhitePoint !== undefined) view.setBigUint64(24, data.WhitePoint === null ? 0n : util.toBigInt(util.toPointer(data.WhitePoint)), true);
   // 0x20: u32
   if (data?.MaxMasteringLuminance !== undefined) view.setUint32(32, Number(data.MaxMasteringLuminance), true);
   // 0x24: u32
@@ -4272,22 +4272,22 @@ export class DXGI_HDR_METADATA_HDR10View {
 
   // 0x00: pointer
   set RedPrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set GreenPrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set BluePrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WhitePoint(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4327,7 +4327,7 @@ export function allocDXGI_HDR_METADATA_HDR10PLUS(data?: Partial<DXGI_HDR_METADAT
   const buf = new Uint8Array(sizeofDXGI_HDR_METADATA_HDR10PLUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -4349,7 +4349,7 @@ export class DXGI_HDR_METADATA_HDR10PLUSView {
 
   // 0x00: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4368,11 +4368,11 @@ export interface DXGI_ADAPTER_DESC3 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: number | bigint;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: number | bigint;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: number | bigint;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Graphics.Dxgi.DXGI_ADAPTER_FLAG3 */
@@ -4389,7 +4389,7 @@ export function allocDXGI_ADAPTER_DESC3(data?: Partial<DXGI_ADAPTER_DESC3>): Uin
   const buf = new Uint8Array(sizeofDXGI_ADAPTER_DESC3);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : BigInt(util.toPointer(data.Description)), true);
+  if (data?.Description !== undefined) view.setBigUint64(0, data.Description === null ? 0n : util.toBigInt(util.toPointer(data.Description)), true);
   // 0x08: u32
   if (data?.VendorId !== undefined) view.setUint32(8, Number(data.VendorId), true);
   // 0x0c: u32
@@ -4399,13 +4399,13 @@ export function allocDXGI_ADAPTER_DESC3(data?: Partial<DXGI_ADAPTER_DESC3>): Uin
   // 0x14: u32
   if (data?.Revision !== undefined) view.setUint32(20, Number(data.Revision), true);
   // 0x18: usize
-  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, BigInt(data.DedicatedVideoMemory), true);
+  if (data?.DedicatedVideoMemory !== undefined) view.setBigUint64(24, util.toBigInt(data.DedicatedVideoMemory), true);
   // 0x20: usize
-  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, BigInt(data.DedicatedSystemMemory), true);
+  if (data?.DedicatedSystemMemory !== undefined) view.setBigUint64(32, util.toBigInt(data.DedicatedSystemMemory), true);
   // 0x28: usize
-  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, BigInt(data.SharedSystemMemory), true);
+  if (data?.SharedSystemMemory !== undefined) view.setBigUint64(40, util.toBigInt(data.SharedSystemMemory), true);
   // 0x30: pointer
-  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : BigInt(util.toPointer(data.AdapterLuid)), true);
+  if (data?.AdapterLuid !== undefined) view.setBigUint64(48, data.AdapterLuid === null ? 0n : util.toBigInt(util.toPointer(data.AdapterLuid)), true);
   // 0x38: u32
   if (data?.Flags !== undefined) view.setUint32(56, Number(data.Flags), true);
   // 0x3c: i32
@@ -4453,18 +4453,18 @@ export class DXGI_ADAPTER_DESC3View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get DedicatedVideoMemory(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get DedicatedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get SharedSystemMemory(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: pointer
@@ -4492,7 +4492,7 @@ export class DXGI_ADAPTER_DESC3View {
 
   // 0x00: pointer
   set Description(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -4516,23 +4516,23 @@ export class DXGI_ADAPTER_DESC3View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set DedicatedVideoMemory(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set DedicatedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set SharedSystemMemory(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: pointer
   set AdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u32
@@ -4593,27 +4593,27 @@ export function allocDXGI_OUTPUT_DESC1(data?: Partial<DXGI_OUTPUT_DESC1>): Uint8
   const buf = new Uint8Array(sizeofDXGI_OUTPUT_DESC1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceName !== undefined) view.setBigUint64(0, data.DeviceName === null ? 0n : BigInt(util.toPointer(data.DeviceName)), true);
+  if (data?.DeviceName !== undefined) view.setBigUint64(0, data.DeviceName === null ? 0n : util.toBigInt(util.toPointer(data.DeviceName)), true);
   // 0x08: pointer
-  if (data?.DesktopCoordinates !== undefined) view.setBigUint64(8, data.DesktopCoordinates === null ? 0n : BigInt(util.toPointer(data.DesktopCoordinates)), true);
+  if (data?.DesktopCoordinates !== undefined) view.setBigUint64(8, data.DesktopCoordinates === null ? 0n : util.toBigInt(util.toPointer(data.DesktopCoordinates)), true);
   // 0x10: i32
   if (data?.AttachedToDesktop !== undefined) view.setInt32(16, Number(data.AttachedToDesktop), true);
   // 0x14: i32
   if (data?.Rotation !== undefined) view.setInt32(20, Number(data.Rotation), true);
   // 0x18: pointer
-  if (data?.Monitor !== undefined) view.setBigUint64(24, data.Monitor === null ? 0n : BigInt(util.toPointer(data.Monitor)), true);
+  if (data?.Monitor !== undefined) view.setBigUint64(24, data.Monitor === null ? 0n : util.toBigInt(util.toPointer(data.Monitor)), true);
   // 0x20: u32
   if (data?.BitsPerColor !== undefined) view.setUint32(32, Number(data.BitsPerColor), true);
   // 0x24: i32
   if (data?.ColorSpace !== undefined) view.setInt32(36, Number(data.ColorSpace), true);
   // 0x28: pointer
-  if (data?.RedPrimary !== undefined) view.setBigUint64(40, data.RedPrimary === null ? 0n : BigInt(util.toPointer(data.RedPrimary)), true);
+  if (data?.RedPrimary !== undefined) view.setBigUint64(40, data.RedPrimary === null ? 0n : util.toBigInt(util.toPointer(data.RedPrimary)), true);
   // 0x30: pointer
-  if (data?.GreenPrimary !== undefined) view.setBigUint64(48, data.GreenPrimary === null ? 0n : BigInt(util.toPointer(data.GreenPrimary)), true);
+  if (data?.GreenPrimary !== undefined) view.setBigUint64(48, data.GreenPrimary === null ? 0n : util.toBigInt(util.toPointer(data.GreenPrimary)), true);
   // 0x38: pointer
-  if (data?.BluePrimary !== undefined) view.setBigUint64(56, data.BluePrimary === null ? 0n : BigInt(util.toPointer(data.BluePrimary)), true);
+  if (data?.BluePrimary !== undefined) view.setBigUint64(56, data.BluePrimary === null ? 0n : util.toBigInt(util.toPointer(data.BluePrimary)), true);
   // 0x40: pointer
-  if (data?.WhitePoint !== undefined) view.setBigUint64(64, data.WhitePoint === null ? 0n : BigInt(util.toPointer(data.WhitePoint)), true);
+  if (data?.WhitePoint !== undefined) view.setBigUint64(64, data.WhitePoint === null ? 0n : util.toBigInt(util.toPointer(data.WhitePoint)), true);
   // 0x48: f32
   if (data?.MinLuminance !== undefined) view.setFloat32(72, Number(data.MinLuminance), true);
   // 0x4c: f32
@@ -4715,12 +4715,12 @@ export class DXGI_OUTPUT_DESC1View {
 
   // 0x00: pointer
   set DeviceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DesktopCoordinates(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -4735,7 +4735,7 @@ export class DXGI_OUTPUT_DESC1View {
 
   // 0x18: pointer
   set Monitor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4750,22 +4750,22 @@ export class DXGI_OUTPUT_DESC1View {
 
   // 0x28: pointer
   set RedPrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set GreenPrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set BluePrimary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WhitePoint(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: f32
@@ -4801,7 +4801,7 @@ export interface DXGI_INFO_QUEUE_MESSAGE {
   /** ptr */
   pDescription: Deno.PointerValue | Uint8Array | null;
   /** usize */
-  DescriptionByteLength: Deno.PointerValue;
+  DescriptionByteLength: number | bigint;
 }
 
 export const sizeofDXGI_INFO_QUEUE_MESSAGE = 40;
@@ -4810,7 +4810,7 @@ export function allocDXGI_INFO_QUEUE_MESSAGE(data?: Partial<DXGI_INFO_QUEUE_MESS
   const buf = new Uint8Array(sizeofDXGI_INFO_QUEUE_MESSAGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Producer !== undefined) view.setBigUint64(0, data.Producer === null ? 0n : BigInt(util.toPointer(data.Producer)), true);
+  if (data?.Producer !== undefined) view.setBigUint64(0, data.Producer === null ? 0n : util.toBigInt(util.toPointer(data.Producer)), true);
   // 0x08: i32
   if (data?.Category !== undefined) view.setInt32(8, Number(data.Category), true);
   // 0x0c: i32
@@ -4819,9 +4819,9 @@ export function allocDXGI_INFO_QUEUE_MESSAGE(data?: Partial<DXGI_INFO_QUEUE_MESS
   if (data?.ID !== undefined) view.setInt32(16, Number(data.ID), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pDescription !== undefined) view.setBigUint64(24, data.pDescription === null ? 0n : BigInt(util.toPointer(data.pDescription)), true);
+  if (data?.pDescription !== undefined) view.setBigUint64(24, data.pDescription === null ? 0n : util.toBigInt(util.toPointer(data.pDescription)), true);
   // 0x20: usize
-  if (data?.DescriptionByteLength !== undefined) view.setBigUint64(32, BigInt(data.DescriptionByteLength), true);
+  if (data?.DescriptionByteLength !== undefined) view.setBigUint64(32, util.toBigInt(data.DescriptionByteLength), true);
   return buf;
 }
 
@@ -4865,13 +4865,13 @@ export class DXGI_INFO_QUEUE_MESSAGEView {
   }
 
   // 0x20: usize
-  get DescriptionByteLength(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get DescriptionByteLength(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x00: pointer
   set Producer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -4893,12 +4893,12 @@ export class DXGI_INFO_QUEUE_MESSAGEView {
 
   // 0x18: pointer
   set pDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: usize
-  set DescriptionByteLength(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set DescriptionByteLength(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 }
 
@@ -4929,17 +4929,17 @@ export function allocDXGI_INFO_QUEUE_FILTER_DESC(data?: Partial<DXGI_INFO_QUEUE_
   if (data?.NumCategories !== undefined) view.setUint32(0, Number(data.NumCategories), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pCategoryList !== undefined) view.setBigUint64(8, data.pCategoryList === null ? 0n : BigInt(util.toPointer(data.pCategoryList)), true);
+  if (data?.pCategoryList !== undefined) view.setBigUint64(8, data.pCategoryList === null ? 0n : util.toBigInt(util.toPointer(data.pCategoryList)), true);
   // 0x10: u32
   if (data?.NumSeverities !== undefined) view.setUint32(16, Number(data.NumSeverities), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pSeverityList !== undefined) view.setBigUint64(24, data.pSeverityList === null ? 0n : BigInt(util.toPointer(data.pSeverityList)), true);
+  if (data?.pSeverityList !== undefined) view.setBigUint64(24, data.pSeverityList === null ? 0n : util.toBigInt(util.toPointer(data.pSeverityList)), true);
   // 0x20: u32
   if (data?.NumIDs !== undefined) view.setUint32(32, Number(data.NumIDs), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pIDList !== undefined) view.setBigUint64(40, data.pIDList === null ? 0n : BigInt(util.toPointer(data.pIDList)), true);
+  if (data?.pIDList !== undefined) view.setBigUint64(40, data.pIDList === null ? 0n : util.toBigInt(util.toPointer(data.pIDList)), true);
   return buf;
 }
 
@@ -5001,7 +5001,7 @@ export class DXGI_INFO_QUEUE_FILTER_DESCView {
 
   // 0x08: pointer
   set pCategoryList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -5013,7 +5013,7 @@ export class DXGI_INFO_QUEUE_FILTER_DESCView {
 
   // 0x18: pointer
   set pSeverityList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -5025,7 +5025,7 @@ export class DXGI_INFO_QUEUE_FILTER_DESCView {
 
   // 0x28: pointer
   set pIDList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5045,9 +5045,9 @@ export function allocDXGI_INFO_QUEUE_FILTER(data?: Partial<DXGI_INFO_QUEUE_FILTE
   const buf = new Uint8Array(sizeofDXGI_INFO_QUEUE_FILTER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AllowList !== undefined) view.setBigUint64(0, data.AllowList === null ? 0n : BigInt(util.toPointer(data.AllowList)), true);
+  if (data?.AllowList !== undefined) view.setBigUint64(0, data.AllowList === null ? 0n : util.toBigInt(util.toPointer(data.AllowList)), true);
   // 0x08: pointer
-  if (data?.DenyList !== undefined) view.setBigUint64(8, data.DenyList === null ? 0n : BigInt(util.toPointer(data.DenyList)), true);
+  if (data?.DenyList !== undefined) view.setBigUint64(8, data.DenyList === null ? 0n : util.toBigInt(util.toPointer(data.DenyList)), true);
   return buf;
 }
 
@@ -5075,12 +5075,12 @@ export class DXGI_INFO_QUEUE_FILTERView {
 
   // 0x00: pointer
   set AllowList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DenyList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

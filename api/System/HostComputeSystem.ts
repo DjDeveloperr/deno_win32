@@ -67,11 +67,11 @@ export const HcsCreateOptions_1 = 65536;
 
 // Structs
 
-export type HCS_OPERATION = Deno.PointerValue;
+export type HCS_OPERATION = number | bigint;
 
-export type HCS_SYSTEM = Deno.PointerValue;
+export type HCS_SYSTEM = number | bigint;
 
-export type HCS_PROCESS = Deno.PointerValue;
+export type HCS_PROCESS = number | bigint;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -98,10 +98,10 @@ export function allocHCS_EVENT(data?: Partial<HCS_EVENT>): Uint8Array {
   // 0x08: buffer
   if (data?.EventData !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.EventData);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.Operation !== undefined) view.setBigUint64(16, data.Operation === null ? 0n : BigInt(util.toPointer(data.Operation)), true);
+  if (data?.Operation !== undefined) view.setBigUint64(16, data.Operation === null ? 0n : util.toBigInt(util.toPointer(data.Operation)), true);
   return buf;
 }
 
@@ -144,16 +144,16 @@ export class HCS_EVENTView {
   // 0x08: buffer
   set EventData(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set Operation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.System.HostComputeSystem.HCS_PROCESS_INFORMATION (size: 32)
@@ -181,11 +181,11 @@ export function allocHCS_PROCESS_INFORMATION(data?: Partial<HCS_PROCESS_INFORMAT
   // 0x04: u32
   if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
   // 0x08: pointer
-  if (data?.StdInput !== undefined) view.setBigUint64(8, data.StdInput === null ? 0n : BigInt(util.toPointer(data.StdInput)), true);
+  if (data?.StdInput !== undefined) view.setBigUint64(8, data.StdInput === null ? 0n : util.toBigInt(util.toPointer(data.StdInput)), true);
   // 0x10: pointer
-  if (data?.StdOutput !== undefined) view.setBigUint64(16, data.StdOutput === null ? 0n : BigInt(util.toPointer(data.StdOutput)), true);
+  if (data?.StdOutput !== undefined) view.setBigUint64(16, data.StdOutput === null ? 0n : util.toBigInt(util.toPointer(data.StdOutput)), true);
   // 0x18: pointer
-  if (data?.StdError !== undefined) view.setBigUint64(24, data.StdError === null ? 0n : BigInt(util.toPointer(data.StdError)), true);
+  if (data?.StdError !== undefined) view.setBigUint64(24, data.StdError === null ? 0n : util.toBigInt(util.toPointer(data.StdError)), true);
   return buf;
 }
 
@@ -239,17 +239,17 @@ export class HCS_PROCESS_INFORMATIONView {
 
   // 0x08: pointer
   set StdInput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set StdOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set StdError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -280,16 +280,16 @@ export function allocHCS_CREATE_OPTIONS_1(data?: Partial<HCS_CREATE_OPTIONS_1>):
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.UserToken !== undefined) view.setBigUint64(8, data.UserToken === null ? 0n : BigInt(util.toPointer(data.UserToken)), true);
+  if (data?.UserToken !== undefined) view.setBigUint64(8, data.UserToken === null ? 0n : util.toBigInt(util.toPointer(data.UserToken)), true);
   // 0x10: pointer
-  if (data?.SecurityDescriptor !== undefined) view.setBigUint64(16, data.SecurityDescriptor === null ? 0n : BigInt(util.toPointer(data.SecurityDescriptor)), true);
+  if (data?.SecurityDescriptor !== undefined) view.setBigUint64(16, data.SecurityDescriptor === null ? 0n : util.toBigInt(util.toPointer(data.SecurityDescriptor)), true);
   // 0x18: u32
   if (data?.CallbackOptions !== undefined) view.setUint32(24, Number(data.CallbackOptions), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.CallbackContext !== undefined) view.setBigUint64(32, data.CallbackContext === null ? 0n : BigInt(util.toPointer(data.CallbackContext)), true);
+  if (data?.CallbackContext !== undefined) view.setBigUint64(32, data.CallbackContext === null ? 0n : util.toBigInt(util.toPointer(data.CallbackContext)), true);
   // 0x28: pointer
-  if (data?.Callback !== undefined) view.setBigUint64(40, data.Callback === null ? 0n : BigInt(util.toPointer(data.Callback)), true);
+  if (data?.Callback !== undefined) view.setBigUint64(40, data.Callback === null ? 0n : util.toBigInt(util.toPointer(data.Callback)), true);
   return buf;
 }
 
@@ -350,12 +350,12 @@ export class HCS_CREATE_OPTIONS_1View {
 
   // 0x08: pointer
   set UserToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set SecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -367,12 +367,12 @@ export class HCS_CREATE_OPTIONS_1View {
 
   // 0x20: pointer
   set CallbackContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set Callback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -709,7 +709,7 @@ export function HcsGetOperationType(
 
 export function HcsGetOperationId(
   operation: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
-): Deno.PointerValue /* u64 */ {
+): number | bigint /* u64 */ {
   return libcomputecore_dll.HcsGetOperationId(util.toPointer(operation));
 }
 

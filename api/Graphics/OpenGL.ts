@@ -862,7 +862,7 @@ export const EMR_MAX = 122;
 
 // Structs
 
-export type HGLRC = Deno.PointerValue;
+export type HGLRC = number | bigint;
 
 /**
  * Windows.Win32.Graphics.OpenGL.PIXELFORMATDESCRIPTOR (size: 40)
@@ -1322,9 +1322,9 @@ export function allocEMRPIXELFORMAT(data?: Partial<EMRPIXELFORMAT>): Uint8Array 
   const buf = new Uint8Array(sizeofEMRPIXELFORMAT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(util.toPointer(data.emr)), true);
+  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : util.toBigInt(util.toPointer(data.emr)), true);
   // 0x08: pointer
-  if (data?.pfd !== undefined) view.setBigUint64(8, data.pfd === null ? 0n : BigInt(util.toPointer(data.pfd)), true);
+  if (data?.pfd !== undefined) view.setBigUint64(8, data.pfd === null ? 0n : util.toBigInt(util.toPointer(data.pfd)), true);
   return buf;
 }
 
@@ -1352,12 +1352,12 @@ export class EMRPIXELFORMATView {
 
   // 0x00: pointer
   set emr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pfd(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1440,7 +1440,7 @@ export function allocGLYPHMETRICSFLOAT(data?: Partial<GLYPHMETRICSFLOAT>): Uint8
   // 0x04: f32
   if (data?.gmfBlackBoxY !== undefined) view.setFloat32(4, Number(data.gmfBlackBoxY), true);
   // 0x08: pointer
-  if (data?.gmfptGlyphOrigin !== undefined) view.setBigUint64(8, data.gmfptGlyphOrigin === null ? 0n : BigInt(util.toPointer(data.gmfptGlyphOrigin)), true);
+  if (data?.gmfptGlyphOrigin !== undefined) view.setBigUint64(8, data.gmfptGlyphOrigin === null ? 0n : util.toBigInt(util.toPointer(data.gmfptGlyphOrigin)), true);
   // 0x10: f32
   if (data?.gmfCellIncX !== undefined) view.setFloat32(16, Number(data.gmfCellIncX), true);
   // 0x14: f32
@@ -1496,7 +1496,7 @@ export class GLYPHMETRICSFLOATView {
 
   // 0x08: pointer
   set gmfptGlyphOrigin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: f32
@@ -1619,7 +1619,7 @@ export function allocLAYERPLANEDESCRIPTOR(data?: Partial<LAYERPLANEDESCRIPTOR>):
   if (data?.bReserved !== undefined) view.setUint8(27, Number(data.bReserved));
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.crTransparent !== undefined) view.setBigUint64(32, data.crTransparent === null ? 0n : BigInt(util.toPointer(data.crTransparent)), true);
+  if (data?.crTransparent !== undefined) view.setBigUint64(32, data.crTransparent === null ? 0n : util.toBigInt(util.toPointer(data.crTransparent)), true);
   return buf;
 }
 
@@ -1875,15 +1875,15 @@ export class LAYERPLANEDESCRIPTORView {
 
   // 0x20: pointer
   set crTransparent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = number | bigint;
 
 export type BOOL = number;
 
-export type HENHMETAFILE = Deno.PointerValue;
+export type HENHMETAFILE = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -6405,9 +6405,9 @@ export function gluSphere(
 export function gluQuadricCallback(
   qobj: Deno.PointerValue | Uint8Array | null /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: number | bigint /* isize */,
 ): void /* void */ {
-  return libGLU32_dll.gluQuadricCallback(util.toPointer(qobj), which, fn);
+  return libGLU32_dll.gluQuadricCallback(util.toPointer(qobj), which, util.toBigInt(util.toPointer(fn)));
 }
 
 export function gluNewTess(): Deno.PointerValue | null /* ptr */ {
@@ -6473,9 +6473,9 @@ export function gluTessNormal(
 export function gluTessCallback(
   tess: Deno.PointerValue | Uint8Array | null /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: number | bigint /* isize */,
 ): void /* void */ {
-  return libGLU32_dll.gluTessCallback(util.toPointer(tess), which, fn);
+  return libGLU32_dll.gluTessCallback(util.toPointer(tess), which, util.toBigInt(util.toPointer(fn)));
 }
 
 export function gluGetTessProperty(
@@ -6598,9 +6598,9 @@ export function gluGetNurbsProperty(
 export function gluNurbsCallback(
   nobj: Deno.PointerValue | Uint8Array | null /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: number | bigint /* isize */,
 ): void /* void */ {
-  return libGLU32_dll.gluNurbsCallback(util.toPointer(nobj), which, fn);
+  return libGLU32_dll.gluNurbsCallback(util.toPointer(nobj), which, util.toBigInt(util.toPointer(fn)));
 }
 
 export function gluBeginPolygon(

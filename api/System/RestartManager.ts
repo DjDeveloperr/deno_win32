@@ -122,7 +122,7 @@ export function allocRM_UNIQUE_PROCESS(data?: Partial<RM_UNIQUE_PROCESS>): Uint8
   if (data?.dwProcessId !== undefined) view.setUint32(0, Number(data.dwProcessId), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ProcessStartTime !== undefined) view.setBigUint64(8, data.ProcessStartTime === null ? 0n : BigInt(util.toPointer(data.ProcessStartTime)), true);
+  if (data?.ProcessStartTime !== undefined) view.setBigUint64(8, data.ProcessStartTime === null ? 0n : util.toBigInt(util.toPointer(data.ProcessStartTime)), true);
   return buf;
 }
 
@@ -158,7 +158,7 @@ export class RM_UNIQUE_PROCESSView {
 
   // 0x08: pointer
   set ProcessStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -190,11 +190,11 @@ export function allocRM_PROCESS_INFO(data?: Partial<RM_PROCESS_INFO>): Uint8Arra
   const buf = new Uint8Array(sizeofRM_PROCESS_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Process !== undefined) view.setBigUint64(0, data.Process === null ? 0n : BigInt(util.toPointer(data.Process)), true);
+  if (data?.Process !== undefined) view.setBigUint64(0, data.Process === null ? 0n : util.toBigInt(util.toPointer(data.Process)), true);
   // 0x08: pointer
-  if (data?.strAppName !== undefined) view.setBigUint64(8, data.strAppName === null ? 0n : BigInt(util.toPointer(data.strAppName)), true);
+  if (data?.strAppName !== undefined) view.setBigUint64(8, data.strAppName === null ? 0n : util.toBigInt(util.toPointer(data.strAppName)), true);
   // 0x10: pointer
-  if (data?.strServiceShortName !== undefined) view.setBigUint64(16, data.strServiceShortName === null ? 0n : BigInt(util.toPointer(data.strServiceShortName)), true);
+  if (data?.strServiceShortName !== undefined) view.setBigUint64(16, data.strServiceShortName === null ? 0n : util.toBigInt(util.toPointer(data.strServiceShortName)), true);
   // 0x18: i32
   if (data?.ApplicationType !== undefined) view.setInt32(24, Number(data.ApplicationType), true);
   // 0x1c: u32
@@ -256,17 +256,17 @@ export class RM_PROCESS_INFOView {
 
   // 0x00: pointer
   set Process(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set strAppName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set strServiceShortName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -295,9 +295,9 @@ export class RM_PROCESS_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -306,9 +306,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -323,23 +323,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -359,9 +359,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -389,12 +389,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -425,7 +425,7 @@ export function allocRM_FILTER_INFO(data?: Partial<RM_FILTER_INFO>): Uint8Array 
   if (data?.cbNextOffset !== undefined) view.setUint32(8, Number(data.cbNextOffset), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -481,7 +481,7 @@ export class RM_FILTER_INFOView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

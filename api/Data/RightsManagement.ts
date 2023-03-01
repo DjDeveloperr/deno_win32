@@ -138,12 +138,12 @@ export function allocDRMID(data?: Partial<DRMID>): Uint8Array {
   // 0x08: buffer
   if (data?.wszIDType !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszIDType);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.wszID !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszID);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -187,13 +187,13 @@ export class DRMIDView {
   // 0x08: buffer
   set wszIDType(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set wszID(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -238,24 +238,24 @@ export function allocDRMBOUNDLICENSEPARAMS(data?: Partial<DRMBOUNDLICENSEPARAMS>
   // 0x10: buffer
   if (data?.wszRightsRequested !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszRightsRequested);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.wszRightsGroup !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.wszRightsGroup);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.idResource !== undefined) view.setBigUint64(32, data.idResource === null ? 0n : BigInt(util.toPointer(data.idResource)), true);
+  if (data?.idResource !== undefined) view.setBigUint64(32, data.idResource === null ? 0n : util.toBigInt(util.toPointer(data.idResource)), true);
   // 0x28: u32
   if (data?.cAuthenticatorCount !== undefined) view.setUint32(40, Number(data.cAuthenticatorCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rghAuthenticators !== undefined) view.setBigUint64(48, data.rghAuthenticators === null ? 0n : BigInt(util.toPointer(data.rghAuthenticators)), true);
+  if (data?.rghAuthenticators !== undefined) view.setBigUint64(48, data.rghAuthenticators === null ? 0n : util.toBigInt(util.toPointer(data.rghAuthenticators)), true);
   // 0x38: buffer
   if (data?.wszDefaultEnablingPrincipalCredentials !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.wszDefaultEnablingPrincipalCredentials);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
   }
   // 0x40: u32
   if (data?.dwFlags !== undefined) view.setUint32(64, Number(data.dwFlags), true);
@@ -354,18 +354,18 @@ export class DRMBOUNDLICENSEPARAMSView {
   // 0x10: buffer
   set wszRightsRequested(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set wszRightsGroup(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set idResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -377,13 +377,13 @@ export class DRMBOUNDLICENSEPARAMSView {
 
   // 0x30: pointer
   set rghAuthenticators(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: buffer
   set wszDefaultEnablingPrincipalCredentials(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer((this.buf as any)._f56)), true);
   }
 
   // 0x40: u32
@@ -423,22 +423,22 @@ export function allocDRM_LICENSE_ACQ_DATA(data?: Partial<DRM_LICENSE_ACQ_DATA>):
   // 0x08: buffer
   if (data?.wszURL !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszURL);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.wszLocalFilename !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszLocalFilename);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: pointer
-  if (data?.pbPostData !== undefined) view.setBigUint64(24, data.pbPostData === null ? 0n : BigInt(util.toPointer(data.pbPostData)), true);
+  if (data?.pbPostData !== undefined) view.setBigUint64(24, data.pbPostData === null ? 0n : util.toBigInt(util.toPointer(data.pbPostData)), true);
   // 0x20: u32
   if (data?.dwPostDataSize !== undefined) view.setUint32(32, Number(data.dwPostDataSize), true);
   // 0x24: pad4
   // 0x28: buffer
   if (data?.wszFriendlyName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.wszFriendlyName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   return buf;
 }
@@ -501,18 +501,18 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x08: buffer
   set wszURL(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set wszLocalFilename(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: pointer
   set pbPostData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -525,7 +525,7 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x28: buffer
   set wszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 }
 
@@ -552,12 +552,12 @@ export function allocDRM_ACTSERV_INFO(data?: Partial<DRM_ACTSERV_INFO>): Uint8Ar
   // 0x08: buffer
   if (data?.wszPubKey !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszPubKey);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.wszURL !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszURL);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -601,13 +601,13 @@ export class DRM_ACTSERV_INFOView {
   // 0x08: buffer
   set wszPubKey(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set wszURL(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -636,13 +636,13 @@ export function allocDRM_CLIENT_VERSION_INFO(data?: Partial<DRM_CLIENT_VERSION_I
   if (data?.uStructVersion !== undefined) view.setUint32(0, Number(data.uStructVersion), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwVersion !== undefined) view.setBigUint64(8, data.dwVersion === null ? 0n : BigInt(util.toPointer(data.dwVersion)), true);
+  if (data?.dwVersion !== undefined) view.setBigUint64(8, data.dwVersion === null ? 0n : util.toBigInt(util.toPointer(data.dwVersion)), true);
   // 0x10: pointer
-  if (data?.wszHierarchy !== undefined) view.setBigUint64(16, data.wszHierarchy === null ? 0n : BigInt(util.toPointer(data.wszHierarchy)), true);
+  if (data?.wszHierarchy !== undefined) view.setBigUint64(16, data.wszHierarchy === null ? 0n : util.toBigInt(util.toPointer(data.wszHierarchy)), true);
   // 0x18: pointer
-  if (data?.wszProductId !== undefined) view.setBigUint64(24, data.wszProductId === null ? 0n : BigInt(util.toPointer(data.wszProductId)), true);
+  if (data?.wszProductId !== undefined) view.setBigUint64(24, data.wszProductId === null ? 0n : util.toBigInt(util.toPointer(data.wszProductId)), true);
   // 0x20: pointer
-  if (data?.wszProductDescription !== undefined) view.setBigUint64(32, data.wszProductDescription === null ? 0n : BigInt(util.toPointer(data.wszProductDescription)), true);
+  if (data?.wszProductDescription !== undefined) view.setBigUint64(32, data.wszProductDescription === null ? 0n : util.toBigInt(util.toPointer(data.wszProductDescription)), true);
   return buf;
 }
 
@@ -696,22 +696,22 @@ export class DRM_CLIENT_VERSION_INFOView {
 
   // 0x08: pointer
   set dwVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set wszHierarchy(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set wszProductId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set wszProductDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -719,7 +719,7 @@ export type HRESULT = number;
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 // Native Libraries
 

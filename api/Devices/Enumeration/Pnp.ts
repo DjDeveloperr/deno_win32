@@ -65,7 +65,7 @@ export const SWDeviceLifetimeMax = 2;
 
 // Structs
 
-export type HSWDEVICE = Deno.PointerValue;
+export type HSWDEVICE = number | bigint;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -104,35 +104,35 @@ export function allocSW_DEVICE_CREATE_INFO(data?: Partial<SW_DEVICE_CREATE_INFO>
   // 0x08: buffer
   if (data?.pszInstanceId !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszInstanceId);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszzHardwareIds !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszzHardwareIds);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszzCompatibleIds !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszzCompatibleIds);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.pContainerId !== undefined) view.setBigUint64(32, data.pContainerId === null ? 0n : BigInt(util.toPointer(data.pContainerId)), true);
+  if (data?.pContainerId !== undefined) view.setBigUint64(32, data.pContainerId === null ? 0n : util.toBigInt(util.toPointer(data.pContainerId)), true);
   // 0x28: u32
   if (data?.CapabilityFlags !== undefined) view.setUint32(40, Number(data.CapabilityFlags), true);
   // 0x2c: pad4
   // 0x30: buffer
   if (data?.pszDeviceDescription !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pszDeviceDescription);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: buffer
   if (data?.pszDeviceLocation !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pszDeviceLocation);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
   }
   // 0x40: pointer
-  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(64, data.pSecurityDescriptor === null ? 0n : BigInt(util.toPointer(data.pSecurityDescriptor)), true);
+  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(64, data.pSecurityDescriptor === null ? 0n : util.toBigInt(util.toPointer(data.pSecurityDescriptor)), true);
   return buf;
 }
 
@@ -212,24 +212,24 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x08: buffer
   set pszInstanceId(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszzHardwareIds(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszzCompatibleIds(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set pContainerId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -242,18 +242,18 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x30: buffer
   set pszDeviceDescription(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: buffer
   set pszDeviceLocation(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer((this.buf as any)._f56)), true);
   }
 
   // 0x40: pointer
   set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

@@ -28,11 +28,11 @@ export const HF32_SHARED = 2;
  */
 export interface HEAPLIST32 {
   /** usize */
-  dwSize: Deno.PointerValue;
+  dwSize: number | bigint;
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32HeapID: Deno.PointerValue;
+  th32HeapID: number | bigint;
   /** u32 */
   dwFlags: number;
 }
@@ -43,12 +43,12 @@ export function allocHEAPLIST32(data?: Partial<HEAPLIST32>): Uint8Array {
   const buf = new Uint8Array(sizeofHEAPLIST32);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.dwSize !== undefined) view.setBigUint64(0, BigInt(data.dwSize), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, util.toBigInt(data.dwSize), true);
   // 0x08: u32
   if (data?.th32ProcessID !== undefined) view.setUint32(8, Number(data.th32ProcessID), true);
   // 0x0c: pad4
   // 0x10: usize
-  if (data?.th32HeapID !== undefined) view.setBigUint64(16, BigInt(data.th32HeapID), true);
+  if (data?.th32HeapID !== undefined) view.setBigUint64(16, util.toBigInt(data.th32HeapID), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: pad4
@@ -66,8 +66,8 @@ export class HEAPLIST32View {
   }
 
   // 0x00: usize
-  get dwSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get dwSize(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u32
@@ -78,8 +78,8 @@ export class HEAPLIST32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32HeapID(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get th32HeapID(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -90,8 +90,8 @@ export class HEAPLIST32View {
   // 0x1c: pad4
 
   // 0x00: usize
-  set dwSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set dwSize(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u32
@@ -102,8 +102,8 @@ export class HEAPLIST32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32HeapID(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set th32HeapID(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -114,20 +114,20 @@ export class HEAPLIST32View {
   // 0x1c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.System.Diagnostics.ToolHelp.HEAPENTRY32 (size: 56)
  */
 export interface HEAPENTRY32 {
   /** usize */
-  dwSize: Deno.PointerValue;
+  dwSize: number | bigint;
   /** Windows.Win32.Foundation.HANDLE */
   hHandle: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  dwAddress: Deno.PointerValue;
+  dwAddress: number | bigint;
   /** usize */
-  dwBlockSize: Deno.PointerValue;
+  dwBlockSize: number | bigint;
   /** Windows.Win32.System.Diagnostics.ToolHelp.HEAPENTRY32_FLAGS */
   dwFlags: HEAPENTRY32_FLAGS;
   /** u32 */
@@ -137,7 +137,7 @@ export interface HEAPENTRY32 {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32HeapID: Deno.PointerValue;
+  th32HeapID: number | bigint;
 }
 
 export const sizeofHEAPENTRY32 = 56;
@@ -146,13 +146,13 @@ export function allocHEAPENTRY32(data?: Partial<HEAPENTRY32>): Uint8Array {
   const buf = new Uint8Array(sizeofHEAPENTRY32);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.dwSize !== undefined) view.setBigUint64(0, BigInt(data.dwSize), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, util.toBigInt(data.dwSize), true);
   // 0x08: pointer
-  if (data?.hHandle !== undefined) view.setBigUint64(8, data.hHandle === null ? 0n : BigInt(util.toPointer(data.hHandle)), true);
+  if (data?.hHandle !== undefined) view.setBigUint64(8, data.hHandle === null ? 0n : util.toBigInt(util.toPointer(data.hHandle)), true);
   // 0x10: usize
-  if (data?.dwAddress !== undefined) view.setBigUint64(16, BigInt(data.dwAddress), true);
+  if (data?.dwAddress !== undefined) view.setBigUint64(16, util.toBigInt(data.dwAddress), true);
   // 0x18: usize
-  if (data?.dwBlockSize !== undefined) view.setBigUint64(24, BigInt(data.dwBlockSize), true);
+  if (data?.dwBlockSize !== undefined) view.setBigUint64(24, util.toBigInt(data.dwBlockSize), true);
   // 0x20: u32
   if (data?.dwFlags !== undefined) view.setUint32(32, Number(data.dwFlags), true);
   // 0x24: u32
@@ -162,7 +162,7 @@ export function allocHEAPENTRY32(data?: Partial<HEAPENTRY32>): Uint8Array {
   // 0x2c: u32
   if (data?.th32ProcessID !== undefined) view.setUint32(44, Number(data.th32ProcessID), true);
   // 0x30: usize
-  if (data?.th32HeapID !== undefined) view.setBigUint64(48, BigInt(data.th32HeapID), true);
+  if (data?.th32HeapID !== undefined) view.setBigUint64(48, util.toBigInt(data.th32HeapID), true);
   return buf;
 }
 
@@ -177,8 +177,8 @@ export class HEAPENTRY32View {
   }
 
   // 0x00: usize
-  get dwSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get dwSize(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -188,13 +188,13 @@ export class HEAPENTRY32View {
   }
 
   // 0x10: usize
-  get dwAddress(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get dwAddress(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get dwBlockSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get dwBlockSize(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u32
@@ -218,28 +218,28 @@ export class HEAPENTRY32View {
   }
 
   // 0x30: usize
-  get th32HeapID(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get th32HeapID(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x00: usize
-  set dwSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set dwSize(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set hHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set dwAddress(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set dwAddress(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set dwBlockSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set dwBlockSize(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u32
@@ -263,8 +263,8 @@ export class HEAPENTRY32View {
   }
 
   // 0x30: usize
-  set th32HeapID(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set th32HeapID(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 }
 
@@ -279,7 +279,7 @@ export interface PROCESSENTRY32W {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32DefaultHeapID: Deno.PointerValue;
+  th32DefaultHeapID: number | bigint;
   /** u32 */
   th32ModuleID: number;
   /** u32 */
@@ -307,7 +307,7 @@ export function allocPROCESSENTRY32W(data?: Partial<PROCESSENTRY32W>): Uint8Arra
   if (data?.th32ProcessID !== undefined) view.setUint32(8, Number(data.th32ProcessID), true);
   // 0x0c: pad4
   // 0x10: usize
-  if (data?.th32DefaultHeapID !== undefined) view.setBigUint64(16, BigInt(data.th32DefaultHeapID), true);
+  if (data?.th32DefaultHeapID !== undefined) view.setBigUint64(16, util.toBigInt(data.th32DefaultHeapID), true);
   // 0x18: u32
   if (data?.th32ModuleID !== undefined) view.setUint32(24, Number(data.th32ModuleID), true);
   // 0x1c: u32
@@ -320,7 +320,7 @@ export function allocPROCESSENTRY32W(data?: Partial<PROCESSENTRY32W>): Uint8Arra
   if (data?.dwFlags !== undefined) view.setUint32(40, Number(data.dwFlags), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(util.toPointer(data.szExeFile)), true);
+  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : util.toBigInt(util.toPointer(data.szExeFile)), true);
   return buf;
 }
 
@@ -352,8 +352,8 @@ export class PROCESSENTRY32WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32DefaultHeapID(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get th32DefaultHeapID(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -407,8 +407,8 @@ export class PROCESSENTRY32WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32DefaultHeapID(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set th32DefaultHeapID(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -440,7 +440,7 @@ export class PROCESSENTRY32WView {
 
   // 0x30: pointer
   set szExeFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -455,7 +455,7 @@ export interface PROCESSENTRY32 {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32DefaultHeapID: Deno.PointerValue;
+  th32DefaultHeapID: number | bigint;
   /** u32 */
   th32ModuleID: number;
   /** u32 */
@@ -483,7 +483,7 @@ export function allocPROCESSENTRY32(data?: Partial<PROCESSENTRY32>): Uint8Array 
   if (data?.th32ProcessID !== undefined) view.setUint32(8, Number(data.th32ProcessID), true);
   // 0x0c: pad4
   // 0x10: usize
-  if (data?.th32DefaultHeapID !== undefined) view.setBigUint64(16, BigInt(data.th32DefaultHeapID), true);
+  if (data?.th32DefaultHeapID !== undefined) view.setBigUint64(16, util.toBigInt(data.th32DefaultHeapID), true);
   // 0x18: u32
   if (data?.th32ModuleID !== undefined) view.setUint32(24, Number(data.th32ModuleID), true);
   // 0x1c: u32
@@ -496,7 +496,7 @@ export function allocPROCESSENTRY32(data?: Partial<PROCESSENTRY32>): Uint8Array 
   if (data?.dwFlags !== undefined) view.setUint32(40, Number(data.dwFlags), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(util.toPointer(data.szExeFile)), true);
+  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : util.toBigInt(util.toPointer(data.szExeFile)), true);
   return buf;
 }
 
@@ -528,8 +528,8 @@ export class PROCESSENTRY32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32DefaultHeapID(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get th32DefaultHeapID(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -583,8 +583,8 @@ export class PROCESSENTRY32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32DefaultHeapID(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set th32DefaultHeapID(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -616,7 +616,7 @@ export class PROCESSENTRY32View {
 
   // 0x30: pointer
   set szExeFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -748,7 +748,7 @@ export class THREADENTRY32View {
   // 0x1c: pad4
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = number | bigint;
 
 /**
  * Windows.Win32.System.Diagnostics.ToolHelp.MODULEENTRY32W (size: 64)
@@ -793,16 +793,16 @@ export function allocMODULEENTRY32W(data?: Partial<MODULEENTRY32W>): Uint8Array 
   if (data?.ProccntUsage !== undefined) view.setUint32(16, Number(data.ProccntUsage), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(util.toPointer(data.modBaseAddr)), true);
+  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : util.toBigInt(util.toPointer(data.modBaseAddr)), true);
   // 0x20: u32
   if (data?.modBaseSize !== undefined) view.setUint32(32, Number(data.modBaseSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : util.toBigInt(util.toPointer(data.hModule)), true);
   // 0x30: pointer
-  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(util.toPointer(data.szModule)), true);
+  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : util.toBigInt(util.toPointer(data.szModule)), true);
   // 0x38: pointer
-  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(util.toPointer(data.szExePath)), true);
+  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : util.toBigInt(util.toPointer(data.szExePath)), true);
   return buf;
 }
 
@@ -903,7 +903,7 @@ export class MODULEENTRY32WView {
 
   // 0x18: pointer
   set modBaseAddr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -915,17 +915,17 @@ export class MODULEENTRY32WView {
 
   // 0x28: pointer
   set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set szModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set szExePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -972,16 +972,16 @@ export function allocMODULEENTRY32(data?: Partial<MODULEENTRY32>): Uint8Array {
   if (data?.ProccntUsage !== undefined) view.setUint32(16, Number(data.ProccntUsage), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(util.toPointer(data.modBaseAddr)), true);
+  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : util.toBigInt(util.toPointer(data.modBaseAddr)), true);
   // 0x20: u32
   if (data?.modBaseSize !== undefined) view.setUint32(32, Number(data.modBaseSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : util.toBigInt(util.toPointer(data.hModule)), true);
   // 0x30: pointer
-  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(util.toPointer(data.szModule)), true);
+  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : util.toBigInt(util.toPointer(data.szModule)), true);
   // 0x38: pointer
-  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(util.toPointer(data.szExePath)), true);
+  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : util.toBigInt(util.toPointer(data.szExePath)), true);
   return buf;
 }
 
@@ -1082,7 +1082,7 @@ export class MODULEENTRY32View {
 
   // 0x18: pointer
   set modBaseAddr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -1094,17 +1094,17 @@ export class MODULEENTRY32View {
 
   // 0x28: pointer
   set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set szModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set szExePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1207,9 +1207,9 @@ export function Heap32ListNext(
 export function Heap32First(
   lphe: Deno.PointerValue | Uint8Array | null /* ptr */,
   th32ProcessID: number /* u32 */,
-  th32HeapID: Deno.PointerValue /* usize */,
+  th32HeapID: number | bigint /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Heap32First(util.toPointer(lphe), th32ProcessID, th32HeapID));
+  return util.boolFromFfi(libKERNEL32_dll.Heap32First(util.toPointer(lphe), th32ProcessID, util.toBigInt(util.toPointer(th32HeapID))));
 }
 
 export function Heap32Next(
@@ -1222,10 +1222,10 @@ export function Toolhelp32ReadProcessMemory(
   th32ProcessID: number /* u32 */,
   lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cbRead: Deno.PointerValue /* usize */,
+  cbRead: number | bigint /* usize */,
   lpNumberOfBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), cbRead, util.toPointer(lpNumberOfBytesRead)));
+  return util.boolFromFfi(libKERNEL32_dll.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), util.toBigInt(util.toPointer(cbRead)), util.toPointer(lpNumberOfBytesRead)));
 }
 
 export function Process32FirstW(

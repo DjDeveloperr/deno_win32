@@ -25,7 +25,7 @@ export function allocIsolatedAppLauncherTelemetryParameters(data?: Partial<Isola
   if (data?.EnableForLaunch !== undefined) view.setInt32(0, Number(data.EnableForLaunch), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.CorrelationGUID !== undefined) view.setBigUint64(8, data.CorrelationGUID === null ? 0n : BigInt(util.toPointer(data.CorrelationGUID)), true);
+  if (data?.CorrelationGUID !== undefined) view.setBigUint64(8, data.CorrelationGUID === null ? 0n : util.toBigInt(util.toPointer(data.CorrelationGUID)), true);
   return buf;
 }
 
@@ -61,11 +61,11 @@ export class IsolatedAppLauncherTelemetryParametersView {
 
   // 0x08: pointer
   set CorrelationGUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PSID = Deno.PointerValue | Uint8Array | null;
 

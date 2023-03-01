@@ -3429,7 +3429,7 @@ export function allocVIRTUAL_STORAGE_TYPE(data?: Partial<VIRTUAL_STORAGE_TYPE>):
   if (data?.DeviceId !== undefined) view.setUint32(0, Number(data.DeviceId), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.VendorId !== undefined) view.setBigUint64(8, data.VendorId === null ? 0n : BigInt(util.toPointer(data.VendorId)), true);
+  if (data?.VendorId !== undefined) view.setBigUint64(8, data.VendorId === null ? 0n : util.toBigInt(util.toPointer(data.VendorId)), true);
   return buf;
 }
 
@@ -3465,7 +3465,7 @@ export class VIRTUAL_STORAGE_TYPEView {
 
   // 0x08: pointer
   set VendorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3474,9 +3474,9 @@ export class VIRTUAL_STORAGE_TYPEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3485,9 +3485,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -3502,23 +3502,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -3538,9 +3538,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -3568,12 +3568,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3596,7 +3596,7 @@ export function allocOPEN_VIRTUAL_DISK_PARAMETERS(data?: Partial<OPEN_VIRTUAL_DI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3632,7 +3632,7 @@ export class OPEN_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3655,7 +3655,7 @@ export function allocCREATE_VIRTUAL_DISK_PARAMETERS(data?: Partial<CREATE_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3691,7 +3691,7 @@ export class CREATE_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3714,7 +3714,7 @@ export function allocATTACH_VIRTUAL_DISK_PARAMETERS(data?: Partial<ATTACH_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3750,7 +3750,7 @@ export class ATTACH_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3776,7 +3776,7 @@ export function allocSTORAGE_DEPENDENCY_INFO_TYPE_1(data?: Partial<STORAGE_DEPEN
   // 0x04: u32
   if (data?.ProviderSpecificFlags !== undefined) view.setUint32(4, Number(data.ProviderSpecificFlags), true);
   // 0x08: pointer
-  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(util.toPointer(data.VirtualStorageType)), true);
+  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : util.toBigInt(util.toPointer(data.VirtualStorageType)), true);
   return buf;
 }
 
@@ -3818,7 +3818,7 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_1View {
 
   // 0x08: pointer
   set VirtualStorageType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3856,29 +3856,29 @@ export function allocSTORAGE_DEPENDENCY_INFO_TYPE_2(data?: Partial<STORAGE_DEPEN
   // 0x04: u32
   if (data?.ProviderSpecificFlags !== undefined) view.setUint32(4, Number(data.ProviderSpecificFlags), true);
   // 0x08: pointer
-  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(util.toPointer(data.VirtualStorageType)), true);
+  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : util.toBigInt(util.toPointer(data.VirtualStorageType)), true);
   // 0x10: u32
   if (data?.AncestorLevel !== undefined) view.setUint32(16, Number(data.AncestorLevel), true);
   // 0x14: pad4
   // 0x18: buffer
   if (data?.DependencyDeviceName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.DependencyDeviceName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.HostVolumeName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.HostVolumeName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.DependentVolumeName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.DependentVolumeName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: buffer
   if (data?.DependentVolumeRelativePath !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.DependentVolumeRelativePath);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   return buf;
 }
@@ -3952,7 +3952,7 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
 
   // 0x08: pointer
   set VirtualStorageType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3965,25 +3965,25 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
   // 0x18: buffer
   set DependencyDeviceName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set HostVolumeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set DependentVolumeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: buffer
   set DependentVolumeRelativePath(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 }
 
@@ -4009,7 +4009,7 @@ export function allocSTORAGE_DEPENDENCY_INFO(data?: Partial<STORAGE_DEPENDENCY_I
   // 0x04: u32
   if (data?.NumberEntries !== undefined) view.setUint32(4, Number(data.NumberEntries), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4051,7 +4051,7 @@ export class STORAGE_DEPENDENCY_INFOView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4074,7 +4074,7 @@ export function allocGET_VIRTUAL_DISK_INFO(data?: Partial<GET_VIRTUAL_DISK_INFO>
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4110,7 +4110,7 @@ export class GET_VIRTUAL_DISK_INFOView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4133,7 +4133,7 @@ export function allocSET_VIRTUAL_DISK_INFO(data?: Partial<SET_VIRTUAL_DISK_INFO>
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4169,7 +4169,7 @@ export class SET_VIRTUAL_DISK_INFOView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4180,9 +4180,9 @@ export interface VIRTUAL_DISK_PROGRESS {
   /** u32 */
   OperationStatus: number;
   /** u64 */
-  CurrentValue: Deno.PointerValue;
+  CurrentValue: number | bigint;
   /** u64 */
-  CompletionValue: Deno.PointerValue;
+  CompletionValue: number | bigint;
 }
 
 export const sizeofVIRTUAL_DISK_PROGRESS = 24;
@@ -4194,9 +4194,9 @@ export function allocVIRTUAL_DISK_PROGRESS(data?: Partial<VIRTUAL_DISK_PROGRESS>
   if (data?.OperationStatus !== undefined) view.setUint32(0, Number(data.OperationStatus), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.CurrentValue !== undefined) view.setBigUint64(8, BigInt(data.CurrentValue), true);
+  if (data?.CurrentValue !== undefined) view.setBigUint64(8, util.toBigInt(data.CurrentValue), true);
   // 0x10: u64
-  if (data?.CompletionValue !== undefined) view.setBigUint64(16, BigInt(data.CompletionValue), true);
+  if (data?.CompletionValue !== undefined) view.setBigUint64(16, util.toBigInt(data.CompletionValue), true);
   return buf;
 }
 
@@ -4218,13 +4218,13 @@ export class VIRTUAL_DISK_PROGRESSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get CurrentValue(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get CurrentValue(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get CompletionValue(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get CompletionValue(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: u32
@@ -4235,13 +4235,13 @@ export class VIRTUAL_DISK_PROGRESSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set CurrentValue(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set CurrentValue(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set CompletionValue(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set CompletionValue(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -4264,7 +4264,7 @@ export function allocCOMPACT_VIRTUAL_DISK_PARAMETERS(data?: Partial<COMPACT_VIRT
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4300,7 +4300,7 @@ export class COMPACT_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4323,7 +4323,7 @@ export function allocMERGE_VIRTUAL_DISK_PARAMETERS(data?: Partial<MERGE_VIRTUAL_
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4359,7 +4359,7 @@ export class MERGE_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4382,7 +4382,7 @@ export function allocEXPAND_VIRTUAL_DISK_PARAMETERS(data?: Partial<EXPAND_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4418,7 +4418,7 @@ export class EXPAND_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4441,7 +4441,7 @@ export function allocRESIZE_VIRTUAL_DISK_PARAMETERS(data?: Partial<RESIZE_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4477,7 +4477,7 @@ export class RESIZE_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4500,7 +4500,7 @@ export function allocMIRROR_VIRTUAL_DISK_PARAMETERS(data?: Partial<MIRROR_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4536,7 +4536,7 @@ export class MIRROR_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4545,11 +4545,11 @@ export class MIRROR_VIRTUAL_DISK_PARAMETERSView {
  */
 export interface QUERY_CHANGES_VIRTUAL_DISK_RANGE {
   /** u64 */
-  ByteOffset: Deno.PointerValue;
+  ByteOffset: number | bigint;
   /** u64 */
-  ByteLength: Deno.PointerValue;
+  ByteLength: number | bigint;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: number | bigint;
 }
 
 export const sizeofQUERY_CHANGES_VIRTUAL_DISK_RANGE = 24;
@@ -4558,11 +4558,11 @@ export function allocQUERY_CHANGES_VIRTUAL_DISK_RANGE(data?: Partial<QUERY_CHANG
   const buf = new Uint8Array(sizeofQUERY_CHANGES_VIRTUAL_DISK_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.ByteOffset !== undefined) view.setBigUint64(0, BigInt(data.ByteOffset), true);
+  if (data?.ByteOffset !== undefined) view.setBigUint64(0, util.toBigInt(data.ByteOffset), true);
   // 0x08: u64
-  if (data?.ByteLength !== undefined) view.setBigUint64(8, BigInt(data.ByteLength), true);
+  if (data?.ByteLength !== undefined) view.setBigUint64(8, util.toBigInt(data.ByteLength), true);
   // 0x10: u64
-  if (data?.Reserved !== undefined) view.setBigUint64(16, BigInt(data.Reserved), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(16, util.toBigInt(data.Reserved), true);
   return buf;
 }
 
@@ -4577,33 +4577,33 @@ export class QUERY_CHANGES_VIRTUAL_DISK_RANGEView {
   }
 
   // 0x00: u64
-  get ByteOffset(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get ByteOffset(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get ByteLength(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ByteLength(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get Reserved(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Reserved(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: u64
-  set ByteOffset(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set ByteOffset(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set ByteLength(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ByteLength(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set Reserved(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Reserved(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -4626,7 +4626,7 @@ export function allocTAKE_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<TAKE_SNAPSHO
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4662,7 +4662,7 @@ export class TAKE_SNAPSHOT_VHDSET_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4685,7 +4685,7 @@ export function allocDELETE_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<DELETE_SNA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4721,7 +4721,7 @@ export class DELETE_SNAPSHOT_VHDSET_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4744,7 +4744,7 @@ export function allocMODIFY_VHDSET_PARAMETERS(data?: Partial<MODIFY_VHDSET_PARAM
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4780,7 +4780,7 @@ export class MODIFY_VHDSET_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4803,7 +4803,7 @@ export function allocAPPLY_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<APPLY_SNAPS
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4839,7 +4839,7 @@ export class APPLY_SNAPSHOT_VHDSET_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4862,7 +4862,7 @@ export function allocRAW_SCSI_VIRTUAL_DISK_PARAMETERS(data?: Partial<RAW_SCSI_VI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4898,7 +4898,7 @@ export class RAW_SCSI_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4921,7 +4921,7 @@ export function allocRAW_SCSI_VIRTUAL_DISK_RESPONSE(data?: Partial<RAW_SCSI_VIRT
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4957,7 +4957,7 @@ export class RAW_SCSI_VIRTUAL_DISK_RESPONSEView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4980,7 +4980,7 @@ export function allocFORK_VIRTUAL_DISK_PARAMETERS(data?: Partial<FORK_VIRTUAL_DI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -5016,13 +5016,13 @@ export class FORK_VIRTUAL_DISK_PARAMETERSView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 
@@ -5336,14 +5336,14 @@ export function AddVirtualDiskParent(
 export function QueryChangesVirtualDisk(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   ChangeTrackingId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ByteOffset: Deno.PointerValue /* u64 */,
-  ByteLength: Deno.PointerValue /* u64 */,
+  ByteOffset: number | bigint /* u64 */,
+  ByteLength: number | bigint /* u64 */,
   Flags: QUERY_CHANGES_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.QUERY_CHANGES_VIRTUAL_DISK_FLAG */,
   Ranges: Deno.PointerValue | Uint8Array | null /* ptr */,
   RangeCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   ProcessedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.QueryChangesVirtualDisk(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ChangeTrackingId), ByteOffset, ByteLength, Flags, util.toPointer(Ranges), util.toPointer(RangeCount), util.toPointer(ProcessedLength));
+  return libVirtDisk_dll.QueryChangesVirtualDisk(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ChangeTrackingId), util.toBigInt(util.toPointer(ByteOffset)), util.toBigInt(util.toPointer(ByteLength)), Flags, util.toPointer(Ranges), util.toPointer(RangeCount), util.toPointer(ProcessedLength));
 }
 
 export function TakeSnapshotVhdSet(

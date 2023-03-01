@@ -42,13 +42,13 @@ export function allocCOMEVENTSYSCHANGEINFO(data?: Partial<COMEVENTSYSCHANGEINFO>
   // 0x04: i32
   if (data?.changeType !== undefined) view.setInt32(4, Number(data.changeType), true);
   // 0x08: pointer
-  if (data?.objectId !== undefined) view.setBigUint64(8, data.objectId === null ? 0n : BigInt(util.toPointer(data.objectId)), true);
+  if (data?.objectId !== undefined) view.setBigUint64(8, data.objectId === null ? 0n : util.toBigInt(util.toPointer(data.objectId)), true);
   // 0x10: pointer
-  if (data?.partitionId !== undefined) view.setBigUint64(16, data.partitionId === null ? 0n : BigInt(util.toPointer(data.partitionId)), true);
+  if (data?.partitionId !== undefined) view.setBigUint64(16, data.partitionId === null ? 0n : util.toBigInt(util.toPointer(data.partitionId)), true);
   // 0x18: pointer
-  if (data?.applicationId !== undefined) view.setBigUint64(24, data.applicationId === null ? 0n : BigInt(util.toPointer(data.applicationId)), true);
+  if (data?.applicationId !== undefined) view.setBigUint64(24, data.applicationId === null ? 0n : util.toBigInt(util.toPointer(data.applicationId)), true);
   // 0x20: pointer
-  if (data?.reserved !== undefined) view.setBigUint64(32, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
+  if (data?.reserved !== undefined) view.setBigUint64(32, data.reserved === null ? 0n : util.toBigInt(util.toPointer(data.reserved)), true);
   return buf;
 }
 
@@ -108,22 +108,22 @@ export class COMEVENTSYSCHANGEINFOView {
 
   // 0x08: pointer
   set objectId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set partitionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set applicationId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

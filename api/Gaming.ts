@@ -117,7 +117,7 @@ export class GAMING_DEVICE_MODEL_INFORMATIONView {
 
 export type HRESULT = number;
 
-export type HSTRING = Deno.PointerValue;
+export type HSTRING = number | bigint;
 
 export type BOOL = number;
 
@@ -316,15 +316,15 @@ export function ShowGameInviteUI(
 export function ShowPlayerPickerUI(
   promptDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
   xuids: Deno.PointerValue | Uint8Array | null /* ptr */,
-  xuidsCount: Deno.PointerValue /* usize */,
+  xuidsCount: number | bigint /* usize */,
   preSelectedXuids: Deno.PointerValue | Uint8Array | null /* ptr */,
-  preSelectedXuidsCount: Deno.PointerValue /* usize */,
-  minSelectionCount: Deno.PointerValue /* usize */,
-  maxSelectionCount: Deno.PointerValue /* usize */,
+  preSelectedXuidsCount: number | bigint /* usize */,
+  minSelectionCount: number | bigint /* usize */,
+  maxSelectionCount: number | bigint /* usize */,
   completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowPlayerPickerUI(util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context)));
+  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowPlayerPickerUI(util.toPointer(promptDisplayText), util.toPointer(xuids), util.toBigInt(util.toPointer(xuidsCount)), util.toPointer(preSelectedXuids), util.toBigInt(util.toPointer(preSelectedXuidsCount)), util.toBigInt(util.toPointer(minSelectionCount)), util.toBigInt(util.toPointer(maxSelectionCount)), util.toPointer(completionRoutine), util.toPointer(context)));
 }
 
 export function ShowProfileCardUI(
@@ -397,15 +397,15 @@ export function ShowPlayerPickerUIForUser(
   user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
   promptDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
   xuids: Deno.PointerValue | Uint8Array | null /* ptr */,
-  xuidsCount: Deno.PointerValue /* usize */,
+  xuidsCount: number | bigint /* usize */,
   preSelectedXuids: Deno.PointerValue | Uint8Array | null /* ptr */,
-  preSelectedXuidsCount: Deno.PointerValue /* usize */,
-  minSelectionCount: Deno.PointerValue /* usize */,
-  maxSelectionCount: Deno.PointerValue /* usize */,
+  preSelectedXuidsCount: number | bigint /* usize */,
+  minSelectionCount: number | bigint /* usize */,
+  maxSelectionCount: number | bigint /* usize */,
   completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowPlayerPickerUIForUser(util.toPointer(user), util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context)));
+  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowPlayerPickerUIForUser(util.toPointer(user), util.toPointer(promptDisplayText), util.toPointer(xuids), util.toBigInt(util.toPointer(xuidsCount)), util.toPointer(preSelectedXuids), util.toBigInt(util.toPointer(preSelectedXuidsCount)), util.toBigInt(util.toPointer(minSelectionCount)), util.toBigInt(util.toPointer(maxSelectionCount)), util.toPointer(completionRoutine), util.toPointer(context)));
 }
 
 export function ShowProfileCardUIForUser(

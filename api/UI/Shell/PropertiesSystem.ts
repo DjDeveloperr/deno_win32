@@ -315,7 +315,7 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -347,7 +347,7 @@ export class PROPERTYKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -399,16 +399,16 @@ export function allocPROPPRG(data?: Partial<PROPPRG>): Uint8Array {
   if (data?.flPrgInit !== undefined) view.setUint16(2, Number(data.flPrgInit), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.achTitle !== undefined) view.setBigUint64(8, data.achTitle === null ? 0n : BigInt(util.toPointer(data.achTitle)), true);
+  if (data?.achTitle !== undefined) view.setBigUint64(8, data.achTitle === null ? 0n : util.toBigInt(util.toPointer(data.achTitle)), true);
   // 0x10: pointer
-  if (data?.achCmdLine !== undefined) view.setBigUint64(16, data.achCmdLine === null ? 0n : BigInt(util.toPointer(data.achCmdLine)), true);
+  if (data?.achCmdLine !== undefined) view.setBigUint64(16, data.achCmdLine === null ? 0n : util.toBigInt(util.toPointer(data.achCmdLine)), true);
   // 0x18: pointer
-  if (data?.achWorkDir !== undefined) view.setBigUint64(24, data.achWorkDir === null ? 0n : BigInt(util.toPointer(data.achWorkDir)), true);
+  if (data?.achWorkDir !== undefined) view.setBigUint64(24, data.achWorkDir === null ? 0n : util.toBigInt(util.toPointer(data.achWorkDir)), true);
   // 0x20: u16
   if (data?.wHotKey !== undefined) view.setUint16(32, Number(data.wHotKey), true);
   // 0x22: pad6
   // 0x28: pointer
-  if (data?.achIconFile !== undefined) view.setBigUint64(40, data.achIconFile === null ? 0n : BigInt(util.toPointer(data.achIconFile)), true);
+  if (data?.achIconFile !== undefined) view.setBigUint64(40, data.achIconFile === null ? 0n : util.toBigInt(util.toPointer(data.achIconFile)), true);
   // 0x30: u16
   if (data?.wIconIndex !== undefined) view.setUint16(48, Number(data.wIconIndex), true);
   // 0x32: u32
@@ -417,9 +417,9 @@ export function allocPROPPRG(data?: Partial<PROPPRG>): Uint8Array {
   if (data?.dwRealModeFlags !== undefined) view.setUint32(54, Number(data.dwRealModeFlags), true);
   // 0x3a: pad6
   // 0x40: pointer
-  if (data?.achOtherFile !== undefined) view.setBigUint64(64, data.achOtherFile === null ? 0n : BigInt(util.toPointer(data.achOtherFile)), true);
+  if (data?.achOtherFile !== undefined) view.setBigUint64(64, data.achOtherFile === null ? 0n : util.toBigInt(util.toPointer(data.achOtherFile)), true);
   // 0x48: pointer
-  if (data?.achPIFFile !== undefined) view.setBigUint64(72, data.achPIFFile === null ? 0n : BigInt(util.toPointer(data.achPIFFile)), true);
+  if (data?.achPIFFile !== undefined) view.setBigUint64(72, data.achPIFFile === null ? 0n : util.toBigInt(util.toPointer(data.achPIFFile)), true);
   return buf;
 }
 
@@ -519,17 +519,17 @@ export class PROPPRGView {
 
   // 0x08: pointer
   set achTitle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set achCmdLine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set achWorkDir(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u16
@@ -541,7 +541,7 @@ export class PROPPRGView {
 
   // 0x28: pointer
   set achIconFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u16
@@ -563,12 +563,12 @@ export class PROPPRGView {
 
   // 0x40: pointer
   set achOtherFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set achPIFFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -580,13 +580,13 @@ export type BOOL = number;
 
 export type BSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = number | bigint;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 // Native Libraries
 
@@ -1998,9 +1998,9 @@ export function PSPropertyBag_ReadULONGLONG(
 export function PSPropertyBag_WriteULONGLONG(
   propBag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
   propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  value: Deno.PointerValue /* u64 */,
+  value: number | bigint /* u64 */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value));
+  return util.pointerFromFfi(libPROPSYS_dll.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), util.toBigInt(util.toPointer(value))));
 }
 
 export function PSPropertyBag_ReadUnknown(
@@ -2236,16 +2236,16 @@ export function PropVariantToUInt32WithDefault(
 
 export function PropVariantToInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  llDefault: Deno.PointerValue /* i64 */,
-): Deno.PointerValue /* i64 */ {
-  return libPROPSYS_dll.PropVariantToInt64WithDefault(util.toPointer(propvarIn), llDefault);
+  llDefault: number | bigint /* i64 */,
+): number | bigint /* i64 */ {
+  return libPROPSYS_dll.PropVariantToInt64WithDefault(util.toPointer(propvarIn), util.toBigInt(util.toPointer(llDefault)));
 }
 
 export function PropVariantToUInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ullDefault: Deno.PointerValue /* u64 */,
-): Deno.PointerValue /* u64 */ {
-  return libPROPSYS_dll.PropVariantToUInt64WithDefault(util.toPointer(propvarIn), ullDefault);
+  ullDefault: number | bigint /* u64 */,
+): number | bigint /* u64 */ {
+  return libPROPSYS_dll.PropVariantToUInt64WithDefault(util.toPointer(propvarIn), util.toBigInt(util.toPointer(ullDefault)));
 }
 
 export function PropVariantToDoubleWithDefault(
@@ -2828,16 +2828,16 @@ export function VariantToUInt32WithDefault(
 
 export function VariantToInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  llDefault: Deno.PointerValue /* i64 */,
-): Deno.PointerValue /* i64 */ {
-  return libPROPSYS_dll.VariantToInt64WithDefault(util.toPointer(varIn), llDefault);
+  llDefault: number | bigint /* i64 */,
+): number | bigint /* i64 */ {
+  return libPROPSYS_dll.VariantToInt64WithDefault(util.toPointer(varIn), util.toBigInt(util.toPointer(llDefault)));
 }
 
 export function VariantToUInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ullDefault: Deno.PointerValue /* u64 */,
-): Deno.PointerValue /* u64 */ {
-  return libPROPSYS_dll.VariantToUInt64WithDefault(util.toPointer(varIn), ullDefault);
+  ullDefault: number | bigint /* u64 */,
+): number | bigint /* u64 */ {
+  return libPROPSYS_dll.VariantToUInt64WithDefault(util.toPointer(varIn), util.toBigInt(util.toPointer(ullDefault)));
 }
 
 export function VariantToDoubleWithDefault(

@@ -20,7 +20,7 @@ export interface HARDWARE_COUNTER_DATA {
   /** u32 */
   Reserved: number;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: number | bigint;
 }
 
 export const sizeofHARDWARE_COUNTER_DATA = 16;
@@ -33,7 +33,7 @@ export function allocHARDWARE_COUNTER_DATA(data?: Partial<HARDWARE_COUNTER_DATA>
   // 0x04: u32
   if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
   // 0x08: u64
-  if (data?.Value !== undefined) view.setBigUint64(8, BigInt(data.Value), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, util.toBigInt(data.Value), true);
   return buf;
 }
 
@@ -58,8 +58,8 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Value(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: i32
@@ -73,8 +73,8 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Value(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -91,9 +91,9 @@ export interface PERFORMANCE_DATA {
   /** u32 */
   ContextSwitchCount: number;
   /** u64 */
-  WaitReasonBitMap: Deno.PointerValue;
+  WaitReasonBitMap: number | bigint;
   /** u64 */
-  CycleTime: Deno.PointerValue;
+  CycleTime: number | bigint;
   /** u32 */
   RetryCount: number;
   /** u32 */
@@ -116,15 +116,15 @@ export function allocPERFORMANCE_DATA(data?: Partial<PERFORMANCE_DATA>): Uint8Ar
   // 0x04: u32
   if (data?.ContextSwitchCount !== undefined) view.setUint32(4, Number(data.ContextSwitchCount), true);
   // 0x08: u64
-  if (data?.WaitReasonBitMap !== undefined) view.setBigUint64(8, BigInt(data.WaitReasonBitMap), true);
+  if (data?.WaitReasonBitMap !== undefined) view.setBigUint64(8, util.toBigInt(data.WaitReasonBitMap), true);
   // 0x10: u64
-  if (data?.CycleTime !== undefined) view.setBigUint64(16, BigInt(data.CycleTime), true);
+  if (data?.CycleTime !== undefined) view.setBigUint64(16, util.toBigInt(data.CycleTime), true);
   // 0x18: u32
   if (data?.RetryCount !== undefined) view.setUint32(24, Number(data.RetryCount), true);
   // 0x1c: u32
   if (data?.Reserved !== undefined) view.setUint32(28, Number(data.Reserved), true);
   // 0x20: pointer
-  if (data?.HwCounters !== undefined) view.setBigUint64(32, data.HwCounters === null ? 0n : BigInt(util.toPointer(data.HwCounters)), true);
+  if (data?.HwCounters !== undefined) view.setBigUint64(32, data.HwCounters === null ? 0n : util.toBigInt(util.toPointer(data.HwCounters)), true);
   return buf;
 }
 
@@ -159,13 +159,13 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  get WaitReasonBitMap(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get WaitReasonBitMap(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get CycleTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get CycleTime(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -205,13 +205,13 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  set WaitReasonBitMap(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set WaitReasonBitMap(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set CycleTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set CycleTime(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -226,11 +226,11 @@ export class PERFORMANCE_DATAView {
 
   // 0x20: pointer
   set HwCounters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 
@@ -260,10 +260,10 @@ try {
 export function EnableThreadProfiling(
   ThreadHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  HardwareCounters: Deno.PointerValue /* u64 */,
+  HardwareCounters: number | bigint /* u64 */,
   PerformanceDataHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, HardwareCounters, util.toPointer(PerformanceDataHandle));
+  return libKERNEL32_dll.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, util.toBigInt(util.toPointer(HardwareCounters)), util.toPointer(PerformanceDataHandle));
 }
 
 export function DisableThreadProfiling(

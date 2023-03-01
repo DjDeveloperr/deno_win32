@@ -95,22 +95,22 @@ export function allocWLX_SC_NOTIFICATION_INFO(data?: Partial<WLX_SC_NOTIFICATION
   // 0x00: buffer
   if (data?.pszCard !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszCard);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pszReader !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszReader);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszContainer !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszContainer);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszCryptoProvider !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszCryptoProvider);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   return buf;
 }
@@ -152,25 +152,25 @@ export class WLX_SC_NOTIFICATION_INFOView {
   // 0x00: buffer
   set pszCard(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pszReader(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszContainer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszCryptoProvider(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 }
 
@@ -195,7 +195,7 @@ export function allocWLX_PROFILE_V1_0(data?: Partial<WLX_PROFILE_V1_0>): Uint8Ar
   // 0x08: buffer
   if (data?.pszProfile !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszProfile);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -233,7 +233,7 @@ export class WLX_PROFILE_V1_0View {
   // 0x08: buffer
   set pszProfile(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -266,27 +266,27 @@ export function allocWLX_PROFILE_V2_0(data?: Partial<WLX_PROFILE_V2_0>): Uint8Ar
   // 0x08: buffer
   if (data?.pszProfile !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszProfile);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszPolicy !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszPolicy);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszNetworkDefaultUserProfile !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszNetworkDefaultUserProfile);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.pszServerName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pszServerName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.pszEnvironment !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pszEnvironment);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   return buf;
 }
@@ -348,31 +348,31 @@ export class WLX_PROFILE_V2_0View {
   // 0x08: buffer
   set pszProfile(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszPolicy(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszNetworkDefaultUserProfile(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set pszServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set pszEnvironment(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 }
 
@@ -398,22 +398,22 @@ export function allocWLX_MPR_NOTIFY_INFO(data?: Partial<WLX_MPR_NOTIFY_INFO>): U
   // 0x00: buffer
   if (data?.pszUserName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszUserName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pszDomain !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszDomain);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszPassword !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszPassword);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszOldPassword !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszOldPassword);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   return buf;
 }
@@ -455,25 +455,25 @@ export class WLX_MPR_NOTIFY_INFOView {
   // 0x00: buffer
   set pszUserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pszDomain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszPassword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszOldPassword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 }
 
@@ -495,11 +495,11 @@ export function allocWLX_TERMINAL_SERVICES_DATA(data?: Partial<WLX_TERMINAL_SERV
   const buf = new Uint8Array(sizeofWLX_TERMINAL_SERVICES_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProfilePath !== undefined) view.setBigUint64(0, data.ProfilePath === null ? 0n : BigInt(util.toPointer(data.ProfilePath)), true);
+  if (data?.ProfilePath !== undefined) view.setBigUint64(0, data.ProfilePath === null ? 0n : util.toBigInt(util.toPointer(data.ProfilePath)), true);
   // 0x08: pointer
-  if (data?.HomeDir !== undefined) view.setBigUint64(8, data.HomeDir === null ? 0n : BigInt(util.toPointer(data.HomeDir)), true);
+  if (data?.HomeDir !== undefined) view.setBigUint64(8, data.HomeDir === null ? 0n : util.toBigInt(util.toPointer(data.HomeDir)), true);
   // 0x10: pointer
-  if (data?.HomeDirDrive !== undefined) view.setBigUint64(16, data.HomeDirDrive === null ? 0n : BigInt(util.toPointer(data.HomeDirDrive)), true);
+  if (data?.HomeDirDrive !== undefined) view.setBigUint64(16, data.HomeDirDrive === null ? 0n : util.toBigInt(util.toPointer(data.HomeDirDrive)), true);
   return buf;
 }
 
@@ -533,17 +533,17 @@ export class WLX_TERMINAL_SERVICES_DATAView {
 
   // 0x00: pointer
   set ProfilePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set HomeDir(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set HomeDirDrive(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -576,17 +576,17 @@ export function allocWLX_CLIENT_CREDENTIALS_INFO_V1_0(data?: Partial<WLX_CLIENT_
   // 0x08: buffer
   if (data?.pszUserName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszUserName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszDomain !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszDomain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszPassword !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszPassword);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: i32
   if (data?.fPromptForPassword !== undefined) view.setInt32(32, Number(data.fPromptForPassword), true);
@@ -646,19 +646,19 @@ export class WLX_CLIENT_CREDENTIALS_INFO_V1_0View {
   // 0x08: buffer
   set pszUserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszDomain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszPassword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: i32
@@ -698,17 +698,17 @@ export function allocWLX_CLIENT_CREDENTIALS_INFO_V2_0(data?: Partial<WLX_CLIENT_
   // 0x08: buffer
   if (data?.pszUserName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszUserName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pszDomain !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszDomain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszPassword !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszPassword);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: i32
   if (data?.fPromptForPassword !== undefined) view.setInt32(32, Number(data.fPromptForPassword), true);
@@ -772,19 +772,19 @@ export class WLX_CLIENT_CREDENTIALS_INFO_V2_0View {
   // 0x08: buffer
   set pszUserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pszDomain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszPassword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: i32
@@ -798,7 +798,7 @@ export class WLX_CLIENT_CREDENTIALS_INFO_V2_0View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.Foundation.LUID (size: 8)
@@ -858,9 +858,9 @@ export class LUIDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -869,9 +869,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -886,23 +886,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -927,7 +927,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -965,7 +965,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -978,7 +978,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -987,11 +987,11 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: i64
-  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigInt64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -1018,23 +1018,23 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 }
 
@@ -1043,15 +1043,15 @@ export class LARGE_INTEGERView {
  */
 export interface QUOTA_LIMITS {
   /** usize */
-  PagedPoolLimit: Deno.PointerValue;
+  PagedPoolLimit: number | bigint;
   /** usize */
-  NonPagedPoolLimit: Deno.PointerValue;
+  NonPagedPoolLimit: number | bigint;
   /** usize */
-  MinimumWorkingSetSize: Deno.PointerValue;
+  MinimumWorkingSetSize: number | bigint;
   /** usize */
-  MaximumWorkingSetSize: Deno.PointerValue;
+  MaximumWorkingSetSize: number | bigint;
   /** usize */
-  PagefileLimit: Deno.PointerValue;
+  PagefileLimit: number | bigint;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   TimeLimit: Uint8Array | Deno.PointerValue | null;
 }
@@ -1062,17 +1062,17 @@ export function allocQUOTA_LIMITS(data?: Partial<QUOTA_LIMITS>): Uint8Array {
   const buf = new Uint8Array(sizeofQUOTA_LIMITS);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.PagedPoolLimit !== undefined) view.setBigUint64(0, BigInt(data.PagedPoolLimit), true);
+  if (data?.PagedPoolLimit !== undefined) view.setBigUint64(0, util.toBigInt(data.PagedPoolLimit), true);
   // 0x08: usize
-  if (data?.NonPagedPoolLimit !== undefined) view.setBigUint64(8, BigInt(data.NonPagedPoolLimit), true);
+  if (data?.NonPagedPoolLimit !== undefined) view.setBigUint64(8, util.toBigInt(data.NonPagedPoolLimit), true);
   // 0x10: usize
-  if (data?.MinimumWorkingSetSize !== undefined) view.setBigUint64(16, BigInt(data.MinimumWorkingSetSize), true);
+  if (data?.MinimumWorkingSetSize !== undefined) view.setBigUint64(16, util.toBigInt(data.MinimumWorkingSetSize), true);
   // 0x18: usize
-  if (data?.MaximumWorkingSetSize !== undefined) view.setBigUint64(24, BigInt(data.MaximumWorkingSetSize), true);
+  if (data?.MaximumWorkingSetSize !== undefined) view.setBigUint64(24, util.toBigInt(data.MaximumWorkingSetSize), true);
   // 0x20: usize
-  if (data?.PagefileLimit !== undefined) view.setBigUint64(32, BigInt(data.PagefileLimit), true);
+  if (data?.PagefileLimit !== undefined) view.setBigUint64(32, util.toBigInt(data.PagefileLimit), true);
   // 0x28: pointer
-  if (data?.TimeLimit !== undefined) view.setBigUint64(40, data.TimeLimit === null ? 0n : BigInt(util.toPointer(data.TimeLimit)), true);
+  if (data?.TimeLimit !== undefined) view.setBigUint64(40, data.TimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.TimeLimit)), true);
   return buf;
 }
 
@@ -1087,28 +1087,28 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  get PagedPoolLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get PagedPoolLimit(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: usize
-  get NonPagedPoolLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get NonPagedPoolLimit(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get MinimumWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get MinimumWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get MaximumWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get MaximumWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get PagefileLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get PagefileLimit(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: pointer
@@ -1118,33 +1118,33 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  set PagedPoolLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set PagedPoolLimit(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: usize
-  set NonPagedPoolLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set NonPagedPoolLimit(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set MinimumWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set MinimumWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set MaximumWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set MaximumWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set PagefileLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set PagefileLimit(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: pointer
   set TimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1217,23 +1217,23 @@ export function allocWLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0(data?: Partial<WLX_
   if (data?.dwType !== undefined) view.setUint32(0, Number(data.dwType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.UserToken !== undefined) view.setBigUint64(8, data.UserToken === null ? 0n : BigInt(util.toPointer(data.UserToken)), true);
+  if (data?.UserToken !== undefined) view.setBigUint64(8, data.UserToken === null ? 0n : util.toBigInt(util.toPointer(data.UserToken)), true);
   // 0x10: pointer
-  if (data?.LogonId !== undefined) view.setBigUint64(16, data.LogonId === null ? 0n : BigInt(util.toPointer(data.LogonId)), true);
+  if (data?.LogonId !== undefined) view.setBigUint64(16, data.LogonId === null ? 0n : util.toBigInt(util.toPointer(data.LogonId)), true);
   // 0x18: pointer
-  if (data?.Quotas !== undefined) view.setBigUint64(24, data.Quotas === null ? 0n : BigInt(util.toPointer(data.Quotas)), true);
+  if (data?.Quotas !== undefined) view.setBigUint64(24, data.Quotas === null ? 0n : util.toBigInt(util.toPointer(data.Quotas)), true);
   // 0x20: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.Domain !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.Domain);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: pointer
-  if (data?.LogonTime !== undefined) view.setBigUint64(48, data.LogonTime === null ? 0n : BigInt(util.toPointer(data.LogonTime)), true);
+  if (data?.LogonTime !== undefined) view.setBigUint64(48, data.LogonTime === null ? 0n : util.toBigInt(util.toPointer(data.LogonTime)), true);
   // 0x38: i32
   if (data?.SmartCardLogon !== undefined) view.setInt32(56, Number(data.SmartCardLogon), true);
   // 0x3c: u32
@@ -1245,53 +1245,53 @@ export function allocWLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0(data?: Partial<WLX_
   // 0x46: u16
   if (data?.BadPasswordCount !== undefined) view.setUint16(70, Number(data.BadPasswordCount), true);
   // 0x48: pointer
-  if (data?.ProfileLogonTime !== undefined) view.setBigUint64(72, data.ProfileLogonTime === null ? 0n : BigInt(util.toPointer(data.ProfileLogonTime)), true);
+  if (data?.ProfileLogonTime !== undefined) view.setBigUint64(72, data.ProfileLogonTime === null ? 0n : util.toBigInt(util.toPointer(data.ProfileLogonTime)), true);
   // 0x50: pointer
-  if (data?.LogoffTime !== undefined) view.setBigUint64(80, data.LogoffTime === null ? 0n : BigInt(util.toPointer(data.LogoffTime)), true);
+  if (data?.LogoffTime !== undefined) view.setBigUint64(80, data.LogoffTime === null ? 0n : util.toBigInt(util.toPointer(data.LogoffTime)), true);
   // 0x58: pointer
-  if (data?.KickOffTime !== undefined) view.setBigUint64(88, data.KickOffTime === null ? 0n : BigInt(util.toPointer(data.KickOffTime)), true);
+  if (data?.KickOffTime !== undefined) view.setBigUint64(88, data.KickOffTime === null ? 0n : util.toBigInt(util.toPointer(data.KickOffTime)), true);
   // 0x60: pointer
-  if (data?.PasswordLastSet !== undefined) view.setBigUint64(96, data.PasswordLastSet === null ? 0n : BigInt(util.toPointer(data.PasswordLastSet)), true);
+  if (data?.PasswordLastSet !== undefined) view.setBigUint64(96, data.PasswordLastSet === null ? 0n : util.toBigInt(util.toPointer(data.PasswordLastSet)), true);
   // 0x68: pointer
-  if (data?.PasswordCanChange !== undefined) view.setBigUint64(104, data.PasswordCanChange === null ? 0n : BigInt(util.toPointer(data.PasswordCanChange)), true);
+  if (data?.PasswordCanChange !== undefined) view.setBigUint64(104, data.PasswordCanChange === null ? 0n : util.toBigInt(util.toPointer(data.PasswordCanChange)), true);
   // 0x70: pointer
-  if (data?.PasswordMustChange !== undefined) view.setBigUint64(112, data.PasswordMustChange === null ? 0n : BigInt(util.toPointer(data.PasswordMustChange)), true);
+  if (data?.PasswordMustChange !== undefined) view.setBigUint64(112, data.PasswordMustChange === null ? 0n : util.toBigInt(util.toPointer(data.PasswordMustChange)), true);
   // 0x78: buffer
   if (data?.LogonScript !== undefined) {
     (buf as any)._f120 = util.pwstrToFfi(data.LogonScript);
-    view.setBigUint64(120, (buf as any)._f120 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f120)), true);
+    view.setBigUint64(120, (buf as any)._f120 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f120)), true);
   }
   // 0x80: buffer
   if (data?.HomeDirectory !== undefined) {
     (buf as any)._f128 = util.pwstrToFfi(data.HomeDirectory);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
   }
   // 0x88: buffer
   if (data?.FullName !== undefined) {
     (buf as any)._f136 = util.pwstrToFfi(data.FullName);
-    view.setBigUint64(136, (buf as any)._f136 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f136)), true);
+    view.setBigUint64(136, (buf as any)._f136 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f136)), true);
   }
   // 0x90: buffer
   if (data?.ProfilePath !== undefined) {
     (buf as any)._f144 = util.pwstrToFfi(data.ProfilePath);
-    view.setBigUint64(144, (buf as any)._f144 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f144)), true);
+    view.setBigUint64(144, (buf as any)._f144 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f144)), true);
   }
   // 0x98: buffer
   if (data?.HomeDirectoryDrive !== undefined) {
     (buf as any)._f152 = util.pwstrToFfi(data.HomeDirectoryDrive);
-    view.setBigUint64(152, (buf as any)._f152 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f152)), true);
+    view.setBigUint64(152, (buf as any)._f152 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f152)), true);
   }
   // 0xa0: buffer
   if (data?.LogonServer !== undefined) {
     (buf as any)._f160 = util.pwstrToFfi(data.LogonServer);
-    view.setBigUint64(160, (buf as any)._f160 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f160)), true);
+    view.setBigUint64(160, (buf as any)._f160 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f160)), true);
   }
   // 0xa8: u32
   if (data?.UserFlags !== undefined) view.setUint32(168, Number(data.UserFlags), true);
   // 0xac: u32
   if (data?.PrivateDataLen !== undefined) view.setUint32(172, Number(data.PrivateDataLen), true);
   // 0xb0: pointer
-  if (data?.PrivateData !== undefined) view.setBigUint64(176, data.PrivateData === null ? 0n : BigInt(util.toPointer(data.PrivateData)), true);
+  if (data?.PrivateData !== undefined) view.setBigUint64(176, data.PrivateData === null ? 0n : util.toBigInt(util.toPointer(data.PrivateData)), true);
   return buf;
 }
 
@@ -1470,34 +1470,34 @@ export class WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0View {
 
   // 0x08: pointer
   set UserToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set LogonId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Quotas(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set Domain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: pointer
   set LogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: i32
@@ -1527,68 +1527,68 @@ export class WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0View {
 
   // 0x48: pointer
   set ProfileLogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set LogoffTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set KickOffTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set PasswordLastSet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x68: pointer
   set PasswordCanChange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: pointer
   set PasswordMustChange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x78: buffer
   set LogonScript(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f120 = value;
-    this.view.setBigUint64(120, BigInt(util.toPointer((this.buf as any)._f120)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer((this.buf as any)._f120)), true);
   }
 
   // 0x80: buffer
   set HomeDirectory(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f128 = value;
-    this.view.setBigUint64(128, BigInt(util.toPointer((this.buf as any)._f128)), true);
+    this.view.setBigUint64(128, util.toBigInt(util.toPointer((this.buf as any)._f128)), true);
   }
 
   // 0x88: buffer
   set FullName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f136 = value;
-    this.view.setBigUint64(136, BigInt(util.toPointer((this.buf as any)._f136)), true);
+    this.view.setBigUint64(136, util.toBigInt(util.toPointer((this.buf as any)._f136)), true);
   }
 
   // 0x90: buffer
   set ProfilePath(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f144 = value;
-    this.view.setBigUint64(144, BigInt(util.toPointer((this.buf as any)._f144)), true);
+    this.view.setBigUint64(144, util.toBigInt(util.toPointer((this.buf as any)._f144)), true);
   }
 
   // 0x98: buffer
   set HomeDirectoryDrive(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f152 = value;
-    this.view.setBigUint64(152, BigInt(util.toPointer((this.buf as any)._f152)), true);
+    this.view.setBigUint64(152, util.toBigInt(util.toPointer((this.buf as any)._f152)), true);
   }
 
   // 0xa0: buffer
   set LogonServer(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f160 = value;
-    this.view.setBigUint64(160, BigInt(util.toPointer((this.buf as any)._f160)), true);
+    this.view.setBigUint64(160, util.toBigInt(util.toPointer((this.buf as any)._f160)), true);
   }
 
   // 0xa8: u32
@@ -1603,11 +1603,11 @@ export class WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0View {
 
   // 0xb0: pointer
   set PrivateData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(176, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HDESK = Deno.PointerValue;
+export type HDESK = number | bigint;
 
 /**
  * Windows.Win32.Security.WinWlx.WLX_DESKTOP (size: 24)
@@ -1633,11 +1633,11 @@ export function allocWLX_DESKTOP(data?: Partial<WLX_DESKTOP>): Uint8Array {
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.hDesktop !== undefined) view.setBigUint64(8, data.hDesktop === null ? 0n : BigInt(util.toPointer(data.hDesktop)), true);
+  if (data?.hDesktop !== undefined) view.setBigUint64(8, data.hDesktop === null ? 0n : util.toBigInt(util.toPointer(data.hDesktop)), true);
   // 0x10: buffer
   if (data?.pszDesktopName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszDesktopName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -1686,13 +1686,13 @@ export class WLX_DESKTOPView {
 
   // 0x08: pointer
   set hDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set pszDesktopName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -1734,31 +1734,31 @@ export function allocWLX_DISPATCH_VERSION_1_0(data?: Partial<WLX_DISPATCH_VERSIO
   const buf = new Uint8Array(sizeofWLX_DISPATCH_VERSION_1_0);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
+  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : util.toBigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
   // 0x08: pointer
-  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : BigInt(util.toPointer(data.WlxSetContextPointer)), true);
+  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetContextPointer)), true);
   // 0x10: pointer
-  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : BigInt(util.toPointer(data.WlxSasNotify)), true);
+  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxSasNotify)), true);
   // 0x18: pointer
-  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : BigInt(util.toPointer(data.WlxSetTimeout)), true);
+  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetTimeout)), true);
   // 0x20: pointer
-  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : BigInt(util.toPointer(data.WlxAssignShellProtection)), true);
+  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : util.toBigInt(util.toPointer(data.WlxAssignShellProtection)), true);
   // 0x28: pointer
-  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : BigInt(util.toPointer(data.WlxMessageBox)), true);
+  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxMessageBox)), true);
   // 0x30: pointer
-  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : BigInt(util.toPointer(data.WlxDialogBox)), true);
+  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBox)), true);
   // 0x38: pointer
-  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxParam)), true);
+  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxParam)), true);
   // 0x40: pointer
-  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
+  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
   // 0x48: pointer
-  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
+  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
   // 0x50: pointer
-  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
+  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
   // 0x58: pointer
-  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
+  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
   // 0x60: pointer
-  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
+  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
   return buf;
 }
 
@@ -1852,67 +1852,67 @@ export class WLX_DISPATCH_VERSION_1_0View {
 
   // 0x00: pointer
   set WlxUseCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WlxSetContextPointer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WlxSasNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WlxSetTimeout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set WlxAssignShellProtection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WlxMessageBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WlxDialogBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set WlxDialogBoxParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WlxDialogBoxIndirect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set WlxDialogBoxIndirectParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set WlxSwitchDesktopToUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set WlxSwitchDesktopToWinlogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set WlxChangePasswordNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1962,39 +1962,39 @@ export function allocWLX_DISPATCH_VERSION_1_1(data?: Partial<WLX_DISPATCH_VERSIO
   const buf = new Uint8Array(sizeofWLX_DISPATCH_VERSION_1_1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
+  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : util.toBigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
   // 0x08: pointer
-  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : BigInt(util.toPointer(data.WlxSetContextPointer)), true);
+  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetContextPointer)), true);
   // 0x10: pointer
-  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : BigInt(util.toPointer(data.WlxSasNotify)), true);
+  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxSasNotify)), true);
   // 0x18: pointer
-  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : BigInt(util.toPointer(data.WlxSetTimeout)), true);
+  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetTimeout)), true);
   // 0x20: pointer
-  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : BigInt(util.toPointer(data.WlxAssignShellProtection)), true);
+  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : util.toBigInt(util.toPointer(data.WlxAssignShellProtection)), true);
   // 0x28: pointer
-  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : BigInt(util.toPointer(data.WlxMessageBox)), true);
+  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxMessageBox)), true);
   // 0x30: pointer
-  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : BigInt(util.toPointer(data.WlxDialogBox)), true);
+  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBox)), true);
   // 0x38: pointer
-  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxParam)), true);
+  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxParam)), true);
   // 0x40: pointer
-  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
+  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
   // 0x48: pointer
-  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
+  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
   // 0x50: pointer
-  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
+  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
   // 0x58: pointer
-  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
+  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
   // 0x60: pointer
-  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
+  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
   // 0x68: pointer
-  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : BigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
+  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
   // 0x70: pointer
-  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : BigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
+  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
   // 0x78: pointer
-  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
+  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
   // 0x80: pointer
-  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
+  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
   return buf;
 }
 
@@ -2112,87 +2112,87 @@ export class WLX_DISPATCH_VERSION_1_1View {
 
   // 0x00: pointer
   set WlxUseCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WlxSetContextPointer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WlxSasNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WlxSetTimeout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set WlxAssignShellProtection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WlxMessageBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WlxDialogBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set WlxDialogBoxParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WlxDialogBoxIndirect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set WlxDialogBoxIndirectParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set WlxSwitchDesktopToUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set WlxSwitchDesktopToWinlogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set WlxChangePasswordNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x68: pointer
   set WlxGetSourceDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: pointer
   set WlxSetReturnDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x78: pointer
   set WlxCreateUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: pointer
   set WlxChangePasswordNotifyEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(128, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2244,41 +2244,41 @@ export function allocWLX_DISPATCH_VERSION_1_2(data?: Partial<WLX_DISPATCH_VERSIO
   const buf = new Uint8Array(sizeofWLX_DISPATCH_VERSION_1_2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
+  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : util.toBigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
   // 0x08: pointer
-  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : BigInt(util.toPointer(data.WlxSetContextPointer)), true);
+  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetContextPointer)), true);
   // 0x10: pointer
-  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : BigInt(util.toPointer(data.WlxSasNotify)), true);
+  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxSasNotify)), true);
   // 0x18: pointer
-  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : BigInt(util.toPointer(data.WlxSetTimeout)), true);
+  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetTimeout)), true);
   // 0x20: pointer
-  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : BigInt(util.toPointer(data.WlxAssignShellProtection)), true);
+  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : util.toBigInt(util.toPointer(data.WlxAssignShellProtection)), true);
   // 0x28: pointer
-  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : BigInt(util.toPointer(data.WlxMessageBox)), true);
+  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxMessageBox)), true);
   // 0x30: pointer
-  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : BigInt(util.toPointer(data.WlxDialogBox)), true);
+  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBox)), true);
   // 0x38: pointer
-  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxParam)), true);
+  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxParam)), true);
   // 0x40: pointer
-  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
+  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
   // 0x48: pointer
-  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
+  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
   // 0x50: pointer
-  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
+  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
   // 0x58: pointer
-  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
+  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
   // 0x60: pointer
-  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
+  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
   // 0x68: pointer
-  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : BigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
+  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
   // 0x70: pointer
-  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : BigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
+  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
   // 0x78: pointer
-  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
+  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
   // 0x80: pointer
-  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
+  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
   // 0x88: pointer
-  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
+  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
   return buf;
 }
 
@@ -2402,92 +2402,92 @@ export class WLX_DISPATCH_VERSION_1_2View {
 
   // 0x00: pointer
   set WlxUseCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WlxSetContextPointer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WlxSasNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WlxSetTimeout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set WlxAssignShellProtection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WlxMessageBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WlxDialogBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set WlxDialogBoxParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WlxDialogBoxIndirect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set WlxDialogBoxIndirectParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set WlxSwitchDesktopToUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set WlxSwitchDesktopToWinlogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set WlxChangePasswordNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x68: pointer
   set WlxGetSourceDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: pointer
   set WlxSetReturnDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x78: pointer
   set WlxCreateUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: pointer
   set WlxChangePasswordNotifyEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(128, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x88: pointer
   set WlxCloseUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(136, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2553,55 +2553,55 @@ export function allocWLX_DISPATCH_VERSION_1_3(data?: Partial<WLX_DISPATCH_VERSIO
   const buf = new Uint8Array(sizeofWLX_DISPATCH_VERSION_1_3);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
+  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : util.toBigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
   // 0x08: pointer
-  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : BigInt(util.toPointer(data.WlxSetContextPointer)), true);
+  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetContextPointer)), true);
   // 0x10: pointer
-  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : BigInt(util.toPointer(data.WlxSasNotify)), true);
+  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxSasNotify)), true);
   // 0x18: pointer
-  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : BigInt(util.toPointer(data.WlxSetTimeout)), true);
+  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetTimeout)), true);
   // 0x20: pointer
-  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : BigInt(util.toPointer(data.WlxAssignShellProtection)), true);
+  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : util.toBigInt(util.toPointer(data.WlxAssignShellProtection)), true);
   // 0x28: pointer
-  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : BigInt(util.toPointer(data.WlxMessageBox)), true);
+  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxMessageBox)), true);
   // 0x30: pointer
-  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : BigInt(util.toPointer(data.WlxDialogBox)), true);
+  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBox)), true);
   // 0x38: pointer
-  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxParam)), true);
+  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxParam)), true);
   // 0x40: pointer
-  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
+  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
   // 0x48: pointer
-  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
+  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
   // 0x50: pointer
-  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
+  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
   // 0x58: pointer
-  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
+  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
   // 0x60: pointer
-  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
+  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
   // 0x68: pointer
-  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : BigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
+  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
   // 0x70: pointer
-  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : BigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
+  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
   // 0x78: pointer
-  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
+  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
   // 0x80: pointer
-  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
+  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
   // 0x88: pointer
-  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
+  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
   // 0x90: pointer
-  if (data?.WlxSetOption !== undefined) view.setBigUint64(144, data.WlxSetOption === null ? 0n : BigInt(util.toPointer(data.WlxSetOption)), true);
+  if (data?.WlxSetOption !== undefined) view.setBigUint64(144, data.WlxSetOption === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetOption)), true);
   // 0x98: pointer
-  if (data?.WlxGetOption !== undefined) view.setBigUint64(152, data.WlxGetOption === null ? 0n : BigInt(util.toPointer(data.WlxGetOption)), true);
+  if (data?.WlxGetOption !== undefined) view.setBigUint64(152, data.WlxGetOption === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetOption)), true);
   // 0xa0: pointer
-  if (data?.WlxWin31Migrate !== undefined) view.setBigUint64(160, data.WlxWin31Migrate === null ? 0n : BigInt(util.toPointer(data.WlxWin31Migrate)), true);
+  if (data?.WlxWin31Migrate !== undefined) view.setBigUint64(160, data.WlxWin31Migrate === null ? 0n : util.toBigInt(util.toPointer(data.WlxWin31Migrate)), true);
   // 0xa8: pointer
-  if (data?.WlxQueryClientCredentials !== undefined) view.setBigUint64(168, data.WlxQueryClientCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryClientCredentials)), true);
+  if (data?.WlxQueryClientCredentials !== undefined) view.setBigUint64(168, data.WlxQueryClientCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryClientCredentials)), true);
   // 0xb0: pointer
-  if (data?.WlxQueryInetConnectorCredentials !== undefined) view.setBigUint64(176, data.WlxQueryInetConnectorCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryInetConnectorCredentials)), true);
+  if (data?.WlxQueryInetConnectorCredentials !== undefined) view.setBigUint64(176, data.WlxQueryInetConnectorCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryInetConnectorCredentials)), true);
   // 0xb8: pointer
-  if (data?.WlxDisconnect !== undefined) view.setBigUint64(184, data.WlxDisconnect === null ? 0n : BigInt(util.toPointer(data.WlxDisconnect)), true);
+  if (data?.WlxDisconnect !== undefined) view.setBigUint64(184, data.WlxDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDisconnect)), true);
   // 0xc0: pointer
-  if (data?.WlxQueryTerminalServicesData !== undefined) view.setBigUint64(192, data.WlxQueryTerminalServicesData === null ? 0n : BigInt(util.toPointer(data.WlxQueryTerminalServicesData)), true);
+  if (data?.WlxQueryTerminalServicesData !== undefined) view.setBigUint64(192, data.WlxQueryTerminalServicesData === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryTerminalServicesData)), true);
   return buf;
 }
 
@@ -2767,127 +2767,127 @@ export class WLX_DISPATCH_VERSION_1_3View {
 
   // 0x00: pointer
   set WlxUseCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WlxSetContextPointer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WlxSasNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WlxSetTimeout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set WlxAssignShellProtection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WlxMessageBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WlxDialogBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set WlxDialogBoxParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WlxDialogBoxIndirect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set WlxDialogBoxIndirectParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set WlxSwitchDesktopToUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set WlxSwitchDesktopToWinlogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set WlxChangePasswordNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x68: pointer
   set WlxGetSourceDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: pointer
   set WlxSetReturnDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x78: pointer
   set WlxCreateUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: pointer
   set WlxChangePasswordNotifyEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(128, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x88: pointer
   set WlxCloseUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(136, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x90: pointer
   set WlxSetOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(144, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x98: pointer
   set WlxGetOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(152, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa0: pointer
   set WlxWin31Migrate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(160, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa8: pointer
   set WlxQueryClientCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(168, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xb0: pointer
   set WlxQueryInetConnectorCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(176, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xb8: pointer
   set WlxDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(184, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xc0: pointer
   set WlxQueryTerminalServicesData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(192, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2957,59 +2957,59 @@ export function allocWLX_DISPATCH_VERSION_1_4(data?: Partial<WLX_DISPATCH_VERSIO
   const buf = new Uint8Array(sizeofWLX_DISPATCH_VERSION_1_4);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
+  if (data?.WlxUseCtrlAltDel !== undefined) view.setBigUint64(0, data.WlxUseCtrlAltDel === null ? 0n : util.toBigInt(util.toPointer(data.WlxUseCtrlAltDel)), true);
   // 0x08: pointer
-  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : BigInt(util.toPointer(data.WlxSetContextPointer)), true);
+  if (data?.WlxSetContextPointer !== undefined) view.setBigUint64(8, data.WlxSetContextPointer === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetContextPointer)), true);
   // 0x10: pointer
-  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : BigInt(util.toPointer(data.WlxSasNotify)), true);
+  if (data?.WlxSasNotify !== undefined) view.setBigUint64(16, data.WlxSasNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxSasNotify)), true);
   // 0x18: pointer
-  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : BigInt(util.toPointer(data.WlxSetTimeout)), true);
+  if (data?.WlxSetTimeout !== undefined) view.setBigUint64(24, data.WlxSetTimeout === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetTimeout)), true);
   // 0x20: pointer
-  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : BigInt(util.toPointer(data.WlxAssignShellProtection)), true);
+  if (data?.WlxAssignShellProtection !== undefined) view.setBigUint64(32, data.WlxAssignShellProtection === null ? 0n : util.toBigInt(util.toPointer(data.WlxAssignShellProtection)), true);
   // 0x28: pointer
-  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : BigInt(util.toPointer(data.WlxMessageBox)), true);
+  if (data?.WlxMessageBox !== undefined) view.setBigUint64(40, data.WlxMessageBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxMessageBox)), true);
   // 0x30: pointer
-  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : BigInt(util.toPointer(data.WlxDialogBox)), true);
+  if (data?.WlxDialogBox !== undefined) view.setBigUint64(48, data.WlxDialogBox === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBox)), true);
   // 0x38: pointer
-  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxParam)), true);
+  if (data?.WlxDialogBoxParam !== undefined) view.setBigUint64(56, data.WlxDialogBoxParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxParam)), true);
   // 0x40: pointer
-  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
+  if (data?.WlxDialogBoxIndirect !== undefined) view.setBigUint64(64, data.WlxDialogBoxIndirect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirect)), true);
   // 0x48: pointer
-  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : BigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
+  if (data?.WlxDialogBoxIndirectParam !== undefined) view.setBigUint64(72, data.WlxDialogBoxIndirectParam === null ? 0n : util.toBigInt(util.toPointer(data.WlxDialogBoxIndirectParam)), true);
   // 0x50: pointer
-  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
+  if (data?.WlxSwitchDesktopToUser !== undefined) view.setBigUint64(80, data.WlxSwitchDesktopToUser === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToUser)), true);
   // 0x58: pointer
-  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : BigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
+  if (data?.WlxSwitchDesktopToWinlogon !== undefined) view.setBigUint64(88, data.WlxSwitchDesktopToWinlogon === null ? 0n : util.toBigInt(util.toPointer(data.WlxSwitchDesktopToWinlogon)), true);
   // 0x60: pointer
-  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
+  if (data?.WlxChangePasswordNotify !== undefined) view.setBigUint64(96, data.WlxChangePasswordNotify === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotify)), true);
   // 0x68: pointer
-  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : BigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
+  if (data?.WlxGetSourceDesktop !== undefined) view.setBigUint64(104, data.WlxGetSourceDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetSourceDesktop)), true);
   // 0x70: pointer
-  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : BigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
+  if (data?.WlxSetReturnDesktop !== undefined) view.setBigUint64(112, data.WlxSetReturnDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetReturnDesktop)), true);
   // 0x78: pointer
-  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
+  if (data?.WlxCreateUserDesktop !== undefined) view.setBigUint64(120, data.WlxCreateUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCreateUserDesktop)), true);
   // 0x80: pointer
-  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : BigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
+  if (data?.WlxChangePasswordNotifyEx !== undefined) view.setBigUint64(128, data.WlxChangePasswordNotifyEx === null ? 0n : util.toBigInt(util.toPointer(data.WlxChangePasswordNotifyEx)), true);
   // 0x88: pointer
-  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : BigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
+  if (data?.WlxCloseUserDesktop !== undefined) view.setBigUint64(136, data.WlxCloseUserDesktop === null ? 0n : util.toBigInt(util.toPointer(data.WlxCloseUserDesktop)), true);
   // 0x90: pointer
-  if (data?.WlxSetOption !== undefined) view.setBigUint64(144, data.WlxSetOption === null ? 0n : BigInt(util.toPointer(data.WlxSetOption)), true);
+  if (data?.WlxSetOption !== undefined) view.setBigUint64(144, data.WlxSetOption === null ? 0n : util.toBigInt(util.toPointer(data.WlxSetOption)), true);
   // 0x98: pointer
-  if (data?.WlxGetOption !== undefined) view.setBigUint64(152, data.WlxGetOption === null ? 0n : BigInt(util.toPointer(data.WlxGetOption)), true);
+  if (data?.WlxGetOption !== undefined) view.setBigUint64(152, data.WlxGetOption === null ? 0n : util.toBigInt(util.toPointer(data.WlxGetOption)), true);
   // 0xa0: pointer
-  if (data?.WlxWin31Migrate !== undefined) view.setBigUint64(160, data.WlxWin31Migrate === null ? 0n : BigInt(util.toPointer(data.WlxWin31Migrate)), true);
+  if (data?.WlxWin31Migrate !== undefined) view.setBigUint64(160, data.WlxWin31Migrate === null ? 0n : util.toBigInt(util.toPointer(data.WlxWin31Migrate)), true);
   // 0xa8: pointer
-  if (data?.WlxQueryClientCredentials !== undefined) view.setBigUint64(168, data.WlxQueryClientCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryClientCredentials)), true);
+  if (data?.WlxQueryClientCredentials !== undefined) view.setBigUint64(168, data.WlxQueryClientCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryClientCredentials)), true);
   // 0xb0: pointer
-  if (data?.WlxQueryInetConnectorCredentials !== undefined) view.setBigUint64(176, data.WlxQueryInetConnectorCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryInetConnectorCredentials)), true);
+  if (data?.WlxQueryInetConnectorCredentials !== undefined) view.setBigUint64(176, data.WlxQueryInetConnectorCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryInetConnectorCredentials)), true);
   // 0xb8: pointer
-  if (data?.WlxDisconnect !== undefined) view.setBigUint64(184, data.WlxDisconnect === null ? 0n : BigInt(util.toPointer(data.WlxDisconnect)), true);
+  if (data?.WlxDisconnect !== undefined) view.setBigUint64(184, data.WlxDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.WlxDisconnect)), true);
   // 0xc0: pointer
-  if (data?.WlxQueryTerminalServicesData !== undefined) view.setBigUint64(192, data.WlxQueryTerminalServicesData === null ? 0n : BigInt(util.toPointer(data.WlxQueryTerminalServicesData)), true);
+  if (data?.WlxQueryTerminalServicesData !== undefined) view.setBigUint64(192, data.WlxQueryTerminalServicesData === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryTerminalServicesData)), true);
   // 0xc8: pointer
-  if (data?.WlxQueryConsoleSwitchCredentials !== undefined) view.setBigUint64(200, data.WlxQueryConsoleSwitchCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryConsoleSwitchCredentials)), true);
+  if (data?.WlxQueryConsoleSwitchCredentials !== undefined) view.setBigUint64(200, data.WlxQueryConsoleSwitchCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryConsoleSwitchCredentials)), true);
   // 0xd0: pointer
-  if (data?.WlxQueryTsLogonCredentials !== undefined) view.setBigUint64(208, data.WlxQueryTsLogonCredentials === null ? 0n : BigInt(util.toPointer(data.WlxQueryTsLogonCredentials)), true);
+  if (data?.WlxQueryTsLogonCredentials !== undefined) view.setBigUint64(208, data.WlxQueryTsLogonCredentials === null ? 0n : util.toBigInt(util.toPointer(data.WlxQueryTsLogonCredentials)), true);
   return buf;
 }
 
@@ -3187,137 +3187,137 @@ export class WLX_DISPATCH_VERSION_1_4View {
 
   // 0x00: pointer
   set WlxUseCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set WlxSetContextPointer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WlxSasNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set WlxSetTimeout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set WlxAssignShellProtection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set WlxMessageBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set WlxDialogBox(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set WlxDialogBoxParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set WlxDialogBoxIndirect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set WlxDialogBoxIndirectParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set WlxSwitchDesktopToUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set WlxSwitchDesktopToWinlogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set WlxChangePasswordNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x68: pointer
   set WlxGetSourceDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x70: pointer
   set WlxSetReturnDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x78: pointer
   set WlxCreateUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: pointer
   set WlxChangePasswordNotifyEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(128, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x88: pointer
   set WlxCloseUserDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(136, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x90: pointer
   set WlxSetOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(144, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x98: pointer
   set WlxGetOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(152, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa0: pointer
   set WlxWin31Migrate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(160, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa8: pointer
   set WlxQueryClientCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(168, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xb0: pointer
   set WlxQueryInetConnectorCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(176, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xb8: pointer
   set WlxDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(184, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(184, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xc0: pointer
   set WlxQueryTerminalServicesData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(192, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xc8: pointer
   set WlxQueryConsoleSwitchCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(200, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(200, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xd0: pointer
   set WlxQueryTsLogonCredentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(208, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3355,24 +3355,24 @@ export function allocWLX_NOTIFICATION_INFO(data?: Partial<WLX_NOTIFICATION_INFO>
   // 0x08: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.Domain !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.Domain);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.WindowStation !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.WindowStation);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.hToken !== undefined) view.setBigUint64(32, data.hToken === null ? 0n : BigInt(util.toPointer(data.hToken)), true);
+  if (data?.hToken !== undefined) view.setBigUint64(32, data.hToken === null ? 0n : util.toBigInt(util.toPointer(data.hToken)), true);
   // 0x28: pointer
-  if (data?.hDesktop !== undefined) view.setBigUint64(40, data.hDesktop === null ? 0n : BigInt(util.toPointer(data.hDesktop)), true);
+  if (data?.hDesktop !== undefined) view.setBigUint64(40, data.hDesktop === null ? 0n : util.toBigInt(util.toPointer(data.hDesktop)), true);
   // 0x30: pointer
-  if (data?.pStatusCallback !== undefined) view.setBigUint64(48, data.pStatusCallback === null ? 0n : BigInt(util.toPointer(data.pStatusCallback)), true);
+  if (data?.pStatusCallback !== undefined) view.setBigUint64(48, data.pStatusCallback === null ? 0n : util.toBigInt(util.toPointer(data.pStatusCallback)), true);
   return buf;
 }
 
@@ -3445,34 +3445,34 @@ export class WLX_NOTIFICATION_INFOView {
   // 0x08: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set Domain(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set WindowStation(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set hToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set hDesktop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set pStatusCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

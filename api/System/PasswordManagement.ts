@@ -18,7 +18,7 @@ export function allocCYPHER_BLOCK(data?: Partial<CYPHER_BLOCK>): Uint8Array {
   const buf = new Uint8Array(sizeofCYPHER_BLOCK);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : util.toBigInt(util.toPointer(data.data)), true);
   return buf;
 }
 
@@ -40,7 +40,7 @@ export class CYPHER_BLOCKView {
 
   // 0x00: pointer
   set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -58,7 +58,7 @@ export function allocLM_OWF_PASSWORD(data?: Partial<LM_OWF_PASSWORD>): Uint8Arra
   const buf = new Uint8Array(sizeofLM_OWF_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : util.toBigInt(util.toPointer(data.data)), true);
   return buf;
 }
 
@@ -80,7 +80,7 @@ export class LM_OWF_PASSWORDView {
 
   // 0x00: pointer
   set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -98,7 +98,7 @@ export function allocSAMPR_ENCRYPTED_USER_PASSWORD(data?: Partial<SAMPR_ENCRYPTE
   const buf = new Uint8Array(sizeofSAMPR_ENCRYPTED_USER_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : util.toBigInt(util.toPointer(data.Buffer)), true);
   return buf;
 }
 
@@ -120,7 +120,7 @@ export class SAMPR_ENCRYPTED_USER_PASSWORDView {
 
   // 0x00: pointer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -138,7 +138,7 @@ export function allocENCRYPTED_LM_OWF_PASSWORD(data?: Partial<ENCRYPTED_LM_OWF_P
   const buf = new Uint8Array(sizeofENCRYPTED_LM_OWF_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : util.toBigInt(util.toPointer(data.data)), true);
   return buf;
 }
 
@@ -160,7 +160,7 @@ export class ENCRYPTED_LM_OWF_PASSWORDView {
 
   // 0x00: pointer
   set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

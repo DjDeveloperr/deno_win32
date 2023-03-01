@@ -26,7 +26,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type HRESULT = number;
 
-export type HPTPROVIDER = Deno.PointerValue;
+export type HPTPROVIDER = number | bigint;
 
 // Native Libraries
 

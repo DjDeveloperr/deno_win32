@@ -86,9 +86,9 @@ export function allocDMO_MEDIA_TYPE(data?: Partial<DMO_MEDIA_TYPE>): Uint8Array 
   const buf = new Uint8Array(sizeofDMO_MEDIA_TYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
+  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : util.toBigInt(util.toPointer(data.majortype)), true);
   // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : util.toBigInt(util.toPointer(data.subtype)), true);
   // 0x10: i32
   if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
   // 0x14: i32
@@ -97,14 +97,14 @@ export function allocDMO_MEDIA_TYPE(data?: Partial<DMO_MEDIA_TYPE>): Uint8Array 
   if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
+  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : util.toBigInt(util.toPointer(data.formattype)), true);
   // 0x28: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : util.toBigInt(util.toPointer(data.pUnk)), true);
   // 0x30: u32
   if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
+  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : util.toBigInt(util.toPointer(data.pbFormat)), true);
   return buf;
 }
 
@@ -174,12 +174,12 @@ export class DMO_MEDIA_TYPEView {
 
   // 0x00: pointer
   set majortype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set subtype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -201,12 +201,12 @@ export class DMO_MEDIA_TYPEView {
 
   // 0x20: pointer
   set formattype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set pUnk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -218,7 +218,7 @@ export class DMO_MEDIA_TYPEView {
 
   // 0x38: pointer
   set pbFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -231,9 +231,9 @@ export interface DMO_OUTPUT_DATA_BUFFER {
   /** u32 */
   dwStatus: number;
   /** i64 */
-  rtTimestamp: Deno.PointerValue;
+  rtTimestamp: number | bigint;
   /** i64 */
-  rtTimelength: Deno.PointerValue;
+  rtTimelength: number | bigint;
 }
 
 export const sizeofDMO_OUTPUT_DATA_BUFFER = 32;
@@ -242,14 +242,14 @@ export function allocDMO_OUTPUT_DATA_BUFFER(data?: Partial<DMO_OUTPUT_DATA_BUFFE
   const buf = new Uint8Array(sizeofDMO_OUTPUT_DATA_BUFFER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : BigInt(util.toPointer(data.pBuffer)), true);
+  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pBuffer)), true);
   // 0x08: u32
   if (data?.dwStatus !== undefined) view.setUint32(8, Number(data.dwStatus), true);
   // 0x0c: pad4
   // 0x10: i64
-  if (data?.rtTimestamp !== undefined) view.setBigInt64(16, BigInt(data.rtTimestamp), true);
+  if (data?.rtTimestamp !== undefined) view.setBigInt64(16, util.toBigInt(data.rtTimestamp), true);
   // 0x18: i64
-  if (data?.rtTimelength !== undefined) view.setBigInt64(24, BigInt(data.rtTimelength), true);
+  if (data?.rtTimelength !== undefined) view.setBigInt64(24, util.toBigInt(data.rtTimelength), true);
   return buf;
 }
 
@@ -277,18 +277,18 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   // 0x0c: pad4
 
   // 0x10: i64
-  get rtTimestamp(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get rtTimestamp(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: i64
-  get rtTimelength(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get rtTimelength(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x00: pointer
   set pBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -299,13 +299,13 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   // 0x0c: pad4
 
   // 0x10: i64
-  set rtTimestamp(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set rtTimestamp(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: i64
-  set rtTimelength(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set rtTimelength(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 }
 
@@ -325,9 +325,9 @@ export function allocDMO_PARTIAL_MEDIATYPE(data?: Partial<DMO_PARTIAL_MEDIATYPE>
   const buf = new Uint8Array(sizeofDMO_PARTIAL_MEDIATYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.type !== undefined) view.setBigUint64(0, data.type === null ? 0n : BigInt(util.toPointer(data.type)), true);
+  if (data?.type !== undefined) view.setBigUint64(0, data.type === null ? 0n : util.toBigInt(util.toPointer(data.type)), true);
   // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : util.toBigInt(util.toPointer(data.subtype)), true);
   return buf;
 }
 
@@ -355,12 +355,12 @@ export class DMO_PARTIAL_MEDIATYPEView {
 
   // 0x00: pointer
   set type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set subtype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

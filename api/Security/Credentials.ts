@@ -301,7 +301,7 @@ export function allocKeyCredentialManagerInfo(data?: Partial<KeyCredentialManage
   const buf = new Uint8Array(sizeofKeyCredentialManagerInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.containerId !== undefined) view.setBigUint64(0, data.containerId === null ? 0n : BigInt(util.toPointer(data.containerId)), true);
+  if (data?.containerId !== undefined) view.setBigUint64(0, data.containerId === null ? 0n : util.toBigInt(util.toPointer(data.containerId)), true);
   return buf;
 }
 
@@ -323,7 +323,7 @@ export class KeyCredentialManagerInfoView {
 
   // 0x00: pointer
   set containerId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -332,9 +332,9 @@ export class KeyCredentialManagerInfoView {
  */
 export interface SecHandle {
   /** usize */
-  dwLower: Deno.PointerValue;
+  dwLower: number | bigint;
   /** usize */
-  dwUpper: Deno.PointerValue;
+  dwUpper: number | bigint;
 }
 
 export const sizeofSecHandle = 16;
@@ -343,9 +343,9 @@ export function allocSecHandle(data?: Partial<SecHandle>): Uint8Array {
   const buf = new Uint8Array(sizeofSecHandle);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.dwLower !== undefined) view.setBigUint64(0, BigInt(data.dwLower), true);
+  if (data?.dwLower !== undefined) view.setBigUint64(0, util.toBigInt(data.dwLower), true);
   // 0x08: usize
-  if (data?.dwUpper !== undefined) view.setBigUint64(8, BigInt(data.dwUpper), true);
+  if (data?.dwUpper !== undefined) view.setBigUint64(8, util.toBigInt(data.dwUpper), true);
   return buf;
 }
 
@@ -360,23 +360,23 @@ export class SecHandleView {
   }
 
   // 0x00: usize
-  get dwLower(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get dwLower(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: usize
-  get dwUpper(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get dwUpper(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: usize
-  set dwLower(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set dwLower(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: usize
-  set dwUpper(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set dwUpper(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -404,14 +404,14 @@ export function allocCREDENTIAL_ATTRIBUTEA(data?: Partial<CREDENTIAL_ATTRIBUTEA>
   // 0x00: buffer
   if (data?.Keyword !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Keyword);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
   // 0x0c: u32
   if (data?.ValueSize !== undefined) view.setUint32(12, Number(data.ValueSize), true);
   // 0x10: pointer
-  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : util.toBigInt(util.toPointer(data.Value)), true);
   return buf;
 }
 
@@ -450,7 +450,7 @@ export class CREDENTIAL_ATTRIBUTEAView {
   // 0x00: buffer
   set Keyword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -465,7 +465,7 @@ export class CREDENTIAL_ATTRIBUTEAView {
 
   // 0x10: pointer
   set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -493,14 +493,14 @@ export function allocCREDENTIAL_ATTRIBUTEW(data?: Partial<CREDENTIAL_ATTRIBUTEW>
   // 0x00: buffer
   if (data?.Keyword !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.Keyword);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
   // 0x0c: u32
   if (data?.ValueSize !== undefined) view.setUint32(12, Number(data.ValueSize), true);
   // 0x10: pointer
-  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : util.toBigInt(util.toPointer(data.Value)), true);
   return buf;
 }
 
@@ -539,7 +539,7 @@ export class CREDENTIAL_ATTRIBUTEWView {
   // 0x00: buffer
   set Keyword(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -554,7 +554,7 @@ export class CREDENTIAL_ATTRIBUTEWView {
 
   // 0x10: pointer
   set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -653,35 +653,35 @@ export function allocCREDENTIALA(data?: Partial<CREDENTIALA>): Uint8Array {
   // 0x08: buffer
   if (data?.TargetName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.TargetName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.Comment !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.Comment);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: pointer
-  if (data?.LastWritten !== undefined) view.setBigUint64(24, data.LastWritten === null ? 0n : BigInt(util.toPointer(data.LastWritten)), true);
+  if (data?.LastWritten !== undefined) view.setBigUint64(24, data.LastWritten === null ? 0n : util.toBigInt(util.toPointer(data.LastWritten)), true);
   // 0x20: u32
   if (data?.CredentialBlobSize !== undefined) view.setUint32(32, Number(data.CredentialBlobSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.CredentialBlob !== undefined) view.setBigUint64(40, data.CredentialBlob === null ? 0n : BigInt(util.toPointer(data.CredentialBlob)), true);
+  if (data?.CredentialBlob !== undefined) view.setBigUint64(40, data.CredentialBlob === null ? 0n : util.toBigInt(util.toPointer(data.CredentialBlob)), true);
   // 0x30: u32
   if (data?.Persist !== undefined) view.setUint32(48, Number(data.Persist), true);
   // 0x34: u32
   if (data?.AttributeCount !== undefined) view.setUint32(52, Number(data.AttributeCount), true);
   // 0x38: pointer
-  if (data?.Attributes !== undefined) view.setBigUint64(56, data.Attributes === null ? 0n : BigInt(util.toPointer(data.Attributes)), true);
+  if (data?.Attributes !== undefined) view.setBigUint64(56, data.Attributes === null ? 0n : util.toBigInt(util.toPointer(data.Attributes)), true);
   // 0x40: buffer
   if (data?.TargetAlias !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.TargetAlias);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   // 0x48: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f72 = util.pstrToFfi(data.UserName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
   }
   return buf;
 }
@@ -778,18 +778,18 @@ export class CREDENTIALAView {
   // 0x08: buffer
   set TargetName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set Comment(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: pointer
   set LastWritten(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -801,7 +801,7 @@ export class CREDENTIALAView {
 
   // 0x28: pointer
   set CredentialBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -816,19 +816,19 @@ export class CREDENTIALAView {
 
   // 0x38: pointer
   set Attributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: buffer
   set TargetAlias(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer((this.buf as any)._f64)), true);
   }
 
   // 0x48: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer((this.buf as any)._f72)), true);
   }
 }
 
@@ -874,35 +874,35 @@ export function allocCREDENTIALW(data?: Partial<CREDENTIALW>): Uint8Array {
   // 0x08: buffer
   if (data?.TargetName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.TargetName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.Comment !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.Comment);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: pointer
-  if (data?.LastWritten !== undefined) view.setBigUint64(24, data.LastWritten === null ? 0n : BigInt(util.toPointer(data.LastWritten)), true);
+  if (data?.LastWritten !== undefined) view.setBigUint64(24, data.LastWritten === null ? 0n : util.toBigInt(util.toPointer(data.LastWritten)), true);
   // 0x20: u32
   if (data?.CredentialBlobSize !== undefined) view.setUint32(32, Number(data.CredentialBlobSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.CredentialBlob !== undefined) view.setBigUint64(40, data.CredentialBlob === null ? 0n : BigInt(util.toPointer(data.CredentialBlob)), true);
+  if (data?.CredentialBlob !== undefined) view.setBigUint64(40, data.CredentialBlob === null ? 0n : util.toBigInt(util.toPointer(data.CredentialBlob)), true);
   // 0x30: u32
   if (data?.Persist !== undefined) view.setUint32(48, Number(data.Persist), true);
   // 0x34: u32
   if (data?.AttributeCount !== undefined) view.setUint32(52, Number(data.AttributeCount), true);
   // 0x38: pointer
-  if (data?.Attributes !== undefined) view.setBigUint64(56, data.Attributes === null ? 0n : BigInt(util.toPointer(data.Attributes)), true);
+  if (data?.Attributes !== undefined) view.setBigUint64(56, data.Attributes === null ? 0n : util.toBigInt(util.toPointer(data.Attributes)), true);
   // 0x40: buffer
   if (data?.TargetAlias !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.TargetAlias);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   // 0x48: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
   }
   return buf;
 }
@@ -999,18 +999,18 @@ export class CREDENTIALWView {
   // 0x08: buffer
   set TargetName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set Comment(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: pointer
   set LastWritten(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -1022,7 +1022,7 @@ export class CREDENTIALWView {
 
   // 0x28: pointer
   set CredentialBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -1037,19 +1037,19 @@ export class CREDENTIALWView {
 
   // 0x38: pointer
   set Attributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: buffer
   set TargetAlias(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer((this.buf as any)._f64)), true);
   }
 
   // 0x48: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer((this.buf as any)._f72)), true);
   }
 }
 
@@ -1087,44 +1087,44 @@ export function allocCREDENTIAL_TARGET_INFORMATIONA(data?: Partial<CREDENTIAL_TA
   // 0x00: buffer
   if (data?.TargetName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.TargetName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.NetbiosServerName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.NetbiosServerName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.DnsServerName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.DnsServerName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.NetbiosDomainName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.NetbiosDomainName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.DnsDomainName !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.DnsDomainName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.DnsTreeName !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.DnsTreeName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: buffer
   if (data?.PackageName !== undefined) {
     (buf as any)._f48 = util.pstrToFfi(data.PackageName);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: u32
   if (data?.Flags !== undefined) view.setUint32(56, Number(data.Flags), true);
   // 0x3c: u32
   if (data?.CredTypeCount !== undefined) view.setUint32(60, Number(data.CredTypeCount), true);
   // 0x40: pointer
-  if (data?.CredTypes !== undefined) view.setBigUint64(64, data.CredTypes === null ? 0n : BigInt(util.toPointer(data.CredTypes)), true);
+  if (data?.CredTypes !== undefined) view.setBigUint64(64, data.CredTypes === null ? 0n : util.toBigInt(util.toPointer(data.CredTypes)), true);
   return buf;
 }
 
@@ -1199,43 +1199,43 @@ export class CREDENTIAL_TARGET_INFORMATIONAView {
   // 0x00: buffer
   set TargetName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set NetbiosServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set DnsServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set NetbiosDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set DnsDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set DnsTreeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: buffer
   set PackageName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: u32
@@ -1250,7 +1250,7 @@ export class CREDENTIAL_TARGET_INFORMATIONAView {
 
   // 0x40: pointer
   set CredTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1288,44 +1288,44 @@ export function allocCREDENTIAL_TARGET_INFORMATIONW(data?: Partial<CREDENTIAL_TA
   // 0x00: buffer
   if (data?.TargetName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.TargetName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.NetbiosServerName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.NetbiosServerName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.DnsServerName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.DnsServerName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.NetbiosDomainName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.NetbiosDomainName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.DnsDomainName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.DnsDomainName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.DnsTreeName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.DnsTreeName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: buffer
   if (data?.PackageName !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.PackageName);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: u32
   if (data?.Flags !== undefined) view.setUint32(56, Number(data.Flags), true);
   // 0x3c: u32
   if (data?.CredTypeCount !== undefined) view.setUint32(60, Number(data.CredTypeCount), true);
   // 0x40: pointer
-  if (data?.CredTypes !== undefined) view.setBigUint64(64, data.CredTypes === null ? 0n : BigInt(util.toPointer(data.CredTypes)), true);
+  if (data?.CredTypes !== undefined) view.setBigUint64(64, data.CredTypes === null ? 0n : util.toBigInt(util.toPointer(data.CredTypes)), true);
   return buf;
 }
 
@@ -1400,43 +1400,43 @@ export class CREDENTIAL_TARGET_INFORMATIONWView {
   // 0x00: buffer
   set TargetName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set NetbiosServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set DnsServerName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set NetbiosDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set DnsDomainName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set DnsTreeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: buffer
   set PackageName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: u32
@@ -1451,7 +1451,7 @@ export class CREDENTIAL_TARGET_INFORMATIONWView {
 
   // 0x40: pointer
   set CredTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1474,7 +1474,7 @@ export function allocCERT_CREDENTIAL_INFO(data?: Partial<CERT_CREDENTIAL_INFO>):
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgbHashOfCert !== undefined) view.setBigUint64(8, data.rgbHashOfCert === null ? 0n : BigInt(util.toPointer(data.rgbHashOfCert)), true);
+  if (data?.rgbHashOfCert !== undefined) view.setBigUint64(8, data.rgbHashOfCert === null ? 0n : util.toBigInt(util.toPointer(data.rgbHashOfCert)), true);
   return buf;
 }
 
@@ -1510,7 +1510,7 @@ export class CERT_CREDENTIAL_INFOView {
 
   // 0x08: pointer
   set rgbHashOfCert(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1530,7 +1530,7 @@ export function allocUSERNAME_TARGET_CREDENTIAL_INFO(data?: Partial<USERNAME_TAR
   // 0x00: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   return buf;
 }
@@ -1554,7 +1554,7 @@ export class USERNAME_TARGET_CREDENTIAL_INFOView {
   // 0x00: buffer
   set UserName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 }
 
@@ -1577,7 +1577,7 @@ export function allocBINARY_BLOB_CREDENTIAL_INFO(data?: Partial<BINARY_BLOB_CRED
   if (data?.cbBlob !== undefined) view.setUint32(0, Number(data.cbBlob), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pbBlob !== undefined) view.setBigUint64(8, data.pbBlob === null ? 0n : BigInt(util.toPointer(data.pbBlob)), true);
+  if (data?.pbBlob !== undefined) view.setBigUint64(8, data.pbBlob === null ? 0n : util.toBigInt(util.toPointer(data.pbBlob)), true);
   return buf;
 }
 
@@ -1613,13 +1613,13 @@ export class BINARY_BLOB_CREDENTIAL_INFOView {
 
   // 0x08: pointer
   set pbBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = number | bigint;
 
 /**
  * Windows.Win32.Security.Credentials.CREDUI_INFOA (size: 40)
@@ -1646,19 +1646,19 @@ export function allocCREDUI_INFOA(data?: Partial<CREDUI_INFOA>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndParent !== undefined) view.setBigUint64(8, data.hwndParent === null ? 0n : BigInt(util.toPointer(data.hwndParent)), true);
+  if (data?.hwndParent !== undefined) view.setBigUint64(8, data.hwndParent === null ? 0n : util.toBigInt(util.toPointer(data.hwndParent)), true);
   // 0x10: buffer
   if (data?.pszMessageText !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pszMessageText);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszCaptionText !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pszCaptionText);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.hbmBanner !== undefined) view.setBigUint64(32, data.hbmBanner === null ? 0n : BigInt(util.toPointer(data.hbmBanner)), true);
+  if (data?.hbmBanner !== undefined) view.setBigUint64(32, data.hbmBanner === null ? 0n : util.toBigInt(util.toPointer(data.hbmBanner)), true);
   return buf;
 }
 
@@ -1712,24 +1712,24 @@ export class CREDUI_INFOAView {
 
   // 0x08: pointer
   set hwndParent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set pszMessageText(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszCaptionText(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set hbmBanner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1758,19 +1758,19 @@ export function allocCREDUI_INFOW(data?: Partial<CREDUI_INFOW>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndParent !== undefined) view.setBigUint64(8, data.hwndParent === null ? 0n : BigInt(util.toPointer(data.hwndParent)), true);
+  if (data?.hwndParent !== undefined) view.setBigUint64(8, data.hwndParent === null ? 0n : util.toBigInt(util.toPointer(data.hwndParent)), true);
   // 0x10: buffer
   if (data?.pszMessageText !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszMessageText);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pszCaptionText !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszCaptionText);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.hbmBanner !== undefined) view.setBigUint64(32, data.hbmBanner === null ? 0n : BigInt(util.toPointer(data.hbmBanner)), true);
+  if (data?.hbmBanner !== undefined) view.setBigUint64(32, data.hbmBanner === null ? 0n : util.toBigInt(util.toPointer(data.hbmBanner)), true);
   return buf;
 }
 
@@ -1824,24 +1824,24 @@ export class CREDUI_INFOWView {
 
   // 0x08: pointer
   set hwndParent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set pszMessageText(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pszCaptionText(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set hbmBanner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2003,9 +2003,9 @@ export class SCARD_T0_COMMANDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2014,9 +2014,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -2031,23 +2031,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -2067,9 +2067,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -2097,12 +2097,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2126,14 +2126,14 @@ export function allocSCARD_T0_REQUEST(data?: Partial<SCARD_T0_REQUEST>): Uint8Ar
   const buf = new Uint8Array(sizeofSCARD_T0_REQUEST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ioRequest !== undefined) view.setBigUint64(0, data.ioRequest === null ? 0n : BigInt(util.toPointer(data.ioRequest)), true);
+  if (data?.ioRequest !== undefined) view.setBigUint64(0, data.ioRequest === null ? 0n : util.toBigInt(util.toPointer(data.ioRequest)), true);
   // 0x08: u8
   if (data?.bSw1 !== undefined) view.setUint8(8, Number(data.bSw1));
   // 0x09: u8
   if (data?.bSw2 !== undefined) view.setUint8(9, Number(data.bSw2));
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -2173,7 +2173,7 @@ export class SCARD_T0_REQUESTView {
 
   // 0x00: pointer
   set ioRequest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u8
@@ -2190,7 +2190,7 @@ export class SCARD_T0_REQUESTView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2208,7 +2208,7 @@ export function allocSCARD_T1_REQUEST(data?: Partial<SCARD_T1_REQUEST>): Uint8Ar
   const buf = new Uint8Array(sizeofSCARD_T1_REQUEST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ioRequest !== undefined) view.setBigUint64(0, data.ioRequest === null ? 0n : BigInt(util.toPointer(data.ioRequest)), true);
+  if (data?.ioRequest !== undefined) view.setBigUint64(0, data.ioRequest === null ? 0n : util.toBigInt(util.toPointer(data.ioRequest)), true);
   return buf;
 }
 
@@ -2230,7 +2230,7 @@ export class SCARD_T1_REQUESTView {
 
   // 0x00: pointer
   set ioRequest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2260,10 +2260,10 @@ export function allocSCARD_READERSTATEA(data?: Partial<SCARD_READERSTATEA>): Uin
   // 0x00: buffer
   if (data?.szReader !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.szReader);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(8, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(8, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x10: u32
   if (data?.dwCurrentState !== undefined) view.setUint32(16, Number(data.dwCurrentState), true);
   // 0x14: u32
@@ -2272,7 +2272,7 @@ export function allocSCARD_READERSTATEA(data?: Partial<SCARD_READERSTATEA>): Uin
   if (data?.cbAtr !== undefined) view.setUint32(24, Number(data.cbAtr), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.rgbAtr !== undefined) view.setBigUint64(32, data.rgbAtr === null ? 0n : BigInt(util.toPointer(data.rgbAtr)), true);
+  if (data?.rgbAtr !== undefined) view.setBigUint64(32, data.rgbAtr === null ? 0n : util.toBigInt(util.toPointer(data.rgbAtr)), true);
   return buf;
 }
 
@@ -2324,12 +2324,12 @@ export class SCARD_READERSTATEAView {
   // 0x00: buffer
   set szReader(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -2351,7 +2351,7 @@ export class SCARD_READERSTATEAView {
 
   // 0x20: pointer
   set rgbAtr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2381,10 +2381,10 @@ export function allocSCARD_READERSTATEW(data?: Partial<SCARD_READERSTATEW>): Uin
   // 0x00: buffer
   if (data?.szReader !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szReader);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(8, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(8, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x10: u32
   if (data?.dwCurrentState !== undefined) view.setUint32(16, Number(data.dwCurrentState), true);
   // 0x14: u32
@@ -2393,7 +2393,7 @@ export function allocSCARD_READERSTATEW(data?: Partial<SCARD_READERSTATEW>): Uin
   if (data?.cbAtr !== undefined) view.setUint32(24, Number(data.cbAtr), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.rgbAtr !== undefined) view.setBigUint64(32, data.rgbAtr === null ? 0n : BigInt(util.toPointer(data.rgbAtr)), true);
+  if (data?.rgbAtr !== undefined) view.setBigUint64(32, data.rgbAtr === null ? 0n : util.toBigInt(util.toPointer(data.rgbAtr)), true);
   return buf;
 }
 
@@ -2445,12 +2445,12 @@ export class SCARD_READERSTATEWView {
   // 0x00: buffer
   set szReader(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -2472,7 +2472,7 @@ export class SCARD_READERSTATEWView {
 
   // 0x20: pointer
   set rgbAtr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2497,9 +2497,9 @@ export function allocSCARD_ATRMASK(data?: Partial<SCARD_ATRMASK>): Uint8Array {
   if (data?.cbAtr !== undefined) view.setUint32(0, Number(data.cbAtr), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgbAtr !== undefined) view.setBigUint64(8, data.rgbAtr === null ? 0n : BigInt(util.toPointer(data.rgbAtr)), true);
+  if (data?.rgbAtr !== undefined) view.setBigUint64(8, data.rgbAtr === null ? 0n : util.toBigInt(util.toPointer(data.rgbAtr)), true);
   // 0x10: pointer
-  if (data?.rgbMask !== undefined) view.setBigUint64(16, data.rgbMask === null ? 0n : BigInt(util.toPointer(data.rgbMask)), true);
+  if (data?.rgbMask !== undefined) view.setBigUint64(16, data.rgbMask === null ? 0n : util.toBigInt(util.toPointer(data.rgbMask)), true);
   return buf;
 }
 
@@ -2541,12 +2541,12 @@ export class SCARD_ATRMASKView {
 
   // 0x08: pointer
   set rgbAtr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set rgbMask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2593,32 +2593,32 @@ export function allocOPENCARD_SEARCH_CRITERIAA(data?: Partial<OPENCARD_SEARCH_CR
   // 0x08: buffer
   if (data?.lpstrGroupNames !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpstrGroupNames);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.nMaxGroupNames !== undefined) view.setUint32(16, Number(data.nMaxGroupNames), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(24, data.rgguidInterfaces === null ? 0n : BigInt(util.toPointer(data.rgguidInterfaces)), true);
+  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(24, data.rgguidInterfaces === null ? 0n : util.toBigInt(util.toPointer(data.rgguidInterfaces)), true);
   // 0x20: u32
   if (data?.cguidInterfaces !== undefined) view.setUint32(32, Number(data.cguidInterfaces), true);
   // 0x24: pad4
   // 0x28: buffer
   if (data?.lpstrCardNames !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpstrCardNames);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: u32
   if (data?.nMaxCardNames !== undefined) view.setUint32(48, Number(data.nMaxCardNames), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.lpfnCheck !== undefined) view.setBigUint64(56, data.lpfnCheck === null ? 0n : BigInt(util.toPointer(data.lpfnCheck)), true);
+  if (data?.lpfnCheck !== undefined) view.setBigUint64(56, data.lpfnCheck === null ? 0n : util.toBigInt(util.toPointer(data.lpfnCheck)), true);
   // 0x40: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x48: pointer
-  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(72, data.lpfnDisconnect === null ? 0n : BigInt(util.toPointer(data.lpfnDisconnect)), true);
+  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(72, data.lpfnDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnDisconnect)), true);
   // 0x50: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(80, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(80, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x58: u32
   if (data?.dwShareMode !== undefined) view.setUint32(88, Number(data.dwShareMode), true);
   // 0x5c: u32
@@ -2726,7 +2726,7 @@ export class OPENCARD_SEARCH_CRITERIAAView {
   // 0x08: buffer
   set lpstrGroupNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -2738,7 +2738,7 @@ export class OPENCARD_SEARCH_CRITERIAAView {
 
   // 0x18: pointer
   set rgguidInterfaces(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -2751,7 +2751,7 @@ export class OPENCARD_SEARCH_CRITERIAAView {
   // 0x28: buffer
   set lpstrCardNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: u32
@@ -2763,22 +2763,22 @@ export class OPENCARD_SEARCH_CRITERIAAView {
 
   // 0x38: pointer
   set lpfnCheck(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set lpfnDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: u32
@@ -2835,32 +2835,32 @@ export function allocOPENCARD_SEARCH_CRITERIAW(data?: Partial<OPENCARD_SEARCH_CR
   // 0x08: buffer
   if (data?.lpstrGroupNames !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpstrGroupNames);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.nMaxGroupNames !== undefined) view.setUint32(16, Number(data.nMaxGroupNames), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(24, data.rgguidInterfaces === null ? 0n : BigInt(util.toPointer(data.rgguidInterfaces)), true);
+  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(24, data.rgguidInterfaces === null ? 0n : util.toBigInt(util.toPointer(data.rgguidInterfaces)), true);
   // 0x20: u32
   if (data?.cguidInterfaces !== undefined) view.setUint32(32, Number(data.cguidInterfaces), true);
   // 0x24: pad4
   // 0x28: buffer
   if (data?.lpstrCardNames !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpstrCardNames);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: u32
   if (data?.nMaxCardNames !== undefined) view.setUint32(48, Number(data.nMaxCardNames), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.lpfnCheck !== undefined) view.setBigUint64(56, data.lpfnCheck === null ? 0n : BigInt(util.toPointer(data.lpfnCheck)), true);
+  if (data?.lpfnCheck !== undefined) view.setBigUint64(56, data.lpfnCheck === null ? 0n : util.toBigInt(util.toPointer(data.lpfnCheck)), true);
   // 0x40: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x48: pointer
-  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(72, data.lpfnDisconnect === null ? 0n : BigInt(util.toPointer(data.lpfnDisconnect)), true);
+  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(72, data.lpfnDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnDisconnect)), true);
   // 0x50: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(80, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(80, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x58: u32
   if (data?.dwShareMode !== undefined) view.setUint32(88, Number(data.dwShareMode), true);
   // 0x5c: u32
@@ -2968,7 +2968,7 @@ export class OPENCARD_SEARCH_CRITERIAWView {
   // 0x08: buffer
   set lpstrGroupNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -2980,7 +2980,7 @@ export class OPENCARD_SEARCH_CRITERIAWView {
 
   // 0x18: pointer
   set rgguidInterfaces(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -2993,7 +2993,7 @@ export class OPENCARD_SEARCH_CRITERIAWView {
   // 0x28: buffer
   set lpstrCardNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: u32
@@ -3005,22 +3005,22 @@ export class OPENCARD_SEARCH_CRITERIAWView {
 
   // 0x38: pointer
   set lpfnCheck(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set lpfnDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: u32
@@ -3034,7 +3034,7 @@ export class OPENCARD_SEARCH_CRITERIAWView {
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = number | bigint;
 
 /**
  * Windows.Win32.Security.Credentials.OPENCARDNAME_EXA (size: 128)
@@ -3043,7 +3043,7 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwStructSize: number;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: number | bigint;
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** u32 */
@@ -3075,7 +3075,7 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwActiveProtocol: number;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: number | bigint;
 }
 
 export const sizeofOPENCARDNAME_EXA = 128;
@@ -3087,30 +3087,30 @@ export function allocOPENCARDNAME_EXA(data?: Partial<OPENCARDNAME_EXA>): Uint8Ar
   if (data?.dwStructSize !== undefined) view.setUint32(0, Number(data.dwStructSize), true);
   // 0x04: pad4
   // 0x08: usize
-  if (data?.hSCardContext !== undefined) view.setBigUint64(8, BigInt(data.hSCardContext), true);
+  if (data?.hSCardContext !== undefined) view.setBigUint64(8, util.toBigInt(data.hSCardContext), true);
   // 0x10: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : util.toBigInt(util.toPointer(data.hwndOwner)), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: pad4
   // 0x20: buffer
   if (data?.lpstrTitle !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.lpstrTitle);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.lpstrSearchDesc !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpstrSearchDesc);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: pointer
-  if (data?.hIcon !== undefined) view.setBigUint64(48, data.hIcon === null ? 0n : BigInt(util.toPointer(data.hIcon)), true);
+  if (data?.hIcon !== undefined) view.setBigUint64(48, data.hIcon === null ? 0n : util.toBigInt(util.toPointer(data.hIcon)), true);
   // 0x38: pointer
-  if (data?.pOpenCardSearchCriteria !== undefined) view.setBigUint64(56, data.pOpenCardSearchCriteria === null ? 0n : BigInt(util.toPointer(data.pOpenCardSearchCriteria)), true);
+  if (data?.pOpenCardSearchCriteria !== undefined) view.setBigUint64(56, data.pOpenCardSearchCriteria === null ? 0n : util.toBigInt(util.toPointer(data.pOpenCardSearchCriteria)), true);
   // 0x40: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x48: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(72, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(72, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x50: u32
   if (data?.dwShareMode !== undefined) view.setUint32(80, Number(data.dwShareMode), true);
   // 0x54: u32
@@ -3118,7 +3118,7 @@ export function allocOPENCARDNAME_EXA(data?: Partial<OPENCARDNAME_EXA>): Uint8Ar
   // 0x58: buffer
   if (data?.lpstrRdr !== undefined) {
     (buf as any)._f88 = util.pstrToFfi(data.lpstrRdr);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
   // 0x60: u32
   if (data?.nMaxRdr !== undefined) view.setUint32(96, Number(data.nMaxRdr), true);
@@ -3126,14 +3126,14 @@ export function allocOPENCARDNAME_EXA(data?: Partial<OPENCARDNAME_EXA>): Uint8Ar
   // 0x68: buffer
   if (data?.lpstrCard !== undefined) {
     (buf as any)._f104 = util.pstrToFfi(data.lpstrCard);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
   }
   // 0x70: u32
   if (data?.nMaxCard !== undefined) view.setUint32(112, Number(data.nMaxCard), true);
   // 0x74: u32
   if (data?.dwActiveProtocol !== undefined) view.setUint32(116, Number(data.dwActiveProtocol), true);
   // 0x78: usize
-  if (data?.hCardHandle !== undefined) view.setBigUint64(120, BigInt(data.hCardHandle), true);
+  if (data?.hCardHandle !== undefined) view.setBigUint64(120, util.toBigInt(data.hCardHandle), true);
   return buf;
 }
 
@@ -3155,8 +3155,8 @@ export class OPENCARDNAME_EXAView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hSCardContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get hSCardContext(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -3248,8 +3248,8 @@ export class OPENCARDNAME_EXAView {
   }
 
   // 0x78: usize
-  get hCardHandle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(120, true));
+  get hCardHandle(): number | bigint {
+    return this.view.getBigUint64(120, true);
   }
 
   // 0x00: u32
@@ -3260,13 +3260,13 @@ export class OPENCARDNAME_EXAView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hSCardContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set hSCardContext(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -3279,33 +3279,33 @@ export class OPENCARDNAME_EXAView {
   // 0x20: buffer
   set lpstrTitle(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set lpstrSearchDesc(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: pointer
   set hIcon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pOpenCardSearchCriteria(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: u32
@@ -3321,7 +3321,7 @@ export class OPENCARDNAME_EXAView {
   // 0x58: buffer
   set lpstrRdr(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer((this.buf as any)._f88)), true);
   }
 
   // 0x60: u32
@@ -3334,7 +3334,7 @@ export class OPENCARDNAME_EXAView {
   // 0x68: buffer
   set lpstrCard(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer((this.buf as any)._f104)), true);
   }
 
   // 0x70: u32
@@ -3348,8 +3348,8 @@ export class OPENCARDNAME_EXAView {
   }
 
   // 0x78: usize
-  set hCardHandle(value: Deno.PointerValue) {
-    this.view.setBigUint64(120, BigInt(value), true);
+  set hCardHandle(value: number | bigint) {
+    this.view.setBigUint64(120, util.toBigInt(value), true);
   }
 }
 
@@ -3360,7 +3360,7 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwStructSize: number;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: number | bigint;
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** u32 */
@@ -3392,7 +3392,7 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwActiveProtocol: number;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: number | bigint;
 }
 
 export const sizeofOPENCARDNAME_EXW = 128;
@@ -3404,30 +3404,30 @@ export function allocOPENCARDNAME_EXW(data?: Partial<OPENCARDNAME_EXW>): Uint8Ar
   if (data?.dwStructSize !== undefined) view.setUint32(0, Number(data.dwStructSize), true);
   // 0x04: pad4
   // 0x08: usize
-  if (data?.hSCardContext !== undefined) view.setBigUint64(8, BigInt(data.hSCardContext), true);
+  if (data?.hSCardContext !== undefined) view.setBigUint64(8, util.toBigInt(data.hSCardContext), true);
   // 0x10: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : util.toBigInt(util.toPointer(data.hwndOwner)), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: pad4
   // 0x20: buffer
   if (data?.lpstrTitle !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.lpstrTitle);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.lpstrSearchDesc !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpstrSearchDesc);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: pointer
-  if (data?.hIcon !== undefined) view.setBigUint64(48, data.hIcon === null ? 0n : BigInt(util.toPointer(data.hIcon)), true);
+  if (data?.hIcon !== undefined) view.setBigUint64(48, data.hIcon === null ? 0n : util.toBigInt(util.toPointer(data.hIcon)), true);
   // 0x38: pointer
-  if (data?.pOpenCardSearchCriteria !== undefined) view.setBigUint64(56, data.pOpenCardSearchCriteria === null ? 0n : BigInt(util.toPointer(data.pOpenCardSearchCriteria)), true);
+  if (data?.pOpenCardSearchCriteria !== undefined) view.setBigUint64(56, data.pOpenCardSearchCriteria === null ? 0n : util.toBigInt(util.toPointer(data.pOpenCardSearchCriteria)), true);
   // 0x40: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(64, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x48: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(72, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(72, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x50: u32
   if (data?.dwShareMode !== undefined) view.setUint32(80, Number(data.dwShareMode), true);
   // 0x54: u32
@@ -3435,7 +3435,7 @@ export function allocOPENCARDNAME_EXW(data?: Partial<OPENCARDNAME_EXW>): Uint8Ar
   // 0x58: buffer
   if (data?.lpstrRdr !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.lpstrRdr);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
   // 0x60: u32
   if (data?.nMaxRdr !== undefined) view.setUint32(96, Number(data.nMaxRdr), true);
@@ -3443,14 +3443,14 @@ export function allocOPENCARDNAME_EXW(data?: Partial<OPENCARDNAME_EXW>): Uint8Ar
   // 0x68: buffer
   if (data?.lpstrCard !== undefined) {
     (buf as any)._f104 = util.pwstrToFfi(data.lpstrCard);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
   }
   // 0x70: u32
   if (data?.nMaxCard !== undefined) view.setUint32(112, Number(data.nMaxCard), true);
   // 0x74: u32
   if (data?.dwActiveProtocol !== undefined) view.setUint32(116, Number(data.dwActiveProtocol), true);
   // 0x78: usize
-  if (data?.hCardHandle !== undefined) view.setBigUint64(120, BigInt(data.hCardHandle), true);
+  if (data?.hCardHandle !== undefined) view.setBigUint64(120, util.toBigInt(data.hCardHandle), true);
   return buf;
 }
 
@@ -3472,8 +3472,8 @@ export class OPENCARDNAME_EXWView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hSCardContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get hSCardContext(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -3565,8 +3565,8 @@ export class OPENCARDNAME_EXWView {
   }
 
   // 0x78: usize
-  get hCardHandle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(120, true));
+  get hCardHandle(): number | bigint {
+    return this.view.getBigUint64(120, true);
   }
 
   // 0x00: u32
@@ -3577,13 +3577,13 @@ export class OPENCARDNAME_EXWView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hSCardContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set hSCardContext(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -3596,33 +3596,33 @@ export class OPENCARDNAME_EXWView {
   // 0x20: buffer
   set lpstrTitle(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set lpstrSearchDesc(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: pointer
   set hIcon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pOpenCardSearchCriteria(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: u32
@@ -3638,7 +3638,7 @@ export class OPENCARDNAME_EXWView {
   // 0x58: buffer
   set lpstrRdr(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer((this.buf as any)._f88)), true);
   }
 
   // 0x60: u32
@@ -3651,7 +3651,7 @@ export class OPENCARDNAME_EXWView {
   // 0x68: buffer
   set lpstrCard(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer((this.buf as any)._f104)), true);
   }
 
   // 0x70: u32
@@ -3665,8 +3665,8 @@ export class OPENCARDNAME_EXWView {
   }
 
   // 0x78: usize
-  set hCardHandle(value: Deno.PointerValue) {
-    this.view.setBigUint64(120, BigInt(value), true);
+  set hCardHandle(value: number | bigint) {
+    this.view.setBigUint64(120, util.toBigInt(value), true);
   }
 }
 
@@ -3697,7 +3697,7 @@ export function allocREADER_SEL_REQUEST(data?: Partial<READER_SEL_REQUEST>): Uin
   if (data?.MatchType !== undefined) view.setInt32(8, Number(data.MatchType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3753,7 +3753,7 @@ export class READER_SEL_REQUESTView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3847,7 +3847,7 @@ export interface OPENCARDNAMEA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: number | bigint;
   /** Windows.Win32.Foundation.PSTR */
   lpstrGroupNames: string | null | Uint8Array;
   /** u32 */
@@ -3887,7 +3887,7 @@ export interface OPENCARDNAMEA {
   /** Windows.Win32.Security.Credentials.LPOCNDSCPROC */
   lpfnDisconnect: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: number | bigint;
 }
 
 export const sizeofOPENCARDNAMEA = 176;
@@ -3899,13 +3899,13 @@ export function allocOPENCARDNAMEA(data?: Partial<OPENCARDNAMEA>): Uint8Array {
   if (data?.dwStructSize !== undefined) view.setUint32(0, Number(data.dwStructSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : util.toBigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: usize
-  if (data?.hSCardContext !== undefined) view.setBigUint64(16, BigInt(data.hSCardContext), true);
+  if (data?.hSCardContext !== undefined) view.setBigUint64(16, util.toBigInt(data.hSCardContext), true);
   // 0x18: buffer
   if (data?.lpstrGroupNames !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpstrGroupNames);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.nMaxGroupNames !== undefined) view.setUint32(32, Number(data.nMaxGroupNames), true);
@@ -3913,20 +3913,20 @@ export function allocOPENCARDNAMEA(data?: Partial<OPENCARDNAMEA>): Uint8Array {
   // 0x28: buffer
   if (data?.lpstrCardNames !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpstrCardNames);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: u32
   if (data?.nMaxCardNames !== undefined) view.setUint32(48, Number(data.nMaxCardNames), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(56, data.rgguidInterfaces === null ? 0n : BigInt(util.toPointer(data.rgguidInterfaces)), true);
+  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(56, data.rgguidInterfaces === null ? 0n : util.toBigInt(util.toPointer(data.rgguidInterfaces)), true);
   // 0x40: u32
   if (data?.cguidInterfaces !== undefined) view.setUint32(64, Number(data.cguidInterfaces), true);
   // 0x44: pad4
   // 0x48: buffer
   if (data?.lpstrRdr !== undefined) {
     (buf as any)._f72 = util.pstrToFfi(data.lpstrRdr);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
   }
   // 0x50: u32
   if (data?.nMaxRdr !== undefined) view.setUint32(80, Number(data.nMaxRdr), true);
@@ -3934,7 +3934,7 @@ export function allocOPENCARDNAMEA(data?: Partial<OPENCARDNAMEA>): Uint8Array {
   // 0x58: buffer
   if (data?.lpstrCard !== undefined) {
     (buf as any)._f88 = util.pstrToFfi(data.lpstrCard);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
   // 0x60: u32
   if (data?.nMaxCard !== undefined) view.setUint32(96, Number(data.nMaxCard), true);
@@ -3942,13 +3942,13 @@ export function allocOPENCARDNAMEA(data?: Partial<OPENCARDNAMEA>): Uint8Array {
   // 0x68: buffer
   if (data?.lpstrTitle !== undefined) {
     (buf as any)._f104 = util.pstrToFfi(data.lpstrTitle);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
   }
   // 0x70: u32
   if (data?.dwFlags !== undefined) view.setUint32(112, Number(data.dwFlags), true);
   // 0x74: pad4
   // 0x78: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(120, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(120, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x80: u32
   if (data?.dwShareMode !== undefined) view.setUint32(128, Number(data.dwShareMode), true);
   // 0x84: u32
@@ -3957,13 +3957,13 @@ export function allocOPENCARDNAMEA(data?: Partial<OPENCARDNAMEA>): Uint8Array {
   if (data?.dwActiveProtocol !== undefined) view.setUint32(136, Number(data.dwActiveProtocol), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(144, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(144, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x98: pointer
-  if (data?.lpfnCheck !== undefined) view.setBigUint64(152, data.lpfnCheck === null ? 0n : BigInt(util.toPointer(data.lpfnCheck)), true);
+  if (data?.lpfnCheck !== undefined) view.setBigUint64(152, data.lpfnCheck === null ? 0n : util.toBigInt(util.toPointer(data.lpfnCheck)), true);
   // 0xa0: pointer
-  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(160, data.lpfnDisconnect === null ? 0n : BigInt(util.toPointer(data.lpfnDisconnect)), true);
+  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(160, data.lpfnDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnDisconnect)), true);
   // 0xa8: usize
-  if (data?.hCardHandle !== undefined) view.setBigUint64(168, BigInt(data.hCardHandle), true);
+  if (data?.hCardHandle !== undefined) view.setBigUint64(168, util.toBigInt(data.hCardHandle), true);
   return buf;
 }
 
@@ -3991,8 +3991,8 @@ export class OPENCARDNAMEAView {
   }
 
   // 0x10: usize
-  get hSCardContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get hSCardContext(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: buffer
@@ -4115,8 +4115,8 @@ export class OPENCARDNAMEAView {
   }
 
   // 0xa8: usize
-  get hCardHandle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(168, true));
+  get hCardHandle(): number | bigint {
+    return this.view.getBigUint64(168, true);
   }
 
   // 0x00: u32
@@ -4128,18 +4128,18 @@ export class OPENCARDNAMEAView {
 
   // 0x08: pointer
   set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set hSCardContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set hSCardContext(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: buffer
   set lpstrGroupNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -4152,7 +4152,7 @@ export class OPENCARDNAMEAView {
   // 0x28: buffer
   set lpstrCardNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: u32
@@ -4164,7 +4164,7 @@ export class OPENCARDNAMEAView {
 
   // 0x38: pointer
   set rgguidInterfaces(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: u32
@@ -4177,7 +4177,7 @@ export class OPENCARDNAMEAView {
   // 0x48: buffer
   set lpstrRdr(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer((this.buf as any)._f72)), true);
   }
 
   // 0x50: u32
@@ -4190,7 +4190,7 @@ export class OPENCARDNAMEAView {
   // 0x58: buffer
   set lpstrCard(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer((this.buf as any)._f88)), true);
   }
 
   // 0x60: u32
@@ -4203,7 +4203,7 @@ export class OPENCARDNAMEAView {
   // 0x68: buffer
   set lpstrTitle(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer((this.buf as any)._f104)), true);
   }
 
   // 0x70: u32
@@ -4215,7 +4215,7 @@ export class OPENCARDNAMEAView {
 
   // 0x78: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: u32
@@ -4237,22 +4237,22 @@ export class OPENCARDNAMEAView {
 
   // 0x90: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(144, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x98: pointer
   set lpfnCheck(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(152, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa0: pointer
   set lpfnDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(160, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa8: usize
-  set hCardHandle(value: Deno.PointerValue) {
-    this.view.setBigUint64(168, BigInt(value), true);
+  set hCardHandle(value: number | bigint) {
+    this.view.setBigUint64(168, util.toBigInt(value), true);
   }
 }
 
@@ -4265,7 +4265,7 @@ export interface OPENCARDNAMEW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue | null;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrGroupNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -4305,7 +4305,7 @@ export interface OPENCARDNAMEW {
   /** Windows.Win32.Security.Credentials.LPOCNDSCPROC */
   lpfnDisconnect: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: number | bigint;
 }
 
 export const sizeofOPENCARDNAMEW = 176;
@@ -4317,13 +4317,13 @@ export function allocOPENCARDNAMEW(data?: Partial<OPENCARDNAMEW>): Uint8Array {
   if (data?.dwStructSize !== undefined) view.setUint32(0, Number(data.dwStructSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : util.toBigInt(util.toPointer(data.hwndOwner)), true);
   // 0x10: usize
-  if (data?.hSCardContext !== undefined) view.setBigUint64(16, BigInt(data.hSCardContext), true);
+  if (data?.hSCardContext !== undefined) view.setBigUint64(16, util.toBigInt(data.hSCardContext), true);
   // 0x18: buffer
   if (data?.lpstrGroupNames !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpstrGroupNames);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.nMaxGroupNames !== undefined) view.setUint32(32, Number(data.nMaxGroupNames), true);
@@ -4331,20 +4331,20 @@ export function allocOPENCARDNAMEW(data?: Partial<OPENCARDNAMEW>): Uint8Array {
   // 0x28: buffer
   if (data?.lpstrCardNames !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpstrCardNames);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   // 0x30: u32
   if (data?.nMaxCardNames !== undefined) view.setUint32(48, Number(data.nMaxCardNames), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(56, data.rgguidInterfaces === null ? 0n : BigInt(util.toPointer(data.rgguidInterfaces)), true);
+  if (data?.rgguidInterfaces !== undefined) view.setBigUint64(56, data.rgguidInterfaces === null ? 0n : util.toBigInt(util.toPointer(data.rgguidInterfaces)), true);
   // 0x40: u32
   if (data?.cguidInterfaces !== undefined) view.setUint32(64, Number(data.cguidInterfaces), true);
   // 0x44: pad4
   // 0x48: buffer
   if (data?.lpstrRdr !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.lpstrRdr);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
   }
   // 0x50: u32
   if (data?.nMaxRdr !== undefined) view.setUint32(80, Number(data.nMaxRdr), true);
@@ -4352,7 +4352,7 @@ export function allocOPENCARDNAMEW(data?: Partial<OPENCARDNAMEW>): Uint8Array {
   // 0x58: buffer
   if (data?.lpstrCard !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.lpstrCard);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
   }
   // 0x60: u32
   if (data?.nMaxCard !== undefined) view.setUint32(96, Number(data.nMaxCard), true);
@@ -4360,13 +4360,13 @@ export function allocOPENCARDNAMEW(data?: Partial<OPENCARDNAMEW>): Uint8Array {
   // 0x68: buffer
   if (data?.lpstrTitle !== undefined) {
     (buf as any)._f104 = util.pwstrToFfi(data.lpstrTitle);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
   }
   // 0x70: u32
   if (data?.dwFlags !== undefined) view.setUint32(112, Number(data.dwFlags), true);
   // 0x74: pad4
   // 0x78: pointer
-  if (data?.pvUserData !== undefined) view.setBigUint64(120, data.pvUserData === null ? 0n : BigInt(util.toPointer(data.pvUserData)), true);
+  if (data?.pvUserData !== undefined) view.setBigUint64(120, data.pvUserData === null ? 0n : util.toBigInt(util.toPointer(data.pvUserData)), true);
   // 0x80: u32
   if (data?.dwShareMode !== undefined) view.setUint32(128, Number(data.dwShareMode), true);
   // 0x84: u32
@@ -4375,13 +4375,13 @@ export function allocOPENCARDNAMEW(data?: Partial<OPENCARDNAMEW>): Uint8Array {
   if (data?.dwActiveProtocol !== undefined) view.setUint32(136, Number(data.dwActiveProtocol), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.lpfnConnect !== undefined) view.setBigUint64(144, data.lpfnConnect === null ? 0n : BigInt(util.toPointer(data.lpfnConnect)), true);
+  if (data?.lpfnConnect !== undefined) view.setBigUint64(144, data.lpfnConnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnConnect)), true);
   // 0x98: pointer
-  if (data?.lpfnCheck !== undefined) view.setBigUint64(152, data.lpfnCheck === null ? 0n : BigInt(util.toPointer(data.lpfnCheck)), true);
+  if (data?.lpfnCheck !== undefined) view.setBigUint64(152, data.lpfnCheck === null ? 0n : util.toBigInt(util.toPointer(data.lpfnCheck)), true);
   // 0xa0: pointer
-  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(160, data.lpfnDisconnect === null ? 0n : BigInt(util.toPointer(data.lpfnDisconnect)), true);
+  if (data?.lpfnDisconnect !== undefined) view.setBigUint64(160, data.lpfnDisconnect === null ? 0n : util.toBigInt(util.toPointer(data.lpfnDisconnect)), true);
   // 0xa8: usize
-  if (data?.hCardHandle !== undefined) view.setBigUint64(168, BigInt(data.hCardHandle), true);
+  if (data?.hCardHandle !== undefined) view.setBigUint64(168, util.toBigInt(data.hCardHandle), true);
   return buf;
 }
 
@@ -4409,8 +4409,8 @@ export class OPENCARDNAMEWView {
   }
 
   // 0x10: usize
-  get hSCardContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get hSCardContext(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: buffer
@@ -4533,8 +4533,8 @@ export class OPENCARDNAMEWView {
   }
 
   // 0xa8: usize
-  get hCardHandle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(168, true));
+  get hCardHandle(): number | bigint {
+    return this.view.getBigUint64(168, true);
   }
 
   // 0x00: u32
@@ -4546,18 +4546,18 @@ export class OPENCARDNAMEWView {
 
   // 0x08: pointer
   set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set hSCardContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set hSCardContext(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: buffer
   set lpstrGroupNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -4570,7 +4570,7 @@ export class OPENCARDNAMEWView {
   // 0x28: buffer
   set lpstrCardNames(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 
   // 0x30: u32
@@ -4582,7 +4582,7 @@ export class OPENCARDNAMEWView {
 
   // 0x38: pointer
   set rgguidInterfaces(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: u32
@@ -4595,7 +4595,7 @@ export class OPENCARDNAMEWView {
   // 0x48: buffer
   set lpstrRdr(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer((this.buf as any)._f72)), true);
   }
 
   // 0x50: u32
@@ -4608,7 +4608,7 @@ export class OPENCARDNAMEWView {
   // 0x58: buffer
   set lpstrCard(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer((this.buf as any)._f88)), true);
   }
 
   // 0x60: u32
@@ -4621,7 +4621,7 @@ export class OPENCARDNAMEWView {
   // 0x68: buffer
   set lpstrTitle(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, util.toBigInt(util.toPointer((this.buf as any)._f104)), true);
   }
 
   // 0x70: u32
@@ -4633,7 +4633,7 @@ export class OPENCARDNAMEWView {
 
   // 0x78: pointer
   set pvUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(120, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x80: u32
@@ -4655,22 +4655,22 @@ export class OPENCARDNAMEWView {
 
   // 0x90: pointer
   set lpfnConnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(144, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x98: pointer
   set lpfnCheck(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(152, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa0: pointer
   set lpfnDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(160, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0xa8: usize
-  set hCardHandle(value: Deno.PointerValue) {
-    this.view.setBigUint64(168, BigInt(value), true);
+  set hCardHandle(value: number | bigint) {
+    this.view.setBigUint64(168, util.toBigInt(value), true);
   }
 }
 
@@ -4693,7 +4693,7 @@ export function allocSecPkgContext_ClientCreds(data?: Partial<SecPkgContext_Clie
   if (data?.AuthBufferLen !== undefined) view.setUint32(0, Number(data.AuthBufferLen), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.AuthBuffer !== undefined) view.setBigUint64(8, data.AuthBuffer === null ? 0n : BigInt(util.toPointer(data.AuthBuffer)), true);
+  if (data?.AuthBuffer !== undefined) view.setBigUint64(8, data.AuthBuffer === null ? 0n : util.toBigInt(util.toPointer(data.AuthBuffer)), true);
   return buf;
 }
 
@@ -4729,7 +4729,7 @@ export class SecPkgContext_ClientCredsView {
 
   // 0x08: pointer
   set AuthBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4754,9 +4754,9 @@ export function allocCREDSSP_CRED(data?: Partial<CREDSSP_CRED>): Uint8Array {
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pSchannelCred !== undefined) view.setBigUint64(8, data.pSchannelCred === null ? 0n : BigInt(util.toPointer(data.pSchannelCred)), true);
+  if (data?.pSchannelCred !== undefined) view.setBigUint64(8, data.pSchannelCred === null ? 0n : util.toBigInt(util.toPointer(data.pSchannelCred)), true);
   // 0x10: pointer
-  if (data?.pSpnegoCred !== undefined) view.setBigUint64(16, data.pSpnegoCred === null ? 0n : BigInt(util.toPointer(data.pSpnegoCred)), true);
+  if (data?.pSpnegoCred !== undefined) view.setBigUint64(16, data.pSpnegoCred === null ? 0n : util.toBigInt(util.toPointer(data.pSpnegoCred)), true);
   return buf;
 }
 
@@ -4798,12 +4798,12 @@ export class CREDSSP_CREDView {
 
   // 0x08: pointer
   set pSchannelCred(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pSpnegoCred(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4837,7 +4837,7 @@ export function allocCREDSSP_CRED_EX(data?: Partial<CREDSSP_CRED_EX>): Uint8Arra
   // 0x0c: u32
   if (data?.Reserved !== undefined) view.setUint32(12, Number(data.Reserved), true);
   // 0x10: pointer
-  if (data?.Cred !== undefined) view.setBigUint64(16, data.Cred === null ? 0n : BigInt(util.toPointer(data.Cred)), true);
+  if (data?.Cred !== undefined) view.setBigUint64(16, data.Cred === null ? 0n : util.toBigInt(util.toPointer(data.Cred)), true);
   return buf;
 }
 
@@ -4899,7 +4899,7 @@ export class CREDSSP_CRED_EXView {
 
   // 0x10: pointer
   set Cred(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4907,7 +4907,7 @@ export type HRESULT = number;
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 
@@ -5932,219 +5932,219 @@ export function SCardEstablishContext(
 }
 
 export function SCardReleaseContext(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardReleaseContext(hContext);
+  return libWinSCard_dll.SCardReleaseContext(util.toBigInt(util.toPointer(hContext)));
 }
 
 export function SCardIsValidContext(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIsValidContext(hContext);
+  return libWinSCard_dll.SCardIsValidContext(util.toBigInt(util.toPointer(hContext)));
 }
 
 export function SCardListReaderGroupsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReaderGroupsA(hContext, util.pstrToFfi(mszGroups), util.toPointer(pcchGroups));
+  return libWinSCard_dll.SCardListReaderGroupsA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(mszGroups), util.toPointer(pcchGroups));
 }
 
 export function SCardListReaderGroupsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReaderGroupsW(hContext, util.pwstrToFfi(mszGroups), util.toPointer(pcchGroups));
+  return libWinSCard_dll.SCardListReaderGroupsW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(mszGroups), util.toPointer(pcchGroups));
 }
 
 export function SCardListReadersA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReadersA(hContext, util.pstrToFfi(mszGroups), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(mszGroups), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListReadersW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReadersW(hContext, util.pwstrToFfi(mszGroups), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(mszGroups), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListCardsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   cguidInterfaceCount: number /* u32 */,
   mszCards: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListCardsA(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pstrToFfi(mszCards), util.toPointer(pcchCards));
+  return libWinSCard_dll.SCardListCardsA(util.toBigInt(util.toPointer(hContext)), util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pstrToFfi(mszCards), util.toPointer(pcchCards));
 }
 
 export function SCardListCardsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   cguidInterfaceCount: number /* u32 */,
   mszCards: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchCards: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListCardsW(hContext, util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pwstrToFfi(mszCards), util.toPointer(pcchCards));
+  return libWinSCard_dll.SCardListCardsW(util.toBigInt(util.toPointer(hContext)), util.toPointer(pbAtr), util.toPointer(rgquidInterfaces), cguidInterfaceCount, util.pwstrToFfi(mszCards), util.toPointer(pcchCards));
 }
 
 export function SCardListInterfacesA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListInterfacesA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
+  return libWinSCard_dll.SCardListInterfacesA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
 }
 
 export function SCardListInterfacesW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListInterfacesW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
+  return libWinSCard_dll.SCardListInterfacesW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCard), util.toPointer(pguidInterfaces), util.toPointer(pcguidInterfaces));
 }
 
 export function SCardGetProviderIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetProviderIdA(hContext, util.pstrToFfi(szCard), util.toPointer(pguidProviderId));
+  return libWinSCard_dll.SCardGetProviderIdA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCard), util.toPointer(pguidProviderId));
 }
 
 export function SCardGetProviderIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetProviderIdW(hContext, util.pwstrToFfi(szCard), util.toPointer(pguidProviderId));
+  return libWinSCard_dll.SCardGetProviderIdW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCard), util.toPointer(pguidProviderId));
 }
 
 export function SCardGetCardTypeProviderNameA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider), util.toPointer(pcchProvider));
+  return libWinSCard_dll.SCardGetCardTypeProviderNameA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider), util.toPointer(pcchProvider));
 }
 
 export function SCardGetCardTypeProviderNameW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider), util.toPointer(pcchProvider));
+  return libWinSCard_dll.SCardGetCardTypeProviderNameW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider), util.toPointer(pcchProvider));
 }
 
 export function SCardIntroduceReaderGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceReaderGroupA(hContext, util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardIntroduceReaderGroupA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardIntroduceReaderGroupW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetReaderGroupA(hContext, util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardForgetReaderGroupA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardForgetReaderGroupW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceReaderA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceName));
+  return libWinSCard_dll.SCardIntroduceReaderA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceName));
 }
 
 export function SCardIntroduceReaderW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceReaderW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceName));
+  return libWinSCard_dll.SCardIntroduceReaderW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceName));
 }
 
 export function SCardForgetReaderA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetReaderA(hContext, util.pstrToFfi(szReaderName));
+  return libWinSCard_dll.SCardForgetReaderA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName));
 }
 
 export function SCardForgetReaderW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetReaderW(hContext, util.pwstrToFfi(szReaderName));
+  return libWinSCard_dll.SCardForgetReaderW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName));
 }
 
 export function SCardAddReaderToGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardAddReaderToGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardAddReaderToGroupA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardAddReaderToGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardAddReaderToGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardAddReaderToGroupW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardRemoveReaderFromGroupA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardRemoveReaderFromGroupA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.pstrToFfi(szGroupName));
 }
 
 export function SCardRemoveReaderFromGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardRemoveReaderFromGroupW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
+  return libWinSCard_dll.SCardRemoveReaderFromGroupW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceCardTypeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6153,11 +6153,11 @@ export function SCardIntroduceCardTypeA(
   pbAtrMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAtrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceCardTypeA(hContext, util.pstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
+  return libWinSCard_dll.SCardIntroduceCardTypeA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
 }
 
 export function SCardIntroduceCardTypeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6166,46 +6166,46 @@ export function SCardIntroduceCardTypeW(
   pbAtrMask: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAtrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardIntroduceCardTypeW(hContext, util.pwstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
+  return libWinSCard_dll.SCardIntroduceCardTypeW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCardName), util.toPointer(pguidPrimaryProvider), util.toPointer(rgguidInterfaces), dwInterfaceCount, util.toPointer(pbAtr), util.toPointer(pbAtrMask), cbAtrLen);
 }
 
 export function SCardSetCardTypeProviderNameA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardSetCardTypeProviderNameA(hContext, util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider));
+  return libWinSCard_dll.SCardSetCardTypeProviderNameA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCardName), dwProviderId, util.pstrToFfi(szProvider));
 }
 
 export function SCardSetCardTypeProviderNameW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardSetCardTypeProviderNameW(hContext, util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider));
+  return libWinSCard_dll.SCardSetCardTypeProviderNameW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCardName), dwProviderId, util.pwstrToFfi(szProvider));
 }
 
 export function SCardForgetCardTypeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetCardTypeA(hContext, util.pstrToFfi(szCardName));
+  return libWinSCard_dll.SCardForgetCardTypeA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szCardName));
 }
 
 export function SCardForgetCardTypeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardForgetCardTypeW(hContext, util.pwstrToFfi(szCardName));
+  return libWinSCard_dll.SCardForgetCardTypeW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szCardName));
 }
 
 export function SCardFreeMemory(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   pvMem: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardFreeMemory(hContext, util.toPointer(pvMem));
+  return libWinSCard_dll.SCardFreeMemory(util.toBigInt(util.toPointer(hContext)), util.toPointer(pvMem));
 }
 
 export function SCardAccessStartedEvent(): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
@@ -6217,131 +6217,131 @@ export function SCardReleaseStartedEvent(): void /* void */ {
 }
 
 export function SCardLocateCardsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszCards: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardLocateCardsA(hContext, util.pstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   mszCards: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardLocateCardsW(hContext, util.pwstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(mszCards), util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsByATRA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   rgAtrMasks: Deno.PointerValue | Uint8Array | null /* ptr */,
   cAtrs: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardLocateCardsByATRA(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsByATRA(util.toBigInt(util.toPointer(hContext)), util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardLocateCardsByATRW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   rgAtrMasks: Deno.PointerValue | Uint8Array | null /* ptr */,
   cAtrs: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardLocateCardsByATRW(hContext, util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardLocateCardsByATRW(util.toBigInt(util.toPointer(hContext)), util.toPointer(rgAtrMasks), cAtrs, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardGetStatusChangeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   dwTimeout: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetStatusChangeA(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardGetStatusChangeA(util.toBigInt(util.toPointer(hContext)), dwTimeout, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardGetStatusChangeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   dwTimeout: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array | null /* ptr */,
   cReaders: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetStatusChangeW(hContext, dwTimeout, util.toPointer(rgReaderStates), cReaders);
+  return libWinSCard_dll.SCardGetStatusChangeW(util.toBigInt(util.toPointer(hContext)), dwTimeout, util.toPointer(rgReaderStates), cReaders);
 }
 
 export function SCardCancel(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardCancel(hContext);
+  return libWinSCard_dll.SCardCancel(util.toBigInt(util.toPointer(hContext)));
 }
 
 export function SCardConnectA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReader: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardConnectA(hContext, util.pstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardConnectA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardConnectW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReader: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   phCard: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardConnectW(hContext, util.pwstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardConnectW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReader), dwShareMode, dwPreferredProtocols, util.toPointer(phCard), util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardReconnect(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   dwInitialization: number /* u32 */,
   pdwActiveProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardReconnect(hCard, dwShareMode, dwPreferredProtocols, dwInitialization, util.toPointer(pdwActiveProtocol));
+  return libWinSCard_dll.SCardReconnect(util.toBigInt(util.toPointer(hCard)), dwShareMode, dwPreferredProtocols, dwInitialization, util.toPointer(pdwActiveProtocol));
 }
 
 export function SCardDisconnect(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardDisconnect(hCard, dwDisposition);
+  return libWinSCard_dll.SCardDisconnect(util.toBigInt(util.toPointer(hCard)), dwDisposition);
 }
 
 export function SCardBeginTransaction(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardBeginTransaction(hCard);
+  return libWinSCard_dll.SCardBeginTransaction(util.toBigInt(util.toPointer(hCard)));
 }
 
 export function SCardEndTransaction(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardEndTransaction(hCard, dwDisposition);
+  return libWinSCard_dll.SCardEndTransaction(util.toBigInt(util.toPointer(hCard)), dwDisposition);
 }
 
 export function SCardState(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwProtocol: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardState(hCard, util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardState(util.toBigInt(util.toPointer(hCard)), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardStatusA(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   mszReaderNames: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6349,11 +6349,11 @@ export function SCardStatusA(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardStatusA(hCard, util.pstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardStatusA(util.toBigInt(util.toPointer(hCard)), util.pstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardStatusW(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   mszReaderNames: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array | null /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
@@ -6361,11 +6361,11 @@ export function SCardStatusW(
   pbAtr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAtrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardStatusW(hCard, util.pwstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
+  return libWinSCard_dll.SCardStatusW(util.toBigInt(util.toPointer(hCard)), util.pwstrToFfi(mszReaderNames), util.toPointer(pcchReaderLen), util.toPointer(pdwState), util.toPointer(pdwProtocol), util.toPointer(pbAtr), util.toPointer(pcbAtrLen));
 }
 
 export function SCardTransmit(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   pioSendPci: Deno.PointerValue | Uint8Array | null /* ptr */,
   pbSendBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbSendLength: number /* u32 */,
@@ -6373,18 +6373,18 @@ export function SCardTransmit(
   pbRecvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbRecvLength: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardTransmit(hCard, util.toPointer(pioSendPci), util.toPointer(pbSendBuffer), cbSendLength, util.toPointer(pioRecvPci), util.toPointer(pbRecvBuffer), util.toPointer(pcbRecvLength));
+  return libWinSCard_dll.SCardTransmit(util.toBigInt(util.toPointer(hCard)), util.toPointer(pioSendPci), util.toPointer(pbSendBuffer), cbSendLength, util.toPointer(pioRecvPci), util.toPointer(pbRecvBuffer), util.toPointer(pcbRecvLength));
 }
 
 export function SCardGetTransmitCount(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   pcTransmitCount: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetTransmitCount(hCard, util.toPointer(pcTransmitCount));
+  return libWinSCard_dll.SCardGetTransmitCount(util.toBigInt(util.toPointer(hCard)), util.toPointer(pcTransmitCount));
 }
 
 export function SCardControl(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwControlCode: number /* u32 */,
   lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbInBufferSize: number /* u32 */,
@@ -6392,25 +6392,25 @@ export function SCardControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardControl(hCard, dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libWinSCard_dll.SCardControl(util.toBigInt(util.toPointer(hCard)), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function SCardGetAttrib(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwAttrId: number /* u32 */,
   pbAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbAttrLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), util.toPointer(pcbAttrLen));
+  return libWinSCard_dll.SCardGetAttrib(util.toBigInt(util.toPointer(hCard)), dwAttrId, util.toPointer(pbAttr), util.toPointer(pcbAttrLen));
 }
 
 export function SCardSetAttrib(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: number | bigint /* usize */,
   dwAttrId: number /* u32 */,
   pbAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
   cbAttrLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardSetAttrib(hCard, dwAttrId, util.toPointer(pbAttr), cbAttrLen);
+  return libWinSCard_dll.SCardSetAttrib(util.toBigInt(util.toPointer(hCard)), dwAttrId, util.toPointer(pbAttr), cbAttrLen);
 }
 
 export function SCardUIDlgSelectCardA(
@@ -6442,123 +6442,123 @@ export function SCardDlgExtendedError(): number /* i32 */ {
 }
 
 export function SCardReadCacheA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardReadCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
+  return libWinSCard_dll.SCardReadCacheA(util.toBigInt(util.toPointer(hContext)), util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
 }
 
 export function SCardReadCacheW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardReadCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
+  return libWinSCard_dll.SCardReadCacheW(util.toBigInt(util.toPointer(hContext)), util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), util.toPointer(DataLen));
 }
 
 export function SCardWriteCacheA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardWriteCacheA(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), DataLen);
+  return libWinSCard_dll.SCardWriteCacheA(util.toBigInt(util.toPointer(hContext)), util.toPointer(CardIdentifier), FreshnessCounter, util.pstrToFfi(LookupName), util.toPointer(Data), DataLen);
 }
 
 export function SCardWriteCacheW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Data: Deno.PointerValue | Uint8Array | null /* ptr */,
   DataLen: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardWriteCacheW(hContext, util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), DataLen);
+  return libWinSCard_dll.SCardWriteCacheW(util.toBigInt(util.toPointer(hContext)), util.toPointer(CardIdentifier), FreshnessCounter, util.pwstrToFfi(LookupName), util.toPointer(Data), DataLen);
 }
 
 export function SCardGetReaderIconA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetReaderIconA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
+  return libWinSCard_dll.SCardGetReaderIconA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
 }
 
 export function SCardGetReaderIconW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetReaderIconW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
+  return libWinSCard_dll.SCardGetReaderIconW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.toPointer(pbIcon), util.toPointer(pcbIcon));
 }
 
 export function SCardGetDeviceTypeIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetDeviceTypeIdA(hContext, util.pstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
+  return libWinSCard_dll.SCardGetDeviceTypeIdA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
 }
 
 export function SCardGetDeviceTypeIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetDeviceTypeIdW(hContext, util.pwstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
+  return libWinSCard_dll.SCardGetDeviceTypeIdW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.toPointer(pdwDeviceTypeId));
 }
 
 export function SCardGetReaderDeviceInstanceIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdA(hContext, util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
+  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szReaderName), util.pstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
 }
 
 export function SCardGetReaderDeviceInstanceIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdW(hContext, util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
+  return libWinSCard_dll.SCardGetReaderDeviceInstanceIdW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szReaderName), util.pwstrToFfi(szDeviceInstanceId), util.toPointer(pcchDeviceInstanceId));
 }
 
 export function SCardListReadersWithDeviceInstanceIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdA(hContext, util.pstrToFfi(szDeviceInstanceId), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdA(util.toBigInt(util.toPointer(hContext)), util.pstrToFfi(szDeviceInstanceId), util.pstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardListReadersWithDeviceInstanceIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdW(hContext, util.pwstrToFfi(szDeviceInstanceId), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
+  return libWinSCard_dll.SCardListReadersWithDeviceInstanceIdW(util.toBigInt(util.toPointer(hContext)), util.pwstrToFfi(szDeviceInstanceId), util.pwstrToFfi(mszReaders), util.toPointer(pcchReaders));
 }
 
 export function SCardAudit(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: number | bigint /* usize */,
   dwEvent: number /* u32 */,
 ): number /* i32 */ {
-  return libWinSCard_dll.SCardAudit(hContext, dwEvent);
+  return libWinSCard_dll.SCardAudit(util.toBigInt(util.toPointer(hContext)), dwEvent);
 }
 

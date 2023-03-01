@@ -100,7 +100,7 @@ export interface HCN_PORT_RANGE_ENTRY {
   /** Windows.Win32.System.HostComputeNetwork.HCN_PORT_PROTOCOL */
   Protocol: HCN_PORT_PROTOCOL;
   /** u64 */
-  Priority: Deno.PointerValue;
+  Priority: number | bigint;
   /** u32 */
   ReservationType: number;
   /** u32 */
@@ -119,14 +119,14 @@ export function allocHCN_PORT_RANGE_ENTRY(data?: Partial<HCN_PORT_RANGE_ENTRY>):
   const buf = new Uint8Array(sizeofHCN_PORT_RANGE_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.OwningPartitionId !== undefined) view.setBigUint64(0, data.OwningPartitionId === null ? 0n : BigInt(util.toPointer(data.OwningPartitionId)), true);
+  if (data?.OwningPartitionId !== undefined) view.setBigUint64(0, data.OwningPartitionId === null ? 0n : util.toBigInt(util.toPointer(data.OwningPartitionId)), true);
   // 0x08: pointer
-  if (data?.TargetPartitionId !== undefined) view.setBigUint64(8, data.TargetPartitionId === null ? 0n : BigInt(util.toPointer(data.TargetPartitionId)), true);
+  if (data?.TargetPartitionId !== undefined) view.setBigUint64(8, data.TargetPartitionId === null ? 0n : util.toBigInt(util.toPointer(data.TargetPartitionId)), true);
   // 0x10: i32
   if (data?.Protocol !== undefined) view.setInt32(16, Number(data.Protocol), true);
   // 0x14: pad4
   // 0x18: u64
-  if (data?.Priority !== undefined) view.setBigUint64(24, BigInt(data.Priority), true);
+  if (data?.Priority !== undefined) view.setBigUint64(24, util.toBigInt(data.Priority), true);
   // 0x20: u32
   if (data?.ReservationType !== undefined) view.setUint32(32, Number(data.ReservationType), true);
   // 0x24: u32
@@ -170,8 +170,8 @@ export class HCN_PORT_RANGE_ENTRYView {
   // 0x14: pad4
 
   // 0x18: u64
-  get Priority(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get Priority(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u32
@@ -201,12 +201,12 @@ export class HCN_PORT_RANGE_ENTRYView {
 
   // 0x00: pointer
   set OwningPartitionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set TargetPartitionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -217,8 +217,8 @@ export class HCN_PORT_RANGE_ENTRYView {
   // 0x14: pad4
 
   // 0x18: u64
-  set Priority(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set Priority(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u32
@@ -251,7 +251,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

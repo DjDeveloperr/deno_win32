@@ -252,7 +252,7 @@ export function allocXINPUT_STATE(data?: Partial<XINPUT_STATE>): Uint8Array {
   if (data?.dwPacketNumber !== undefined) view.setUint32(0, Number(data.dwPacketNumber), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : util.toBigInt(util.toPointer(data.Gamepad)), true);
   return buf;
 }
 
@@ -288,7 +288,7 @@ export class XINPUT_STATEView {
 
   // 0x08: pointer
   set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -379,9 +379,9 @@ export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): U
   if (data?.Flags !== undefined) view.setUint16(8, Number(data.Flags), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : util.toBigInt(util.toPointer(data.Gamepad)), true);
   // 0x18: pointer
-  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
+  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : util.toBigInt(util.toPointer(data.Vibration)), true);
   return buf;
 }
 
@@ -443,12 +443,12 @@ export class XINPUT_CAPABILITIESView {
 
   // 0x10: pointer
   set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Vibration(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -530,7 +530,7 @@ export function allocXINPUT_KEYSTROKE(data?: Partial<XINPUT_KEYSTROKE>): Uint8Ar
   if (data?.VirtualKey !== undefined) view.setUint16(0, Number(data.VirtualKey), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Unicode !== undefined) view.setBigUint64(8, data.Unicode === null ? 0n : BigInt(util.toPointer(data.Unicode)), true);
+  if (data?.Unicode !== undefined) view.setBigUint64(8, data.Unicode === null ? 0n : util.toBigInt(util.toPointer(data.Unicode)), true);
   // 0x10: u16
   if (data?.Flags !== undefined) view.setUint16(16, Number(data.Flags), true);
   // 0x12: u8
@@ -590,7 +590,7 @@ export class XINPUT_KEYSTROKEView {
 
   // 0x08: pointer
   set Unicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16

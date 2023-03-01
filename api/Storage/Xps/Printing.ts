@@ -55,7 +55,7 @@ export function allocXPS_JOB_STATUS(data?: Partial<XPS_JOB_STATUS>): Uint8Array 
   if (data?.completion !== undefined) view.setInt32(16, Number(data.completion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.jobStatus !== undefined) view.setBigUint64(24, data.jobStatus === null ? 0n : BigInt(util.toPointer(data.jobStatus)), true);
+  if (data?.jobStatus !== undefined) view.setBigUint64(24, data.jobStatus === null ? 0n : util.toBigInt(util.toPointer(data.jobStatus)), true);
   return buf;
 }
 
@@ -131,7 +131,7 @@ export class XPS_JOB_STATUSView {
 
   // 0x18: pointer
   set jobStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -170,7 +170,7 @@ export function allocPrintDocumentPackageStatus(data?: Partial<PrintDocumentPack
   if (data?.Completion !== undefined) view.setInt32(16, Number(data.Completion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.PackageStatus !== undefined) view.setBigUint64(24, data.PackageStatus === null ? 0n : BigInt(util.toPointer(data.PackageStatus)), true);
+  if (data?.PackageStatus !== undefined) view.setBigUint64(24, data.PackageStatus === null ? 0n : util.toBigInt(util.toPointer(data.PackageStatus)), true);
   return buf;
 }
 
@@ -246,13 +246,13 @@ export class PrintDocumentPackageStatusView {
 
   // 0x18: pointer
   set PackageStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

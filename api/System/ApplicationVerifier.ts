@@ -54,7 +54,7 @@ export function allocAVRF_BACKTRACE_INFORMATION(data?: Partial<AVRF_BACKTRACE_IN
   // 0x04: u32
   if (data?.Index !== undefined) view.setUint32(4, Number(data.Index), true);
   // 0x08: pointer
-  if (data?.ReturnAddresses !== undefined) view.setBigUint64(8, data.ReturnAddresses === null ? 0n : BigInt(util.toPointer(data.ReturnAddresses)), true);
+  if (data?.ReturnAddresses !== undefined) view.setBigUint64(8, data.ReturnAddresses === null ? 0n : util.toBigInt(util.toPointer(data.ReturnAddresses)), true);
   return buf;
 }
 
@@ -96,7 +96,7 @@ export class AVRF_BACKTRACE_INFORMATIONView {
 
   // 0x08: pointer
   set ReturnAddresses(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -105,21 +105,21 @@ export class AVRF_BACKTRACE_INFORMATIONView {
  */
 export interface AVRF_HEAP_ALLOCATION {
   /** u64 */
-  HeapHandle: Deno.PointerValue;
+  HeapHandle: number | bigint;
   /** u64 */
-  UserAllocation: Deno.PointerValue;
+  UserAllocation: number | bigint;
   /** u64 */
-  UserAllocationSize: Deno.PointerValue;
+  UserAllocationSize: number | bigint;
   /** u64 */
-  Allocation: Deno.PointerValue;
+  Allocation: number | bigint;
   /** u64 */
-  AllocationSize: Deno.PointerValue;
+  AllocationSize: number | bigint;
   /** u32 */
   UserAllocationState: number;
   /** u32 */
   HeapState: number;
   /** u64 */
-  HeapContext: Deno.PointerValue;
+  HeapContext: number | bigint;
   /** ptr */
   BackTraceInformation: Deno.PointerValue | Uint8Array | null;
 }
@@ -130,23 +130,23 @@ export function allocAVRF_HEAP_ALLOCATION(data?: Partial<AVRF_HEAP_ALLOCATION>):
   const buf = new Uint8Array(sizeofAVRF_HEAP_ALLOCATION);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.HeapHandle !== undefined) view.setBigUint64(0, BigInt(data.HeapHandle), true);
+  if (data?.HeapHandle !== undefined) view.setBigUint64(0, util.toBigInt(data.HeapHandle), true);
   // 0x08: u64
-  if (data?.UserAllocation !== undefined) view.setBigUint64(8, BigInt(data.UserAllocation), true);
+  if (data?.UserAllocation !== undefined) view.setBigUint64(8, util.toBigInt(data.UserAllocation), true);
   // 0x10: u64
-  if (data?.UserAllocationSize !== undefined) view.setBigUint64(16, BigInt(data.UserAllocationSize), true);
+  if (data?.UserAllocationSize !== undefined) view.setBigUint64(16, util.toBigInt(data.UserAllocationSize), true);
   // 0x18: u64
-  if (data?.Allocation !== undefined) view.setBigUint64(24, BigInt(data.Allocation), true);
+  if (data?.Allocation !== undefined) view.setBigUint64(24, util.toBigInt(data.Allocation), true);
   // 0x20: u64
-  if (data?.AllocationSize !== undefined) view.setBigUint64(32, BigInt(data.AllocationSize), true);
+  if (data?.AllocationSize !== undefined) view.setBigUint64(32, util.toBigInt(data.AllocationSize), true);
   // 0x28: u32
   if (data?.UserAllocationState !== undefined) view.setUint32(40, Number(data.UserAllocationState), true);
   // 0x2c: u32
   if (data?.HeapState !== undefined) view.setUint32(44, Number(data.HeapState), true);
   // 0x30: u64
-  if (data?.HeapContext !== undefined) view.setBigUint64(48, BigInt(data.HeapContext), true);
+  if (data?.HeapContext !== undefined) view.setBigUint64(48, util.toBigInt(data.HeapContext), true);
   // 0x38: pointer
-  if (data?.BackTraceInformation !== undefined) view.setBigUint64(56, data.BackTraceInformation === null ? 0n : BigInt(util.toPointer(data.BackTraceInformation)), true);
+  if (data?.BackTraceInformation !== undefined) view.setBigUint64(56, data.BackTraceInformation === null ? 0n : util.toBigInt(util.toPointer(data.BackTraceInformation)), true);
   return buf;
 }
 
@@ -161,28 +161,28 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x00: u64
-  get HeapHandle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get HeapHandle(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get UserAllocation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get UserAllocation(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get UserAllocationSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get UserAllocationSize(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get Allocation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get Allocation(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get AllocationSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get AllocationSize(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u32
@@ -196,8 +196,8 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x30: u64
-  get HeapContext(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get HeapContext(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: pointer
@@ -207,28 +207,28 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x00: u64
-  set HeapHandle(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set HeapHandle(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set UserAllocation(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set UserAllocation(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set UserAllocationSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set UserAllocationSize(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set Allocation(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set Allocation(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set AllocationSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set AllocationSize(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u32
@@ -242,13 +242,13 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x30: u64
-  set HeapContext(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set HeapContext(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: pointer
   set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -257,7 +257,7 @@ export class AVRF_HEAP_ALLOCATIONView {
  */
 export interface AVRF_HANDLE_OPERATION {
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: number | bigint;
   /** u32 */
   ProcessId: number;
   /** u32 */
@@ -276,7 +276,7 @@ export function allocAVRF_HANDLE_OPERATION(data?: Partial<AVRF_HANDLE_OPERATION>
   const buf = new Uint8Array(sizeofAVRF_HANDLE_OPERATION);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Handle !== undefined) view.setBigUint64(0, BigInt(data.Handle), true);
+  if (data?.Handle !== undefined) view.setBigUint64(0, util.toBigInt(data.Handle), true);
   // 0x08: u32
   if (data?.ProcessId !== undefined) view.setUint32(8, Number(data.ProcessId), true);
   // 0x0c: u32
@@ -286,7 +286,7 @@ export function allocAVRF_HANDLE_OPERATION(data?: Partial<AVRF_HANDLE_OPERATION>
   // 0x14: u32
   if (data?.Spare0 !== undefined) view.setUint32(20, Number(data.Spare0), true);
   // 0x18: pointer
-  if (data?.BackTraceInformation !== undefined) view.setBigUint64(24, data.BackTraceInformation === null ? 0n : BigInt(util.toPointer(data.BackTraceInformation)), true);
+  if (data?.BackTraceInformation !== undefined) view.setBigUint64(24, data.BackTraceInformation === null ? 0n : util.toBigInt(util.toPointer(data.BackTraceInformation)), true);
   return buf;
 }
 
@@ -301,8 +301,8 @@ export class AVRF_HANDLE_OPERATIONView {
   }
 
   // 0x00: u64
-  get Handle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Handle(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u32
@@ -332,8 +332,8 @@ export class AVRF_HANDLE_OPERATIONView {
   }
 
   // 0x00: u64
-  set Handle(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Handle(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u32
@@ -358,11 +358,11 @@ export class AVRF_HANDLE_OPERATIONView {
 
   // 0x18: pointer
   set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

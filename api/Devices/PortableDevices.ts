@@ -662,7 +662,7 @@ export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -694,7 +694,7 @@ export class DEVPROPKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -721,7 +721,7 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -753,7 +753,7 @@ export class PROPERTYKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -782,12 +782,12 @@ export function allocWPD_COMMAND_ACCESS_LOOKUP_ENTRY(data?: Partial<WPD_COMMAND_
   const buf = new Uint8Array(sizeofWPD_COMMAND_ACCESS_LOOKUP_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Command !== undefined) view.setBigUint64(0, data.Command === null ? 0n : BigInt(util.toPointer(data.Command)), true);
+  if (data?.Command !== undefined) view.setBigUint64(0, data.Command === null ? 0n : util.toBigInt(util.toPointer(data.Command)), true);
   // 0x08: u32
   if (data?.AccessType !== undefined) view.setUint32(8, Number(data.AccessType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.AccessProperty !== undefined) view.setBigUint64(16, data.AccessProperty === null ? 0n : BigInt(util.toPointer(data.AccessProperty)), true);
+  if (data?.AccessProperty !== undefined) view.setBigUint64(16, data.AccessProperty === null ? 0n : util.toBigInt(util.toPointer(data.AccessProperty)), true);
   return buf;
 }
 
@@ -822,7 +822,7 @@ export class WPD_COMMAND_ACCESS_LOOKUP_ENTRYView {
 
   // 0x00: pointer
   set Command(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -834,7 +834,7 @@ export class WPD_COMMAND_ACCESS_LOOKUP_ENTRYView {
 
   // 0x10: pointer
   set AccessProperty(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

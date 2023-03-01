@@ -4186,7 +4186,7 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 // Structs
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = number | bigint;
 
 /**
  * Windows.Win32.System.Registry.val_context (size: 24)
@@ -4209,9 +4209,9 @@ export function allocVal_context(data?: Partial<val_context>): Uint8Array {
   if (data?.valuelen !== undefined) view.setInt32(0, Number(data.valuelen), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.value_context !== undefined) view.setBigUint64(8, data.value_context === null ? 0n : BigInt(util.toPointer(data.value_context)), true);
+  if (data?.value_context !== undefined) view.setBigUint64(8, data.value_context === null ? 0n : util.toBigInt(util.toPointer(data.value_context)), true);
   // 0x10: pointer
-  if (data?.val_buff_ptr !== undefined) view.setBigUint64(16, data.val_buff_ptr === null ? 0n : BigInt(util.toPointer(data.val_buff_ptr)), true);
+  if (data?.val_buff_ptr !== undefined) view.setBigUint64(16, data.val_buff_ptr === null ? 0n : util.toBigInt(util.toPointer(data.val_buff_ptr)), true);
   return buf;
 }
 
@@ -4253,12 +4253,12 @@ export class val_contextView {
 
   // 0x08: pointer
   set value_context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set val_buff_ptr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4286,13 +4286,13 @@ export function allocPVALUEA(data?: Partial<PVALUEA>): Uint8Array {
   // 0x00: buffer
   if (data?.pv_valuename !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pv_valuename);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: i32
   if (data?.pv_valuelen !== undefined) view.setInt32(8, Number(data.pv_valuelen), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pv_value_context !== undefined) view.setBigUint64(16, data.pv_value_context === null ? 0n : BigInt(util.toPointer(data.pv_value_context)), true);
+  if (data?.pv_value_context !== undefined) view.setBigUint64(16, data.pv_value_context === null ? 0n : util.toBigInt(util.toPointer(data.pv_value_context)), true);
   // 0x18: u32
   if (data?.pv_type !== undefined) view.setUint32(24, Number(data.pv_type), true);
   // 0x1c: pad4
@@ -4338,7 +4338,7 @@ export class PVALUEAView {
   // 0x00: buffer
   set pv_valuename(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: i32
@@ -4350,7 +4350,7 @@ export class PVALUEAView {
 
   // 0x10: pointer
   set pv_value_context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -4385,13 +4385,13 @@ export function allocPVALUEW(data?: Partial<PVALUEW>): Uint8Array {
   // 0x00: buffer
   if (data?.pv_valuename !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pv_valuename);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: i32
   if (data?.pv_valuelen !== undefined) view.setInt32(8, Number(data.pv_valuelen), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pv_value_context !== undefined) view.setBigUint64(16, data.pv_value_context === null ? 0n : BigInt(util.toPointer(data.pv_value_context)), true);
+  if (data?.pv_value_context !== undefined) view.setBigUint64(16, data.pv_value_context === null ? 0n : util.toBigInt(util.toPointer(data.pv_value_context)), true);
   // 0x18: u32
   if (data?.pv_type !== undefined) view.setUint32(24, Number(data.pv_type), true);
   // 0x1c: pad4
@@ -4437,7 +4437,7 @@ export class PVALUEWView {
   // 0x00: buffer
   set pv_valuename(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: i32
@@ -4449,7 +4449,7 @@ export class PVALUEWView {
 
   // 0x10: pointer
   set pv_value_context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -4484,18 +4484,18 @@ export function allocREG_PROVIDER(data?: Partial<REG_PROVIDER>): Uint8Array {
   const buf = new Uint8Array(sizeofREG_PROVIDER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pi_R0_1val !== undefined) view.setBigUint64(0, data.pi_R0_1val === null ? 0n : BigInt(util.toPointer(data.pi_R0_1val)), true);
+  if (data?.pi_R0_1val !== undefined) view.setBigUint64(0, data.pi_R0_1val === null ? 0n : util.toBigInt(util.toPointer(data.pi_R0_1val)), true);
   // 0x08: pointer
-  if (data?.pi_R0_allvals !== undefined) view.setBigUint64(8, data.pi_R0_allvals === null ? 0n : BigInt(util.toPointer(data.pi_R0_allvals)), true);
+  if (data?.pi_R0_allvals !== undefined) view.setBigUint64(8, data.pi_R0_allvals === null ? 0n : util.toBigInt(util.toPointer(data.pi_R0_allvals)), true);
   // 0x10: pointer
-  if (data?.pi_R3_1val !== undefined) view.setBigUint64(16, data.pi_R3_1val === null ? 0n : BigInt(util.toPointer(data.pi_R3_1val)), true);
+  if (data?.pi_R3_1val !== undefined) view.setBigUint64(16, data.pi_R3_1val === null ? 0n : util.toBigInt(util.toPointer(data.pi_R3_1val)), true);
   // 0x18: pointer
-  if (data?.pi_R3_allvals !== undefined) view.setBigUint64(24, data.pi_R3_allvals === null ? 0n : BigInt(util.toPointer(data.pi_R3_allvals)), true);
+  if (data?.pi_R3_allvals !== undefined) view.setBigUint64(24, data.pi_R3_allvals === null ? 0n : util.toBigInt(util.toPointer(data.pi_R3_allvals)), true);
   // 0x20: u32
   if (data?.pi_flags !== undefined) view.setUint32(32, Number(data.pi_flags), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pi_key_context !== undefined) view.setBigUint64(40, data.pi_key_context === null ? 0n : BigInt(util.toPointer(data.pi_key_context)), true);
+  if (data?.pi_key_context !== undefined) view.setBigUint64(40, data.pi_key_context === null ? 0n : util.toBigInt(util.toPointer(data.pi_key_context)), true);
   return buf;
 }
 
@@ -4548,22 +4548,22 @@ export class REG_PROVIDERView {
 
   // 0x00: pointer
   set pi_R0_1val(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set pi_R0_allvals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set pi_R3_1val(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set pi_R3_allvals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4575,7 +4575,7 @@ export class REG_PROVIDERView {
 
   // 0x28: pointer
   set pi_key_context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4588,7 +4588,7 @@ export interface VALENTA {
   /** u32 */
   ve_valuelen: number;
   /** usize */
-  ve_valueptr: Deno.PointerValue;
+  ve_valueptr: number | bigint;
   /** Windows.Win32.System.Registry.REG_VALUE_TYPE */
   ve_type: REG_VALUE_TYPE;
 }
@@ -4601,13 +4601,13 @@ export function allocVALENTA(data?: Partial<VALENTA>): Uint8Array {
   // 0x00: buffer
   if (data?.ve_valuename !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.ve_valuename);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.ve_valuelen !== undefined) view.setUint32(8, Number(data.ve_valuelen), true);
   // 0x0c: pad4
   // 0x10: usize
-  if (data?.ve_valueptr !== undefined) view.setBigUint64(16, BigInt(data.ve_valueptr), true);
+  if (data?.ve_valueptr !== undefined) view.setBigUint64(16, util.toBigInt(data.ve_valueptr), true);
   // 0x18: u32
   if (data?.ve_type !== undefined) view.setUint32(24, Number(data.ve_type), true);
   // 0x1c: pad4
@@ -4638,8 +4638,8 @@ export class VALENTAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get ve_valueptr(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get ve_valueptr(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -4652,7 +4652,7 @@ export class VALENTAView {
   // 0x00: buffer
   set ve_valuename(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -4663,8 +4663,8 @@ export class VALENTAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set ve_valueptr(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set ve_valueptr(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -4684,7 +4684,7 @@ export interface VALENTW {
   /** u32 */
   ve_valuelen: number;
   /** usize */
-  ve_valueptr: Deno.PointerValue;
+  ve_valueptr: number | bigint;
   /** Windows.Win32.System.Registry.REG_VALUE_TYPE */
   ve_type: REG_VALUE_TYPE;
 }
@@ -4697,13 +4697,13 @@ export function allocVALENTW(data?: Partial<VALENTW>): Uint8Array {
   // 0x00: buffer
   if (data?.ve_valuename !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.ve_valuename);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: u32
   if (data?.ve_valuelen !== undefined) view.setUint32(8, Number(data.ve_valuelen), true);
   // 0x0c: pad4
   // 0x10: usize
-  if (data?.ve_valueptr !== undefined) view.setBigUint64(16, BigInt(data.ve_valueptr), true);
+  if (data?.ve_valueptr !== undefined) view.setBigUint64(16, util.toBigInt(data.ve_valueptr), true);
   // 0x18: u32
   if (data?.ve_type !== undefined) view.setUint32(24, Number(data.ve_type), true);
   // 0x1c: pad4
@@ -4734,8 +4734,8 @@ export class VALENTWView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get ve_valueptr(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get ve_valueptr(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -4748,7 +4748,7 @@ export class VALENTWView {
   // 0x00: buffer
   set ve_valuename(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: u32
@@ -4759,8 +4759,8 @@ export class VALENTWView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set ve_valueptr(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set ve_valueptr(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32
@@ -4927,7 +4927,7 @@ export class DSKTLSYSTEMTIMEView {
   // 0x12: pad6
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
 

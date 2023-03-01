@@ -858,7 +858,7 @@ export interface TimedLevel {
   /** i32 */
   state: number;
   /** i64 */
-  timeStamp: Deno.PointerValue;
+  timeStamp: number | bigint;
 }
 
 export const sizeofTimedLevel = 32;
@@ -867,14 +867,14 @@ export function allocTimedLevel(data?: Partial<TimedLevel>): Uint8Array {
   const buf = new Uint8Array(sizeofTimedLevel);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.frequency !== undefined) view.setBigUint64(0, data.frequency === null ? 0n : BigInt(util.toPointer(data.frequency)), true);
+  if (data?.frequency !== undefined) view.setBigUint64(0, data.frequency === null ? 0n : util.toBigInt(util.toPointer(data.frequency)), true);
   // 0x08: pointer
-  if (data?.waveform !== undefined) view.setBigUint64(8, data.waveform === null ? 0n : BigInt(util.toPointer(data.waveform)), true);
+  if (data?.waveform !== undefined) view.setBigUint64(8, data.waveform === null ? 0n : util.toBigInt(util.toPointer(data.waveform)), true);
   // 0x10: i32
   if (data?.state !== undefined) view.setInt32(16, Number(data.state), true);
   // 0x14: pad4
   // 0x18: i64
-  if (data?.timeStamp !== undefined) view.setBigInt64(24, BigInt(data.timeStamp), true);
+  if (data?.timeStamp !== undefined) view.setBigInt64(24, util.toBigInt(data.timeStamp), true);
   return buf;
 }
 
@@ -908,18 +908,18 @@ export class TimedLevelView {
   // 0x14: pad4
 
   // 0x18: i64
-  get timeStamp(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get timeStamp(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x00: pointer
   set frequency(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set waveform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -930,8 +930,8 @@ export class TimedLevelView {
   // 0x14: pad4
 
   // 0x18: i64
-  set timeStamp(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set timeStamp(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 }
 
@@ -958,9 +958,9 @@ export function allocWMPContextMenuInfo(data?: Partial<WMPContextMenuInfo>): Uin
   if (data?.dwID !== undefined) view.setUint32(0, Number(data.dwID), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.bstrMenuText !== undefined) view.setBigUint64(8, data.bstrMenuText === null ? 0n : BigInt(util.toPointer(data.bstrMenuText)), true);
+  if (data?.bstrMenuText !== undefined) view.setBigUint64(8, data.bstrMenuText === null ? 0n : util.toBigInt(util.toPointer(data.bstrMenuText)), true);
   // 0x10: pointer
-  if (data?.bstrHelpText !== undefined) view.setBigUint64(16, data.bstrHelpText === null ? 0n : BigInt(util.toPointer(data.bstrHelpText)), true);
+  if (data?.bstrHelpText !== undefined) view.setBigUint64(16, data.bstrHelpText === null ? 0n : util.toBigInt(util.toPointer(data.bstrHelpText)), true);
   return buf;
 }
 
@@ -1002,12 +1002,12 @@ export class WMPContextMenuInfoView {
 
   // 0x08: pointer
   set bstrMenuText(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set bstrHelpText(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1099,7 +1099,7 @@ export function allocWMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC(data?: Partial<WMP_W
   if (data?.dwFlags !== undefined) view.setUint32(16, Number(data.dwFlags), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.wsObjectPathnameList !== undefined) view.setBigUint64(24, data.wsObjectPathnameList === null ? 0n : BigInt(util.toPointer(data.wsObjectPathnameList)), true);
+  if (data?.wsObjectPathnameList !== undefined) view.setBigUint64(24, data.wsObjectPathnameList === null ? 0n : util.toBigInt(util.toPointer(data.wsObjectPathnameList)), true);
   return buf;
 }
 
@@ -1175,7 +1175,7 @@ export class WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PCView {
 
   // 0x18: pointer
   set wsObjectPathnameList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

@@ -99,7 +99,7 @@ export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -131,7 +131,7 @@ export class DEVPROPKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -162,14 +162,14 @@ export function allocDEVPROPCOMPKEY(data?: Partial<DEVPROPCOMPKEY>): Uint8Array 
   const buf = new Uint8Array(sizeofDEVPROPCOMPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : util.toBigInt(util.toPointer(data.Key)), true);
   // 0x08: i32
   if (data?.Store !== undefined) view.setInt32(8, Number(data.Store), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.LocaleName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.LocaleName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -205,7 +205,7 @@ export class DEVPROPCOMPKEYView {
 
   // 0x00: pointer
   set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -218,7 +218,7 @@ export class DEVPROPCOMPKEYView {
   // 0x10: buffer
   set LocaleName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -242,13 +242,13 @@ export function allocDEVPROPERTY(data?: Partial<DEVPROPERTY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPERTY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : BigInt(util.toPointer(data.CompKey)), true);
+  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : util.toBigInt(util.toPointer(data.CompKey)), true);
   // 0x08: u32
   if (data?.Type !== undefined) view.setUint32(8, Number(data.Type), true);
   // 0x0c: u32
   if (data?.BufferSize !== undefined) view.setUint32(12, Number(data.BufferSize), true);
   // 0x10: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : util.toBigInt(util.toPointer(data.Buffer)), true);
   return buf;
 }
 
@@ -286,7 +286,7 @@ export class DEVPROPERTYView {
 
   // 0x00: pointer
   set CompKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -301,7 +301,7 @@ export class DEVPROPERTYView {
 
   // 0x10: pointer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -324,7 +324,7 @@ export function allocDEVPROP_FILTER_EXPRESSION(data?: Partial<DEVPROP_FILTER_EXP
   if (data?.Operator !== undefined) view.setUint32(0, Number(data.Operator), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Property !== undefined) view.setBigUint64(8, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
+  if (data?.Property !== undefined) view.setBigUint64(8, data.Property === null ? 0n : util.toBigInt(util.toPointer(data.Property)), true);
   return buf;
 }
 
@@ -360,7 +360,7 @@ export class DEVPROP_FILTER_EXPRESSIONView {
 
   // 0x08: pointer
   set Property(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -389,13 +389,13 @@ export function allocDEV_OBJECT(data?: Partial<DEV_OBJECT>): Uint8Array {
   // 0x08: buffer
   if (data?.pszObjectId !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszObjectId);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: u32
   if (data?.cPropertyCount !== undefined) view.setUint32(16, Number(data.cPropertyCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pProperties !== undefined) view.setBigUint64(24, data.pProperties === null ? 0n : BigInt(util.toPointer(data.pProperties)), true);
+  if (data?.pProperties !== undefined) view.setBigUint64(24, data.pProperties === null ? 0n : util.toBigInt(util.toPointer(data.pProperties)), true);
   return buf;
 }
 
@@ -445,7 +445,7 @@ export class DEV_OBJECTView {
   // 0x08: buffer
   set pszObjectId(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: u32
@@ -457,7 +457,7 @@ export class DEV_OBJECTView {
 
   // 0x18: pointer
   set pProperties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -480,7 +480,7 @@ export function alloc_DEV_QUERY_RESULT_UPDATE_PAYLOAD(data?: Partial<_DEV_QUERY_
   if (data?.State !== undefined) view.setInt32(0, Number(data.State), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DeviceObject !== undefined) view.setBigUint64(8, data.DeviceObject === null ? 0n : BigInt(util.toPointer(data.DeviceObject)), true);
+  if (data?.DeviceObject !== undefined) view.setBigUint64(8, data.DeviceObject === null ? 0n : util.toBigInt(util.toPointer(data.DeviceObject)), true);
   return buf;
 }
 
@@ -516,7 +516,7 @@ export class _DEV_QUERY_RESULT_UPDATE_PAYLOADView {
 
   // 0x08: pointer
   set DeviceObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -539,7 +539,7 @@ export function allocDEV_QUERY_RESULT_ACTION_DATA(data?: Partial<DEV_QUERY_RESUL
   if (data?.Action !== undefined) view.setInt32(0, Number(data.Action), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : util.toBigInt(util.toPointer(data.Data)), true);
   return buf;
 }
 
@@ -575,7 +575,7 @@ export class DEV_QUERY_RESULT_ACTION_DATAView {
 
   // 0x08: pointer
   set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -599,13 +599,13 @@ export function allocDEV_QUERY_PARAMETER(data?: Partial<DEV_QUERY_PARAMETER>): U
   const buf = new Uint8Array(sizeofDEV_QUERY_PARAMETER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : util.toBigInt(util.toPointer(data.Key)), true);
   // 0x08: u32
   if (data?.Type !== undefined) view.setUint32(8, Number(data.Type), true);
   // 0x0c: u32
   if (data?.BufferSize !== undefined) view.setUint32(12, Number(data.BufferSize), true);
   // 0x10: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : util.toBigInt(util.toPointer(data.Buffer)), true);
   return buf;
 }
 
@@ -643,7 +643,7 @@ export class DEV_QUERY_PARAMETERView {
 
   // 0x00: pointer
   set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -658,7 +658,7 @@ export class DEV_QUERY_PARAMETERView {
 
   // 0x10: pointer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

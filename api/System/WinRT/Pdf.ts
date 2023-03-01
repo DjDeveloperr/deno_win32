@@ -190,15 +190,15 @@ export function allocPDF_RENDER_PARAMS(data?: Partial<PDF_RENDER_PARAMS>): Uint8
   const buf = new Uint8Array(sizeofPDF_RENDER_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(util.toPointer(data.SourceRect)), true);
+  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : util.toBigInt(util.toPointer(data.SourceRect)), true);
   // 0x08: u32
   if (data?.DestinationWidth !== undefined) view.setUint32(8, Number(data.DestinationWidth), true);
   // 0x0c: u32
   if (data?.DestinationHeight !== undefined) view.setUint32(12, Number(data.DestinationHeight), true);
   // 0x10: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : util.toBigInt(util.toPointer(data.BackgroundColor)), true);
   // 0x18: pointer
-  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(util.toPointer(data.IgnoreHighContrast)), true);
+  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : util.toBigInt(util.toPointer(data.IgnoreHighContrast)), true);
   return buf;
 }
 
@@ -242,7 +242,7 @@ export class PDF_RENDER_PARAMSView {
 
   // 0x00: pointer
   set SourceRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -257,12 +257,12 @@ export class PDF_RENDER_PARAMSView {
 
   // 0x10: pointer
   set BackgroundColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

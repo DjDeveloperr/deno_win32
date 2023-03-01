@@ -117,7 +117,7 @@ export const PT_TOUCHPAD = 5;
 
 // Structs
 
-export type HINTERACTIONCONTEXT = Deno.PointerValue;
+export type HINTERACTIONCONTEXT = number | bigint;
 
 /**
  * Windows.Win32.UI.InteractionContext.MANIPULATION_TRANSFORM (size: 24)
@@ -320,11 +320,11 @@ export function allocINTERACTION_ARGUMENTS_MANIPULATION(data?: Partial<INTERACTI
   const buf = new Uint8Array(sizeofINTERACTION_ARGUMENTS_MANIPULATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.delta !== undefined) view.setBigUint64(0, data.delta === null ? 0n : BigInt(util.toPointer(data.delta)), true);
+  if (data?.delta !== undefined) view.setBigUint64(0, data.delta === null ? 0n : util.toBigInt(util.toPointer(data.delta)), true);
   // 0x08: pointer
-  if (data?.cumulative !== undefined) view.setBigUint64(8, data.cumulative === null ? 0n : BigInt(util.toPointer(data.cumulative)), true);
+  if (data?.cumulative !== undefined) view.setBigUint64(8, data.cumulative === null ? 0n : util.toBigInt(util.toPointer(data.cumulative)), true);
   // 0x10: pointer
-  if (data?.velocity !== undefined) view.setBigUint64(16, data.velocity === null ? 0n : BigInt(util.toPointer(data.velocity)), true);
+  if (data?.velocity !== undefined) view.setBigUint64(16, data.velocity === null ? 0n : util.toBigInt(util.toPointer(data.velocity)), true);
   // 0x18: i32
   if (data?.railsState !== undefined) view.setInt32(24, Number(data.railsState), true);
   // 0x1c: pad4
@@ -368,17 +368,17 @@ export class INTERACTION_ARGUMENTS_MANIPULATIONView {
 
   // 0x00: pointer
   set delta(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set cumulative(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set velocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -495,11 +495,11 @@ export function alloc_arguments_e__Union(data?: Partial<_arguments_e__Union>): U
   const buf = new Uint8Array(sizeof_arguments_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.manipulation !== undefined) view.setBigUint64(0, data.manipulation === null ? 0n : BigInt(util.toPointer(data.manipulation)), true);
+  if (data?.manipulation !== undefined) view.setBigUint64(0, data.manipulation === null ? 0n : util.toBigInt(util.toPointer(data.manipulation)), true);
   // 0x08: pointer
-  if (data?.tap !== undefined) view.setBigUint64(8, data.tap === null ? 0n : BigInt(util.toPointer(data.tap)), true);
+  if (data?.tap !== undefined) view.setBigUint64(8, data.tap === null ? 0n : util.toBigInt(util.toPointer(data.tap)), true);
   // 0x10: pointer
-  if (data?.crossSlide !== undefined) view.setBigUint64(16, data.crossSlide === null ? 0n : BigInt(util.toPointer(data.crossSlide)), true);
+  if (data?.crossSlide !== undefined) view.setBigUint64(16, data.crossSlide === null ? 0n : util.toBigInt(util.toPointer(data.crossSlide)), true);
   return buf;
 }
 
@@ -533,17 +533,17 @@ export class _arguments_e__UnionView {
 
   // 0x00: pointer
   set manipulation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set tap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set crossSlide(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -582,7 +582,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT(data?: Partial<INTERACTION_CONTE
   if (data?.y !== undefined) view.setFloat32(16, Number(data.y), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : util.toBigInt(util.toPointer(data.arguments__)), true);
   return buf;
 }
 
@@ -658,7 +658,7 @@ export class INTERACTION_CONTEXT_OUTPUTView {
 
   // 0x18: pointer
   set arguments__(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -705,7 +705,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT2(data?: Partial<INTERACTION_CONT
   if (data?.y !== undefined) view.setFloat32(24, Number(data.y), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.arguments__ !== undefined) view.setBigUint64(32, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(32, data.arguments__ === null ? 0n : util.toBigInt(util.toPointer(data.arguments__)), true);
   return buf;
 }
 
@@ -801,7 +801,7 @@ export class INTERACTION_CONTEXT_OUTPUT2View {
 
   // 0x20: pointer
   set arguments__(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

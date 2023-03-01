@@ -60,7 +60,7 @@ export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -92,7 +92,7 @@ export class DEVPROPKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -123,14 +123,14 @@ export function allocDEVPROPCOMPKEY(data?: Partial<DEVPROPCOMPKEY>): Uint8Array 
   const buf = new Uint8Array(sizeofDEVPROPCOMPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : util.toBigInt(util.toPointer(data.Key)), true);
   // 0x08: i32
   if (data?.Store !== undefined) view.setInt32(8, Number(data.Store), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.LocaleName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.LocaleName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   return buf;
 }
@@ -166,7 +166,7 @@ export class DEVPROPCOMPKEYView {
 
   // 0x00: pointer
   set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -179,7 +179,7 @@ export class DEVPROPCOMPKEYView {
   // 0x10: buffer
   set LocaleName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 }
 
@@ -203,13 +203,13 @@ export function allocDEVPROPERTY(data?: Partial<DEVPROPERTY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPERTY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : BigInt(util.toPointer(data.CompKey)), true);
+  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : util.toBigInt(util.toPointer(data.CompKey)), true);
   // 0x08: u32
   if (data?.Type !== undefined) view.setUint32(8, Number(data.Type), true);
   // 0x0c: u32
   if (data?.BufferSize !== undefined) view.setUint32(12, Number(data.BufferSize), true);
   // 0x10: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : util.toBigInt(util.toPointer(data.Buffer)), true);
   return buf;
 }
 
@@ -247,7 +247,7 @@ export class DEVPROPERTYView {
 
   // 0x00: pointer
   set CompKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -262,7 +262,7 @@ export class DEVPROPERTYView {
 
   // 0x10: pointer
   set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

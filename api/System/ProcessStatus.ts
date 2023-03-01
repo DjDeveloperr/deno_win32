@@ -32,12 +32,12 @@ export function allocMODULEINFO(data?: Partial<MODULEINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofMODULEINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(0, data.lpBaseOfDll === null ? 0n : BigInt(util.toPointer(data.lpBaseOfDll)), true);
+  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(0, data.lpBaseOfDll === null ? 0n : util.toBigInt(util.toPointer(data.lpBaseOfDll)), true);
   // 0x08: u32
   if (data?.SizeOfImage !== undefined) view.setUint32(8, Number(data.SizeOfImage), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.EntryPoint !== undefined) view.setBigUint64(16, data.EntryPoint === null ? 0n : BigInt(util.toPointer(data.EntryPoint)), true);
+  if (data?.EntryPoint !== undefined) view.setBigUint64(16, data.EntryPoint === null ? 0n : util.toBigInt(util.toPointer(data.EntryPoint)), true);
   return buf;
 }
 
@@ -72,7 +72,7 @@ export class MODULEINFOView {
 
   // 0x00: pointer
   set lpBaseOfDll(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -84,7 +84,7 @@ export class MODULEINFOView {
 
   // 0x10: pointer
   set EntryPoint(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -104,9 +104,9 @@ export function allocPSAPI_WS_WATCH_INFORMATION(data?: Partial<PSAPI_WS_WATCH_IN
   const buf = new Uint8Array(sizeofPSAPI_WS_WATCH_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FaultingPc !== undefined) view.setBigUint64(0, data.FaultingPc === null ? 0n : BigInt(util.toPointer(data.FaultingPc)), true);
+  if (data?.FaultingPc !== undefined) view.setBigUint64(0, data.FaultingPc === null ? 0n : util.toBigInt(util.toPointer(data.FaultingPc)), true);
   // 0x08: pointer
-  if (data?.FaultingVa !== undefined) view.setBigUint64(8, data.FaultingVa === null ? 0n : BigInt(util.toPointer(data.FaultingVa)), true);
+  if (data?.FaultingVa !== undefined) view.setBigUint64(8, data.FaultingVa === null ? 0n : util.toBigInt(util.toPointer(data.FaultingVa)), true);
   return buf;
 }
 
@@ -134,12 +134,12 @@ export class PSAPI_WS_WATCH_INFORMATIONView {
 
   // 0x00: pointer
   set FaultingPc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set FaultingVa(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -150,9 +150,9 @@ export interface PSAPI_WS_WATCH_INFORMATION_EX {
   /** Windows.Win32.System.ProcessStatus.PSAPI_WS_WATCH_INFORMATION */
   BasicInfo: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  FaultingThreadId: Deno.PointerValue;
+  FaultingThreadId: number | bigint;
   /** usize */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
 }
 
 export const sizeofPSAPI_WS_WATCH_INFORMATION_EX = 24;
@@ -161,11 +161,11 @@ export function allocPSAPI_WS_WATCH_INFORMATION_EX(data?: Partial<PSAPI_WS_WATCH
   const buf = new Uint8Array(sizeofPSAPI_WS_WATCH_INFORMATION_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : BigInt(util.toPointer(data.BasicInfo)), true);
+  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : util.toBigInt(util.toPointer(data.BasicInfo)), true);
   // 0x08: usize
-  if (data?.FaultingThreadId !== undefined) view.setBigUint64(8, BigInt(data.FaultingThreadId), true);
+  if (data?.FaultingThreadId !== undefined) view.setBigUint64(8, util.toBigInt(data.FaultingThreadId), true);
   // 0x10: usize
-  if (data?.Flags !== undefined) view.setBigUint64(16, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(16, util.toBigInt(data.Flags), true);
   return buf;
 }
 
@@ -186,28 +186,28 @@ export class PSAPI_WS_WATCH_INFORMATION_EXView {
   }
 
   // 0x08: usize
-  get FaultingThreadId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get FaultingThreadId(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set BasicInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: usize
-  set FaultingThreadId(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set FaultingThreadId(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -216,9 +216,9 @@ export class PSAPI_WS_WATCH_INFORMATION_EXView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -227,9 +227,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -244,23 +244,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -269,7 +269,7 @@ export class _Anonymous_e__StructView {
  */
 export interface PSAPI_WORKING_SET_BLOCK {
   /** usize */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -280,9 +280,9 @@ export function allocPSAPI_WORKING_SET_BLOCK(data?: Partial<PSAPI_WORKING_SET_BL
   const buf = new Uint8Array(sizeofPSAPI_WORKING_SET_BLOCK);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Flags !== undefined) view.setBigUint64(0, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, util.toBigInt(data.Flags), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -297,8 +297,8 @@ export class PSAPI_WORKING_SET_BLOCKView {
   }
 
   // 0x00: usize
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -308,13 +308,13 @@ export class PSAPI_WORKING_SET_BLOCKView {
   }
 
   // 0x00: usize
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -323,7 +323,7 @@ export class PSAPI_WORKING_SET_BLOCKView {
  */
 export interface PSAPI_WORKING_SET_INFORMATION {
   /** usize */
-  NumberOfEntries: Deno.PointerValue;
+  NumberOfEntries: number | bigint;
   /** array */
   WorkingSetInfo: Deno.PointerValue | null;
 }
@@ -334,9 +334,9 @@ export function allocPSAPI_WORKING_SET_INFORMATION(data?: Partial<PSAPI_WORKING_
   const buf = new Uint8Array(sizeofPSAPI_WORKING_SET_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.NumberOfEntries !== undefined) view.setBigUint64(0, BigInt(data.NumberOfEntries), true);
+  if (data?.NumberOfEntries !== undefined) view.setBigUint64(0, util.toBigInt(data.NumberOfEntries), true);
   // 0x08: pointer
-  if (data?.WorkingSetInfo !== undefined) view.setBigUint64(8, data.WorkingSetInfo === null ? 0n : BigInt(util.toPointer(data.WorkingSetInfo)), true);
+  if (data?.WorkingSetInfo !== undefined) view.setBigUint64(8, data.WorkingSetInfo === null ? 0n : util.toBigInt(util.toPointer(data.WorkingSetInfo)), true);
   return buf;
 }
 
@@ -351,8 +351,8 @@ export class PSAPI_WORKING_SET_INFORMATIONView {
   }
 
   // 0x00: usize
-  get NumberOfEntries(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get NumberOfEntries(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -362,13 +362,13 @@ export class PSAPI_WORKING_SET_INFORMATIONView {
   }
 
   // 0x00: usize
-  set NumberOfEntries(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set NumberOfEntries(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set WorkingSetInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -388,9 +388,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -418,12 +418,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -432,7 +432,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface PSAPI_WORKING_SET_EX_BLOCK {
   /** usize */
-  Flags: Deno.PointerValue;
+  Flags: number | bigint;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue | null;
 }
@@ -443,9 +443,9 @@ export function allocPSAPI_WORKING_SET_EX_BLOCK(data?: Partial<PSAPI_WORKING_SET
   const buf = new Uint8Array(sizeofPSAPI_WORKING_SET_EX_BLOCK);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Flags !== undefined) view.setBigUint64(0, BigInt(data.Flags), true);
+  if (data?.Flags !== undefined) view.setBigUint64(0, util.toBigInt(data.Flags), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -460,8 +460,8 @@ export class PSAPI_WORKING_SET_EX_BLOCKView {
   }
 
   // 0x00: usize
-  get Flags(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Flags(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -471,13 +471,13 @@ export class PSAPI_WORKING_SET_EX_BLOCKView {
   }
 
   // 0x00: usize
-  set Flags(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Flags(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -497,9 +497,9 @@ export function allocPSAPI_WORKING_SET_EX_INFORMATION(data?: Partial<PSAPI_WORKI
   const buf = new Uint8Array(sizeofPSAPI_WORKING_SET_EX_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.VirtualAddress !== undefined) view.setBigUint64(0, data.VirtualAddress === null ? 0n : BigInt(util.toPointer(data.VirtualAddress)), true);
+  if (data?.VirtualAddress !== undefined) view.setBigUint64(0, data.VirtualAddress === null ? 0n : util.toBigInt(util.toPointer(data.VirtualAddress)), true);
   // 0x08: pointer
-  if (data?.VirtualAttributes !== undefined) view.setBigUint64(8, data.VirtualAttributes === null ? 0n : BigInt(util.toPointer(data.VirtualAttributes)), true);
+  if (data?.VirtualAttributes !== undefined) view.setBigUint64(8, data.VirtualAttributes === null ? 0n : util.toBigInt(util.toPointer(data.VirtualAttributes)), true);
   return buf;
 }
 
@@ -527,12 +527,12 @@ export class PSAPI_WORKING_SET_EX_INFORMATIONView {
 
   // 0x00: pointer
   set VirtualAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set VirtualAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -545,21 +545,21 @@ export interface PROCESS_MEMORY_COUNTERS {
   /** u32 */
   PageFaultCount: number;
   /** usize */
-  PeakWorkingSetSize: Deno.PointerValue;
+  PeakWorkingSetSize: number | bigint;
   /** usize */
-  WorkingSetSize: Deno.PointerValue;
+  WorkingSetSize: number | bigint;
   /** usize */
-  QuotaPeakPagedPoolUsage: Deno.PointerValue;
+  QuotaPeakPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaPagedPoolUsage: Deno.PointerValue;
+  QuotaPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaPeakNonPagedPoolUsage: Deno.PointerValue;
+  QuotaPeakNonPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaNonPagedPoolUsage: Deno.PointerValue;
+  QuotaNonPagedPoolUsage: number | bigint;
   /** usize */
-  PagefileUsage: Deno.PointerValue;
+  PagefileUsage: number | bigint;
   /** usize */
-  PeakPagefileUsage: Deno.PointerValue;
+  PeakPagefileUsage: number | bigint;
 }
 
 export const sizeofPROCESS_MEMORY_COUNTERS = 72;
@@ -572,21 +572,21 @@ export function allocPROCESS_MEMORY_COUNTERS(data?: Partial<PROCESS_MEMORY_COUNT
   // 0x04: u32
   if (data?.PageFaultCount !== undefined) view.setUint32(4, Number(data.PageFaultCount), true);
   // 0x08: usize
-  if (data?.PeakWorkingSetSize !== undefined) view.setBigUint64(8, BigInt(data.PeakWorkingSetSize), true);
+  if (data?.PeakWorkingSetSize !== undefined) view.setBigUint64(8, util.toBigInt(data.PeakWorkingSetSize), true);
   // 0x10: usize
-  if (data?.WorkingSetSize !== undefined) view.setBigUint64(16, BigInt(data.WorkingSetSize), true);
+  if (data?.WorkingSetSize !== undefined) view.setBigUint64(16, util.toBigInt(data.WorkingSetSize), true);
   // 0x18: usize
-  if (data?.QuotaPeakPagedPoolUsage !== undefined) view.setBigUint64(24, BigInt(data.QuotaPeakPagedPoolUsage), true);
+  if (data?.QuotaPeakPagedPoolUsage !== undefined) view.setBigUint64(24, util.toBigInt(data.QuotaPeakPagedPoolUsage), true);
   // 0x20: usize
-  if (data?.QuotaPagedPoolUsage !== undefined) view.setBigUint64(32, BigInt(data.QuotaPagedPoolUsage), true);
+  if (data?.QuotaPagedPoolUsage !== undefined) view.setBigUint64(32, util.toBigInt(data.QuotaPagedPoolUsage), true);
   // 0x28: usize
-  if (data?.QuotaPeakNonPagedPoolUsage !== undefined) view.setBigUint64(40, BigInt(data.QuotaPeakNonPagedPoolUsage), true);
+  if (data?.QuotaPeakNonPagedPoolUsage !== undefined) view.setBigUint64(40, util.toBigInt(data.QuotaPeakNonPagedPoolUsage), true);
   // 0x30: usize
-  if (data?.QuotaNonPagedPoolUsage !== undefined) view.setBigUint64(48, BigInt(data.QuotaNonPagedPoolUsage), true);
+  if (data?.QuotaNonPagedPoolUsage !== undefined) view.setBigUint64(48, util.toBigInt(data.QuotaNonPagedPoolUsage), true);
   // 0x38: usize
-  if (data?.PagefileUsage !== undefined) view.setBigUint64(56, BigInt(data.PagefileUsage), true);
+  if (data?.PagefileUsage !== undefined) view.setBigUint64(56, util.toBigInt(data.PagefileUsage), true);
   // 0x40: usize
-  if (data?.PeakPagefileUsage !== undefined) view.setBigUint64(64, BigInt(data.PeakPagefileUsage), true);
+  if (data?.PeakPagefileUsage !== undefined) view.setBigUint64(64, util.toBigInt(data.PeakPagefileUsage), true);
   return buf;
 }
 
@@ -611,43 +611,43 @@ export class PROCESS_MEMORY_COUNTERSView {
   }
 
   // 0x08: usize
-  get PeakWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get PeakWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get WorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get WorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get QuotaPeakPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get QuotaPeakPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get QuotaPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get QuotaPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get QuotaPeakNonPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get QuotaPeakNonPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: usize
-  get QuotaNonPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get QuotaNonPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: usize
-  get PagefileUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get PagefileUsage(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: usize
-  get PeakPagefileUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get PeakPagefileUsage(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x00: u32
@@ -661,43 +661,43 @@ export class PROCESS_MEMORY_COUNTERSView {
   }
 
   // 0x08: usize
-  set PeakWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set PeakWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set WorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set WorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set QuotaPeakPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set QuotaPeakPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set QuotaPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set QuotaPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set QuotaPeakNonPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set QuotaPeakNonPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: usize
-  set QuotaNonPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set QuotaNonPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: usize
-  set PagefileUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set PagefileUsage(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: usize
-  set PeakPagefileUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set PeakPagefileUsage(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 }
 
@@ -710,23 +710,23 @@ export interface PROCESS_MEMORY_COUNTERS_EX {
   /** u32 */
   PageFaultCount: number;
   /** usize */
-  PeakWorkingSetSize: Deno.PointerValue;
+  PeakWorkingSetSize: number | bigint;
   /** usize */
-  WorkingSetSize: Deno.PointerValue;
+  WorkingSetSize: number | bigint;
   /** usize */
-  QuotaPeakPagedPoolUsage: Deno.PointerValue;
+  QuotaPeakPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaPagedPoolUsage: Deno.PointerValue;
+  QuotaPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaPeakNonPagedPoolUsage: Deno.PointerValue;
+  QuotaPeakNonPagedPoolUsage: number | bigint;
   /** usize */
-  QuotaNonPagedPoolUsage: Deno.PointerValue;
+  QuotaNonPagedPoolUsage: number | bigint;
   /** usize */
-  PagefileUsage: Deno.PointerValue;
+  PagefileUsage: number | bigint;
   /** usize */
-  PeakPagefileUsage: Deno.PointerValue;
+  PeakPagefileUsage: number | bigint;
   /** usize */
-  PrivateUsage: Deno.PointerValue;
+  PrivateUsage: number | bigint;
 }
 
 export const sizeofPROCESS_MEMORY_COUNTERS_EX = 80;
@@ -739,23 +739,23 @@ export function allocPROCESS_MEMORY_COUNTERS_EX(data?: Partial<PROCESS_MEMORY_CO
   // 0x04: u32
   if (data?.PageFaultCount !== undefined) view.setUint32(4, Number(data.PageFaultCount), true);
   // 0x08: usize
-  if (data?.PeakWorkingSetSize !== undefined) view.setBigUint64(8, BigInt(data.PeakWorkingSetSize), true);
+  if (data?.PeakWorkingSetSize !== undefined) view.setBigUint64(8, util.toBigInt(data.PeakWorkingSetSize), true);
   // 0x10: usize
-  if (data?.WorkingSetSize !== undefined) view.setBigUint64(16, BigInt(data.WorkingSetSize), true);
+  if (data?.WorkingSetSize !== undefined) view.setBigUint64(16, util.toBigInt(data.WorkingSetSize), true);
   // 0x18: usize
-  if (data?.QuotaPeakPagedPoolUsage !== undefined) view.setBigUint64(24, BigInt(data.QuotaPeakPagedPoolUsage), true);
+  if (data?.QuotaPeakPagedPoolUsage !== undefined) view.setBigUint64(24, util.toBigInt(data.QuotaPeakPagedPoolUsage), true);
   // 0x20: usize
-  if (data?.QuotaPagedPoolUsage !== undefined) view.setBigUint64(32, BigInt(data.QuotaPagedPoolUsage), true);
+  if (data?.QuotaPagedPoolUsage !== undefined) view.setBigUint64(32, util.toBigInt(data.QuotaPagedPoolUsage), true);
   // 0x28: usize
-  if (data?.QuotaPeakNonPagedPoolUsage !== undefined) view.setBigUint64(40, BigInt(data.QuotaPeakNonPagedPoolUsage), true);
+  if (data?.QuotaPeakNonPagedPoolUsage !== undefined) view.setBigUint64(40, util.toBigInt(data.QuotaPeakNonPagedPoolUsage), true);
   // 0x30: usize
-  if (data?.QuotaNonPagedPoolUsage !== undefined) view.setBigUint64(48, BigInt(data.QuotaNonPagedPoolUsage), true);
+  if (data?.QuotaNonPagedPoolUsage !== undefined) view.setBigUint64(48, util.toBigInt(data.QuotaNonPagedPoolUsage), true);
   // 0x38: usize
-  if (data?.PagefileUsage !== undefined) view.setBigUint64(56, BigInt(data.PagefileUsage), true);
+  if (data?.PagefileUsage !== undefined) view.setBigUint64(56, util.toBigInt(data.PagefileUsage), true);
   // 0x40: usize
-  if (data?.PeakPagefileUsage !== undefined) view.setBigUint64(64, BigInt(data.PeakPagefileUsage), true);
+  if (data?.PeakPagefileUsage !== undefined) view.setBigUint64(64, util.toBigInt(data.PeakPagefileUsage), true);
   // 0x48: usize
-  if (data?.PrivateUsage !== undefined) view.setBigUint64(72, BigInt(data.PrivateUsage), true);
+  if (data?.PrivateUsage !== undefined) view.setBigUint64(72, util.toBigInt(data.PrivateUsage), true);
   return buf;
 }
 
@@ -780,48 +780,48 @@ export class PROCESS_MEMORY_COUNTERS_EXView {
   }
 
   // 0x08: usize
-  get PeakWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get PeakWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get WorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get WorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get QuotaPeakPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get QuotaPeakPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get QuotaPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get QuotaPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get QuotaPeakNonPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get QuotaPeakNonPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: usize
-  get QuotaNonPagedPoolUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get QuotaNonPagedPoolUsage(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: usize
-  get PagefileUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get PagefileUsage(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: usize
-  get PeakPagefileUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get PeakPagefileUsage(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: usize
-  get PrivateUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(72, true));
+  get PrivateUsage(): number | bigint {
+    return this.view.getBigUint64(72, true);
   }
 
   // 0x00: u32
@@ -835,48 +835,48 @@ export class PROCESS_MEMORY_COUNTERS_EXView {
   }
 
   // 0x08: usize
-  set PeakWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set PeakWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set WorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set WorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set QuotaPeakPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set QuotaPeakPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set QuotaPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set QuotaPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set QuotaPeakNonPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set QuotaPeakNonPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: usize
-  set QuotaNonPagedPoolUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set QuotaNonPagedPoolUsage(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: usize
-  set PagefileUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set PagefileUsage(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: usize
-  set PeakPagefileUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set PeakPagefileUsage(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: usize
-  set PrivateUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(72, BigInt(value), true);
+  set PrivateUsage(value: number | bigint) {
+    this.view.setBigUint64(72, util.toBigInt(value), true);
   }
 }
 
@@ -887,25 +887,25 @@ export interface PERFORMANCE_INFORMATION {
   /** u32 */
   cb: number;
   /** usize */
-  CommitTotal: Deno.PointerValue;
+  CommitTotal: number | bigint;
   /** usize */
-  CommitLimit: Deno.PointerValue;
+  CommitLimit: number | bigint;
   /** usize */
-  CommitPeak: Deno.PointerValue;
+  CommitPeak: number | bigint;
   /** usize */
-  PhysicalTotal: Deno.PointerValue;
+  PhysicalTotal: number | bigint;
   /** usize */
-  PhysicalAvailable: Deno.PointerValue;
+  PhysicalAvailable: number | bigint;
   /** usize */
-  SystemCache: Deno.PointerValue;
+  SystemCache: number | bigint;
   /** usize */
-  KernelTotal: Deno.PointerValue;
+  KernelTotal: number | bigint;
   /** usize */
-  KernelPaged: Deno.PointerValue;
+  KernelPaged: number | bigint;
   /** usize */
-  KernelNonpaged: Deno.PointerValue;
+  KernelNonpaged: number | bigint;
   /** usize */
-  PageSize: Deno.PointerValue;
+  PageSize: number | bigint;
   /** u32 */
   HandleCount: number;
   /** u32 */
@@ -923,25 +923,25 @@ export function allocPERFORMANCE_INFORMATION(data?: Partial<PERFORMANCE_INFORMAT
   if (data?.cb !== undefined) view.setUint32(0, Number(data.cb), true);
   // 0x04: pad4
   // 0x08: usize
-  if (data?.CommitTotal !== undefined) view.setBigUint64(8, BigInt(data.CommitTotal), true);
+  if (data?.CommitTotal !== undefined) view.setBigUint64(8, util.toBigInt(data.CommitTotal), true);
   // 0x10: usize
-  if (data?.CommitLimit !== undefined) view.setBigUint64(16, BigInt(data.CommitLimit), true);
+  if (data?.CommitLimit !== undefined) view.setBigUint64(16, util.toBigInt(data.CommitLimit), true);
   // 0x18: usize
-  if (data?.CommitPeak !== undefined) view.setBigUint64(24, BigInt(data.CommitPeak), true);
+  if (data?.CommitPeak !== undefined) view.setBigUint64(24, util.toBigInt(data.CommitPeak), true);
   // 0x20: usize
-  if (data?.PhysicalTotal !== undefined) view.setBigUint64(32, BigInt(data.PhysicalTotal), true);
+  if (data?.PhysicalTotal !== undefined) view.setBigUint64(32, util.toBigInt(data.PhysicalTotal), true);
   // 0x28: usize
-  if (data?.PhysicalAvailable !== undefined) view.setBigUint64(40, BigInt(data.PhysicalAvailable), true);
+  if (data?.PhysicalAvailable !== undefined) view.setBigUint64(40, util.toBigInt(data.PhysicalAvailable), true);
   // 0x30: usize
-  if (data?.SystemCache !== undefined) view.setBigUint64(48, BigInt(data.SystemCache), true);
+  if (data?.SystemCache !== undefined) view.setBigUint64(48, util.toBigInt(data.SystemCache), true);
   // 0x38: usize
-  if (data?.KernelTotal !== undefined) view.setBigUint64(56, BigInt(data.KernelTotal), true);
+  if (data?.KernelTotal !== undefined) view.setBigUint64(56, util.toBigInt(data.KernelTotal), true);
   // 0x40: usize
-  if (data?.KernelPaged !== undefined) view.setBigUint64(64, BigInt(data.KernelPaged), true);
+  if (data?.KernelPaged !== undefined) view.setBigUint64(64, util.toBigInt(data.KernelPaged), true);
   // 0x48: usize
-  if (data?.KernelNonpaged !== undefined) view.setBigUint64(72, BigInt(data.KernelNonpaged), true);
+  if (data?.KernelNonpaged !== undefined) view.setBigUint64(72, util.toBigInt(data.KernelNonpaged), true);
   // 0x50: usize
-  if (data?.PageSize !== undefined) view.setBigUint64(80, BigInt(data.PageSize), true);
+  if (data?.PageSize !== undefined) view.setBigUint64(80, util.toBigInt(data.PageSize), true);
   // 0x58: u32
   if (data?.HandleCount !== undefined) view.setUint32(88, Number(data.HandleCount), true);
   // 0x5c: u32
@@ -970,53 +970,53 @@ export class PERFORMANCE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: usize
-  get CommitTotal(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get CommitTotal(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get CommitLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get CommitLimit(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get CommitPeak(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get CommitPeak(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get PhysicalTotal(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get PhysicalTotal(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get PhysicalAvailable(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get PhysicalAvailable(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: usize
-  get SystemCache(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get SystemCache(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: usize
-  get KernelTotal(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get KernelTotal(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: usize
-  get KernelPaged(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get KernelPaged(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: usize
-  get KernelNonpaged(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(72, true));
+  get KernelNonpaged(): number | bigint {
+    return this.view.getBigUint64(72, true);
   }
 
   // 0x50: usize
-  get PageSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(80, true));
+  get PageSize(): number | bigint {
+    return this.view.getBigUint64(80, true);
   }
 
   // 0x58: u32
@@ -1044,53 +1044,53 @@ export class PERFORMANCE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: usize
-  set CommitTotal(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set CommitTotal(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set CommitLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set CommitLimit(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set CommitPeak(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set CommitPeak(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set PhysicalTotal(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set PhysicalTotal(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set PhysicalAvailable(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set PhysicalAvailable(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: usize
-  set SystemCache(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set SystemCache(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: usize
-  set KernelTotal(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set KernelTotal(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: usize
-  set KernelPaged(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set KernelPaged(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: usize
-  set KernelNonpaged(value: Deno.PointerValue) {
-    this.view.setBigUint64(72, BigInt(value), true);
+  set KernelNonpaged(value: number | bigint) {
+    this.view.setBigUint64(72, util.toBigInt(value), true);
   }
 
   // 0x50: usize
-  set PageSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(80, BigInt(value), true);
+  set PageSize(value: number | bigint) {
+    this.view.setBigUint64(80, util.toBigInt(value), true);
   }
 
   // 0x58: u32
@@ -1120,11 +1120,11 @@ export interface ENUM_PAGE_FILE_INFORMATION {
   /** u32 */
   Reserved: number;
   /** usize */
-  TotalSize: Deno.PointerValue;
+  TotalSize: number | bigint;
   /** usize */
-  TotalInUse: Deno.PointerValue;
+  TotalInUse: number | bigint;
   /** usize */
-  PeakUsage: Deno.PointerValue;
+  PeakUsage: number | bigint;
 }
 
 export const sizeofENUM_PAGE_FILE_INFORMATION = 32;
@@ -1137,11 +1137,11 @@ export function allocENUM_PAGE_FILE_INFORMATION(data?: Partial<ENUM_PAGE_FILE_IN
   // 0x04: u32
   if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
   // 0x08: usize
-  if (data?.TotalSize !== undefined) view.setBigUint64(8, BigInt(data.TotalSize), true);
+  if (data?.TotalSize !== undefined) view.setBigUint64(8, util.toBigInt(data.TotalSize), true);
   // 0x10: usize
-  if (data?.TotalInUse !== undefined) view.setBigUint64(16, BigInt(data.TotalInUse), true);
+  if (data?.TotalInUse !== undefined) view.setBigUint64(16, util.toBigInt(data.TotalInUse), true);
   // 0x18: usize
-  if (data?.PeakUsage !== undefined) view.setBigUint64(24, BigInt(data.PeakUsage), true);
+  if (data?.PeakUsage !== undefined) view.setBigUint64(24, util.toBigInt(data.PeakUsage), true);
   return buf;
 }
 
@@ -1166,18 +1166,18 @@ export class ENUM_PAGE_FILE_INFORMATIONView {
   }
 
   // 0x08: usize
-  get TotalSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get TotalSize(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: usize
-  get TotalInUse(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get TotalInUse(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get PeakUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get PeakUsage(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: u32
@@ -1191,26 +1191,26 @@ export class ENUM_PAGE_FILE_INFORMATIONView {
   }
 
   // 0x08: usize
-  set TotalSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set TotalSize(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: usize
-  set TotalInUse(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set TotalInUse(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set PeakUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set PeakUsage(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 

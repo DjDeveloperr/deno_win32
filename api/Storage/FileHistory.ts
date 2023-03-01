@@ -99,7 +99,7 @@ export type BOOL = number;
 
 export type HRESULT = number;
 
-export type FH_SERVICE_PIPE_HANDLE = Deno.PointerValue;
+export type FH_SERVICE_PIPE_HANDLE = number | bigint;
 
 // Native Libraries
 

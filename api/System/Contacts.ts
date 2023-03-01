@@ -138,7 +138,7 @@ export function allocCONTACT_AGGREGATION_BLOB(data?: Partial<CONTACT_AGGREGATION
   if (data?.dwCount !== undefined) view.setUint32(0, Number(data.dwCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lpb !== undefined) view.setBigUint64(8, data.lpb === null ? 0n : BigInt(util.toPointer(data.lpb)), true);
+  if (data?.lpb !== undefined) view.setBigUint64(8, data.lpb === null ? 0n : util.toBigInt(util.toPointer(data.lpb)), true);
   return buf;
 }
 
@@ -174,7 +174,7 @@ export class CONTACT_AGGREGATION_BLOBView {
 
   // 0x08: pointer
   set lpb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

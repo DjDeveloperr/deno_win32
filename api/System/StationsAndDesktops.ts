@@ -33,9 +33,9 @@ export const DF_ALLOWOTHERACCOUNTHOOK = 1;
 
 // Structs
 
-export type HWINSTA = Deno.PointerValue;
+export type HWINSTA = number | bigint;
 
-export type HDESK = Deno.PointerValue;
+export type HDESK = number | bigint;
 
 export type BOOL = number;
 
@@ -111,7 +111,7 @@ export class USEROBJECTFLAGSView {
   // 0x0c: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 /**
  * Windows.Win32.Foundation.LUID (size: 8)
@@ -189,11 +189,11 @@ export function allocBSMINFO(data?: Partial<BSMINFO>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hdesk !== undefined) view.setBigUint64(8, data.hdesk === null ? 0n : BigInt(util.toPointer(data.hdesk)), true);
+  if (data?.hdesk !== undefined) view.setBigUint64(8, data.hdesk === null ? 0n : util.toBigInt(util.toPointer(data.hdesk)), true);
   // 0x10: pointer
-  if (data?.hwnd !== undefined) view.setBigUint64(16, data.hwnd === null ? 0n : BigInt(util.toPointer(data.hwnd)), true);
+  if (data?.hwnd !== undefined) view.setBigUint64(16, data.hwnd === null ? 0n : util.toBigInt(util.toPointer(data.hwnd)), true);
   // 0x18: pointer
-  if (data?.luid !== undefined) view.setBigUint64(24, data.luid === null ? 0n : BigInt(util.toPointer(data.luid)), true);
+  if (data?.luid !== undefined) view.setBigUint64(24, data.luid === null ? 0n : util.toBigInt(util.toPointer(data.luid)), true);
   return buf;
 }
 
@@ -241,17 +241,17 @@ export class BSMINFOView {
 
   // 0x08: pointer
   set hdesk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set hwnd(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set luid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -259,11 +259,11 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = number | bigint;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = number | bigint;
 
 // Native Libraries
 

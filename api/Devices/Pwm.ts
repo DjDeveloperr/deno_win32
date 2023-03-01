@@ -37,13 +37,13 @@ export const PWM_ACTIVE_LOW = 1;
  */
 export interface PWM_CONTROLLER_INFO {
   /** usize */
-  Size: Deno.PointerValue;
+  Size: number | bigint;
   /** u32 */
   PinCount: number;
   /** u64 */
-  MinimumPeriod: Deno.PointerValue;
+  MinimumPeriod: number | bigint;
   /** u64 */
-  MaximumPeriod: Deno.PointerValue;
+  MaximumPeriod: number | bigint;
 }
 
 export const sizeofPWM_CONTROLLER_INFO = 32;
@@ -52,14 +52,14 @@ export function allocPWM_CONTROLLER_INFO(data?: Partial<PWM_CONTROLLER_INFO>): U
   const buf = new Uint8Array(sizeofPWM_CONTROLLER_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Size !== undefined) view.setBigUint64(0, BigInt(data.Size), true);
+  if (data?.Size !== undefined) view.setBigUint64(0, util.toBigInt(data.Size), true);
   // 0x08: u32
   if (data?.PinCount !== undefined) view.setUint32(8, Number(data.PinCount), true);
   // 0x0c: pad4
   // 0x10: u64
-  if (data?.MinimumPeriod !== undefined) view.setBigUint64(16, BigInt(data.MinimumPeriod), true);
+  if (data?.MinimumPeriod !== undefined) view.setBigUint64(16, util.toBigInt(data.MinimumPeriod), true);
   // 0x18: u64
-  if (data?.MaximumPeriod !== undefined) view.setBigUint64(24, BigInt(data.MaximumPeriod), true);
+  if (data?.MaximumPeriod !== undefined) view.setBigUint64(24, util.toBigInt(data.MaximumPeriod), true);
   return buf;
 }
 
@@ -74,8 +74,8 @@ export class PWM_CONTROLLER_INFOView {
   }
 
   // 0x00: usize
-  get Size(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Size(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u32
@@ -86,18 +86,18 @@ export class PWM_CONTROLLER_INFOView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MinimumPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get MinimumPeriod(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get MaximumPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get MaximumPeriod(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: usize
-  set Size(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Size(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u32
@@ -108,13 +108,13 @@ export class PWM_CONTROLLER_INFOView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MinimumPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set MinimumPeriod(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set MaximumPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set MaximumPeriod(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 
@@ -123,7 +123,7 @@ export class PWM_CONTROLLER_INFOView {
  */
 export interface PWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT {
   /** u64 */
-  ActualPeriod: Deno.PointerValue;
+  ActualPeriod: number | bigint;
 }
 
 export const sizeofPWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT = 8;
@@ -132,7 +132,7 @@ export function allocPWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT(data?: Partial<PWM_
   const buf = new Uint8Array(sizeofPWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.ActualPeriod !== undefined) view.setBigUint64(0, BigInt(data.ActualPeriod), true);
+  if (data?.ActualPeriod !== undefined) view.setBigUint64(0, util.toBigInt(data.ActualPeriod), true);
   return buf;
 }
 
@@ -147,13 +147,13 @@ export class PWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUTView {
   }
 
   // 0x00: u64
-  get ActualPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get ActualPeriod(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set ActualPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set ActualPeriod(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -162,7 +162,7 @@ export class PWM_CONTROLLER_GET_ACTUAL_PERIOD_OUTPUTView {
  */
 export interface PWM_CONTROLLER_SET_DESIRED_PERIOD_INPUT {
   /** u64 */
-  DesiredPeriod: Deno.PointerValue;
+  DesiredPeriod: number | bigint;
 }
 
 export const sizeofPWM_CONTROLLER_SET_DESIRED_PERIOD_INPUT = 8;
@@ -171,7 +171,7 @@ export function allocPWM_CONTROLLER_SET_DESIRED_PERIOD_INPUT(data?: Partial<PWM_
   const buf = new Uint8Array(sizeofPWM_CONTROLLER_SET_DESIRED_PERIOD_INPUT);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.DesiredPeriod !== undefined) view.setBigUint64(0, BigInt(data.DesiredPeriod), true);
+  if (data?.DesiredPeriod !== undefined) view.setBigUint64(0, util.toBigInt(data.DesiredPeriod), true);
   return buf;
 }
 
@@ -186,13 +186,13 @@ export class PWM_CONTROLLER_SET_DESIRED_PERIOD_INPUTView {
   }
 
   // 0x00: u64
-  get DesiredPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get DesiredPeriod(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set DesiredPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set DesiredPeriod(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -201,7 +201,7 @@ export class PWM_CONTROLLER_SET_DESIRED_PERIOD_INPUTView {
  */
 export interface PWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT {
   /** u64 */
-  ActualPeriod: Deno.PointerValue;
+  ActualPeriod: number | bigint;
 }
 
 export const sizeofPWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT = 8;
@@ -210,7 +210,7 @@ export function allocPWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT(data?: Partial<PWM
   const buf = new Uint8Array(sizeofPWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.ActualPeriod !== undefined) view.setBigUint64(0, BigInt(data.ActualPeriod), true);
+  if (data?.ActualPeriod !== undefined) view.setBigUint64(0, util.toBigInt(data.ActualPeriod), true);
   return buf;
 }
 
@@ -225,13 +225,13 @@ export class PWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUTView {
   }
 
   // 0x00: u64
-  get ActualPeriod(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get ActualPeriod(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set ActualPeriod(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set ActualPeriod(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -240,7 +240,7 @@ export class PWM_CONTROLLER_SET_DESIRED_PERIOD_OUTPUTView {
  */
 export interface PWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUT {
   /** u64 */
-  Percentage: Deno.PointerValue;
+  Percentage: number | bigint;
 }
 
 export const sizeofPWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUT = 8;
@@ -249,7 +249,7 @@ export function allocPWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUT(data?: Part
   const buf = new Uint8Array(sizeofPWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Percentage !== undefined) view.setBigUint64(0, BigInt(data.Percentage), true);
+  if (data?.Percentage !== undefined) view.setBigUint64(0, util.toBigInt(data.Percentage), true);
   return buf;
 }
 
@@ -264,13 +264,13 @@ export class PWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUTView {
   }
 
   // 0x00: u64
-  get Percentage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Percentage(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set Percentage(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Percentage(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -279,7 +279,7 @@ export class PWM_PIN_GET_ACTIVE_DUTY_CYCLE_PERCENTAGE_OUTPUTView {
  */
 export interface PWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT {
   /** u64 */
-  Percentage: Deno.PointerValue;
+  Percentage: number | bigint;
 }
 
 export const sizeofPWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT = 8;
@@ -288,7 +288,7 @@ export function allocPWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT(data?: Parti
   const buf = new Uint8Array(sizeofPWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUT);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Percentage !== undefined) view.setBigUint64(0, BigInt(data.Percentage), true);
+  if (data?.Percentage !== undefined) view.setBigUint64(0, util.toBigInt(data.Percentage), true);
   return buf;
 }
 
@@ -303,13 +303,13 @@ export class PWM_PIN_SET_ACTIVE_DUTY_CYCLE_PERCENTAGE_INPUTView {
   }
 
   // 0x00: u64
-  get Percentage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Percentage(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x00: u64
-  set Percentage(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Percentage(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 }
 
@@ -417,7 +417,7 @@ export function allocPWM_PIN_IS_STARTED_OUTPUT(data?: Partial<PWM_PIN_IS_STARTED
   const buf = new Uint8Array(sizeofPWM_PIN_IS_STARTED_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IsStarted !== undefined) view.setBigUint64(0, data.IsStarted === null ? 0n : BigInt(util.toPointer(data.IsStarted)), true);
+  if (data?.IsStarted !== undefined) view.setBigUint64(0, data.IsStarted === null ? 0n : util.toBigInt(util.toPointer(data.IsStarted)), true);
   return buf;
 }
 
@@ -439,7 +439,7 @@ export class PWM_PIN_IS_STARTED_OUTPUTView {
 
   // 0x00: pointer
   set IsStarted(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

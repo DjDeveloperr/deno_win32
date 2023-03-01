@@ -200,7 +200,7 @@ export function allocSourceInfo(data?: Partial<SourceInfo>): Uint8Array {
   const buf = new Uint8Array(sizeofSourceInfo);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FileName !== undefined) view.setBigUint64(0, data.FileName === null ? 0n : BigInt(util.toPointer(data.FileName)), true);
+  if (data?.FileName !== undefined) view.setBigUint64(0, data.FileName === null ? 0n : util.toBigInt(util.toPointer(data.FileName)), true);
   // 0x08: u32
   if (data?.LineNumber !== undefined) view.setUint32(8, Number(data.LineNumber), true);
   // 0x0c: u32
@@ -209,7 +209,7 @@ export function allocSourceInfo(data?: Partial<SourceInfo>): Uint8Array {
   if (data?.CharPosition !== undefined) view.setUint32(16, Number(data.CharPosition), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(24, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(24, data.Hash === null ? 0n : util.toBigInt(util.toPointer(data.Hash)), true);
   return buf;
 }
 
@@ -254,7 +254,7 @@ export class SourceInfoView {
 
   // 0x00: pointer
   set FileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -276,7 +276,7 @@ export class SourceInfoView {
 
   // 0x18: pointer
   set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -285,9 +285,9 @@ export class SourceInfoView {
  */
 export interface ParentChildRelation {
   /** u64 */
-  Parent: Deno.PointerValue;
+  Parent: number | bigint;
   /** u64 */
-  Child: Deno.PointerValue;
+  Child: number | bigint;
   /** u32 */
   ChildIndex: number;
 }
@@ -298,9 +298,9 @@ export function allocParentChildRelation(data?: Partial<ParentChildRelation>): U
   const buf = new Uint8Array(sizeofParentChildRelation);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Parent !== undefined) view.setBigUint64(0, BigInt(data.Parent), true);
+  if (data?.Parent !== undefined) view.setBigUint64(0, util.toBigInt(data.Parent), true);
   // 0x08: u64
-  if (data?.Child !== undefined) view.setBigUint64(8, BigInt(data.Child), true);
+  if (data?.Child !== undefined) view.setBigUint64(8, util.toBigInt(data.Child), true);
   // 0x10: u32
   if (data?.ChildIndex !== undefined) view.setUint32(16, Number(data.ChildIndex), true);
   // 0x14: pad4
@@ -318,13 +318,13 @@ export class ParentChildRelationView {
   }
 
   // 0x00: u64
-  get Parent(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Parent(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Child(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Child(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u32
@@ -335,13 +335,13 @@ export class ParentChildRelationView {
   // 0x14: pad4
 
   // 0x00: u64
-  set Parent(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Parent(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Child(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Child(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u32
@@ -357,7 +357,7 @@ export class ParentChildRelationView {
  */
 export interface VisualElement {
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: number | bigint;
   /** Windows.Win32.UI.Xaml.Diagnostics.SourceInfo */
   SrcInfo: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BSTR */
@@ -374,13 +374,13 @@ export function allocVisualElement(data?: Partial<VisualElement>): Uint8Array {
   const buf = new Uint8Array(sizeofVisualElement);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Handle !== undefined) view.setBigUint64(0, BigInt(data.Handle), true);
+  if (data?.Handle !== undefined) view.setBigUint64(0, util.toBigInt(data.Handle), true);
   // 0x08: pointer
-  if (data?.SrcInfo !== undefined) view.setBigUint64(8, data.SrcInfo === null ? 0n : BigInt(util.toPointer(data.SrcInfo)), true);
+  if (data?.SrcInfo !== undefined) view.setBigUint64(8, data.SrcInfo === null ? 0n : util.toBigInt(util.toPointer(data.SrcInfo)), true);
   // 0x10: pointer
-  if (data?.Type !== undefined) view.setBigUint64(16, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(16, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   // 0x18: pointer
-  if (data?.Name !== undefined) view.setBigUint64(24, data.Name === null ? 0n : BigInt(util.toPointer(data.Name)), true);
+  if (data?.Name !== undefined) view.setBigUint64(24, data.Name === null ? 0n : util.toBigInt(util.toPointer(data.Name)), true);
   // 0x20: u32
   if (data?.NumChildren !== undefined) view.setUint32(32, Number(data.NumChildren), true);
   // 0x24: pad4
@@ -398,8 +398,8 @@ export class VisualElementView {
   }
 
   // 0x00: u64
-  get Handle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Handle(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -428,23 +428,23 @@ export class VisualElementView {
   // 0x24: pad4
 
   // 0x00: u64
-  set Handle(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Handle(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set SrcInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -460,7 +460,7 @@ export class VisualElementView {
  */
 export interface PropertyChainSource {
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: number | bigint;
   /** Windows.Win32.Foundation.BSTR */
   TargetType: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.BSTR */
@@ -477,16 +477,16 @@ export function allocPropertyChainSource(data?: Partial<PropertyChainSource>): U
   const buf = new Uint8Array(sizeofPropertyChainSource);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Handle !== undefined) view.setBigUint64(0, BigInt(data.Handle), true);
+  if (data?.Handle !== undefined) view.setBigUint64(0, util.toBigInt(data.Handle), true);
   // 0x08: pointer
-  if (data?.TargetType !== undefined) view.setBigUint64(8, data.TargetType === null ? 0n : BigInt(util.toPointer(data.TargetType)), true);
+  if (data?.TargetType !== undefined) view.setBigUint64(8, data.TargetType === null ? 0n : util.toBigInt(util.toPointer(data.TargetType)), true);
   // 0x10: pointer
-  if (data?.Name !== undefined) view.setBigUint64(16, data.Name === null ? 0n : BigInt(util.toPointer(data.Name)), true);
+  if (data?.Name !== undefined) view.setBigUint64(16, data.Name === null ? 0n : util.toBigInt(util.toPointer(data.Name)), true);
   // 0x18: i32
   if (data?.Source !== undefined) view.setInt32(24, Number(data.Source), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.SrcInfo !== undefined) view.setBigUint64(32, data.SrcInfo === null ? 0n : BigInt(util.toPointer(data.SrcInfo)), true);
+  if (data?.SrcInfo !== undefined) view.setBigUint64(32, data.SrcInfo === null ? 0n : util.toBigInt(util.toPointer(data.SrcInfo)), true);
   return buf;
 }
 
@@ -501,8 +501,8 @@ export class PropertyChainSourceView {
   }
 
   // 0x00: u64
-  get Handle(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Handle(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: pointer
@@ -531,18 +531,18 @@ export class PropertyChainSourceView {
   }
 
   // 0x00: u64
-  set Handle(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Handle(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: pointer
   set TargetType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set Name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -554,7 +554,7 @@ export class PropertyChainSourceView {
 
   // 0x20: pointer
   set SrcInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -579,7 +579,7 @@ export interface PropertyChainValue {
   /** Windows.Win32.Foundation.BOOL */
   Overridden: boolean;
   /** i64 */
-  MetadataBits: Deno.PointerValue;
+  MetadataBits: number | bigint;
   /** Windows.Win32.Foundation.BSTR */
   PropertyName: Uint8Array | Deno.PointerValue | null;
   /** u32 */
@@ -595,22 +595,22 @@ export function allocPropertyChainValue(data?: Partial<PropertyChainValue>): Uin
   if (data?.Index !== undefined) view.setUint32(0, Number(data.Index), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   // 0x10: pointer
-  if (data?.DeclaringType !== undefined) view.setBigUint64(16, data.DeclaringType === null ? 0n : BigInt(util.toPointer(data.DeclaringType)), true);
+  if (data?.DeclaringType !== undefined) view.setBigUint64(16, data.DeclaringType === null ? 0n : util.toBigInt(util.toPointer(data.DeclaringType)), true);
   // 0x18: pointer
-  if (data?.ValueType !== undefined) view.setBigUint64(24, data.ValueType === null ? 0n : BigInt(util.toPointer(data.ValueType)), true);
+  if (data?.ValueType !== undefined) view.setBigUint64(24, data.ValueType === null ? 0n : util.toBigInt(util.toPointer(data.ValueType)), true);
   // 0x20: pointer
-  if (data?.ItemType !== undefined) view.setBigUint64(32, data.ItemType === null ? 0n : BigInt(util.toPointer(data.ItemType)), true);
+  if (data?.ItemType !== undefined) view.setBigUint64(32, data.ItemType === null ? 0n : util.toBigInt(util.toPointer(data.ItemType)), true);
   // 0x28: pointer
-  if (data?.Value !== undefined) view.setBigUint64(40, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(40, data.Value === null ? 0n : util.toBigInt(util.toPointer(data.Value)), true);
   // 0x30: i32
   if (data?.Overridden !== undefined) view.setInt32(48, Number(data.Overridden), true);
   // 0x34: pad4
   // 0x38: i64
-  if (data?.MetadataBits !== undefined) view.setBigInt64(56, BigInt(data.MetadataBits), true);
+  if (data?.MetadataBits !== undefined) view.setBigInt64(56, util.toBigInt(data.MetadataBits), true);
   // 0x40: pointer
-  if (data?.PropertyName !== undefined) view.setBigUint64(64, data.PropertyName === null ? 0n : BigInt(util.toPointer(data.PropertyName)), true);
+  if (data?.PropertyName !== undefined) view.setBigUint64(64, data.PropertyName === null ? 0n : util.toBigInt(util.toPointer(data.PropertyName)), true);
   // 0x48: u32
   if (data?.PropertyChainIndex !== undefined) view.setUint32(72, Number(data.PropertyChainIndex), true);
   // 0x4c: pad4
@@ -672,8 +672,8 @@ export class PropertyChainValueView {
   // 0x34: pad4
 
   // 0x38: i64
-  get MetadataBits(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(56, true));
+  get MetadataBits(): number | bigint {
+    return this.view.getBigInt64(56, true);
   }
 
   // 0x40: pointer
@@ -698,27 +698,27 @@ export class PropertyChainValueView {
 
   // 0x08: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set DeclaringType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ValueType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ItemType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: i32
@@ -729,13 +729,13 @@ export class PropertyChainValueView {
   // 0x34: pad4
 
   // 0x38: i64
-  set MetadataBits(value: Deno.PointerValue) {
-    this.view.setBigInt64(56, BigInt(value), true);
+  set MetadataBits(value: number | bigint) {
+    this.view.setBigInt64(56, util.toBigInt(value), true);
   }
 
   // 0x40: pointer
   set PropertyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: u32
@@ -764,11 +764,11 @@ export function allocEnumType(data?: Partial<EnumType>): Uint8Array {
   const buf = new Uint8Array(sizeofEnumType);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Name !== undefined) view.setBigUint64(0, data.Name === null ? 0n : BigInt(util.toPointer(data.Name)), true);
+  if (data?.Name !== undefined) view.setBigUint64(0, data.Name === null ? 0n : util.toBigInt(util.toPointer(data.Name)), true);
   // 0x08: pointer
-  if (data?.ValueInts !== undefined) view.setBigUint64(8, data.ValueInts === null ? 0n : BigInt(util.toPointer(data.ValueInts)), true);
+  if (data?.ValueInts !== undefined) view.setBigUint64(8, data.ValueInts === null ? 0n : util.toBigInt(util.toPointer(data.ValueInts)), true);
   // 0x10: pointer
-  if (data?.ValueStrings !== undefined) view.setBigUint64(16, data.ValueStrings === null ? 0n : BigInt(util.toPointer(data.ValueStrings)), true);
+  if (data?.ValueStrings !== undefined) view.setBigUint64(16, data.ValueStrings === null ? 0n : util.toBigInt(util.toPointer(data.ValueStrings)), true);
   return buf;
 }
 
@@ -802,17 +802,17 @@ export class EnumTypeView {
 
   // 0x00: pointer
   set Name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ValueInts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set ValueStrings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -827,7 +827,7 @@ export interface CollectionElementValue {
   /** Windows.Win32.Foundation.BSTR */
   Value: Uint8Array | Deno.PointerValue | null;
   /** i64 */
-  MetadataBits: Deno.PointerValue;
+  MetadataBits: number | bigint;
 }
 
 export const sizeofCollectionElementValue = 32;
@@ -839,11 +839,11 @@ export function allocCollectionElementValue(data?: Partial<CollectionElementValu
   if (data?.Index !== undefined) view.setUint32(0, Number(data.Index), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ValueType !== undefined) view.setBigUint64(8, data.ValueType === null ? 0n : BigInt(util.toPointer(data.ValueType)), true);
+  if (data?.ValueType !== undefined) view.setBigUint64(8, data.ValueType === null ? 0n : util.toBigInt(util.toPointer(data.ValueType)), true);
   // 0x10: pointer
-  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : util.toBigInt(util.toPointer(data.Value)), true);
   // 0x18: i64
-  if (data?.MetadataBits !== undefined) view.setBigInt64(24, BigInt(data.MetadataBits), true);
+  if (data?.MetadataBits !== undefined) view.setBigInt64(24, util.toBigInt(data.MetadataBits), true);
   return buf;
 }
 
@@ -877,8 +877,8 @@ export class CollectionElementValueView {
   }
 
   // 0x18: i64
-  get MetadataBits(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get MetadataBits(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x00: u32
@@ -890,17 +890,17 @@ export class CollectionElementValueView {
 
   // 0x08: pointer
   set ValueType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i64
-  set MetadataBits(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set MetadataBits(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 }
 

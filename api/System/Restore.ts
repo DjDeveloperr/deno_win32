@@ -49,7 +49,7 @@ export interface RESTOREPOINTINFOA {
   /** Windows.Win32.System.Restore.RESTOREPOINTINFO_TYPE */
   dwRestorePtType: RESTOREPOINTINFO_TYPE;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: number | bigint;
   /** array */
   szDescription: Deno.PointerValue | null;
 }
@@ -64,9 +64,9 @@ export function allocRESTOREPOINTINFOA(data?: Partial<RESTOREPOINTINFOA>): Uint8
   // 0x04: u32
   if (data?.dwRestorePtType !== undefined) view.setUint32(4, Number(data.dwRestorePtType), true);
   // 0x08: i64
-  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, BigInt(data.llSequenceNumber), true);
+  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, util.toBigInt(data.llSequenceNumber), true);
   // 0x10: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : util.toBigInt(util.toPointer(data.szDescription)), true);
   return buf;
 }
 
@@ -91,8 +91,8 @@ export class RESTOREPOINTINFOAView {
   }
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get llSequenceNumber(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: pointer
@@ -112,13 +112,13 @@ export class RESTOREPOINTINFOAView {
   }
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set llSequenceNumber(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set szDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -131,7 +131,7 @@ export interface RESTOREPOINTINFOW {
   /** Windows.Win32.System.Restore.RESTOREPOINTINFO_TYPE */
   dwRestorePtType: RESTOREPOINTINFO_TYPE;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: number | bigint;
   /** array */
   szDescription: Deno.PointerValue | null;
 }
@@ -146,9 +146,9 @@ export function allocRESTOREPOINTINFOW(data?: Partial<RESTOREPOINTINFOW>): Uint8
   // 0x04: u32
   if (data?.dwRestorePtType !== undefined) view.setUint32(4, Number(data.dwRestorePtType), true);
   // 0x08: i64
-  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, BigInt(data.llSequenceNumber), true);
+  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, util.toBigInt(data.llSequenceNumber), true);
   // 0x10: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : util.toBigInt(util.toPointer(data.szDescription)), true);
   return buf;
 }
 
@@ -173,8 +173,8 @@ export class RESTOREPOINTINFOWView {
   }
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get llSequenceNumber(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: pointer
@@ -194,13 +194,13 @@ export class RESTOREPOINTINFOWView {
   }
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set llSequenceNumber(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set szDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -279,7 +279,7 @@ export function allocRESTOREPOINTINFOEX(data?: Partial<RESTOREPOINTINFOEX>): Uin
   const buf = new Uint8Array(sizeofRESTOREPOINTINFOEX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ftCreation !== undefined) view.setBigUint64(0, data.ftCreation === null ? 0n : BigInt(util.toPointer(data.ftCreation)), true);
+  if (data?.ftCreation !== undefined) view.setBigUint64(0, data.ftCreation === null ? 0n : util.toBigInt(util.toPointer(data.ftCreation)), true);
   // 0x08: u32
   if (data?.dwEventType !== undefined) view.setUint32(8, Number(data.dwEventType), true);
   // 0x0c: u32
@@ -288,7 +288,7 @@ export function allocRESTOREPOINTINFOEX(data?: Partial<RESTOREPOINTINFOEX>): Uin
   if (data?.dwRPNum !== undefined) view.setUint32(16, Number(data.dwRPNum), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(24, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  if (data?.szDescription !== undefined) view.setBigUint64(24, data.szDescription === null ? 0n : util.toBigInt(util.toPointer(data.szDescription)), true);
   return buf;
 }
 
@@ -333,7 +333,7 @@ export class RESTOREPOINTINFOEXView {
 
   // 0x00: pointer
   set ftCreation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -355,7 +355,7 @@ export class RESTOREPOINTINFOEXView {
 
   // 0x18: pointer
   set szDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -366,7 +366,7 @@ export interface STATEMGRSTATUS {
   /** u32 */
   nStatus: number;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: number | bigint;
 }
 
 export const sizeofSTATEMGRSTATUS = 16;
@@ -378,7 +378,7 @@ export function allocSTATEMGRSTATUS(data?: Partial<STATEMGRSTATUS>): Uint8Array 
   if (data?.nStatus !== undefined) view.setUint32(0, Number(data.nStatus), true);
   // 0x04: pad4
   // 0x08: i64
-  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, BigInt(data.llSequenceNumber), true);
+  if (data?.llSequenceNumber !== undefined) view.setBigInt64(8, util.toBigInt(data.llSequenceNumber), true);
   return buf;
 }
 
@@ -400,8 +400,8 @@ export class STATEMGRSTATUSView {
   // 0x04: pad4
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get llSequenceNumber(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x00: u32
@@ -412,8 +412,8 @@ export class STATEMGRSTATUSView {
   // 0x04: pad4
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set llSequenceNumber(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 }
 

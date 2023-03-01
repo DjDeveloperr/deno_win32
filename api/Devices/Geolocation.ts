@@ -381,7 +381,7 @@ export function allocGNSS_DEVICE_CAPABILITY(data?: Partial<GNSS_DEVICE_CAPABILIT
   if (data?.SupportSuplV2 !== undefined) view.setInt32(80, Number(data.SupportSuplV2), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.SupportedSuplVersion !== undefined) view.setBigUint64(88, data.SupportedSuplVersion === null ? 0n : BigInt(util.toPointer(data.SupportedSuplVersion)), true);
+  if (data?.SupportedSuplVersion !== undefined) view.setBigUint64(88, data.SupportedSuplVersion === null ? 0n : util.toBigInt(util.toPointer(data.SupportedSuplVersion)), true);
   // 0x60: u32
   if (data?.MaxGeofencesSupported !== undefined) view.setUint32(96, Number(data.MaxGeofencesSupported), true);
   // 0x64: i32
@@ -391,7 +391,7 @@ export function allocGNSS_DEVICE_CAPABILITY(data?: Partial<GNSS_DEVICE_CAPABILIT
   // 0x6c: u32
   if (data?.MaxGnssBreadCrumbFixes !== undefined) view.setUint32(108, Number(data.MaxGnssBreadCrumbFixes), true);
   // 0x70: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(112, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(112, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -653,7 +653,7 @@ export class GNSS_DEVICE_CAPABILITYView {
 
   // 0x58: pointer
   set SupportedSuplVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: u32
@@ -678,7 +678,7 @@ export class GNSS_DEVICE_CAPABILITYView {
 
   // 0x70: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(112, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -712,7 +712,7 @@ export function allocGNSS_PLATFORM_CAPABILITY(data?: Partial<GNSS_PLATFORM_CAPAB
   // 0x0c: u32
   if (data?.AgnssFormatSupported !== undefined) view.setUint32(12, Number(data.AgnssFormatSupported), true);
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -774,7 +774,7 @@ export class GNSS_PLATFORM_CAPABILITYView {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -815,9 +815,9 @@ export function allocGNSS_DRIVERCOMMAND_PARAM(data?: Partial<GNSS_DRIVERCOMMAND_
   if (data?.CommandDataSize !== undefined) view.setUint32(16, Number(data.CommandDataSize), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x20: pointer
-  if (data?.CommandData !== undefined) view.setBigUint64(32, data.CommandData === null ? 0n : BigInt(util.toPointer(data.CommandData)), true);
+  if (data?.CommandData !== undefined) view.setBigUint64(32, data.CommandData === null ? 0n : util.toBigInt(util.toPointer(data.CommandData)), true);
   return buf;
 }
 
@@ -899,12 +899,12 @@ export class GNSS_DRIVERCOMMAND_PARAMView {
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set CommandData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1182,9 +1182,9 @@ export class GNSS_LKGFIX_PARAMView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1193,9 +1193,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -1210,23 +1210,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -1246,9 +1246,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -1276,12 +1276,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1329,14 +1329,14 @@ export function allocGNSS_FIXSESSION_PARAM(data?: Partial<GNSS_FIXSESSION_PARAM>
   // 0x14: u32
   if (data?.HorizontalConfidence !== undefined) view.setUint32(20, Number(data.HorizontalConfidence), true);
   // 0x18: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(24, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(24, data.Reserved === null ? 0n : util.toBigInt(util.toPointer(data.Reserved)), true);
   // 0x20: u32
   if (data?.FixLevelOfDetails !== undefined) view.setUint32(32, Number(data.FixLevelOfDetails), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x30: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(48, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(48, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -1437,7 +1437,7 @@ export class GNSS_FIXSESSION_PARAMView {
 
   // 0x18: pointer
   set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -1449,12 +1449,12 @@ export class GNSS_FIXSESSION_PARAMView {
 
   // 0x28: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1485,7 +1485,7 @@ export function allocGNSS_STOPFIXSESSION_PARAM(data?: Partial<GNSS_STOPFIXSESSIO
   if (data?.FixSessionID !== undefined) view.setUint32(8, Number(data.FixSessionID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -1541,7 +1541,7 @@ export class GNSS_STOPFIXSESSION_PARAMView {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2453,7 +2453,7 @@ export function allocGNSS_FIXDATA_SATELLITE(data?: Partial<GNSS_FIXDATA_SATELLIT
   if (data?.SatelliteCount !== undefined) view.setUint32(8, Number(data.SatelliteCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.SatelliteArray !== undefined) view.setBigUint64(16, data.SatelliteArray === null ? 0n : BigInt(util.toPointer(data.SatelliteArray)), true);
+  if (data?.SatelliteArray !== undefined) view.setBigUint64(16, data.SatelliteArray === null ? 0n : util.toBigInt(util.toPointer(data.SatelliteArray)), true);
   return buf;
 }
 
@@ -2509,7 +2509,7 @@ export class GNSS_FIXDATA_SATELLITEView {
 
   // 0x10: pointer
   set SatelliteArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2607,21 +2607,21 @@ export function allocGNSS_FIXDATA(data?: Partial<GNSS_FIXDATA>): Uint8Array {
   if (data?.FixSessionID !== undefined) view.setUint32(8, Number(data.FixSessionID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.FixTimeStamp !== undefined) view.setBigUint64(16, data.FixTimeStamp === null ? 0n : BigInt(util.toPointer(data.FixTimeStamp)), true);
+  if (data?.FixTimeStamp !== undefined) view.setBigUint64(16, data.FixTimeStamp === null ? 0n : util.toBigInt(util.toPointer(data.FixTimeStamp)), true);
   // 0x18: i32
   if (data?.IsFinalFix !== undefined) view.setInt32(24, Number(data.IsFinalFix), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.FixStatus !== undefined) view.setBigUint64(32, data.FixStatus === null ? 0n : BigInt(util.toPointer(data.FixStatus)), true);
+  if (data?.FixStatus !== undefined) view.setBigUint64(32, data.FixStatus === null ? 0n : util.toBigInt(util.toPointer(data.FixStatus)), true);
   // 0x28: u32
   if (data?.FixLevelOfDetails !== undefined) view.setUint32(40, Number(data.FixLevelOfDetails), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.BasicData !== undefined) view.setBigUint64(48, data.BasicData === null ? 0n : BigInt(util.toPointer(data.BasicData)), true);
+  if (data?.BasicData !== undefined) view.setBigUint64(48, data.BasicData === null ? 0n : util.toBigInt(util.toPointer(data.BasicData)), true);
   // 0x38: pointer
-  if (data?.AccuracyData !== undefined) view.setBigUint64(56, data.AccuracyData === null ? 0n : BigInt(util.toPointer(data.AccuracyData)), true);
+  if (data?.AccuracyData !== undefined) view.setBigUint64(56, data.AccuracyData === null ? 0n : util.toBigInt(util.toPointer(data.AccuracyData)), true);
   // 0x40: pointer
-  if (data?.SatelliteData !== undefined) view.setBigUint64(64, data.SatelliteData === null ? 0n : BigInt(util.toPointer(data.SatelliteData)), true);
+  if (data?.SatelliteData !== undefined) view.setBigUint64(64, data.SatelliteData === null ? 0n : util.toBigInt(util.toPointer(data.SatelliteData)), true);
   return buf;
 }
 
@@ -2715,7 +2715,7 @@ export class GNSS_FIXDATAView {
 
   // 0x10: pointer
   set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -2727,7 +2727,7 @@ export class GNSS_FIXDATAView {
 
   // 0x20: pointer
   set FixStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -2739,17 +2739,17 @@ export class GNSS_FIXDATAView {
 
   // 0x30: pointer
   set BasicData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set SatelliteData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2792,21 +2792,21 @@ export function allocGNSS_FIXDATA_2(data?: Partial<GNSS_FIXDATA_2>): Uint8Array 
   if (data?.FixSessionID !== undefined) view.setUint32(8, Number(data.FixSessionID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.FixTimeStamp !== undefined) view.setBigUint64(16, data.FixTimeStamp === null ? 0n : BigInt(util.toPointer(data.FixTimeStamp)), true);
+  if (data?.FixTimeStamp !== undefined) view.setBigUint64(16, data.FixTimeStamp === null ? 0n : util.toBigInt(util.toPointer(data.FixTimeStamp)), true);
   // 0x18: i32
   if (data?.IsFinalFix !== undefined) view.setInt32(24, Number(data.IsFinalFix), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.FixStatus !== undefined) view.setBigUint64(32, data.FixStatus === null ? 0n : BigInt(util.toPointer(data.FixStatus)), true);
+  if (data?.FixStatus !== undefined) view.setBigUint64(32, data.FixStatus === null ? 0n : util.toBigInt(util.toPointer(data.FixStatus)), true);
   // 0x28: u32
   if (data?.FixLevelOfDetails !== undefined) view.setUint32(40, Number(data.FixLevelOfDetails), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.BasicData !== undefined) view.setBigUint64(48, data.BasicData === null ? 0n : BigInt(util.toPointer(data.BasicData)), true);
+  if (data?.BasicData !== undefined) view.setBigUint64(48, data.BasicData === null ? 0n : util.toBigInt(util.toPointer(data.BasicData)), true);
   // 0x38: pointer
-  if (data?.AccuracyData !== undefined) view.setBigUint64(56, data.AccuracyData === null ? 0n : BigInt(util.toPointer(data.AccuracyData)), true);
+  if (data?.AccuracyData !== undefined) view.setBigUint64(56, data.AccuracyData === null ? 0n : util.toBigInt(util.toPointer(data.AccuracyData)), true);
   // 0x40: pointer
-  if (data?.SatelliteData !== undefined) view.setBigUint64(64, data.SatelliteData === null ? 0n : BigInt(util.toPointer(data.SatelliteData)), true);
+  if (data?.SatelliteData !== undefined) view.setBigUint64(64, data.SatelliteData === null ? 0n : util.toBigInt(util.toPointer(data.SatelliteData)), true);
   return buf;
 }
 
@@ -2900,7 +2900,7 @@ export class GNSS_FIXDATA_2View {
 
   // 0x10: pointer
   set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -2912,7 +2912,7 @@ export class GNSS_FIXDATA_2View {
 
   // 0x20: pointer
   set FixStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -2924,17 +2924,17 @@ export class GNSS_FIXDATA_2View {
 
   // 0x30: pointer
   set BasicData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set SatelliteData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2973,7 +2973,7 @@ export function allocGNSS_BREADCRUMBING_PARAM(data?: Partial<GNSS_BREADCRUMBING_
   if (data?.MaximumErrorTimeoutMs !== undefined) view.setUint32(16, Number(data.MaximumErrorTimeoutMs), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3049,7 +3049,7 @@ export class GNSS_BREADCRUMBING_PARAMView {
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3075,7 +3075,7 @@ export function allocGNSS_BREADCRUMBING_ALERT_DATA(data?: Partial<GNSS_BREADCRUM
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(8, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(8, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3117,7 +3117,7 @@ export class GNSS_BREADCRUMBING_ALERT_DATAView {
 
   // 0x08: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3155,7 +3155,7 @@ export function allocGNSS_BREADCRUMB_V1(data?: Partial<GNSS_BREADCRUMB_V1>): Uin
   const buf = new Uint8Array(sizeofGNSS_BREADCRUMB_V1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FixTimeStamp !== undefined) view.setBigUint64(0, data.FixTimeStamp === null ? 0n : BigInt(util.toPointer(data.FixTimeStamp)), true);
+  if (data?.FixTimeStamp !== undefined) view.setBigUint64(0, data.FixTimeStamp === null ? 0n : util.toBigInt(util.toPointer(data.FixTimeStamp)), true);
   // 0x08: f64
   if (data?.Latitude !== undefined) view.setFloat64(8, Number(data.Latitude), true);
   // 0x10: f64
@@ -3247,7 +3247,7 @@ export class GNSS_BREADCRUMB_V1View {
 
   // 0x00: pointer
   set FixTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: f64
@@ -3328,7 +3328,7 @@ export function allocGNSS_BREADCRUMB_LIST(data?: Partial<GNSS_BREADCRUMB_LIST>):
   if (data?.NumCrumbs !== undefined) view.setUint32(8, Number(data.NumCrumbs), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3384,7 +3384,7 @@ export class GNSS_BREADCRUMB_LISTView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3482,7 +3482,7 @@ export function allocGNSS_GEOREGION(data?: Partial<GNSS_GEOREGION>): Uint8Array 
   if (data?.GeoRegionType !== undefined) view.setInt32(8, Number(data.GeoRegionType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -3538,7 +3538,7 @@ export class GNSS_GEOREGIONView {
 
   // 0x10: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3574,9 +3574,9 @@ export function allocGNSS_GEOFENCE_CREATE_PARAM(data?: Partial<GNSS_GEOFENCE_CRE
   // 0x0c: i32
   if (data?.InitialState !== undefined) view.setInt32(12, Number(data.InitialState), true);
   // 0x10: pointer
-  if (data?.Boundary !== undefined) view.setBigUint64(16, data.Boundary === null ? 0n : BigInt(util.toPointer(data.Boundary)), true);
+  if (data?.Boundary !== undefined) view.setBigUint64(16, data.Boundary === null ? 0n : util.toBigInt(util.toPointer(data.Boundary)), true);
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3644,12 +3644,12 @@ export class GNSS_GEOFENCE_CREATE_PARAMView {
 
   // 0x10: pointer
   set Boundary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3679,12 +3679,12 @@ export function allocGNSS_GEOFENCE_CREATE_RESPONSE(data?: Partial<GNSS_GEOFENCE_
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.CreationStatus !== undefined) view.setBigUint64(8, data.CreationStatus === null ? 0n : BigInt(util.toPointer(data.CreationStatus)), true);
+  if (data?.CreationStatus !== undefined) view.setBigUint64(8, data.CreationStatus === null ? 0n : util.toBigInt(util.toPointer(data.CreationStatus)), true);
   // 0x10: u32
   if (data?.GeofenceID !== undefined) view.setUint32(16, Number(data.GeofenceID), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3739,7 +3739,7 @@ export class GNSS_GEOFENCE_CREATE_RESPONSEView {
 
   // 0x08: pointer
   set CreationStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -3751,7 +3751,7 @@ export class GNSS_GEOFENCE_CREATE_RESPONSEView {
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3782,7 +3782,7 @@ export function allocGNSS_GEOFENCE_DELETE_PARAM(data?: Partial<GNSS_GEOFENCE_DEL
   if (data?.GeofenceID !== undefined) view.setUint32(8, Number(data.GeofenceID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3838,7 +3838,7 @@ export class GNSS_GEOFENCE_DELETE_PARAMView {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3876,11 +3876,11 @@ export function allocGNSS_GEOFENCE_ALERT_DATA(data?: Partial<GNSS_GEOFENCE_ALERT
   // 0x0c: i32
   if (data?.GeofenceState !== undefined) view.setInt32(12, Number(data.GeofenceState), true);
   // 0x10: pointer
-  if (data?.FixBasicData !== undefined) view.setBigUint64(16, data.FixBasicData === null ? 0n : BigInt(util.toPointer(data.FixBasicData)), true);
+  if (data?.FixBasicData !== undefined) view.setBigUint64(16, data.FixBasicData === null ? 0n : util.toBigInt(util.toPointer(data.FixBasicData)), true);
   // 0x18: pointer
-  if (data?.FixAccuracyData !== undefined) view.setBigUint64(24, data.FixAccuracyData === null ? 0n : BigInt(util.toPointer(data.FixAccuracyData)), true);
+  if (data?.FixAccuracyData !== undefined) view.setBigUint64(24, data.FixAccuracyData === null ? 0n : util.toBigInt(util.toPointer(data.FixAccuracyData)), true);
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -3954,17 +3954,17 @@ export class GNSS_GEOFENCE_ALERT_DATAView {
 
   // 0x10: pointer
   set FixBasicData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set FixAccuracyData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3994,11 +3994,11 @@ export function allocGNSS_GEOFENCES_TRACKINGSTATUS_DATA(data?: Partial<GNSS_GEOF
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.Status !== undefined) view.setBigUint64(8, data.Status === null ? 0n : BigInt(util.toPointer(data.Status)), true);
+  if (data?.Status !== undefined) view.setBigUint64(8, data.Status === null ? 0n : util.toBigInt(util.toPointer(data.Status)), true);
   // 0x10: pointer
-  if (data?.StatusTimeStamp !== undefined) view.setBigUint64(16, data.StatusTimeStamp === null ? 0n : BigInt(util.toPointer(data.StatusTimeStamp)), true);
+  if (data?.StatusTimeStamp !== undefined) view.setBigUint64(16, data.StatusTimeStamp === null ? 0n : util.toBigInt(util.toPointer(data.StatusTimeStamp)), true);
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -4052,17 +4052,17 @@ export class GNSS_GEOFENCES_TRACKINGSTATUS_DATAView {
 
   // 0x08: pointer
   set Status(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set StatusTimeStamp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4098,9 +4098,9 @@ export function allocGNSS_ERRORINFO(data?: Partial<GNSS_ERRORINFO>): Uint8Array 
   // 0x0c: i32
   if (data?.IsRecoverable !== undefined) view.setInt32(12, Number(data.IsRecoverable), true);
   // 0x10: pointer
-  if (data?.ErrorDescription !== undefined) view.setBigUint64(16, data.ErrorDescription === null ? 0n : BigInt(util.toPointer(data.ErrorDescription)), true);
+  if (data?.ErrorDescription !== undefined) view.setBigUint64(16, data.ErrorDescription === null ? 0n : util.toBigInt(util.toPointer(data.ErrorDescription)), true);
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -4168,12 +4168,12 @@ export class GNSS_ERRORINFOView {
 
   // 0x10: pointer
   set ErrorDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4199,7 +4199,7 @@ export function allocGNSS_NMEA_DATA(data?: Partial<GNSS_NMEA_DATA>): Uint8Array 
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.NmeaSentences !== undefined) view.setBigUint64(8, data.NmeaSentences === null ? 0n : BigInt(util.toPointer(data.NmeaSentences)), true);
+  if (data?.NmeaSentences !== undefined) view.setBigUint64(8, data.NmeaSentences === null ? 0n : util.toBigInt(util.toPointer(data.NmeaSentences)), true);
   return buf;
 }
 
@@ -4241,7 +4241,7 @@ export class GNSS_NMEA_DATAView {
 
   // 0x08: pointer
   set NmeaSentences(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4352,11 +4352,11 @@ export function allocGNSS_SUPL_NI_INFO(data?: Partial<GNSS_SUPL_NI_INFO>): Uint8
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : BigInt(util.toPointer(data.RequestorId)), true);
+  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : util.toBigInt(util.toPointer(data.RequestorId)), true);
   // 0x10: pointer
-  if (data?.ClientName !== undefined) view.setBigUint64(16, data.ClientName === null ? 0n : BigInt(util.toPointer(data.ClientName)), true);
+  if (data?.ClientName !== undefined) view.setBigUint64(16, data.ClientName === null ? 0n : util.toBigInt(util.toPointer(data.ClientName)), true);
   // 0x18: pointer
-  if (data?.SuplNiUrl !== undefined) view.setBigUint64(24, data.SuplNiUrl === null ? 0n : BigInt(util.toPointer(data.SuplNiUrl)), true);
+  if (data?.SuplNiUrl !== undefined) view.setBigUint64(24, data.SuplNiUrl === null ? 0n : util.toBigInt(util.toPointer(data.SuplNiUrl)), true);
   return buf;
 }
 
@@ -4410,17 +4410,17 @@ export class GNSS_SUPL_NI_INFOView {
 
   // 0x08: pointer
   set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set ClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set SuplNiUrl(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4448,9 +4448,9 @@ export function allocGNSS_CP_NI_INFO(data?: Partial<GNSS_CP_NI_INFO>): Uint8Arra
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : BigInt(util.toPointer(data.RequestorId)), true);
+  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : util.toBigInt(util.toPointer(data.RequestorId)), true);
   // 0x10: pointer
-  if (data?.NotificationText !== undefined) view.setBigUint64(16, data.NotificationText === null ? 0n : BigInt(util.toPointer(data.NotificationText)), true);
+  if (data?.NotificationText !== undefined) view.setBigUint64(16, data.NotificationText === null ? 0n : util.toBigInt(util.toPointer(data.NotificationText)), true);
   return buf;
 }
 
@@ -4498,12 +4498,12 @@ export class GNSS_CP_NI_INFOView {
 
   // 0x08: pointer
   set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set NotificationText(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4529,7 +4529,7 @@ export function allocGNSS_V2UPL_NI_INFO(data?: Partial<GNSS_V2UPL_NI_INFO>): Uin
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : BigInt(util.toPointer(data.RequestorId)), true);
+  if (data?.RequestorId !== undefined) view.setBigUint64(8, data.RequestorId === null ? 0n : util.toBigInt(util.toPointer(data.RequestorId)), true);
   return buf;
 }
 
@@ -4571,7 +4571,7 @@ export class GNSS_V2UPL_NI_INFOView {
 
   // 0x08: pointer
   set RequestorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4617,7 +4617,7 @@ export function allocGNSS_NI_REQUEST_PARAM(data?: Partial<GNSS_NI_REQUEST_PARAM>
   // 0x14: i32
   if (data?.RequestPlaneType !== undefined) view.setInt32(20, Number(data.RequestPlaneType), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x20: u32
   if (data?.ResponseTimeInSec !== undefined) view.setUint32(32, Number(data.ResponseTimeInSec), true);
   // 0x24: i32
@@ -4713,7 +4713,7 @@ export class GNSS_NI_REQUEST_PARAMView {
 
   // 0x18: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -4840,9 +4840,9 @@ export function allocGNSS_EVENT(data?: Partial<GNSS_EVENT>): Uint8Array {
   // 0x0c: u32
   if (data?.EventDataSize !== undefined) view.setUint32(12, Number(data.EventDataSize), true);
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4910,12 +4910,12 @@ export class GNSS_EVENTView {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4951,9 +4951,9 @@ export function allocGNSS_EVENT_2(data?: Partial<GNSS_EVENT_2>): Uint8Array {
   // 0x0c: u32
   if (data?.EventDataSize !== undefined) view.setUint32(12, Number(data.EventDataSize), true);
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -5021,12 +5021,12 @@ export class GNSS_EVENT_2View {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5054,7 +5054,7 @@ export function allocGNSS_AGNSS_INJECTTIME(data?: Partial<GNSS_AGNSS_INJECTTIME>
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.UtcTime !== undefined) view.setBigUint64(8, data.UtcTime === null ? 0n : BigInt(util.toPointer(data.UtcTime)), true);
+  if (data?.UtcTime !== undefined) view.setBigUint64(8, data.UtcTime === null ? 0n : util.toBigInt(util.toPointer(data.UtcTime)), true);
   // 0x10: u32
   if (data?.TimeUncertainty !== undefined) view.setUint32(16, Number(data.TimeUncertainty), true);
   // 0x14: pad4
@@ -5106,7 +5106,7 @@ export class GNSS_AGNSS_INJECTTIMEView {
 
   // 0x08: pointer
   set UtcTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -5146,9 +5146,9 @@ export function allocGNSS_AGNSS_INJECTPOSITION(data?: Partial<GNSS_AGNSS_INJECTP
   if (data?.Age !== undefined) view.setUint32(8, Number(data.Age), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.BasicData !== undefined) view.setBigUint64(16, data.BasicData === null ? 0n : BigInt(util.toPointer(data.BasicData)), true);
+  if (data?.BasicData !== undefined) view.setBigUint64(16, data.BasicData === null ? 0n : util.toBigInt(util.toPointer(data.BasicData)), true);
   // 0x18: pointer
-  if (data?.AccuracyData !== undefined) view.setBigUint64(24, data.AccuracyData === null ? 0n : BigInt(util.toPointer(data.AccuracyData)), true);
+  if (data?.AccuracyData !== undefined) view.setBigUint64(24, data.AccuracyData === null ? 0n : util.toBigInt(util.toPointer(data.AccuracyData)), true);
   return buf;
 }
 
@@ -5210,12 +5210,12 @@ export class GNSS_AGNSS_INJECTPOSITIONView {
 
   // 0x10: pointer
   set BasicData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set AccuracyData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5257,7 +5257,7 @@ export function allocGNSS_AGNSS_INJECTBLOB(data?: Partial<GNSS_AGNSS_INJECTBLOB>
   // 0x14: u32
   if (data?.BlobSize !== undefined) view.setUint32(20, Number(data.BlobSize), true);
   // 0x18: pointer
-  if (data?.BlobData !== undefined) view.setBigUint64(24, data.BlobData === null ? 0n : BigInt(util.toPointer(data.BlobData)), true);
+  if (data?.BlobData !== undefined) view.setBigUint64(24, data.BlobData === null ? 0n : util.toBigInt(util.toPointer(data.BlobData)), true);
   return buf;
 }
 
@@ -5339,7 +5339,7 @@ export class GNSS_AGNSS_INJECTBLOBView {
 
   // 0x18: pointer
   set BlobData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5376,14 +5376,14 @@ export function allocGNSS_AGNSS_INJECT(data?: Partial<GNSS_AGNSS_INJECT>): Uint8
   if (data?.InjectionType !== undefined) view.setInt32(8, Number(data.InjectionType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.InjectionStatus !== undefined) view.setBigUint64(16, data.InjectionStatus === null ? 0n : BigInt(util.toPointer(data.InjectionStatus)), true);
+  if (data?.InjectionStatus !== undefined) view.setBigUint64(16, data.InjectionStatus === null ? 0n : util.toBigInt(util.toPointer(data.InjectionStatus)), true);
   // 0x18: u32
   if (data?.InjectionDataSize !== undefined) view.setUint32(24, Number(data.InjectionDataSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x28: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(40, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -5458,7 +5458,7 @@ export class GNSS_AGNSS_INJECTView {
 
   // 0x10: pointer
   set InjectionStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -5470,12 +5470,12 @@ export class GNSS_AGNSS_INJECTView {
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5507,14 +5507,14 @@ export function allocGNSS_SUPL_HSLP_CONFIG(data?: Partial<GNSS_SUPL_HSLP_CONFIG>
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.SuplHslp !== undefined) view.setBigUint64(8, data.SuplHslp === null ? 0n : BigInt(util.toPointer(data.SuplHslp)), true);
+  if (data?.SuplHslp !== undefined) view.setBigUint64(8, data.SuplHslp === null ? 0n : util.toBigInt(util.toPointer(data.SuplHslp)), true);
   // 0x10: pointer
-  if (data?.SuplHslpFromImsi !== undefined) view.setBigUint64(16, data.SuplHslpFromImsi === null ? 0n : BigInt(util.toPointer(data.SuplHslpFromImsi)), true);
+  if (data?.SuplHslpFromImsi !== undefined) view.setBigUint64(16, data.SuplHslpFromImsi === null ? 0n : util.toBigInt(util.toPointer(data.SuplHslpFromImsi)), true);
   // 0x18: u32
   if (data?.Reserved !== undefined) view.setUint32(24, Number(data.Reserved), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -5575,12 +5575,12 @@ export class GNSS_SUPL_HSLP_CONFIGView {
 
   // 0x08: pointer
   set SuplHslp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set SuplHslpFromImsi(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -5592,7 +5592,7 @@ export class GNSS_SUPL_HSLP_CONFIGView {
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5629,14 +5629,14 @@ export function allocGNSS_SUPL_CERT_CONFIG(data?: Partial<GNSS_SUPL_CERT_CONFIG>
   if (data?.CertAction !== undefined) view.setInt32(8, Number(data.CertAction), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.SuplCertName !== undefined) view.setBigUint64(16, data.SuplCertName === null ? 0n : BigInt(util.toPointer(data.SuplCertName)), true);
+  if (data?.SuplCertName !== undefined) view.setBigUint64(16, data.SuplCertName === null ? 0n : util.toBigInt(util.toPointer(data.SuplCertName)), true);
   // 0x18: u32
   if (data?.CertSize !== undefined) view.setUint32(24, Number(data.CertSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x28: pointer
-  if (data?.CertData !== undefined) view.setBigUint64(40, data.CertData === null ? 0n : BigInt(util.toPointer(data.CertData)), true);
+  if (data?.CertData !== undefined) view.setBigUint64(40, data.CertData === null ? 0n : util.toBigInt(util.toPointer(data.CertData)), true);
   return buf;
 }
 
@@ -5711,7 +5711,7 @@ export class GNSS_SUPL_CERT_CONFIGView {
 
   // 0x10: pointer
   set SuplCertName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -5723,12 +5723,12 @@ export class GNSS_SUPL_CERT_CONFIGView {
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set CertData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5760,14 +5760,14 @@ export function allocGNSS_V2UPL_CONFIG(data?: Partial<GNSS_V2UPL_CONFIG>): Uint8
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.MPC !== undefined) view.setBigUint64(8, data.MPC === null ? 0n : BigInt(util.toPointer(data.MPC)), true);
+  if (data?.MPC !== undefined) view.setBigUint64(8, data.MPC === null ? 0n : util.toBigInt(util.toPointer(data.MPC)), true);
   // 0x10: pointer
-  if (data?.PDE !== undefined) view.setBigUint64(16, data.PDE === null ? 0n : BigInt(util.toPointer(data.PDE)), true);
+  if (data?.PDE !== undefined) view.setBigUint64(16, data.PDE === null ? 0n : util.toBigInt(util.toPointer(data.PDE)), true);
   // 0x18: u8
   if (data?.ApplicationTypeIndicator_MR !== undefined) view.setUint8(24, Number(data.ApplicationTypeIndicator_MR));
   // 0x19: pad7
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -5828,12 +5828,12 @@ export class GNSS_V2UPL_CONFIGView {
 
   // 0x08: pointer
   set MPC(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set PDE(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u8
@@ -5845,7 +5845,7 @@ export class GNSS_V2UPL_CONFIGView {
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -5958,13 +5958,13 @@ export function allocGNSS_CWTESTDATA(data?: Partial<GNSS_CWTESTDATA>): Uint8Arra
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.TestResultStatus !== undefined) view.setBigUint64(8, data.TestResultStatus === null ? 0n : BigInt(util.toPointer(data.TestResultStatus)), true);
+  if (data?.TestResultStatus !== undefined) view.setBigUint64(8, data.TestResultStatus === null ? 0n : util.toBigInt(util.toPointer(data.TestResultStatus)), true);
   // 0x10: f64
   if (data?.SignalToNoiseRatio !== undefined) view.setFloat64(16, Number(data.SignalToNoiseRatio), true);
   // 0x18: f64
   if (data?.Frequency !== undefined) view.setFloat64(24, Number(data.Frequency), true);
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -6022,7 +6022,7 @@ export class GNSS_CWTESTDATAView {
 
   // 0x08: pointer
   set TestResultStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: f64
@@ -6037,7 +6037,7 @@ export class GNSS_CWTESTDATAView {
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6072,12 +6072,12 @@ export function allocGNSS_SELFTESTCONFIG(data?: Partial<GNSS_SELFTESTCONFIG>): U
   if (data?.TestType !== undefined) view.setUint32(8, Number(data.TestType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(16, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x18: u32
   if (data?.InBufLen !== undefined) view.setUint32(24, Number(data.InBufLen), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.InBuffer !== undefined) view.setBigUint64(32, data.InBuffer === null ? 0n : BigInt(util.toPointer(data.InBuffer)), true);
+  if (data?.InBuffer !== undefined) view.setBigUint64(32, data.InBuffer === null ? 0n : util.toBigInt(util.toPointer(data.InBuffer)), true);
   return buf;
 }
 
@@ -6146,7 +6146,7 @@ export class GNSS_SELFTESTCONFIGView {
 
   // 0x10: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -6158,7 +6158,7 @@ export class GNSS_SELFTESTCONFIGView {
 
   // 0x20: pointer
   set InBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6194,18 +6194,18 @@ export function allocGNSS_SELFTESTRESULT(data?: Partial<GNSS_SELFTESTRESULT>): U
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.TestResultStatus !== undefined) view.setBigUint64(8, data.TestResultStatus === null ? 0n : BigInt(util.toPointer(data.TestResultStatus)), true);
+  if (data?.TestResultStatus !== undefined) view.setBigUint64(8, data.TestResultStatus === null ? 0n : util.toBigInt(util.toPointer(data.TestResultStatus)), true);
   // 0x10: u32
   if (data?.Result !== undefined) view.setUint32(16, Number(data.Result), true);
   // 0x14: u32
   if (data?.PinFailedBitMask !== undefined) view.setUint32(20, Number(data.PinFailedBitMask), true);
   // 0x18: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(24, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   // 0x20: u32
   if (data?.OutBufLen !== undefined) view.setUint32(32, Number(data.OutBufLen), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.OutBuffer !== undefined) view.setBigUint64(40, data.OutBuffer === null ? 0n : BigInt(util.toPointer(data.OutBuffer)), true);
+  if (data?.OutBuffer !== undefined) view.setBigUint64(40, data.OutBuffer === null ? 0n : util.toBigInt(util.toPointer(data.OutBuffer)), true);
   return buf;
 }
 
@@ -6276,7 +6276,7 @@ export class GNSS_SELFTESTRESULTView {
 
   // 0x08: pointer
   set TestResultStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -6291,7 +6291,7 @@ export class GNSS_SELFTESTRESULTView {
 
   // 0x18: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -6303,7 +6303,7 @@ export class GNSS_SELFTESTRESULTView {
 
   // 0x28: pointer
   set OutBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -6335,13 +6335,13 @@ export function allocGNSS_CHIPSETINFO(data?: Partial<GNSS_CHIPSETINFO>): Uint8Ar
   // 0x04: u32
   if (data?.Version !== undefined) view.setUint32(4, Number(data.Version), true);
   // 0x08: pointer
-  if (data?.ManufacturerID !== undefined) view.setBigUint64(8, data.ManufacturerID === null ? 0n : BigInt(util.toPointer(data.ManufacturerID)), true);
+  if (data?.ManufacturerID !== undefined) view.setBigUint64(8, data.ManufacturerID === null ? 0n : util.toBigInt(util.toPointer(data.ManufacturerID)), true);
   // 0x10: pointer
-  if (data?.HardwareID !== undefined) view.setBigUint64(16, data.HardwareID === null ? 0n : BigInt(util.toPointer(data.HardwareID)), true);
+  if (data?.HardwareID !== undefined) view.setBigUint64(16, data.HardwareID === null ? 0n : util.toBigInt(util.toPointer(data.HardwareID)), true);
   // 0x18: pointer
-  if (data?.FirmwareVersion !== undefined) view.setBigUint64(24, data.FirmwareVersion === null ? 0n : BigInt(util.toPointer(data.FirmwareVersion)), true);
+  if (data?.FirmwareVersion !== undefined) view.setBigUint64(24, data.FirmwareVersion === null ? 0n : util.toBigInt(util.toPointer(data.FirmwareVersion)), true);
   // 0x20: pointer
-  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : BigInt(util.toPointer(data.Unused)), true);
+  if (data?.Unused !== undefined) view.setBigUint64(32, data.Unused === null ? 0n : util.toBigInt(util.toPointer(data.Unused)), true);
   return buf;
 }
 
@@ -6401,22 +6401,22 @@ export class GNSS_CHIPSETINFOView {
 
   // 0x08: pointer
   set ManufacturerID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set HardwareID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set FirmwareVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set Unused(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

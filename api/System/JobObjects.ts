@@ -141,11 +141,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
  */
 export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION {
   /** i64 */
-  MaxIops: Deno.PointerValue;
+  MaxIops: number | bigint;
   /** i64 */
-  MaxBandwidth: Deno.PointerValue;
+  MaxBandwidth: number | bigint;
   /** i64 */
-  ReservationIops: Deno.PointerValue;
+  ReservationIops: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -160,15 +160,15 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION(data?: Partial<JOBOBJ
   const buf = new Uint8Array(sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.MaxIops !== undefined) view.setBigInt64(0, BigInt(data.MaxIops), true);
+  if (data?.MaxIops !== undefined) view.setBigInt64(0, util.toBigInt(data.MaxIops), true);
   // 0x08: i64
-  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, BigInt(data.MaxBandwidth), true);
+  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, util.toBigInt(data.MaxBandwidth), true);
   // 0x10: i64
-  if (data?.ReservationIops !== undefined) view.setBigInt64(16, BigInt(data.ReservationIops), true);
+  if (data?.ReservationIops !== undefined) view.setBigInt64(16, util.toBigInt(data.ReservationIops), true);
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -188,18 +188,18 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATIONView {
   }
 
   // 0x00: i64
-  get MaxIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get MaxIops(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x08: i64
-  get MaxBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get MaxBandwidth(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: i64
-  get ReservationIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get ReservationIops(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: buffer
@@ -219,24 +219,24 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATIONView {
   }
 
   // 0x00: i64
-  set MaxIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set MaxIops(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i64
-  set MaxBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set MaxBandwidth(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: i64
-  set ReservationIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set ReservationIops(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: buffer
   set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -250,7 +250,7 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATIONView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.System.JobObjects.JOB_SET_ARRAY (size: 16)
@@ -270,7 +270,7 @@ export function allocJOB_SET_ARRAY(data?: Partial<JOB_SET_ARRAY>): Uint8Array {
   const buf = new Uint8Array(sizeofJOB_SET_ARRAY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.JobHandle !== undefined) view.setBigUint64(0, data.JobHandle === null ? 0n : BigInt(util.toPointer(data.JobHandle)), true);
+  if (data?.JobHandle !== undefined) view.setBigUint64(0, data.JobHandle === null ? 0n : util.toBigInt(util.toPointer(data.JobHandle)), true);
   // 0x08: u32
   if (data?.MemberLevel !== undefined) view.setUint32(8, Number(data.MemberLevel), true);
   // 0x0c: u32
@@ -306,7 +306,7 @@ export class JOB_SET_ARRAYView {
 
   // 0x00: pointer
   set JobHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -325,9 +325,9 @@ export class JOB_SET_ARRAYView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -336,9 +336,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -353,23 +353,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -394,7 +394,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -432,7 +432,7 @@ export class _u_e__StructView {
   // 0x08: buffer
   set pwszName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -445,7 +445,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue | null;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: number | bigint;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -454,11 +454,11 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : util.toBigInt(util.toPointer(data.u)), true);
   // 0x10: i64
-  if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
+  if (data?.QuadPart !== undefined) view.setBigInt64(16, util.toBigInt(data.QuadPart), true);
   return buf;
 }
 
@@ -485,23 +485,23 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get QuadPart(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set QuadPart(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 }
 
@@ -533,13 +533,13 @@ export function allocJOBOBJECT_BASIC_ACCOUNTING_INFORMATION(data?: Partial<JOBOB
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_ACCOUNTING_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.TotalUserTime !== undefined) view.setBigUint64(0, data.TotalUserTime === null ? 0n : BigInt(util.toPointer(data.TotalUserTime)), true);
+  if (data?.TotalUserTime !== undefined) view.setBigUint64(0, data.TotalUserTime === null ? 0n : util.toBigInt(util.toPointer(data.TotalUserTime)), true);
   // 0x08: pointer
-  if (data?.TotalKernelTime !== undefined) view.setBigUint64(8, data.TotalKernelTime === null ? 0n : BigInt(util.toPointer(data.TotalKernelTime)), true);
+  if (data?.TotalKernelTime !== undefined) view.setBigUint64(8, data.TotalKernelTime === null ? 0n : util.toBigInt(util.toPointer(data.TotalKernelTime)), true);
   // 0x10: pointer
-  if (data?.ThisPeriodTotalUserTime !== undefined) view.setBigUint64(16, data.ThisPeriodTotalUserTime === null ? 0n : BigInt(util.toPointer(data.ThisPeriodTotalUserTime)), true);
+  if (data?.ThisPeriodTotalUserTime !== undefined) view.setBigUint64(16, data.ThisPeriodTotalUserTime === null ? 0n : util.toBigInt(util.toPointer(data.ThisPeriodTotalUserTime)), true);
   // 0x18: pointer
-  if (data?.ThisPeriodTotalKernelTime !== undefined) view.setBigUint64(24, data.ThisPeriodTotalKernelTime === null ? 0n : BigInt(util.toPointer(data.ThisPeriodTotalKernelTime)), true);
+  if (data?.ThisPeriodTotalKernelTime !== undefined) view.setBigUint64(24, data.ThisPeriodTotalKernelTime === null ? 0n : util.toBigInt(util.toPointer(data.ThisPeriodTotalKernelTime)), true);
   // 0x20: u32
   if (data?.TotalPageFaultCount !== undefined) view.setUint32(32, Number(data.TotalPageFaultCount), true);
   // 0x24: u32
@@ -607,22 +607,22 @@ export class JOBOBJECT_BASIC_ACCOUNTING_INFORMATIONView {
 
   // 0x00: pointer
   set TotalUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set TotalKernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set ThisPeriodTotalUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ThisPeriodTotalKernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -657,13 +657,13 @@ export interface JOBOBJECT_BASIC_LIMIT_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_LIMIT */
   LimitFlags: JOB_OBJECT_LIMIT;
   /** usize */
-  MinimumWorkingSetSize: Deno.PointerValue;
+  MinimumWorkingSetSize: number | bigint;
   /** usize */
-  MaximumWorkingSetSize: Deno.PointerValue;
+  MaximumWorkingSetSize: number | bigint;
   /** u32 */
   ActiveProcessLimit: number;
   /** usize */
-  Affinity: Deno.PointerValue;
+  Affinity: number | bigint;
   /** u32 */
   PriorityClass: number;
   /** u32 */
@@ -676,21 +676,21 @@ export function allocJOBOBJECT_BASIC_LIMIT_INFORMATION(data?: Partial<JOBOBJECT_
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_LIMIT_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.PerProcessUserTimeLimit !== undefined) view.setBigUint64(0, data.PerProcessUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerProcessUserTimeLimit)), true);
+  if (data?.PerProcessUserTimeLimit !== undefined) view.setBigUint64(0, data.PerProcessUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerProcessUserTimeLimit)), true);
   // 0x08: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(8, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(8, data.PerJobUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
   // 0x10: u32
   if (data?.LimitFlags !== undefined) view.setUint32(16, Number(data.LimitFlags), true);
   // 0x14: pad4
   // 0x18: usize
-  if (data?.MinimumWorkingSetSize !== undefined) view.setBigUint64(24, BigInt(data.MinimumWorkingSetSize), true);
+  if (data?.MinimumWorkingSetSize !== undefined) view.setBigUint64(24, util.toBigInt(data.MinimumWorkingSetSize), true);
   // 0x20: usize
-  if (data?.MaximumWorkingSetSize !== undefined) view.setBigUint64(32, BigInt(data.MaximumWorkingSetSize), true);
+  if (data?.MaximumWorkingSetSize !== undefined) view.setBigUint64(32, util.toBigInt(data.MaximumWorkingSetSize), true);
   // 0x28: u32
   if (data?.ActiveProcessLimit !== undefined) view.setUint32(40, Number(data.ActiveProcessLimit), true);
   // 0x2c: pad4
   // 0x30: usize
-  if (data?.Affinity !== undefined) view.setBigUint64(48, BigInt(data.Affinity), true);
+  if (data?.Affinity !== undefined) view.setBigUint64(48, util.toBigInt(data.Affinity), true);
   // 0x38: u32
   if (data?.PriorityClass !== undefined) view.setUint32(56, Number(data.PriorityClass), true);
   // 0x3c: u32
@@ -728,13 +728,13 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   // 0x14: pad4
 
   // 0x18: usize
-  get MinimumWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get MinimumWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get MaximumWorkingSetSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get MaximumWorkingSetSize(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u32
@@ -745,8 +745,8 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   // 0x2c: pad4
 
   // 0x30: usize
-  get Affinity(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get Affinity(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x38: u32
@@ -761,12 +761,12 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
 
   // 0x00: pointer
   set PerProcessUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -777,13 +777,13 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   // 0x14: pad4
 
   // 0x18: usize
-  set MinimumWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set MinimumWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set MaximumWorkingSetSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set MaximumWorkingSetSize(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u32
@@ -794,8 +794,8 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   // 0x2c: pad4
 
   // 0x30: usize
-  set Affinity(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set Affinity(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 
   // 0x38: u32
@@ -814,17 +814,17 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
  */
 export interface IO_COUNTERS {
   /** u64 */
-  ReadOperationCount: Deno.PointerValue;
+  ReadOperationCount: number | bigint;
   /** u64 */
-  WriteOperationCount: Deno.PointerValue;
+  WriteOperationCount: number | bigint;
   /** u64 */
-  OtherOperationCount: Deno.PointerValue;
+  OtherOperationCount: number | bigint;
   /** u64 */
-  ReadTransferCount: Deno.PointerValue;
+  ReadTransferCount: number | bigint;
   /** u64 */
-  WriteTransferCount: Deno.PointerValue;
+  WriteTransferCount: number | bigint;
   /** u64 */
-  OtherTransferCount: Deno.PointerValue;
+  OtherTransferCount: number | bigint;
 }
 
 export const sizeofIO_COUNTERS = 48;
@@ -833,17 +833,17 @@ export function allocIO_COUNTERS(data?: Partial<IO_COUNTERS>): Uint8Array {
   const buf = new Uint8Array(sizeofIO_COUNTERS);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.ReadOperationCount !== undefined) view.setBigUint64(0, BigInt(data.ReadOperationCount), true);
+  if (data?.ReadOperationCount !== undefined) view.setBigUint64(0, util.toBigInt(data.ReadOperationCount), true);
   // 0x08: u64
-  if (data?.WriteOperationCount !== undefined) view.setBigUint64(8, BigInt(data.WriteOperationCount), true);
+  if (data?.WriteOperationCount !== undefined) view.setBigUint64(8, util.toBigInt(data.WriteOperationCount), true);
   // 0x10: u64
-  if (data?.OtherOperationCount !== undefined) view.setBigUint64(16, BigInt(data.OtherOperationCount), true);
+  if (data?.OtherOperationCount !== undefined) view.setBigUint64(16, util.toBigInt(data.OtherOperationCount), true);
   // 0x18: u64
-  if (data?.ReadTransferCount !== undefined) view.setBigUint64(24, BigInt(data.ReadTransferCount), true);
+  if (data?.ReadTransferCount !== undefined) view.setBigUint64(24, util.toBigInt(data.ReadTransferCount), true);
   // 0x20: u64
-  if (data?.WriteTransferCount !== undefined) view.setBigUint64(32, BigInt(data.WriteTransferCount), true);
+  if (data?.WriteTransferCount !== undefined) view.setBigUint64(32, util.toBigInt(data.WriteTransferCount), true);
   // 0x28: u64
-  if (data?.OtherTransferCount !== undefined) view.setBigUint64(40, BigInt(data.OtherTransferCount), true);
+  if (data?.OtherTransferCount !== undefined) view.setBigUint64(40, util.toBigInt(data.OtherTransferCount), true);
   return buf;
 }
 
@@ -858,63 +858,63 @@ export class IO_COUNTERSView {
   }
 
   // 0x00: u64
-  get ReadOperationCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get ReadOperationCount(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get WriteOperationCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get WriteOperationCount(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get OtherOperationCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get OtherOperationCount(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get ReadTransferCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get ReadTransferCount(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get WriteTransferCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get WriteTransferCount(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u64
-  get OtherTransferCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get OtherTransferCount(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x00: u64
-  set ReadOperationCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set ReadOperationCount(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set WriteOperationCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set WriteOperationCount(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set OtherOperationCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set OtherOperationCount(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set ReadTransferCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set ReadTransferCount(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set WriteTransferCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set WriteTransferCount(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u64
-  set OtherTransferCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set OtherTransferCount(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 }
 
@@ -927,13 +927,13 @@ export interface JOBOBJECT_EXTENDED_LIMIT_INFORMATION {
   /** Windows.Win32.System.Threading.IO_COUNTERS */
   IoInfo: Uint8Array | Deno.PointerValue | null;
   /** usize */
-  ProcessMemoryLimit: Deno.PointerValue;
+  ProcessMemoryLimit: number | bigint;
   /** usize */
-  JobMemoryLimit: Deno.PointerValue;
+  JobMemoryLimit: number | bigint;
   /** usize */
-  PeakProcessMemoryUsed: Deno.PointerValue;
+  PeakProcessMemoryUsed: number | bigint;
   /** usize */
-  PeakJobMemoryUsed: Deno.PointerValue;
+  PeakJobMemoryUsed: number | bigint;
 }
 
 export const sizeofJOBOBJECT_EXTENDED_LIMIT_INFORMATION = 48;
@@ -942,17 +942,17 @@ export function allocJOBOBJECT_EXTENDED_LIMIT_INFORMATION(data?: Partial<JOBOBJE
   const buf = new Uint8Array(sizeofJOBOBJECT_EXTENDED_LIMIT_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BasicLimitInformation !== undefined) view.setBigUint64(0, data.BasicLimitInformation === null ? 0n : BigInt(util.toPointer(data.BasicLimitInformation)), true);
+  if (data?.BasicLimitInformation !== undefined) view.setBigUint64(0, data.BasicLimitInformation === null ? 0n : util.toBigInt(util.toPointer(data.BasicLimitInformation)), true);
   // 0x08: pointer
-  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(util.toPointer(data.IoInfo)), true);
+  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : util.toBigInt(util.toPointer(data.IoInfo)), true);
   // 0x10: usize
-  if (data?.ProcessMemoryLimit !== undefined) view.setBigUint64(16, BigInt(data.ProcessMemoryLimit), true);
+  if (data?.ProcessMemoryLimit !== undefined) view.setBigUint64(16, util.toBigInt(data.ProcessMemoryLimit), true);
   // 0x18: usize
-  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(24, BigInt(data.JobMemoryLimit), true);
+  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(24, util.toBigInt(data.JobMemoryLimit), true);
   // 0x20: usize
-  if (data?.PeakProcessMemoryUsed !== undefined) view.setBigUint64(32, BigInt(data.PeakProcessMemoryUsed), true);
+  if (data?.PeakProcessMemoryUsed !== undefined) view.setBigUint64(32, util.toBigInt(data.PeakProcessMemoryUsed), true);
   // 0x28: usize
-  if (data?.PeakJobMemoryUsed !== undefined) view.setBigUint64(40, BigInt(data.PeakJobMemoryUsed), true);
+  if (data?.PeakJobMemoryUsed !== undefined) view.setBigUint64(40, util.toBigInt(data.PeakJobMemoryUsed), true);
   return buf;
 }
 
@@ -979,53 +979,53 @@ export class JOBOBJECT_EXTENDED_LIMIT_INFORMATIONView {
   }
 
   // 0x10: usize
-  get ProcessMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get ProcessMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get JobMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get JobMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get PeakProcessMemoryUsed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get PeakProcessMemoryUsed(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get PeakJobMemoryUsed(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get PeakJobMemoryUsed(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x00: pointer
   set BasicLimitInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set IoInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set ProcessMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set ProcessMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set JobMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set JobMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set PeakProcessMemoryUsed(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set PeakProcessMemoryUsed(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set PeakJobMemoryUsed(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set PeakJobMemoryUsed(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 }
 
@@ -1051,7 +1051,7 @@ export function allocJOBOBJECT_BASIC_PROCESS_ID_LIST(data?: Partial<JOBOBJECT_BA
   // 0x04: u32
   if (data?.NumberOfProcessIdsInList !== undefined) view.setUint32(4, Number(data.NumberOfProcessIdsInList), true);
   // 0x08: pointer
-  if (data?.ProcessIdList !== undefined) view.setBigUint64(8, data.ProcessIdList === null ? 0n : BigInt(util.toPointer(data.ProcessIdList)), true);
+  if (data?.ProcessIdList !== undefined) view.setBigUint64(8, data.ProcessIdList === null ? 0n : util.toBigInt(util.toPointer(data.ProcessIdList)), true);
   return buf;
 }
 
@@ -1093,7 +1093,7 @@ export class JOBOBJECT_BASIC_PROCESS_ID_LISTView {
 
   // 0x08: pointer
   set ProcessIdList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1166,13 +1166,13 @@ export function allocJOBOBJECT_SECURITY_LIMIT_INFORMATION(data?: Partial<JOBOBJE
   if (data?.SecurityLimitFlags !== undefined) view.setUint32(0, Number(data.SecurityLimitFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.JobToken !== undefined) view.setBigUint64(8, data.JobToken === null ? 0n : BigInt(util.toPointer(data.JobToken)), true);
+  if (data?.JobToken !== undefined) view.setBigUint64(8, data.JobToken === null ? 0n : util.toBigInt(util.toPointer(data.JobToken)), true);
   // 0x10: pointer
-  if (data?.SidsToDisable !== undefined) view.setBigUint64(16, data.SidsToDisable === null ? 0n : BigInt(util.toPointer(data.SidsToDisable)), true);
+  if (data?.SidsToDisable !== undefined) view.setBigUint64(16, data.SidsToDisable === null ? 0n : util.toBigInt(util.toPointer(data.SidsToDisable)), true);
   // 0x18: pointer
-  if (data?.PrivilegesToDelete !== undefined) view.setBigUint64(24, data.PrivilegesToDelete === null ? 0n : BigInt(util.toPointer(data.PrivilegesToDelete)), true);
+  if (data?.PrivilegesToDelete !== undefined) view.setBigUint64(24, data.PrivilegesToDelete === null ? 0n : util.toBigInt(util.toPointer(data.PrivilegesToDelete)), true);
   // 0x20: pointer
-  if (data?.RestrictedSids !== undefined) view.setBigUint64(32, data.RestrictedSids === null ? 0n : BigInt(util.toPointer(data.RestrictedSids)), true);
+  if (data?.RestrictedSids !== undefined) view.setBigUint64(32, data.RestrictedSids === null ? 0n : util.toBigInt(util.toPointer(data.RestrictedSids)), true);
   return buf;
 }
 
@@ -1226,22 +1226,22 @@ export class JOBOBJECT_SECURITY_LIMIT_INFORMATIONView {
 
   // 0x08: pointer
   set JobToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set SidsToDisable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set PrivilegesToDelete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set RestrictedSids(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1305,9 +1305,9 @@ export function allocJOBOBJECT_ASSOCIATE_COMPLETION_PORT(data?: Partial<JOBOBJEC
   const buf = new Uint8Array(sizeofJOBOBJECT_ASSOCIATE_COMPLETION_PORT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompletionKey !== undefined) view.setBigUint64(0, data.CompletionKey === null ? 0n : BigInt(util.toPointer(data.CompletionKey)), true);
+  if (data?.CompletionKey !== undefined) view.setBigUint64(0, data.CompletionKey === null ? 0n : util.toBigInt(util.toPointer(data.CompletionKey)), true);
   // 0x08: pointer
-  if (data?.CompletionPort !== undefined) view.setBigUint64(8, data.CompletionPort === null ? 0n : BigInt(util.toPointer(data.CompletionPort)), true);
+  if (data?.CompletionPort !== undefined) view.setBigUint64(8, data.CompletionPort === null ? 0n : util.toBigInt(util.toPointer(data.CompletionPort)), true);
   return buf;
 }
 
@@ -1335,12 +1335,12 @@ export class JOBOBJECT_ASSOCIATE_COMPLETION_PORTView {
 
   // 0x00: pointer
   set CompletionKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set CompletionPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1360,9 +1360,9 @@ export function allocJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION(data?: Partia
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : BigInt(util.toPointer(data.BasicInfo)), true);
+  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : util.toBigInt(util.toPointer(data.BasicInfo)), true);
   // 0x08: pointer
-  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(util.toPointer(data.IoInfo)), true);
+  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : util.toBigInt(util.toPointer(data.IoInfo)), true);
   return buf;
 }
 
@@ -1390,12 +1390,12 @@ export class JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATIONView {
 
   // 0x00: pointer
   set BasicInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set IoInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1448,13 +1448,13 @@ export class JOBOBJECT_JOBSET_INFORMATIONView {
  */
 export interface JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION {
   /** u64 */
-  IoReadBytesLimit: Deno.PointerValue;
+  IoReadBytesLimit: number | bigint;
   /** u64 */
-  IoWriteBytesLimit: Deno.PointerValue;
+  IoWriteBytesLimit: number | bigint;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  JobMemoryLimit: Deno.PointerValue;
+  JobMemoryLimit: number | bigint;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
   RateControlTolerance: JOBOBJECT_RATE_CONTROL_TOLERANCE;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL */
@@ -1469,13 +1469,13 @@ export function allocJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION(data?: Partial<JOB
   const buf = new Uint8Array(sizeofJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(0, BigInt(data.IoReadBytesLimit), true);
+  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(0, util.toBigInt(data.IoReadBytesLimit), true);
   // 0x08: u64
-  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, BigInt(data.IoWriteBytesLimit), true);
+  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, util.toBigInt(data.IoWriteBytesLimit), true);
   // 0x10: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
   // 0x18: u64
-  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(24, BigInt(data.JobMemoryLimit), true);
+  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(24, util.toBigInt(data.JobMemoryLimit), true);
   // 0x20: i32
   if (data?.RateControlTolerance !== undefined) view.setInt32(32, Number(data.RateControlTolerance), true);
   // 0x24: i32
@@ -1497,13 +1497,13 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
   }
 
   // 0x00: u64
-  get IoReadBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get IoReadBytesLimit(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get IoWriteBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get IoWriteBytesLimit(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -1513,8 +1513,8 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
   }
 
   // 0x18: u64
-  get JobMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get JobMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: i32
@@ -1535,23 +1535,23 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
   // 0x2c: pad4
 
   // 0x00: u64
-  set IoReadBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set IoReadBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set IoWriteBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set IoWriteBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u64
-  set JobMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set JobMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: i32
@@ -1577,11 +1577,11 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: number | bigint;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array | null;
   /** ptr */
@@ -1600,25 +1600,25 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   const buf = new Uint8Array(sizeof_Anonymous1_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Data0 !== undefined) view.setBigUint64(0, BigInt(data.Data0), true);
+  if (data?.Data0 !== undefined) view.setBigUint64(0, util.toBigInt(data.Data0), true);
   // 0x08: buffer
   if (data?.String !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.String);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: usize
-  if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
+  if (data?.u !== undefined) view.setBigUint64(16, util.toBigInt(data.u), true);
   // 0x18: pointer
-  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : util.toBigInt(util.toPointer(data.psid)), true);
   // 0x20: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : util.toBigInt(util.toPointer(data.pguid)), true);
   // 0x28: u32
   if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : util.toBigInt(util.toPointer(data.pObjectTypes)), true);
   // 0x38: pointer
-  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : util.toBigInt(util.toPointer(data.pIpAddress)), true);
   return buf;
 }
 
@@ -1633,8 +1633,8 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Data0(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: buffer
@@ -1644,8 +1644,8 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get u(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: pointer
@@ -1680,29 +1680,29 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Data0(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: buffer
   set String(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set u(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set psid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -1714,12 +1714,12 @@ export class _Anonymous1_e__UnionView {
 
   // 0x30: pointer
   set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1728,7 +1728,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: number | bigint;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -1739,7 +1739,7 @@ export function alloc_Anonymous2_e__Union(data?: Partial<_Anonymous2_e__Union>):
   const buf = new Uint8Array(sizeof_Anonymous2_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.Data1 !== undefined) view.setBigUint64(0, BigInt(data.Data1), true);
+  if (data?.Data1 !== undefined) view.setBigUint64(0, util.toBigInt(data.Data1), true);
   // 0x08: i32
   if (data?.LogonId_HighPart !== undefined) view.setInt32(8, Number(data.LogonId_HighPart), true);
   // 0x0c: pad4
@@ -1757,8 +1757,8 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Data1(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: i32
@@ -1769,8 +1769,8 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Data1(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i32
@@ -1800,7 +1800,7 @@ export function alloc_Anonymous3_e__Union(data?: Partial<_Anonymous3_e__Union>):
   if (data?.dwAlphaDestConst !== undefined) view.setUint32(0, Number(data.dwAlphaDestConst), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lpDDSAlphaDest !== undefined) view.setBigUint64(8, data.lpDDSAlphaDest === null ? 0n : BigInt(util.toPointer(data.lpDDSAlphaDest)), true);
+  if (data?.lpDDSAlphaDest !== undefined) view.setBigUint64(8, data.lpDDSAlphaDest === null ? 0n : util.toBigInt(util.toPointer(data.lpDDSAlphaDest)), true);
   return buf;
 }
 
@@ -1836,7 +1836,7 @@ export class _Anonymous3_e__UnionView {
 
   // 0x08: pointer
   set lpDDSAlphaDest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1845,9 +1845,9 @@ export class _Anonymous3_e__UnionView {
  */
 export interface JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2 {
   /** u64 */
-  IoReadBytesLimit: Deno.PointerValue;
+  IoReadBytesLimit: number | bigint;
   /** u64 */
-  IoWriteBytesLimit: Deno.PointerValue;
+  IoWriteBytesLimit: number | bigint;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous1_e__Union */
@@ -1861,7 +1861,7 @@ export interface JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2 {
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
   IoRateControlTolerance: JOBOBJECT_RATE_CONTROL_TOLERANCE;
   /** u64 */
-  JobLowMemoryLimit: Deno.PointerValue;
+  JobLowMemoryLimit: number | bigint;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL */
   IoRateControlToleranceInterval: JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -1876,23 +1876,23 @@ export function allocJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2(data?: Partial<J
   const buf = new Uint8Array(sizeofJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(0, BigInt(data.IoReadBytesLimit), true);
+  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(0, util.toBigInt(data.IoReadBytesLimit), true);
   // 0x08: u64
-  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, BigInt(data.IoWriteBytesLimit), true);
+  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, util.toBigInt(data.IoWriteBytesLimit), true);
   // 0x10: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
   // 0x18: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(24, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(24, data.Anonymous1 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous1)), true);
   // 0x20: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(32, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(32, data.Anonymous2 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous2)), true);
   // 0x28: pointer
-  if (data?.Anonymous3 !== undefined) view.setBigUint64(40, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
+  if (data?.Anonymous3 !== undefined) view.setBigUint64(40, data.Anonymous3 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous3)), true);
   // 0x30: u32
   if (data?.LimitFlags !== undefined) view.setUint32(48, Number(data.LimitFlags), true);
   // 0x34: i32
   if (data?.IoRateControlTolerance !== undefined) view.setInt32(52, Number(data.IoRateControlTolerance), true);
   // 0x38: u64
-  if (data?.JobLowMemoryLimit !== undefined) view.setBigUint64(56, BigInt(data.JobLowMemoryLimit), true);
+  if (data?.JobLowMemoryLimit !== undefined) view.setBigUint64(56, util.toBigInt(data.JobLowMemoryLimit), true);
   // 0x40: i32
   if (data?.IoRateControlToleranceInterval !== undefined) view.setInt32(64, Number(data.IoRateControlToleranceInterval), true);
   // 0x44: i32
@@ -1914,13 +1914,13 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   }
 
   // 0x00: u64
-  get IoReadBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get IoReadBytesLimit(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get IoWriteBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get IoWriteBytesLimit(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: pointer
@@ -1958,8 +1958,8 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   }
 
   // 0x38: u64
-  get JobLowMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get JobLowMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: i32
@@ -1980,33 +1980,33 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   // 0x4c: pad4
 
   // 0x00: u64
-  set IoReadBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set IoReadBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set IoWriteBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set IoWriteBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: pointer
   set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set Anonymous3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -2020,8 +2020,8 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   }
 
   // 0x38: u64
-  set JobLowMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set JobLowMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: i32
@@ -2051,21 +2051,21 @@ export interface JOBOBJECT_LIMIT_VIOLATION_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_LIMIT */
   ViolationLimitFlags: JOB_OBJECT_LIMIT;
   /** u64 */
-  IoReadBytes: Deno.PointerValue;
+  IoReadBytes: number | bigint;
   /** u64 */
-  IoReadBytesLimit: Deno.PointerValue;
+  IoReadBytesLimit: number | bigint;
   /** u64 */
-  IoWriteBytes: Deno.PointerValue;
+  IoWriteBytes: number | bigint;
   /** u64 */
-  IoWriteBytesLimit: Deno.PointerValue;
+  IoWriteBytesLimit: number | bigint;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  JobMemory: Deno.PointerValue;
+  JobMemory: number | bigint;
   /** u64 */
-  JobMemoryLimit: Deno.PointerValue;
+  JobMemoryLimit: number | bigint;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
   RateControlTolerance: JOBOBJECT_RATE_CONTROL_TOLERANCE;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -2082,21 +2082,21 @@ export function allocJOBOBJECT_LIMIT_VIOLATION_INFORMATION(data?: Partial<JOBOBJ
   // 0x04: u32
   if (data?.ViolationLimitFlags !== undefined) view.setUint32(4, Number(data.ViolationLimitFlags), true);
   // 0x08: u64
-  if (data?.IoReadBytes !== undefined) view.setBigUint64(8, BigInt(data.IoReadBytes), true);
+  if (data?.IoReadBytes !== undefined) view.setBigUint64(8, util.toBigInt(data.IoReadBytes), true);
   // 0x10: u64
-  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(16, BigInt(data.IoReadBytesLimit), true);
+  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(16, util.toBigInt(data.IoReadBytesLimit), true);
   // 0x18: u64
-  if (data?.IoWriteBytes !== undefined) view.setBigUint64(24, BigInt(data.IoWriteBytes), true);
+  if (data?.IoWriteBytes !== undefined) view.setBigUint64(24, util.toBigInt(data.IoWriteBytes), true);
   // 0x20: u64
-  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, BigInt(data.IoWriteBytesLimit), true);
+  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, util.toBigInt(data.IoWriteBytesLimit), true);
   // 0x28: pointer
-  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(util.toPointer(data.PerJobUserTime)), true);
+  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTime)), true);
   // 0x30: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
   // 0x38: u64
-  if (data?.JobMemory !== undefined) view.setBigUint64(56, BigInt(data.JobMemory), true);
+  if (data?.JobMemory !== undefined) view.setBigUint64(56, util.toBigInt(data.JobMemory), true);
   // 0x40: u64
-  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(64, BigInt(data.JobMemoryLimit), true);
+  if (data?.JobMemoryLimit !== undefined) view.setBigUint64(64, util.toBigInt(data.JobMemoryLimit), true);
   // 0x48: i32
   if (data?.RateControlTolerance !== undefined) view.setInt32(72, Number(data.RateControlTolerance), true);
   // 0x4c: i32
@@ -2125,23 +2125,23 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATIONView {
   }
 
   // 0x08: u64
-  get IoReadBytes(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get IoReadBytes(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get IoReadBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get IoReadBytesLimit(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get IoWriteBytes(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get IoWriteBytes(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get IoWriteBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get IoWriteBytesLimit(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: pointer
@@ -2157,13 +2157,13 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATIONView {
   }
 
   // 0x38: u64
-  get JobMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get JobMemory(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: u64
-  get JobMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(64, true));
+  get JobMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(64, true);
   }
 
   // 0x48: i32
@@ -2187,43 +2187,43 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATIONView {
   }
 
   // 0x08: u64
-  set IoReadBytes(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set IoReadBytes(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set IoReadBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set IoReadBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set IoWriteBytes(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set IoWriteBytes(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set IoWriteBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set IoWriteBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: pointer
   set PerJobUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u64
-  set JobMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set JobMemory(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: u64
-  set JobMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(64, BigInt(value), true);
+  set JobMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(64, util.toBigInt(value), true);
   }
 
   // 0x48: i32
@@ -2246,19 +2246,19 @@ export interface JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2 {
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_LIMIT */
   ViolationLimitFlags: JOB_OBJECT_LIMIT;
   /** u64 */
-  IoReadBytes: Deno.PointerValue;
+  IoReadBytes: number | bigint;
   /** u64 */
-  IoReadBytesLimit: Deno.PointerValue;
+  IoReadBytesLimit: number | bigint;
   /** u64 */
-  IoWriteBytes: Deno.PointerValue;
+  IoWriteBytes: number | bigint;
   /** u64 */
-  IoWriteBytesLimit: Deno.PointerValue;
+  IoWriteBytesLimit: number | bigint;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTime: Uint8Array | Deno.PointerValue | null;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  JobMemory: Deno.PointerValue;
+  JobMemory: number | bigint;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue | null;
   /** _Anonymous2_e__Union */
@@ -2266,7 +2266,7 @@ export interface JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2 {
   /** _Anonymous3_e__Union */
   Anonymous3: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  JobLowMemoryLimit: Deno.PointerValue;
+  JobLowMemoryLimit: number | bigint;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
   IoRateControlTolerance: JOBOBJECT_RATE_CONTROL_TOLERANCE;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -2287,27 +2287,27 @@ export function allocJOBOBJECT_LIMIT_VIOLATION_INFORMATION_2(data?: Partial<JOBO
   // 0x04: u32
   if (data?.ViolationLimitFlags !== undefined) view.setUint32(4, Number(data.ViolationLimitFlags), true);
   // 0x08: u64
-  if (data?.IoReadBytes !== undefined) view.setBigUint64(8, BigInt(data.IoReadBytes), true);
+  if (data?.IoReadBytes !== undefined) view.setBigUint64(8, util.toBigInt(data.IoReadBytes), true);
   // 0x10: u64
-  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(16, BigInt(data.IoReadBytesLimit), true);
+  if (data?.IoReadBytesLimit !== undefined) view.setBigUint64(16, util.toBigInt(data.IoReadBytesLimit), true);
   // 0x18: u64
-  if (data?.IoWriteBytes !== undefined) view.setBigUint64(24, BigInt(data.IoWriteBytes), true);
+  if (data?.IoWriteBytes !== undefined) view.setBigUint64(24, util.toBigInt(data.IoWriteBytes), true);
   // 0x20: u64
-  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, BigInt(data.IoWriteBytesLimit), true);
+  if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, util.toBigInt(data.IoWriteBytesLimit), true);
   // 0x28: pointer
-  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(util.toPointer(data.PerJobUserTime)), true);
+  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTime)), true);
   // 0x30: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : util.toBigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
   // 0x38: u64
-  if (data?.JobMemory !== undefined) view.setBigUint64(56, BigInt(data.JobMemory), true);
+  if (data?.JobMemory !== undefined) view.setBigUint64(56, util.toBigInt(data.JobMemory), true);
   // 0x40: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(64, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(64, data.Anonymous1 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous1)), true);
   // 0x48: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(72, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(72, data.Anonymous2 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous2)), true);
   // 0x50: pointer
-  if (data?.Anonymous3 !== undefined) view.setBigUint64(80, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
+  if (data?.Anonymous3 !== undefined) view.setBigUint64(80, data.Anonymous3 === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous3)), true);
   // 0x58: u64
-  if (data?.JobLowMemoryLimit !== undefined) view.setBigUint64(88, BigInt(data.JobLowMemoryLimit), true);
+  if (data?.JobLowMemoryLimit !== undefined) view.setBigUint64(88, util.toBigInt(data.JobLowMemoryLimit), true);
   // 0x60: i32
   if (data?.IoRateControlTolerance !== undefined) view.setInt32(96, Number(data.IoRateControlTolerance), true);
   // 0x64: i32
@@ -2340,23 +2340,23 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x08: u64
-  get IoReadBytes(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get IoReadBytes(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get IoReadBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get IoReadBytesLimit(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get IoWriteBytes(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get IoWriteBytes(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get IoWriteBytesLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get IoWriteBytesLimit(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: pointer
@@ -2372,8 +2372,8 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x38: u64
-  get JobMemory(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(56, true));
+  get JobMemory(): number | bigint {
+    return this.view.getBigUint64(56, true);
   }
 
   // 0x40: pointer
@@ -2395,8 +2395,8 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x58: u64
-  get JobLowMemoryLimit(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(88, true));
+  get JobLowMemoryLimit(): number | bigint {
+    return this.view.getBigUint64(88, true);
   }
 
   // 0x60: i32
@@ -2430,58 +2430,58 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x08: u64
-  set IoReadBytes(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set IoReadBytes(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set IoReadBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set IoReadBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set IoWriteBytes(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set IoWriteBytes(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set IoWriteBytesLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set IoWriteBytesLimit(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: pointer
   set PerJobUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: u64
-  set JobMemory(value: Deno.PointerValue) {
-    this.view.setBigUint64(56, BigInt(value), true);
+  set JobMemory(value: number | bigint) {
+    this.view.setBigUint64(56, util.toBigInt(value), true);
   }
 
   // 0x40: pointer
   set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set Anonymous3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: u64
-  set JobLowMemoryLimit(value: Deno.PointerValue) {
-    this.view.setBigUint64(88, BigInt(value), true);
+  set JobLowMemoryLimit(value: number | bigint) {
+    this.view.setBigUint64(88, util.toBigInt(value), true);
   }
 
   // 0x60: i32
@@ -2521,9 +2521,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -2551,12 +2551,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2579,7 +2579,7 @@ export function allocJOBOBJECT_CPU_RATE_CONTROL_INFORMATION(data?: Partial<JOBOB
   if (data?.ControlFlags !== undefined) view.setUint32(0, Number(data.ControlFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -2615,7 +2615,7 @@ export class JOBOBJECT_CPU_RATE_CONTROL_INFORMATIONView {
 
   // 0x08: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2624,7 +2624,7 @@ export class JOBOBJECT_CPU_RATE_CONTROL_INFORMATIONView {
  */
 export interface JOBOBJECT_NET_RATE_CONTROL_INFORMATION {
   /** u64 */
-  MaxBandwidth: Deno.PointerValue;
+  MaxBandwidth: number | bigint;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_NET_RATE_CONTROL_FLAGS */
   ControlFlags: JOB_OBJECT_NET_RATE_CONTROL_FLAGS;
   /** u8 */
@@ -2637,7 +2637,7 @@ export function allocJOBOBJECT_NET_RATE_CONTROL_INFORMATION(data?: Partial<JOBOB
   const buf = new Uint8Array(sizeofJOBOBJECT_NET_RATE_CONTROL_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.MaxBandwidth !== undefined) view.setBigUint64(0, BigInt(data.MaxBandwidth), true);
+  if (data?.MaxBandwidth !== undefined) view.setBigUint64(0, util.toBigInt(data.MaxBandwidth), true);
   // 0x08: u32
   if (data?.ControlFlags !== undefined) view.setUint32(8, Number(data.ControlFlags), true);
   // 0x0c: u8
@@ -2657,8 +2657,8 @@ export class JOBOBJECT_NET_RATE_CONTROL_INFORMATIONView {
   }
 
   // 0x00: u64
-  get MaxBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get MaxBandwidth(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u32
@@ -2674,8 +2674,8 @@ export class JOBOBJECT_NET_RATE_CONTROL_INFORMATIONView {
   // 0x0d: pad3
 
   // 0x00: u64
-  set MaxBandwidth(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set MaxBandwidth(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u32
@@ -2696,11 +2696,11 @@ export class JOBOBJECT_NET_RATE_CONTROL_INFORMATIONView {
  */
 export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2 {
   /** i64 */
-  MaxIops: Deno.PointerValue;
+  MaxIops: number | bigint;
   /** i64 */
-  MaxBandwidth: Deno.PointerValue;
+  MaxBandwidth: number | bigint;
   /** i64 */
-  ReservationIops: Deno.PointerValue;
+  ReservationIops: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -2710,17 +2710,17 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2 {
   /** u16 */
   VolumeNameLength: number;
   /** i64 */
-  CriticalReservationIops: Deno.PointerValue;
+  CriticalReservationIops: number | bigint;
   /** i64 */
-  ReservationBandwidth: Deno.PointerValue;
+  ReservationBandwidth: number | bigint;
   /** i64 */
-  CriticalReservationBandwidth: Deno.PointerValue;
+  CriticalReservationBandwidth: number | bigint;
   /** i64 */
-  MaxTimePercent: Deno.PointerValue;
+  MaxTimePercent: number | bigint;
   /** i64 */
-  ReservationTimePercent: Deno.PointerValue;
+  ReservationTimePercent: number | bigint;
   /** i64 */
-  CriticalReservationTimePercent: Deno.PointerValue;
+  CriticalReservationTimePercent: number | bigint;
 }
 
 export const sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2 = 96;
@@ -2729,15 +2729,15 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2(data?: Part
   const buf = new Uint8Array(sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.MaxIops !== undefined) view.setBigInt64(0, BigInt(data.MaxIops), true);
+  if (data?.MaxIops !== undefined) view.setBigInt64(0, util.toBigInt(data.MaxIops), true);
   // 0x08: i64
-  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, BigInt(data.MaxBandwidth), true);
+  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, util.toBigInt(data.MaxBandwidth), true);
   // 0x10: i64
-  if (data?.ReservationIops !== undefined) view.setBigInt64(16, BigInt(data.ReservationIops), true);
+  if (data?.ReservationIops !== undefined) view.setBigInt64(16, util.toBigInt(data.ReservationIops), true);
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -2747,17 +2747,17 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2(data?: Part
   if (data?.VolumeNameLength !== undefined) view.setUint16(40, Number(data.VolumeNameLength), true);
   // 0x2a: pad6
   // 0x30: i64
-  if (data?.CriticalReservationIops !== undefined) view.setBigInt64(48, BigInt(data.CriticalReservationIops), true);
+  if (data?.CriticalReservationIops !== undefined) view.setBigInt64(48, util.toBigInt(data.CriticalReservationIops), true);
   // 0x38: i64
-  if (data?.ReservationBandwidth !== undefined) view.setBigInt64(56, BigInt(data.ReservationBandwidth), true);
+  if (data?.ReservationBandwidth !== undefined) view.setBigInt64(56, util.toBigInt(data.ReservationBandwidth), true);
   // 0x40: i64
-  if (data?.CriticalReservationBandwidth !== undefined) view.setBigInt64(64, BigInt(data.CriticalReservationBandwidth), true);
+  if (data?.CriticalReservationBandwidth !== undefined) view.setBigInt64(64, util.toBigInt(data.CriticalReservationBandwidth), true);
   // 0x48: i64
-  if (data?.MaxTimePercent !== undefined) view.setBigInt64(72, BigInt(data.MaxTimePercent), true);
+  if (data?.MaxTimePercent !== undefined) view.setBigInt64(72, util.toBigInt(data.MaxTimePercent), true);
   // 0x50: i64
-  if (data?.ReservationTimePercent !== undefined) view.setBigInt64(80, BigInt(data.ReservationTimePercent), true);
+  if (data?.ReservationTimePercent !== undefined) view.setBigInt64(80, util.toBigInt(data.ReservationTimePercent), true);
   // 0x58: i64
-  if (data?.CriticalReservationTimePercent !== undefined) view.setBigInt64(88, BigInt(data.CriticalReservationTimePercent), true);
+  if (data?.CriticalReservationTimePercent !== undefined) view.setBigInt64(88, util.toBigInt(data.CriticalReservationTimePercent), true);
   return buf;
 }
 
@@ -2772,18 +2772,18 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
   }
 
   // 0x00: i64
-  get MaxIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get MaxIops(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x08: i64
-  get MaxBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get MaxBandwidth(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: i64
-  get ReservationIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get ReservationIops(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: buffer
@@ -2810,54 +2810,54 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
   // 0x2a: pad6
 
   // 0x30: i64
-  get CriticalReservationIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(48, true));
+  get CriticalReservationIops(): number | bigint {
+    return this.view.getBigInt64(48, true);
   }
 
   // 0x38: i64
-  get ReservationBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(56, true));
+  get ReservationBandwidth(): number | bigint {
+    return this.view.getBigInt64(56, true);
   }
 
   // 0x40: i64
-  get CriticalReservationBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(64, true));
+  get CriticalReservationBandwidth(): number | bigint {
+    return this.view.getBigInt64(64, true);
   }
 
   // 0x48: i64
-  get MaxTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(72, true));
+  get MaxTimePercent(): number | bigint {
+    return this.view.getBigInt64(72, true);
   }
 
   // 0x50: i64
-  get ReservationTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(80, true));
+  get ReservationTimePercent(): number | bigint {
+    return this.view.getBigInt64(80, true);
   }
 
   // 0x58: i64
-  get CriticalReservationTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(88, true));
+  get CriticalReservationTimePercent(): number | bigint {
+    return this.view.getBigInt64(88, true);
   }
 
   // 0x00: i64
-  set MaxIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set MaxIops(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i64
-  set MaxBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set MaxBandwidth(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: i64
-  set ReservationIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set ReservationIops(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: buffer
   set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -2878,33 +2878,33 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
   // 0x2a: pad6
 
   // 0x30: i64
-  set CriticalReservationIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(48, BigInt(value), true);
+  set CriticalReservationIops(value: number | bigint) {
+    this.view.setBigInt64(48, util.toBigInt(value), true);
   }
 
   // 0x38: i64
-  set ReservationBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(56, BigInt(value), true);
+  set ReservationBandwidth(value: number | bigint) {
+    this.view.setBigInt64(56, util.toBigInt(value), true);
   }
 
   // 0x40: i64
-  set CriticalReservationBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(64, BigInt(value), true);
+  set CriticalReservationBandwidth(value: number | bigint) {
+    this.view.setBigInt64(64, util.toBigInt(value), true);
   }
 
   // 0x48: i64
-  set MaxTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(72, BigInt(value), true);
+  set MaxTimePercent(value: number | bigint) {
+    this.view.setBigInt64(72, util.toBigInt(value), true);
   }
 
   // 0x50: i64
-  set ReservationTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(80, BigInt(value), true);
+  set ReservationTimePercent(value: number | bigint) {
+    this.view.setBigInt64(80, util.toBigInt(value), true);
   }
 
   // 0x58: i64
-  set CriticalReservationTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(88, BigInt(value), true);
+  set CriticalReservationTimePercent(value: number | bigint) {
+    this.view.setBigInt64(88, util.toBigInt(value), true);
   }
 }
 
@@ -2913,11 +2913,11 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
  */
 export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3 {
   /** i64 */
-  MaxIops: Deno.PointerValue;
+  MaxIops: number | bigint;
   /** i64 */
-  MaxBandwidth: Deno.PointerValue;
+  MaxBandwidth: number | bigint;
   /** i64 */
-  ReservationIops: Deno.PointerValue;
+  ReservationIops: number | bigint;
   /** Windows.Win32.Foundation.PWSTR */
   VolumeName: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -2927,29 +2927,29 @@ export interface JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3 {
   /** u16 */
   VolumeNameLength: number;
   /** i64 */
-  CriticalReservationIops: Deno.PointerValue;
+  CriticalReservationIops: number | bigint;
   /** i64 */
-  ReservationBandwidth: Deno.PointerValue;
+  ReservationBandwidth: number | bigint;
   /** i64 */
-  CriticalReservationBandwidth: Deno.PointerValue;
+  CriticalReservationBandwidth: number | bigint;
   /** i64 */
-  MaxTimePercent: Deno.PointerValue;
+  MaxTimePercent: number | bigint;
   /** i64 */
-  ReservationTimePercent: Deno.PointerValue;
+  ReservationTimePercent: number | bigint;
   /** i64 */
-  CriticalReservationTimePercent: Deno.PointerValue;
+  CriticalReservationTimePercent: number | bigint;
   /** i64 */
-  SoftMaxIops: Deno.PointerValue;
+  SoftMaxIops: number | bigint;
   /** i64 */
-  SoftMaxBandwidth: Deno.PointerValue;
+  SoftMaxBandwidth: number | bigint;
   /** i64 */
-  SoftMaxTimePercent: Deno.PointerValue;
+  SoftMaxTimePercent: number | bigint;
   /** i64 */
-  LimitExcessNotifyIops: Deno.PointerValue;
+  LimitExcessNotifyIops: number | bigint;
   /** i64 */
-  LimitExcessNotifyBandwidth: Deno.PointerValue;
+  LimitExcessNotifyBandwidth: number | bigint;
   /** i64 */
-  LimitExcessNotifyTimePercent: Deno.PointerValue;
+  LimitExcessNotifyTimePercent: number | bigint;
 }
 
 export const sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3 = 144;
@@ -2958,15 +2958,15 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3(data?: Part
   const buf = new Uint8Array(sizeofJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.MaxIops !== undefined) view.setBigInt64(0, BigInt(data.MaxIops), true);
+  if (data?.MaxIops !== undefined) view.setBigInt64(0, util.toBigInt(data.MaxIops), true);
   // 0x08: i64
-  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, BigInt(data.MaxBandwidth), true);
+  if (data?.MaxBandwidth !== undefined) view.setBigInt64(8, util.toBigInt(data.MaxBandwidth), true);
   // 0x10: i64
-  if (data?.ReservationIops !== undefined) view.setBigInt64(16, BigInt(data.ReservationIops), true);
+  if (data?.ReservationIops !== undefined) view.setBigInt64(16, util.toBigInt(data.ReservationIops), true);
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -2976,29 +2976,29 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3(data?: Part
   if (data?.VolumeNameLength !== undefined) view.setUint16(40, Number(data.VolumeNameLength), true);
   // 0x2a: pad6
   // 0x30: i64
-  if (data?.CriticalReservationIops !== undefined) view.setBigInt64(48, BigInt(data.CriticalReservationIops), true);
+  if (data?.CriticalReservationIops !== undefined) view.setBigInt64(48, util.toBigInt(data.CriticalReservationIops), true);
   // 0x38: i64
-  if (data?.ReservationBandwidth !== undefined) view.setBigInt64(56, BigInt(data.ReservationBandwidth), true);
+  if (data?.ReservationBandwidth !== undefined) view.setBigInt64(56, util.toBigInt(data.ReservationBandwidth), true);
   // 0x40: i64
-  if (data?.CriticalReservationBandwidth !== undefined) view.setBigInt64(64, BigInt(data.CriticalReservationBandwidth), true);
+  if (data?.CriticalReservationBandwidth !== undefined) view.setBigInt64(64, util.toBigInt(data.CriticalReservationBandwidth), true);
   // 0x48: i64
-  if (data?.MaxTimePercent !== undefined) view.setBigInt64(72, BigInt(data.MaxTimePercent), true);
+  if (data?.MaxTimePercent !== undefined) view.setBigInt64(72, util.toBigInt(data.MaxTimePercent), true);
   // 0x50: i64
-  if (data?.ReservationTimePercent !== undefined) view.setBigInt64(80, BigInt(data.ReservationTimePercent), true);
+  if (data?.ReservationTimePercent !== undefined) view.setBigInt64(80, util.toBigInt(data.ReservationTimePercent), true);
   // 0x58: i64
-  if (data?.CriticalReservationTimePercent !== undefined) view.setBigInt64(88, BigInt(data.CriticalReservationTimePercent), true);
+  if (data?.CriticalReservationTimePercent !== undefined) view.setBigInt64(88, util.toBigInt(data.CriticalReservationTimePercent), true);
   // 0x60: i64
-  if (data?.SoftMaxIops !== undefined) view.setBigInt64(96, BigInt(data.SoftMaxIops), true);
+  if (data?.SoftMaxIops !== undefined) view.setBigInt64(96, util.toBigInt(data.SoftMaxIops), true);
   // 0x68: i64
-  if (data?.SoftMaxBandwidth !== undefined) view.setBigInt64(104, BigInt(data.SoftMaxBandwidth), true);
+  if (data?.SoftMaxBandwidth !== undefined) view.setBigInt64(104, util.toBigInt(data.SoftMaxBandwidth), true);
   // 0x70: i64
-  if (data?.SoftMaxTimePercent !== undefined) view.setBigInt64(112, BigInt(data.SoftMaxTimePercent), true);
+  if (data?.SoftMaxTimePercent !== undefined) view.setBigInt64(112, util.toBigInt(data.SoftMaxTimePercent), true);
   // 0x78: i64
-  if (data?.LimitExcessNotifyIops !== undefined) view.setBigInt64(120, BigInt(data.LimitExcessNotifyIops), true);
+  if (data?.LimitExcessNotifyIops !== undefined) view.setBigInt64(120, util.toBigInt(data.LimitExcessNotifyIops), true);
   // 0x80: i64
-  if (data?.LimitExcessNotifyBandwidth !== undefined) view.setBigInt64(128, BigInt(data.LimitExcessNotifyBandwidth), true);
+  if (data?.LimitExcessNotifyBandwidth !== undefined) view.setBigInt64(128, util.toBigInt(data.LimitExcessNotifyBandwidth), true);
   // 0x88: i64
-  if (data?.LimitExcessNotifyTimePercent !== undefined) view.setBigInt64(136, BigInt(data.LimitExcessNotifyTimePercent), true);
+  if (data?.LimitExcessNotifyTimePercent !== undefined) view.setBigInt64(136, util.toBigInt(data.LimitExcessNotifyTimePercent), true);
   return buf;
 }
 
@@ -3013,18 +3013,18 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
   }
 
   // 0x00: i64
-  get MaxIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get MaxIops(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x08: i64
-  get MaxBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get MaxBandwidth(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: i64
-  get ReservationIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get ReservationIops(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: buffer
@@ -3051,84 +3051,84 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
   // 0x2a: pad6
 
   // 0x30: i64
-  get CriticalReservationIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(48, true));
+  get CriticalReservationIops(): number | bigint {
+    return this.view.getBigInt64(48, true);
   }
 
   // 0x38: i64
-  get ReservationBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(56, true));
+  get ReservationBandwidth(): number | bigint {
+    return this.view.getBigInt64(56, true);
   }
 
   // 0x40: i64
-  get CriticalReservationBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(64, true));
+  get CriticalReservationBandwidth(): number | bigint {
+    return this.view.getBigInt64(64, true);
   }
 
   // 0x48: i64
-  get MaxTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(72, true));
+  get MaxTimePercent(): number | bigint {
+    return this.view.getBigInt64(72, true);
   }
 
   // 0x50: i64
-  get ReservationTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(80, true));
+  get ReservationTimePercent(): number | bigint {
+    return this.view.getBigInt64(80, true);
   }
 
   // 0x58: i64
-  get CriticalReservationTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(88, true));
+  get CriticalReservationTimePercent(): number | bigint {
+    return this.view.getBigInt64(88, true);
   }
 
   // 0x60: i64
-  get SoftMaxIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(96, true));
+  get SoftMaxIops(): number | bigint {
+    return this.view.getBigInt64(96, true);
   }
 
   // 0x68: i64
-  get SoftMaxBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(104, true));
+  get SoftMaxBandwidth(): number | bigint {
+    return this.view.getBigInt64(104, true);
   }
 
   // 0x70: i64
-  get SoftMaxTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(112, true));
+  get SoftMaxTimePercent(): number | bigint {
+    return this.view.getBigInt64(112, true);
   }
 
   // 0x78: i64
-  get LimitExcessNotifyIops(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(120, true));
+  get LimitExcessNotifyIops(): number | bigint {
+    return this.view.getBigInt64(120, true);
   }
 
   // 0x80: i64
-  get LimitExcessNotifyBandwidth(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(128, true));
+  get LimitExcessNotifyBandwidth(): number | bigint {
+    return this.view.getBigInt64(128, true);
   }
 
   // 0x88: i64
-  get LimitExcessNotifyTimePercent(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(136, true));
+  get LimitExcessNotifyTimePercent(): number | bigint {
+    return this.view.getBigInt64(136, true);
   }
 
   // 0x00: i64
-  set MaxIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set MaxIops(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i64
-  set MaxBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set MaxBandwidth(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: i64
-  set ReservationIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set ReservationIops(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: buffer
   set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: u32
@@ -3149,63 +3149,63 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
   // 0x2a: pad6
 
   // 0x30: i64
-  set CriticalReservationIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(48, BigInt(value), true);
+  set CriticalReservationIops(value: number | bigint) {
+    this.view.setBigInt64(48, util.toBigInt(value), true);
   }
 
   // 0x38: i64
-  set ReservationBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(56, BigInt(value), true);
+  set ReservationBandwidth(value: number | bigint) {
+    this.view.setBigInt64(56, util.toBigInt(value), true);
   }
 
   // 0x40: i64
-  set CriticalReservationBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(64, BigInt(value), true);
+  set CriticalReservationBandwidth(value: number | bigint) {
+    this.view.setBigInt64(64, util.toBigInt(value), true);
   }
 
   // 0x48: i64
-  set MaxTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(72, BigInt(value), true);
+  set MaxTimePercent(value: number | bigint) {
+    this.view.setBigInt64(72, util.toBigInt(value), true);
   }
 
   // 0x50: i64
-  set ReservationTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(80, BigInt(value), true);
+  set ReservationTimePercent(value: number | bigint) {
+    this.view.setBigInt64(80, util.toBigInt(value), true);
   }
 
   // 0x58: i64
-  set CriticalReservationTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(88, BigInt(value), true);
+  set CriticalReservationTimePercent(value: number | bigint) {
+    this.view.setBigInt64(88, util.toBigInt(value), true);
   }
 
   // 0x60: i64
-  set SoftMaxIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(96, BigInt(value), true);
+  set SoftMaxIops(value: number | bigint) {
+    this.view.setBigInt64(96, util.toBigInt(value), true);
   }
 
   // 0x68: i64
-  set SoftMaxBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(104, BigInt(value), true);
+  set SoftMaxBandwidth(value: number | bigint) {
+    this.view.setBigInt64(104, util.toBigInt(value), true);
   }
 
   // 0x70: i64
-  set SoftMaxTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(112, BigInt(value), true);
+  set SoftMaxTimePercent(value: number | bigint) {
+    this.view.setBigInt64(112, util.toBigInt(value), true);
   }
 
   // 0x78: i64
-  set LimitExcessNotifyIops(value: Deno.PointerValue) {
-    this.view.setBigInt64(120, BigInt(value), true);
+  set LimitExcessNotifyIops(value: number | bigint) {
+    this.view.setBigInt64(120, util.toBigInt(value), true);
   }
 
   // 0x80: i64
-  set LimitExcessNotifyBandwidth(value: Deno.PointerValue) {
-    this.view.setBigInt64(128, BigInt(value), true);
+  set LimitExcessNotifyBandwidth(value: number | bigint) {
+    this.view.setBigInt64(128, util.toBigInt(value), true);
   }
 
   // 0x88: i64
-  set LimitExcessNotifyTimePercent(value: Deno.PointerValue) {
-    this.view.setBigInt64(136, BigInt(value), true);
+  set LimitExcessNotifyTimePercent(value: number | bigint) {
+    this.view.setBigInt64(136, util.toBigInt(value), true);
   }
 }
 
@@ -3214,13 +3214,13 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
  */
 export interface JOBOBJECT_IO_ATTRIBUTION_STATS {
   /** usize */
-  IoCount: Deno.PointerValue;
+  IoCount: number | bigint;
   /** u64 */
-  TotalNonOverlappedQueueTime: Deno.PointerValue;
+  TotalNonOverlappedQueueTime: number | bigint;
   /** u64 */
-  TotalNonOverlappedServiceTime: Deno.PointerValue;
+  TotalNonOverlappedServiceTime: number | bigint;
   /** u64 */
-  TotalSize: Deno.PointerValue;
+  TotalSize: number | bigint;
 }
 
 export const sizeofJOBOBJECT_IO_ATTRIBUTION_STATS = 32;
@@ -3229,13 +3229,13 @@ export function allocJOBOBJECT_IO_ATTRIBUTION_STATS(data?: Partial<JOBOBJECT_IO_
   const buf = new Uint8Array(sizeofJOBOBJECT_IO_ATTRIBUTION_STATS);
   const view = new DataView(buf.buffer);
   // 0x00: usize
-  if (data?.IoCount !== undefined) view.setBigUint64(0, BigInt(data.IoCount), true);
+  if (data?.IoCount !== undefined) view.setBigUint64(0, util.toBigInt(data.IoCount), true);
   // 0x08: u64
-  if (data?.TotalNonOverlappedQueueTime !== undefined) view.setBigUint64(8, BigInt(data.TotalNonOverlappedQueueTime), true);
+  if (data?.TotalNonOverlappedQueueTime !== undefined) view.setBigUint64(8, util.toBigInt(data.TotalNonOverlappedQueueTime), true);
   // 0x10: u64
-  if (data?.TotalNonOverlappedServiceTime !== undefined) view.setBigUint64(16, BigInt(data.TotalNonOverlappedServiceTime), true);
+  if (data?.TotalNonOverlappedServiceTime !== undefined) view.setBigUint64(16, util.toBigInt(data.TotalNonOverlappedServiceTime), true);
   // 0x18: u64
-  if (data?.TotalSize !== undefined) view.setBigUint64(24, BigInt(data.TotalSize), true);
+  if (data?.TotalSize !== undefined) view.setBigUint64(24, util.toBigInt(data.TotalSize), true);
   return buf;
 }
 
@@ -3250,43 +3250,43 @@ export class JOBOBJECT_IO_ATTRIBUTION_STATSView {
   }
 
   // 0x00: usize
-  get IoCount(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get IoCount(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get TotalNonOverlappedQueueTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get TotalNonOverlappedQueueTime(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get TotalNonOverlappedServiceTime(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get TotalNonOverlappedServiceTime(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get TotalSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get TotalSize(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: usize
-  set IoCount(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set IoCount(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set TotalNonOverlappedQueueTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set TotalNonOverlappedQueueTime(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set TotalNonOverlappedServiceTime(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set TotalNonOverlappedServiceTime(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set TotalSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set TotalSize(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 
@@ -3311,9 +3311,9 @@ export function allocJOBOBJECT_IO_ATTRIBUTION_INFORMATION(data?: Partial<JOBOBJE
   if (data?.ControlFlags !== undefined) view.setUint32(0, Number(data.ControlFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ReadStats !== undefined) view.setBigUint64(8, data.ReadStats === null ? 0n : BigInt(util.toPointer(data.ReadStats)), true);
+  if (data?.ReadStats !== undefined) view.setBigUint64(8, data.ReadStats === null ? 0n : util.toBigInt(util.toPointer(data.ReadStats)), true);
   // 0x10: pointer
-  if (data?.WriteStats !== undefined) view.setBigUint64(16, data.WriteStats === null ? 0n : BigInt(util.toPointer(data.WriteStats)), true);
+  if (data?.WriteStats !== undefined) view.setBigUint64(16, data.WriteStats === null ? 0n : util.toBigInt(util.toPointer(data.WriteStats)), true);
   return buf;
 }
 
@@ -3355,12 +3355,12 @@ export class JOBOBJECT_IO_ATTRIBUTION_INFORMATIONView {
 
   // 0x08: pointer
   set ReadStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WriteStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

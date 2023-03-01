@@ -1,7 +1,8 @@
-import { createCanvas } from "https://deno.land/x/skia_canvas@0.2.0/mod.ts";
+import { createCanvas } from "https://deno.land/x/skia_canvas@0.5.2/mod.ts";
 import * as Wm from "../api/UI/WindowsAndMessaging.ts";
 import * as Gfx from "../api/Graphics/OpenGL.ts";
 import * as Gdi from "../api/Graphics/Gdi.ts";
+import { toNumber } from "../util.ts";
 
 const canvas = createCanvas(800, 600);
 const ctx = canvas.getContext("2d");
@@ -95,7 +96,7 @@ function glInit(hWnd: Deno.PointerValue) {
   const wglGetSwapIntervalEXT = Gfx.wglGetProcAddress("wglGetSwapIntervalEXT");
   if (wglSwapIntervalEXT && wglGetSwapIntervalEXT) {
     new Deno.UnsafeFnPointer(
-      BigInt(wglSwapIntervalEXT),
+      wglSwapIntervalEXT,
       {
         parameters: ["i32"],
         result: "void",
@@ -104,7 +105,7 @@ function glInit(hWnd: Deno.PointerValue) {
     console.log(
       "Enabled VSync",
       new Deno.UnsafeFnPointer(
-        BigInt(wglGetSwapIntervalEXT),
+        wglGetSwapIntervalEXT,
         {
           parameters: [],
           result: "i32",
@@ -185,13 +186,13 @@ const cb = new Deno.UnsafeCallback(
   (hWnd, msg, wParam, lParam) => {
     switch (msg) {
       case Wm.WM_SIZE: {
-        Gfx.glViewport(0, 0, Number(lParam) & 0xffff, Number(lParam) >> 16);
+        Gfx.glViewport(0, 0, toNumber(lParam) & 0xffff, toNumber(lParam) >> 16);
         Wm.PostMessageA(hWnd, Wm.WM_PAINT, null, null);
         return 0;
       }
 
       case Wm.WM_KEYDOWN: {
-        switch (wParam) {
+        switch (Deno.UnsafePointer.value(wParam)) {
           case 0x25: {
             x -= 10;
             break;
@@ -220,7 +221,7 @@ const cb = new Deno.UnsafeCallback(
         Deno.exit(0);
       }
     }
-    return Number(
+    return toNumber(
       Wm.DefWindowProcA(
         hWnd,
         msg,

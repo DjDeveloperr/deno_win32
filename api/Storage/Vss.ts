@@ -372,7 +372,7 @@ export interface VSS_SNAPSHOT_PROP {
   /** i32 */
   m_lSnapshotAttributes: number;
   /** i64 */
-  m_tsCreationTimestamp: Deno.PointerValue;
+  m_tsCreationTimestamp: number | bigint;
   /** Windows.Win32.Storage.Vss.VSS_SNAPSHOT_STATE */
   m_eStatus: VSS_SNAPSHOT_STATE;
 }
@@ -383,31 +383,31 @@ export function allocVSS_SNAPSHOT_PROP(data?: Partial<VSS_SNAPSHOT_PROP>): Uint8
   const buf = new Uint8Array(sizeofVSS_SNAPSHOT_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_SnapshotId !== undefined) view.setBigUint64(0, data.m_SnapshotId === null ? 0n : BigInt(util.toPointer(data.m_SnapshotId)), true);
+  if (data?.m_SnapshotId !== undefined) view.setBigUint64(0, data.m_SnapshotId === null ? 0n : util.toBigInt(util.toPointer(data.m_SnapshotId)), true);
   // 0x08: pointer
-  if (data?.m_SnapshotSetId !== undefined) view.setBigUint64(8, data.m_SnapshotSetId === null ? 0n : BigInt(util.toPointer(data.m_SnapshotSetId)), true);
+  if (data?.m_SnapshotSetId !== undefined) view.setBigUint64(8, data.m_SnapshotSetId === null ? 0n : util.toBigInt(util.toPointer(data.m_SnapshotSetId)), true);
   // 0x10: i32
   if (data?.m_lSnapshotsCount !== undefined) view.setInt32(16, Number(data.m_lSnapshotsCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.m_pwszSnapshotDeviceObject !== undefined) view.setBigUint64(24, data.m_pwszSnapshotDeviceObject === null ? 0n : BigInt(util.toPointer(data.m_pwszSnapshotDeviceObject)), true);
+  if (data?.m_pwszSnapshotDeviceObject !== undefined) view.setBigUint64(24, data.m_pwszSnapshotDeviceObject === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszSnapshotDeviceObject)), true);
   // 0x20: pointer
-  if (data?.m_pwszOriginalVolumeName !== undefined) view.setBigUint64(32, data.m_pwszOriginalVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszOriginalVolumeName)), true);
+  if (data?.m_pwszOriginalVolumeName !== undefined) view.setBigUint64(32, data.m_pwszOriginalVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszOriginalVolumeName)), true);
   // 0x28: pointer
-  if (data?.m_pwszOriginatingMachine !== undefined) view.setBigUint64(40, data.m_pwszOriginatingMachine === null ? 0n : BigInt(util.toPointer(data.m_pwszOriginatingMachine)), true);
+  if (data?.m_pwszOriginatingMachine !== undefined) view.setBigUint64(40, data.m_pwszOriginatingMachine === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszOriginatingMachine)), true);
   // 0x30: pointer
-  if (data?.m_pwszServiceMachine !== undefined) view.setBigUint64(48, data.m_pwszServiceMachine === null ? 0n : BigInt(util.toPointer(data.m_pwszServiceMachine)), true);
+  if (data?.m_pwszServiceMachine !== undefined) view.setBigUint64(48, data.m_pwszServiceMachine === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszServiceMachine)), true);
   // 0x38: pointer
-  if (data?.m_pwszExposedName !== undefined) view.setBigUint64(56, data.m_pwszExposedName === null ? 0n : BigInt(util.toPointer(data.m_pwszExposedName)), true);
+  if (data?.m_pwszExposedName !== undefined) view.setBigUint64(56, data.m_pwszExposedName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszExposedName)), true);
   // 0x40: pointer
-  if (data?.m_pwszExposedPath !== undefined) view.setBigUint64(64, data.m_pwszExposedPath === null ? 0n : BigInt(util.toPointer(data.m_pwszExposedPath)), true);
+  if (data?.m_pwszExposedPath !== undefined) view.setBigUint64(64, data.m_pwszExposedPath === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszExposedPath)), true);
   // 0x48: pointer
-  if (data?.m_ProviderId !== undefined) view.setBigUint64(72, data.m_ProviderId === null ? 0n : BigInt(util.toPointer(data.m_ProviderId)), true);
+  if (data?.m_ProviderId !== undefined) view.setBigUint64(72, data.m_ProviderId === null ? 0n : util.toBigInt(util.toPointer(data.m_ProviderId)), true);
   // 0x50: i32
   if (data?.m_lSnapshotAttributes !== undefined) view.setInt32(80, Number(data.m_lSnapshotAttributes), true);
   // 0x54: pad4
   // 0x58: i64
-  if (data?.m_tsCreationTimestamp !== undefined) view.setBigInt64(88, BigInt(data.m_tsCreationTimestamp), true);
+  if (data?.m_tsCreationTimestamp !== undefined) view.setBigInt64(88, util.toBigInt(data.m_tsCreationTimestamp), true);
   // 0x60: i32
   if (data?.m_eStatus !== undefined) view.setInt32(96, Number(data.m_eStatus), true);
   // 0x64: pad4
@@ -493,8 +493,8 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x54: pad4
 
   // 0x58: i64
-  get m_tsCreationTimestamp(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(88, true));
+  get m_tsCreationTimestamp(): number | bigint {
+    return this.view.getBigInt64(88, true);
   }
 
   // 0x60: i32
@@ -506,12 +506,12 @@ export class VSS_SNAPSHOT_PROPView {
 
   // 0x00: pointer
   set m_SnapshotId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set m_SnapshotSetId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -523,37 +523,37 @@ export class VSS_SNAPSHOT_PROPView {
 
   // 0x18: pointer
   set m_pwszSnapshotDeviceObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set m_pwszOriginalVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set m_pwszOriginatingMachine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set m_pwszServiceMachine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set m_pwszExposedName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set m_pwszExposedPath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set m_ProviderId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: i32
@@ -564,8 +564,8 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x54: pad4
 
   // 0x58: i64
-  set m_tsCreationTimestamp(value: Deno.PointerValue) {
-    this.view.setBigInt64(88, BigInt(value), true);
+  set m_tsCreationTimestamp(value: number | bigint) {
+    this.view.setBigInt64(88, util.toBigInt(value), true);
   }
 
   // 0x60: i32
@@ -600,18 +600,18 @@ export function allocVSS_PROVIDER_PROP(data?: Partial<VSS_PROVIDER_PROP>): Uint8
   const buf = new Uint8Array(sizeofVSS_PROVIDER_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_ProviderId !== undefined) view.setBigUint64(0, data.m_ProviderId === null ? 0n : BigInt(util.toPointer(data.m_ProviderId)), true);
+  if (data?.m_ProviderId !== undefined) view.setBigUint64(0, data.m_ProviderId === null ? 0n : util.toBigInt(util.toPointer(data.m_ProviderId)), true);
   // 0x08: pointer
-  if (data?.m_pwszProviderName !== undefined) view.setBigUint64(8, data.m_pwszProviderName === null ? 0n : BigInt(util.toPointer(data.m_pwszProviderName)), true);
+  if (data?.m_pwszProviderName !== undefined) view.setBigUint64(8, data.m_pwszProviderName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszProviderName)), true);
   // 0x10: i32
   if (data?.m_eProviderType !== undefined) view.setInt32(16, Number(data.m_eProviderType), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.m_pwszProviderVersion !== undefined) view.setBigUint64(24, data.m_pwszProviderVersion === null ? 0n : BigInt(util.toPointer(data.m_pwszProviderVersion)), true);
+  if (data?.m_pwszProviderVersion !== undefined) view.setBigUint64(24, data.m_pwszProviderVersion === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszProviderVersion)), true);
   // 0x20: pointer
-  if (data?.m_ProviderVersionId !== undefined) view.setBigUint64(32, data.m_ProviderVersionId === null ? 0n : BigInt(util.toPointer(data.m_ProviderVersionId)), true);
+  if (data?.m_ProviderVersionId !== undefined) view.setBigUint64(32, data.m_ProviderVersionId === null ? 0n : util.toBigInt(util.toPointer(data.m_ProviderVersionId)), true);
   // 0x28: pointer
-  if (data?.m_ClassId !== undefined) view.setBigUint64(40, data.m_ClassId === null ? 0n : BigInt(util.toPointer(data.m_ClassId)), true);
+  if (data?.m_ClassId !== undefined) view.setBigUint64(40, data.m_ClassId === null ? 0n : util.toBigInt(util.toPointer(data.m_ClassId)), true);
   return buf;
 }
 
@@ -664,12 +664,12 @@ export class VSS_PROVIDER_PROPView {
 
   // 0x00: pointer
   set m_ProviderId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set m_pwszProviderName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i32
@@ -681,17 +681,17 @@ export class VSS_PROVIDER_PROPView {
 
   // 0x18: pointer
   set m_pwszProviderVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set m_ProviderVersionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set m_ClassId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -711,9 +711,9 @@ export function allocVSS_OBJECT_UNION(data?: Partial<VSS_OBJECT_UNION>): Uint8Ar
   const buf = new Uint8Array(sizeofVSS_OBJECT_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Snap !== undefined) view.setBigUint64(0, data.Snap === null ? 0n : BigInt(util.toPointer(data.Snap)), true);
+  if (data?.Snap !== undefined) view.setBigUint64(0, data.Snap === null ? 0n : util.toBigInt(util.toPointer(data.Snap)), true);
   // 0x08: pointer
-  if (data?.Prov !== undefined) view.setBigUint64(8, data.Prov === null ? 0n : BigInt(util.toPointer(data.Prov)), true);
+  if (data?.Prov !== undefined) view.setBigUint64(8, data.Prov === null ? 0n : util.toBigInt(util.toPointer(data.Prov)), true);
   return buf;
 }
 
@@ -741,12 +741,12 @@ export class VSS_OBJECT_UNIONView {
 
   // 0x00: pointer
   set Snap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Prov(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -769,7 +769,7 @@ export function allocVSS_OBJECT_PROP(data?: Partial<VSS_OBJECT_PROP>): Uint8Arra
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(util.toPointer(data.Obj)), true);
+  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : util.toBigInt(util.toPointer(data.Obj)), true);
   return buf;
 }
 
@@ -805,7 +805,7 @@ export class VSS_OBJECT_PROPView {
 
   // 0x08: pointer
   set Obj(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -825,9 +825,9 @@ export function allocVSS_VOLUME_PROP(data?: Partial<VSS_VOLUME_PROP>): Uint8Arra
   const buf = new Uint8Array(sizeofVSS_VOLUME_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszVolumeName)), true);
   // 0x08: pointer
-  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
+  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
   return buf;
 }
 
@@ -855,12 +855,12 @@ export class VSS_VOLUME_PROPView {
 
   // 0x00: pointer
   set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -873,9 +873,9 @@ export interface VSS_DIFF_VOLUME_PROP {
   /** ptr */
   m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array | null;
   /** i64 */
-  m_llVolumeFreeSpace: Deno.PointerValue;
+  m_llVolumeFreeSpace: number | bigint;
   /** i64 */
-  m_llVolumeTotalSpace: Deno.PointerValue;
+  m_llVolumeTotalSpace: number | bigint;
 }
 
 export const sizeofVSS_DIFF_VOLUME_PROP = 32;
@@ -884,13 +884,13 @@ export function allocVSS_DIFF_VOLUME_PROP(data?: Partial<VSS_DIFF_VOLUME_PROP>):
   const buf = new Uint8Array(sizeofVSS_DIFF_VOLUME_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszVolumeName)), true);
   // 0x08: pointer
-  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
+  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
   // 0x10: i64
-  if (data?.m_llVolumeFreeSpace !== undefined) view.setBigInt64(16, BigInt(data.m_llVolumeFreeSpace), true);
+  if (data?.m_llVolumeFreeSpace !== undefined) view.setBigInt64(16, util.toBigInt(data.m_llVolumeFreeSpace), true);
   // 0x18: i64
-  if (data?.m_llVolumeTotalSpace !== undefined) view.setBigInt64(24, BigInt(data.m_llVolumeTotalSpace), true);
+  if (data?.m_llVolumeTotalSpace !== undefined) view.setBigInt64(24, util.toBigInt(data.m_llVolumeTotalSpace), true);
   return buf;
 }
 
@@ -917,33 +917,33 @@ export class VSS_DIFF_VOLUME_PROPView {
   }
 
   // 0x10: i64
-  get m_llVolumeFreeSpace(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get m_llVolumeFreeSpace(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: i64
-  get m_llVolumeTotalSpace(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get m_llVolumeTotalSpace(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x00: pointer
   set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set m_llVolumeFreeSpace(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set m_llVolumeFreeSpace(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: i64
-  set m_llVolumeTotalSpace(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set m_llVolumeTotalSpace(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 }
 
@@ -956,11 +956,11 @@ export interface VSS_DIFF_AREA_PROP {
   /** ptr */
   m_pwszDiffAreaVolumeName: Deno.PointerValue | Uint8Array | null;
   /** i64 */
-  m_llMaximumDiffSpace: Deno.PointerValue;
+  m_llMaximumDiffSpace: number | bigint;
   /** i64 */
-  m_llAllocatedDiffSpace: Deno.PointerValue;
+  m_llAllocatedDiffSpace: number | bigint;
   /** i64 */
-  m_llUsedDiffSpace: Deno.PointerValue;
+  m_llUsedDiffSpace: number | bigint;
 }
 
 export const sizeofVSS_DIFF_AREA_PROP = 40;
@@ -969,15 +969,15 @@ export function allocVSS_DIFF_AREA_PROP(data?: Partial<VSS_DIFF_AREA_PROP>): Uin
   const buf = new Uint8Array(sizeofVSS_DIFF_AREA_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszVolumeName)), true);
   // 0x08: pointer
-  if (data?.m_pwszDiffAreaVolumeName !== undefined) view.setBigUint64(8, data.m_pwszDiffAreaVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszDiffAreaVolumeName)), true);
+  if (data?.m_pwszDiffAreaVolumeName !== undefined) view.setBigUint64(8, data.m_pwszDiffAreaVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.m_pwszDiffAreaVolumeName)), true);
   // 0x10: i64
-  if (data?.m_llMaximumDiffSpace !== undefined) view.setBigInt64(16, BigInt(data.m_llMaximumDiffSpace), true);
+  if (data?.m_llMaximumDiffSpace !== undefined) view.setBigInt64(16, util.toBigInt(data.m_llMaximumDiffSpace), true);
   // 0x18: i64
-  if (data?.m_llAllocatedDiffSpace !== undefined) view.setBigInt64(24, BigInt(data.m_llAllocatedDiffSpace), true);
+  if (data?.m_llAllocatedDiffSpace !== undefined) view.setBigInt64(24, util.toBigInt(data.m_llAllocatedDiffSpace), true);
   // 0x20: i64
-  if (data?.m_llUsedDiffSpace !== undefined) view.setBigInt64(32, BigInt(data.m_llUsedDiffSpace), true);
+  if (data?.m_llUsedDiffSpace !== undefined) view.setBigInt64(32, util.toBigInt(data.m_llUsedDiffSpace), true);
   return buf;
 }
 
@@ -1004,43 +1004,43 @@ export class VSS_DIFF_AREA_PROPView {
   }
 
   // 0x10: i64
-  get m_llMaximumDiffSpace(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get m_llMaximumDiffSpace(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x18: i64
-  get m_llAllocatedDiffSpace(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(24, true));
+  get m_llAllocatedDiffSpace(): number | bigint {
+    return this.view.getBigInt64(24, true);
   }
 
   // 0x20: i64
-  get m_llUsedDiffSpace(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(32, true));
+  get m_llUsedDiffSpace(): number | bigint {
+    return this.view.getBigInt64(32, true);
   }
 
   // 0x00: pointer
   set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set m_pwszDiffAreaVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: i64
-  set m_llMaximumDiffSpace(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set m_llMaximumDiffSpace(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 
   // 0x18: i64
-  set m_llAllocatedDiffSpace(value: Deno.PointerValue) {
-    this.view.setBigInt64(24, BigInt(value), true);
+  set m_llAllocatedDiffSpace(value: number | bigint) {
+    this.view.setBigInt64(24, util.toBigInt(value), true);
   }
 
   // 0x20: i64
-  set m_llUsedDiffSpace(value: Deno.PointerValue) {
-    this.view.setBigInt64(32, BigInt(value), true);
+  set m_llUsedDiffSpace(value: number | bigint) {
+    this.view.setBigInt64(32, util.toBigInt(value), true);
   }
 }
 
@@ -1062,11 +1062,11 @@ export function allocVSS_MGMT_OBJECT_UNION(data?: Partial<VSS_MGMT_OBJECT_UNION>
   const buf = new Uint8Array(sizeofVSS_MGMT_OBJECT_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Vol !== undefined) view.setBigUint64(0, data.Vol === null ? 0n : BigInt(util.toPointer(data.Vol)), true);
+  if (data?.Vol !== undefined) view.setBigUint64(0, data.Vol === null ? 0n : util.toBigInt(util.toPointer(data.Vol)), true);
   // 0x08: pointer
-  if (data?.DiffVol !== undefined) view.setBigUint64(8, data.DiffVol === null ? 0n : BigInt(util.toPointer(data.DiffVol)), true);
+  if (data?.DiffVol !== undefined) view.setBigUint64(8, data.DiffVol === null ? 0n : util.toBigInt(util.toPointer(data.DiffVol)), true);
   // 0x10: pointer
-  if (data?.DiffArea !== undefined) view.setBigUint64(16, data.DiffArea === null ? 0n : BigInt(util.toPointer(data.DiffArea)), true);
+  if (data?.DiffArea !== undefined) view.setBigUint64(16, data.DiffArea === null ? 0n : util.toBigInt(util.toPointer(data.DiffArea)), true);
   return buf;
 }
 
@@ -1100,17 +1100,17 @@ export class VSS_MGMT_OBJECT_UNIONView {
 
   // 0x00: pointer
   set Vol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set DiffVol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set DiffArea(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1133,7 +1133,7 @@ export function allocVSS_MGMT_OBJECT_PROP(data?: Partial<VSS_MGMT_OBJECT_PROP>):
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(util.toPointer(data.Obj)), true);
+  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : util.toBigInt(util.toPointer(data.Obj)), true);
   return buf;
 }
 
@@ -1169,7 +1169,7 @@ export class VSS_MGMT_OBJECT_PROPView {
 
   // 0x08: pointer
   set Obj(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

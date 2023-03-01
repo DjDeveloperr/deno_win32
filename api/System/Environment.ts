@@ -65,15 +65,15 @@ export function allocENCLAVE_IDENTITY(data?: Partial<ENCLAVE_IDENTITY>): Uint8Ar
   const buf = new Uint8Array(sizeofENCLAVE_IDENTITY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.OwnerId !== undefined) view.setBigUint64(0, data.OwnerId === null ? 0n : BigInt(util.toPointer(data.OwnerId)), true);
+  if (data?.OwnerId !== undefined) view.setBigUint64(0, data.OwnerId === null ? 0n : util.toBigInt(util.toPointer(data.OwnerId)), true);
   // 0x08: pointer
-  if (data?.UniqueId !== undefined) view.setBigUint64(8, data.UniqueId === null ? 0n : BigInt(util.toPointer(data.UniqueId)), true);
+  if (data?.UniqueId !== undefined) view.setBigUint64(8, data.UniqueId === null ? 0n : util.toBigInt(util.toPointer(data.UniqueId)), true);
   // 0x10: pointer
-  if (data?.AuthorId !== undefined) view.setBigUint64(16, data.AuthorId === null ? 0n : BigInt(util.toPointer(data.AuthorId)), true);
+  if (data?.AuthorId !== undefined) view.setBigUint64(16, data.AuthorId === null ? 0n : util.toBigInt(util.toPointer(data.AuthorId)), true);
   // 0x18: pointer
-  if (data?.FamilyId !== undefined) view.setBigUint64(24, data.FamilyId === null ? 0n : BigInt(util.toPointer(data.FamilyId)), true);
+  if (data?.FamilyId !== undefined) view.setBigUint64(24, data.FamilyId === null ? 0n : util.toBigInt(util.toPointer(data.FamilyId)), true);
   // 0x20: pointer
-  if (data?.ImageId !== undefined) view.setBigUint64(32, data.ImageId === null ? 0n : BigInt(util.toPointer(data.ImageId)), true);
+  if (data?.ImageId !== undefined) view.setBigUint64(32, data.ImageId === null ? 0n : util.toBigInt(util.toPointer(data.ImageId)), true);
   // 0x28: u32
   if (data?.EnclaveSvn !== undefined) view.setUint32(40, Number(data.EnclaveSvn), true);
   // 0x2c: u32
@@ -161,27 +161,27 @@ export class ENCLAVE_IDENTITYView {
 
   // 0x00: pointer
   set OwnerId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set UniqueId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set AuthorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set FamilyId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ImageId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -348,9 +348,9 @@ export function allocVBS_ENCLAVE_REPORT(data?: Partial<VBS_ENCLAVE_REPORT>): Uin
   // 0x04: u32
   if (data?.ReportVersion !== undefined) view.setUint32(4, Number(data.ReportVersion), true);
   // 0x08: pointer
-  if (data?.EnclaveData !== undefined) view.setBigUint64(8, data.EnclaveData === null ? 0n : BigInt(util.toPointer(data.EnclaveData)), true);
+  if (data?.EnclaveData !== undefined) view.setBigUint64(8, data.EnclaveData === null ? 0n : util.toBigInt(util.toPointer(data.EnclaveData)), true);
   // 0x10: pointer
-  if (data?.EnclaveIdentity !== undefined) view.setBigUint64(16, data.EnclaveIdentity === null ? 0n : BigInt(util.toPointer(data.EnclaveIdentity)), true);
+  if (data?.EnclaveIdentity !== undefined) view.setBigUint64(16, data.EnclaveIdentity === null ? 0n : util.toBigInt(util.toPointer(data.EnclaveIdentity)), true);
   return buf;
 }
 
@@ -398,12 +398,12 @@ export class VBS_ENCLAVE_REPORTView {
 
   // 0x08: pointer
   set EnclaveData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set EnclaveIdentity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -486,20 +486,20 @@ export function allocVBS_ENCLAVE_REPORT_MODULE(data?: Partial<VBS_ENCLAVE_REPORT
   const buf = new Uint8Array(sizeofVBS_ENCLAVE_REPORT_MODULE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  if (data?.Header !== undefined) view.setBigUint64(0, data.Header === null ? 0n : util.toBigInt(util.toPointer(data.Header)), true);
   // 0x08: pointer
-  if (data?.UniqueId !== undefined) view.setBigUint64(8, data.UniqueId === null ? 0n : BigInt(util.toPointer(data.UniqueId)), true);
+  if (data?.UniqueId !== undefined) view.setBigUint64(8, data.UniqueId === null ? 0n : util.toBigInt(util.toPointer(data.UniqueId)), true);
   // 0x10: pointer
-  if (data?.AuthorId !== undefined) view.setBigUint64(16, data.AuthorId === null ? 0n : BigInt(util.toPointer(data.AuthorId)), true);
+  if (data?.AuthorId !== undefined) view.setBigUint64(16, data.AuthorId === null ? 0n : util.toBigInt(util.toPointer(data.AuthorId)), true);
   // 0x18: pointer
-  if (data?.FamilyId !== undefined) view.setBigUint64(24, data.FamilyId === null ? 0n : BigInt(util.toPointer(data.FamilyId)), true);
+  if (data?.FamilyId !== undefined) view.setBigUint64(24, data.FamilyId === null ? 0n : util.toBigInt(util.toPointer(data.FamilyId)), true);
   // 0x20: pointer
-  if (data?.ImageId !== undefined) view.setBigUint64(32, data.ImageId === null ? 0n : BigInt(util.toPointer(data.ImageId)), true);
+  if (data?.ImageId !== undefined) view.setBigUint64(32, data.ImageId === null ? 0n : util.toBigInt(util.toPointer(data.ImageId)), true);
   // 0x28: u32
   if (data?.Svn !== undefined) view.setUint32(40, Number(data.Svn), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.ModuleName !== undefined) view.setBigUint64(48, data.ModuleName === null ? 0n : BigInt(util.toPointer(data.ModuleName)), true);
+  if (data?.ModuleName !== undefined) view.setBigUint64(48, data.ModuleName === null ? 0n : util.toBigInt(util.toPointer(data.ModuleName)), true);
   return buf;
 }
 
@@ -558,27 +558,27 @@ export class VBS_ENCLAVE_REPORT_MODULEView {
 
   // 0x00: pointer
   set Header(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set UniqueId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set AuthorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set FamilyId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ImageId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: u32
@@ -590,7 +590,7 @@ export class VBS_ENCLAVE_REPORT_MODULEView {
 
   // 0x30: pointer
   set ModuleName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -605,7 +605,7 @@ export interface ENCLAVE_INFORMATION {
   /** ptr */
   BaseAddress: Deno.PointerValue | Uint8Array | null;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: number | bigint;
   /** Windows.Win32.System.Environment.ENCLAVE_IDENTITY */
   Identity: Uint8Array | Deno.PointerValue | null;
 }
@@ -620,11 +620,11 @@ export function allocENCLAVE_INFORMATION(data?: Partial<ENCLAVE_INFORMATION>): U
   // 0x04: u32
   if (data?.Reserved !== undefined) view.setUint32(4, Number(data.Reserved), true);
   // 0x08: pointer
-  if (data?.BaseAddress !== undefined) view.setBigUint64(8, data.BaseAddress === null ? 0n : BigInt(util.toPointer(data.BaseAddress)), true);
+  if (data?.BaseAddress !== undefined) view.setBigUint64(8, data.BaseAddress === null ? 0n : util.toBigInt(util.toPointer(data.BaseAddress)), true);
   // 0x10: usize
-  if (data?.Size !== undefined) view.setBigUint64(16, BigInt(data.Size), true);
+  if (data?.Size !== undefined) view.setBigUint64(16, util.toBigInt(data.Size), true);
   // 0x18: pointer
-  if (data?.Identity !== undefined) view.setBigUint64(24, data.Identity === null ? 0n : BigInt(util.toPointer(data.Identity)), true);
+  if (data?.Identity !== undefined) view.setBigUint64(24, data.Identity === null ? 0n : util.toBigInt(util.toPointer(data.Identity)), true);
   return buf;
 }
 
@@ -655,8 +655,8 @@ export class ENCLAVE_INFORMATIONView {
   }
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Size(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: pointer
@@ -677,17 +677,17 @@ export class ENCLAVE_INFORMATIONView {
 
   // 0x08: pointer
   set BaseAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Size(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set Identity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -715,7 +715,7 @@ export function allocVBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32(data?: Partial<VBS_BA
   const buf = new Uint8Array(sizeofVBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ThreadContext !== undefined) view.setBigUint64(0, data.ThreadContext === null ? 0n : BigInt(util.toPointer(data.ThreadContext)), true);
+  if (data?.ThreadContext !== undefined) view.setBigUint64(0, data.ThreadContext === null ? 0n : util.toBigInt(util.toPointer(data.ThreadContext)), true);
   // 0x08: u32
   if (data?.EntryPoint !== undefined) view.setUint32(8, Number(data.EntryPoint), true);
   // 0x0c: u32
@@ -775,7 +775,7 @@ export class VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32View {
 
   // 0x00: pointer
   set ThreadContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -813,13 +813,13 @@ export interface VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
   /** array */
   ThreadContext: Deno.PointerValue | null;
   /** u64 */
-  EntryPoint: Deno.PointerValue;
+  EntryPoint: number | bigint;
   /** u64 */
-  StackPointer: Deno.PointerValue;
+  StackPointer: number | bigint;
   /** u64 */
-  ExceptionEntryPoint: Deno.PointerValue;
+  ExceptionEntryPoint: number | bigint;
   /** u64 */
-  ExceptionStack: Deno.PointerValue;
+  ExceptionStack: number | bigint;
   /** u32 */
   ExceptionActive: number;
 }
@@ -830,15 +830,15 @@ export function allocVBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64(data?: Partial<VBS_BA
   const buf = new Uint8Array(sizeofVBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ThreadContext !== undefined) view.setBigUint64(0, data.ThreadContext === null ? 0n : BigInt(util.toPointer(data.ThreadContext)), true);
+  if (data?.ThreadContext !== undefined) view.setBigUint64(0, data.ThreadContext === null ? 0n : util.toBigInt(util.toPointer(data.ThreadContext)), true);
   // 0x08: u64
-  if (data?.EntryPoint !== undefined) view.setBigUint64(8, BigInt(data.EntryPoint), true);
+  if (data?.EntryPoint !== undefined) view.setBigUint64(8, util.toBigInt(data.EntryPoint), true);
   // 0x10: u64
-  if (data?.StackPointer !== undefined) view.setBigUint64(16, BigInt(data.StackPointer), true);
+  if (data?.StackPointer !== undefined) view.setBigUint64(16, util.toBigInt(data.StackPointer), true);
   // 0x18: u64
-  if (data?.ExceptionEntryPoint !== undefined) view.setBigUint64(24, BigInt(data.ExceptionEntryPoint), true);
+  if (data?.ExceptionEntryPoint !== undefined) view.setBigUint64(24, util.toBigInt(data.ExceptionEntryPoint), true);
   // 0x20: u64
-  if (data?.ExceptionStack !== undefined) view.setBigUint64(32, BigInt(data.ExceptionStack), true);
+  if (data?.ExceptionStack !== undefined) view.setBigUint64(32, util.toBigInt(data.ExceptionStack), true);
   // 0x28: u32
   if (data?.ExceptionActive !== undefined) view.setUint32(40, Number(data.ExceptionActive), true);
   // 0x2c: pad4
@@ -862,23 +862,23 @@ export class VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64View {
   }
 
   // 0x08: u64
-  get EntryPoint(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get EntryPoint(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get StackPointer(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get StackPointer(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get ExceptionEntryPoint(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get ExceptionEntryPoint(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: u64
-  get ExceptionStack(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get ExceptionStack(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u32
@@ -890,27 +890,27 @@ export class VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64View {
 
   // 0x00: pointer
   set ThreadContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u64
-  set EntryPoint(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set EntryPoint(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set StackPointer(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set StackPointer(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set ExceptionEntryPoint(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set ExceptionEntryPoint(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: u64
-  set ExceptionStack(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set ExceptionStack(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u32
@@ -932,15 +932,15 @@ export interface VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
   /** array */
   ExceptionInformation: Deno.PointerValue | null;
   /** usize */
-  ExceptionRAX: Deno.PointerValue;
+  ExceptionRAX: number | bigint;
   /** usize */
-  ExceptionRCX: Deno.PointerValue;
+  ExceptionRCX: number | bigint;
   /** usize */
-  ExceptionRIP: Deno.PointerValue;
+  ExceptionRIP: number | bigint;
   /** usize */
-  ExceptionRFLAGS: Deno.PointerValue;
+  ExceptionRFLAGS: number | bigint;
   /** usize */
-  ExceptionRSP: Deno.PointerValue;
+  ExceptionRSP: number | bigint;
 }
 
 export const sizeofVBS_BASIC_ENCLAVE_EXCEPTION_AMD64 = 56;
@@ -953,17 +953,17 @@ export function allocVBS_BASIC_ENCLAVE_EXCEPTION_AMD64(data?: Partial<VBS_BASIC_
   // 0x04: u32
   if (data?.NumberParameters !== undefined) view.setUint32(4, Number(data.NumberParameters), true);
   // 0x08: pointer
-  if (data?.ExceptionInformation !== undefined) view.setBigUint64(8, data.ExceptionInformation === null ? 0n : BigInt(util.toPointer(data.ExceptionInformation)), true);
+  if (data?.ExceptionInformation !== undefined) view.setBigUint64(8, data.ExceptionInformation === null ? 0n : util.toBigInt(util.toPointer(data.ExceptionInformation)), true);
   // 0x10: usize
-  if (data?.ExceptionRAX !== undefined) view.setBigUint64(16, BigInt(data.ExceptionRAX), true);
+  if (data?.ExceptionRAX !== undefined) view.setBigUint64(16, util.toBigInt(data.ExceptionRAX), true);
   // 0x18: usize
-  if (data?.ExceptionRCX !== undefined) view.setBigUint64(24, BigInt(data.ExceptionRCX), true);
+  if (data?.ExceptionRCX !== undefined) view.setBigUint64(24, util.toBigInt(data.ExceptionRCX), true);
   // 0x20: usize
-  if (data?.ExceptionRIP !== undefined) view.setBigUint64(32, BigInt(data.ExceptionRIP), true);
+  if (data?.ExceptionRIP !== undefined) view.setBigUint64(32, util.toBigInt(data.ExceptionRIP), true);
   // 0x28: usize
-  if (data?.ExceptionRFLAGS !== undefined) view.setBigUint64(40, BigInt(data.ExceptionRFLAGS), true);
+  if (data?.ExceptionRFLAGS !== undefined) view.setBigUint64(40, util.toBigInt(data.ExceptionRFLAGS), true);
   // 0x30: usize
-  if (data?.ExceptionRSP !== undefined) view.setBigUint64(48, BigInt(data.ExceptionRSP), true);
+  if (data?.ExceptionRSP !== undefined) view.setBigUint64(48, util.toBigInt(data.ExceptionRSP), true);
   return buf;
 }
 
@@ -994,28 +994,28 @@ export class VBS_BASIC_ENCLAVE_EXCEPTION_AMD64View {
   }
 
   // 0x10: usize
-  get ExceptionRAX(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get ExceptionRAX(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: usize
-  get ExceptionRCX(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get ExceptionRCX(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x20: usize
-  get ExceptionRIP(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get ExceptionRIP(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: usize
-  get ExceptionRFLAGS(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get ExceptionRFLAGS(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: usize
-  get ExceptionRSP(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(48, true));
+  get ExceptionRSP(): number | bigint {
+    return this.view.getBigUint64(48, true);
   }
 
   // 0x00: u32
@@ -1030,32 +1030,32 @@ export class VBS_BASIC_ENCLAVE_EXCEPTION_AMD64View {
 
   // 0x08: pointer
   set ExceptionInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: usize
-  set ExceptionRAX(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set ExceptionRAX(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: usize
-  set ExceptionRCX(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set ExceptionRCX(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 
   // 0x20: usize
-  set ExceptionRIP(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set ExceptionRIP(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: usize
-  set ExceptionRFLAGS(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set ExceptionRFLAGS(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: usize
-  set ExceptionRSP(value: Deno.PointerValue) {
-    this.view.setBigUint64(48, BigInt(value), true);
+  set ExceptionRSP(value: number | bigint) {
+    this.view.setBigUint64(48, util.toBigInt(value), true);
   }
 }
 
@@ -1197,31 +1197,31 @@ export function allocVBS_BASIC_ENCLAVE_SYSCALL_PAGE(data?: Partial<VBS_BASIC_ENC
   const buf = new Uint8Array(sizeofVBS_BASIC_ENCLAVE_SYSCALL_PAGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ReturnFromEnclave !== undefined) view.setBigUint64(0, data.ReturnFromEnclave === null ? 0n : BigInt(util.toPointer(data.ReturnFromEnclave)), true);
+  if (data?.ReturnFromEnclave !== undefined) view.setBigUint64(0, data.ReturnFromEnclave === null ? 0n : util.toBigInt(util.toPointer(data.ReturnFromEnclave)), true);
   // 0x08: pointer
-  if (data?.ReturnFromException !== undefined) view.setBigUint64(8, data.ReturnFromException === null ? 0n : BigInt(util.toPointer(data.ReturnFromException)), true);
+  if (data?.ReturnFromException !== undefined) view.setBigUint64(8, data.ReturnFromException === null ? 0n : util.toBigInt(util.toPointer(data.ReturnFromException)), true);
   // 0x10: pointer
-  if (data?.TerminateThread !== undefined) view.setBigUint64(16, data.TerminateThread === null ? 0n : BigInt(util.toPointer(data.TerminateThread)), true);
+  if (data?.TerminateThread !== undefined) view.setBigUint64(16, data.TerminateThread === null ? 0n : util.toBigInt(util.toPointer(data.TerminateThread)), true);
   // 0x18: pointer
-  if (data?.InterruptThread !== undefined) view.setBigUint64(24, data.InterruptThread === null ? 0n : BigInt(util.toPointer(data.InterruptThread)), true);
+  if (data?.InterruptThread !== undefined) view.setBigUint64(24, data.InterruptThread === null ? 0n : util.toBigInt(util.toPointer(data.InterruptThread)), true);
   // 0x20: pointer
-  if (data?.CommitPages !== undefined) view.setBigUint64(32, data.CommitPages === null ? 0n : BigInt(util.toPointer(data.CommitPages)), true);
+  if (data?.CommitPages !== undefined) view.setBigUint64(32, data.CommitPages === null ? 0n : util.toBigInt(util.toPointer(data.CommitPages)), true);
   // 0x28: pointer
-  if (data?.DecommitPages !== undefined) view.setBigUint64(40, data.DecommitPages === null ? 0n : BigInt(util.toPointer(data.DecommitPages)), true);
+  if (data?.DecommitPages !== undefined) view.setBigUint64(40, data.DecommitPages === null ? 0n : util.toBigInt(util.toPointer(data.DecommitPages)), true);
   // 0x30: pointer
-  if (data?.ProtectPages !== undefined) view.setBigUint64(48, data.ProtectPages === null ? 0n : BigInt(util.toPointer(data.ProtectPages)), true);
+  if (data?.ProtectPages !== undefined) view.setBigUint64(48, data.ProtectPages === null ? 0n : util.toBigInt(util.toPointer(data.ProtectPages)), true);
   // 0x38: pointer
-  if (data?.CreateThread !== undefined) view.setBigUint64(56, data.CreateThread === null ? 0n : BigInt(util.toPointer(data.CreateThread)), true);
+  if (data?.CreateThread !== undefined) view.setBigUint64(56, data.CreateThread === null ? 0n : util.toBigInt(util.toPointer(data.CreateThread)), true);
   // 0x40: pointer
-  if (data?.GetEnclaveInformation !== undefined) view.setBigUint64(64, data.GetEnclaveInformation === null ? 0n : BigInt(util.toPointer(data.GetEnclaveInformation)), true);
+  if (data?.GetEnclaveInformation !== undefined) view.setBigUint64(64, data.GetEnclaveInformation === null ? 0n : util.toBigInt(util.toPointer(data.GetEnclaveInformation)), true);
   // 0x48: pointer
-  if (data?.GenerateKey !== undefined) view.setBigUint64(72, data.GenerateKey === null ? 0n : BigInt(util.toPointer(data.GenerateKey)), true);
+  if (data?.GenerateKey !== undefined) view.setBigUint64(72, data.GenerateKey === null ? 0n : util.toBigInt(util.toPointer(data.GenerateKey)), true);
   // 0x50: pointer
-  if (data?.GenerateReport !== undefined) view.setBigUint64(80, data.GenerateReport === null ? 0n : BigInt(util.toPointer(data.GenerateReport)), true);
+  if (data?.GenerateReport !== undefined) view.setBigUint64(80, data.GenerateReport === null ? 0n : util.toBigInt(util.toPointer(data.GenerateReport)), true);
   // 0x58: pointer
-  if (data?.VerifyReport !== undefined) view.setBigUint64(88, data.VerifyReport === null ? 0n : BigInt(util.toPointer(data.VerifyReport)), true);
+  if (data?.VerifyReport !== undefined) view.setBigUint64(88, data.VerifyReport === null ? 0n : util.toBigInt(util.toPointer(data.VerifyReport)), true);
   // 0x60: pointer
-  if (data?.GenerateRandomData !== undefined) view.setBigUint64(96, data.GenerateRandomData === null ? 0n : BigInt(util.toPointer(data.GenerateRandomData)), true);
+  if (data?.GenerateRandomData !== undefined) view.setBigUint64(96, data.GenerateRandomData === null ? 0n : util.toBigInt(util.toPointer(data.GenerateRandomData)), true);
   return buf;
 }
 
@@ -1315,67 +1315,67 @@ export class VBS_BASIC_ENCLAVE_SYSCALL_PAGEView {
 
   // 0x00: pointer
   set ReturnFromEnclave(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set ReturnFromException(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set TerminateThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set InterruptThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set CommitPages(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set DecommitPages(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: pointer
   set ProtectPages(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x38: pointer
   set CreateThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: pointer
   set GetEnclaveInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x48: pointer
   set GenerateKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x50: pointer
   set GenerateReport(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(80, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x58: pointer
   set VerifyReport(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(88, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x60: pointer
   set GenerateRandomData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(96, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1385,7 +1385,7 @@ export type BOOL = number;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type HRESULT = number;
 
@@ -1720,28 +1720,28 @@ export function IsEnclaveTypeSupported(
 export function CreateEnclave(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwSize: Deno.PointerValue /* usize */,
-  dwInitialCommitment: Deno.PointerValue /* usize */,
+  dwSize: number | bigint /* usize */,
+  dwInitialCommitment: number | bigint /* usize */,
   flEnclaveType: number /* u32 */,
   lpEnclaveInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInfoLength: number /* u32 */,
   lpEnclaveError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, dwInitialCommitment, flEnclaveType, util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
+  return util.pointerFromFfi(libKERNEL32_dll.CreateEnclave(util.toPointer(hProcess), util.toPointer(lpAddress), util.toBigInt(util.toPointer(dwSize)), util.toBigInt(util.toPointer(dwInitialCommitment)), flEnclaveType, util.toPointer(lpEnclaveInformation), dwInfoLength, util.toPointer(lpEnclaveError)));
 }
 
 export function LoadEnclaveData(
   hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
   lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  nSize: Deno.PointerValue /* usize */,
+  nSize: number | bigint /* usize */,
   flProtect: number /* u32 */,
   lpPageInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
   dwInfoLength: number /* u32 */,
   lpNumberOfBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
   lpEnclaveError: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.LoadEnclaveData(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpBuffer), nSize, flProtect, util.toPointer(lpPageInformation), dwInfoLength, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpEnclaveError)));
+  return util.boolFromFfi(libKERNEL32_dll.LoadEnclaveData(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpBuffer), util.toBigInt(util.toPointer(nSize)), flProtect, util.toPointer(lpPageInformation), dwInfoLength, util.toPointer(lpNumberOfBytesWritten), util.toPointer(lpEnclaveError)));
 }
 
 export function InitializeEnclave(
@@ -1769,12 +1769,12 @@ export function LoadEnclaveImageW(
 }
 
 export function CallEnclave(
-  lpRoutine: Deno.PointerValue /* isize */,
+  lpRoutine: number | bigint /* isize */,
   lpParameter: Deno.PointerValue | Uint8Array | null /* ptr */,
   fWaitForThread: boolean /* Windows.Win32.Foundation.BOOL */,
   lpReturnValue: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libvertdll_dll.CallEnclave(lpRoutine, util.toPointer(lpParameter), util.boolToFfi(fWaitForThread), util.toPointer(lpReturnValue)));
+  return util.boolFromFfi(libvertdll_dll.CallEnclave(util.toBigInt(util.toPointer(lpRoutine)), util.toPointer(lpParameter), util.boolToFfi(fWaitForThread), util.toPointer(lpReturnValue)));
 }
 
 export function TerminateEnclave(

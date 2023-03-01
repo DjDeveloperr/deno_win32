@@ -40,11 +40,11 @@ export const MANIPULATION_ALL = 15;
 
 // Structs
 
-export type HGESTUREINFO = Deno.PointerValue;
+export type HGESTUREINFO = number | bigint;
 
-export type HTOUCHINPUT = Deno.PointerValue;
+export type HTOUCHINPUT = number | bigint;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 /**
  * Windows.Win32.UI.Input.Touch.TOUCHINPUT (size: 48)
@@ -65,7 +65,7 @@ export interface TOUCHINPUT {
   /** u32 */
   dwTime: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: number | bigint;
   /** u32 */
   cxContact: number;
   /** u32 */
@@ -82,7 +82,7 @@ export function allocTOUCHINPUT(data?: Partial<TOUCHINPUT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   // 0x08: pointer
-  if (data?.hSource !== undefined) view.setBigUint64(8, data.hSource === null ? 0n : BigInt(util.toPointer(data.hSource)), true);
+  if (data?.hSource !== undefined) view.setBigUint64(8, data.hSource === null ? 0n : util.toBigInt(util.toPointer(data.hSource)), true);
   // 0x10: u32
   if (data?.dwID !== undefined) view.setUint32(16, Number(data.dwID), true);
   // 0x14: u32
@@ -92,7 +92,7 @@ export function allocTOUCHINPUT(data?: Partial<TOUCHINPUT>): Uint8Array {
   // 0x1c: u32
   if (data?.dwTime !== undefined) view.setUint32(28, Number(data.dwTime), true);
   // 0x20: usize
-  if (data?.dwExtraInfo !== undefined) view.setBigUint64(32, BigInt(data.dwExtraInfo), true);
+  if (data?.dwExtraInfo !== undefined) view.setBigUint64(32, util.toBigInt(data.dwExtraInfo), true);
   // 0x28: u32
   if (data?.cxContact !== undefined) view.setUint32(40, Number(data.cxContact), true);
   // 0x2c: u32
@@ -147,8 +147,8 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  get dwExtraInfo(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(32, true));
+  get dwExtraInfo(): number | bigint {
+    return this.view.getBigUint64(32, true);
   }
 
   // 0x28: u32
@@ -173,7 +173,7 @@ export class TOUCHINPUTView {
 
   // 0x08: pointer
   set hSource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -197,8 +197,8 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
-    this.view.setBigUint64(32, BigInt(value), true);
+  set dwExtraInfo(value: number | bigint) {
+    this.view.setBigUint64(32, util.toBigInt(value), true);
   }
 
   // 0x28: u32
@@ -212,7 +212,7 @@ export class TOUCHINPUTView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 /**
  * Windows.Win32.Foundation.POINTS (size: 8)
@@ -291,7 +291,7 @@ export interface GESTUREINFO {
   /** u32 */
   dwSequenceID: number;
   /** u64 */
-  ullArguments: Deno.PointerValue;
+  ullArguments: number | bigint;
   /** u32 */
   cbExtraArgs: number;
 }
@@ -309,15 +309,15 @@ export function allocGESTUREINFO(data?: Partial<GESTUREINFO>): Uint8Array {
   if (data?.dwID !== undefined) view.setUint32(8, Number(data.dwID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.hwndTarget !== undefined) view.setBigUint64(16, data.hwndTarget === null ? 0n : BigInt(util.toPointer(data.hwndTarget)), true);
+  if (data?.hwndTarget !== undefined) view.setBigUint64(16, data.hwndTarget === null ? 0n : util.toBigInt(util.toPointer(data.hwndTarget)), true);
   // 0x18: pointer
-  if (data?.ptsLocation !== undefined) view.setBigUint64(24, data.ptsLocation === null ? 0n : BigInt(util.toPointer(data.ptsLocation)), true);
+  if (data?.ptsLocation !== undefined) view.setBigUint64(24, data.ptsLocation === null ? 0n : util.toBigInt(util.toPointer(data.ptsLocation)), true);
   // 0x20: u32
   if (data?.dwInstanceID !== undefined) view.setUint32(32, Number(data.dwInstanceID), true);
   // 0x24: u32
   if (data?.dwSequenceID !== undefined) view.setUint32(36, Number(data.dwSequenceID), true);
   // 0x28: u64
-  if (data?.ullArguments !== undefined) view.setBigUint64(40, BigInt(data.ullArguments), true);
+  if (data?.ullArguments !== undefined) view.setBigUint64(40, util.toBigInt(data.ullArguments), true);
   // 0x30: u32
   if (data?.cbExtraArgs !== undefined) view.setUint32(48, Number(data.cbExtraArgs), true);
   // 0x34: pad4
@@ -374,8 +374,8 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  get ullArguments(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(40, true));
+  get ullArguments(): number | bigint {
+    return this.view.getBigUint64(40, true);
   }
 
   // 0x30: u32
@@ -404,12 +404,12 @@ export class GESTUREINFOView {
 
   // 0x10: pointer
   set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: u32
@@ -423,8 +423,8 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  set ullArguments(value: Deno.PointerValue) {
-    this.view.setBigUint64(40, BigInt(value), true);
+  set ullArguments(value: number | bigint) {
+    this.view.setBigUint64(40, util.toBigInt(value), true);
   }
 
   // 0x30: u32
@@ -461,9 +461,9 @@ export function allocGESTURENOTIFYSTRUCT(data?: Partial<GESTURENOTIFYSTRUCT>): U
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.hwndTarget !== undefined) view.setBigUint64(8, data.hwndTarget === null ? 0n : BigInt(util.toPointer(data.hwndTarget)), true);
+  if (data?.hwndTarget !== undefined) view.setBigUint64(8, data.hwndTarget === null ? 0n : util.toBigInt(util.toPointer(data.hwndTarget)), true);
   // 0x10: pointer
-  if (data?.ptsLocation !== undefined) view.setBigUint64(16, data.ptsLocation === null ? 0n : BigInt(util.toPointer(data.ptsLocation)), true);
+  if (data?.ptsLocation !== undefined) view.setBigUint64(16, data.ptsLocation === null ? 0n : util.toBigInt(util.toPointer(data.ptsLocation)), true);
   // 0x18: u32
   if (data?.dwInstanceID !== undefined) view.setUint32(24, Number(data.dwInstanceID), true);
   // 0x1c: pad4
@@ -521,12 +521,12 @@ export class GESTURENOTIFYSTRUCTView {
 
   // 0x08: pointer
   set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32

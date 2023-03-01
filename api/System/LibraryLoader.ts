@@ -59,7 +59,7 @@ export function allocENUMUILANG(data?: Partial<ENUMUILANG>): Uint8Array {
   // 0x04: u32
   if (data?.SizeOfEnumUIBuffer !== undefined) view.setUint32(4, Number(data.SizeOfEnumUIBuffer), true);
   // 0x08: pointer
-  if (data?.pEnumUIBuffer !== undefined) view.setBigUint64(8, data.pEnumUIBuffer === null ? 0n : BigInt(util.toPointer(data.pEnumUIBuffer)), true);
+  if (data?.pEnumUIBuffer !== undefined) view.setBigUint64(8, data.pEnumUIBuffer === null ? 0n : util.toBigInt(util.toPointer(data.pEnumUIBuffer)), true);
   return buf;
 }
 
@@ -101,7 +101,7 @@ export class ENUMUILANGView {
 
   // 0x08: pointer
   set pEnumUIBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -127,15 +127,15 @@ export function allocREDIRECTION_FUNCTION_DESCRIPTOR(data?: Partial<REDIRECTION_
   // 0x00: buffer
   if (data?.DllName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.DllName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.FunctionName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.FunctionName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.RedirectionTarget !== undefined) view.setBigUint64(16, data.RedirectionTarget === null ? 0n : BigInt(util.toPointer(data.RedirectionTarget)), true);
+  if (data?.RedirectionTarget !== undefined) view.setBigUint64(16, data.RedirectionTarget === null ? 0n : util.toBigInt(util.toPointer(data.RedirectionTarget)), true);
   return buf;
 }
 
@@ -170,18 +170,18 @@ export class REDIRECTION_FUNCTION_DESCRIPTORView {
   // 0x00: buffer
   set DllName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set FunctionName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set RedirectionTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -207,7 +207,7 @@ export function allocREDIRECTION_DESCRIPTOR(data?: Partial<REDIRECTION_DESCRIPTO
   // 0x04: u32
   if (data?.FunctionCount !== undefined) view.setUint32(4, Number(data.FunctionCount), true);
   // 0x08: pointer
-  if (data?.Redirections !== undefined) view.setBigUint64(8, data.Redirections === null ? 0n : BigInt(util.toPointer(data.Redirections)), true);
+  if (data?.Redirections !== undefined) view.setBigUint64(8, data.Redirections === null ? 0n : util.toBigInt(util.toPointer(data.Redirections)), true);
   return buf;
 }
 
@@ -249,19 +249,19 @@ export class REDIRECTION_DESCRIPTORView {
 
   // 0x08: pointer
   set Redirections(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = number | bigint;
 
 export type BOOL = number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HRSRC = Deno.PointerValue;
+export type HRSRC = number | bigint;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 
@@ -497,9 +497,9 @@ export function FreeLibraryAndExitThread(
 }
 
 export function FreeResource(
-  hResData: Deno.PointerValue /* isize */,
+  hResData: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FreeResource(hResData));
+  return util.boolFromFfi(libKERNEL32_dll.FreeResource(util.toBigInt(util.toPointer(hResData))));
 }
 
 export function GetModuleFileNameA(
@@ -572,14 +572,14 @@ export function LoadLibraryExW(
 export function LoadResource(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   hResInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRSRC */,
-): Deno.PointerValue /* isize */ {
+): number | bigint /* isize */ {
   return libKERNEL32_dll.LoadResource(util.toPointer(hModule), util.toPointer(hResInfo));
 }
 
 export function LockResource(
-  hResData: Deno.PointerValue /* isize */,
+  hResData: number | bigint /* isize */,
 ): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.LockResource(hResData));
+  return util.pointerFromFfi(libKERNEL32_dll.LockResource(util.toBigInt(util.toPointer(hResData))));
 }
 
 export function SizeofResource(
@@ -612,11 +612,11 @@ export function EnumResourceLanguagesExA(
   lpType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function EnumResourceLanguagesExW(
@@ -624,53 +624,53 @@ export function EnumResourceLanguagesExW(
   lpType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function EnumResourceNamesExA(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function EnumResourceNamesExW(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function EnumResourceTypesExA(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExA(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExA(util.toPointer(hModule), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function EnumResourceTypesExW(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExW(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExW(util.toPointer(hModule), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam)), dwFlags, LangId));
 }
 
 export function FindResourceW(
@@ -697,18 +697,18 @@ export function EnumResourceNamesW(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function EnumResourceNamesA(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function LoadModule(
@@ -745,17 +745,17 @@ export function FindResourceExA(
 export function EnumResourceTypesA(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesA(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesA(util.toPointer(hModule), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function EnumResourceTypesW(
   hModule: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HINSTANCE */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesW(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesW(util.toPointer(hModule), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function EnumResourceLanguagesA(
@@ -763,9 +763,9 @@ export function EnumResourceLanguagesA(
   lpType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCA */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function EnumResourceLanguagesW(
@@ -773,9 +773,9 @@ export function EnumResourceLanguagesW(
   lpType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCW */,
-  lParam: Deno.PointerValue /* isize */,
+  lParam: number | bigint /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), util.toBigInt(util.toPointer(lParam))));
 }
 
 export function BeginUpdateResourceA(

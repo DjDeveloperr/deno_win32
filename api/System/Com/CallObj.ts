@@ -85,7 +85,7 @@ export function allocCALLFRAMEINFO(data?: Partial<CALLFRAMEINFO>): Uint8Array {
   if (data?.cTopLevelInInterfaces !== undefined) view.setInt32(32, Number(data.cTopLevelInInterfaces), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.iid !== undefined) view.setBigUint64(40, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(40, data.iid === null ? 0n : util.toBigInt(util.toPointer(data.iid)), true);
   // 0x30: u32
   if (data?.cMethod !== undefined) view.setUint32(48, Number(data.cMethod), true);
   // 0x34: u32
@@ -215,7 +215,7 @@ export class CALLFRAMEINFOView {
 
   // 0x28: pointer
   set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -251,9 +251,9 @@ export function allocCALLFRAMEPARAMINFO(data?: Partial<CALLFRAMEPARAMINFO>): Uin
   const buf = new Uint8Array(sizeofCALLFRAMEPARAMINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(util.toPointer(data.fIn)), true);
+  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : util.toBigInt(util.toPointer(data.fIn)), true);
   // 0x08: pointer
-  if (data?.fOut !== undefined) view.setBigUint64(8, data.fOut === null ? 0n : BigInt(util.toPointer(data.fOut)), true);
+  if (data?.fOut !== undefined) view.setBigUint64(8, data.fOut === null ? 0n : util.toBigInt(util.toPointer(data.fOut)), true);
   // 0x10: u32
   if (data?.stackOffset !== undefined) view.setUint32(16, Number(data.stackOffset), true);
   // 0x14: u32
@@ -295,12 +295,12 @@ export class CALLFRAMEPARAMINFOView {
 
   // 0x00: pointer
   set fIn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set fOut(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -336,16 +336,16 @@ export function allocCALLFRAME_MARSHALCONTEXT(data?: Partial<CALLFRAME_MARSHALCO
   const buf = new Uint8Array(sizeofCALLFRAME_MARSHALCONTEXT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(util.toPointer(data.fIn)), true);
+  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : util.toBigInt(util.toPointer(data.fIn)), true);
   // 0x08: u32
   if (data?.dwDestContext !== undefined) view.setUint32(8, Number(data.dwDestContext), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pvDestContext !== undefined) view.setBigUint64(16, data.pvDestContext === null ? 0n : BigInt(util.toPointer(data.pvDestContext)), true);
+  if (data?.pvDestContext !== undefined) view.setBigUint64(16, data.pvDestContext === null ? 0n : util.toBigInt(util.toPointer(data.pvDestContext)), true);
   // 0x18: pointer
-  if (data?.punkReserved !== undefined) view.setBigUint64(24, data.punkReserved === null ? 0n : BigInt(util.toPointer(data.punkReserved)), true);
+  if (data?.punkReserved !== undefined) view.setBigUint64(24, data.punkReserved === null ? 0n : util.toBigInt(util.toPointer(data.punkReserved)), true);
   // 0x20: pointer
-  if (data?.guidTransferSyntax !== undefined) view.setBigUint64(32, data.guidTransferSyntax === null ? 0n : BigInt(util.toPointer(data.guidTransferSyntax)), true);
+  if (data?.guidTransferSyntax !== undefined) view.setBigUint64(32, data.guidTransferSyntax === null ? 0n : util.toBigInt(util.toPointer(data.guidTransferSyntax)), true);
   return buf;
 }
 
@@ -392,7 +392,7 @@ export class CALLFRAME_MARSHALCONTEXTView {
 
   // 0x00: pointer
   set fIn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -404,17 +404,17 @@ export class CALLFRAME_MARSHALCONTEXTView {
 
   // 0x10: pointer
   set pvDestContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set punkReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set guidTransferSyntax(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

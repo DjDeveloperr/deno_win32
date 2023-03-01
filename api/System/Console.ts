@@ -94,7 +94,7 @@ export const FOCUS_EVENT = 16;
 
 // Structs
 
-export type HPCON = Deno.PointerValue;
+export type HPCON = number | bigint;
 
 /**
  * Windows.Win32.System.Console.COORD (size: 8)
@@ -255,7 +255,7 @@ export function alloc_uChar_e__Union(data?: Partial<_uChar_e__Union>): Uint8Arra
   const buf = new Uint8Array(sizeof_uChar_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(util.toPointer(data.UnicodeChar)), true);
+  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : util.toBigInt(util.toPointer(data.UnicodeChar)), true);
   // 0x08: u8
   if (data?.AsciiChar !== undefined) view.setUint8(8, Number(data.AsciiChar));
   // 0x09: pad7
@@ -287,7 +287,7 @@ export class _uChar_e__UnionView {
 
   // 0x00: pointer
   set UnicodeChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u8
@@ -331,7 +331,7 @@ export function allocKEY_EVENT_RECORD(data?: Partial<KEY_EVENT_RECORD>): Uint8Ar
   if (data?.wVirtualScanCode !== undefined) view.setUint16(8, Number(data.wVirtualScanCode), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.uChar !== undefined) view.setBigUint64(16, data.uChar === null ? 0n : BigInt(util.toPointer(data.uChar)), true);
+  if (data?.uChar !== undefined) view.setBigUint64(16, data.uChar === null ? 0n : util.toBigInt(util.toPointer(data.uChar)), true);
   // 0x18: u32
   if (data?.dwControlKeyState !== undefined) view.setUint32(24, Number(data.dwControlKeyState), true);
   // 0x1c: pad4
@@ -407,7 +407,7 @@ export class KEY_EVENT_RECORDView {
 
   // 0x10: pointer
   set uChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -438,7 +438,7 @@ export function allocMOUSE_EVENT_RECORD(data?: Partial<MOUSE_EVENT_RECORD>): Uin
   const buf = new Uint8Array(sizeofMOUSE_EVENT_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwMousePosition !== undefined) view.setBigUint64(0, data.dwMousePosition === null ? 0n : BigInt(util.toPointer(data.dwMousePosition)), true);
+  if (data?.dwMousePosition !== undefined) view.setBigUint64(0, data.dwMousePosition === null ? 0n : util.toBigInt(util.toPointer(data.dwMousePosition)), true);
   // 0x08: u32
   if (data?.dwButtonState !== undefined) view.setUint32(8, Number(data.dwButtonState), true);
   // 0x0c: u32
@@ -484,7 +484,7 @@ export class MOUSE_EVENT_RECORDView {
 
   // 0x00: pointer
   set dwMousePosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -519,7 +519,7 @@ export function allocWINDOW_BUFFER_SIZE_RECORD(data?: Partial<WINDOW_BUFFER_SIZE
   const buf = new Uint8Array(sizeofWINDOW_BUFFER_SIZE_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : util.toBigInt(util.toPointer(data.dwSize)), true);
   return buf;
 }
 
@@ -541,7 +541,7 @@ export class WINDOW_BUFFER_SIZE_RECORDView {
 
   // 0x00: pointer
   set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -655,15 +655,15 @@ export function alloc_Event_e__Union(data?: Partial<_Event_e__Union>): Uint8Arra
   const buf = new Uint8Array(sizeof_Event_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyEvent !== undefined) view.setBigUint64(0, data.KeyEvent === null ? 0n : BigInt(util.toPointer(data.KeyEvent)), true);
+  if (data?.KeyEvent !== undefined) view.setBigUint64(0, data.KeyEvent === null ? 0n : util.toBigInt(util.toPointer(data.KeyEvent)), true);
   // 0x08: pointer
-  if (data?.MouseEvent !== undefined) view.setBigUint64(8, data.MouseEvent === null ? 0n : BigInt(util.toPointer(data.MouseEvent)), true);
+  if (data?.MouseEvent !== undefined) view.setBigUint64(8, data.MouseEvent === null ? 0n : util.toBigInt(util.toPointer(data.MouseEvent)), true);
   // 0x10: pointer
-  if (data?.WindowBufferSizeEvent !== undefined) view.setBigUint64(16, data.WindowBufferSizeEvent === null ? 0n : BigInt(util.toPointer(data.WindowBufferSizeEvent)), true);
+  if (data?.WindowBufferSizeEvent !== undefined) view.setBigUint64(16, data.WindowBufferSizeEvent === null ? 0n : util.toBigInt(util.toPointer(data.WindowBufferSizeEvent)), true);
   // 0x18: pointer
-  if (data?.MenuEvent !== undefined) view.setBigUint64(24, data.MenuEvent === null ? 0n : BigInt(util.toPointer(data.MenuEvent)), true);
+  if (data?.MenuEvent !== undefined) view.setBigUint64(24, data.MenuEvent === null ? 0n : util.toBigInt(util.toPointer(data.MenuEvent)), true);
   // 0x20: pointer
-  if (data?.FocusEvent !== undefined) view.setBigUint64(32, data.FocusEvent === null ? 0n : BigInt(util.toPointer(data.FocusEvent)), true);
+  if (data?.FocusEvent !== undefined) view.setBigUint64(32, data.FocusEvent === null ? 0n : util.toBigInt(util.toPointer(data.FocusEvent)), true);
   return buf;
 }
 
@@ -709,27 +709,27 @@ export class _Event_e__UnionView {
 
   // 0x00: pointer
   set KeyEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set MouseEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set WindowBufferSizeEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set MenuEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set FocusEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -752,7 +752,7 @@ export function allocINPUT_RECORD(data?: Partial<INPUT_RECORD>): Uint8Array {
   if (data?.EventType !== undefined) view.setUint16(0, Number(data.EventType), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Event !== undefined) view.setBigUint64(8, data.Event === null ? 0n : BigInt(util.toPointer(data.Event)), true);
+  if (data?.Event !== undefined) view.setBigUint64(8, data.Event === null ? 0n : util.toBigInt(util.toPointer(data.Event)), true);
   return buf;
 }
 
@@ -788,7 +788,7 @@ export class INPUT_RECORDView {
 
   // 0x08: pointer
   set Event(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -808,7 +808,7 @@ export function alloc_Char_e__Union(data?: Partial<_Char_e__Union>): Uint8Array 
   const buf = new Uint8Array(sizeof_Char_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(util.toPointer(data.UnicodeChar)), true);
+  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : util.toBigInt(util.toPointer(data.UnicodeChar)), true);
   // 0x08: u8
   if (data?.AsciiChar !== undefined) view.setUint8(8, Number(data.AsciiChar));
   // 0x09: pad7
@@ -840,7 +840,7 @@ export class _Char_e__UnionView {
 
   // 0x00: pointer
   set UnicodeChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u8
@@ -867,7 +867,7 @@ export function allocCHAR_INFO(data?: Partial<CHAR_INFO>): Uint8Array {
   const buf = new Uint8Array(sizeofCHAR_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Char !== undefined) view.setBigUint64(0, data.Char === null ? 0n : BigInt(util.toPointer(data.Char)), true);
+  if (data?.Char !== undefined) view.setBigUint64(0, data.Char === null ? 0n : util.toBigInt(util.toPointer(data.Char)), true);
   // 0x08: u16
   if (data?.Attributes !== undefined) view.setUint16(8, Number(data.Attributes), true);
   // 0x0a: pad6
@@ -899,7 +899,7 @@ export class CHAR_INFOView {
 
   // 0x00: pointer
   set Char(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u16
@@ -929,7 +929,7 @@ export function allocCONSOLE_FONT_INFO(data?: Partial<CONSOLE_FONT_INFO>): Uint8
   if (data?.nFont !== undefined) view.setUint32(0, Number(data.nFont), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(util.toPointer(data.dwFontSize)), true);
+  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : util.toBigInt(util.toPointer(data.dwFontSize)), true);
   return buf;
 }
 
@@ -965,7 +965,7 @@ export class CONSOLE_FONT_INFOView {
 
   // 0x08: pointer
   set dwFontSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1125,16 +1125,16 @@ export function allocCONSOLE_SCREEN_BUFFER_INFO(data?: Partial<CONSOLE_SCREEN_BU
   const buf = new Uint8Array(sizeofCONSOLE_SCREEN_BUFFER_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : util.toBigInt(util.toPointer(data.dwSize)), true);
   // 0x08: pointer
-  if (data?.dwCursorPosition !== undefined) view.setBigUint64(8, data.dwCursorPosition === null ? 0n : BigInt(util.toPointer(data.dwCursorPosition)), true);
+  if (data?.dwCursorPosition !== undefined) view.setBigUint64(8, data.dwCursorPosition === null ? 0n : util.toBigInt(util.toPointer(data.dwCursorPosition)), true);
   // 0x10: u16
   if (data?.wAttributes !== undefined) view.setUint16(16, Number(data.wAttributes), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.srWindow !== undefined) view.setBigUint64(24, data.srWindow === null ? 0n : BigInt(util.toPointer(data.srWindow)), true);
+  if (data?.srWindow !== undefined) view.setBigUint64(24, data.srWindow === null ? 0n : util.toBigInt(util.toPointer(data.srWindow)), true);
   // 0x20: pointer
-  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(32, data.dwMaximumWindowSize === null ? 0n : BigInt(util.toPointer(data.dwMaximumWindowSize)), true);
+  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(32, data.dwMaximumWindowSize === null ? 0n : util.toBigInt(util.toPointer(data.dwMaximumWindowSize)), true);
   return buf;
 }
 
@@ -1181,12 +1181,12 @@ export class CONSOLE_SCREEN_BUFFER_INFOView {
 
   // 0x00: pointer
   set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set dwCursorPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u16
@@ -1198,12 +1198,12 @@ export class CONSOLE_SCREEN_BUFFER_INFOView {
 
   // 0x18: pointer
   set srWindow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1240,23 +1240,23 @@ export function allocCONSOLE_SCREEN_BUFFER_INFOEX(data?: Partial<CONSOLE_SCREEN_
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(8, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(8, data.dwSize === null ? 0n : util.toBigInt(util.toPointer(data.dwSize)), true);
   // 0x10: pointer
-  if (data?.dwCursorPosition !== undefined) view.setBigUint64(16, data.dwCursorPosition === null ? 0n : BigInt(util.toPointer(data.dwCursorPosition)), true);
+  if (data?.dwCursorPosition !== undefined) view.setBigUint64(16, data.dwCursorPosition === null ? 0n : util.toBigInt(util.toPointer(data.dwCursorPosition)), true);
   // 0x18: u16
   if (data?.wAttributes !== undefined) view.setUint16(24, Number(data.wAttributes), true);
   // 0x1a: pad6
   // 0x20: pointer
-  if (data?.srWindow !== undefined) view.setBigUint64(32, data.srWindow === null ? 0n : BigInt(util.toPointer(data.srWindow)), true);
+  if (data?.srWindow !== undefined) view.setBigUint64(32, data.srWindow === null ? 0n : util.toBigInt(util.toPointer(data.srWindow)), true);
   // 0x28: pointer
-  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(40, data.dwMaximumWindowSize === null ? 0n : BigInt(util.toPointer(data.dwMaximumWindowSize)), true);
+  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(40, data.dwMaximumWindowSize === null ? 0n : util.toBigInt(util.toPointer(data.dwMaximumWindowSize)), true);
   // 0x30: u16
   if (data?.wPopupAttributes !== undefined) view.setUint16(48, Number(data.wPopupAttributes), true);
   // 0x32: i32
   if (data?.bFullscreenSupported !== undefined) view.setInt32(50, Number(data.bFullscreenSupported), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ColorTable !== undefined) view.setBigUint64(56, data.ColorTable === null ? 0n : BigInt(util.toPointer(data.ColorTable)), true);
+  if (data?.ColorTable !== undefined) view.setBigUint64(56, data.ColorTable === null ? 0n : util.toBigInt(util.toPointer(data.ColorTable)), true);
   return buf;
 }
 
@@ -1335,12 +1335,12 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
 
   // 0x08: pointer
   set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set dwCursorPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u16
@@ -1352,12 +1352,12 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
 
   // 0x20: pointer
   set srWindow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u16
@@ -1374,7 +1374,7 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
 
   // 0x38: pointer
   set ColorTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1406,13 +1406,13 @@ export function allocCONSOLE_FONT_INFOEX(data?: Partial<CONSOLE_FONT_INFOEX>): U
   // 0x04: u32
   if (data?.nFont !== undefined) view.setUint32(4, Number(data.nFont), true);
   // 0x08: pointer
-  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(util.toPointer(data.dwFontSize)), true);
+  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : util.toBigInt(util.toPointer(data.dwFontSize)), true);
   // 0x10: u32
   if (data?.FontFamily !== undefined) view.setUint32(16, Number(data.FontFamily), true);
   // 0x14: u32
   if (data?.FontWeight !== undefined) view.setUint32(20, Number(data.FontWeight), true);
   // 0x18: pointer
-  if (data?.FaceName !== undefined) view.setBigUint64(24, data.FaceName === null ? 0n : BigInt(util.toPointer(data.FaceName)), true);
+  if (data?.FaceName !== undefined) view.setBigUint64(24, data.FaceName === null ? 0n : util.toBigInt(util.toPointer(data.FaceName)), true);
   return buf;
 }
 
@@ -1470,7 +1470,7 @@ export class CONSOLE_FONT_INFOEXView {
 
   // 0x08: pointer
   set dwFontSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -1485,7 +1485,7 @@ export class CONSOLE_FONT_INFOEXView {
 
   // 0x18: pointer
   set FaceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1510,9 +1510,9 @@ export function allocCONSOLE_SELECTION_INFO(data?: Partial<CONSOLE_SELECTION_INF
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwSelectionAnchor !== undefined) view.setBigUint64(8, data.dwSelectionAnchor === null ? 0n : BigInt(util.toPointer(data.dwSelectionAnchor)), true);
+  if (data?.dwSelectionAnchor !== undefined) view.setBigUint64(8, data.dwSelectionAnchor === null ? 0n : util.toBigInt(util.toPointer(data.dwSelectionAnchor)), true);
   // 0x10: pointer
-  if (data?.srSelection !== undefined) view.setBigUint64(16, data.srSelection === null ? 0n : BigInt(util.toPointer(data.srSelection)), true);
+  if (data?.srSelection !== undefined) view.setBigUint64(16, data.srSelection === null ? 0n : util.toBigInt(util.toPointer(data.srSelection)), true);
   return buf;
 }
 
@@ -1554,12 +1554,12 @@ export class CONSOLE_SELECTION_INFOView {
 
   // 0x08: pointer
   set dwSelectionAnchor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set srSelection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1644,7 +1644,7 @@ export class CONSOLE_HISTORY_INFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type HRESULT = number;
 
@@ -1652,7 +1652,7 @@ export type PSTR = Deno.PointerValue | Uint8Array | null;
 
 export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 // Native Libraries
 

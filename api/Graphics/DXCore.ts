@@ -279,13 +279,13 @@ export class DXCoreAdapterMemoryBudgetNodeSegmentGroupView {
  */
 export interface DXCoreAdapterMemoryBudget {
   /** u64 */
-  budget: Deno.PointerValue;
+  budget: number | bigint;
   /** u64 */
-  currentUsage: Deno.PointerValue;
+  currentUsage: number | bigint;
   /** u64 */
-  availableForReservation: Deno.PointerValue;
+  availableForReservation: number | bigint;
   /** u64 */
-  currentReservation: Deno.PointerValue;
+  currentReservation: number | bigint;
 }
 
 export const sizeofDXCoreAdapterMemoryBudget = 32;
@@ -294,13 +294,13 @@ export function allocDXCoreAdapterMemoryBudget(data?: Partial<DXCoreAdapterMemor
   const buf = new Uint8Array(sizeofDXCoreAdapterMemoryBudget);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.budget !== undefined) view.setBigUint64(0, BigInt(data.budget), true);
+  if (data?.budget !== undefined) view.setBigUint64(0, util.toBigInt(data.budget), true);
   // 0x08: u64
-  if (data?.currentUsage !== undefined) view.setBigUint64(8, BigInt(data.currentUsage), true);
+  if (data?.currentUsage !== undefined) view.setBigUint64(8, util.toBigInt(data.currentUsage), true);
   // 0x10: u64
-  if (data?.availableForReservation !== undefined) view.setBigUint64(16, BigInt(data.availableForReservation), true);
+  if (data?.availableForReservation !== undefined) view.setBigUint64(16, util.toBigInt(data.availableForReservation), true);
   // 0x18: u64
-  if (data?.currentReservation !== undefined) view.setBigUint64(24, BigInt(data.currentReservation), true);
+  if (data?.currentReservation !== undefined) view.setBigUint64(24, util.toBigInt(data.currentReservation), true);
   return buf;
 }
 
@@ -315,43 +315,43 @@ export class DXCoreAdapterMemoryBudgetView {
   }
 
   // 0x00: u64
-  get budget(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get budget(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get currentUsage(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get currentUsage(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get availableForReservation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get availableForReservation(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u64
-  get currentReservation(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(24, true));
+  get currentReservation(): number | bigint {
+    return this.view.getBigUint64(24, true);
   }
 
   // 0x00: u64
-  set budget(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set budget(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set currentUsage(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set currentUsage(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set availableForReservation(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set availableForReservation(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u64
-  set currentReservation(value: Deno.PointerValue) {
-    this.view.setBigUint64(24, BigInt(value), true);
+  set currentReservation(value: number | bigint) {
+    this.view.setBigUint64(24, util.toBigInt(value), true);
   }
 }
 

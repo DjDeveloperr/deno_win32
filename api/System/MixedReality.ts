@@ -22,7 +22,7 @@ export function allocPERCEPTION_PAYLOAD_FIELD(data?: Partial<PERCEPTION_PAYLOAD_
   const buf = new Uint8Array(sizeofPERCEPTION_PAYLOAD_FIELD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FieldId !== undefined) view.setBigUint64(0, data.FieldId === null ? 0n : BigInt(util.toPointer(data.FieldId)), true);
+  if (data?.FieldId !== undefined) view.setBigUint64(0, data.FieldId === null ? 0n : util.toBigInt(util.toPointer(data.FieldId)), true);
   // 0x08: u32
   if (data?.OffsetInBytes !== undefined) view.setUint32(8, Number(data.OffsetInBytes), true);
   // 0x0c: u32
@@ -58,7 +58,7 @@ export class PERCEPTION_PAYLOAD_FIELDView {
 
   // 0x00: pointer
   set FieldId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -77,9 +77,9 @@ export class PERCEPTION_PAYLOAD_FIELDView {
  */
 export interface PERCEPTION_STATE_STREAM_TIMESTAMPS {
   /** i64 */
-  InputTimestampInQpcCounts: Deno.PointerValue;
+  InputTimestampInQpcCounts: number | bigint;
   /** i64 */
-  AvailableTimestampInQpcCounts: Deno.PointerValue;
+  AvailableTimestampInQpcCounts: number | bigint;
 }
 
 export const sizeofPERCEPTION_STATE_STREAM_TIMESTAMPS = 16;
@@ -88,9 +88,9 @@ export function allocPERCEPTION_STATE_STREAM_TIMESTAMPS(data?: Partial<PERCEPTIO
   const buf = new Uint8Array(sizeofPERCEPTION_STATE_STREAM_TIMESTAMPS);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.InputTimestampInQpcCounts !== undefined) view.setBigInt64(0, BigInt(data.InputTimestampInQpcCounts), true);
+  if (data?.InputTimestampInQpcCounts !== undefined) view.setBigInt64(0, util.toBigInt(data.InputTimestampInQpcCounts), true);
   // 0x08: i64
-  if (data?.AvailableTimestampInQpcCounts !== undefined) view.setBigInt64(8, BigInt(data.AvailableTimestampInQpcCounts), true);
+  if (data?.AvailableTimestampInQpcCounts !== undefined) view.setBigInt64(8, util.toBigInt(data.AvailableTimestampInQpcCounts), true);
   return buf;
 }
 
@@ -105,23 +105,23 @@ export class PERCEPTION_STATE_STREAM_TIMESTAMPSView {
   }
 
   // 0x00: i64
-  get InputTimestampInQpcCounts(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get InputTimestampInQpcCounts(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x08: i64
-  get AvailableTimestampInQpcCounts(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get AvailableTimestampInQpcCounts(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x00: i64
-  set InputTimestampInQpcCounts(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set InputTimestampInQpcCounts(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i64
-  set AvailableTimestampInQpcCounts(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set AvailableTimestampInQpcCounts(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 }
 

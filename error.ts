@@ -15,7 +15,7 @@ function FormatMessage(errCode: number): string {
   ) as number;
 
   const lpBufferView = new Deno.UnsafePointerView(
-    lpBufferPtr[0],
+    Deno.UnsafePointer.create(lpBufferPtr[0])!,
   );
   return lpBufferView.getCString();
 }

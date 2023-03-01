@@ -3389,7 +3389,7 @@ export function allocAPPX_PACKAGE_SETTINGS(data?: Partial<APPX_PACKAGE_SETTINGS>
   if (data?.forceZip32 !== undefined) view.setInt32(0, Number(data.forceZip32), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hashMethod !== undefined) view.setBigUint64(8, data.hashMethod === null ? 0n : BigInt(util.toPointer(data.hashMethod)), true);
+  if (data?.hashMethod !== undefined) view.setBigUint64(8, data.hashMethod === null ? 0n : util.toBigInt(util.toPointer(data.hashMethod)), true);
   return buf;
 }
 
@@ -3425,7 +3425,7 @@ export class APPX_PACKAGE_SETTINGSView {
 
   // 0x08: pointer
   set hashMethod(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3451,16 +3451,16 @@ export function allocAPPX_PACKAGE_WRITER_PAYLOAD_STREAM(data?: Partial<APPX_PACK
   const buf = new Uint8Array(sizeofAPPX_PACKAGE_WRITER_PAYLOAD_STREAM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.inputStream !== undefined) view.setBigUint64(0, data.inputStream === null ? 0n : BigInt(util.toPointer(data.inputStream)), true);
+  if (data?.inputStream !== undefined) view.setBigUint64(0, data.inputStream === null ? 0n : util.toBigInt(util.toPointer(data.inputStream)), true);
   // 0x08: buffer
   if (data?.fileName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.fileName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.contentType !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.contentType);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: i32
   if (data?.compressionOption !== undefined) view.setInt32(24, Number(data.compressionOption), true);
@@ -3505,19 +3505,19 @@ export class APPX_PACKAGE_WRITER_PAYLOAD_STREAMView {
 
   // 0x00: pointer
   set inputStream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: buffer
   set fileName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set contentType(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: i32
@@ -3553,13 +3553,13 @@ export function allocAPPX_ENCRYPTED_PACKAGE_SETTINGS(data?: Partial<APPX_ENCRYPT
   // 0x08: buffer
   if (data?.encryptionAlgorithm !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.encryptionAlgorithm);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: i32
   if (data?.useDiffusion !== undefined) view.setInt32(16, Number(data.useDiffusion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(24, data.blockMapHashAlgorithm === null ? 0n : BigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
+  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(24, data.blockMapHashAlgorithm === null ? 0n : util.toBigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
   return buf;
 }
 
@@ -3609,7 +3609,7 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
   // 0x08: buffer
   set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: i32
@@ -3621,7 +3621,7 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
 
   // 0x18: pointer
   set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3650,10 +3650,10 @@ export function allocAPPX_ENCRYPTED_PACKAGE_SETTINGS2(data?: Partial<APPX_ENCRYP
   // 0x08: buffer
   if (data?.encryptionAlgorithm !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.encryptionAlgorithm);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: pointer
-  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(16, data.blockMapHashAlgorithm === null ? 0n : BigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
+  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(16, data.blockMapHashAlgorithm === null ? 0n : util.toBigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
   // 0x18: u32
   if (data?.options !== undefined) view.setUint32(24, Number(data.options), true);
   // 0x1c: pad4
@@ -3706,12 +3706,12 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGS2View {
   // 0x08: buffer
   set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: pointer
   set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -3746,9 +3746,9 @@ export function allocAPPX_KEY_INFO(data?: Partial<APPX_KEY_INFO>): Uint8Array {
   // 0x04: u32
   if (data?.keyIdLength !== undefined) view.setUint32(4, Number(data.keyIdLength), true);
   // 0x08: pointer
-  if (data?.key !== undefined) view.setBigUint64(8, data.key === null ? 0n : BigInt(util.toPointer(data.key)), true);
+  if (data?.key !== undefined) view.setBigUint64(8, data.key === null ? 0n : util.toBigInt(util.toPointer(data.key)), true);
   // 0x10: pointer
-  if (data?.keyId !== undefined) view.setBigUint64(16, data.keyId === null ? 0n : BigInt(util.toPointer(data.keyId)), true);
+  if (data?.keyId !== undefined) view.setBigUint64(16, data.keyId === null ? 0n : util.toBigInt(util.toPointer(data.keyId)), true);
   return buf;
 }
 
@@ -3796,12 +3796,12 @@ export class APPX_KEY_INFOView {
 
   // 0x08: pointer
   set key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set keyId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3824,7 +3824,7 @@ export function allocAPPX_ENCRYPTED_EXEMPTIONS(data?: Partial<APPX_ENCRYPTED_EXE
   if (data?.count !== undefined) view.setUint32(0, Number(data.count), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.plainTextFiles !== undefined) view.setBigUint64(8, data.plainTextFiles === null ? 0n : BigInt(util.toPointer(data.plainTextFiles)), true);
+  if (data?.plainTextFiles !== undefined) view.setBigUint64(8, data.plainTextFiles === null ? 0n : util.toBigInt(util.toPointer(data.plainTextFiles)), true);
   return buf;
 }
 
@@ -3860,7 +3860,7 @@ export class APPX_ENCRYPTED_EXEMPTIONSView {
 
   // 0x08: pointer
   set plainTextFiles(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3869,9 +3869,9 @@ export class APPX_ENCRYPTED_EXEMPTIONSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: number | bigint;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: number | bigint;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3880,9 +3880,9 @@ export function alloc_Anonymous_e__Struct(data?: Partial<_Anonymous_e__Struct>):
   const buf = new Uint8Array(sizeof_Anonymous_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: u64
-  if (data?.Alignment !== undefined) view.setBigUint64(0, BigInt(data.Alignment), true);
+  if (data?.Alignment !== undefined) view.setBigUint64(0, util.toBigInt(data.Alignment), true);
   // 0x08: u64
-  if (data?.Region !== undefined) view.setBigUint64(8, BigInt(data.Region), true);
+  if (data?.Region !== undefined) view.setBigUint64(8, util.toBigInt(data.Region), true);
   return buf;
 }
 
@@ -3897,23 +3897,23 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(0, true));
+  get Alignment(): number | bigint {
+    return this.view.getBigUint64(0, true);
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Region(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
-    this.view.setBigUint64(0, BigInt(value), true);
+  set Alignment(value: number | bigint) {
+    this.view.setBigUint64(0, util.toBigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Region(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -3933,9 +3933,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : util.toBigInt(util.toPointer(data.X)), true);
   return buf;
 }
 
@@ -3963,12 +3963,12 @@ export class _Anonymous_e__UnionView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -3986,7 +3986,7 @@ export function allocPACKAGE_VERSION(data?: Partial<PACKAGE_VERSION>): Uint8Arra
   const buf = new Uint8Array(sizeofPACKAGE_VERSION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : util.toBigInt(util.toPointer(data.Anonymous)), true);
   return buf;
 }
 
@@ -4008,7 +4008,7 @@ export class PACKAGE_VERSIONView {
 
   // 0x00: pointer
   set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4042,26 +4042,26 @@ export function allocPACKAGE_ID(data?: Partial<PACKAGE_ID>): Uint8Array {
   // 0x04: u32
   if (data?.processorArchitecture !== undefined) view.setUint32(4, Number(data.processorArchitecture), true);
   // 0x08: pointer
-  if (data?.version !== undefined) view.setBigUint64(8, data.version === null ? 0n : BigInt(util.toPointer(data.version)), true);
+  if (data?.version !== undefined) view.setBigUint64(8, data.version === null ? 0n : util.toBigInt(util.toPointer(data.version)), true);
   // 0x10: buffer
   if (data?.name !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.publisher !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.publisher);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: buffer
   if (data?.resourceId !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.resourceId);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
   }
   // 0x28: buffer
   if (data?.publisherId !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.publisherId);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
   }
   return buf;
 }
@@ -4128,31 +4128,31 @@ export class PACKAGE_IDView {
 
   // 0x08: pointer
   set version(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: buffer
   set name(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set publisher(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: buffer
   set resourceId(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer((this.buf as any)._f32)), true);
   }
 
   // 0x28: buffer
   set publisherId(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer((this.buf as any)._f40)), true);
   }
 }
 
@@ -4170,7 +4170,7 @@ export function alloc_PACKAGE_INFO_REFERENCE(data?: Partial<_PACKAGE_INFO_REFERE
   const buf = new Uint8Array(sizeof_PACKAGE_INFO_REFERENCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
+  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : util.toBigInt(util.toPointer(data.reserved)), true);
   return buf;
 }
 
@@ -4192,7 +4192,7 @@ export class _PACKAGE_INFO_REFERENCEView {
 
   // 0x00: pointer
   set reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4226,20 +4226,20 @@ export function allocPACKAGE_INFO(data?: Partial<PACKAGE_INFO>): Uint8Array {
   // 0x08: buffer
   if (data?.path !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.path);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.packageFullName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.packageFullName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.packageFamilyName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.packageFamilyName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   // 0x20: pointer
-  if (data?.packageId !== undefined) view.setBigUint64(32, data.packageId === null ? 0n : BigInt(util.toPointer(data.packageId)), true);
+  if (data?.packageId !== undefined) view.setBigUint64(32, data.packageId === null ? 0n : util.toBigInt(util.toPointer(data.packageId)), true);
   return buf;
 }
 
@@ -4300,24 +4300,24 @@ export class PACKAGE_INFOView {
   // 0x08: buffer
   set path(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set packageFullName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set packageFamilyName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 
   // 0x20: pointer
   set packageId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -4409,7 +4409,7 @@ export class PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__View {
   // 0x04: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 export type PSID = Deno.PointerValue | Uint8Array | null;
 
@@ -5159,9 +5159,9 @@ export function ReleasePackageVirtualizationContext(
 }
 
 export function DeactivatePackageVirtualizationContext(
-  cookie: Deno.PointerValue /* usize */,
+  cookie: number | bigint /* usize */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeactivatePackageVirtualizationContext(cookie);
+  return libKERNEL32_dll.DeactivatePackageVirtualizationContext(util.toBigInt(util.toPointer(cookie)));
 }
 
 export function DuplicatePackageVirtualizationContext(

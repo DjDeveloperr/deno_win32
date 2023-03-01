@@ -9177,9 +9177,9 @@ export function allocHTML_PAINTER_INFO(data?: Partial<HTML_PAINTER_INFO>): Uint8
   // 0x04: i32
   if (data?.lZOrder !== undefined) view.setInt32(4, Number(data.lZOrder), true);
   // 0x08: pointer
-  if (data?.iidDrawObject !== undefined) view.setBigUint64(8, data.iidDrawObject === null ? 0n : BigInt(util.toPointer(data.iidDrawObject)), true);
+  if (data?.iidDrawObject !== undefined) view.setBigUint64(8, data.iidDrawObject === null ? 0n : util.toBigInt(util.toPointer(data.iidDrawObject)), true);
   // 0x10: pointer
-  if (data?.rcExpand !== undefined) view.setBigUint64(16, data.rcExpand === null ? 0n : BigInt(util.toPointer(data.rcExpand)), true);
+  if (data?.rcExpand !== undefined) view.setBigUint64(16, data.rcExpand === null ? 0n : util.toBigInt(util.toPointer(data.rcExpand)), true);
   return buf;
 }
 
@@ -9227,12 +9227,12 @@ export class HTML_PAINTER_INFOView {
 
   // 0x08: pointer
   set iidDrawObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set rcExpand(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -9345,7 +9345,7 @@ export class HTML_PAINT_XFORMView {
   }
 }
 
-export type HRGN = Deno.PointerValue;
+export type HRGN = number | bigint;
 
 /**
  * Windows.Win32.Web.MsHtml.HTML_PAINT_DRAW_INFO (size: 24)
@@ -9365,11 +9365,11 @@ export function allocHTML_PAINT_DRAW_INFO(data?: Partial<HTML_PAINT_DRAW_INFO>):
   const buf = new Uint8Array(sizeofHTML_PAINT_DRAW_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rcViewport !== undefined) view.setBigUint64(0, data.rcViewport === null ? 0n : BigInt(util.toPointer(data.rcViewport)), true);
+  if (data?.rcViewport !== undefined) view.setBigUint64(0, data.rcViewport === null ? 0n : util.toBigInt(util.toPointer(data.rcViewport)), true);
   // 0x08: pointer
-  if (data?.hrgnUpdate !== undefined) view.setBigUint64(8, data.hrgnUpdate === null ? 0n : BigInt(util.toPointer(data.hrgnUpdate)), true);
+  if (data?.hrgnUpdate !== undefined) view.setBigUint64(8, data.hrgnUpdate === null ? 0n : util.toBigInt(util.toPointer(data.hrgnUpdate)), true);
   // 0x10: pointer
-  if (data?.xform !== undefined) view.setBigUint64(16, data.xform === null ? 0n : BigInt(util.toPointer(data.xform)), true);
+  if (data?.xform !== undefined) view.setBigUint64(16, data.xform === null ? 0n : util.toBigInt(util.toPointer(data.xform)), true);
   return buf;
 }
 
@@ -9403,17 +9403,17 @@ export class HTML_PAINT_DRAW_INFOView {
 
   // 0x00: pointer
   set rcViewport(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set hrgnUpdate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set xform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -9622,12 +9622,12 @@ export function allocDOCHOSTUIINFO(data?: Partial<DOCHOSTUIINFO>): Uint8Array {
   // 0x10: buffer
   if (data?.pchHostCss !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pchHostCss);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: buffer
   if (data?.pchHostNS !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pchHostNS);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
   }
   return buf;
 }
@@ -9691,13 +9691,13 @@ export class DOCHOSTUIINFOView {
   // 0x10: buffer
   set pchHostCss(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: buffer
   set pchHostNS(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer((this.buf as any)._f24)), true);
   }
 }
 
@@ -9785,19 +9785,19 @@ export function allocSTATURL(data?: Partial<STATURL>): Uint8Array {
   // 0x08: buffer
   if (data?.pwcsUrl !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwcsUrl);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   // 0x10: buffer
   if (data?.pwcsTitle !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwcsTitle);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
   }
   // 0x18: pointer
-  if (data?.ftLastVisited !== undefined) view.setBigUint64(24, data.ftLastVisited === null ? 0n : BigInt(util.toPointer(data.ftLastVisited)), true);
+  if (data?.ftLastVisited !== undefined) view.setBigUint64(24, data.ftLastVisited === null ? 0n : util.toBigInt(util.toPointer(data.ftLastVisited)), true);
   // 0x20: pointer
-  if (data?.ftLastUpdated !== undefined) view.setBigUint64(32, data.ftLastUpdated === null ? 0n : BigInt(util.toPointer(data.ftLastUpdated)), true);
+  if (data?.ftLastUpdated !== undefined) view.setBigUint64(32, data.ftLastUpdated === null ? 0n : util.toBigInt(util.toPointer(data.ftLastUpdated)), true);
   // 0x28: pointer
-  if (data?.ftExpires !== undefined) view.setBigUint64(40, data.ftExpires === null ? 0n : BigInt(util.toPointer(data.ftExpires)), true);
+  if (data?.ftExpires !== undefined) view.setBigUint64(40, data.ftExpires === null ? 0n : util.toBigInt(util.toPointer(data.ftExpires)), true);
   // 0x30: u32
   if (data?.dwFlags !== undefined) view.setUint32(48, Number(data.dwFlags), true);
   // 0x34: pad4
@@ -9868,28 +9868,28 @@ export class STATURLView {
   // 0x08: buffer
   set pwcsUrl(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 
   // 0x10: buffer
   set pwcsTitle(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer((this.buf as any)._f16)), true);
   }
 
   // 0x18: pointer
   set ftLastVisited(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x20: pointer
   set ftLastUpdated(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set ftExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u32
@@ -9900,7 +9900,7 @@ export class STATURLView {
   // 0x34: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = number | bigint;
 
 export type PSTR = Deno.PointerValue | Uint8Array | null;
 
@@ -9908,11 +9908,11 @@ export type BOOL = number;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = number | bigint;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = number | bigint;
 
 // Native Libraries
 
@@ -10136,19 +10136,19 @@ export function RatingObtainCancel(
 export function RatingObtainQuery(
   pszTargetUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: number /* u32 */,
-  fCallback: Deno.PointerValue /* isize */,
+  fCallback: number | bigint /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, util.toBigInt(util.toPointer(fCallback)), util.toPointer(phRatingObtainQuery)));
 }
 
 export function RatingObtainQueryW(
   pszTargetUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: number /* u32 */,
-  fCallback: Deno.PointerValue /* isize */,
+  fCallback: number | bigint /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery)));
+  return util.pointerFromFfi(libMSRATING_dll.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, util.toBigInt(util.toPointer(fCallback)), util.toPointer(phRatingObtainQuery)));
 }
 
 export function RatingSetupUI(

@@ -1,6 +1,7 @@
 import * as Wm from "../api/UI/WindowsAndMessaging.ts";
 import * as Gfx from "../api/Graphics/OpenGL.ts";
 import * as Gdi from "../api/Graphics/Gdi.ts";
+import { toNumber } from "../util.ts";
 
 function display() {
   Gfx.glClear(Gfx.GL_COLOR_BUFFER_BIT);
@@ -33,13 +34,13 @@ const cb = new Deno.UnsafeCallback(
       }
 
       case Wm.WM_SIZE: {
-        Gfx.glViewport(0, 0, Number(lParam) & 0xffff, Number(lParam) >> 16);
+        Gfx.glViewport(0, 0, toNumber(lParam) & 0xffff, toNumber(lParam) >> 16);
         Wm.PostMessageA(hWnd, Wm.WM_PAINT, null, null);
         return 0;
       }
 
       case Wm.WM_COMMAND: {
-        if ((Number(wParam) & 0xffff) === Wm.BN_CLICKED) {
+        if ((toNumber(wParam) & 0xffff) === Wm.BN_CLICKED) {
           if (lParam === button1) {
             Wm.SendMessageA(
               staticText1,
@@ -63,7 +64,7 @@ const cb = new Deno.UnsafeCallback(
         Deno.exit(0);
       }
     }
-    return Number(
+    return toNumber(
       Wm.DefWindowProcA(
         hWnd,
         msg,

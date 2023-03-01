@@ -53,7 +53,7 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : util.toBigInt(util.toPointer(data.fmtid)), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -85,7 +85,7 @@ export class PROPERTYKEYView {
 
   // 0x00: pointer
   set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -425,9 +425,9 @@ export function allocCONTENT_MISSING_EVENT_DATA(data?: Partial<CONTENT_MISSING_E
   if (data?.cbContentMissingEventData !== undefined) view.setUint32(0, Number(data.cbContentMissingEventData), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ApplicationId !== undefined) view.setBigUint64(8, data.ApplicationId === null ? 0n : BigInt(util.toPointer(data.ApplicationId)), true);
+  if (data?.ApplicationId !== undefined) view.setBigUint64(8, data.ApplicationId === null ? 0n : util.toBigInt(util.toPointer(data.ApplicationId)), true);
   // 0x10: pointer
-  if (data?.EndpointId !== undefined) view.setBigUint64(16, data.EndpointId === null ? 0n : BigInt(util.toPointer(data.EndpointId)), true);
+  if (data?.EndpointId !== undefined) view.setBigUint64(16, data.EndpointId === null ? 0n : util.toBigInt(util.toPointer(data.EndpointId)), true);
   // 0x18: u32
   if (data?.ContentId !== undefined) view.setUint32(24, Number(data.ContentId), true);
   // 0x1c: pad4
@@ -479,12 +479,12 @@ export class CONTENT_MISSING_EVENT_DATAView {
 
   // 0x08: pointer
   set ApplicationId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set EndpointId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -522,15 +522,15 @@ export function allocAPPLICATION_EVENT_DATA(data?: Partial<APPLICATION_EVENT_DAT
   if (data?.cbApplicationEventData !== undefined) view.setUint32(0, Number(data.cbApplicationEventData), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ApplicationId !== undefined) view.setBigUint64(8, data.ApplicationId === null ? 0n : BigInt(util.toPointer(data.ApplicationId)), true);
+  if (data?.ApplicationId !== undefined) view.setBigUint64(8, data.ApplicationId === null ? 0n : util.toBigInt(util.toPointer(data.ApplicationId)), true);
   // 0x10: pointer
-  if (data?.EndpointId !== undefined) view.setBigUint64(16, data.EndpointId === null ? 0n : BigInt(util.toPointer(data.EndpointId)), true);
+  if (data?.EndpointId !== undefined) view.setBigUint64(16, data.EndpointId === null ? 0n : util.toBigInt(util.toPointer(data.EndpointId)), true);
   // 0x18: u32
   if (data?.dwEventId !== undefined) view.setUint32(24, Number(data.dwEventId), true);
   // 0x1c: u32
   if (data?.cbEventData !== undefined) view.setUint32(28, Number(data.cbEventData), true);
   // 0x20: pointer
-  if (data?.bEventData !== undefined) view.setBigUint64(32, data.bEventData === null ? 0n : BigInt(util.toPointer(data.bEventData)), true);
+  if (data?.bEventData !== undefined) view.setBigUint64(32, data.bEventData === null ? 0n : util.toBigInt(util.toPointer(data.bEventData)), true);
   return buf;
 }
 
@@ -588,12 +588,12 @@ export class APPLICATION_EVENT_DATAView {
 
   // 0x08: pointer
   set ApplicationId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set EndpointId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32
@@ -608,7 +608,7 @@ export class APPLICATION_EVENT_DATAView {
 
   // 0x20: pointer
   set bEventData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -631,7 +631,7 @@ export function allocDEVICE_USER_CHANGE_EVENT_DATA(data?: Partial<DEVICE_USER_CH
   if (data?.cbDeviceUserChangeEventData !== undefined) view.setUint32(0, Number(data.cbDeviceUserChangeEventData), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.wszUser !== undefined) view.setBigUint64(8, data.wszUser === null ? 0n : BigInt(util.toPointer(data.wszUser)), true);
+  if (data?.wszUser !== undefined) view.setBigUint64(8, data.wszUser === null ? 0n : util.toBigInt(util.toPointer(data.wszUser)), true);
   return buf;
 }
 
@@ -667,7 +667,7 @@ export class DEVICE_USER_CHANGE_EVENT_DATAView {
 
   // 0x08: pointer
   set wszUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -747,7 +747,7 @@ export function allocEVENT_DATA_HEADER(data?: Partial<EVENT_DATA_HEADER>): Uint8
   if (data?.cbEventDataHeader !== undefined) view.setUint32(0, Number(data.cbEventDataHeader), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.guidEventType !== undefined) view.setBigUint64(8, data.guidEventType === null ? 0n : BigInt(util.toPointer(data.guidEventType)), true);
+  if (data?.guidEventType !== undefined) view.setBigUint64(8, data.guidEventType === null ? 0n : util.toBigInt(util.toPointer(data.guidEventType)), true);
   // 0x10: u32
   if (data?.dwVersion !== undefined) view.setUint32(16, Number(data.dwVersion), true);
   // 0x14: u32
@@ -797,7 +797,7 @@ export class EVENT_DATA_HEADERView {
 
   // 0x08: pointer
   set guidEventType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32

@@ -2165,12 +2165,12 @@ export function allocCSEDB_RSTMAPW(data?: Partial<CSEDB_RSTMAPW>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszDatabaseName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszDatabaseName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: buffer
   if (data?.pwszNewDatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszNewDatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
   }
   return buf;
 }
@@ -2200,13 +2200,13 @@ export class CSEDB_RSTMAPWView {
   // 0x00: buffer
   set pwszDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: buffer
   set pwszNewDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer((this.buf as any)._f8)), true);
   }
 }
 
@@ -2229,7 +2229,7 @@ export function allocCERTTRANSBLOB(data?: Partial<CERTTRANSBLOB>): Uint8Array {
   if (data?.cb !== undefined) view.setUint32(0, Number(data.cb), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pb !== undefined) view.setBigUint64(8, data.pb === null ? 0n : BigInt(util.toPointer(data.pb)), true);
+  if (data?.pb !== undefined) view.setBigUint64(8, data.pb === null ? 0n : util.toBigInt(util.toPointer(data.pb)), true);
   return buf;
 }
 
@@ -2265,7 +2265,7 @@ export class CERTTRANSBLOBView {
 
   // 0x08: pointer
   set pb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -2298,7 +2298,7 @@ export function allocCERTVIEWRESTRICTION(data?: Partial<CERTVIEWRESTRICTION>): U
   if (data?.SortOrder !== undefined) view.setInt32(8, Number(data.SortOrder), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pbValue !== undefined) view.setBigUint64(16, data.pbValue === null ? 0n : BigInt(util.toPointer(data.pbValue)), true);
+  if (data?.pbValue !== undefined) view.setBigUint64(16, data.pbValue === null ? 0n : util.toBigInt(util.toPointer(data.pbValue)), true);
   // 0x18: u32
   if (data?.cbValue !== undefined) view.setUint32(24, Number(data.cbValue), true);
   // 0x1c: pad4
@@ -2364,7 +2364,7 @@ export class CERTVIEWRESTRICTIONView {
 
   // 0x10: pointer
   set pbValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: u32

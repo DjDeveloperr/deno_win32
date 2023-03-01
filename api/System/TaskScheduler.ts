@@ -389,13 +389,13 @@ export function allocTRIGGER_TYPE_UNION(data?: Partial<TRIGGER_TYPE_UNION>): Uin
   const buf = new Uint8Array(sizeofTRIGGER_TYPE_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Daily !== undefined) view.setBigUint64(0, data.Daily === null ? 0n : BigInt(util.toPointer(data.Daily)), true);
+  if (data?.Daily !== undefined) view.setBigUint64(0, data.Daily === null ? 0n : util.toBigInt(util.toPointer(data.Daily)), true);
   // 0x08: pointer
-  if (data?.Weekly !== undefined) view.setBigUint64(8, data.Weekly === null ? 0n : BigInt(util.toPointer(data.Weekly)), true);
+  if (data?.Weekly !== undefined) view.setBigUint64(8, data.Weekly === null ? 0n : util.toBigInt(util.toPointer(data.Weekly)), true);
   // 0x10: pointer
-  if (data?.MonthlyDate !== undefined) view.setBigUint64(16, data.MonthlyDate === null ? 0n : BigInt(util.toPointer(data.MonthlyDate)), true);
+  if (data?.MonthlyDate !== undefined) view.setBigUint64(16, data.MonthlyDate === null ? 0n : util.toBigInt(util.toPointer(data.MonthlyDate)), true);
   // 0x18: pointer
-  if (data?.MonthlyDOW !== undefined) view.setBigUint64(24, data.MonthlyDOW === null ? 0n : BigInt(util.toPointer(data.MonthlyDOW)), true);
+  if (data?.MonthlyDOW !== undefined) view.setBigUint64(24, data.MonthlyDOW === null ? 0n : util.toBigInt(util.toPointer(data.MonthlyDOW)), true);
   return buf;
 }
 
@@ -435,22 +435,22 @@ export class TRIGGER_TYPE_UNIONView {
 
   // 0x00: pointer
   set Daily(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Weekly(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set MonthlyDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set MonthlyDOW(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -529,7 +529,7 @@ export function allocTASK_TRIGGER(data?: Partial<TASK_TRIGGER>): Uint8Array {
   if (data?.TriggerType !== undefined) view.setInt32(32, Number(data.TriggerType), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Type !== undefined) view.setBigUint64(40, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(40, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   // 0x30: u16
   if (data?.Reserved2 !== undefined) view.setUint16(48, Number(data.Reserved2), true);
   // 0x32: u16
@@ -712,7 +712,7 @@ export class TASK_TRIGGERView {
 
   // 0x28: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: u16

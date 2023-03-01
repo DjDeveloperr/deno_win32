@@ -39,7 +39,7 @@ export function allocWSB_OB_STATUS_ENTRY_VALUE_TYPE_PAIR(data?: Partial<WSB_OB_S
   // 0x00: buffer
   if (data?.m_wszObStatusEntryPairValue !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.m_wszObStatusEntryPairValue);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: i32
   if (data?.m_ObStatusEntryPairType !== undefined) view.setInt32(8, Number(data.m_ObStatusEntryPairType), true);
@@ -73,7 +73,7 @@ export class WSB_OB_STATUS_ENTRY_VALUE_TYPE_PAIRView {
   // 0x00: buffer
   set m_wszObStatusEntryPairValue(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: i32
@@ -114,7 +114,7 @@ export function allocWSB_OB_STATUS_ENTRY(data?: Partial<WSB_OB_STATUS_ENTRY>): U
   // 0x0c: u32
   if (data?.m_cValueTypePair !== undefined) view.setUint32(12, Number(data.m_cValueTypePair), true);
   // 0x10: pointer
-  if (data?.m_rgValueTypePair !== undefined) view.setBigUint64(16, data.m_rgValueTypePair === null ? 0n : BigInt(util.toPointer(data.m_rgValueTypePair)), true);
+  if (data?.m_rgValueTypePair !== undefined) view.setBigUint64(16, data.m_rgValueTypePair === null ? 0n : util.toBigInt(util.toPointer(data.m_rgValueTypePair)), true);
   return buf;
 }
 
@@ -176,7 +176,7 @@ export class WSB_OB_STATUS_ENTRYView {
 
   // 0x10: pointer
   set m_rgValueTypePair(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -198,12 +198,12 @@ export function allocWSB_OB_STATUS_INFO(data?: Partial<WSB_OB_STATUS_INFO>): Uin
   const buf = new Uint8Array(sizeofWSB_OB_STATUS_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_guidSnapinId !== undefined) view.setBigUint64(0, data.m_guidSnapinId === null ? 0n : BigInt(util.toPointer(data.m_guidSnapinId)), true);
+  if (data?.m_guidSnapinId !== undefined) view.setBigUint64(0, data.m_guidSnapinId === null ? 0n : util.toBigInt(util.toPointer(data.m_guidSnapinId)), true);
   // 0x08: u32
   if (data?.m_cStatusEntry !== undefined) view.setUint32(8, Number(data.m_cStatusEntry), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.m_rgStatusEntry !== undefined) view.setBigUint64(16, data.m_rgStatusEntry === null ? 0n : BigInt(util.toPointer(data.m_rgStatusEntry)), true);
+  if (data?.m_rgStatusEntry !== undefined) view.setBigUint64(16, data.m_rgStatusEntry === null ? 0n : util.toBigInt(util.toPointer(data.m_rgStatusEntry)), true);
   return buf;
 }
 
@@ -238,7 +238,7 @@ export class WSB_OB_STATUS_INFOView {
 
   // 0x00: pointer
   set m_guidSnapinId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -250,7 +250,7 @@ export class WSB_OB_STATUS_INFOView {
 
   // 0x10: pointer
   set m_rgStatusEntry(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -280,16 +280,16 @@ export function allocWSB_OB_REGISTRATION_INFO(data?: Partial<WSB_OB_REGISTRATION
   // 0x00: buffer
   if (data?.m_wszResourceDLL !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.m_wszResourceDLL);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
   }
   // 0x08: pointer
-  if (data?.m_guidSnapinId !== undefined) view.setBigUint64(8, data.m_guidSnapinId === null ? 0n : BigInt(util.toPointer(data.m_guidSnapinId)), true);
+  if (data?.m_guidSnapinId !== undefined) view.setBigUint64(8, data.m_guidSnapinId === null ? 0n : util.toBigInt(util.toPointer(data.m_guidSnapinId)), true);
   // 0x10: u32
   if (data?.m_dwProviderName !== undefined) view.setUint32(16, Number(data.m_dwProviderName), true);
   // 0x14: u32
   if (data?.m_dwProviderIcon !== undefined) view.setUint32(20, Number(data.m_dwProviderIcon), true);
   // 0x18: pointer
-  if (data?.m_bSupportsRemoting !== undefined) view.setBigUint64(24, data.m_bSupportsRemoting === null ? 0n : BigInt(util.toPointer(data.m_bSupportsRemoting)), true);
+  if (data?.m_bSupportsRemoting !== undefined) view.setBigUint64(24, data.m_bSupportsRemoting === null ? 0n : util.toBigInt(util.toPointer(data.m_bSupportsRemoting)), true);
   return buf;
 }
 
@@ -334,12 +334,12 @@ export class WSB_OB_REGISTRATION_INFOView {
   // 0x00: buffer
   set m_wszResourceDLL(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer((this.buf as any)._f0)), true);
   }
 
   // 0x08: pointer
   set m_guidSnapinId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: u32
@@ -354,7 +354,7 @@ export class WSB_OB_REGISTRATION_INFOView {
 
   // 0x18: pointer
   set m_bSupportsRemoting(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

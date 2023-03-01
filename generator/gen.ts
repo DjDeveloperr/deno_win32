@@ -107,7 +107,7 @@ function typeToJS(ty: string, result = false) {
     case "i64":
     case "isize":
     case "usize":
-      return "Deno.PointerValue";
+      return "number | bigint";
     case "f32":
     case "f64":
       return "number";
@@ -435,13 +435,13 @@ for (const api in win32) {
 
             case "u64": {
               content +=
-                `view.setBigUint64(${offset}, BigInt(data.${field.name}), true);\n`;
+                `view.setBigUint64(${offset}, util.toBigInt(data.${field.name}), true);\n`;
               break;
             }
 
             case "i64": {
               content +=
-                `view.setBigInt64(${offset}, BigInt(data.${field.name}), true);\n`;
+                `view.setBigInt64(${offset}, util.toBigInt(data.${field.name}), true);\n`;
               break;
             }
 
@@ -458,26 +458,26 @@ for (const api in win32) {
                 special ? (special.toFfi + "(") : ""
               }data.${field.name}${special ? ")" : ""};\n`;
               content +=
-                `    view.setBigUint64(${offset}, (buf as any)._f${offset} === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f${offset})), true);\n`;
+                `    view.setBigUint64(${offset}, (buf as any)._f${offset} === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f${offset})), true);\n`;
               content += "  }\n";
               break;
             }
 
             case "pointer": {
               content +=
-                `view.setBigUint64(${offset}, data.${field.name} === null ? 0n : BigInt(util.toPointer(data.${field.name})), true);\n`;
+                `view.setBigUint64(${offset}, data.${field.name} === null ? 0n : util.toBigInt(util.toPointer(data.${field.name})), true);\n`;
               break;
             }
 
             case "isize": {
               content +=
-                `view.setBigInt64(${offset}, BigInt(data.${field.name}), true);\n`;
+                `view.setBigInt64(${offset}, util.toBigInt(data.${field.name}), true);\n`;
               break;
             }
 
             case "usize": {
               content +=
-                `view.setBigUint64(${offset}, BigInt(data.${field.name}), true);\n`;
+                `view.setBigUint64(${offset}, util.toBigInt(data.${field.name}), true);\n`;
               break;
             }
 
@@ -545,13 +545,12 @@ for (const api in win32) {
 
             case "u64": {
               content +=
-                `    return Number(this.view.getBigUint64(${offset}, true));\n`;
+                `    return this.view.getBigUint64(${offset}, true);\n`;
               break;
             }
 
             case "i64": {
-              content +=
-                `    return Number(this.view.getBigInt64(${offset}, true));\n`;
+              content += `    return this.view.getBigInt64(${offset}, true);\n`;
               break;
             }
 
@@ -576,14 +575,13 @@ for (const api in win32) {
             }
 
             case "isize": {
-              content +=
-                `    return Number(this.view.getBigInt64(${offset}, true));\n`;
+              content += `    return this.view.getBigInt64(${offset}, true);\n`;
               break;
             }
 
             case "usize": {
               content +=
-                `    return Number(this.view.getBigUint64(${offset}, true));\n`;
+                `    return this.view.getBigUint64(${offset}, true);\n`;
               break;
             }
 
@@ -644,13 +642,13 @@ for (const api in win32) {
 
             case "u64": {
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(value), true);\n`;
+                `    this.view.setBigUint64(${offset}, util.toBigInt(value), true);\n`;
               break;
             }
 
             case "i64": {
               content +=
-                `    this.view.setBigInt64(${offset}, BigInt(value), true);\n`;
+                `    this.view.setBigInt64(${offset}, util.toBigInt(value), true);\n`;
               break;
             }
 
@@ -664,25 +662,25 @@ for (const api in win32) {
               // Attach the buffer to the view so it doesn't get GC'd
               content += `    (this.buf as any)._f${offset} = value;\n`;
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer((this.buf as any)._f${offset})), true);\n`;
+                `    this.view.setBigUint64(${offset}, util.toBigInt(util.toPointer((this.buf as any)._f${offset})), true);\n`;
               break;
             }
 
             case "pointer": {
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer(value)), true);\n`;
+                `    this.view.setBigUint64(${offset}, util.toBigInt(util.toPointer(value)), true);\n`;
               break;
             }
 
             case "isize": {
               content +=
-                `    this.view.setBigInt64(${offset}, BigInt(value), true);\n`;
+                `    this.view.setBigInt64(${offset}, util.toBigInt(value), true);\n`;
               break;
             }
 
             case "usize": {
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(value), true);\n`;
+                `    this.view.setBigUint64(${offset}, util.toBigInt(value), true);\n`;
               break;
             }
 
@@ -777,6 +775,12 @@ for (const api in win32) {
         if (ffi === "pointer") {
           return `util.toPointer(${jsify(e[0])})`;
         }
+        if (
+          ffi === "isize" || ffi === "usize" || ffi === "u64" ||
+          ffi === "i64"
+        ) {
+          return `util.toBigInt(util.toPointer(${jsify(e[0])}))`;
+        }
         return jsify(e[0]);
       }).join(", ")
     })${retSpecial || retFfi === "pointer" ? ")" : ""};\n`;
@@ -798,6 +802,12 @@ for (const api in win32) {
           const ffi = typeToFFI(e[1]);
           if (ffi === "pointer") {
             return `util.toPointer(${jsify(e[0])})`;
+          }
+          if (
+            ffi === "isize" || ffi === "usize" || ffi === "u64" ||
+            ffi === "i64"
+          ) {
+            return `util.toBigInt(util.toPointer(${jsify(e[0])}))`;
           }
           return jsify(e[0]);
         }).join(", ")

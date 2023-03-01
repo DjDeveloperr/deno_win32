@@ -138,17 +138,17 @@ export const InstanceAggregateStandardInformation = 3;
 
 // Structs
 
-export type HFILTER = Deno.PointerValue;
+export type HFILTER = number | bigint;
 
-export type HFILTER_INSTANCE = Deno.PointerValue;
+export type HFILTER_INSTANCE = number | bigint;
 
-export type FilterFindHandle = Deno.PointerValue;
+export type FilterFindHandle = number | bigint;
 
-export type FilterVolumeFindHandle = Deno.PointerValue;
+export type FilterVolumeFindHandle = number | bigint;
 
-export type FilterInstanceFindHandle = Deno.PointerValue;
+export type FilterInstanceFindHandle = number | bigint;
 
-export type FilterVolumeInstanceFindHandle = Deno.PointerValue;
+export type FilterVolumeInstanceFindHandle = number | bigint;
 
 /**
  * Windows.Win32.Storage.InstallableFileSystems.FILTER_FULL_INFORMATION (size: 24)
@@ -181,7 +181,7 @@ export function allocFILTER_FULL_INFORMATION(data?: Partial<FILTER_FULL_INFORMAT
   if (data?.FilterNameLength !== undefined) view.setUint16(12, Number(data.FilterNameLength), true);
   // 0x0e: pad2
   // 0x10: pointer
-  if (data?.FilterNameBuffer !== undefined) view.setBigUint64(16, data.FilterNameBuffer === null ? 0n : BigInt(util.toPointer(data.FilterNameBuffer)), true);
+  if (data?.FilterNameBuffer !== undefined) view.setBigUint64(16, data.FilterNameBuffer === null ? 0n : util.toBigInt(util.toPointer(data.FilterNameBuffer)), true);
   return buf;
 }
 
@@ -247,7 +247,7 @@ export class FILTER_FULL_INFORMATIONView {
 
   // 0x10: pointer
   set FilterNameBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -434,9 +434,9 @@ export function alloc_Type_e__Union(data?: Partial<_Type_e__Union>): Uint8Array 
   const buf = new Uint8Array(sizeof_Type_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MiniFilter !== undefined) view.setBigUint64(0, data.MiniFilter === null ? 0n : BigInt(util.toPointer(data.MiniFilter)), true);
+  if (data?.MiniFilter !== undefined) view.setBigUint64(0, data.MiniFilter === null ? 0n : util.toBigInt(util.toPointer(data.MiniFilter)), true);
   // 0x08: pointer
-  if (data?.LegacyFilter !== undefined) view.setBigUint64(8, data.LegacyFilter === null ? 0n : BigInt(util.toPointer(data.LegacyFilter)), true);
+  if (data?.LegacyFilter !== undefined) view.setBigUint64(8, data.LegacyFilter === null ? 0n : util.toBigInt(util.toPointer(data.LegacyFilter)), true);
   return buf;
 }
 
@@ -464,12 +464,12 @@ export class _Type_e__UnionView {
 
   // 0x00: pointer
   set MiniFilter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set LegacyFilter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -495,7 +495,7 @@ export function allocFILTER_AGGREGATE_BASIC_INFORMATION(data?: Partial<FILTER_AG
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   return buf;
 }
 
@@ -537,7 +537,7 @@ export class FILTER_AGGREGATE_BASIC_INFORMATIONView {
 
   // 0x08: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -563,7 +563,7 @@ export function allocFILTER_AGGREGATE_STANDARD_INFORMATION(data?: Partial<FILTER
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   return buf;
 }
 
@@ -605,7 +605,7 @@ export class FILTER_AGGREGATE_STANDARD_INFORMATIONView {
 
   // 0x08: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -628,7 +628,7 @@ export function allocFILTER_VOLUME_BASIC_INFORMATION(data?: Partial<FILTER_VOLUM
   if (data?.FilterVolumeNameLength !== undefined) view.setUint16(0, Number(data.FilterVolumeNameLength), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.FilterVolumeName !== undefined) view.setBigUint64(8, data.FilterVolumeName === null ? 0n : BigInt(util.toPointer(data.FilterVolumeName)), true);
+  if (data?.FilterVolumeName !== undefined) view.setBigUint64(8, data.FilterVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.FilterVolumeName)), true);
   return buf;
 }
 
@@ -664,7 +664,7 @@ export class FILTER_VOLUME_BASIC_INFORMATIONView {
 
   // 0x08: pointer
   set FilterVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -703,7 +703,7 @@ export function allocFILTER_VOLUME_STANDARD_INFORMATION(data?: Partial<FILTER_VO
   if (data?.FilterVolumeNameLength !== undefined) view.setUint16(16, Number(data.FilterVolumeNameLength), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.FilterVolumeName !== undefined) view.setBigUint64(24, data.FilterVolumeName === null ? 0n : BigInt(util.toPointer(data.FilterVolumeName)), true);
+  if (data?.FilterVolumeName !== undefined) view.setBigUint64(24, data.FilterVolumeName === null ? 0n : util.toBigInt(util.toPointer(data.FilterVolumeName)), true);
   return buf;
 }
 
@@ -779,7 +779,7 @@ export class FILTER_VOLUME_STANDARD_INFORMATIONView {
 
   // 0x18: pointer
   set FilterVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1128,7 +1128,7 @@ export function allocINSTANCE_AGGREGATE_STANDARD_INFORMATION(data?: Partial<INST
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : util.toBigInt(util.toPointer(data.Type)), true);
   return buf;
 }
 
@@ -1170,7 +1170,7 @@ export class INSTANCE_AGGREGATE_STANDARD_INFORMATIONView {
 
   // 0x08: pointer
   set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1181,7 +1181,7 @@ export interface FILTER_MESSAGE_HEADER {
   /** u32 */
   ReplyLength: number;
   /** u64 */
-  MessageId: Deno.PointerValue;
+  MessageId: number | bigint;
 }
 
 export const sizeofFILTER_MESSAGE_HEADER = 16;
@@ -1193,7 +1193,7 @@ export function allocFILTER_MESSAGE_HEADER(data?: Partial<FILTER_MESSAGE_HEADER>
   if (data?.ReplyLength !== undefined) view.setUint32(0, Number(data.ReplyLength), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.MessageId !== undefined) view.setBigUint64(8, BigInt(data.MessageId), true);
+  if (data?.MessageId !== undefined) view.setBigUint64(8, util.toBigInt(data.MessageId), true);
   return buf;
 }
 
@@ -1215,8 +1215,8 @@ export class FILTER_MESSAGE_HEADERView {
   // 0x04: pad4
 
   // 0x08: u64
-  get MessageId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get MessageId(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u32
@@ -1227,8 +1227,8 @@ export class FILTER_MESSAGE_HEADERView {
   // 0x04: pad4
 
   // 0x08: u64
-  set MessageId(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set MessageId(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -1241,7 +1241,7 @@ export interface FILTER_REPLY_HEADER {
   /** Windows.Win32.Foundation.NTSTATUS */
   Status: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  MessageId: Deno.PointerValue;
+  MessageId: number | bigint;
 }
 
 export const sizeofFILTER_REPLY_HEADER = 16;
@@ -1250,9 +1250,9 @@ export function allocFILTER_REPLY_HEADER(data?: Partial<FILTER_REPLY_HEADER>): U
   const buf = new Uint8Array(sizeofFILTER_REPLY_HEADER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Status !== undefined) view.setBigUint64(0, data.Status === null ? 0n : BigInt(util.toPointer(data.Status)), true);
+  if (data?.Status !== undefined) view.setBigUint64(0, data.Status === null ? 0n : util.toBigInt(util.toPointer(data.Status)), true);
   // 0x08: u64
-  if (data?.MessageId !== undefined) view.setBigUint64(8, BigInt(data.MessageId), true);
+  if (data?.MessageId !== undefined) view.setBigUint64(8, util.toBigInt(data.MessageId), true);
   return buf;
 }
 
@@ -1273,18 +1273,18 @@ export class FILTER_REPLY_HEADERView {
   }
 
   // 0x08: u64
-  get MessageId(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get MessageId(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: pointer
   set Status(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u64
-  set MessageId(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set MessageId(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -1292,7 +1292,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array | null;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

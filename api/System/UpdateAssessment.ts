@@ -190,30 +190,30 @@ export function allocOSUpdateAssessment(data?: Partial<OSUpdateAssessment>): Uin
   if (data?.isEndOfSupport !== undefined) view.setInt32(0, Number(data.isEndOfSupport), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.assessmentForCurrent !== undefined) view.setBigUint64(8, data.assessmentForCurrent === null ? 0n : BigInt(util.toPointer(data.assessmentForCurrent)), true);
+  if (data?.assessmentForCurrent !== undefined) view.setBigUint64(8, data.assessmentForCurrent === null ? 0n : util.toBigInt(util.toPointer(data.assessmentForCurrent)), true);
   // 0x10: pointer
-  if (data?.assessmentForUpToDate !== undefined) view.setBigUint64(16, data.assessmentForUpToDate === null ? 0n : BigInt(util.toPointer(data.assessmentForUpToDate)), true);
+  if (data?.assessmentForUpToDate !== undefined) view.setBigUint64(16, data.assessmentForUpToDate === null ? 0n : util.toBigInt(util.toPointer(data.assessmentForUpToDate)), true);
   // 0x18: i32
   if (data?.securityStatus !== undefined) view.setInt32(24, Number(data.securityStatus), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.assessmentTime !== undefined) view.setBigUint64(32, data.assessmentTime === null ? 0n : BigInt(util.toPointer(data.assessmentTime)), true);
+  if (data?.assessmentTime !== undefined) view.setBigUint64(32, data.assessmentTime === null ? 0n : util.toBigInt(util.toPointer(data.assessmentTime)), true);
   // 0x28: pointer
-  if (data?.releaseInfoTime !== undefined) view.setBigUint64(40, data.releaseInfoTime === null ? 0n : BigInt(util.toPointer(data.releaseInfoTime)), true);
+  if (data?.releaseInfoTime !== undefined) view.setBigUint64(40, data.releaseInfoTime === null ? 0n : util.toBigInt(util.toPointer(data.releaseInfoTime)), true);
   // 0x30: buffer
   if (data?.currentOSBuild !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.currentOSBuild);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
   }
   // 0x38: pointer
-  if (data?.currentOSReleaseTime !== undefined) view.setBigUint64(56, data.currentOSReleaseTime === null ? 0n : BigInt(util.toPointer(data.currentOSReleaseTime)), true);
+  if (data?.currentOSReleaseTime !== undefined) view.setBigUint64(56, data.currentOSReleaseTime === null ? 0n : util.toBigInt(util.toPointer(data.currentOSReleaseTime)), true);
   // 0x40: buffer
   if (data?.upToDateOSBuild !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.upToDateOSBuild);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : util.toBigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
   }
   // 0x48: pointer
-  if (data?.upToDateOSReleaseTime !== undefined) view.setBigUint64(72, data.upToDateOSReleaseTime === null ? 0n : BigInt(util.toPointer(data.upToDateOSReleaseTime)), true);
+  if (data?.upToDateOSReleaseTime !== undefined) view.setBigUint64(72, data.upToDateOSReleaseTime === null ? 0n : util.toBigInt(util.toPointer(data.upToDateOSReleaseTime)), true);
   return buf;
 }
 
@@ -298,12 +298,12 @@ export class OSUpdateAssessmentView {
 
   // 0x08: pointer
   set assessmentForCurrent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set assessmentForUpToDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: i32
@@ -315,34 +315,34 @@ export class OSUpdateAssessmentView {
 
   // 0x20: pointer
   set assessmentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(32, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x28: pointer
   set releaseInfoTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(40, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x30: buffer
   set currentOSBuild(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, util.toBigInt(util.toPointer((this.buf as any)._f48)), true);
   }
 
   // 0x38: pointer
   set currentOSReleaseTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(56, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x40: buffer
   set upToDateOSBuild(value: Uint8Array | Deno.PointerValue | null) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, util.toBigInt(util.toPointer((this.buf as any)._f64)), true);
   }
 
   // 0x48: pointer
   set upToDateOSReleaseTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(72, util.toBigInt(util.toPointer(value)), true);
   }
 }
 

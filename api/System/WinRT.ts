@@ -110,7 +110,7 @@ export const XAML_REFERENCETRACKER_DISCONNECT_SUSPEND = 1;
  */
 export interface EventRegistrationToken {
   /** i64 */
-  value: Deno.PointerValue;
+  value: number | bigint;
 }
 
 export const sizeofEventRegistrationToken = 8;
@@ -119,7 +119,7 @@ export function allocEventRegistrationToken(data?: Partial<EventRegistrationToke
   const buf = new Uint8Array(sizeofEventRegistrationToken);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.value !== undefined) view.setBigInt64(0, BigInt(data.value), true);
+  if (data?.value !== undefined) view.setBigInt64(0, util.toBigInt(data.value), true);
   return buf;
 }
 
@@ -134,13 +134,13 @@ export class EventRegistrationTokenView {
   }
 
   // 0x00: i64
-  get value(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get value(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x00: i64
-  set value(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set value(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 }
 
@@ -157,7 +157,7 @@ export interface HSTRING_HEADER {
   /** u32 */
   padding2: number;
   /** isize */
-  data: Deno.PointerValue;
+  data: number | bigint;
 }
 
 export const sizeofHSTRING_HEADER = 24;
@@ -174,7 +174,7 @@ export function allocHSTRING_HEADER(data?: Partial<HSTRING_HEADER>): Uint8Array 
   // 0x0c: u32
   if (data?.padding2 !== undefined) view.setUint32(12, Number(data.padding2), true);
   // 0x10: isize
-  if (data?.data !== undefined) view.setBigInt64(16, BigInt(data.data), true);
+  if (data?.data !== undefined) view.setBigInt64(16, util.toBigInt(data.data), true);
   return buf;
 }
 
@@ -209,8 +209,8 @@ export class HSTRING_HEADERView {
   }
 
   // 0x10: isize
-  get data(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get data(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x00: u32
@@ -234,18 +234,18 @@ export class HSTRING_HEADERView {
   }
 
   // 0x10: isize
-  set data(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set data(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 }
 
-export type HSTRING = Deno.PointerValue;
+export type HSTRING = number | bigint;
 
-export type HSTRING_BUFFER = Deno.PointerValue;
+export type HSTRING_BUFFER = number | bigint;
 
-export type ROPARAMIIDHANDLE = Deno.PointerValue;
+export type ROPARAMIIDHANDLE = number | bigint;
 
-export type APARTMENT_SHUTDOWN_REGISTRATION_COOKIE = Deno.PointerValue;
+export type APARTMENT_SHUTDOWN_REGISTRATION_COOKIE = number | bigint;
 
 /**
  * Windows.Win32.System.WinRT.ServerInformation (size: 16)
@@ -256,7 +256,7 @@ export interface ServerInformation {
   /** u32 */
   dwServerTid: number;
   /** u64 */
-  ui64ServerAddress: Deno.PointerValue;
+  ui64ServerAddress: number | bigint;
 }
 
 export const sizeofServerInformation = 16;
@@ -269,7 +269,7 @@ export function allocServerInformation(data?: Partial<ServerInformation>): Uint8
   // 0x04: u32
   if (data?.dwServerTid !== undefined) view.setUint32(4, Number(data.dwServerTid), true);
   // 0x08: u64
-  if (data?.ui64ServerAddress !== undefined) view.setBigUint64(8, BigInt(data.ui64ServerAddress), true);
+  if (data?.ui64ServerAddress !== undefined) view.setBigUint64(8, util.toBigInt(data.ui64ServerAddress), true);
   return buf;
 }
 
@@ -294,8 +294,8 @@ export class ServerInformationView {
   }
 
   // 0x08: u64
-  get ui64ServerAddress(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ui64ServerAddress(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x00: u32
@@ -309,8 +309,8 @@ export class ServerInformationView {
   }
 
   // 0x08: u64
-  set ui64ServerAddress(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ui64ServerAddress(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 }
 
@@ -572,15 +572,15 @@ export function allocPDF_RENDER_PARAMS(data?: Partial<PDF_RENDER_PARAMS>): Uint8
   const buf = new Uint8Array(sizeofPDF_RENDER_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(util.toPointer(data.SourceRect)), true);
+  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : util.toBigInt(util.toPointer(data.SourceRect)), true);
   // 0x08: u32
   if (data?.DestinationWidth !== undefined) view.setUint32(8, Number(data.DestinationWidth), true);
   // 0x0c: u32
   if (data?.DestinationHeight !== undefined) view.setUint32(12, Number(data.DestinationHeight), true);
   // 0x10: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : util.toBigInt(util.toPointer(data.BackgroundColor)), true);
   // 0x18: pointer
-  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(util.toPointer(data.IgnoreHighContrast)), true);
+  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : util.toBigInt(util.toPointer(data.IgnoreHighContrast)), true);
   return buf;
 }
 
@@ -624,7 +624,7 @@ export class PDF_RENDER_PARAMSView {
 
   // 0x00: pointer
   set SourceRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -639,12 +639,12 @@ export class PDF_RENDER_PARAMSView {
 
   // 0x10: pointer
   set BackgroundColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x18: pointer
   set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -1051,10 +1051,10 @@ try {
 
 export function CoDecodeProxy(
   dwClientPid: number /* u32 */,
-  ui64ProxyAddress: Deno.PointerValue /* u64 */,
+  ui64ProxyAddress: number | bigint /* u64 */,
   pServerInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoDecodeProxy(dwClientPid, ui64ProxyAddress, util.toPointer(pServerInformation)));
+  return util.pointerFromFfi(libOLE32_dll.CoDecodeProxy(dwClientPid, util.toBigInt(util.toPointer(ui64ProxyAddress)), util.toPointer(pServerInformation)));
 }
 
 export function RoGetAgileReference(
@@ -1264,25 +1264,25 @@ export function WindowsDeleteStringBuffer(
 }
 
 export function WindowsInspectString(
-  targetHString: Deno.PointerValue /* usize */,
+  targetHString: number | bigint /* usize */,
   machine: number /* u16 */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetStringAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsInspectString(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
+  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsInspectString(util.toBigInt(util.toPointer(targetHString)), machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
 }
 
 export function WindowsInspectString2(
-  targetHString: Deno.PointerValue /* u64 */,
+  targetHString: number | bigint /* u64 */,
   machine: number /* u16 */,
   callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK2 */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   length: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetStringAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_1_dll.WindowsInspectString2(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
+  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_1_dll.WindowsInspectString2(util.toBigInt(util.toPointer(targetHString)), machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
 }
 
 export function CreateDispatcherQueueController(
@@ -1319,9 +1319,9 @@ export function RoRegisterActivationFactories(
 }
 
 export function RoRevokeActivationFactories(
-  cookie: Deno.PointerValue /* isize */,
+  cookie: number | bigint /* isize */,
 ): void /* void */ {
-  return libapi_ms_win_core_winrt_l1_1_0_dll.RoRevokeActivationFactories(cookie);
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoRevokeActivationFactories(util.toBigInt(util.toPointer(cookie)));
 }
 
 export function RoGetActivationFactory(
@@ -1452,24 +1452,24 @@ export function RoReportUnhandledError(
 }
 
 export function RoInspectThreadErrorInfo(
-  targetTebAddress: Deno.PointerValue /* usize */,
+  targetTebAddress: number | bigint /* usize */,
   machine: number /* u16 */,
   readMemoryCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetErrorInfoAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectThreadErrorInfo(targetTebAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(targetErrorInfoAddress)));
+  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectThreadErrorInfo(util.toBigInt(util.toPointer(targetTebAddress)), machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(targetErrorInfoAddress)));
 }
 
 export function RoInspectCapturedStackBackTrace(
-  targetErrorInfoAddress: Deno.PointerValue /* usize */,
+  targetErrorInfoAddress: number | bigint /* usize */,
   machine: number /* u16 */,
   readMemoryCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
   context: Deno.PointerValue | Uint8Array | null /* ptr */,
   frameCount: Deno.PointerValue | Uint8Array | null /* ptr */,
   targetBackTraceAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
 ): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectCapturedStackBackTrace(targetErrorInfoAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(frameCount), util.toPointer(targetBackTraceAddress)));
+  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectCapturedStackBackTrace(util.toBigInt(util.toPointer(targetErrorInfoAddress)), machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(frameCount), util.toPointer(targetBackTraceAddress)));
 }
 
 export function RoGetMatchingRestrictedErrorInfo(

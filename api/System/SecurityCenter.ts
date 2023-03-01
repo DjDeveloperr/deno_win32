@@ -42,7 +42,7 @@ export const WSC_SECURITY_PROVIDER_HEALTH_SNOOZE = 3;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = number | bigint;
 
 // Native Libraries
 

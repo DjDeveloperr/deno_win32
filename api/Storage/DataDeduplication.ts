@@ -56,9 +56,9 @@ export interface DEDUP_CONTAINER_EXTENT {
   /** u32 */
   ContainerIndex: number;
   /** i64 */
-  StartOffset: Deno.PointerValue;
+  StartOffset: number | bigint;
   /** i64 */
-  Length: Deno.PointerValue;
+  Length: number | bigint;
 }
 
 export const sizeofDEDUP_CONTAINER_EXTENT = 24;
@@ -70,9 +70,9 @@ export function allocDEDUP_CONTAINER_EXTENT(data?: Partial<DEDUP_CONTAINER_EXTEN
   if (data?.ContainerIndex !== undefined) view.setUint32(0, Number(data.ContainerIndex), true);
   // 0x04: pad4
   // 0x08: i64
-  if (data?.StartOffset !== undefined) view.setBigInt64(8, BigInt(data.StartOffset), true);
+  if (data?.StartOffset !== undefined) view.setBigInt64(8, util.toBigInt(data.StartOffset), true);
   // 0x10: i64
-  if (data?.Length !== undefined) view.setBigInt64(16, BigInt(data.Length), true);
+  if (data?.Length !== undefined) view.setBigInt64(16, util.toBigInt(data.Length), true);
   return buf;
 }
 
@@ -94,13 +94,13 @@ export class DEDUP_CONTAINER_EXTENTView {
   // 0x04: pad4
 
   // 0x08: i64
-  get StartOffset(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get StartOffset(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x10: i64
-  get Length(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(16, true));
+  get Length(): number | bigint {
+    return this.view.getBigInt64(16, true);
   }
 
   // 0x00: u32
@@ -111,13 +111,13 @@ export class DEDUP_CONTAINER_EXTENTView {
   // 0x04: pad4
 
   // 0x08: i64
-  set StartOffset(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set StartOffset(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 
   // 0x10: i64
-  set Length(value: Deno.PointerValue) {
-    this.view.setBigInt64(16, BigInt(value), true);
+  set Length(value: number | bigint) {
+    this.view.setBigInt64(16, util.toBigInt(value), true);
   }
 }
 
@@ -126,9 +126,9 @@ export class DEDUP_CONTAINER_EXTENTView {
  */
 export interface DDP_FILE_EXTENT {
   /** i64 */
-  Length: Deno.PointerValue;
+  Length: number | bigint;
   /** i64 */
-  Offset: Deno.PointerValue;
+  Offset: number | bigint;
 }
 
 export const sizeofDDP_FILE_EXTENT = 16;
@@ -137,9 +137,9 @@ export function allocDDP_FILE_EXTENT(data?: Partial<DDP_FILE_EXTENT>): Uint8Arra
   const buf = new Uint8Array(sizeofDDP_FILE_EXTENT);
   const view = new DataView(buf.buffer);
   // 0x00: i64
-  if (data?.Length !== undefined) view.setBigInt64(0, BigInt(data.Length), true);
+  if (data?.Length !== undefined) view.setBigInt64(0, util.toBigInt(data.Length), true);
   // 0x08: i64
-  if (data?.Offset !== undefined) view.setBigInt64(8, BigInt(data.Offset), true);
+  if (data?.Offset !== undefined) view.setBigInt64(8, util.toBigInt(data.Offset), true);
   return buf;
 }
 
@@ -154,23 +154,23 @@ export class DDP_FILE_EXTENTView {
   }
 
   // 0x00: i64
-  get Length(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(0, true));
+  get Length(): number | bigint {
+    return this.view.getBigInt64(0, true);
   }
 
   // 0x08: i64
-  get Offset(): Deno.PointerValue {
-    return Number(this.view.getBigInt64(8, true));
+  get Offset(): number | bigint {
+    return this.view.getBigInt64(8, true);
   }
 
   // 0x00: i64
-  set Length(value: Deno.PointerValue) {
-    this.view.setBigInt64(0, BigInt(value), true);
+  set Length(value: number | bigint) {
+    this.view.setBigInt64(0, util.toBigInt(value), true);
   }
 
   // 0x08: i64
-  set Offset(value: Deno.PointerValue) {
-    this.view.setBigInt64(8, BigInt(value), true);
+  set Offset(value: number | bigint) {
+    this.view.setBigInt64(8, util.toBigInt(value), true);
   }
 }
 
@@ -181,9 +181,9 @@ export interface DEDUP_CHUNK_INFO_HASH32 {
   /** u32 */
   ChunkFlags: number;
   /** u64 */
-  ChunkOffsetInStream: Deno.PointerValue;
+  ChunkOffsetInStream: number | bigint;
   /** u64 */
-  ChunkSize: Deno.PointerValue;
+  ChunkSize: number | bigint;
   /** array */
   HashVal: Deno.PointerValue | null;
 }
@@ -197,11 +197,11 @@ export function allocDEDUP_CHUNK_INFO_HASH32(data?: Partial<DEDUP_CHUNK_INFO_HAS
   if (data?.ChunkFlags !== undefined) view.setUint32(0, Number(data.ChunkFlags), true);
   // 0x04: pad4
   // 0x08: u64
-  if (data?.ChunkOffsetInStream !== undefined) view.setBigUint64(8, BigInt(data.ChunkOffsetInStream), true);
+  if (data?.ChunkOffsetInStream !== undefined) view.setBigUint64(8, util.toBigInt(data.ChunkOffsetInStream), true);
   // 0x10: u64
-  if (data?.ChunkSize !== undefined) view.setBigUint64(16, BigInt(data.ChunkSize), true);
+  if (data?.ChunkSize !== undefined) view.setBigUint64(16, util.toBigInt(data.ChunkSize), true);
   // 0x18: pointer
-  if (data?.HashVal !== undefined) view.setBigUint64(24, data.HashVal === null ? 0n : BigInt(util.toPointer(data.HashVal)), true);
+  if (data?.HashVal !== undefined) view.setBigUint64(24, data.HashVal === null ? 0n : util.toBigInt(util.toPointer(data.HashVal)), true);
   return buf;
 }
 
@@ -223,13 +223,13 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   // 0x04: pad4
 
   // 0x08: u64
-  get ChunkOffsetInStream(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get ChunkOffsetInStream(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get ChunkSize(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get ChunkSize(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: pointer
@@ -246,18 +246,18 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   // 0x04: pad4
 
   // 0x08: u64
-  set ChunkOffsetInStream(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set ChunkOffsetInStream(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set ChunkSize(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set ChunkSize(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: pointer
   set HashVal(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(24, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -275,7 +275,7 @@ export function allocDedupHash(data?: Partial<DedupHash>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupHash);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : util.toBigInt(util.toPointer(data.Hash)), true);
   return buf;
 }
 
@@ -297,7 +297,7 @@ export class DedupHashView {
 
   // 0x00: pointer
   set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -321,7 +321,7 @@ export function allocDedupChunk(data?: Partial<DedupChunk>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupChunk);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : util.toBigInt(util.toPointer(data.Hash)), true);
   // 0x08: i32
   if (data?.Flags !== undefined) view.setInt32(8, Number(data.Flags), true);
   // 0x0c: u32
@@ -367,7 +367,7 @@ export class DedupChunkView {
 
   // 0x00: pointer
   set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: i32
@@ -397,7 +397,7 @@ export interface DedupStreamEntry {
   /** u32 */
   LogicalSize: number;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: number | bigint;
 }
 
 export const sizeofDedupStreamEntry = 24;
@@ -406,12 +406,12 @@ export function allocDedupStreamEntry(data?: Partial<DedupStreamEntry>): Uint8Ar
   const buf = new Uint8Array(sizeofDedupStreamEntry);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : util.toBigInt(util.toPointer(data.Hash)), true);
   // 0x08: u32
   if (data?.LogicalSize !== undefined) view.setUint32(8, Number(data.LogicalSize), true);
   // 0x0c: pad4
   // 0x10: u64
-  if (data?.Offset !== undefined) view.setBigUint64(16, BigInt(data.Offset), true);
+  if (data?.Offset !== undefined) view.setBigUint64(16, util.toBigInt(data.Offset), true);
   return buf;
 }
 
@@ -439,13 +439,13 @@ export class DedupStreamEntryView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get Offset(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Offset(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x00: pointer
   set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u32
@@ -456,8 +456,8 @@ export class DedupStreamEntryView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set Offset(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Offset(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 }
 
@@ -470,9 +470,9 @@ export interface DedupStream {
   /** Windows.Win32.Foundation.BSTR */
   Path: Uint8Array | Deno.PointerValue | null;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: number | bigint;
   /** u64 */
-  Length: Deno.PointerValue;
+  Length: number | bigint;
   /** u32 */
   ChunkCount: number;
 }
@@ -483,11 +483,11 @@ export function allocDedupStream(data?: Partial<DedupStream>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupStream);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Path !== undefined) view.setBigUint64(0, data.Path === null ? 0n : BigInt(util.toPointer(data.Path)), true);
+  if (data?.Path !== undefined) view.setBigUint64(0, data.Path === null ? 0n : util.toBigInt(util.toPointer(data.Path)), true);
   // 0x08: u64
-  if (data?.Offset !== undefined) view.setBigUint64(8, BigInt(data.Offset), true);
+  if (data?.Offset !== undefined) view.setBigUint64(8, util.toBigInt(data.Offset), true);
   // 0x10: u64
-  if (data?.Length !== undefined) view.setBigUint64(16, BigInt(data.Length), true);
+  if (data?.Length !== undefined) view.setBigUint64(16, util.toBigInt(data.Length), true);
   // 0x18: u32
   if (data?.ChunkCount !== undefined) view.setUint32(24, Number(data.ChunkCount), true);
   // 0x1c: pad4
@@ -511,13 +511,13 @@ export class DedupStreamView {
   }
 
   // 0x08: u64
-  get Offset(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(8, true));
+  get Offset(): number | bigint {
+    return this.view.getBigUint64(8, true);
   }
 
   // 0x10: u64
-  get Length(): Deno.PointerValue {
-    return Number(this.view.getBigUint64(16, true));
+  get Length(): number | bigint {
+    return this.view.getBigUint64(16, true);
   }
 
   // 0x18: u32
@@ -529,17 +529,17 @@ export class DedupStreamView {
 
   // 0x00: pointer
   set Path(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: u64
-  set Offset(value: Deno.PointerValue) {
-    this.view.setBigUint64(8, BigInt(value), true);
+  set Offset(value: number | bigint) {
+    this.view.setBigUint64(8, util.toBigInt(value), true);
   }
 
   // 0x10: u64
-  set Length(value: Deno.PointerValue) {
-    this.view.setBigUint64(16, BigInt(value), true);
+  set Length(value: number | bigint) {
+    this.view.setBigUint64(16, util.toBigInt(value), true);
   }
 
   // 0x18: u32

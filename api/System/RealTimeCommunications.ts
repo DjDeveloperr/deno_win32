@@ -518,7 +518,7 @@ export function allocTRANSPORT_SETTING_ID(data?: Partial<TRANSPORT_SETTING_ID>):
   const buf = new Uint8Array(sizeofTRANSPORT_SETTING_ID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Guid !== undefined) view.setBigUint64(0, data.Guid === null ? 0n : BigInt(util.toPointer(data.Guid)), true);
+  if (data?.Guid !== undefined) view.setBigUint64(0, data.Guid === null ? 0n : util.toBigInt(util.toPointer(data.Guid)), true);
   return buf;
 }
 
@@ -540,7 +540,7 @@ export class TRANSPORT_SETTING_IDView {
 
   // 0x00: pointer
   set Guid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
@@ -562,11 +562,11 @@ export function allocTRANSPORT_SETTING(data?: Partial<TRANSPORT_SETTING>): Uint8
   const buf = new Uint8Array(sizeofTRANSPORT_SETTING);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SettingId !== undefined) view.setBigUint64(0, data.SettingId === null ? 0n : BigInt(util.toPointer(data.SettingId)), true);
+  if (data?.SettingId !== undefined) view.setBigUint64(0, data.SettingId === null ? 0n : util.toBigInt(util.toPointer(data.SettingId)), true);
   // 0x08: pointer
-  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(util.toPointer(data.Length)), true);
+  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : util.toBigInt(util.toPointer(data.Length)), true);
   // 0x10: pointer
-  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : util.toBigInt(util.toPointer(data.Value)), true);
   return buf;
 }
 
@@ -600,17 +600,17 @@ export class TRANSPORT_SETTINGView {
 
   // 0x00: pointer
   set SettingId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(0, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x08: pointer
   set Length(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(8, util.toBigInt(util.toPointer(value)), true);
   }
 
   // 0x10: pointer
   set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+    this.view.setBigUint64(16, util.toBigInt(util.toPointer(value)), true);
   }
 }
 
